@@ -1,4 +1,5 @@
 import type { z } from 'zod'
+import { applyBestOffer } from './offers.ts'
 import {
   ProductCategorySchema,
   ProductsSchema,
@@ -44,6 +45,16 @@ function checkProducts(products: Products): string[] {
       const other = seenIds.get(option.id)
       if (other) errors.push(`${at}: id "${option.id}" repetido (também em ${other})`)
       seenIds.set(option.id, category)
+
+      const shown = applyBestOffer(option)
+      const fields = (['price', 'priceUpdatedAt', 'store', 'url'] as const).filter(
+        (field) => shown[field] !== option[field],
+      )
+      if (fields.length) {
+        errors.push(
+          `${at}: "${option.id}" mostra ${fields.join(', ')} diferente da melhor oferta em offers (rode npm run ml:links import ou corrija à mão)`,
+        )
+      }
     }
 
     const tiers = options.map((o) => o.tier)

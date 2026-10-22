@@ -1,4 +1,5 @@
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
+import { otherOffers, STORE_WHERE } from '../data/offers.ts'
 import type { Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
@@ -109,9 +110,20 @@ export function ProductCard({
               {item.qty} × {formatBRL(option.price)}
             </span>
           )}
+          {otherOffers(option).map((offer) => (
+            <a
+              key={offer.store}
+              class="other-offer"
+              href={offer.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+            >
+              Também {STORE_WHERE[offer.store] || 'em outra loja'}: {formatBRL(offer.price)}
+            </a>
+          ))}
         </div>
         <a class="buy-button" href={option.url} target="_blank" rel="sponsored noopener noreferrer">
-          Comprar ↗
+          Comprar {STORE_WHERE[option.store]} ↗
         </a>
       </footer>
     </article>

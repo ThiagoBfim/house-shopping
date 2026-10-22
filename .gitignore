@@ -29,3 +29,7 @@ test-results
 
 # Claude Code (configuração local)
 .claude/settings.local.json
+
+# Credenciais e tokens locais
+.env.local
+.ml-token.json

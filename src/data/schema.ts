@@ -18,6 +18,22 @@ const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'deve ser kebab-case (
 const httpsUrl = z.url({ protocol: /^https$/, error: 'deve ser uma URL https válida' })
 const isoDate = z.iso.date({ error: 'deve ser uma data AAAA-MM-DD' })
 
+/** Onde comprar um modelo: uma oferta por loja. */
+export const OfferSchema = z.strictObject({
+  store: StoreSchema,
+  url: httpsUrl,
+  price: z.number().positive(),
+  updatedAt: isoDate,
+  /** Id do produto na loja, usado pelo sync de preços (Mercado Livre: MLB…; Amazon: ASIN). */
+  externalId: z.string().min(3).optional(),
+  /** false = sem estoque / anúncio pausado na última sincronização. */
+  available: z.boolean().default(true),
+})
+
+/**
+ * `price`, `priceUpdatedAt`, `store` e `url` são sempre os da melhor oferta (a mais barata
+ * disponível em `offers`). Sem `offers`, valem como estão (preço de referência + link de busca).
+ */
 export const ProductOptionSchema = z.strictObject({
   id: slug,
   tier: TierSchema,
@@ -28,6 +44,7 @@ export const ProductOptionSchema = z.strictObject({
   url: httpsUrl,
   image: httpsUrl.optional(),
   bullets: z.array(z.string().min(3)).min(3, 'mínimo de 3 bullets').max(5, 'máximo de 5 bullets'),
+  offers: z.array(OfferSchema).min(1).optional(),
 })
 
 export const ProductCategorySchema = z.strictObject({
@@ -58,6 +75,7 @@ export const RoomsSchema = z.record(slug, RoomSchema)
 export type Tier = z.infer<typeof TierSchema>
 export type Need = z.infer<typeof NeedSchema>
 export type Store = z.infer<typeof StoreSchema>
+export type Offer = z.infer<typeof OfferSchema>
 export type ProductOption = z.infer<typeof ProductOptionSchema>
 export type ProductCategory = z.infer<typeof ProductCategorySchema>
 export type Products = z.infer<typeof ProductsSchema>

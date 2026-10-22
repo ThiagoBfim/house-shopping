@@ -10,6 +10,8 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 
 - `npm run dev` — servidor local (http://localhost:5173/house-shopping/)
 - `npm test` — Vitest (inclui validação do catálogo real em `data/`)
+- `npm run ml:links export|import` — planilha `data/affiliate/mercadolivre.csv` ↔ links de afiliado nos JSONs
+- `npm run sync:ml` — preço/disponibilidade do Mercado Livre (precisa de token em `.env.local`; ver `docs/project/MercadoLivre.md`)
 - `npm run validate` — valida `data/rooms.json` + `data/products/*.json` e lista os erros
 - `npm run test:e2e` — Playwright (perfil celular), sobe o Vite sozinho na porta 4321
 - `npm run check` — lint + format + validate + testes com cobertura (≥ 90% em engine/data) + build + E2E (rodar antes de fechar um drop)
@@ -20,7 +22,8 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `src/data/` — schema Zod (`schema.ts`, tipos derivados com `z.infer`) e regras do catálogo (`validate.ts`). Na UI, importar só tipos (`import type`) para não levar o Zod no bundle.
 - `src/ui/` — componentes Preact. `App.tsx` guarda a sessão (`plan` + `choices`); `persistence.ts` sincroniza URL (`#l=`) e localStorage.
 - `data/rooms.json` (cômodos → itens com `need` 1–5 e `qty`) e `data/products/<categoria>.json` (um arquivo por categoria; o nome é o id). Não ler o catálogo inteiro; para adicionar/atualizar categoria use a skill `/add-product` (`.claude/skills/add-product/`).
-- `scripts/` — scripts Node (validação, sync de afiliados).
+- `scripts/` — scripts Node (validação, links de afiliado, sync). Lógica pura em `scripts/lib/` (testada); IO e HTTP nos scripts.
+- Ofertas: `offers` por loja em cada opção; `price/url/store/priceUpdatedAt` = melhor oferta (`applyBestOffer`, `src/data/offers.ts`). O validador exige isso.
 - `tests/` — testes unitários `*.test.ts` (Vitest). `e2e/` — testes `*.spec.ts` (Playwright).
 
 ## Convenções
