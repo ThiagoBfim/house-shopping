@@ -85,7 +85,8 @@ export function App() {
       <header class="app-header">
         <div class="container">
           <h1 class="brand">
-            <span aria-hidden="true">🏠</span> House Shopping
+            <img class="brand-icon" src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
+            House Shopping
           </h1>
           <p class="tagline">Sua lista de compras por cômodo, dentro do orçamento.</p>
         </div>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="House Shopping">
+  <title>House Shopping</title>
+  <rect width="64" height="64" rx="14" fill="#1f6f5c"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Telhado = alça da sacola -->
+    <path d="M23 25 L32 13 L41 25" stroke-width="4.5"/>
+    <!-- Corpo da sacola -->
+    <rect x="15" y="25" width="34" height="28" rx="4" stroke-width="4.5"/>
+    <!-- Paredes da planta (com vão de porta) -->
+    <path d="M32 25 V34 M32 39 V53 M32 39 H38 M43 39 H49" stroke-width="2.5"/>
+  </g>
+</svg>
