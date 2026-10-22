@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:16 | 2026-10-22 09:19 | 3min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** repositório pronto, com build e lint rodando.
 
 - [x] `git init` e `.gitignore`

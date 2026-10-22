@@ -4,7 +4,9 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
-**Meta:** ideias para depois do MVP.
+**Wave:** backlog — depois das duas waves
+
+**Meta:** ideias para depois das duas waves.
 
 - [ ] **Casa inteira**: um orçamento total dividido entre vários cômodos (sliders por cômodo)
 - [ ] Filtros: marca, cor, voltagem (110/220 V), tamanho

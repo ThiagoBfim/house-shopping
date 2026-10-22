@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:41 | 2026-10-22 09:44 | 3min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** usuário molda a própria lista.
 
 - [x] Botão **Recusar** e **Já tenho** (com desfazer)

@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:44 | 2026-10-22 09:47 | 3min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** a lista sobrevive a refresh e pode ser compartilhada.
 
 - [x] Serializar estado (cômodo, orçamento, travados, recusados) na URL (`#` + compressão, ex. `lz-string`)

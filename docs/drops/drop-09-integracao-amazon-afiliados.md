@@ -4,6 +4,8 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
+**Wave:** 2ª — publicação e automação (deploy + Amazon)
+
 **Meta:** preços e links da Amazon atualizados automaticamente.
 
 - [ ] Cadastro no Associados Amazon BR e obtenção do `partner tag`
@@ -11,6 +13,7 @@
 - [ ] Script `scripts/sync-amazon.ts`: busca por ASIN → atualiza preço, imagem, disponibilidade e link
 - [ ] Guardar credenciais em **GitHub Secrets**
 - [ ] Workflow agendado (cron diário) que roda o sync, valida e faz commit → dispara deploy
+- [ ] Incluir o sync do Mercado Livre (`npm run sync:ml`, Drop 10) no mesmo workflow agendado
 - [ ] Marcar produtos indisponíveis e cair para o próximo tier no motor
 
 **Pronto quando:** preços Amazon atualizam sozinhos todo dia.

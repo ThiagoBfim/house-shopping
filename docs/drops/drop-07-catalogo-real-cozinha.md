@@ -4,6 +4,8 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** dados reais e curados para o primeiro cômodo.
 
 - [ ] Listar categorias da cozinha com prioridade e peso

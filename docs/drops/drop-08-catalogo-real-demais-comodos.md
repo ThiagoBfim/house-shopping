@@ -4,6 +4,8 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** cobrir os cômodos do escopo inicial.
 
 - [ ] Quarto (casal)

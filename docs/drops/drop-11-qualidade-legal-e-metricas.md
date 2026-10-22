@@ -4,16 +4,17 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
-**Meta:** site confiável e mensurável.
+**Wave:** 1ª — produto completo rodando localmente
+
+**Meta:** site confiável, acessível e com os avisos legais.
 
 - [ ] Aviso de links de afiliado e de "preços podem variar" com data de atualização
-- [ ] Analytics leve e sem cookies (ex.: Plausible, GoatCounter) — cliques em "Comprar" e compartilhamentos
-- [ ] Lighthouse ≥ 90 (performance, acessibilidade, SEO)
+- [ ] Lighthouse ≥ 90 (performance, acessibilidade, SEO), medido localmente com `npm run preview`
 - [ ] Acessibilidade: navegação por teclado, contraste, `aria-labels`
 - [ ] Página "Sobre / Como funciona"
-- [ ] Alerta no CI para links quebrados (link checker semanal)
+- [ ] Script `npm run check:links` para achar links de produto quebrados (o agendamento semanal no CI foi para o Drop 6, na 2ª wave)
 
-**Pronto quando:** Lighthouse ≥ 90 e métricas aparecendo no painel.
+**Pronto quando:** Lighthouse ≥ 90 local e avisos legais visíveis.
 
 ## Registro
 

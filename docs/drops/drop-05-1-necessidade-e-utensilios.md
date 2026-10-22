@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** escolher os itens também pela necessidade e poder incluir ou não os utensílios. (Pedido do usuário depois do Drop 5.)
 
 - [x] Trocar `priority` + `weight` por `need` (1–5) nos itens de `rooms.json`

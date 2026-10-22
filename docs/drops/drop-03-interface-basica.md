@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:38 | 2026-10-22 09:40 | 2min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** usuário escolhe cômodo + orçamento e vê a lista.
 
 - [x] Tela inicial: cards de cômodos

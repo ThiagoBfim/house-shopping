@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:35 | 2026-10-22 09:37 | 2min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** função pura que transforma (cômodo, orçamento, escolhas) em lista.
 
 - [x] `buildList(room, budget, state)` — essenciais no tier 1 → importantes → desejáveis

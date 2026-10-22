@@ -4,6 +4,8 @@
 | ------------ | ---------------- | ---------------- | ------- |
 | ✅ Concluído | 2026-10-22 09:21 | 2026-10-22 09:23 | 2min    |
 
+**Wave:** 1ª — produto completo rodando localmente
+
 **Meta:** formato dos JSONs definido e validado automaticamente.
 
 - [x] Definir tipos TS: `Room`, `RoomItem`, `ProductCategory`, `ProductOption`, `Tier`, `Priority`
