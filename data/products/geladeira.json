@@ -22,9 +22,11 @@
           "price": 2249,
           "updatedAt": "2026-10-22",
           "available": true,
-          "externalId": "MLB7479712988"
+          "externalId": "MLB7479712988",
+          "history": [{ "date": "2026-10-22", "price": 2249 }]
         }
-      ]
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_890527-MLB118274172164_102026-O-geladeira-consul-crm40mb-duplex-frost-free-333l-branco.webp"
     },
     {
       "id": "geladeira-electrolux-it70s",
@@ -46,9 +48,11 @@
           "price": 4104.78,
           "updatedAt": "2026-10-22",
           "available": true,
-          "externalId": "MLB36520314"
+          "externalId": "MLB36520314",
+          "history": [{ "date": "2026-10-22", "price": 4104.78 }]
         }
-      ]
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_780538-MLU76901817142_062024-O.webp"
     },
     {
       "id": "geladeira-brastemp-bre57fk",

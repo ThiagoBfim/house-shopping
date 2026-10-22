@@ -54,6 +54,8 @@ O nome do arquivo (kebab-case, sem acento) é o id da categoria.
 - `url`: até existir link de afiliado, use a busca do modelo no Mercado Livre: `https://lista.mercadolivre.com.br/<termos-com-hifen>`.
 - `bullets`: **3–5**, curtos, em pt-BR, explicando **o que muda em relação aos outros tiers** (ex.: "Frost free (o barato não é)"), não a ficha técnica inteira.
 - `priceUpdatedAt`: data de hoje.
+- `image` (opcional): URL https da foto (no Mercado Livre, `og:image` da página do produto).
+- Não crie `offers` à mão: links de afiliado, preço real e histórico entram pela planilha (`npm run ml:links import`, ver `docs/project/MercadoLivre.md`).
 
 ## 4. Colocar no cômodo (`data/rooms.json`)
 

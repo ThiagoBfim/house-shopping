@@ -88,6 +88,7 @@ describe('importRows', () => {
         updatedAt: '2026-10-23',
         available: true,
         externalId: 'MLB123456',
+        history: [{ date: '2026-10-23', price: 119.9 }],
       },
     ])
     expect(option).toMatchObject({
@@ -148,9 +149,74 @@ describe('importRows', () => {
     expect(next.liquidificador.options[1].offers?.[0].price).toBe(299)
   })
 
+  it('usa a coluna data e grava o histórico quando o preço muda', () => {
+    const link = 'https://meli.la/abc'
+    const first = importRows(
+      products(),
+      [{ id: 'liq-barato', link_afiliado: link, preco: '129', data: '2026-10-01' }],
+      '2026-10-23',
+    ).products
+    const second = importRows(
+      first,
+      [{ id: 'liq-barato', link_afiliado: link, preco: '109,90', data: '2026-10-20' }],
+      '2026-10-23',
+    ).products
+    const offer = second.liquidificador.options[0].offers?.[0]
+    expect(offer).toMatchObject({ price: 109.9, updatedAt: '2026-10-20' })
+    expect(offer?.history).toEqual([
+      { date: '2026-10-01', price: 129 },
+      { date: '2026-10-20', price: 109.9 },
+    ])
+    expect(second.liquidificador.options[0].priceUpdatedAt).toBe('2026-10-20')
+  })
+
+  it('data inválida usa hoje e avisa; imagem https é gravada, outra é ignorada', () => {
+    const { products: next, report } = importRows(
+      products(),
+      [
+        {
+          id: 'liq-barato',
+          link_afiliado: 'https://meli.la/a',
+          data: '22/10/2026',
+          imagem: 'https://http2.mlstatic.com/D_NQ_NP_123.webp',
+        },
+        { id: 'liq-medio', link_afiliado: 'https://meli.la/b', imagem: 'http://inseguro.jpg' },
+      ],
+      '2026-10-23',
+    )
+    expect(next.liquidificador.options[0]).toMatchObject({
+      priceUpdatedAt: '2026-10-23',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_123.webp',
+    })
+    expect(next.liquidificador.options[1].image).toBeUndefined()
+    expect(report).toMatchObject({ badDates: ['liq-barato'], badImages: ['liq-medio'] })
+  })
+
+  it('exporta data e imagem já preenchidas', () => {
+    const { products: next } = importRows(
+      products(),
+      [
+        {
+          id: 'liq-barato',
+          link_afiliado: 'https://meli.la/a',
+          preco: '120',
+          data: '2026-10-21',
+          imagem: 'https://img/x.jpg',
+        },
+      ],
+      '2026-10-23',
+    )
+    const row = exportRows(next)[0]
+    expect(row.slice(-2)).toEqual(['2026-10-21', 'https://img/x.jpg'])
+  })
+
   it('não altera o catálogo recebido', () => {
     const base = products()
-    importRows(base, [{ id: 'liq-barato', link_afiliado: 'https://mercadolivre.com/sec/a' }], 'x')
+    importRows(
+      base,
+      [{ id: 'liq-barato', link_afiliado: 'https://mercadolivre.com/sec/a' }],
+      '2026-10-23',
+    )
     expect(base).toEqual(products())
   })
 })
@@ -189,8 +255,23 @@ describe('syncOffers', () => {
       price: 109.9,
       priceUpdatedAt: '2026-10-23',
     })
+    expect(next.liquidificador.options[0].offers?.[0].history).toEqual([
+      { date: '2026-10-01', price: 119 },
+      { date: '2026-10-23', price: 109.9 },
+    ])
     expect(report.updated).toEqual([{ id: 'liq-barato', from: 119, to: 109.9 }])
     expect(report.noCommission).toEqual([])
+  })
+
+  it('traz a imagem só se o produto ainda não tiver', async () => {
+    const quote = { price: 119, available: true, image: 'https://img/nova.jpg' }
+    const { products: next } = await syncOffers(withOffer(), async () => quote, '2026-10-23')
+    expect(next.liquidificador.options[0].image).toBe('https://img/nova.jpg')
+
+    const withImage = withOffer()
+    withImage.liquidificador.options[0].image = 'https://img/escolhida.jpg'
+    const { products: kept } = await syncOffers(withImage, async () => quote, '2026-10-23')
+    expect(kept.liquidificador.options[0].image).toBe('https://img/escolhida.jpg')
   })
 
   it('marca indisponível e sem comissão', async () => {

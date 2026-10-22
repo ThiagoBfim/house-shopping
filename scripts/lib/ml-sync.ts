@@ -1,5 +1,6 @@
 // Atualiza as ofertas do Mercado Livre com preço/disponibilidade atuais (lógica pura).
 import { applyBestOffer } from '../../src/data/offers.ts'
+import { recordPrice } from '../../src/data/price-history.ts'
 import type { Products } from '../../src/data/schema.ts'
 
 /** Situação atual de um produto no Mercado Livre. */
@@ -10,6 +11,8 @@ export interface Quote {
   condition?: string
   /** seller_reputation.level_id, ex.: "5_green" */
   sellerLevel?: string
+  /** Foto principal (https). */
+  image?: string
 }
 
 export type Lookup = (externalId: string) => Promise<Quote | undefined>
@@ -48,8 +51,10 @@ export async function syncOffers(
 
   for (const [category, { options }] of Object.entries(next)) {
     for (const [i, option] of options.entries()) {
-      const offer = option.offers?.find((o) => o.store === 'mercadolivre' && o.externalId)
-      if (!offer?.externalId) continue
+      const index =
+        option.offers?.findIndex((o) => o.store === 'mercadolivre' && o.externalId) ?? -1
+      const offer = option.offers?.[index]
+      if (!option.offers || !offer?.externalId) continue
 
       const quote = await lookup(offer.externalId)
       if (!quote) {
@@ -62,9 +67,11 @@ export async function syncOffers(
       if (!quote.available) report.unavailable.push(option.id)
       if (!earnsCommission(quote)) report.noCommission.push(option.id)
 
-      offer.price = quote.price
-      offer.available = quote.available
-      offer.updatedAt = today
+      option.offers[index] = {
+        ...recordPrice(offer, today, quote.price),
+        available: quote.available,
+      }
+      if (!option.image && quote.image) option.image = quote.image
       options[i] = applyBestOffer(option)
       report.changedCategories.add(category)
     }

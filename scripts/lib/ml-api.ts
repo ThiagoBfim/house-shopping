@@ -67,6 +67,8 @@ export function createLookup(accessToken: string): Lookup {
     status: string
     condition?: string
     seller_id?: number
+    pictures?: { secure_url?: string }[]
+    thumbnail?: string
   }
 
   const fromItem = async (item: Item): Promise<Quote> => ({
@@ -74,6 +76,7 @@ export function createLookup(accessToken: string): Lookup {
     available: item.status === 'active',
     condition: item.condition,
     sellerLevel: await sellerLevel(item.seller_id),
+    image: item.pictures?.[0]?.secure_url ?? item.thumbnail?.replace(/^http:/, 'https:'),
   })
 
   return async (externalId) => {

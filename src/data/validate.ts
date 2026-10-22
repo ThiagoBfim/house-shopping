@@ -55,6 +55,21 @@ function checkProducts(products: Products): string[] {
           `${at}: "${option.id}" mostra ${fields.join(', ')} diferente da melhor oferta em offers (rode npm run ml:links import ou corrija à mão)`,
         )
       }
+
+      for (const offer of option.offers ?? []) {
+        const history = offer.history
+        if (!history) continue
+        const where = `${at}: "${option.id}" (${offer.store}) history`
+        if (history.some((point, i) => i > 0 && point.date <= history[i - 1].date)) {
+          errors.push(`${where}: datas fora de ordem ou repetidas`)
+        }
+        const last = history[history.length - 1]
+        if (last.price !== offer.price || last.date > offer.updatedAt) {
+          errors.push(
+            `${where}: o último ponto deve ter o preço atual (${offer.price}) e data até ${offer.updatedAt}`,
+          )
+        }
+      }
     }
 
     const tiers = options.map((o) => o.tier)

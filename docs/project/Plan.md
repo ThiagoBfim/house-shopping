@@ -18,6 +18,7 @@ As tarefas, o status e os tempos de cada drop ficam em [`docs/drops/`](../drops/
 | [7](../drops/drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha          | 4 tiers reais por produto caro                    |
 | [8](../drops/drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | Quarto, Sala, Quarto do bebê, Área externa        |
 | [10](../drops/drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | Links de afiliado + preço atualizado              |
+| [10.1](../drops/drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem     | Preço subiu/caiu, promoções e foto                |
 | [11](../drops/drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | Lighthouse ≥ 90, acessibilidade, avisos legais    |
 
 ### 2ª wave — publicação e automação

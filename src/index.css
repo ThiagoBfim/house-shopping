@@ -481,6 +481,32 @@ h3 {
   font-size: 0.8rem;
 }
 
+.price-trend {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.trend-down {
+  color: var(--accent);
+}
+
+.trend-up {
+  color: var(--warn);
+}
+
+.promo-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.product-media.has-image {
+  background: #fff;
+}
+
 .other-offer {
   font-size: 0.8rem;
   color: var(--accent);

@@ -1,5 +1,6 @@
 // Planilha de links de afiliado do Mercado Livre ↔ catálogo (lógica pura, sem arquivos).
 import { applyBestOffer, isAffiliateUrl, parseMercadoLivreId } from '../../src/data/offers.ts'
+import { recordPrice } from '../../src/data/price-history.ts'
 import type { Offer, Products } from '../../src/data/schema.ts'
 import { parsePrice } from './csv.ts'
 
@@ -13,7 +14,21 @@ export const LINK_COLUMNS = [
   'link_produto',
   'link_afiliado',
   'preco',
+  /** Data em que o preço foi visto (AAAA-MM-DD; vazia = hoje). */
+  'data',
+  /** URL https da foto do produto. */
+  'imagem',
 ] as const
+
+const isIsoDate = (text: string) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(text) && !Number.isNaN(Date.parse(text))
+const isHttpsUrl = (text: string) => {
+  try {
+    return new URL(text).protocol === 'https:'
+  } catch {
+    return false
+  }
+}
 
 const mlOffer = (offers: Offer[] | undefined) => offers?.find((o) => o.store === 'mercadolivre')
 
@@ -36,6 +51,8 @@ export function exportRows(products: Products): string[][] {
             offer?.externalId ?? '',
             offer?.url ?? '',
             offer ? String(offer.price) : '',
+            offer?.updatedAt ?? '',
+            option.image ?? '',
           ]
         }),
     )
@@ -48,6 +65,10 @@ export interface ImportReport {
   /** Link que não parece de afiliado (não gera comissão). */
   notAffiliate: string[]
   unknownIds: string[]
+  /** Data inválida na planilha (usou hoje). */
+  badDates: string[]
+  /** Imagem que não é URL https (ignorada). */
+  badImages: string[]
   changedCategories: Set<string>
 }
 
@@ -63,6 +84,8 @@ export function importRows(
     withoutId: [],
     notAffiliate: [],
     unknownIds: [],
+    badDates: [],
+    badImages: [],
     changedCategories: new Set(),
   }
   const index = new Map(
@@ -83,16 +106,27 @@ export function importRows(
     const option = options[found.i]
     const externalId =
       parseMercadoLivreId(row.link_produto ?? '')?.id ?? parseMercadoLivreId(link)?.id
-    const offer: Offer = {
-      store: 'mercadolivre',
-      url: link,
-      price: parsePrice(row.preco ?? '') ?? mlOffer(option.offers)?.price ?? option.price,
-      updatedAt: today,
-      available: true,
-      ...(externalId && { externalId }),
-    }
+    const existing = mlOffer(option.offers)
+    const date = row.data && isIsoDate(row.data) ? row.data : today
+    if (row.data && date !== row.data) report.badDates.push(row.id)
+    const price = parsePrice(row.preco ?? '') ?? existing?.price ?? option.price
+
+    const base: Offer = existing
+      ? { ...existing, url: link, available: true }
+      : { store: 'mercadolivre', url: link, price, updatedAt: date, available: true }
+    const offer = recordPrice({ ...base, ...(externalId && { externalId }) }, date, price)
     const others = (option.offers ?? []).filter((o) => o.store !== 'mercadolivre')
-    options[found.i] = applyBestOffer({ ...option, offers: [offer, ...others] })
+
+    let image = option.image
+    if (row.imagem) {
+      if (isHttpsUrl(row.imagem)) image = row.imagem
+      else report.badImages.push(row.id)
+    }
+    options[found.i] = applyBestOffer({
+      ...option,
+      ...(image && { image }),
+      offers: [offer, ...others],
+    })
 
     report.applied.push(row.id)
     report.changedCategories.add(found.category)

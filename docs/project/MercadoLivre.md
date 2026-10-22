@@ -25,6 +25,7 @@ Para cada linha (dá para fazer aos poucos; linhas vazias são ignoradas):
 2. Copie o endereço da página do produto para **`link_produto`**. Ele tem um id `MLB…` (inclusive dentro de `pdp_filters=item_id:MLB…`), que o sync de preço usa.
 3. Logado como afiliado, a página do produto mostra no topo a barra **Afiliados → "GANHOS x%" → Compartilhar**. Clique em **Compartilhar** e copie o **Link do produto** (`https://meli.la/…`) para **`link_afiliado`**. Isso também adiciona o produto à sua lista "Minhas recomendações". O Gerador de links do painel (Ferramentas) faz o mesmo.
 4. Em **`preco`**, coloque o preço em destaque (à vista/Pix quando houver; ex.: `4.104,78`).
+5. Em **`data`**, a data em que viu o preço (`AAAA-MM-DD`; vazia = hoje). Em **`imagem`**, a URL da foto (botão direito na foto → copiar endereço; a página tem em `og:image`). A imagem só é trocada se a coluna vier preenchida.
 
 > O link `meli.la` abre o seu perfil social de afiliado (`/social/<etiqueta>?matt_word=…&matt_tool=…`) com o produto em destaque e o botão "Ir para produto". É assim que a comissão é rastreada.
 
@@ -75,6 +76,17 @@ O refresh token muda a cada uso; o script guarda o novo em `.ml-token.json` (tam
 
 > Os campos lidos da API (`buy_box_winner`, `price`, `status`, `condition`, `seller_reputation.level_id`) seguem a documentação pública, mas ainda não foram testados com um token real. Se o primeiro `sync:ml` der erro, a mensagem mostra a resposta da API.
 
+## Histórico de preço e promoções
+
+Cada oferta guarda `history` (data + preço), que ganha um ponto **só quando o preço muda**; no mesmo dia, vale o último. O import (coluna `data`) e o `sync:ml` (data de hoje) alimentam o histórico. Pontos com mais de 365 dias saem, exceto o que estava em vigor na data de corte.
+
+No card:
+
+- **"↓ R$ 604 (−13%) desde 01/10"** (verde) ou **"↑ … desde …"** (laranja): comparação com o preço anterior.
+- **"🔥 Menor preço em 90 dias"**: o preço atual é o menor da janela e está pelo menos 5% abaixo do maior preço dela.
+
+As constantes ficam em `src/data/price-history.ts`: `PROMO_WINDOW_DAYS`, `PROMO_MIN_DROP` e `HISTORY_MAX_DAYS`. O histórico começa vazio, então seta e selo só aparecem depois da segunda coleta com preço diferente. Com a atualização diária da 2ª wave, isso fica automático.
+
 ## Como os dados ficam
 
 Cada opção ganha `offers`, com uma oferta por loja. Os campos exibidos (`price`, `url`, `store`, `priceUpdatedAt`) são sempre os da **oferta mais barata disponível**; o validador garante isso. Quando a Amazon entrar (Drop 9), o mesmo modelo nas duas lojas mostra a mais barata, e o card exibe "Também na Amazon: R$ X".
@@ -87,7 +99,11 @@ Cada opção ganha `offers`, com uma oferta por loja. Os campos exibidos (`price
     "price": 2649.9,
     "updatedAt": "2026-10-22",
     "available": true,
-    "externalId": "MLB19615251"
+    "externalId": "MLB19615251",
+    "history": [
+      { "date": "2026-10-01", "price": 2799 },
+      { "date": "2026-10-22", "price": 2649.9 }
+    ]
   }
 ]
 ```

@@ -22,9 +22,11 @@
           "price": 2674,
           "updatedAt": "2026-10-22",
           "available": true,
-          "externalId": "MLB78576179"
+          "externalId": "MLB78576179",
+          "history": [{ "date": "2026-10-22", "price": 2674 }]
         }
-      ]
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_972857-MLA116658596194_092026-O.webp"
     },
     {
       "id": "smart-tv-tcl-55-c6k",

@@ -106,3 +106,16 @@ for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Área exter
     expect(await remaining(page)).toBeGreaterThanOrEqual(0)
   })
 }
+
+test('produto com link real mostra a foto e o botão da loja', async ({ page }) => {
+  await page.goto('./')
+  await page.getByRole('button', { name: /^Sala \d+ itens$/ }).click()
+  await page.getByLabel('Orçamento em reais').fill('5000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  const tv = card(page, 'Smart TV')
+  await expect(tv.locator('img')).toHaveAttribute('src', /^https:\/\/http2\.mlstatic\.com\//)
+  await expect(tv.getByRole('link', { name: 'Comprar no Mercado Livre ↗' })).toHaveAttribute(
+    'href',
+    /^https:\/\/meli\.la\//,
+  )
+})

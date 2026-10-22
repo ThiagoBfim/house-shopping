@@ -18,6 +18,9 @@ const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'deve ser kebab-case (
 const httpsUrl = z.url({ protocol: /^https$/, error: 'deve ser uma URL https válida' })
 const isoDate = z.iso.date({ error: 'deve ser uma data AAAA-MM-DD' })
 
+/** Preço visto numa data. */
+export const PricePointSchema = z.strictObject({ date: isoDate, price: z.number().positive() })
+
 /** Onde comprar um modelo: uma oferta por loja. */
 export const OfferSchema = z.strictObject({
   store: StoreSchema,
@@ -28,6 +31,8 @@ export const OfferSchema = z.strictObject({
   externalId: z.string().min(3).optional(),
   /** false = sem estoque / anúncio pausado na última sincronização. */
   available: z.boolean().default(true),
+  /** Preços já vistos, em ordem de data; só ganha ponto novo quando o preço muda. */
+  history: z.array(PricePointSchema).min(1).optional(),
 })
 
 /**
@@ -76,6 +81,7 @@ export type Tier = z.infer<typeof TierSchema>
 export type Need = z.infer<typeof NeedSchema>
 export type Store = z.infer<typeof StoreSchema>
 export type Offer = z.infer<typeof OfferSchema>
+export type PricePoint = z.infer<typeof PricePointSchema>
 export type ProductOption = z.infer<typeof ProductOptionSchema>
 export type ProductCategory = z.infer<typeof ProductCategorySchema>
 export type Products = z.infer<typeof ProductsSchema>

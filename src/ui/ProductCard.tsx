@@ -1,5 +1,12 @@
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
 import { otherOffers, STORE_WHERE } from '../data/offers.ts'
+import {
+  isPromo,
+  priceTrend,
+  PROMO_WINDOW_DAYS,
+  shownOffer,
+  type PriceTrend,
+} from '../data/price-history.ts'
 import type { Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
@@ -30,6 +37,9 @@ export function ProductCard({
   onRefuse,
 }: Props) {
   const { option, options, item, label, subtotal, locked, utensil } = entry
+  const offer = shownOffer(option)
+  const trend = offer && priceTrend(offer)
+  const promo = offer !== undefined && isPromo(offer, today())
   const cheaper = neighborOption(options, option.tier, -1)
   const pricier = neighborOption(options, option.tier, 1)
   const delta = (other: { price: number }) =>
@@ -40,9 +50,9 @@ export function ProductCard({
       class={`product-card ${change ? `is-${change}` : ''}`}
       aria-label={`${label}: ${option.name}`}
     >
-      <div class="product-media">
+      <div class={`product-media ${option.image ? 'has-image' : ''}`}>
         {option.image ? (
-          <img src={option.image} alt="" loading="lazy" />
+          <img src={option.image} alt={option.name} loading="lazy" referrerpolicy="no-referrer" />
         ) : (
           <span class="product-placeholder" aria-hidden="true">
             {label.charAt(0)}
@@ -55,6 +65,7 @@ export function ProductCard({
           <span class="product-category">{label}</span>
           <span class={`tier-badge tier-${option.tier}`}>{TIER_LABELS[option.tier]}</span>
           {utensil && <span class="utensil-badge">Utensílio</span>}
+          {promo && <span class="promo-badge">🔥 Menor preço em {PROMO_WINDOW_DAYS} dias</span>}
           {locked && <span class="lock-badge">🔒 Travado</span>}
           {change && CHANGE_LABELS[change] && (
             <span class={`change-badge change-${change}`}>{CHANGE_LABELS[change]}</span>
@@ -105,6 +116,7 @@ export function ProductCard({
       <footer class="product-footer">
         <div class="product-price">
           <strong>{formatBRL(subtotal)}</strong>
+          {trend && <span class={`price-trend trend-${trend.direction}`}>{trendText(trend)}</span>}
           {item.qty > 1 && (
             <span class="muted">
               {item.qty} × {formatBRL(option.price)}
@@ -129,3 +141,17 @@ export function ProductCard({
     </article>
   )
 }
+
+/** Hoje no fuso do usuário, AAAA-MM-DD. */
+const today = () => new Date().toLocaleDateString('sv-SE')
+
+/** "↓ R$ 604 (−13%) desde 01/10" */
+function trendText({ direction, delta, percent, since }: PriceTrend): string {
+  const arrow = direction === 'down' ? '↓' : '↑'
+  const sign = direction === 'down' ? '−' : '+'
+  const pct = Math.max(1, Math.abs(Math.round(percent * 100)))
+  return `${arrow} ${formatBRLWhole(Math.abs(delta))} (${sign}${pct}%) desde ${dayMonth(since)}`
+}
+
+/** 2026-10-01 → 01/10 */
+const dayMonth = (date: string) => `${date.slice(8, 10)}/${date.slice(5, 7)}`
