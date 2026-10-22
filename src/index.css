@@ -30,10 +30,12 @@
   color: var(--fg);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  color-scheme: light;
 }
 
+/* Escuro: segue o sistema, a menos que o usuário tenha escolhido claro (data-theme no <html>). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #121211;
     --surface: #1c1c1a;
     --fg: #f2f0eb;
@@ -53,7 +55,31 @@
     --tier-4: #352a16;
     --tier-4-fg: #f0c674;
     --shadow: none;
+    color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --bg: #121211;
+  --surface: #1c1c1a;
+  --fg: #f2f0eb;
+  --muted: #a19d95;
+  --border: #2e2d2a;
+  --accent: #4fb39a;
+  --accent-fg: #0d1f1a;
+  --accent-soft: #1b2e29;
+  --warn: #f08a62;
+  --warn-soft: #3a2018;
+  --tier-1: #22301e;
+  --tier-1-fg: #a8d596;
+  --tier-2: #1d2736;
+  --tier-2-fg: #9cbfec;
+  --tier-3: #2d2235;
+  --tier-3-fg: #d3a8e8;
+  --tier-4: #352a16;
+  --tier-4-fg: #f0c674;
+  --shadow: none;
+  color-scheme: dark;
 }
 
 *,
@@ -105,8 +131,27 @@ h3 {
 /* Cabeçalho */
 
 .app-header .container {
+  position: relative;
   padding-top: 20px;
   padding-bottom: 8px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
 }
 
 .brand {

@@ -38,6 +38,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [13.1](drop-13-1-faixas-de-orcamento.md)                   | Três faixas de orçamento        | ✅ Concluído                   | 2026-10-22 16:38 | 2026-10-22 16:40 | 2min    |
 | [14](drop-14-layout-busca-e-utilidades.md)                 | Layout, busca e utilidades      | ✅ Concluído                   | 2026-10-22 17:30 | 2026-10-22 17:51 | 21min   |
 | [15](drop-15-escritorio-e-gamer.md)                        | Escritório (com opção gamer)    | ✅ Concluído                   | 2026-10-22 17:52 | 2026-10-22 18:07 | 15min   |
+| [16](drop-16-tema-claro-escuro.md)                         | Tema claro / escuro             | ✅ Concluído                   | 2026-10-22 18:08 | 2026-10-22 18:10 | 2min    |
 
 ### 2ª wave — publicação e automação
 

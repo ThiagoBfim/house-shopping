@@ -12,6 +12,13 @@
       content="Monte a lista de compras de móveis e eletrodomésticos de cada cômodo dentro do seu orçamento."
     />
     <title>House Shopping</title>
+    <script>
+      // Tema escolhido (src/ui/theme.ts), aplicado antes de pintar para não piscar.
+      try {
+        const theme = localStorage.getItem('house-shopping:theme')
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="app"></div>

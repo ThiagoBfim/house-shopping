@@ -10,6 +10,7 @@ import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
 import { persistState, readInitialState, shareUrl } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
+import { ThemeToggle } from './ThemeToggle.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
 
 type Load = { status: 'loading' } | { status: 'error' } | { status: 'ready'; catalog: Catalog }
@@ -89,6 +90,7 @@ export function App() {
             House Shopping
           </h1>
           <p class="tagline">Sua lista de compras por cômodo, dentro do orçamento.</p>
+          <ThemeToggle />
         </div>
       </header>
       <main class="container">{renderStep()}</main>
