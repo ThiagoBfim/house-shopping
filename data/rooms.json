@@ -1,0 +1,37 @@
+{
+  "cozinha": {
+    "name": "Cozinha",
+    "items": [
+      {
+        "category": "geladeira",
+        "priority": "essential",
+        "weight": 10,
+        "qty": 1
+      },
+      {
+        "category": "fogao",
+        "priority": "essential",
+        "weight": 9,
+        "qty": 1
+      },
+      {
+        "category": "micro-ondas",
+        "priority": "important",
+        "weight": 6,
+        "qty": 1
+      },
+      {
+        "category": "liquidificador",
+        "priority": "important",
+        "weight": 3,
+        "qty": 1
+      },
+      {
+        "category": "freezer",
+        "priority": "optional",
+        "weight": 4,
+        "qty": 1
+      }
+    ]
+  }
+}

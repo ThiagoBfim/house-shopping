@@ -9,12 +9,14 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 ## Comandos
 
 - `npm run dev` — servidor local (http://localhost:5173/house-shopping/)
-- `npm test` — Vitest
+- `npm test` — Vitest (inclui validação do catálogo real em `data/`)
+- `npm run validate` — valida `data/*.json` e lista os erros
 - `npm run check` — lint + format + testes + build (rodar antes de fechar um drop)
 
 ## Estrutura
 
 - `src/engine/` — lógica pura (motor de orçamento, dinheiro). Sem DOM, sempre testada.
+- `src/data/` — schema Zod (`schema.ts`, tipos derivados com `z.infer`) e regras do catálogo (`validate.ts`). Na UI, importar só tipos (`import type`) para não levar o Zod no bundle.
 - `src/ui/` — componentes Preact.
 - `data/` — `rooms.json`, `products.json` (catálogo). Não ler o catálogo inteiro; editar por categoria.
 - `scripts/` — scripts Node (validação, sync de afiliados).

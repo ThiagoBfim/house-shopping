@@ -61,9 +61,9 @@ Produtos **baratos** (ex.: tábua de corte, escorredor) podem ter só 1–2 opç
 
 Cada item de um cômodo tem uma prioridade:
 
-- **Essencial** — sempre entra na lista (ex.: geladeira, fogão, cama).
-- **Importante** — entra se o orçamento permitir (ex.: micro-ondas, lava-louças).
-- **Desejável** — entra se sobrar dinheiro (ex.: adega, máquina de espresso).
+- **Essencial** (`essential`) — sempre entra na lista (ex.: geladeira, fogão, cama).
+- **Importante** (`important`) — entra se o orçamento permitir (ex.: micro-ondas, lava-louças).
+- **Desejável** (`optional`) — entra se sobrar dinheiro (ex.: adega, máquina de espresso).
 
 ### 4.2 Motor de orçamento (resumo)
 
@@ -111,7 +111,9 @@ Cada item de um cômodo tem uma prioridade:
 - **Chaves de API nunca no front-end**: integrações com Amazon/Mercado Livre rodam em **GitHub Actions** (com _secrets_), que atualizam os JSONs e fazem commit/deploy.
 - **Stack sugerida**: Vite + TypeScript + (Preact ou vanilla) + CSS simples. Testes com Vitest; E2E com Playwright.
 
-### 5.1 Modelo de dados (rascunho)
+### 5.1 Modelo de dados
+
+Definido em `src/data/schema.ts` (Zod) e validado por `npm run validate`.
 
 `data/rooms.json`
 
@@ -120,8 +122,8 @@ Cada item de um cômodo tem uma prioridade:
   "cozinha": {
     "name": "Cozinha",
     "items": [
-      { "category": "geladeira", "priority": "essencial", "weight": 10, "qty": 1 },
-      { "category": "freezer", "priority": "desejavel", "weight": 4, "qty": 1 }
+      { "category": "geladeira", "priority": "essential", "weight": 10, "qty": 1 },
+      { "category": "freezer", "priority": "optional", "weight": 4 }
     ]
   }
 }
@@ -150,7 +152,17 @@ Cada item de um cômodo tem uma prioridade:
 }
 ```
 
-Validação com **JSON Schema** (ou Zod) no CI — um JSON quebrado nunca chega a produção.
+Campos:
+
+- `priority`: `essential` | `important` | `optional` · `weight`: 1–10 (ordem dos upgrades) · `qty`: padrão 1
+- `tier`: 1 (barato) a 4 (muito caro) · `store`: `amazon` | `mercadolivre` | `other` · `image` é opcional
+
+Regras checadas pelo validador (`npm test` e `npm run check` falham se alguma quebrar; o CI do Drop 6 também vai rodar):
+
+- Produto cuja opção mais cara custa **≥ R$ 1.000** precisa dos **4 tiers**
+- Preço sobe a cada tier; tiers e `id`s não se repetem
+- URLs `https`; 3–5 bullets; data `AAAA-MM-DD`; campos desconhecidos são rejeitados (pega erro de digitação)
+- Toda categoria usada num cômodo existe em `products.json`
 
 ---
 

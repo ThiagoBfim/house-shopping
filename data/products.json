@@ -1,0 +1,225 @@
+{
+  "geladeira": {
+    "label": "Geladeira",
+    "options": [
+      {
+        "id": "geladeira-exemplo-barato",
+        "tier": 1,
+        "name": "Geladeira Exemplo 300 L Degelo Manual",
+        "price": 2199,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/geladeira/barato",
+        "bullets": ["Degelo manual", "300 L, uma porta", "Classe C de consumo"]
+      },
+      {
+        "id": "geladeira-exemplo-medio",
+        "tier": 2,
+        "name": "Geladeira Exemplo 400 L Frost Free",
+        "price": 3499,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/geladeira/medio",
+        "bullets": ["Frost free (o barato não é)", "400 L, duplex", "Classe A de consumo"]
+      },
+      {
+        "id": "geladeira-exemplo-caro",
+        "tier": 3,
+        "name": "Geladeira Exemplo 480 L Inverse Inverter",
+        "price": 6999,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/geladeira/caro",
+        "bullets": [
+          "Freezer embaixo (inverse)",
+          "Compressor inverter, mais silencioso",
+          "Painel digital externo"
+        ]
+      },
+      {
+        "id": "geladeira-exemplo-muito-caro",
+        "tier": 4,
+        "name": "Geladeira Exemplo Side by Side 600 L",
+        "price": 14999,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/geladeira/muito-caro",
+        "bullets": [
+          "Side by side, 600 L",
+          "Dispenser de água e gelo",
+          "Inox antidigital",
+          "Wi-Fi e app"
+        ]
+      }
+    ]
+  },
+  "fogao": {
+    "label": "Fogão",
+    "options": [
+      {
+        "id": "fogao-exemplo-barato",
+        "tier": 1,
+        "name": "Fogão Exemplo 4 Bocas Piso",
+        "price": 899,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/fogao/barato",
+        "bullets": ["4 bocas", "Acendimento manual", "Forno 50 L"]
+      },
+      {
+        "id": "fogao-exemplo-medio",
+        "tier": 2,
+        "name": "Fogão Exemplo 5 Bocas Mesa de Vidro",
+        "price": 1599,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/fogao/medio",
+        "bullets": ["5 bocas com tripla chama", "Acendimento automático", "Mesa de vidro"]
+      },
+      {
+        "id": "fogao-exemplo-caro",
+        "tier": 3,
+        "name": "Cooktop Exemplo 5 Bocas Inox",
+        "price": 3299,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/fogao/caro",
+        "bullets": ["Cooktop de embutir", "Trempes de ferro fundido", "Visual inox"]
+      },
+      {
+        "id": "fogao-exemplo-muito-caro",
+        "tier": 4,
+        "name": "Cooktop Exemplo Indução 4 Zonas",
+        "price": 7999,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/fogao/muito-caro",
+        "bullets": [
+          "Indução: aquece mais rápido",
+          "Superfície fácil de limpar",
+          "Exige panelas compatíveis",
+          "Timer por zona"
+        ]
+      }
+    ]
+  },
+  "micro-ondas": {
+    "label": "Micro-ondas",
+    "options": [
+      {
+        "id": "micro-ondas-exemplo-barato",
+        "tier": 1,
+        "name": "Micro-ondas Exemplo 20 L",
+        "price": 549,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/micro-ondas/barato",
+        "bullets": ["20 L", "Painel mecânico", "Sem grill"]
+      },
+      {
+        "id": "micro-ondas-exemplo-medio",
+        "tier": 2,
+        "name": "Micro-ondas Exemplo 32 L Digital",
+        "price": 899,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/micro-ondas/medio",
+        "bullets": ["32 L", "Painel digital com receitas", "Função descongelar inteligente"]
+      },
+      {
+        "id": "micro-ondas-exemplo-caro",
+        "tier": 3,
+        "name": "Micro-ondas Exemplo 30 L Inverter Grill",
+        "price": 1499,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/micro-ondas/caro",
+        "bullets": [
+          "Tecnologia inverter (aquece por igual)",
+          "Função grill",
+          "Acabamento espelhado"
+        ]
+      },
+      {
+        "id": "micro-ondas-exemplo-muito-caro",
+        "tier": 4,
+        "name": "Micro-ondas Exemplo de Embutir 34 L",
+        "price": 3299,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/micro-ondas/muito-caro",
+        "bullets": ["De embutir, visual planejado", "Grill e convecção (assa como forno)", "Inox"]
+      }
+    ]
+  },
+  "freezer": {
+    "label": "Freezer",
+    "options": [
+      {
+        "id": "freezer-exemplo-barato",
+        "tier": 1,
+        "name": "Freezer Exemplo Horizontal 200 L",
+        "price": 1899,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/freezer/barato",
+        "bullets": ["Horizontal, 200 L", "Degelo manual", "Uma tampa"]
+      },
+      {
+        "id": "freezer-exemplo-medio",
+        "tier": 2,
+        "name": "Freezer Exemplo Vertical 230 L Frost Free",
+        "price": 2999,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/freezer/medio",
+        "bullets": ["Vertical, ocupa menos espaço", "Frost free", "Classe A"]
+      },
+      {
+        "id": "freezer-exemplo-caro",
+        "tier": 3,
+        "name": "Freezer Exemplo Vertical 300 L Conversível",
+        "price": 4499,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/freezer/caro",
+        "bullets": ["Conversível freezer/refrigerador", "Controle digital", "Gavetas transparentes"]
+      },
+      {
+        "id": "freezer-exemplo-muito-caro",
+        "tier": 4,
+        "name": "Freezer Exemplo Vertical 400 L Inverter Inox",
+        "price": 8999,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/freezer/muito-caro",
+        "bullets": ["400 L", "Compressor inverter", "Inox", "Alarme de porta aberta"]
+      }
+    ]
+  },
+  "liquidificador": {
+    "label": "Liquidificador",
+    "options": [
+      {
+        "id": "liquidificador-exemplo-barato",
+        "tier": 1,
+        "name": "Liquidificador Exemplo 2 L 600 W",
+        "price": 149,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/liquidificador/barato",
+        "bullets": ["600 W", "Copo de plástico 2 L", "3 velocidades"]
+      },
+      {
+        "id": "liquidificador-exemplo-medio",
+        "tier": 2,
+        "name": "Liquidificador Exemplo 3 L 1200 W",
+        "price": 349,
+        "priceUpdatedAt": "2026-10-22",
+        "store": "other",
+        "url": "https://example.com/liquidificador/medio",
+        "bullets": ["1200 W, tritura gelo", "Copo de vidro 3 L", "12 velocidades + pulsar"]
+      }
+    ]
+  }
+}
