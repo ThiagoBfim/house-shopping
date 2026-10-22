@@ -1,4 +1,4 @@
-import { compressToEncodedURIComponent } from 'lz-string'
+import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
 import { describe, expect, it } from 'vitest'
 import realProducts from '../data/products.json'
 import realRooms from '../data/rooms.json'
@@ -13,6 +13,8 @@ const room = rooms.cozinha
 const choices: Choices = {
   locked: { geladeira: 2, freezer: 1 },
   excluded: { fogao: 'owned', liquidificador: 'refused' },
+  minNeed: 2,
+  utensils: false,
 }
 const state: ListState = {
   roomId: 'cozinha',
@@ -70,7 +72,12 @@ describe('encodeState / decodeState', () => {
       roomId: 'cozinha',
       budget: 5000,
       plan: { geladeira: 2 },
-      choices: { locked: { freezer: 1 }, excluded: { fogao: 'refused' } },
+      choices: {
+        locked: { freezer: 1 },
+        excluded: { fogao: 'refused' },
+        minNeed: 1,
+        utensils: true,
+      },
     })
   })
 
@@ -79,7 +86,23 @@ describe('encodeState / decodeState', () => {
       roomId: 'cozinha',
       budget: 5000,
       plan: {},
-      choices: { locked: {}, excluded: {} },
+      choices: { locked: {}, excluded: {}, minNeed: 1, utensils: true },
     })
+  })
+
+  it('lê os filtros e ignora necessidade inválida', () => {
+    const decode = (extra: object) =>
+      decodeState(wire({ v: STATE_VERSION, r: 'cozinha', b: 5000, ...extra }), rooms)?.choices
+    expect(decode({ n: 3, u: 0 })).toMatchObject({ minNeed: 3, utensils: false })
+    expect(decode({ n: 9, u: 1 })).toMatchObject({ minNeed: 1, utensils: true })
+  })
+
+  it('não grava filtros no padrão (link mais curto e igual ao formato antigo)', () => {
+    const plain = { ...state, choices: { ...choices, minNeed: 1 as const, utensils: true } }
+    const wireOf = (s: ListState) =>
+      JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
+    expect(wireOf(plain)).not.toHaveProperty('n')
+    expect(wireOf(plain)).not.toHaveProperty('u')
+    expect(wireOf(state)).toMatchObject({ n: 2, u: 0 })
   })
 })

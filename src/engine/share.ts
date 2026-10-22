@@ -1,5 +1,5 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
-import type { Rooms, Tier } from '../data/schema.ts'
+import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
@@ -27,6 +27,10 @@ interface Wire {
   p: Record<string, number>
   l: Record<string, number>
   x: Record<string, string>
+  /** Necessidade mínima (ausente = 1). Campos novos são opcionais: links antigos continuam válidos. */
+  n?: number
+  /** Utensílios: 0 = sem (ausente = com). */
+  u?: number
 }
 
 export function encodeState(state: ListState): string {
@@ -43,6 +47,8 @@ export function encodeState(state: ListState): string {
       ]),
     ),
   }
+  if (state.choices.minNeed !== 1) wire.n = state.choices.minNeed
+  if (!state.choices.utensils) wire.u = 0
   return compressToEncodedURIComponent(JSON.stringify(wire))
 }
 
@@ -51,6 +57,8 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const isTier = (value: unknown): value is Tier =>
   value === 1 || value === 2 || value === 3 || value === 4
+
+const isNeed = (value: unknown): value is Need => isTier(value) || value === 5
 
 /**
  * Lê um estado vindo da URL ou do localStorage. Nunca lança: entrada inválida
@@ -85,5 +93,15 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
     }
   }
 
-  return { roomId, budget, plan: tiers(wire.p), choices: { locked: tiers(wire.l), excluded } }
+  return {
+    roomId,
+    budget,
+    plan: tiers(wire.p),
+    choices: {
+      locked: tiers(wire.l),
+      excluded,
+      minNeed: isNeed(wire.n) ? wire.n : 1,
+      utensils: wire.u !== 0,
+    },
+  }
 }

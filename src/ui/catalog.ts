@@ -1,4 +1,4 @@
-import type { Products, Rooms, Tier } from '../data/schema.ts'
+import type { Need, Products, Rooms, Tier } from '../data/schema.ts'
 
 export interface Catalog {
   rooms: Rooms
@@ -19,6 +19,16 @@ export const TIER_LABELS: Record<Tier, string> = {
   2: 'Médio',
   3: 'Caro',
   4: 'Muito caro',
+}
+
+export const NEEDS: Need[] = [1, 2, 3, 4, 5]
+
+export const NEED_LABELS: Record<Need, string> = {
+  1: 'Supérfluo',
+  2: 'Útil',
+  3: 'Importante',
+  4: 'Necessário',
+  5: 'Essencial',
 }
 
 /** Cômodos exibidos na tela inicial; os que ainda não estão no catálogo aparecem como "em breve". */

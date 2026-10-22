@@ -1,7 +1,8 @@
 import type { Choices, ListView, Plan } from '../engine/budget.ts'
 import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
-import { TIER_LABELS } from './catalog.ts'
+import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
+import { Filters, type FilterValues } from './Filters.tsx'
 import { ProductCard } from './ProductCard.tsx'
 import { ShareBar } from './ShareBar.tsx'
 
@@ -15,6 +16,7 @@ interface Props {
   /** `include`: coloca o item de volta na lista (no tier que tinha ou no informado). */
   onChoices: (next: Choices, message: string, include?: Plan) => void
   onReload: () => void
+  onFilters: (next: FilterValues) => void
   onEditBudget: () => void
   onChangeRoom: () => void
   share: { url: string; text: string; onCopied: (ok: boolean) => void }
@@ -30,13 +32,20 @@ export function ListScreen({
   dirty,
   onChoices,
   onReload,
+  onFilters,
   onEditBudget,
   onChangeRoom,
   share,
 }: Props) {
   const over = view.remaining < 0
   const used = view.budget > 0 ? Math.min(100, (view.total / view.budget) * 100) : 100
-  const removed = Object.entries(changes).filter(([, change]) => change === 'removed').length
+  // Só conta quem saiu por falta de saldo (não quem foi escondido pelos filtros).
+  const removed = view.skipped.filter((s) => changes[s.item.category] === 'removed').length
+  const filters = { minNeed: choices.minNeed, utensils: choices.utensils }
+  const activeFilters = [
+    choices.minNeed > 1 && `necessidade ${choices.minNeed}+`,
+    !choices.utensils && 'sem utensílios',
+  ].filter(Boolean)
 
   return (
     <section>
@@ -84,6 +93,14 @@ export function ListScreen({
       </div>
 
       <ShareBar {...share} />
+
+      <details class="filters-panel">
+        <summary>
+          Filtros
+          <span class="muted"> · {activeFilters.length ? activeFilters.join(' · ') : 'tudo'}</span>
+        </summary>
+        <Filters value={filters} onChange={onFilters} />
+      </details>
 
       {over && (
         <p class="notice notice-warn">
@@ -159,6 +176,24 @@ export function ListScreen({
                 >
                   + Adicionar
                 </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {view.filtered.length > 0 && (
+        <section class="side-section">
+          <h3>Escondidos pelos filtros</h3>
+          <ul class="compact-list">
+            {view.filtered.map(({ item, label, reason }) => (
+              <li key={item.category}>
+                <span>{label}</span>
+                <span class="muted">
+                  {reason === 'utensil'
+                    ? 'Utensílio'
+                    : `Necessidade: ${NEED_LABELS[item.need].toLowerCase()} (${item.need}/5)`}
+                </span>
               </li>
             ))}
           </ul>

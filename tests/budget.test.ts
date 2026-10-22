@@ -16,6 +16,7 @@ import {
 
 const category = (label: string, prices: number[]) => ({
   label,
+  utensil: false,
   options: prices.map((price, i) => ({
     id: `${label.toLowerCase()}-${i + 1}`,
     tier: (i + 1) as Tier,
@@ -37,11 +38,11 @@ const products: Products = {
 }
 
 const items: RoomItem[] = [
-  { category: 'geladeira', priority: 'essential', weight: 10, qty: 1 },
-  { category: 'fogao', priority: 'essential', weight: 9, qty: 1 },
-  { category: 'micro', priority: 'important', weight: 6, qty: 1 },
-  { category: 'liquidificador', priority: 'important', weight: 3, qty: 1 },
-  { category: 'freezer', priority: 'optional', weight: 4, qty: 1 },
+  { category: 'geladeira', need: 5, qty: 1 },
+  { category: 'fogao', need: 4, qty: 1 },
+  { category: 'micro', need: 3, qty: 1 },
+  { category: 'freezer', need: 2, qty: 1 },
+  { category: 'liquidificador', need: 1, qty: 1 },
 ]
 const room: Room = { name: 'Cozinha', items }
 
@@ -52,15 +53,15 @@ const choices = (partial: Partial<Choices> = {}): Choices => ({ ...emptyChoices(
 const tiersOf = (budget: number, c = choices()) => planList(room, products, budget, c)
 
 describe('planList', () => {
-  it('orçamento baixo: inclui só os essenciais, mesmo passando do orçamento', () => {
+  it('orçamento baixo: inclui só os necessários (≥ 4), mesmo passando do orçamento', () => {
     const view = buildList(room, products, 2500)
     expect(view.entries.map((e) => e.item.category)).toEqual(['geladeira', 'fogao'])
-    expect(view.skipped.map((e) => e.item.category)).toEqual(['micro', 'liquidificador', 'freezer'])
+    expect(view.skipped.map((e) => e.item.category)).toEqual(['micro', 'freezer', 'liquidificador'])
     expect(view.total).toBe(2900)
     expect(view.remaining).toBe(-400)
   })
 
-  it('inclui importantes antes dos desejáveis e pula o que não cabe', () => {
+  it('inclui da maior para a menor necessidade e pula o que não cabe', () => {
     expect(tiersOf(3550)).toEqual({ geladeira: 1, fogao: 1, micro: 1, liquidificador: 1 })
   })
 
@@ -80,7 +81,7 @@ describe('planList', () => {
     })
   })
 
-  it('upgrade vai primeiro para o item de maior peso', () => {
+  it('upgrade vai primeiro para o item de maior necessidade', () => {
     expect(tiersOf(CHEAPEST_TOTAL + 1500).geladeira).toBe(2)
   })
 
@@ -90,7 +91,7 @@ describe('planList', () => {
   })
 
   it('distribui upgrades em vez de concentrar tudo num item', () => {
-    // geladeira (10/1) → fogão (9/1) → micro (6/1) antes da geladeira de novo (10/2 = 5)
+    // geladeira (5/1) → fogão (4/1) → micro (3/1) antes da geladeira de novo (5/2 = 2,5)
     const plan = tiersOf(CHEAPEST_TOTAL + 1500 + 700 + 400)
     expect(plan).toMatchObject({ geladeira: 2, fogao: 2, micro: 2, freezer: 1 })
   })
@@ -144,7 +145,7 @@ describe('planList', () => {
   it('multiplica pela quantidade', () => {
     const chairs: Room = {
       name: 'Sala',
-      items: [{ category: 'micro', priority: 'essential', weight: 5, qty: 4 }],
+      items: [{ category: 'micro', need: 5, qty: 4 }],
     }
     expect(buildList(chairs, products, 2000).total).toBe(2000)
     expect(planList(chairs, products, 3599, emptyChoices())).toEqual({ micro: 1 })
@@ -156,8 +157,8 @@ describe('planList', () => {
     const tiny: Room = {
       name: 'X',
       items: [
-        { category: 'a', priority: 'important', weight: 1, qty: 1 },
-        { category: 'b', priority: 'important', weight: 1, qty: 1 },
+        { category: 'a', need: 3, qty: 1 },
+        { category: 'b', need: 3, qty: 1 },
       ],
     }
     const view = buildList(tiny, cheap, 0.3)
@@ -234,7 +235,7 @@ describe('helpers de opções', () => {
 describe('budgetRange', () => {
   it('calcula mínimo dos essenciais, tudo barato e tudo no topo', () => {
     expect(budgetRange(room, products)).toEqual({
-      essentials: 2900,
+      required: 2900,
       allCheapest: CHEAPEST_TOTAL,
       allTop: 15000 + 8000 + 3300 + 350 + 9000,
     })
@@ -245,5 +246,59 @@ describe('excluded', () => {
   it('informa a opção mais barata do item excluído (para reativar)', () => {
     const view = buildList(room, products, 30000, choices({ excluded: { fogao: 'refused' } }))
     expect(view.excluded[0]).toMatchObject({ label: 'Fogao', cheapest: { tier: 1, price: 900 } })
+  })
+})
+
+describe('filtros', () => {
+  /** Mesmo catálogo, com o liquidificador marcado como utensílio. */
+  const withUtensil: Products = {
+    ...products,
+    liquidificador: { ...products.liquidificador, utensil: true },
+  }
+
+  it('necessidade mínima esconde os itens abaixo dela e libera o dinheiro', () => {
+    const view = buildList(room, products, CHEAPEST_TOTAL, choices({ minNeed: 3 }))
+    expect(view.entries.map((e) => e.item.category)).toEqual(['geladeira', 'fogao', 'micro'])
+    expect(view.filtered).toEqual([
+      expect.objectContaining({ label: 'Freezer', reason: 'need' }),
+      expect.objectContaining({ label: 'Liquidificador', reason: 'need' }),
+    ])
+    // o que seria do freezer e do liquidificador vira upgrade
+    expect(view.entries.some((e) => e.option.tier > 1)).toBe(true)
+  })
+
+  it('sem utensílios esconde as categorias marcadas como utensílio', () => {
+    const view = buildList(room, withUtensil, 1_000_000, choices({ utensils: false }))
+    expect(view.entries.map((e) => e.item.category)).not.toContain('liquidificador')
+    expect(view.filtered).toEqual([
+      expect.objectContaining({ label: 'Liquidificador', reason: 'utensil' }),
+    ])
+  })
+
+  it('marca os utensílios na lista', () => {
+    const view = buildList(room, withUtensil, 1_000_000)
+    const blender = view.entries.find((e) => e.item.category === 'liquidificador')
+    expect(blender?.utensil).toBe(true)
+    expect(view.entries.find((e) => e.item.category === 'fogao')?.utensil).toBe(false)
+  })
+
+  it('filtro vence a trava; recusado continua em "recusados"', () => {
+    const view = buildList(
+      room,
+      products,
+      30000,
+      choices({ minNeed: 4, locked: { freezer: 4 }, excluded: { micro: 'owned' } }),
+    )
+    expect(view.entries.map((e) => e.item.category)).toEqual(['geladeira', 'fogao'])
+    expect(view.excluded.map((e) => e.item.category)).toEqual(['micro'])
+    expect(view.filtered.map((e) => e.item.category)).toEqual(['freezer', 'liquidificador'])
+  })
+
+  it('budgetRange considera só os itens que passam pelos filtros', () => {
+    expect(budgetRange(room, withUtensil, { minNeed: 2, utensils: false })).toEqual({
+      required: 2900,
+      allCheapest: 2000 + 900 + 500 + 1900,
+      allTop: 15000 + 8000 + 3300 + 9000,
+    })
   })
 })

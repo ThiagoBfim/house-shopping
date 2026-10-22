@@ -28,16 +28,16 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
 
   // sem reload, a lista não muda sozinha: só libera o saldo
   await expect(card(page, 'Geladeira')).toHaveCount(0)
-  expect(await remaining(page)).toBeGreaterThan(before + 10_000)
+  expect(await remaining(page)).toBeGreaterThan(before + 5_000)
   await expect(freezer.locator('.tier-badge')).toHaveText('Médio')
   await expect(page.getByRole('button', { name: /Recalcular lista com o saldo/ })).toBeVisible()
 
   await page.getByRole('button', { name: /Recalcular lista/ }).click()
 
-  await expect(freezer.locator('.tier-badge')).toHaveText('Muito caro')
+  await expect(freezer.locator('.tier-badge')).toHaveText('Caro')
   await expect(freezer.getByText('↑ Melhorou')).toBeVisible()
-  await expect(page.getByText(/Lista recalculada: 1 item mudou/)).toBeVisible()
-  expect(await remaining(page)).toBeLessThan(before + 10_000)
+  await expect(page.getByText(/Lista recalculada: \d+ itens mudaram/)).toBeVisible()
+  expect(await remaining(page)).toBeLessThan(before + 5_000)
 
   // a geladeira continua fora e pode ser reativada
   const excluded = page.locator('.side-section', { hasText: 'Recusados' })
@@ -57,15 +57,15 @@ test('desfazer uma recusa traz o item de volta', async ({ page }) => {
 
 test('mais barato trava o item e o recalcular respeita a trava', async ({ page }) => {
   await openKitchen(page, '30000')
-  const fridge = card(page, 'Geladeira')
-  await expect(fridge.getByRole('button', { name: /Mais caro/ })).toBeDisabled()
+  const stove = card(page, 'Fogão')
+  await expect(stove.getByRole('button', { name: /Mais caro/ })).toBeDisabled()
 
-  await fridge.getByRole('button', { name: /Mais barato/ }).click()
-  await expect(fridge.locator('.tier-badge')).toHaveText('Caro')
-  await expect(fridge.getByText('🔒 Travado')).toBeVisible()
+  await stove.getByRole('button', { name: /Mais barato/ }).click()
+  await expect(stove.locator('.tier-badge')).toHaveText('Caro')
+  await expect(stove.getByText('🔒 Travado')).toBeVisible()
 
   await page.getByRole('button', { name: /Recalcular lista/ }).click()
-  await expect(fridge.locator('.tier-badge')).toHaveText('Caro')
+  await expect(stove.locator('.tier-badge')).toHaveText('Caro')
 })
 
 test('item que não coube pode ser adicionado', async ({ page }) => {

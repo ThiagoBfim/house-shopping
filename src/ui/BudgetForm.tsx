@@ -3,18 +3,21 @@ import type { Products, Room } from '../data/schema.ts'
 import { budgetRange } from '../engine/budget.ts'
 import { formatBRLWhole, formatInteger, parseDigits } from '../engine/money.ts'
 import { BUDGET_SUGGESTIONS } from './catalog.ts'
+import { Filters, type FilterValues } from './Filters.tsx'
 
 interface Props {
   room: Room
   products: Products
   initial?: number
-  onSubmit: (budget: number) => void
+  initialFilters: FilterValues
+  onSubmit: (budget: number, filters: FilterValues) => void
   onBack: () => void
 }
 
-export function BudgetForm({ room, products, initial, onSubmit, onBack }: Props) {
+export function BudgetForm({ room, products, initial, initialFilters, onSubmit, onBack }: Props) {
   const [value, setValue] = useState(initial ?? 0)
-  const range = budgetRange(room, products)
+  const [filters, setFilters] = useState(initialFilters)
+  const range = budgetRange(room, products, filters)
 
   return (
     <section>
@@ -27,7 +30,7 @@ export function BudgetForm({ room, products, initial, onSubmit, onBack }: Props)
         class="budget-form"
         onSubmit={(e) => {
           e.preventDefault()
-          if (value > 0) onSubmit(value)
+          if (value > 0) onSubmit(value, filters)
         }}
       >
         <label class="budget-field">
@@ -55,9 +58,11 @@ export function BudgetForm({ room, products, initial, onSubmit, onBack }: Props)
           ))}
         </div>
 
+        <Filters value={filters} onChange={setFilters} />
+
         <ul class="range-hints">
           <li>
-            Só o essencial, no mais barato: <strong>{formatBRLWhole(range.essentials)}</strong>
+            Só o necessário, no mais barato: <strong>{formatBRLWhole(range.required)}</strong>
           </li>
           <li>
             Tudo, no mais barato: <strong>{formatBRLWhole(range.allCheapest)}</strong>

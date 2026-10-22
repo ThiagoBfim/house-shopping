@@ -14,7 +14,7 @@ describe('escolhas', () => {
   it('exclude marca o motivo e remove a trava do item', () => {
     const locked = lockAt(emptyChoices(), 'geladeira', 3)
     expect(exclude(locked, 'geladeira', 'owned')).toEqual({
-      locked: {},
+      ...emptyChoices(),
       excluded: { geladeira: 'owned' },
     })
   })
@@ -28,6 +28,18 @@ describe('escolhas', () => {
     const locked = lockAt(emptyChoices(), 'fogao', 2)
     expect(locked.locked).toEqual({ fogao: 2 })
     expect(unlock(locked, 'fogao')).toEqual(emptyChoices())
+  })
+
+  it('preserva os filtros', () => {
+    const filtered = { ...emptyChoices(), minNeed: 3 as const, utensils: false }
+    for (const next of [
+      exclude(filtered, 'a', 'refused'),
+      restore(filtered, 'a'),
+      lockAt(filtered, 'a', 2),
+      unlock(filtered, 'a'),
+    ]) {
+      expect(next).toMatchObject({ minNeed: 3, utensils: false })
+    }
   })
 
   it('não muta o objeto original', () => {

@@ -57,22 +57,38 @@ Produtos **baratos** (ex.: tábua de corte, escorredor) podem ter só 1–2 opç
 
 ## 4. Regras de negócio
 
-### 4.1 Prioridade dos itens
+### 4.1 Necessidade dos itens (1–5)
 
-Cada item de um cômodo tem uma prioridade:
+Cada item de um cômodo tem uma **necessidade**, definida por cômodo (talher é 4 na cozinha, mas nem aparece no quarto):
 
-- **Essencial** (`essential`) — sempre entra na lista (ex.: geladeira, fogão, cama).
-- **Importante** (`important`) — entra se o orçamento permitir (ex.: micro-ondas, lava-louças).
-- **Desejável** (`optional`) — entra se sobrar dinheiro (ex.: adega, máquina de espresso).
+| Nível | Nome       | Exemplo na cozinha        | Regra                                     |
+| ----- | ---------- | ------------------------- | ----------------------------------------- |
+| 5     | Essencial  | Geladeira, fogão          | Entra sempre, mesmo passando do orçamento |
+| 4     | Necessário | Pratos, talheres, panelas | Entra sempre, mesmo passando do orçamento |
+| 3     | Importante | Forno, micro-ondas        | Entra se couber                           |
+| 2     | Útil       | Liquidificador, freezer   | Entra se couber                           |
+| 1     | Supérfluo  | Toalha de mesa            | Entra se couber                           |
 
-### 4.2 Motor de orçamento (resumo)
+**Necessário** = necessidade ≥ 4 (`REQUIRED_NEED`): é tudo que é realmente importante.
 
-1. Coloca todos os **essenciais no tier mais barato**. Se nem isso cabe → avisa quanto falta.
-2. Adiciona **importantes** e depois **desejáveis** no tier mais barato, enquanto couber.
-3. Com o que sobra, faz **upgrades de um tier por vez**, sempre no item com maior `peso ÷ tier atual` (impacto no dia a dia, sem concentrar tudo num só item), até não caber mais nenhum upgrade. Itens travados não sobem.
+### 4.2 Utensílios
+
+Cada categoria de produto diz se é **utensílio** (`utensil: true`): pratos, talheres, panelas, jogo americano, toalha de mesa… O usuário pode tirar todos os utensílios da lista com uma chave.
+
+### 4.3 Filtros
+
+- **Necessidade mínima** (1–5): só entram itens com necessidade igual ou maior. Ex.: "3+" monta só o importante.
+- **Incluir utensílios** (sim/não).
+- Itens escondidos aparecem na seção "Escondidos pelos filtros". Os filtros também vão no link compartilhado.
+
+### 4.4 Motor de orçamento (resumo)
+
+1. Coloca os **necessários (≥ 4) no tier mais barato**. Se nem isso cabe → avisa quanto falta.
+2. Adiciona os demais no tier mais barato, da maior para a menor necessidade, enquanto couber.
+3. Com o que sobra, faz **upgrades de um tier por vez**, sempre no item com maior `necessidade ÷ tier atual` (os mais necessários sobem primeiro, sem concentrar tudo num só item), até não caber mais nenhum upgrade. Itens travados não sobem.
 4. Resultado: lista + total + saldo restante.
 
-### 4.3 Interações do usuário
+### 4.5 Interações do usuário
 
 | Ação                        | Efeito                                                                   |
 | --------------------------- | ------------------------------------------------------------------------ |
@@ -82,7 +98,7 @@ Cada item de um cômodo tem uma prioridade:
 | **Já tenho**                | Igual a recusar, mas com outro rótulo (útil para mudança de casa)        |
 | **Reload**                  | Re-roda o motor respeitando travados e recusados, redistribuindo o saldo |
 
-### 4.4 Compartilhamento
+### 4.6 Compartilhamento
 
 - O estado inteiro (cômodo, orçamento, travados, recusados) vai **codificado na URL** → basta copiar o link.
 - Também é salvo no `localStorage` para o usuário não perder a lista.
@@ -122,8 +138,8 @@ Definido em `src/data/schema.ts` (Zod) e validado por `npm run validate`.
   "cozinha": {
     "name": "Cozinha",
     "items": [
-      { "category": "geladeira", "priority": "essential", "weight": 10, "qty": 1 },
-      { "category": "freezer", "priority": "optional", "weight": 4 }
+      { "category": "geladeira", "need": 5, "qty": 1 },
+      { "category": "pratos", "need": 4 }
     ]
   }
 }
@@ -135,6 +151,7 @@ Definido em `src/data/schema.ts` (Zod) e validado por `npm run validate`.
 {
   "freezer": {
     "label": "Freezer",
+    "utensil": false,
     "options": [
       {
         "id": "freezer-consul-cvu20-barato",
@@ -154,7 +171,7 @@ Definido em `src/data/schema.ts` (Zod) e validado por `npm run validate`.
 
 Campos:
 
-- `priority`: `essential` | `important` | `optional` · `weight`: 1–10 (ordem dos upgrades) · `qty`: padrão 1
+- `need`: 1–5 (necessidade no cômodo) · `qty`: padrão 1 · `utensil` (na categoria do produto): obrigatório, `true`/`false`
 - `tier`: 1 (barato) a 4 (muito caro) · `store`: `amazon` | `mercadolivre` | `other` · `image` é opcional
 
 Regras checadas pelo validador (`npm test` e `npm run check` falham se alguma quebrar; o CI do Drop 6 também vai rodar):

@@ -24,6 +24,7 @@ No topo de cada drop há uma tabela:
 | [3](drop-03-interface-basica.md)                           | Interface básica                | ✅ Concluído | 2026-10-22 09:38 | 2026-10-22 09:40 | 2min    |
 | [4](drop-04-interacoes-recusar-mais-barato-caro-reload.md) | Interações                      | ✅ Concluído | 2026-10-22 09:41 | 2026-10-22 09:44 | 3min    |
 | [5](drop-05-persistencia-e-compartilhamento.md)            | Persistência e compartilhamento | ✅ Concluído | 2026-10-22 09:44 | 2026-10-22 09:47 | 3min    |
+| [5.1](drop-05-1-necessidade-e-utensilios.md)               | Necessidade e utensílios        | ✅ Concluído | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
 | [6](drop-06-deploy-no-github-pages.md)                     | Deploy no GitHub Pages          | ⏳ A fazer   | —                | —                | —       |
 | [7](drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha          | ⏳ A fazer   | —                | —                | —       |
 | [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | ⏳ A fazer   | —                | —                | —       |

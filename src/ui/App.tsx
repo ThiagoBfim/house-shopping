@@ -5,6 +5,7 @@ import { formatBRLWhole } from '../engine/money.ts'
 import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
 import { loadCatalog, type Catalog } from './catalog.ts'
+import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
 import { persistState, readInitialState, shareUrl } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
@@ -122,12 +123,15 @@ export function App() {
           room={room}
           products={products}
           initial={session.budget}
+          initialFilters={{ minNeed: session.choices.minNeed, utensils: session.choices.utensils }}
           onBack={changeRoom}
-          onSubmit={(budget) => {
+          onSubmit={(budget, filters) => {
+            const choices = { ...session.choices, ...filters }
             setSession({
               ...session,
               budget,
-              plan: planList(room, products, budget, session.choices),
+              choices,
+              plan: planList(room, products, budget, choices),
               editingBudget: false,
             })
             setChanges({})
@@ -155,18 +159,31 @@ export function App() {
       })
     }
 
-    const reload = () => {
-      const nextPlan = planList(room, products, budget, choices)
-      const nextView = describeList(room, products, budget, nextPlan, choices)
+    /** Recalcula o plano (reload) e destaca o que mudou na lista exibida. */
+    const replan = (nextChoices: Choices) => {
+      const nextPlan = planList(room, products, budget, nextChoices)
+      const nextView = describeList(room, products, budget, nextPlan, nextChoices)
       const diff = diffPlans(displayedTiers(view), displayedTiers(nextView))
-      setSession({ ...session, plan: nextPlan })
+      setSession({ ...session, choices: nextChoices, plan: nextPlan })
       setChanges(diff)
       setDirty(false)
       const count = Object.keys(diff).length
+      return count ? `${count} ${count === 1 ? 'item mudou' : 'itens mudaram'}` : 'nada mudou'
+    }
+
+    const reload = () => setToast({ message: `Lista recalculada: ${replan(choices)}.` })
+
+    const applyFilters = (filters: FilterValues) => {
+      const previous = { choices, plan }
       setToast({
-        message: count
-          ? `Lista recalculada: ${count} ${count === 1 ? 'item mudou' : 'itens mudaram'}.`
-          : 'Lista recalculada: nada mudou.',
+        message: `Filtros aplicados: ${replan({ ...choices, ...filters })}.`,
+        action: {
+          label: 'Desfazer',
+          run: () => {
+            setSession((current) => ({ ...current, ...previous }))
+            setChanges({})
+          },
+        },
       })
     }
 
@@ -199,6 +216,7 @@ export function App() {
           dirty={dirty}
           onChoices={updateChoices}
           onReload={reload}
+          onFilters={applyFilters}
           onEditBudget={() => setSession({ ...session, editingBudget: true })}
           onChangeRoom={changeRoom}
           share={{

@@ -6,7 +6,7 @@ import type { Choices, ExclusionReason, ListView, Plan } from './budget.ts'
 export function exclude(choices: Choices, category: string, reason: ExclusionReason): Choices {
   const locked = { ...choices.locked }
   delete locked[category]
-  return { locked, excluded: { ...choices.excluded, [category]: reason } }
+  return { ...choices, locked, excluded: { ...choices.excluded, [category]: reason } }
 }
 
 export function restore(choices: Choices, category: string): Choices {

@@ -18,11 +18,11 @@ const option = (tier: number, price: number, overrides: Record<string, unknown> 
 const fourTiers = () => [option(1, 2000), option(2, 3500), option(3, 7000), option(4, 15000)]
 
 const products = (options: unknown[] = fourTiers()) => ({
-  geladeira: { label: 'Geladeira', options },
+  geladeira: { label: 'Geladeira', utensil: false, options },
 })
 
 const rooms = (category = 'geladeira') => ({
-  cozinha: { name: 'Cozinha', items: [{ category, priority: 'essential', weight: 10 }] },
+  cozinha: { name: 'Cozinha', items: [{ category, need: 5 }] },
 })
 
 function errorsOf(rawRooms: unknown, rawProducts: unknown): string[] {
@@ -71,7 +71,7 @@ describe('validateCatalog', () => {
   it('rejeita id repetido entre categorias', () => {
     const data = {
       ...products(),
-      freezer: { label: 'Freezer', options: [option(1, 500)] },
+      freezer: { label: 'Freezer', utensil: false, options: [option(1, 500)] },
     }
     expect(errorsOf(rooms(), data)).toContainEqual(
       'products.json › freezer: id "geladeira-t1" repetido (também em geladeira)',
@@ -108,8 +108,16 @@ describe('validateCatalog', () => {
 
   it('reporta erro de formato e de regra de negócio juntos', () => {
     const data = {
-      geladeira: { label: 'Geladeira', options: [option(1, 2000), option(2, 3500)] },
-      fogao: { label: 'Fogão', options: [option(1, 900, { id: 'fogao-t1', url: 'http://x' })] },
+      geladeira: {
+        label: 'Geladeira',
+        utensil: false,
+        options: [option(1, 2000), option(2, 3500)],
+      },
+      fogao: {
+        label: 'Fogão',
+        utensil: false,
+        options: [option(1, 900, { id: 'fogao-t1', url: 'http://x' })],
+      },
     }
     expect(errorsOf(rooms(), data)).toEqual([
       'products.json › fogao.options.0.url: deve ser uma URL https válida',
@@ -123,11 +131,16 @@ describe('validateCatalog', () => {
     ])
   })
 
-  it('rejeita prioridade inválida no cômodo', () => {
+  it.each([0, 6, 2.5, '5'])('rejeita necessidade fora de 1–5: %s', (need) => {
     const data = rooms()
-    ;(data.cozinha.items[0] as { priority: string }).priority = 'essencial'
-    expect(errorsOf(data, products()).join('\n')).toMatch(
-      /rooms\.json › cozinha\.items\.0\.priority/,
+    ;(data.cozinha.items[0] as { need: unknown }).need = need
+    expect(errorsOf(data, products()).join('\n')).toMatch(/rooms\.json › cozinha\.items\.0\.need/)
+  })
+
+  it('exige o campo utensil na categoria', () => {
+    const data = { geladeira: { label: 'Geladeira', options: fourTiers() } }
+    expect(errorsOf(rooms(), data)).toContainEqual(
+      'products.json › geladeira.utensil: informe true ou false',
     )
   })
 })

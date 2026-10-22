@@ -1,7 +1,7 @@
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
 import type { Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
-import { TIER_LABELS } from './catalog.ts'
+import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
 
 interface Props {
   entry: ListEntry
@@ -28,7 +28,7 @@ export function ProductCard({
   onOwned,
   onRefuse,
 }: Props) {
-  const { option, options, item, label, subtotal, locked } = entry
+  const { option, options, item, label, subtotal, locked, utensil } = entry
   const cheaper = neighborOption(options, option.tier, -1)
   const pricier = neighborOption(options, option.tier, 1)
   const delta = (other: { price: number }) =>
@@ -53,12 +53,22 @@ export function ProductCard({
         <header class="product-header">
           <span class="product-category">{label}</span>
           <span class={`tier-badge tier-${option.tier}`}>{TIER_LABELS[option.tier]}</span>
+          {utensil && <span class="utensil-badge">Utensílio</span>}
           {locked && <span class="lock-badge">🔒 Travado</span>}
           {change && CHANGE_LABELS[change] && (
             <span class={`change-badge change-${change}`}>{CHANGE_LABELS[change]}</span>
           )}
         </header>
         <h3 class="product-name">{option.name}</h3>
+        <p class="need-meter" title={`Necessidade ${item.need} de 5`}>
+          <span class="need-dots" aria-hidden="true">
+            {'●'.repeat(item.need)}
+            <span class="need-dots-off">{'●'.repeat(5 - item.need)}</span>
+          </span>
+          <span>
+            Necessidade: {NEED_LABELS[item.need].toLowerCase()} ({item.need}/5)
+          </span>
+        </p>
         <ul class="product-bullets">
           {option.bullets.map((bullet) => (
             <li key={bullet}>{bullet}</li>

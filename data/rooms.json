@@ -4,32 +4,57 @@
     "items": [
       {
         "category": "geladeira",
-        "priority": "essential",
-        "weight": 10,
+        "need": 5,
         "qty": 1
       },
       {
         "category": "fogao",
-        "priority": "essential",
-        "weight": 9,
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "pratos",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "talheres",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "panelas",
+        "need": 4,
         "qty": 1
       },
       {
         "category": "micro-ondas",
-        "priority": "important",
-        "weight": 6,
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "forno",
+        "need": 3,
         "qty": 1
       },
       {
         "category": "liquidificador",
-        "priority": "important",
-        "weight": 3,
+        "need": 2,
         "qty": 1
       },
       {
         "category": "freezer",
-        "priority": "optional",
-        "weight": 4,
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "jogo-americano",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "toalha-de-mesa",
+        "need": 1,
         "qty": 1
       }
     ]
