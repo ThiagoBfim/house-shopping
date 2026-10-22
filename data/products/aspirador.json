@@ -10,17 +10,26 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/aspirador-de-po-vertical-mondial-turbo-cycle-1000w",
-      "bullets": ["Vira aspirador de mão", "Com fio", "Reservatório pequeno"]
+      "bullets": [
+        "2 em 1: vertical para o chão e de mão para o sofá",
+        "Com fio",
+        "Reservatório pequeno"
+      ]
     },
     {
-      "id": "aspirador-de-po-wap-power-speed-2000w",
+      "id": "aspirador-de-po-e-agua-wap-gtw-10",
       "tier": 2,
-      "name": "Aspirador de Pó WAP Power Speed 2000W",
-      "price": 349,
+      "name": "Aspirador de Pó e Água WAP GTW 10",
+      "price": 399,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-wap-power-speed-2000w",
-      "bullets": ["Bem mais potente", "Filtro HEPA", "Bocais para sofá e cantos"]
+      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-e-agua-wap-gtw-10",
+      "bullets": [
+        "Aspira pó e líquidos (água derramada, box, quintal)",
+        "Função sopro",
+        "Bocais para sofá, frestas e carro",
+        "Reservatório grande de 10 L"
+      ]
     },
     {
       "id": "aspirador-vertical-sem-fio-electrolux-ergorapido",
@@ -32,8 +41,9 @@
       "url": "https://lista.mercadolivre.com.br/aspirador-vertical-sem-fio-electrolux-ergorapido",
       "bullets": [
         "Sem fio: aspira a casa toda sem tomada",
+        "Vira aspirador de mão (sofá, carro)",
         "Bateria de ~40 min",
-        "Leve e fica em pé sozinho"
+        "Fica em pé sozinho"
       ]
     },
     {
@@ -44,7 +54,11 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/robo-aspirador-roborock-q7-max",
-      "bullets": ["Limpa sozinho com mapa da casa", "Aspira e passa pano", "Controle pelo app"]
+      "bullets": [
+        "Limpa sozinho com mapa da casa",
+        "Aspira e passa pano (não substitui o mop na faxina pesada)",
+        "Controle pelo app"
+      ]
     }
   ]
 }
