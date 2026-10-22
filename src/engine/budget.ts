@@ -194,3 +194,27 @@ export function buildList(
 ): ListView {
   return describeList(room, products, budget, planList(room, products, budget, choices), choices)
 }
+
+export interface BudgetRange {
+  /** Mínimo para os essenciais no tier mais barato. */
+  essentials: number
+  /** Todos os itens no tier mais barato. */
+  allCheapest: number
+  /** Todos os itens no tier mais caro. */
+  allTop: number
+}
+
+/** Faixa de orçamento de um cômodo, para orientar o usuário antes de montar a lista. */
+export function budgetRange(room: Room, products: Products): BudgetRange {
+  let essentials = 0
+  let allCheapest = 0
+  let allTop = 0
+  for (const item of room.items) {
+    const options = sortedOptions(products, item.category)
+    const cheapest = cents(options[0].price) * item.qty
+    allCheapest += cheapest
+    allTop += cents(options[options.length - 1].price) * item.qty
+    if (item.priority === 'essential') essentials += cheapest
+  }
+  return { essentials: essentials / 100, allCheapest: allCheapest / 100, allTop: allTop / 100 }
+}

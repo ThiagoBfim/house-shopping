@@ -3,6 +3,7 @@ import realProducts from '../data/products.json'
 import realRooms from '../data/rooms.json'
 import type { Products, Room, RoomItem, Tier } from '../src/data/schema.ts'
 import {
+  budgetRange,
   buildList,
   describeList,
   emptyChoices,
@@ -227,5 +228,15 @@ describe('helpers de opções', () => {
     expect(neighborOption(options, 1, 1)?.tier).toBe(2)
     expect(neighborOption(options, 2, 1)).toBeUndefined()
     expect(neighborOption(options, 2, -1)?.tier).toBe(1)
+  })
+})
+
+describe('budgetRange', () => {
+  it('calcula mínimo dos essenciais, tudo barato e tudo no topo', () => {
+    expect(budgetRange(room, products)).toEqual({
+      essentials: 2900,
+      allCheapest: CHEAPEST_TOTAL,
+      allTop: 15000 + 8000 + 3300 + 350 + 9000,
+    })
   })
 })
