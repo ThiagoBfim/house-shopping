@@ -44,15 +44,27 @@
       "id": "forno-de-embutir-electrolux-oe8ea",
       "tier": 4,
       "name": "Forno de Embutir Elétrico Electrolux 80 L OE8EA",
-      "price": 4299,
+      "price": 2047.79,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-electrolux-oe8ea",
+      "url": "https://meli.la/2TzFJkW",
       "bullets": [
         "80 L: cabe ceia de Natal",
         "Convecção + função AirFry",
         "Painel digital com receitas",
         "Limpeza facilitada"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_658835-MLA99943283739_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2TzFJkW",
+          "price": 2047.79,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5524387860",
+          "history": [{ "date": "2026-10-22", "price": 2047.79 }]
+        }
       ]
     }
   ]

@@ -48,14 +48,26 @@
       "id": "churrasqueira-weber-spirit-e-310",
       "tier": 4,
       "name": "Churrasqueira a Gás Weber Spirit E-310",
-      "price": 6999,
+      "price": 8561,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/churrasqueira-weber-spirit-e-310",
+      "url": "https://meli.la/1o37LBm",
       "bullets": [
         "Referência mundial em churrasqueira a gás",
         "3 queimadores com calor uniforme",
         "Dura muitos anos"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_892723-MLA83739190627_042025-O-churrasqueira-weber-a-gas-em-aco-inox-spirit-e310-preta.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1o37LBm",
+          "price": 8561,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7540392888",
+          "history": [{ "date": "2026-10-22", "price": 8561 }]
+        }
       ]
     }
   ]

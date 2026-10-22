@@ -29,7 +29,7 @@ Para cada linha (dá para fazer aos poucos; linhas vazias são ignoradas):
 
 > O link `meli.la` abre o seu perfil social de afiliado (`/social/<etiqueta>?matt_word=…&matt_tool=…`) com o produto em destaque e o botão "Ir para produto". É assim que a comissão é rastreada.
 
-**Com a extensão Claude in Chrome conectada**, o Claude faz os passos 1–4 no seu navegador (logado), confere os links abrindo cada um e roda o import. Foi assim no piloto de 2026-10-22.
+**Com a extensão Claude in Chrome conectada**, rode a skill **`/ml-links`** (ex.: `/ml-links 20`, `/ml-links banheiro`): o Claude faz os passos 1–5 no seu navegador logado, só com produtos **novos e nacionais**, confere cada link abrindo-o e roda o import.
 
 Salve como CSV (UTF-8, separador `;`) no mesmo lugar e rode:
 

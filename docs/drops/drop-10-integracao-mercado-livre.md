@@ -9,7 +9,7 @@
 **Meta:** produtos do Mercado Livre com link de afiliado e preço atualizado.
 
 - [x] Cadastro no programa **Afiliados e Criadores** (o usuário já era afiliado; etiqueta `master_sold`)
-- [ ] Preencher `data/affiliate/mercadolivre.csv` e rodar `npm run ml:links import` — **3/192 feitos** (piloto via Claude in Chrome)
+- [ ] Preencher `data/affiliate/mercadolivre.csv` e rodar `npm run ml:links import` — **16/222 feitos** (via Claude in Chrome; agora com a skill `/ml-links`)
 - [ ] **(você)** Criar app de desenvolvedor e colocar o token em `.env.local` — passo 3
 - [x] Links de afiliado em lote: `npm run ml:links export|import` (planilha ↔ JSON, com validação antes de gravar)
 - [x] Script `scripts/sync-mercadolivre.ts` (`npm run sync:ml`): preço e disponibilidade pela API com OAuth (a API pública exige token desde 2025)
@@ -44,3 +44,5 @@
   - **Código ajustado:** `isAffiliateUrl` aceita `meli.la`; `parseMercadoLivreId` lê o `item_id` de `pdp_filters` (anúncios `/up/MLBU…`). Os testes cobrem os dois casos.
   - **Sem navegador**, o site do Mercado Livre bloqueia leitura automática (`403`); dá para achar as páginas pelo índice do buscador, mas os preços ficam desatualizados. Com o Chrome logado, o preço é o da hora.
   - **Ritmo:** cerca de 1 min por produto, contando busca, troca de modelo quando preciso e conferência.
+- **Lote 1 (2026-10-22):** 13 produtos caros, com links conferidos abrindo cada um. Modelos trocados por fora de linha ou sem oferta nacional nova: TV S90F → **S95H**, LG C5 → **C6**, BRE57FK → **BRE66AE**, BRO85AK → **BRO88AB**, Simmons → **King Koil Attraction**, Le Creuset 3 peças → **kit 2 panelas**, FE5AD → **Fogão Electrolux Airfry**, BVR28HR → **BVR28PB**. Os freezers trocaram de tier (HI550 → 3, BVR28PB → 4) para os preços subirem com o tier. Descartados: Stokke e Sonos (só internacionais ou de pessoa física) e BRE57FK (vendedores com atendimento ruim). **Regra do usuário: só novos e nacionais.**
+- **Skill `/ml-links`** (`.claude/skills/ml-links/`): o fluxo inteiro (busca, conferência de novo/nacional/barra de afiliado, link pelo zoom, id do anúncio, conferência abrindo o link, planilha, import), com os snippets e as armadilhas.

@@ -55,32 +55,56 @@
       "image": "https://http2.mlstatic.com/D_NQ_NP_780538-MLU76901817142_062024-O.webp"
     },
     {
-      "id": "geladeira-brastemp-bre57fk",
+      "id": "geladeira-brastemp-bre66ae",
       "tier": 3,
-      "name": "Geladeira Brastemp Inverse Inverter 463 L BRE57FK",
-      "price": 5999,
+      "name": "Geladeira Brastemp Inverse Frost Free 500 L BRE66AE",
+      "price": 4299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/geladeira-brastemp-bre57fk",
+      "url": "https://meli.la/2qb55eb",
       "bullets": [
         "Freezer embaixo (inverse): o que você mais usa fica na altura dos olhos",
-        "Inverter e classe A",
-        "Painel eletrônico externo"
+        "500 L",
+        "Acabamento black inox"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_716403-MLA106542463286_022026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2qb55eb",
+          "price": 4299,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB65575170",
+          "history": [{ "date": "2026-10-22", "price": 4299 }]
+        }
       ]
     },
     {
-      "id": "geladeira-brastemp-french-door-bro85ak",
+      "id": "geladeira-brastemp-bro88ab",
       "tier": 4,
-      "name": "Geladeira Brastemp French Door Inverter 554 L BRO85AK",
-      "price": 12499,
+      "name": "Geladeira Brastemp French Door Inteligente 630 L BRO88AB",
+      "price": 5749,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/geladeira-brastemp-french-door-bro85ak",
+      "url": "https://meli.la/1HR2kHx",
       "bullets": [
-        "French door: 2 portas em cima + gaveta freezer",
-        "554 L, a maior da lista",
-        "Inverter, classificação A+++",
-        "Visual de cozinha planejada"
+        "630 L, a maior da lista",
+        "Congelador embaixo com máquina de gelo",
+        "Display digital e conectada",
+        "Bivolt"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_946242-MLA116669356970_092026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1HR2kHx",
+          "price": 5749,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7657831126",
+          "history": [{ "date": "2026-10-22", "price": 5749 }]
+        }
       ]
     }
   ]

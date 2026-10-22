@@ -48,15 +48,27 @@
       "id": "ar-condicionado-daikin-inverter-12000-quente-frio",
       "tier": 4,
       "name": "Ar-condicionado Split Daikin Full Inverter 12.000 BTUs Quente/Frio",
-      "price": 5499,
+      "price": 4005.16,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ar-condicionado-daikin-inverter-12000-quente-frio",
+      "url": "https://meli.la/28XQHqc",
       "bullets": [
         "Referência em eficiência e durabilidade",
         "Temperatura muito estável",
         "Quente e frio",
         "Marca premium japonesa"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_669015-MLA111828252483_052026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/28XQHqc",
+          "price": 4005.16,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4823282293",
+          "history": [{ "date": "2026-10-22", "price": 4005.16 }]
+        }
       ]
     }
   ]

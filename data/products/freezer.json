@@ -27,28 +27,56 @@
       "bullets": ["234 L", "Cycle Defrost (degelo mais fácil)", "Gavetas transparentes"]
     },
     {
-      "id": "freezer-brastemp-bvr28",
+      "id": "freezer-horizontal-electrolux-hi550",
       "tier": 3,
-      "name": "Freezer Vertical Brastemp Frost Free 228 L BVR28HR",
-      "price": 4399,
+      "name": "Freezer Horizontal Electrolux Inverter 513 L HI550",
+      "price": 3463.88,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/freezer-brastemp-bvr28",
+      "url": "https://meli.la/1UJ4rCV",
       "bullets": [
-        "Frost free: nunca precisa descongelar",
-        "Vira geladeira com um toque",
-        "Controle eletrônico"
+        "Horizontal 513 L: para quem estoca muito",
+        "Compressor inverter",
+        "Uma tampa, degelo manual"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_695905-MLA96114658315_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1UJ4rCV",
+          "price": 3463.88,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7534915934",
+          "history": [{ "date": "2026-10-22", "price": 3463.88 }]
+        }
       ]
     },
     {
-      "id": "freezer-horizontal-electrolux-hi550",
+      "id": "freezer-brastemp-bvr28pb",
       "tier": 4,
-      "name": "Freezer Horizontal Electrolux 513 L HI550",
-      "price": 5299,
+      "name": "Freezer Vertical Brastemp Frost Free 276 L BVR28PB",
+      "price": 3467.5,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/freezer-horizontal-electrolux-hi550",
-      "bullets": ["Horizontal 513 L: para quem estoca muito", "Duas tampas", "Classe A+"]
+      "url": "https://meli.la/1YxsxSf",
+      "bullets": [
+        "Frost free: nunca precisa descongelar",
+        "Vira geladeira com um toque",
+        "Vertical, 276 L"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_994038-MLA105303474250_012026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1YxsxSf",
+          "price": 3467.5,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6214393636",
+          "history": [{ "date": "2026-10-22", "price": 3467.5 }]
+        }
+      ]
     }
   ]
 }

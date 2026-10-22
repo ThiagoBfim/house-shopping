@@ -37,17 +37,29 @@
       ]
     },
     {
-      "id": "sofa-retratil-reclinavel-couro-3-lugares",
+      "id": "sofa-couro-legitimo-cannes",
       "tier": 4,
-      "name": "Sofá 3 Lugares Retrátil e Reclinável de Couro",
-      "price": 7999,
+      "name": "Sofá Retrátil e Reclinável de Couro Legítimo Cannes",
+      "price": 9247.02,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/sofa-retratil-reclinavel-couro-3-lugares",
+      "url": "https://meli.la/1pTP4TN",
       "bullets": [
-        "Couro natural: dura e fica mais bonito com o tempo",
-        "Fácil de limpar",
+        "Couro legítimo: dura e fica mais bonito com o tempo",
+        "Retrátil e reclinável",
         "Acabamento premium"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_938968-MLB117187924013_092026-O-sofa-de-couro-legitimo-retratil-e-reclinavel-cannes.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1pTP4TN",
+          "price": 9247.02,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7588790936",
+          "history": [{ "date": "2026-10-22", "price": 9247.02 }]
+        }
       ]
     }
   ]

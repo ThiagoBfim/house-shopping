@@ -21,7 +21,7 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `src/engine/` — lógica pura, sem DOM, sempre testada: `budget.ts` (planList = reload, describeList = lista exibida), `choices.ts` (recusar/travar/diff), `share.ts` (estado ↔ URL, versionado), `house.ts` (cômodos + quantidades → itens com chave `instância:categoria`, um orçamento só), `money.ts`.
 - `src/data/` — schema Zod (`schema.ts`, tipos derivados com `z.infer`) e regras do catálogo (`validate.ts`). Na UI, importar só tipos (`import type`) para não levar o Zod no bundle.
 - `src/ui/` — componentes Preact. `App.tsx` guarda a sessão (`house` + `plan` + `choices`); `persistence.ts` sincroniza URL (`#l=`) e localStorage.
-- `data/rooms.json` (cômodos → itens com `need` 1–5 e `qty`) e `data/products/<categoria>.json` (um arquivo por categoria; o nome é o id). Não ler o catálogo inteiro; para adicionar/atualizar categoria use a skill `/add-product` (`.claude/skills/add-product/`).
+- `data/rooms.json` (cômodos → itens com `need` 1–5 e `qty`) e `data/products/<categoria>.json` (um arquivo por categoria; o nome é o id). Não ler o catálogo inteiro; para adicionar/atualizar categoria use a skill `/add-product`; para links de afiliado do Mercado Livre, a skill `/ml-links` (Chrome logado; só produtos novos e nacionais).
 - `scripts/` — scripts Node (validação, links de afiliado, sync). Lógica pura em `scripts/lib/` (testada); IO e HTTP nos scripts.
 - Ofertas: `offers` por loja em cada opção; `price/url/store/priceUpdatedAt` = melhor oferta (`applyBestOffer`, `src/data/offers.ts`). O validador exige isso.
 - Histórico: `offers[].history` (ponto só quando o preço muda) → variação e selo de promoção (`src/data/price-history.ts`). Sempre registrar preço com `recordPrice`.

@@ -43,31 +43,55 @@
       ]
     },
     {
-      "id": "smart-tv-lg-oled-55-c5",
+      "id": "smart-tv-lg-oled-55-c6",
       "tier": 3,
-      "name": "Smart TV LG OLED evo 55\" C5",
-      "price": 6999,
+      "name": "Smart TV LG OLED evo 55\" C6",
+      "price": 6858.1,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/smart-tv-lg-oled-55-c5",
+      "url": "https://meli.la/2RvShAm",
       "bullets": [
         "OLED: preto perfeito, melhor para filmes",
         "Ângulo de visão amplo",
-        "webOS e 4 entradas HDMI 2.1"
+        "webOS 26 e HDMI 2.1 para games"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_772512-MLA115250914015_072026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2RvShAm",
+          "price": 6858.1,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7608133612",
+          "history": [{ "date": "2026-10-22", "price": 6858.1 }]
+        }
       ]
     },
     {
-      "id": "smart-tv-samsung-oled-65-s90f",
+      "id": "smart-tv-samsung-oled-65-s95h",
       "tier": 4,
-      "name": "Smart TV Samsung OLED 65\" S90F",
-      "price": 12999,
+      "name": "Smart TV Samsung OLED 65\" 4K S95H",
+      "price": 14379,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/smart-tv-samsung-oled-65-s90f",
+      "url": "https://meli.la/12ivCtv",
       "bullets": [
-        "65\": tela de cinema",
-        "QD-OLED: cores mais vivas que o OLED comum",
-        "Topo de linha para sala grande"
+        "65\" OLED: tela de cinema",
+        "Antirreflexo e até 165 Hz (ótima para games)",
+        "Topo de linha da Samsung (2026/27)"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_642690-MLA116505547364_092026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/12ivCtv",
+          "price": 14379,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5325874311",
+          "history": [{ "date": "2026-10-22", "price": 14379 }]
+        }
       ]
     }
   ]

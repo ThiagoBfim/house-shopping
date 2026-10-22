@@ -20,22 +20,22 @@ No topo de cada drop há uma tabela:
 
 Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afiliado do Mercado Livre e qualidade/avisos legais.
 
-| Drop                                                       | Tema                            | Status                        | Iniciado em      | Terminado em     | Duração |
-| ---------------------------------------------------------- | ------------------------------- | ----------------------------- | ---------------- | ---------------- | ------- |
-| [0](drop-00-fundacao-do-repositorio.md)                    | Fundação do repositório         | ✅ Concluído                  | 2026-10-22 09:16 | 2026-10-22 09:19 | 3min    |
-| [1](drop-01-modelo-de-dados-e-validacao.md)                | Modelo de dados e validação     | ✅ Concluído                  | 2026-10-22 09:21 | 2026-10-22 09:23 | 2min    |
-| [2](drop-02-motor-de-orcamento.md)                         | Motor de orçamento              | ✅ Concluído                  | 2026-10-22 09:35 | 2026-10-22 09:37 | 2min    |
-| [3](drop-03-interface-basica.md)                           | Interface básica                | ✅ Concluído                  | 2026-10-22 09:38 | 2026-10-22 09:40 | 2min    |
-| [4](drop-04-interacoes-recusar-mais-barato-caro-reload.md) | Interações                      | ✅ Concluído                  | 2026-10-22 09:41 | 2026-10-22 09:44 | 3min    |
-| [5](drop-05-persistencia-e-compartilhamento.md)            | Persistência e compartilhamento | ✅ Concluído                  | 2026-10-22 09:44 | 2026-10-22 09:47 | 3min    |
-| [5.1](drop-05-1-necessidade-e-utensilios.md)               | Necessidade e utensílios        | ✅ Concluído                  | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
-| [7](drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha          | ✅ Concluído                  | 2026-10-22 10:19 | 2026-10-22 10:24 | 5min    |
-| [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | ✅ Concluído                  | 2026-10-22 10:25 | 2026-10-22 10:30 | 5min    |
-| [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | 🚧 Em andamento — 3/192 links | 2026-10-22 10:48 | —                | —       |
-| [10.1](drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem     | ✅ Concluído                  | 2026-10-22 11:54 | 2026-10-22 11:58 | 4min    |
-| [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | ⏳ A fazer                    | —                | —                | —       |
-| [13](drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro         | ✅ Concluído                  | 2026-10-22 16:26 | 2026-10-22 16:33 | 7min    |
-| [13.1](drop-13-1-faixas-de-orcamento.md)                   | Três faixas de orçamento        | ✅ Concluído                  | 2026-10-22 16:38 | 2026-10-22 16:40 | 2min    |
+| Drop                                                       | Tema                            | Status                         | Iniciado em      | Terminado em     | Duração |
+| ---------------------------------------------------------- | ------------------------------- | ------------------------------ | ---------------- | ---------------- | ------- |
+| [0](drop-00-fundacao-do-repositorio.md)                    | Fundação do repositório         | ✅ Concluído                   | 2026-10-22 09:16 | 2026-10-22 09:19 | 3min    |
+| [1](drop-01-modelo-de-dados-e-validacao.md)                | Modelo de dados e validação     | ✅ Concluído                   | 2026-10-22 09:21 | 2026-10-22 09:23 | 2min    |
+| [2](drop-02-motor-de-orcamento.md)                         | Motor de orçamento              | ✅ Concluído                   | 2026-10-22 09:35 | 2026-10-22 09:37 | 2min    |
+| [3](drop-03-interface-basica.md)                           | Interface básica                | ✅ Concluído                   | 2026-10-22 09:38 | 2026-10-22 09:40 | 2min    |
+| [4](drop-04-interacoes-recusar-mais-barato-caro-reload.md) | Interações                      | ✅ Concluído                   | 2026-10-22 09:41 | 2026-10-22 09:44 | 3min    |
+| [5](drop-05-persistencia-e-compartilhamento.md)            | Persistência e compartilhamento | ✅ Concluído                   | 2026-10-22 09:44 | 2026-10-22 09:47 | 3min    |
+| [5.1](drop-05-1-necessidade-e-utensilios.md)               | Necessidade e utensílios        | ✅ Concluído                   | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
+| [7](drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha          | ✅ Concluído                   | 2026-10-22 10:19 | 2026-10-22 10:24 | 5min    |
+| [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | ✅ Concluído                   | 2026-10-22 10:25 | 2026-10-22 10:30 | 5min    |
+| [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | 🚧 Em andamento — 16/222 links | 2026-10-22 10:48 | —                | —       |
+| [10.1](drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem     | ✅ Concluído                   | 2026-10-22 11:54 | 2026-10-22 11:58 | 4min    |
+| [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | ⏳ A fazer                     | —                | —                | —       |
+| [13](drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro         | ✅ Concluído                   | 2026-10-22 16:26 | 2026-10-22 16:33 | 7min    |
+| [13.1](drop-13-1-faixas-de-orcamento.md)                   | Três faixas de orçamento        | ✅ Concluído                   | 2026-10-22 16:38 | 2026-10-22 16:40 | 2min    |
 
 ### 2ª wave — publicação e automação
 

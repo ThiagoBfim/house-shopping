@@ -41,18 +41,30 @@
       ]
     },
     {
-      "id": "fogao-electrolux-fe5ad",
+      "id": "fogao-electrolux-5-bocas-airfry",
       "tier": 4,
-      "name": "Fogão Electrolux 5 Bocas Dois Fornos com Air Fryer FE5AD",
-      "price": 4799,
+      "name": "Fogão Electrolux 5 Bocas Airfry Gás/Elétrico Inox",
+      "price": 4323.08,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fogao-electrolux-fe5ad",
+      "url": "https://meli.la/1phX4ru",
       "bullets": [
-        "Dois fornos: assa doce e salgado ao mesmo tempo",
-        "Função air fryer no forno",
+        "Forno elétrico com convecção e função air fryer",
+        "Cozinha a vapor",
         "Timer digital",
         "Topo de linha em fogão de piso"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_625719-MLA105363957923_012026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1phX4ru",
+          "price": 4323.08,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6258830598",
+          "history": [{ "date": "2026-10-22", "price": 4323.08 }]
+        }
       ]
     }
   ]

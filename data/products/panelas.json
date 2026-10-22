@@ -41,18 +41,30 @@
       "bullets": ["Corpo triplo inteiro (não só o fundo)", "Linha profissional", "Dura a vida toda"]
     },
     {
-      "id": "jogo-de-panelas-le-creuset-signature",
+      "id": "kit-le-creuset-2-panelas-20-22",
       "tier": 4,
-      "name": "Jogo de Panelas Le Creuset Signature Ferro Fundido 3 Peças",
-      "price": 7499,
+      "name": "Kit Le Creuset 2 Panelas de Ferro Fundido 20 e 22 cm",
+      "price": 4948,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-le-creuset-signature",
+      "url": "https://meli.la/1QzqwhB",
       "bullets": [
         "Ferro fundido esmaltado",
         "Vai do fogão ao forno e à mesa",
         "Ícone de cozinha (dura décadas)",
-        "Menos peças pelo preço"
+        "Só 2 peças pelo preço"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_616357-MLB76742067470_062024-O-kit-le-creuset-2-panelas-redondas-20-e-22cm-em-ferro-rhone.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1QzqwhB",
+          "price": 4948,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "history": [{ "date": "2026-10-22", "price": 4948 }],
+          "externalId": "MLB4776706002"
+        }
       ]
     }
   ]

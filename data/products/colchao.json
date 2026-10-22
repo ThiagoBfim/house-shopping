@@ -41,17 +41,29 @@
       ]
     },
     {
-      "id": "colchao-simmons-beautyrest-black-queen",
+      "id": "colchao-king-koil-attraction-queen",
       "tier": 4,
-      "name": "Colchão Queen Simmons Beautyrest Black",
-      "price": 7999,
+      "name": "Colchão Queen King Koil Attraction Molas Ensacadas",
+      "price": 3863.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-simmons-beautyrest-black-queen",
+      "url": "https://meli.la/1eXwoDG",
       "bullets": [
         "Molas ensacadas: não transmite movimento",
-        "Camadas de conforto premium",
-        "Topo de linha em colchão"
+        "Queen 158 x 198 x 27 cm",
+        "Marca americana tradicional de colchões"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_851083-MLB114638086479_072026-O-colchao-queen-molas-158x198x27-attraction-king-koil-cr458d.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1eXwoDG",
+          "price": 3863.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7181284028",
+          "history": [{ "date": "2026-10-22", "price": 3863.99 }]
+        }
       ]
     }
   ]
