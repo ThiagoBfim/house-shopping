@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks'
 import { describeList, emptyChoices, planList, type Choices, type Plan } from '../engine/budget.ts'
 import { diffPlans, displayedTiers, type Change } from '../engine/choices.ts'
+import { expandHouse, type HouseSpec } from '../engine/house.ts'
 import { formatBRLWhole } from '../engine/money.ts'
 import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
@@ -14,7 +15,10 @@ import { Toast, type ToastMessage } from './Toast.tsx'
 type Load = { status: 'loading' } | { status: 'error' } | { status: 'ready'; catalog: Catalog }
 
 interface Session {
-  roomId?: string
+  /** Cômodos escolhidos e quantidades (um cômodo só = { cozinha: 1 }). */
+  house: HouseSpec
+  /** Mostra a escolha de cômodos. */
+  picking: boolean
   budget?: number
   /** Resultado do último reload. */
   plan: Plan
@@ -23,14 +27,15 @@ interface Session {
   editingBudget: boolean
 }
 
-const listState = ({ roomId, budget, plan, choices }: Session): ListState | undefined =>
-  roomId !== undefined && budget !== undefined ? { roomId, budget, plan, choices } : undefined
+const listState = ({ house, budget, plan, choices }: Session): ListState | undefined =>
+  Object.keys(house).length && budget !== undefined ? { house, budget, plan, choices } : undefined
 
-const newSession = (roomId?: string): Session => ({
-  roomId,
+const newSession = (): Session => ({
+  house: {},
+  picking: true,
   plan: {},
   choices: emptyChoices(),
-  editingBudget: roomId !== undefined,
+  editingBudget: false,
 })
 
 export function App() {
@@ -46,7 +51,7 @@ export function App() {
   /** Restaura a lista da URL (link compartilhado) ou do localStorage. */
   const restore = (catalog: Catalog) => {
     const initial = readInitialState(catalog.rooms)
-    if (initial.state) setSession({ ...initial.state, editingBudget: false })
+    if (initial.state) setSession({ ...initial.state, picking: false, editingBudget: false })
     setShared(initial.shared)
     setChanges({})
     setDirty(false)
@@ -103,18 +108,29 @@ export function App() {
       )
     }
 
-    const { rooms, products } = load.catalog
-    const room = session.roomId ? rooms[session.roomId] : undefined
+    const { rooms } = load.catalog
+    const house = expandHouse(rooms, load.catalog.products, session.house)
+    const { room, products } = house
 
-    const changeRoom = () => {
-      setSession(newSession())
+    const changeRooms = () => {
+      setSession({ ...session, picking: true })
       setChanges({})
       setDirty(false)
       setShared(false)
     }
 
-    if (!room) {
-      return <RoomPicker rooms={rooms} onPick={(roomId) => setSession(newSession(roomId))} />
+    if (session.picking || !house.instances.length) {
+      return (
+        <RoomPicker
+          rooms={rooms}
+          products={load.catalog.products}
+          initial={session.house}
+          onConfirm={(spec) => {
+            // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora.
+            setSession({ ...session, house: spec, picking: false, editingBudget: true })
+          }}
+        />
+      )
     }
 
     if (session.editingBudget || session.budget === undefined) {
@@ -124,7 +140,7 @@ export function App() {
           products={products}
           initial={session.budget}
           initialFilters={{ minNeed: session.choices.minNeed, utensils: session.choices.utensils }}
-          onBack={changeRoom}
+          onBack={changeRooms}
           onSubmit={(budget, filters) => {
             const choices = { ...session.choices, ...filters }
             setSession({
@@ -188,7 +204,7 @@ export function App() {
     }
 
     const url = shareUrl(listState(session)!)
-    const shareText = `Minha lista de ${room.name} no House Shopping: ${formatBRLWhole(view.total)} de ${formatBRLWhole(budget)}.`
+    const shareText = `Minha lista (${room.name}) no House Shopping: ${formatBRLWhole(view.total)} de ${formatBRLWhole(budget)}.`
 
     return (
       <>
@@ -210,6 +226,7 @@ export function App() {
         )}
         <ListScreen
           roomName={room.name}
+          instances={house.instances}
           view={view}
           choices={choices}
           changes={changes}
@@ -218,7 +235,7 @@ export function App() {
           onReload={reload}
           onFilters={applyFilters}
           onEditBudget={() => setSession({ ...session, editingBudget: true })}
-          onChangeRoom={changeRoom}
+          onChangeRoom={changeRooms}
           share={{
             url,
             text: shareText,

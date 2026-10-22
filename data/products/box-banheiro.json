@@ -1,0 +1,46 @@
+{
+  "label": "Box de banheiro",
+  "utensil": false,
+  "options": [
+    {
+      "id": "box-banheiro-vidro-temperado-8mm-1-20",
+      "tier": 1,
+      "name": "Box de Banheiro Vidro Temperado 8 mm até 1,20 m",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/box-banheiro-vidro-temperado-8mm-1-20",
+      "bullets": ["Vidro temperado incolor 8 mm", "Porta de correr", "Até 1,20 m de largura"]
+    },
+    {
+      "id": "box-banheiro-vidro-temperado-8mm-1-50",
+      "tier": 2,
+      "name": "Box de Banheiro Vidro Temperado 8 mm até 1,50 m",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/box-banheiro-vidro-temperado-8mm-1-50",
+      "bullets": ["Até 1,50 m", "Kit de alumínio reforçado", "Puxador de inox"]
+    },
+    {
+      "id": "box-banheiro-vidro-fume-kit-preto",
+      "tier": 3,
+      "name": "Box de Banheiro Vidro Fumê com Kit Preto",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/box-banheiro-vidro-fume-kit-preto",
+      "bullets": ["Vidro fumê", "Kit e puxador pretos (visual moderno)", "Roldanas silenciosas"]
+    },
+    {
+      "id": "box-banheiro-de-abrir-sob-medida",
+      "tier": 4,
+      "name": "Box de Banheiro de Abrir Sob Medida",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/box-banheiro-de-abrir-sob-medida",
+      "bullets": ["Porta de abrir com dobradiças", "Sob medida", "Vidro com proteção antimanchas"]
+    }
+  ]
+}

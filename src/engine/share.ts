@@ -1,11 +1,14 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
 import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
+import { houseItemKeys, itemKey, normalizeSpec, type HouseSpec } from './house.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
 export interface ListState {
-  roomId: string
+  /** Cômodos e quantidades (um cômodo só = { cozinha: 1 }). */
+  house: HouseSpec
   budget: number
+  /** Chaves "instância:categoria" (ver house.ts). */
   plan: Plan
   choices: Choices
 }
@@ -22,7 +25,10 @@ const REASONS_BY_CODE: Record<string, ExclusionReason> = { r: 'refused', o: 'own
 /** Formato compacto que vai na URL. */
 interface Wire {
   v: number
-  r: string
+  /** Cômodos e quantidades. */
+  h?: Record<string, number>
+  /** Formato antigo (um cômodo só, chaves sem instância). Só lido, nunca gravado. */
+  r?: string
   b: number
   p: Record<string, number>
   l: Record<string, number>
@@ -36,15 +42,12 @@ interface Wire {
 export function encodeState(state: ListState): string {
   const wire: Wire = {
     v: STATE_VERSION,
-    r: state.roomId,
+    h: state.house,
     b: state.budget,
     p: state.plan,
     l: state.choices.locked,
     x: Object.fromEntries(
-      Object.entries(state.choices.excluded).map(([category, reason]) => [
-        category,
-        REASON_CODES[reason],
-      ]),
+      Object.entries(state.choices.excluded).map(([key, reason]) => [key, REASON_CODES[reason]]),
     ),
   }
   if (state.choices.minNeed !== 1) wire.n = state.choices.minNeed
@@ -62,8 +65,9 @@ const isNeed = (value: unknown): value is Need => isTier(value) || value === 5
 
 /**
  * Lê um estado vindo da URL ou do localStorage. Nunca lança: entrada inválida
- * devolve undefined. Categorias que não existem mais no cômodo são descartadas,
- * para que links antigos continuem abrindo depois de mudanças no catálogo.
+ * devolve undefined. Itens que não existem mais na casa são descartados, para que
+ * links antigos continuem abrindo depois de mudanças no catálogo. Links do formato
+ * antigo (`r`: um cômodo, chaves sem instância) são convertidos.
  */
 export function decodeState(encoded: string, rooms: Rooms): ListState | undefined {
   let wire: unknown
@@ -74,27 +78,39 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
   }
   if (!isRecord(wire) || wire.v !== STATE_VERSION) return undefined
 
-  const { r: roomId, b: budget } = wire
-  if (typeof roomId !== 'string' || !Object.hasOwn(rooms, roomId)) return undefined
+  const { b: budget } = wire
   if (typeof budget !== 'number' || !Number.isFinite(budget) || budget <= 0) return undefined
 
-  const categories = new Set(rooms[roomId].items.map((item) => item.category))
-  const tiers = (raw: unknown): Record<string, Tier> => {
-    if (!isRecord(raw)) return {}
-    return Object.fromEntries(
-      Object.entries(raw).filter(([category, tier]) => categories.has(category) && isTier(tier)),
-    ) as Record<string, Tier>
+  let house: HouseSpec
+  let toKey = (key: string) => key
+  if (isRecord(wire.h)) {
+    house = normalizeSpec(wire.h as HouseSpec, rooms)
+  } else if (typeof wire.r === 'string' && Object.hasOwn(rooms, wire.r)) {
+    const roomId = wire.r
+    house = { [roomId]: 1 }
+    toKey = (category) => itemKey(roomId, category)
+  } else {
+    return undefined
   }
+  if (!Object.keys(house).length) return undefined
+
+  const keys = houseItemKeys(rooms, house)
+  const entries = (raw: unknown) =>
+    isRecord(raw)
+      ? Object.entries(raw)
+          .map(([key, value]) => [toKey(key), value] as const)
+          .filter(([key]) => keys.has(key))
+      : []
+  const tiers = (raw: unknown) =>
+    Object.fromEntries(entries(raw).filter(([, tier]) => isTier(tier))) as Record<string, Tier>
   const excluded: Record<string, ExclusionReason> = {}
-  if (isRecord(wire.x)) {
-    for (const [category, code] of Object.entries(wire.x)) {
-      const reason = typeof code === 'string' ? REASONS_BY_CODE[code] : undefined
-      if (categories.has(category) && reason) excluded[category] = reason
-    }
+  for (const [key, code] of entries(wire.x)) {
+    const reason = typeof code === 'string' ? REASONS_BY_CODE[code] : undefined
+    if (reason) excluded[key] = reason
   }
 
   return {
-    roomId,
+    house,
     budget,
     plan: tiers(wire.p),
     choices: {

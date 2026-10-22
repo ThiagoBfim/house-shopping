@@ -264,6 +264,56 @@
       }
     ]
   },
+  "banheiro": {
+    "name": "Banheiro",
+    "items": [
+      {
+        "category": "chuveiro",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "toalhas",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "box-banheiro",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "gabinete-banheiro",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "kit-acessorios-banheiro",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "ducha-higienica",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "tapete-banheiro",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "lixeira-banheiro",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "secador-de-cabelo",
+        "need": 1,
+        "qty": 1
+      }
+    ]
+  },
   "area-externa": {
     "name": "Área externa",
     "items": [

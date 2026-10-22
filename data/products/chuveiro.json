@@ -1,0 +1,40 @@
+{
+  "label": "Chuveiro",
+  "utensil": false,
+  "options": [
+    {
+      "id": "chuveiro-lorenzetti-advanced-eletronico",
+      "tier": 1,
+      "name": "Chuveiro Lorenzetti Advanced Turbo Eletrônico",
+      "price": 139,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/chuveiro-lorenzetti-advanced-eletronico",
+      "bullets": ["Controle de temperatura eletrônico", "Bom para 127 V", "Jato simples"]
+    },
+    {
+      "id": "chuveiro-lorenzetti-duo-shower-quadra",
+      "tier": 2,
+      "name": "Chuveiro Lorenzetti Duo Shower Quadra Multitemperaturas",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/chuveiro-lorenzetti-duo-shower-quadra",
+      "bullets": ["Ducha + chuveirinho", "Várias temperaturas", "Espalhador quadrado grande"]
+    },
+    {
+      "id": "ducha-lorenzetti-acqua-duo-ultra",
+      "tier": 3,
+      "name": "Ducha Lorenzetti Acqua Duo Ultra Eletrônica 7800 W",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ducha-lorenzetti-acqua-duo-ultra",
+      "bullets": [
+        "7800 W: banho bem quente no inverno",
+        "Ducha e chuveirinho em um aparelho",
+        "A mais recomendada nos guias de 2026"
+      ]
+    }
+  ]
+}

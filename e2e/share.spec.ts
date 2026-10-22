@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { pickRooms } from './helpers.ts'
 
 const card = (page: Page, label: string) =>
   page.getByRole('article', { name: new RegExp(`^${label}:`) })
@@ -22,7 +23,7 @@ async function snapshot(page: Page) {
 /** Monta uma lista com recusa, troca de tier e reload. */
 async function buildCustomList(page: Page) {
   await page.goto('./')
-  await page.getByRole('button', { name: /Cozinha/ }).click()
+  await pickRooms(page, { Cozinha: 1 })
   await page.getByLabel('Orçamento em reais').fill('20000')
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   await card(page, 'Fogão').getByRole('button', { name: 'Recusar' }).click()
@@ -73,19 +74,22 @@ test('botão do WhatsApp leva o link da lista', async ({ page }) => {
   const href = await page.getByRole('link', { name: 'WhatsApp' }).getAttribute('href')
   expect(href).toMatch(/^https:\/\/wa\.me\/\?text=/)
   const text = decodeURIComponent(href!.split('text=')[1])
-  expect(text).toContain('Minha lista de Cozinha')
+  expect(text).toContain('Minha lista (Cozinha)')
   expect(text).toMatch(/#l=.+&s=1$/)
 })
 
 test('link inválido abre a tela inicial sem quebrar', async ({ page }) => {
   await page.goto('./#l=link-quebrado&s=1')
-  await expect(page.getByRole('heading', { name: 'Qual cômodo você vai montar?' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Quais cômodos você vai montar?' })).toBeVisible()
 })
 
-test('trocar de cômodo limpa a lista salva', async ({ page }) => {
+test('voltar aos cômodos mantém a seleção e a lista salva', async ({ page }) => {
   await buildCustomList(page)
-  await page.getByRole('button', { name: '← Trocar cômodo' }).click()
-  await expect(page).not.toHaveURL(/#l=/)
-  await page.goto('./')
-  await expect(page.getByRole('heading', { name: 'Qual cômodo você vai montar?' })).toBeVisible()
+  await page.getByRole('button', { name: '← Cômodos' }).click()
+  await expect(page.getByRole('heading', { name: 'Quais cômodos você vai montar?' })).toBeVisible()
+  await expect(page.getByRole('button', { name: /^Cozinha \d+ itens$/ })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+  await expect(page).toHaveURL(/#l=/)
 })

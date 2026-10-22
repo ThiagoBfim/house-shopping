@@ -6,8 +6,8 @@
 
 Fluxo principal:
 
-1. Escolho um cômodo — ex.: **Cozinha**.
-2. Defino um orçamento — ex.: **R$ 30.000**.
+1. Escolho os cômodos e quantos de cada — um só (ex.: **Cozinha**) ou a casa toda (ex.: 1 cozinha, 2 quartos, 1 quarto do bebê, 1 banheiro).
+2. Defino um orçamento **total** — ex.: **R$ 60.000** para a casa toda.
 3. O site me devolve **o que devo comprar**, com um modelo sugerido para cada item, preço e link (afiliado).
 4. Ajusto a lista: **recusar** um item, pedir uma opção **mais barata** ou **mais cara**, e pedir um **reload** — o orçamento liberado (ou consumido) é redistribuído entre os demais itens.
 5. **Compartilho** a lista final com outras pessoas por um link, para elas fazerem o mesmo (ou comprarem pelos mesmos links).
@@ -26,18 +26,11 @@ Necessidade entre parênteses; **negrito** = utensílio/enxoval; ×2 = quantidad
 | Quarto (11)         | Cama/box (5), colchão (5), guarda-roupa (5), **jogo de cama** (4), **travesseiro** ×2 (4), criado-mudo ×2 (3), cortina (3), ar-condicionado (3), **edredom** (3), cômoda (2), TV (2)                                                                                                              |
 | Sala (10)           | Sofá (5), TV (4), rack/painel (4), mesa de jantar com cadeiras (4), ar-condicionado (3), cortina (2), tapete (2), mesa de centro (2), soundbar (2), poltrona (1)                                                                                                                                  |
 | Quarto do bebê (10) | Berço (5), colchão de berço (5), cômoda com trocador (4), **kit berço** (4), guarda-roupa infantil (3), babá eletrônica (3), poltrona de amamentação (3), cortina (3), umidificador (2), ar-condicionado (2)                                                                                      |
+| Banheiro (9)        | Chuveiro (5), **toalhas** (4), box (3), gabinete com cuba e espelheira (3), **kit de acessórios** (3), ducha higiênica (2), **tapete** (2), **lixeira** (2), secador de cabelo (1)                                                                                                                |
 | Área externa (7)    | Churrasqueira (4), mesa externa com cadeiras (4), **kit churrasco** (3), lavadora de alta pressão (3), espreguiçadeira ×2 (2), ombrelone (2), cooler (2)                                                                                                                                          |
-| (futuro)            | Banheiro, Lavanderia, Home office                                                                                                                                                                                                                                                                 |
+| (futuro)            | Lavanderia, Home office, Quarto de solteiro                                                                                                                                                                                                                                                       |
 
 TV, ar-condicionado e cortina são categorias compartilhadas: o mesmo produto, com necessidade diferente em cada cômodo.
-
--------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cozinha | Geladeira, freezer, fogão/cooktop, forno, micro-ondas, lava-louças, coifa/depurador, air fryer, liquidificador, cafeteira, panelas, mesa de jantar |
-| Quarto (casal) | Cama, colchão, guarda-roupa, criados-mudos, cômoda, ar-condicionado, TV |
-| Sala | Sofá, rack/painel, TV, soundbar, mesa de centro, poltrona, tapete, ar-condicionado |
-| Quarto do bebê | Berço, colchão de berço, cômoda/trocador, poltrona de amamentação, guarda-roupa, babá eletrônica, umidificador |
-| Área externa | Churrasqueira, mesa e cadeiras externas, espreguiçadeiras, ombrelone, lavadora de alta pressão |
-| (futuro) | Banheiro, Lavanderia, Home office, Escritório |
 
 ---
 
@@ -93,14 +86,21 @@ Cada categoria de produto diz se é **utensílio** (`utensil: true`): pratos, ta
 - **Incluir utensílios** (sim/não).
 - Itens escondidos aparecem na seção "Escondidos pelos filtros". Os filtros também vão no link compartilhado.
 
-### 4.4 Motor de orçamento (resumo)
+### 4.4 Casa inteira
+
+- Na tela inicial, cada cômodo tem um contador (0–5). Um cômodo só = lista daquele cômodo; vários = lista da casa. A "planta" no topo mostra o que foi escolhido. Atalho "Casa completa" = um de cada (menos o quarto do bebê).
+- A casa vira **instâncias de cômodo** (`quarto-1`, `quarto-2`…) e cada item ganha a chave `instância:categoria` (`src/engine/house.ts`). O motor planeja tudo com **um orçamento só**: necessários de todos os cômodos primeiro, depois os demais e os upgrades pela necessidade, sem um cômodo "comer" o orçamento.
+- Recusar/travar/trocar tier é por cômodo (o colchão do Quarto 1 é independente do do Quarto 2). A lista aparece agrupada por cômodo, com subtotal e atalhos.
+- As sugestões de orçamento saem da faixa real da seleção (tudo no mais barato → tudo no topo).
+
+### 4.5 Motor de orçamento (resumo)
 
 1. Coloca os **necessários (≥ 4) no tier mais barato**. Se nem isso cabe → avisa quanto falta.
 2. Adiciona os demais no tier mais barato, da maior para a menor necessidade, enquanto couber.
 3. Com o que sobra, faz **upgrades de um tier por vez**, sempre no item com maior `necessidade ÷ tier atual` (os mais necessários sobem primeiro, sem concentrar tudo num só item), até não caber mais nenhum upgrade. Itens travados não sobem.
 4. Resultado: lista + total + saldo restante.
 
-### 4.5 Interações do usuário
+### 4.6 Interações do usuário
 
 | Ação                        | Efeito                                                                   |
 | --------------------------- | ------------------------------------------------------------------------ |
@@ -110,7 +110,7 @@ Cada categoria de produto diz se é **utensílio** (`utensil: true`): pratos, ta
 | **Já tenho**                | Igual a recusar, mas com outro rótulo (útil para mudança de casa)        |
 | **Reload**                  | Re-roda o motor respeitando travados e recusados, redistribuindo o saldo |
 
-### 4.6 Compartilhamento
+### 4.7 Compartilhamento
 
 - O estado inteiro (cômodo, orçamento, travados, recusados) vai **codificado na URL** → basta copiar o link.
 - Também é salvo no `localStorage` para o usuário não perder a lista.

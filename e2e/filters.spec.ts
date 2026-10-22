@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { pickRooms } from './helpers.ts'
 
 const UTENSILS = [
   'Pratos (aparelho de jantar)',
@@ -17,7 +18,7 @@ const cardNames = (page: Page) =>
 
 async function openKitchenForm(page: Page) {
   await page.goto('./')
-  await page.getByRole('button', { name: /Cozinha/ }).click()
+  await pickRooms(page, { Cozinha: 1 })
   await page.getByLabel('Orçamento em reais').fill('20000')
 }
 

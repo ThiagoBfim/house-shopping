@@ -1,0 +1,36 @@
+{
+  "label": "Lixeira de banheiro",
+  "utensil": true,
+  "options": [
+    {
+      "id": "lixeira-banheiro-5-litros",
+      "tier": 1,
+      "name": "Lixeira de Banheiro com Tampa 5 L",
+      "price": 29,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lixeira-banheiro-5-litros",
+      "bullets": ["5 L", "Plástico", "Tampa basculante"]
+    },
+    {
+      "id": "lixeira-inox-pedal-5-litros",
+      "tier": 2,
+      "name": "Lixeira Inox com Pedal 5 L",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lixeira-inox-pedal-5-litros",
+      "bullets": ["Inox", "Pedal: não precisa tocar", "Balde interno removível"]
+    },
+    {
+      "id": "lixeira-inox-sensor",
+      "tier": 3,
+      "name": "Lixeira Inox com Sensor 6 L",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lixeira-inox-sensor",
+      "bullets": ["Abre sozinha por sensor", "Fechamento suave", "Recarregável"]
+    }
+  ]
+}

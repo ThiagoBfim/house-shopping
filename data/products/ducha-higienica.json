@@ -1,0 +1,36 @@
+{
+  "label": "Ducha higiênica",
+  "utensil": false,
+  "options": [
+    {
+      "id": "ducha-higienica-com-registro",
+      "tier": 1,
+      "name": "Ducha Higiênica com Registro",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ducha-higienica-com-registro",
+      "bullets": ["Com registro", "Gatilho de plástico", "Mangueira flexível"]
+    },
+    {
+      "id": "ducha-higienica-docol",
+      "tier": 2,
+      "name": "Ducha Higiênica Docol Metal Cromado",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ducha-higienica-docol",
+      "bullets": ["Metal cromado", "Marca de referência em metais", "Mais durável"]
+    },
+    {
+      "id": "ducha-higienica-deca-monocomando",
+      "tier": 3,
+      "name": "Ducha Higiênica Deca com Misturador Monocomando",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ducha-higienica-deca-monocomando",
+      "bullets": ["Misturador: água quente e fria", "Monocomando", "Acabamento premium"]
+    }
+  ]
+}

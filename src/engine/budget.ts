@@ -269,3 +269,20 @@ export function budgetRange(
   }
   return { required: required / 100, allCheapest: allCheapest / 100, allTop: allTop / 100 }
 }
+
+/** Arredonda para cima num passo "redondo" para o tamanho do valor (R$ 1 mil, 5 mil, 10 mil). */
+function roundUpNicely(value: number): number {
+  const step = value < 20_000 ? 1_000 : value < 100_000 ? 5_000 : 10_000
+  return Math.ceil(value / step) * step
+}
+
+/**
+ * Valores sugeridos de orçamento a partir da faixa da seleção: tudo no mais barato,
+ * 1/4 e 1/2 do caminho até o topo, e tudo no topo (sem repetidos).
+ */
+export function suggestBudgets(range: BudgetRange): number[] {
+  const { allCheapest: low, allTop: high } = range
+  if (high <= 0) return []
+  const points = [low, low + (high - low) / 4, low + (high - low) / 2, high].map(roundUpNicely)
+  return [...new Set(points)]
+}

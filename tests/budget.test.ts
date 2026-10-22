@@ -10,6 +10,7 @@ import {
   optionForTier,
   planList,
   sortedOptions,
+  suggestBudgets,
   type Choices,
 } from '../src/engine/budget.ts'
 
@@ -299,5 +300,24 @@ describe('filtros', () => {
       allCheapest: 2000 + 900 + 500 + 1900,
       allTop: 15000 + 8000 + 3300 + 9000,
     })
+  })
+})
+
+describe('suggestBudgets', () => {
+  it('sugere valores redondos entre tudo barato e tudo no topo', () => {
+    expect(suggestBudgets({ required: 2900, allCheapest: 5450, allTop: 35650 })).toEqual([
+      6000, 13000, 25000, 40000,
+    ])
+  })
+
+  it('casa grande usa passos maiores', () => {
+    expect(suggestBudgets({ required: 0, allCheapest: 40_100, allTop: 260_000 })).toEqual([
+      45000, 100000, 160000, 260000,
+    ])
+  })
+
+  it('sem itens, sem sugestões; valores iguais não repetem', () => {
+    expect(suggestBudgets({ required: 0, allCheapest: 0, allTop: 0 })).toEqual([])
+    expect(suggestBudgets({ required: 0, allCheapest: 990, allTop: 1000 })).toEqual([1000])
   })
 })

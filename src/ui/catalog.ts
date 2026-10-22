@@ -34,7 +34,6 @@ export const ROOM_CARDS = [
   { id: 'quarto', name: 'Quarto', icon: '🛏️' },
   { id: 'sala', name: 'Sala', icon: '🛋️' },
   { id: 'quarto-bebe', name: 'Quarto do bebê', icon: '🍼' },
+  { id: 'banheiro', name: 'Banheiro', icon: '🛁' },
   { id: 'area-externa', name: 'Área externa', icon: '🌿' },
 ]
-
-export const BUDGET_SUGGESTIONS = [10_000, 20_000, 30_000, 50_000]

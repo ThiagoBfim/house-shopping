@@ -1,0 +1,40 @@
+{
+  "label": "Kit de acessórios de banheiro",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-acessorios-banheiro-4-pecas",
+      "tier": 1,
+      "name": "Kit Acessórios de Banheiro 4 Peças Plástico",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-banheiro-4-pecas",
+      "bullets": ["Saboneteira, porta-escova e dispenser", "Plástico", "Várias cores"]
+    },
+    {
+      "id": "kit-acessorios-banheiro-ceramica-5-pecas",
+      "tier": 2,
+      "name": "Kit Acessórios de Banheiro 5 Peças Cerâmica",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-banheiro-ceramica-5-pecas",
+      "bullets": ["Cerâmica", "5 peças com bandeja", "Visual de hotel"]
+    },
+    {
+      "id": "kit-acessorios-banheiro-inox-parede",
+      "tier": 3,
+      "name": "Kit Acessórios de Banheiro Inox 5 Peças de Parede",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-banheiro-inox-parede",
+      "bullets": [
+        "Inox de parede: porta-toalha, papeleira, cabides",
+        "Não enferruja",
+        "Fixação com parafuso"
+      ]
+    }
+  ]
+}

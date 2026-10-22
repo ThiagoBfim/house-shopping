@@ -34,6 +34,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | 🚧 Em andamento — 3/192 links | 2026-10-22 10:48 | —                | —       |
 | [10.1](drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem     | ✅ Concluído                  | 2026-10-22 11:54 | 2026-10-22 11:58 | 4min    |
 | [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | ⏳ A fazer                    | —                | —                | —       |
+| [13](drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro         | ✅ Concluído                  | 2026-10-22 16:26 | 2026-10-22 16:33 | 7min    |
 
 ### 2ª wave — publicação e automação
 

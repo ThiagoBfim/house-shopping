@@ -1,0 +1,50 @@
+{
+  "label": "Secador de cabelo",
+  "utensil": false,
+  "options": [
+    {
+      "id": "secador-de-cabelo-mondial-2000w",
+      "tier": 1,
+      "name": "Secador de Cabelo Mondial 2000 W",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/secador-de-cabelo-mondial-2000w",
+      "bullets": ["2000 W", "2 velocidades", "Básico"]
+    },
+    {
+      "id": "secador-taiff-style",
+      "tier": 2,
+      "name": "Secador de Cabelo Taiff Style 2000 W",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/secador-taiff-style",
+      "bullets": ["Motor profissional AC", "Íons (menos frizz)", "Mais durável"]
+    },
+    {
+      "id": "secador-taiff-titanium",
+      "tier": 3,
+      "name": "Secador de Cabelo Taiff Titanium Profissional",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/secador-taiff-titanium",
+      "bullets": ["Profissional", "2500 W", "Cerâmica e íons"]
+    },
+    {
+      "id": "secador-dyson-supersonic",
+      "tier": 4,
+      "name": "Secador de Cabelo Dyson Supersonic",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/secador-dyson-supersonic",
+      "bullets": [
+        "Motor digital: seca rápido sem calor excessivo",
+        "Leve e silencioso",
+        "Topo de linha"
+      ]
+    }
+  ]
+}

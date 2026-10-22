@@ -1,0 +1,36 @@
+{
+  "label": "Toalhas de banho",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-de-toalhas-4-pecas-algodao",
+      "tier": 1,
+      "name": "Jogo de Toalhas 4 Peças Algodão",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-4-pecas-algodao",
+      "bullets": ["2 de banho + 2 de rosto", "Algodão simples", "Seca mais devagar"]
+    },
+    {
+      "id": "jogo-de-toalhas-karsten-5-pecas",
+      "tier": 2,
+      "name": "Jogo de Toalhas Karsten 5 Peças Fio Penteado",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-karsten-5-pecas",
+      "bullets": ["Fio penteado: mais macio e absorvente", "5 peças", "Marca tradicional"]
+    },
+    {
+      "id": "jogo-de-toalhas-trussardi",
+      "tier": 3,
+      "name": "Jogo de Toalhas Trussardi 5 Peças Gramatura Alta",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-trussardi",
+      "bullets": ["Gramatura alta: toque de hotel", "Algodão egípcio", "Dura muitas lavagens"]
+    }
+  ]
+}

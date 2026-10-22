@@ -1,0 +1,58 @@
+{
+  "label": "Gabinete com cuba e espelheira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "gabinete-banheiro-60-cm-cuba-espelheira",
+      "tier": 1,
+      "name": "Conjunto Gabinete 60 cm com Cuba e Espelheira",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gabinete-banheiro-60-cm-cuba-espelheira",
+      "bullets": ["60 cm, com cuba e espelheira", "MDP", "Para banheiro pequeno"]
+    },
+    {
+      "id": "gabinete-banheiro-cuba-3-gavetas-espelheira",
+      "tier": 2,
+      "name": "Conjunto Gabinete com Cuba, 3 Gavetas e Espelheira",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gabinete-banheiro-cuba-3-gavetas-espelheira",
+      "bullets": [
+        "Porta + 3 gavetas",
+        "Espelheira com porta (guarda remédios e cremes)",
+        "MDF na frente"
+      ]
+    },
+    {
+      "id": "gabinete-suspenso-80-cm-ripado-cuba",
+      "tier": 3,
+      "name": "Gabinete Suspenso 80 cm Ripado com Cuba e Espelheira",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gabinete-suspenso-80-cm-ripado-cuba",
+      "bullets": [
+        "Suspenso: fácil de limpar o chão",
+        "80 cm com frente ripada",
+        "Espelheira com LED"
+      ]
+    },
+    {
+      "id": "gabinete-suspenso-100-cm-cuba-esculpida",
+      "tier": 4,
+      "name": "Gabinete Suspenso 100 cm com Cuba Esculpida",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gabinete-suspenso-100-cm-cuba-esculpida",
+      "bullets": [
+        "Cuba esculpida no tampo",
+        "100 cm, gavetas com fechamento suave",
+        "Visual de projeto de arquiteto"
+      ]
+    }
+  ]
+}

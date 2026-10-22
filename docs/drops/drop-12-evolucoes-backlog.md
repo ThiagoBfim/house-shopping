@@ -8,7 +8,7 @@
 
 **Meta:** ideias para depois das duas waves.
 
-- [ ] **Casa inteira**: um orçamento total dividido entre vários cômodos (sliders por cômodo)
+- [x] ~~**Casa inteira**: um orçamento total dividido entre vários cômodos~~ → virou o Drop 13
 - [ ] Filtros: marca, cor, voltagem (110/220 V), tamanho
 - [ ] Comparar duas opções lado a lado
 - [ ] Exportar lista em PDF / checklist "comprado"

@@ -1,5 +1,6 @@
-import type { Choices, ListView, Plan } from '../engine/budget.ts'
+import type { Choices, ListEntry, ListView, Plan } from '../engine/budget.ts'
 import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices.ts'
+import { splitItemKey, type RoomInstance } from '../engine/house.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
@@ -8,6 +9,8 @@ import { ShareBar } from './ShareBar.tsx'
 
 interface Props {
   roomName: string
+  /** Cômodos da casa; com mais de um, a lista é agrupada por cômodo. */
+  instances: RoomInstance[]
   view: ListView
   choices: Choices
   changes: Record<string, Change>
@@ -26,6 +29,7 @@ const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
 
 export function ListScreen({
   roomName,
+  instances,
   view,
   choices,
   changes,
@@ -47,11 +51,50 @@ export function ListScreen({
     !choices.utensils && 'sem utensílios',
   ].filter(Boolean)
 
+  const grouped = instances.length > 1
+  const titles = new Map(instances.map((instance) => [instance.id, instance.title]))
+  /** Nome do item para avisos e listas: "Colchão (Quarto 2)" quando há vários cômodos. */
+  const nameOf = (key: string, label: string) =>
+    grouped ? `${label} (${titles.get(splitItemKey(key).instanceId)})` : label
+  const entriesOf = (instanceId: string) =>
+    view.entries.filter((entry) => splitItemKey(entry.item.category).instanceId === instanceId)
+
+  const renderCard = (entry: ListEntry) => {
+    const { category } = entry.item
+    const { option, options } = entry
+    const name = nameOf(category, entry.label)
+    const moveTo = (direction: -1 | 1) => {
+      const target = options[options.indexOf(option) + direction]
+      onChoices(
+        lockAt(choices, category, target.tier),
+        `${name}: ${TIER_LABELS[target.tier].toLowerCase()} (travado).`,
+      )
+    }
+    return (
+      <ProductCard
+        key={category}
+        entry={entry}
+        change={changes[category]}
+        onCheaper={() => moveTo(-1)}
+        onPricier={() => moveTo(1)}
+        onToggleLock={() =>
+          entry.locked
+            ? onChoices(unlock(choices, category), `${name} destravado.`)
+            : onChoices(lockAt(choices, category, option.tier), `${name} travado.`)
+        }
+        onOwned={() =>
+          onChoices(exclude(choices, category, 'owned'), `${name}: marcado como “já tenho”.`)
+        }
+        onRefuse={() => onChoices(exclude(choices, category, 'refused'), `${name} recusado.`)}
+      />
+    )
+  }
+
   return (
     <section>
       <div class="list-nav">
         <button type="button" class="link-button" onClick={onChangeRoom}>
-          ← Trocar cômodo
+          ← Cômodos
         </button>
         <button type="button" class="link-button" onClick={onEditBudget}>
           Alterar orçamento
@@ -115,46 +158,50 @@ export function ListScreen({
         </p>
       )}
 
-      {view.entries.length ? (
-        <div class="product-list">
-          {view.entries.map((entry) => {
-            const { category } = entry.item
-            const { label, option, options } = entry
-            const moveTo = (direction: -1 | 1) => {
-              const index = options.indexOf(option) + direction
-              const target = options[index]
-              onChoices(
-                lockAt(choices, category, target.tier),
-                `${label}: ${TIER_LABELS[target.tier].toLowerCase()} (travado).`,
-              )
-            }
-            return (
-              <ProductCard
-                key={category}
-                entry={entry}
-                change={changes[category]}
-                onCheaper={() => moveTo(-1)}
-                onPricier={() => moveTo(1)}
-                onToggleLock={() =>
-                  entry.locked
-                    ? onChoices(unlock(choices, category), `${label} destravado.`)
-                    : onChoices(lockAt(choices, category, option.tier), `${label} travado.`)
-                }
-                onOwned={() =>
-                  onChoices(
-                    exclude(choices, category, 'owned'),
-                    `${label}: marcado como “já tenho”.`,
-                  )
-                }
-                onRefuse={() =>
-                  onChoices(exclude(choices, category, 'refused'), `${label} recusado.`)
-                }
-              />
-            )
-          })}
-        </div>
-      ) : (
+      {grouped && (
+        <nav class="room-jump" aria-label="Ir para o cômodo">
+          {instances.map((instance) => (
+            <button
+              key={instance.id}
+              type="button"
+              class="chip"
+              onClick={() =>
+                document
+                  .getElementById(`room-${instance.id}`)
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+            >
+              {instance.title}
+            </button>
+          ))}
+        </nav>
+      )}
+
+      {!view.entries.length ? (
         <p class="empty-state">Nenhum item na lista.</p>
+      ) : grouped ? (
+        instances.map((instance) => {
+          const entries = entriesOf(instance.id)
+          const subtotal = entries.reduce((sum, entry) => sum + entry.subtotal, 0)
+          return (
+            <section key={instance.id} id={`room-${instance.id}`} class="room-group">
+              <header class="room-group-header">
+                <h3>{instance.title}</h3>
+                <span>
+                  {entries.length} {entries.length === 1 ? 'item' : 'itens'} ·{' '}
+                  <strong>{formatBRL(subtotal)}</strong>
+                </span>
+              </header>
+              {entries.length ? (
+                <div class="product-list">{entries.map(renderCard)}</div>
+              ) : (
+                <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>
+              )}
+            </section>
+          )
+        })
+      ) : (
+        <div class="product-list">{view.entries.map(renderCard)}</div>
       )}
 
       {view.skipped.length > 0 && (
@@ -164,14 +211,17 @@ export function ListScreen({
             {view.skipped.map(({ item, label, cheapest }) => (
               <li key={item.category}>
                 <span>
-                  {label}
+                  {nameOf(item.category, label)}
                   <span class="muted"> · a partir de {formatBRL(cheapest.price * item.qty)}</span>
                 </span>
                 <button
                   type="button"
                   class="small-button"
                   onClick={() =>
-                    onChoices(lockAt(choices, item.category, cheapest.tier), `${label} adicionado.`)
+                    onChoices(
+                      lockAt(choices, item.category, cheapest.tier),
+                      `${nameOf(item.category, label)} adicionado.`,
+                    )
                   }
                 >
                   + Adicionar
@@ -188,7 +238,7 @@ export function ListScreen({
           <ul class="compact-list">
             {view.filtered.map(({ item, label, reason }) => (
               <li key={item.category}>
-                <span>{label}</span>
+                <span>{nameOf(item.category, label)}</span>
                 <span class="muted">
                   {reason === 'utensil'
                     ? 'Utensílio'
@@ -207,16 +257,20 @@ export function ListScreen({
             {view.excluded.map(({ item, label, reason, cheapest }) => (
               <li key={item.category}>
                 <span>
-                  {label}
+                  {nameOf(item.category, label)}
                   <span class="muted"> · {REASON_LABELS[reason]}</span>
                 </span>
                 <button
                   type="button"
                   class="small-button"
                   onClick={() =>
-                    onChoices(restore(choices, item.category), `${label} reativado.`, {
-                      [item.category]: cheapest.tier,
-                    })
+                    onChoices(
+                      restore(choices, item.category),
+                      `${nameOf(item.category, label)} reativado.`,
+                      {
+                        [item.category]: cheapest.tier,
+                      },
+                    )
                   }
                 >
                   Reativar

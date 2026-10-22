@@ -20,6 +20,7 @@ As tarefas, o status e os tempos de cada drop ficam em [`docs/drops/`](../drops/
 | [10](../drops/drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | Links de afiliado + preço atualizado              |
 | [10.1](../drops/drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem     | Preço subiu/caiu, promoções e foto                |
 | [11](../drops/drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | Lighthouse ≥ 90, acessibilidade, avisos legais    |
+| [13](../drops/drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro         | Vários cômodos com um orçamento só + banheiro     |
 
 ### 2ª wave — publicação e automação
 

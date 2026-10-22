@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { pickRooms } from './helpers.ts'
 
 const card = (page: Page, label: string) =>
   page.getByRole('article', { name: new RegExp(`^${label}:`) })
@@ -24,7 +25,7 @@ const tiersByLabel = (page: Page) =>
 
 async function openKitchen(page: Page, budget: string) {
   await page.goto('./')
-  await page.getByRole('button', { name: /Cozinha/ }).click()
+  await pickRooms(page, { Cozinha: 1 })
   await page.getByLabel('Orçamento em reais').fill(budget)
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
 }
@@ -96,10 +97,10 @@ test('item que não coube pode ser adicionado', async ({ page }) => {
   await expect(page.getByText('Faltam')).toBeVisible()
 })
 
-for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Área externa']) {
+for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Banheiro', 'Área externa']) {
   test(`${room}: monta a lista com R$ 15.000`, async ({ page }) => {
     await page.goto('./')
-    await page.getByRole('button', { name: new RegExp(`^${room} \\d+ itens$`) }).click()
+    await pickRooms(page, { [room]: 1 })
     await page.getByLabel('Orçamento em reais').fill('15000')
     await page.getByRole('button', { name: 'Montar minha lista' }).click()
     expect(await page.getByRole('article').count()).toBeGreaterThan(3)
@@ -109,7 +110,7 @@ for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Área exter
 
 test('produto com link real mostra a foto e o botão da loja', async ({ page }) => {
   await page.goto('./')
-  await page.getByRole('button', { name: /^Sala \d+ itens$/ }).click()
+  await pickRooms(page, { Sala: 1 })
   await page.getByLabel('Orçamento em reais').fill('5000')
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   const tv = card(page, 'Smart TV')

@@ -1,8 +1,7 @@
 import { useState } from 'preact/hooks'
 import type { Products, Room } from '../data/schema.ts'
-import { budgetRange } from '../engine/budget.ts'
+import { budgetRange, suggestBudgets } from '../engine/budget.ts'
 import { formatBRLWhole, formatInteger, parseDigits } from '../engine/money.ts'
-import { BUDGET_SUGGESTIONS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
 
 interface Props {
@@ -18,11 +17,12 @@ export function BudgetForm({ room, products, initial, initialFilters, onSubmit, 
   const [value, setValue] = useState(initial ?? 0)
   const [filters, setFilters] = useState(initialFilters)
   const range = budgetRange(room, products, filters)
+  const suggestions = suggestBudgets(range)
 
   return (
     <section>
       <button type="button" class="link-button" onClick={onBack}>
-        ← Trocar cômodo
+        ← Cômodos
       </button>
       <h2 class="step-title">{room.name}: quanto você quer gastar?</h2>
 
@@ -46,7 +46,7 @@ export function BudgetForm({ room, products, initial, initialFilters, onSubmit, 
         </label>
 
         <div class="chips">
-          {BUDGET_SUGGESTIONS.map((suggestion) => (
+          {suggestions.map((suggestion) => (
             <button
               key={suggestion}
               type="button"
