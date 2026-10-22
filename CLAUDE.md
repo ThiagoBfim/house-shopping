@@ -11,16 +11,17 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `npm run dev` — servidor local (http://localhost:5173/house-shopping/)
 - `npm test` — Vitest (inclui validação do catálogo real em `data/`)
 - `npm run validate` — valida `data/*.json` e lista os erros
-- `npm run check` — lint + format + testes + build (rodar antes de fechar um drop)
+- `npm run test:e2e` — Playwright (perfil celular), sobe o Vite sozinho na porta 4321
+- `npm run check` — lint + format + validate + testes com cobertura (≥ 90% em engine/data) + build + E2E (rodar antes de fechar um drop)
 
 ## Estrutura
 
-- `src/engine/` — lógica pura (motor de orçamento, dinheiro). Sem DOM, sempre testada.
+- `src/engine/` — lógica pura, sem DOM, sempre testada: `budget.ts` (planList = reload, describeList = lista exibida), `choices.ts` (recusar/travar/diff), `share.ts` (estado ↔ URL, versionado), `money.ts`.
 - `src/data/` — schema Zod (`schema.ts`, tipos derivados com `z.infer`) e regras do catálogo (`validate.ts`). Na UI, importar só tipos (`import type`) para não levar o Zod no bundle.
-- `src/ui/` — componentes Preact.
+- `src/ui/` — componentes Preact. `App.tsx` guarda a sessão (`plan` + `choices`); `persistence.ts` sincroniza URL (`#l=`) e localStorage.
 - `data/` — `rooms.json`, `products.json` (catálogo). Não ler o catálogo inteiro; editar por categoria.
 - `scripts/` — scripts Node (validação, sync de afiliados).
-- `tests/` — testes `*.test.ts`.
+- `tests/` — testes unitários `*.test.ts` (Vitest). `e2e/` — testes `*.spec.ts` (Playwright).
 
 ## Convenções
 

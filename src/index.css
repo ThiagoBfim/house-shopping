@@ -677,6 +677,39 @@ h3 {
   background: var(--accent-soft);
 }
 
+/* Compartilhar */
+
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.share-bar .small-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.share-whatsapp {
+  background: #25d366;
+  border-color: #25d366;
+  color: #0b3d1f;
+}
+
+.shared-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.shared-banner .link-button {
+  padding: 0 4px;
+}
+
 /* Toast */
 
 .toast {

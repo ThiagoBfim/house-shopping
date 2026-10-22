@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'preact/hooks'
 import { describeList, emptyChoices, planList, type Choices, type Plan } from '../engine/budget.ts'
 import { diffPlans, displayedTiers, type Change } from '../engine/choices.ts'
+import { formatBRLWhole } from '../engine/money.ts'
+import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
 import { loadCatalog, type Catalog } from './catalog.ts'
 import { ListScreen } from './ListScreen.tsx'
+import { persistState, readInitialState, shareUrl } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
 
@@ -19,6 +22,9 @@ interface Session {
   editingBudget: boolean
 }
 
+const listState = ({ roomId, budget, plan, choices }: Session): ListState | undefined =>
+  roomId !== undefined && budget !== undefined ? { roomId, budget, plan, choices } : undefined
+
 const newSession = (roomId?: string): Session => ({
   roomId,
   plan: {},
@@ -33,14 +39,40 @@ export function App() {
   const [dirty, setDirty] = useState(false)
   const [changes, setChanges] = useState<Record<string, Change>>({})
   const [toast, setToast] = useState<ToastMessage>()
+  /** A lista aberta veio de um link compartilhado. */
+  const [shared, setShared] = useState(false)
+
+  /** Restaura a lista da URL (link compartilhado) ou do localStorage. */
+  const restore = (catalog: Catalog) => {
+    const initial = readInitialState(catalog.rooms)
+    if (initial.state) setSession({ ...initial.state, editingBudget: false })
+    setShared(initial.shared)
+    setChanges({})
+    setDirty(false)
+  }
 
   const fetchCatalog = () => {
     setLoad({ status: 'loading' })
     loadCatalog()
-      .then((catalog) => setLoad({ status: 'ready', catalog }))
+      .then((catalog) => {
+        restore(catalog)
+        setLoad({ status: 'ready', catalog })
+      })
       .catch(() => setLoad({ status: 'error' }))
   }
   useEffect(fetchCatalog, [])
+
+  // Link colado na mesma aba (o replaceState do persistState não dispara este evento).
+  useEffect(() => {
+    if (load.status !== 'ready') return
+    const onHashChange = () => restore(load.catalog)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [load])
+
+  useEffect(() => {
+    if (load.status === 'ready') persistState(listState(session))
+  }, [session, load])
 
   return (
     <>
@@ -77,6 +109,7 @@ export function App() {
       setSession(newSession())
       setChanges({})
       setDirty(false)
+      setShared(false)
     }
 
     if (!room) {
@@ -137,18 +170,49 @@ export function App() {
       })
     }
 
+    const url = shareUrl(listState(session)!)
+    const shareText = `Minha lista de ${room.name} no House Shopping: ${formatBRLWhole(view.total)} de ${formatBRLWhole(budget)}.`
+
     return (
-      <ListScreen
-        roomName={room.name}
-        view={view}
-        choices={choices}
-        changes={changes}
-        dirty={dirty}
-        onChoices={updateChoices}
-        onReload={reload}
-        onEditBudget={() => setSession({ ...session, editingBudget: true })}
-        onChangeRoom={changeRoom}
-      />
+      <>
+        {shared && (
+          <div class="notice shared-banner" role="note">
+            <span>
+              <strong>Lista compartilhada.</strong> Ajuste à vontade: suas mudanças não alteram a
+              lista de quem enviou.
+            </span>
+            <button
+              type="button"
+              class="link-button"
+              aria-label="Fechar aviso"
+              onClick={() => setShared(false)}
+            >
+              ✕
+            </button>
+          </div>
+        )}
+        <ListScreen
+          roomName={room.name}
+          view={view}
+          choices={choices}
+          changes={changes}
+          dirty={dirty}
+          onChoices={updateChoices}
+          onReload={reload}
+          onEditBudget={() => setSession({ ...session, editingBudget: true })}
+          onChangeRoom={changeRoom}
+          share={{
+            url,
+            text: shareText,
+            onCopied: (ok) =>
+              setToast({
+                message: ok
+                  ? 'Link copiado!'
+                  : 'Não foi possível copiar. Copie o endereço da barra.',
+              }),
+          }}
+        />
+      </>
     )
   }
 }

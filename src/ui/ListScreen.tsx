@@ -3,6 +3,7 @@ import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { TIER_LABELS } from './catalog.ts'
 import { ProductCard } from './ProductCard.tsx'
+import { ShareBar } from './ShareBar.tsx'
 
 interface Props {
   roomName: string
@@ -16,6 +17,7 @@ interface Props {
   onReload: () => void
   onEditBudget: () => void
   onChangeRoom: () => void
+  share: { url: string; text: string; onCopied: (ok: boolean) => void }
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
@@ -30,6 +32,7 @@ export function ListScreen({
   onReload,
   onEditBudget,
   onChangeRoom,
+  share,
 }: Props) {
   const over = view.remaining < 0
   const used = view.budget > 0 ? Math.min(100, (view.total / view.budget) * 100) : 100
@@ -79,6 +82,8 @@ export function ListScreen({
           )}
         </button>
       </div>
+
+      <ShareBar {...share} />
 
       {over && (
         <p class="notice notice-warn">
