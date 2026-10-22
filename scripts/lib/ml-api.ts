@@ -3,8 +3,13 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import type { Lookup, Quote } from './ml-sync.ts'
 
-const API = 'https://api.mercadolibre.com'
+export const API = 'https://api.mercadolibre.com'
 const TOKEN_FILE = new URL('../../.ml-token.json', import.meta.url)
+
+/** Guarda o refresh token (muda a cada uso) fora do git. */
+export function saveRefreshToken(refreshToken: string) {
+  writeFileSync(TOKEN_FILE, JSON.stringify({ refresh_token: refreshToken }, null, 2))
+}
 
 /**
  * Token de acesso: ML_ACCESS_TOKEN, ou renova com ML_CLIENT_ID + ML_CLIENT_SECRET + refresh token
@@ -38,7 +43,7 @@ export async function getAccessToken(): Promise<string> {
     throw new Error(`Falha ao renovar o token (${response.status}): ${await response.text()}`)
   }
   const token = (await response.json()) as { access_token: string; refresh_token: string }
-  writeFileSync(TOKEN_FILE, JSON.stringify({ refresh_token: token.refresh_token }, null, 2))
+  saveRefreshToken(token.refresh_token)
   return token.access_token
 }
 
