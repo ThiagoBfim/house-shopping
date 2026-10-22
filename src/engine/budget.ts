@@ -33,6 +33,7 @@ export interface ExcludedEntry {
   item: RoomItem
   label: string
   reason: ExclusionReason
+  cheapest: ProductOption
 }
 
 export interface ListView {
@@ -162,7 +163,7 @@ export function describeList(
     const tier = choices.locked[item.category] ?? plan[item.category]
 
     if (reason) {
-      view.excluded.push({ item, label, reason })
+      view.excluded.push({ item, label, reason, cheapest: options[0] })
     } else if (tier === undefined) {
       view.skipped.push({ item, label, cheapest: options[0] })
     } else {

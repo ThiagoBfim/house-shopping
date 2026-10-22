@@ -240,3 +240,10 @@ describe('budgetRange', () => {
     })
   })
 })
+
+describe('excluded', () => {
+  it('informa a opção mais barata do item excluído (para reativar)', () => {
+    const view = buildList(room, products, 30000, choices({ excluded: { fogao: 'refused' } }))
+    expect(view.excluded[0]).toMatchObject({ label: 'Fogao', cheapest: { tier: 1, price: 900 } })
+  })
+})

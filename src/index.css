@@ -369,6 +369,7 @@ h3 {
   grid-template-columns: 72px 1fr;
   grid-template-areas:
     'media body'
+    'actions actions'
     'footer footer';
   gap: 12px;
   padding: 14px;
@@ -527,6 +528,185 @@ h3 {
   margin-top: 12px;
 }
 
+/* Ações do card */
+
+.product-actions {
+  grid-area: actions;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tier-stepper {
+  display: flex;
+  gap: 8px;
+}
+
+.tier-stepper button {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.25;
+  padding: 6px 8px;
+  border-radius: 12px;
+}
+
+.stepper-delta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-actions button {
+  white-space: nowrap;
+}
+
+.tier-stepper button,
+.card-actions button,
+.small-button {
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tier-stepper button:not(:disabled):hover,
+.card-actions button:hover,
+.small-button:hover {
+  border-color: var(--accent);
+}
+
+.tier-stepper button:disabled {
+  opacity: 0.4;
+}
+
+.card-actions button {
+  border-color: transparent;
+  background: none;
+  padding-inline: 8px;
+  color: var(--muted);
+}
+
+.card-actions button[aria-pressed='true'] {
+  color: var(--accent);
+}
+
+.card-actions .danger:hover {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+
+.small-button {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lock-badge,
+.change-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.change-up,
+.change-added {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.change-down {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.product-card.is-up,
+.product-card.is-added {
+  border-color: var(--accent);
+  animation: highlight 1.2s ease-out;
+}
+
+.product-card.is-down {
+  border-color: var(--warn);
+}
+
+@keyframes highlight {
+  from {
+    background: var(--accent-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card {
+    animation: none !important;
+  }
+}
+
+/* Recalcular */
+
+.reload-button {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.reload-button.is-pending {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.notice {
+  background: var(--accent-soft);
+}
+
+/* Toast */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 20;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+}
+
+.toast-action {
+  border: none;
+  background: none;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  padding: 4px;
+}
+
 @media (min-width: 640px) {
   .room-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -539,8 +719,26 @@ h3 {
 
   .product-card {
     grid-template-columns: 96px 1fr auto;
-    grid-template-areas: 'media body footer';
+    grid-template-areas:
+      'media body footer'
+      'media actions footer';
     padding: 16px;
+  }
+
+  .product-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .tier-stepper button {
+    flex: none;
+    min-width: 140px;
+  }
+
+  .card-actions {
+    gap: 4px;
   }
 
   .product-media {
@@ -558,5 +756,10 @@ h3 {
 
   .product-price {
     align-items: flex-end;
+  }
+
+  .reload-button {
+    width: auto;
+    padding: 0 20px;
   }
 }

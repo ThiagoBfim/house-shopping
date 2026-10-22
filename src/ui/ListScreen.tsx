@@ -1,17 +1,39 @@
-import type { ListView } from '../engine/budget.ts'
+import type { Choices, ListView, Plan } from '../engine/budget.ts'
+import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
+import { TIER_LABELS } from './catalog.ts'
 import { ProductCard } from './ProductCard.tsx'
 
 interface Props {
   roomName: string
   view: ListView
+  choices: Choices
+  changes: Record<string, Change>
+  /** Escolhas mudaram desde o último reload. */
+  dirty: boolean
+  /** `include`: coloca o item de volta na lista (no tier que tinha ou no informado). */
+  onChoices: (next: Choices, message: string, include?: Plan) => void
+  onReload: () => void
   onEditBudget: () => void
   onChangeRoom: () => void
 }
 
-export function ListScreen({ roomName, view, onEditBudget, onChangeRoom }: Props) {
+const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
+
+export function ListScreen({
+  roomName,
+  view,
+  choices,
+  changes,
+  dirty,
+  onChoices,
+  onReload,
+  onEditBudget,
+  onChangeRoom,
+}: Props) {
   const over = view.remaining < 0
   const used = view.budget > 0 ? Math.min(100, (view.total / view.budget) * 100) : 100
+  const removed = Object.entries(changes).filter(([, change]) => change === 'removed').length
 
   return (
     <section>
@@ -33,7 +55,7 @@ export function ListScreen({ roomName, view, onEditBudget, onChangeRoom }: Props
           </div>
           <div class={`summary-remaining ${over ? 'is-over' : ''}`}>
             <span class="summary-label">{over ? 'Faltam' : 'Saldo'}</span>
-            <strong>{formatBRL(Math.abs(view.remaining))}</strong>
+            <strong data-testid="remaining">{formatBRL(Math.abs(view.remaining))}</strong>
           </div>
         </div>
         <div
@@ -46,20 +68,68 @@ export function ListScreen({ roomName, view, onEditBudget, onChangeRoom }: Props
         >
           <span style={{ width: `${used}%` }} />
         </div>
+        <button
+          type="button"
+          class={`reload-button ${dirty ? 'is-pending' : ''}`}
+          onClick={onReload}
+        >
+          ↻ Recalcular lista
+          {dirty && !over && view.remaining > 0 && (
+            <span> com o saldo de {formatBRLWhole(view.remaining)}</span>
+          )}
+        </button>
       </div>
 
       {over && (
         <p class="notice notice-warn">
-          Os itens essenciais passam do orçamento em {formatBRL(-view.remaining)}. Aumente o
-          orçamento ou recuse algum item.
+          A lista passa do orçamento em {formatBRL(-view.remaining)}. Aumente o orçamento, escolha
+          opções mais baratas ou recuse algum item.
+        </p>
+      )}
+      {removed > 0 && (
+        <p class="notice">
+          {removed === 1 ? '1 item saiu' : `${removed} itens saíram`} da lista para caber no
+          orçamento — veja em “Não coube no orçamento”.
         </p>
       )}
 
       {view.entries.length ? (
         <div class="product-list">
-          {view.entries.map((entry) => (
-            <ProductCard key={entry.item.category} entry={entry} />
-          ))}
+          {view.entries.map((entry) => {
+            const { category } = entry.item
+            const { label, option, options } = entry
+            const moveTo = (direction: -1 | 1) => {
+              const index = options.indexOf(option) + direction
+              const target = options[index]
+              onChoices(
+                lockAt(choices, category, target.tier),
+                `${label}: ${TIER_LABELS[target.tier].toLowerCase()} (travado).`,
+              )
+            }
+            return (
+              <ProductCard
+                key={category}
+                entry={entry}
+                change={changes[category]}
+                onCheaper={() => moveTo(-1)}
+                onPricier={() => moveTo(1)}
+                onToggleLock={() =>
+                  entry.locked
+                    ? onChoices(unlock(choices, category), `${label} destravado.`)
+                    : onChoices(lockAt(choices, category, option.tier), `${label} travado.`)
+                }
+                onOwned={() =>
+                  onChoices(
+                    exclude(choices, category, 'owned'),
+                    `${label}: marcado como “já tenho”.`,
+                  )
+                }
+                onRefuse={() =>
+                  onChoices(exclude(choices, category, 'refused'), `${label} recusado.`)
+                }
+              />
+            )
+          })}
         </div>
       ) : (
         <p class="empty-state">Nenhum item na lista.</p>
@@ -71,8 +141,46 @@ export function ListScreen({ roomName, view, onEditBudget, onChangeRoom }: Props
           <ul class="compact-list">
             {view.skipped.map(({ item, label, cheapest }) => (
               <li key={item.category}>
-                <span>{label}</span>
-                <span class="muted">a partir de {formatBRL(cheapest.price * item.qty)}</span>
+                <span>
+                  {label}
+                  <span class="muted"> · a partir de {formatBRL(cheapest.price * item.qty)}</span>
+                </span>
+                <button
+                  type="button"
+                  class="small-button"
+                  onClick={() =>
+                    onChoices(lockAt(choices, item.category, cheapest.tier), `${label} adicionado.`)
+                  }
+                >
+                  + Adicionar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {view.excluded.length > 0 && (
+        <section class="side-section">
+          <h3>Recusados e “já tenho”</h3>
+          <ul class="compact-list">
+            {view.excluded.map(({ item, label, reason, cheapest }) => (
+              <li key={item.category}>
+                <span>
+                  {label}
+                  <span class="muted"> · {REASON_LABELS[reason]}</span>
+                </span>
+                <button
+                  type="button"
+                  class="small-button"
+                  onClick={() =>
+                    onChoices(restore(choices, item.category), `${label} reativado.`, {
+                      [item.category]: cheapest.tier,
+                    })
+                  }
+                >
+                  Reativar
+                </button>
               </li>
             ))}
           </ul>

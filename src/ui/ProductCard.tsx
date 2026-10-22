@@ -1,16 +1,44 @@
-import type { ListEntry } from '../engine/budget.ts'
-import { formatBRL } from '../engine/money.ts'
+import { neighborOption, type ListEntry } from '../engine/budget.ts'
+import type { Change } from '../engine/choices.ts'
+import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { TIER_LABELS } from './catalog.ts'
 
 interface Props {
   entry: ListEntry
+  change?: Change
+  onCheaper: () => void
+  onPricier: () => void
+  onToggleLock: () => void
+  onOwned: () => void
+  onRefuse: () => void
 }
 
-export function ProductCard({ entry }: Props) {
-  const { option, item, label, subtotal } = entry
+const CHANGE_LABELS: Partial<Record<Change, string>> = {
+  up: '↑ Melhorou',
+  down: '↓ Mais barato',
+  added: '+ Novo',
+}
+
+export function ProductCard({
+  entry,
+  change,
+  onCheaper,
+  onPricier,
+  onToggleLock,
+  onOwned,
+  onRefuse,
+}: Props) {
+  const { option, options, item, label, subtotal, locked } = entry
+  const cheaper = neighborOption(options, option.tier, -1)
+  const pricier = neighborOption(options, option.tier, 1)
+  const delta = (other: { price: number }) =>
+    formatBRLWhole(Math.abs(other.price - option.price) * item.qty)
 
   return (
-    <article class="product-card">
+    <article
+      class={`product-card ${change ? `is-${change}` : ''}`}
+      aria-label={`${label}: ${option.name}`}
+    >
       <div class="product-media">
         {option.image ? (
           <img src={option.image} alt="" loading="lazy" />
@@ -25,6 +53,10 @@ export function ProductCard({ entry }: Props) {
         <header class="product-header">
           <span class="product-category">{label}</span>
           <span class={`tier-badge tier-${option.tier}`}>{TIER_LABELS[option.tier]}</span>
+          {locked && <span class="lock-badge">🔒 Travado</span>}
+          {change && CHANGE_LABELS[change] && (
+            <span class={`change-badge change-${change}`}>{CHANGE_LABELS[change]}</span>
+          )}
         </header>
         <h3 class="product-name">{option.name}</h3>
         <ul class="product-bullets">
@@ -32,6 +64,31 @@ export function ProductCard({ entry }: Props) {
             <li key={bullet}>{bullet}</li>
           ))}
         </ul>
+      </div>
+
+      <div class="product-actions">
+        <div class="tier-stepper">
+          <button type="button" disabled={!cheaper} onClick={onCheaper}>
+            ↓ Mais barato
+            {cheaper && <span class="stepper-delta">−{delta(cheaper)}</span>}
+          </button>
+          <button type="button" disabled={!pricier} onClick={onPricier}>
+            ↑ Mais caro
+            {pricier && <span class="stepper-delta">+{delta(pricier)}</span>}
+          </button>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" aria-pressed={locked} onClick={onToggleLock}>
+            {locked ? '🔓 Destravar' : '🔒 Travar'}
+          </button>
+          <button type="button" onClick={onOwned}>
+            ✓ Já tenho
+          </button>
+          <button type="button" class="danger" onClick={onRefuse}>
+            ✕ Recusar
+          </button>
+        </div>
       </div>
 
       <footer class="product-footer">
