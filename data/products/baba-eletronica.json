@@ -25,15 +25,28 @@
     {
       "id": "baba-eletronica-philips-avent-video",
       "tier": 3,
-      "name": "Babá Eletrônica com Vídeo Philips Avent",
+      "name": "Babá Eletrônica Philips Avent Full HD SCD643/26",
       "price": 1299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/baba-eletronica-philips-avent-video",
+      "url": "https://meli.la/1mKEdE2",
       "bullets": [
         "Tela maior e conexão segura",
         "Bateria dura a noite toda",
         "Sensor de temperatura"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_843028-MLA110429732523_042026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1mKEdE2",
+          "price": 1299,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4580482639",
+          "catalogId": "MLB65322285",
+          "history": [{ "date": "2026-10-22", "price": 1299 }]
+        }
       ]
     },
     {

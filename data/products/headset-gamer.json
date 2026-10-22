@@ -26,24 +26,50 @@
       "id": "headset-gamer-sem-fio-logitech-g-pro-x-2-lightspeed",
       "tier": 3,
       "name": "Headset Gamer sem Fio Logitech G Pro X 2 Lightspeed",
-      "price": 1599,
+      "price": 1699.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/headset-gamer-sem-fio-logitech-g-pro-x-2-lightspeed",
-      "bullets": ["Sem fio de baixa latência", "Bateria de ~50 h", "Drivers de grafeno"]
+      "url": "https://meli.la/1xeL2yc",
+      "bullets": ["Sem fio de baixa latência", "Bateria de ~50 h", "Drivers de grafeno"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_962051-MLU73341892974_122023-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1xeL2yc",
+          "price": 1699.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4662952840",
+          "catalogId": "MLB28986717",
+          "history": [{ "date": "2026-10-22", "price": 1699.99 }]
+        }
+      ]
     },
     {
       "id": "headset-steelseries-arctis-nova-pro-wireless",
       "tier": 4,
       "name": "Headset SteelSeries Arctis Nova Pro Wireless",
-      "price": 2999,
+      "price": 2599,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/headset-steelseries-arctis-nova-pro-wireless",
+      "url": "https://meli.la/1L4ePKN",
       "bullets": [
         "Cancelamento de ruído",
         "Duas baterias que se trocam",
         "Liga no PC e no console ao mesmo tempo"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_714213-MLU77312412299_062024-O-headset-steelseries-arctis-nova-pro-wireless.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1L4ePKN",
+          "price": 2599,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5474959840",
+          "catalogId": "MLB20770502",
+          "history": [{ "date": "2026-10-22", "price": 2599 }]
+        }
       ]
     }
   ]

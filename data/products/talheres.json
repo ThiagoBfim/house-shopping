@@ -23,14 +23,27 @@
       "bullets": ["42 peças (6 pessoas)", "Inox mais grosso", "Inclui colheres de sobremesa e chá"]
     },
     {
-      "id": "faqueiro-tramontina-amalfi-72-pecas",
+      "id": "faqueiro-tramontina-pacific-72-pecas",
       "tier": 3,
-      "name": "Faqueiro Tramontina Amalfi 72 Peças Inox 18/10",
-      "price": 799,
+      "name": "Faqueiro Tramontina Pacific 72 Peças",
+      "price": 537.6,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-amalfi-72-pecas",
-      "bullets": ["72 peças (12 pessoas)", "Inox 18/10: não mancha", "Acompanha estojo"]
+      "url": "https://meli.la/167zDqx",
+      "bullets": ["72 peças (12 pessoas)", "Aço inox", "Linha Pacific da Tramontina"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_778706-MLA99428864366_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/167zDqx",
+          "price": 537.6,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3964324909",
+          "catalogId": "MLB32486578",
+          "history": [{ "date": "2026-10-22", "price": 537.6 }]
+        }
+      ]
     },
     {
       "id": "faqueiro-zwilling-68-pecas",

@@ -13,14 +13,27 @@
       "bullets": ["Para limpeza leve (calçada, carro)", "Compacta", "Mangueira curta"]
     },
     {
-      "id": "lavadora-karcher-k2",
+      "id": "lavadora-karcher-k2-plus",
       "tier": 2,
-      "name": "Lavadora de Alta Pressão Kärcher K2 Power",
-      "price": 549,
+      "name": "Lavadora de Alta Pressão Kärcher K2 Plus Turbo",
+      "price": 402.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k2",
-      "bullets": ["Kärcher: marca referência", "Bico turbo", "Mais durável"]
+      "url": "https://meli.la/1FR5SJt",
+      "bullets": ["Kärcher: marca referência", "Bico turbo", "Mais durável"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_919684-MLA99524335512_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1FR5SJt",
+          "price": 402.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6676755768",
+          "catalogId": "MLB25413983",
+          "history": [{ "date": "2026-10-22", "price": 402.99 }]
+        }
+      ]
     },
     {
       "id": "lavadora-karcher-k3-power-control",

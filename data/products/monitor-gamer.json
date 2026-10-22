@@ -3,44 +3,100 @@
   "utensil": false,
   "options": [
     {
-      "id": "monitor-gamer-aoc-24g2-24-144hz-ips",
+      "id": "monitor-gamer-aoc-hero-24-144hz-ips",
       "tier": 1,
-      "name": "Monitor Gamer AOC 24G2 24 144Hz IPS",
-      "price": 899,
+      "name": "Monitor Gamer AOC Hero 24\" 144 Hz IPS",
+      "price": 794,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/monitor-gamer-aoc-24g2-24-144hz-ips",
-      "bullets": ["144 Hz: jogo bem mais fluido", "IPS Full HD", "Ajuste de altura"]
-    },
-    {
-      "id": "monitor-gamer-lg-ultragear-27-qhd-180hz",
-      "tier": 2,
-      "name": "Monitor Gamer LG UltraGear 27 QHD 180Hz",
-      "price": 1599,
-      "priceUpdatedAt": "2026-10-22",
-      "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/monitor-gamer-lg-ultragear-27-qhd-180hz",
-      "bullets": ["QHD em 27\"", "180 Hz e 1 ms", "G-Sync e FreeSync"]
+      "url": "https://meli.la/1K7Q1oJ",
+      "bullets": ["144 Hz: jogo bem mais fluido", "IPS Full HD", "AMD FreeSync"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_686662-MLA93759322173_092025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1K7Q1oJ",
+          "price": 794,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4903536335",
+          "catalogId": "MLB44798973",
+          "history": [{ "date": "2026-10-22", "price": 794 }]
+        }
+      ]
     },
     {
       "id": "monitor-gamer-samsung-odyssey-g5-32-qhd-curvo-165hz",
-      "tier": 3,
+      "tier": 2,
       "name": "Monitor Gamer Samsung Odyssey G5 32 QHD Curvo 165Hz",
-      "price": 1999,
+      "price": 1299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/monitor-gamer-samsung-odyssey-g5-32-qhd-curvo-165hz",
-      "bullets": ["32\" curvo: imersão", "QHD 165 Hz", "HDR10"]
+      "url": "https://meli.la/1N6a9EA",
+      "bullets": ["32\" curvo: imersão", "QHD 165 Hz", "HDR10"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_987462-MLA99509630578_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1N6a9EA",
+          "price": 1299,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7729513600",
+          "catalogId": "MLB46196451",
+          "history": [{ "date": "2026-10-22", "price": 1299 }]
+        }
+      ]
+    },
+    {
+      "id": "monitor-gamer-aoc-agon-q27g4f-27-qhd-180hz",
+      "tier": 3,
+      "name": "Monitor Gamer AOC Agon 27\" QHD 180 Hz IPS Q27G4F",
+      "price": 1699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://meli.la/28YEXJ8",
+      "bullets": ["QHD em 27\" IPS", "180 Hz e 0,5 ms", "HDR10"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_816591-MLB119028200435_102026-O-monitor-gamer-aoc-agon-27--qhd-180hz-05ms-ips-hdr10-q27g4f.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/28YEXJ8",
+          "price": 1699,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5325462419",
+          "catalogId": "MLB59323822",
+          "history": [{ "date": "2026-10-22", "price": 1699 }]
+        }
+      ]
     },
     {
       "id": "monitor-gamer-lg-ultragear-27-oled-240hz",
       "tier": 4,
-      "name": "Monitor Gamer LG UltraGear 27 OLED 240Hz",
-      "price": 4999,
+      "name": "Monitor Gamer LG UltraGear 27\" OLED 240 Hz 27GX704A",
+      "price": 4699,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/monitor-gamer-lg-ultragear-27-oled-240hz",
-      "bullets": ["OLED: preto absoluto e cores fortes", "240 Hz, 0,03 ms", "Para jogo competitivo"]
+      "url": "https://meli.la/2PrL83S",
+      "bullets": [
+        "OLED: preto absoluto e cores fortes",
+        "240 Hz, 0,03 ms",
+        "Para jogo competitivo"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_662384-MLA109034761065_032026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2PrL83S",
+          "price": 4699,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5434274025",
+          "catalogId": "MLB66833470",
+          "history": [{ "date": "2026-10-22", "price": 4699 }]
+        }
+      ]
     }
   ]
 }

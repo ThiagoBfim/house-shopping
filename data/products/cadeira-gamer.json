@@ -33,14 +33,31 @@
       "bullets": ["Tecido respirável", "Estrutura reforçada", "Braços 4D e reclínio com trava"]
     },
     {
-      "id": "cadeira-gamer-secretlab-titan-evo",
+      "id": "cadeira-gamer-dt3-sports-rhino-fabric-v3",
       "tier": 4,
-      "name": "Cadeira Gamer Secretlab Titan Evo",
-      "price": 4499,
+      "name": "Cadeira Gamer DT3 Sports Rhino Fabric V3",
+      "price": 3299.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cadeira-gamer-secretlab-titan-evo",
-      "bullets": ["Topo de linha dos gamers", "Lombar magnética ajustável", "Garantia de 5 anos"]
+      "url": "https://meli.la/2HkfBry",
+      "bullets": [
+        "Topo de linha da DT3 Sports",
+        "Tecido respirável (esquenta menos)",
+        "Apoio lombar ajustável"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_950880-MLA114300419583_072026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2HkfBry",
+          "price": 3299.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7127851450",
+          "catalogId": "MLB75238239",
+          "history": [{ "date": "2026-10-22", "price": 3299.9 }]
+        }
+      ]
     }
   ]
 }
