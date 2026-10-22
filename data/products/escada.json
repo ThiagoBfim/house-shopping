@@ -1,0 +1,44 @@
+{
+  "label": "Escada",
+  "utensil": true,
+  "options": [
+    {
+      "id": "escada-de-aluminio-mor-5-degraus",
+      "tier": 1,
+      "name": "Escada de Alumínio Mor 5 Degraus",
+      "price": 179,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escada-de-aluminio-mor-5-degraus",
+      "bullets": ["Alcança ~2,7 m", "Leve e dobrável", "Troca lâmpada e cortina"]
+    },
+    {
+      "id": "escada-de-aluminio-botafogo-7-degraus",
+      "tier": 2,
+      "name": "Escada de Alumínio Botafogo 7 Degraus",
+      "price": 289,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escada-de-aluminio-botafogo-7-degraus",
+      "bullets": [
+        "Alcança ~3,2 m (pé-direito alto)",
+        "Degraus largos antiderrapantes",
+        "Suporta 120 kg"
+      ]
+    },
+    {
+      "id": "escada-multifuncional-mor-4x3-12-degraus",
+      "tier": 3,
+      "name": "Escada Multifuncional Mor 4x3 12 Degraus",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escada-multifuncional-mor-4x3-12-degraus",
+      "bullets": [
+        "Vira escada de abrir, extensível ou andaime",
+        "Até 3,4 m de altura",
+        "Para obra e pintura"
+      ]
+    }
+  ]
+}

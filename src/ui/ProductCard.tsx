@@ -13,6 +13,8 @@ import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
 
 interface Props {
   entry: ListEntry
+  /** Emoji mostrado quando o produto ainda não tem foto. */
+  icon: string
   change?: Change
   onCheaper: () => void
   onPricier: () => void
@@ -29,6 +31,7 @@ const CHANGE_LABELS: Partial<Record<Change, string>> = {
 
 export function ProductCard({
   entry,
+  icon,
   change,
   onCheaper,
   onPricier,
@@ -36,7 +39,7 @@ export function ProductCard({
   onOwned,
   onRefuse,
 }: Props) {
-  const { option, options, item, label, subtotal, locked, utensil } = entry
+  const { option, options, item, label, subtotal, locked, utensil, helper } = entry
   const offer = shownOffer(option)
   const trend = offer && priceTrend(offer)
   const promo = offer !== undefined && isPromo(offer, today())
@@ -50,12 +53,12 @@ export function ProductCard({
       class={`product-card ${change ? `is-${change}` : ''}`}
       aria-label={`${label}: ${option.name}`}
     >
-      <div class={`product-media ${option.image ? 'has-image' : ''}`}>
+      <div class={`product-media ${option.image ? 'has-image' : `tier-${option.tier}`}`}>
         {option.image ? (
           <img src={option.image} alt={option.name} loading="lazy" referrerpolicy="no-referrer" />
         ) : (
           <span class="product-placeholder" aria-hidden="true">
-            {label.charAt(0)}
+            {icon}
           </span>
         )}
       </div>
@@ -65,6 +68,7 @@ export function ProductCard({
           <span class="product-category">{label}</span>
           <span class={`tier-badge tier-${option.tier}`}>{TIER_LABELS[option.tier]}</span>
           {utensil && <span class="utensil-badge">Utensílio</span>}
+          {helper && <span class="utensil-badge helper-badge">✨ Facilitador</span>}
           {promo && <span class="promo-badge">🔥 Menor preço em {PROMO_WINDOW_DAYS} dias</span>}
           {locked && <span class="lock-badge">🔒 Travado</span>}
           {change && CHANGE_LABELS[change] && (

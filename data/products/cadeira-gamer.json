@@ -1,0 +1,46 @@
+{
+  "label": "Cadeira gamer ou mesh",
+  "utensil": false,
+  "options": [
+    {
+      "id": "cadeira-gamer-mymax-mx5",
+      "tier": 1,
+      "name": "Cadeira Gamer Mymax MX5",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-gamer-mymax-mx5",
+      "bullets": ["Visual gamer, reclina 180°", "Almofadas de pescoço e lombar", "Courino esquenta"]
+    },
+    {
+      "id": "cadeira-ergonomica-mesh-com-apoio-de-cabeca-e-lombar",
+      "tier": 2,
+      "name": "Cadeira Ergonômica Mesh com Apoio de Cabeça e Lombar",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-mesh-com-apoio-de-cabeca-e-lombar",
+      "bullets": ["Mesh: fresca para muitas horas", "Apoio de cabeça ajustável", "Braços 3D"]
+    },
+    {
+      "id": "cadeira-gamer-dt3-sports-gt-fabric",
+      "tier": 3,
+      "name": "Cadeira Gamer DT3 Sports GT Fabric",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-gamer-dt3-sports-gt-fabric",
+      "bullets": ["Tecido respirável", "Estrutura reforçada", "Braços 4D e reclínio com trava"]
+    },
+    {
+      "id": "cadeira-gamer-secretlab-titan-evo",
+      "tier": 4,
+      "name": "Cadeira Gamer Secretlab Titan Evo",
+      "price": 4499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-gamer-secretlab-titan-evo",
+      "bullets": ["Topo de linha dos gamers", "Lombar magnética ajustável", "Garantia de 5 anos"]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "label": "Kit de ferramentas",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-de-ferramentas-40-pecas-com-maleta",
+      "tier": 1,
+      "name": "Kit de Ferramentas 40 Peças com Maleta",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-de-ferramentas-40-pecas-com-maleta",
+      "bullets": [
+        "Chaves de fenda, alicate e martelo",
+        "Resolve consertos simples",
+        "Aço mais fraco"
+      ]
+    },
+    {
+      "id": "kit-de-ferramentas-tramontina-110-pecas",
+      "tier": 2,
+      "name": "Kit de Ferramentas Tramontina 110 Peças",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-de-ferramentas-tramontina-110-pecas",
+      "bullets": ["Inclui soquetes e chaves combinadas", "Aço cromo-vanádio", "Maleta organizada"]
+    },
+    {
+      "id": "kit-de-ferramentas-stanley-150-pecas",
+      "tier": 3,
+      "name": "Kit de Ferramentas Stanley 150 Peças",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-de-ferramentas-stanley-150-pecas",
+      "bullets": [
+        "Mais completo (catraca, torx, bits)",
+        "Marca profissional",
+        "Garantia vitalícia em ferramentas manuais"
+      ]
+    }
+  ]
+}

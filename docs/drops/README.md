@@ -36,6 +36,8 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | ⏳ A fazer                     | —                | —                | —       |
 | [13](drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro         | ✅ Concluído                   | 2026-10-22 16:26 | 2026-10-22 16:33 | 7min    |
 | [13.1](drop-13-1-faixas-de-orcamento.md)                   | Três faixas de orçamento        | ✅ Concluído                   | 2026-10-22 16:38 | 2026-10-22 16:40 | 2min    |
+| [14](drop-14-layout-busca-e-utilidades.md)                 | Layout, busca e utilidades      | ✅ Concluído                   | 2026-10-22 17:30 | 2026-10-22 17:51 | 21min   |
+| [15](drop-15-escritorio-e-gamer.md)                        | Escritório (com opção gamer)    | ✅ Concluído                   | 2026-10-22 17:52 | 2026-10-22 18:07 | 15min   |
 
 ### 2ª wave — publicação e automação
 

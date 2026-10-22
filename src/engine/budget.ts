@@ -15,7 +15,12 @@ export interface Choices {
   minNeed: Need
   /** Filtro: incluir utensílios (pratos, talheres, panelas…). */
   utensils: boolean
+  /** Filtro: incluir facilitadores (organizadores, potes de congelar…). Começa desligado. */
+  helpers: boolean
 }
+
+/** Escolhas que funcionam como filtro da lista. */
+export type FilterChoices = Pick<Choices, 'minNeed' | 'utensils' | 'helpers'>
 
 /** A partir desta necessidade o item é "necessário": entra sempre, mesmo passando do orçamento. */
 export const REQUIRED_NEED = 4
@@ -29,6 +34,7 @@ export interface ListEntry {
   subtotal: number
   locked: boolean
   utensil: boolean
+  helper: boolean
 }
 
 export interface SkippedEntry {
@@ -44,7 +50,7 @@ export interface ExcludedEntry {
   cheapest: ProductOption
 }
 
-export type FilterReason = 'need' | 'utensil'
+export type FilterReason = 'need' | 'helper' | 'utensil'
 
 export interface FilteredEntry {
   item: RoomItem
@@ -57,7 +63,7 @@ export interface ListView {
   /** Itens que não couberam no orçamento. */
   skipped: SkippedEntry[]
   excluded: ExcludedEntry[]
-  /** Itens escondidos pelos filtros (necessidade mínima / utensílios). */
+  /** Itens escondidos pelos filtros (necessidade mínima / utensílios / facilitadores). */
   filtered: FilteredEntry[]
   budget: number
   total: number
@@ -70,6 +76,7 @@ export const emptyChoices = (): Choices => ({
   excluded: {},
   minNeed: 1,
   utensils: true,
+  helpers: false,
 })
 
 // Cálculos em centavos para não acumular erro de ponto flutuante.
@@ -84,9 +91,10 @@ export function byImportance(a: RoomItem, b: RoomItem): number {
 export function filterReason(
   item: RoomItem,
   products: Products,
-  choices: Pick<Choices, 'minNeed' | 'utensils'>,
+  choices: FilterChoices,
 ): FilterReason | undefined {
   if (item.need < choices.minNeed) return 'need'
+  if (!choices.helpers && products[item.category].helper) return 'helper'
   if (!choices.utensils && products[item.category].utensil) return 'utensil'
   return undefined
 }
@@ -195,7 +203,7 @@ export function describeList(
   let total = 0
 
   for (const item of [...room.items].sort(byImportance)) {
-    const { label, utensil } = products[item.category]
+    const { label, utensil, helper = false } = products[item.category]
     const options = sortedOptions(products, item.category)
     const reason = choices.excluded[item.category]
     const hiddenBy = filterReason(item, products, choices)
@@ -219,6 +227,7 @@ export function describeList(
         subtotal: subtotal / 100,
         locked: choices.locked[item.category] !== undefined,
         utensil,
+        helper,
       })
     }
   }
@@ -254,7 +263,7 @@ export interface BudgetRange {
 export function budgetRange(
   room: Room,
   products: Products,
-  filters: Pick<Choices, 'minNeed' | 'utensils'> = emptyChoices(),
+  filters: FilterChoices = emptyChoices(),
 ): BudgetRange {
   let required = 0
   let allCheapest = 0
@@ -296,7 +305,7 @@ export function tierTotal(
   room: Room,
   products: Products,
   tier: Tier,
-  filters: Pick<Choices, 'minNeed' | 'utensils'> = emptyChoices(),
+  filters: FilterChoices = emptyChoices(),
 ): number {
   let total = 0
   for (const item of room.items) {
@@ -313,7 +322,7 @@ export function tierTotal(
 export function budgetPresets(
   room: Room,
   products: Products,
-  filters: Pick<Choices, 'minNeed' | 'utensils'> = emptyChoices(),
+  filters: FilterChoices = emptyChoices(),
 ): BudgetPreset[] {
   return PRESET_TIERS.map(([id, tier]) => ({
     id,

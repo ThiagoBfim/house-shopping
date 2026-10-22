@@ -1,0 +1,46 @@
+{
+  "label": "Monitor gamer",
+  "utensil": false,
+  "options": [
+    {
+      "id": "monitor-gamer-aoc-24g2-24-144hz-ips",
+      "tier": 1,
+      "name": "Monitor Gamer AOC 24G2 24 144Hz IPS",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-gamer-aoc-24g2-24-144hz-ips",
+      "bullets": ["144 Hz: jogo bem mais fluido", "IPS Full HD", "Ajuste de altura"]
+    },
+    {
+      "id": "monitor-gamer-lg-ultragear-27-qhd-180hz",
+      "tier": 2,
+      "name": "Monitor Gamer LG UltraGear 27 QHD 180Hz",
+      "price": 1599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-gamer-lg-ultragear-27-qhd-180hz",
+      "bullets": ["QHD em 27\"", "180 Hz e 1 ms", "G-Sync e FreeSync"]
+    },
+    {
+      "id": "monitor-gamer-samsung-odyssey-g5-32-qhd-curvo-165hz",
+      "tier": 3,
+      "name": "Monitor Gamer Samsung Odyssey G5 32 QHD Curvo 165Hz",
+      "price": 1999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-gamer-samsung-odyssey-g5-32-qhd-curvo-165hz",
+      "bullets": ["32\" curvo: imersão", "QHD 165 Hz", "HDR10"]
+    },
+    {
+      "id": "monitor-gamer-lg-ultragear-27-oled-240hz",
+      "tier": 4,
+      "name": "Monitor Gamer LG UltraGear 27 OLED 240Hz",
+      "price": 4999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-gamer-lg-ultragear-27-oled-240hz",
+      "bullets": ["OLED: preto absoluto e cores fortes", "240 Hz, 0,03 ms", "Para jogo competitivo"]
+    }
+  ]
+}

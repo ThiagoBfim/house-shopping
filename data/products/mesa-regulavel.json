@@ -1,0 +1,50 @@
+{
+  "label": "Mesa com regulagem de altura",
+  "utensil": false,
+  "options": [
+    {
+      "id": "mesa-gamer-120-cm-com-regulagem-de-altura-manual",
+      "tier": 1,
+      "name": "Mesa Gamer 120 cm com Regulagem de Altura Manual",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-gamer-120-cm-com-regulagem-de-altura-manual",
+      "bullets": ["Sobe com manivela", "Tampo de fibra de carbono", "Porta-copo e gancho para fone"]
+    },
+    {
+      "id": "mesa-com-regulagem-de-altura-eletrica-120-cm",
+      "tier": 2,
+      "name": "Mesa com Regulagem de Altura Elétrica 120 cm",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-com-regulagem-de-altura-eletrica-120-cm",
+      "bullets": ["Motor elétrico: sobe num botão", "Memória de altura", "Joga e trabalha em pé"]
+    },
+    {
+      "id": "mesa-eletrica-flexispot-e7-dois-motores-160-cm",
+      "tier": 3,
+      "name": "Mesa Elétrica FlexiSpot E7 Dois Motores 160 cm",
+      "price": 3299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-eletrica-flexispot-e7-dois-motores-160-cm",
+      "bullets": [
+        "Dois motores: mais estável e rápida",
+        "160 cm: setup com 2 monitores",
+        "Aguenta 125 kg"
+      ]
+    },
+    {
+      "id": "mesa-eletrica-flexispot-e7-pro-com-tampo-de-bambu-180-cm",
+      "tier": 4,
+      "name": "Mesa Elétrica FlexiSpot E7 Pro com Tampo de Bambu 180 cm",
+      "price": 4999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-eletrica-flexispot-e7-pro-com-tampo-de-bambu-180-cm",
+      "bullets": ["Tampo de bambu maciço de 180 cm", "Antivibração e anticolisão", "Garantia longa"]
+    }
+  ]
+}

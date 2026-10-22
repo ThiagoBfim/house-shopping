@@ -1,0 +1,30 @@
+{
+  "label": "Escorredor de louça",
+  "utensil": true,
+  "options": [
+    {
+      "id": "escorredor-de-louca-plastico-com-porta-talheres",
+      "tier": 1,
+      "name": "Escorredor de Louça Plástico com Porta-talheres",
+      "price": 29,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escorredor-de-louca-plastico-com-porta-talheres",
+      "bullets": ["Cabe a louça do dia", "Plástico simples", "Ocupa pouco espaço"]
+    },
+    {
+      "id": "escorredor-de-louca-arthi-inox-2-andares",
+      "tier": 2,
+      "name": "Escorredor de Louça Arthi Inox 2 Andares",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escorredor-de-louca-arthi-inox-2-andares",
+      "bullets": [
+        "Inox não enferruja",
+        "Dois andares: cabe bem mais",
+        "Bandeja que escoa para a pia"
+      ]
+    }
+  ]
+}

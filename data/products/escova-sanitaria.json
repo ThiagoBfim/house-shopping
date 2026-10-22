@@ -1,0 +1,40 @@
+{
+  "label": "Escova sanitária",
+  "utensil": true,
+  "options": [
+    {
+      "id": "escova-sanitaria-com-suporte-plastico",
+      "tier": 1,
+      "name": "Escova Sanitária com Suporte Plástico",
+      "price": 19,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escova-sanitaria-com-suporte-plastico",
+      "bullets": ["Escova de cerdas com suporte", "Simples e barata", "Acumula água no suporte"]
+    },
+    {
+      "id": "escova-sanitaria-de-silicone-com-suporte-de-parede",
+      "tier": 2,
+      "name": "Escova Sanitária de Silicone com Suporte de Parede",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escova-sanitaria-de-silicone-com-suporte-de-parede",
+      "bullets": [
+        "Silicone não acumula sujeira",
+        "Seca rápido",
+        "Fica pendurada, sem ocupar o chão"
+      ]
+    },
+    {
+      "id": "escova-sanitaria-inox-brinox-com-suporte",
+      "tier": 3,
+      "name": "Escova Sanitária Inox Brinox com Suporte",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/escova-sanitaria-inox-brinox-com-suporte",
+      "bullets": ["Suporte de inox", "Refil de escova trocável", "Mais bonita no banheiro"]
+    }
+  ]
+}

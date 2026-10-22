@@ -1,0 +1,26 @@
+{
+  "label": "Mousepad gamer",
+  "utensil": true,
+  "options": [
+    {
+      "id": "mousepad-gamer-extra-grande-90x40-cm",
+      "tier": 1,
+      "name": "Mousepad Gamer Extra Grande 90x40 cm",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mousepad-gamer-extra-grande-90x40-cm",
+      "bullets": ["Cobre teclado e mouse", "Base antiderrapante", "Bordas costuradas"]
+    },
+    {
+      "id": "mousepad-gamer-logitech-g840-xl",
+      "tier": 2,
+      "name": "Mousepad Gamer Logitech G840 XL",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mousepad-gamer-logitech-g840-xl",
+      "bullets": ["Superfície de alta precisão", "Não escorrega", "Dura muito mais"]
+    }
+  ]
+}

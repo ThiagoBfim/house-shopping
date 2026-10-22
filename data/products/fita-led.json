@@ -1,0 +1,40 @@
+{
+  "label": "Iluminação LED do setup",
+  "utensil": false,
+  "options": [
+    {
+      "id": "fita-led-rgb-5-m-com-controle",
+      "tier": 1,
+      "name": "Fita LED RGB 5 m com Controle",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fita-led-rgb-5-m-com-controle",
+      "bullets": ["Cores e efeitos pelo controle", "Cola atrás da mesa ou monitor", "USB ou tomada"]
+    },
+    {
+      "id": "fita-led-rgb-wi-fi-positivo-casa-inteligente-5-m",
+      "tier": 2,
+      "name": "Fita LED RGB Wi-Fi Positivo Casa Inteligente 5 m",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fita-led-rgb-wi-fi-positivo-casa-inteligente-5-m",
+      "bullets": ["Controle pelo celular e Alexa", "Rotinas e cenas", "Sincroniza com música"]
+    },
+    {
+      "id": "kit-2-barras-de-luz-philips-hue-play",
+      "tier": 3,
+      "name": "Kit 2 Barras de Luz Philips Hue Play",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-2-barras-de-luz-philips-hue-play",
+      "bullets": [
+        "Luz que acompanha a tela (com Hue Sync)",
+        "Cores muito fortes",
+        "Ecossistema Philips Hue"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "label": "Fechadura digital",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "fechadura-digital-intelbras-fr-101-com-senha",
+      "tier": 1,
+      "name": "Fechadura Digital Intelbras FR 101 com Senha",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fechadura-digital-intelbras-fr-101-com-senha",
+      "bullets": ["Abre com senha", "Sem chave para perder", "Pilhas comuns"]
+    },
+    {
+      "id": "fechadura-digital-intelbras-fr-220-com-biometria",
+      "tier": 2,
+      "name": "Fechadura Digital Intelbras FR 220 com Biometria",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fechadura-digital-intelbras-fr-220-com-biometria",
+      "bullets": [
+        "Abre com digital, senha ou cartão",
+        "Senha para visitas e diaristas",
+        "Alerta de bateria fraca"
+      ]
+    }
+  ]
+}

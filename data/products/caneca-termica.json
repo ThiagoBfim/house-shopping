@@ -1,0 +1,54 @@
+{
+  "label": "Copo térmico para café",
+  "utensil": true,
+  "options": [
+    {
+      "id": "caneca-termica-inox-com-tampa-450-ml",
+      "tier": 1,
+      "name": "Caneca Térmica Inox com Tampa 450 ml",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caneca-termica-inox-com-tampa-450-ml",
+      "bullets": ["Café quente por ~2 h", "Tampa contra derramar", "Inox"]
+    },
+    {
+      "id": "caneca-termica-stanley-camp-mug-350-ml",
+      "tier": 2,
+      "name": "Caneca Térmica Stanley Camp Mug 350 ml",
+      "price": 179,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caneca-termica-stanley-camp-mug-350-ml",
+      "bullets": [
+        "A caneca clássica da Stanley",
+        "Café quente por horas",
+        "Praticamente indestrutível"
+      ]
+    },
+    {
+      "id": "copo-termico-stanley-quencher-887-ml",
+      "tier": 3,
+      "name": "Copo Térmico Stanley Quencher 887 ml",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/copo-termico-stanley-quencher-887-ml",
+      "bullets": [
+        "Grande: café, água ou chá gelado",
+        "Alça e canudo",
+        "Cabe no porta-copo do carro"
+      ]
+    },
+    {
+      "id": "caneca-inteligente-ember-mug-2-295-ml",
+      "tier": 4,
+      "name": "Caneca Inteligente Ember Mug 2 295 ml",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caneca-inteligente-ember-mug-2-295-ml",
+      "bullets": ["Mantém o café na temperatura exata", "Controle pelo app", "Base carregadora"]
+    }
+  ]
+}

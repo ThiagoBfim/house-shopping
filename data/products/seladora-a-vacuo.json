@@ -1,0 +1,31 @@
+{
+  "label": "Seladora a vácuo",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "seladora-a-vacuo-domestica-compacta",
+      "tier": 1,
+      "name": "Seladora a Vácuo Doméstica Compacta",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/seladora-a-vacuo-domestica-compacta",
+      "bullets": ["Tira o ar e sela", "Carne congelada dura muito mais", "Rolos de saco à parte"]
+    },
+    {
+      "id": "seladora-a-vacuo-oster-com-corte-de-saco",
+      "tier": 2,
+      "name": "Seladora a Vácuo Oster com Corte de Saco",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/seladora-a-vacuo-oster-com-corte-de-saco",
+      "bullets": [
+        "Guarda o rolo e corta o saco",
+        "Função para alimentos úmidos",
+        "Vedação mais forte"
+      ]
+    }
+  ]
+}

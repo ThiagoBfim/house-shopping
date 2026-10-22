@@ -1,0 +1,36 @@
+{
+  "label": "Mesa de escritório",
+  "utensil": false,
+  "options": [
+    {
+      "id": "mesa-para-escritorio-120-cm-mdp",
+      "tier": 1,
+      "name": "Mesa para Escritório 120 cm MDP",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-para-escritorio-120-cm-mdp",
+      "bullets": ["120 cm: notebook e um monitor", "Montagem simples", "Sem gavetas"]
+    },
+    {
+      "id": "mesa-escrivaninha-em-l-150-cm",
+      "tier": 2,
+      "name": "Mesa Escrivaninha em L 150 cm",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-escrivaninha-em-l-150-cm",
+      "bullets": ["Formato em L: muito espaço", "Cabe dois monitores", "Passa-fios"]
+    },
+    {
+      "id": "mesa-com-regulagem-de-altura-manual-120-cm",
+      "tier": 3,
+      "name": "Mesa com Regulagem de Altura Manual 120 cm",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-com-regulagem-de-altura-manual-120-cm",
+      "bullets": ["Sobe com manivela: trabalha em pé", "Estrutura de aço", "Tampo de 120 cm"]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "label": "Batedeira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "batedeira-mondial-pratica-400w",
+      "tier": 1,
+      "name": "Batedeira Mondial Prática 400W",
+      "price": 119,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/batedeira-mondial-pratica-400w",
+      "bullets": ["Batedeira de mão (sem tigela)", "Para bolo simples", "Guarda em qualquer gaveta"]
+    },
+    {
+      "id": "batedeira-planetaria-philco-php500-turbo",
+      "tier": 2,
+      "name": "Batedeira Planetária Philco PHP500 Turbo",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-philco-php500-turbo",
+      "bullets": ["Planetária: bate sozinha", "Tigela de 4 L", "Bate massa mais pesada"]
+    },
+    {
+      "id": "batedeira-planetaria-oster-750w",
+      "tier": 3,
+      "name": "Batedeira Planetária Oster 750W",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-oster-750w",
+      "bullets": [
+        "Mais potente (pão e massa de pizza)",
+        "Tigela inox de 4,5 L",
+        "Batedor, gancho e pá"
+      ]
+    },
+    {
+      "id": "batedeira-planetaria-kitchenaid-artisan-4-8-l",
+      "tier": 4,
+      "name": "Batedeira Planetária KitchenAid Artisan 4,8 L",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-kitchenaid-artisan-4-8-l",
+      "bullets": [
+        "Ícone de cozinha, motor muito durável",
+        "Acessórios opcionais (moedor, massa)",
+        "Várias cores"
+      ]
+    }
+  ]
+}

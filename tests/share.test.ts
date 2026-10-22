@@ -13,6 +13,7 @@ const choices: Choices = {
   excluded: { 'cozinha:fogao': 'owned', 'quarto-1:colchao': 'refused' },
   minNeed: 2,
   utensils: false,
+  helpers: true,
 }
 const state: ListState = {
   house,
@@ -93,6 +94,7 @@ describe('encodeState / decodeState', () => {
         excluded: { 'cozinha:fogao': 'refused' },
         minNeed: 1,
         utensils: true,
+        helpers: false,
       },
     })
   })
@@ -120,6 +122,7 @@ describe('encodeState / decodeState', () => {
         excluded: { 'cozinha:fogao': 'refused' },
         minNeed: 3,
         utensils: false,
+        helpers: false,
       },
     })
   })
@@ -127,17 +130,25 @@ describe('encodeState / decodeState', () => {
   it('lê os filtros e ignora necessidade inválida', () => {
     const decode = (extra: object) =>
       decodeState(wire({ v: STATE_VERSION, h: { cozinha: 1 }, b: 5000, ...extra }), rooms)?.choices
-    expect(decode({ n: 3, u: 0 })).toMatchObject({ minNeed: 3, utensils: false })
-    expect(decode({ n: 9, u: 1 })).toMatchObject({ minNeed: 1, utensils: true })
+    expect(decode({ n: 3, u: 0, f: 1 })).toMatchObject({
+      minNeed: 3,
+      utensils: false,
+      helpers: true,
+    })
+    expect(decode({ n: 9, u: 1 })).toMatchObject({ minNeed: 1, utensils: true, helpers: false })
   })
 
   it('não grava filtros no padrão', () => {
-    const plain = { ...state, choices: { ...choices, minNeed: 1 as const, utensils: true } }
+    const plain = {
+      ...state,
+      choices: { ...choices, minNeed: 1 as const, utensils: true, helpers: false },
+    }
     const wireOf = (s: ListState) =>
       JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
     expect(wireOf(plain)).not.toHaveProperty('n')
     expect(wireOf(plain)).not.toHaveProperty('u')
-    expect(wireOf(state)).toMatchObject({ n: 2, u: 0, h: house })
+    expect(wireOf(plain)).not.toHaveProperty('f')
+    expect(wireOf(state)).toMatchObject({ n: 2, u: 0, f: 1, h: house })
     expect(wireOf(state)).not.toHaveProperty('r')
   })
 })

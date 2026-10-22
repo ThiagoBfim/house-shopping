@@ -1,0 +1,44 @@
+{
+  "label": "Formas e assadeiras",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-3-assadeiras-de-aluminio",
+      "tier": 1,
+      "name": "Kit 3 Assadeiras de Alumínio",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-3-assadeiras-de-aluminio",
+      "bullets": ["Três tamanhos", "Leves", "Precisa untar"]
+    },
+    {
+      "id": "kit-5-formas-antiaderentes-tramontina-brasil",
+      "tier": 2,
+      "name": "Kit 5 Formas Antiaderentes Tramontina Brasil",
+      "price": 169,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-5-formas-antiaderentes-tramontina-brasil",
+      "bullets": [
+        "Antiaderente: bolo e lasanha soltam fácil",
+        "Inclui forma de bolo e de pudim",
+        "Lava rápido"
+      ]
+    },
+    {
+      "id": "kit-5-refratarios-de-vidro-pyrex-com-tampa",
+      "tier": 3,
+      "name": "Kit 5 Refratários de Vidro Pyrex com Tampa",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-5-refratarios-de-vidro-pyrex-com-tampa",
+      "bullets": [
+        "Vão do forno à mesa e à geladeira",
+        "Tampas para guardar sobras",
+        "Vidro não pega cheiro"
+      ]
+    }
+  ]
+}

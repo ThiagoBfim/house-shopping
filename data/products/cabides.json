@@ -1,0 +1,26 @@
+{
+  "label": "Cabides",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-50-cabides-plasticos",
+      "tier": 1,
+      "name": "Kit 50 Cabides Plásticos",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-50-cabides-plasticos",
+      "bullets": ["50 unidades", "Simples", "Roupa pode escorregar"]
+    },
+    {
+      "id": "kit-50-cabides-de-veludo-antideslizante",
+      "tier": 2,
+      "name": "Kit 50 Cabides de Veludo Antideslizante",
+      "price": 119,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-50-cabides-de-veludo-antideslizante",
+      "bullets": ["Finos: cabe mais roupa no armário", "Roupa não escorrega", "Gancho giratório"]
+    }
+  ]
+}

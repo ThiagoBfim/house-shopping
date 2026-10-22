@@ -1,0 +1,26 @@
+{
+  "label": "Luminária de cabeceira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "luminaria-de-mesa-abajur-cupula-tecido",
+      "tier": 1,
+      "name": "Luminária de Mesa Abajur Cúpula Tecido",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-mesa-abajur-cupula-tecido",
+      "bullets": ["Abajur clássico", "Luz amarela para leitura", "Lâmpada à parte"]
+    },
+    {
+      "id": "luminaria-de-cabeceira-led-touch-com-carregador-usb",
+      "tier": 2,
+      "name": "Luminária de Cabeceira LED Touch com Carregador USB",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-cabeceira-led-touch-com-carregador-usb",
+      "bullets": ["Liga com toque, 3 intensidades", "Carrega o celular", "LED não esquenta"]
+    }
+  ]
+}

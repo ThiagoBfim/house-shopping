@@ -91,6 +91,96 @@
         "category": "toalha-de-mesa",
         "need": 1,
         "qty": 1
+      },
+      {
+        "category": "utensilios-de-cozinha",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "escorredor-de-louca",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "lixeira-cozinha",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "potes-hermeticos",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "acessorios-de-cozinha",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "tabua-de-corte",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "assadeiras",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "panos-de-prato",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "chaleira-eletrica",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "batedeira",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "garrafa-termica",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "potes-silicone-congelar",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "organizadores-geladeira",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "porta-temperos",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "organizador-de-gaveta",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "organizador-de-armario",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "seladora-a-vacuo",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "dispenser-detergente",
+        "need": 1,
+        "qty": 1
       }
     ]
   },
@@ -151,6 +241,41 @@
         "category": "tv",
         "need": 2,
         "qty": 1
+      },
+      {
+        "category": "cabides",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "protetor-de-colchao",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "luminaria-de-cabeceira",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "espelho-corpo-inteiro",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "colmeia-organizadora",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "sacos-a-vacuo",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "sapateira",
+        "need": 2,
+        "qty": 1
       }
     ]
   },
@@ -204,6 +329,16 @@
       },
       {
         "category": "poltrona",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "luminaria-de-chao",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "assistente-virtual",
         "need": 1,
         "qty": 1
       }
@@ -261,6 +396,11 @@
         "category": "ar-condicionado",
         "need": 2,
         "qty": 1
+      },
+      {
+        "category": "banheira-bebe",
+        "need": 4,
+        "qty": 1
       }
     ]
   },
@@ -311,6 +451,21 @@
         "category": "secador-de-cabelo",
         "need": 1,
         "qty": 1
+      },
+      {
+        "category": "escova-sanitaria",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "desentupidor",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "organizador-de-box",
+        "need": 2,
+        "qty": 1
       }
     ]
   },
@@ -349,6 +504,236 @@
       },
       {
         "category": "cooler",
+        "need": 2,
+        "qty": 1
+      }
+    ]
+  },
+  "lavanderia": {
+    "name": "Lavanderia",
+    "items": [
+      {
+        "category": "lava-roupas",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "varal",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "ferro-de-passar",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "cesto-de-roupa",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "tabua-de-passar",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "prendedores",
+        "need": 3,
+        "qty": 1
+      }
+    ]
+  },
+  "utilidades": {
+    "name": "Utilidades",
+    "items": [
+      {
+        "category": "kit-limpeza",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "filtro-de-linha",
+        "need": 4,
+        "qty": 3
+      },
+      {
+        "category": "lanterna",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "kit-ferramentas",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "escada",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "extensao",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "lampadas-led",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "kit-primeiros-socorros",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "aspirador",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "furadeira",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "roteador-wifi",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "fechadura-digital",
+        "need": 1,
+        "qty": 1
+      }
+    ]
+  },
+  "escritorio": {
+    "name": "Escritório",
+    "items": [
+      {
+        "category": "mesa-escritorio",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "cadeira-escritorio",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "monitor",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "filtro-de-linha",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "teclado-mouse",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "headset",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "luminaria-de-mesa",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "suporte-notebook",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "gaveteiro",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "caneca-termica",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "suporte-monitor",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "organizador-de-cabos",
+        "need": 2,
+        "qty": 1
+      }
+    ]
+  },
+  "escritorio-gamer": {
+    "name": "Escritório gamer",
+    "items": [
+      {
+        "category": "mesa-regulavel",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "cadeira-gamer",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "monitor-gamer",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "filtro-de-linha",
+        "need": 4,
+        "qty": 2
+      },
+      {
+        "category": "teclado-mouse-gamer",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "headset-gamer",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "videogame",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "caneca-termica",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "mousepad-gamer",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "suporte-monitor",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "fita-led",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "organizador-de-cabos",
         "need": 2,
         "qty": 1
       }

@@ -1,0 +1,40 @@
+{
+  "label": "Varal",
+  "utensil": true,
+  "options": [
+    {
+      "id": "varal-de-chao-sanfonado-mor",
+      "tier": 1,
+      "name": "Varal de Chão Sanfonado Mor",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/varal-de-chao-sanfonado-mor",
+      "bullets": ["Dobra e guarda atrás da porta", "Cabe pouca roupa", "Plástico e aço simples"]
+    },
+    {
+      "id": "varal-de-teto-secalux-1-2-m",
+      "tier": 2,
+      "name": "Varal de Teto Secalux 1,2 m",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/varal-de-teto-secalux-1-2-m",
+      "bullets": ["Sobe e desce com cordinha", "Não ocupa o chão", "Precisa instalar no teto"]
+    },
+    {
+      "id": "varal-de-chao-aluminio-mor-com-abas-grande",
+      "tier": 3,
+      "name": "Varal de Chão Alumínio Mor com Abas Grande",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/varal-de-chao-aluminio-mor-com-abas-grande",
+      "bullets": [
+        "Muito espaço (lençol e toalhas)",
+        "Alumínio não enferruja",
+        "Abas recolhem quando não usa"
+      ]
+    }
+  ]
+}

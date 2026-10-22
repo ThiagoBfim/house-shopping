@@ -1,0 +1,48 @@
+{
+  "label": "Acessórios de cozinha",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-acessorios-de-cozinha-6-pecas-abridor-ralador-descascador",
+      "tier": 1,
+      "name": "Kit Acessórios de Cozinha 6 Peças Abridor Ralador Descascador",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-de-cozinha-6-pecas-abridor-ralador-descascador",
+      "bullets": [
+        "Abridor de lata, ralador, descascador de legumes",
+        "Espremedor e descascador de alho",
+        "Plástico e aço simples"
+      ]
+    },
+    {
+      "id": "kit-acessorios-tramontina-utilita-inox-8-pecas",
+      "tier": 2,
+      "name": "Kit Acessórios Tramontina Utilità Inox 8 Peças",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-tramontina-utilita-inox-8-pecas",
+      "bullets": [
+        "Inox: não enferruja nem entorta",
+        "Inclui peneira e espremedor de alho",
+        "Vai na lava-louças"
+      ]
+    },
+    {
+      "id": "kit-acessorios-oxo-good-grips-6-pecas",
+      "tier": 3,
+      "name": "Kit Acessórios OXO Good Grips 6 Peças",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-acessorios-oxo-good-grips-6-pecas",
+      "bullets": [
+        "Cabo emborrachado que não escorrega",
+        "Lâminas mais afiadas",
+        "Feito para durar anos"
+      ]
+    }
+  ]
+}

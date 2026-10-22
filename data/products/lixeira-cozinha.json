@@ -1,0 +1,26 @@
+{
+  "label": "Lixeira de cozinha",
+  "utensil": true,
+  "options": [
+    {
+      "id": "lixeira-com-pedal-plastico-12-l",
+      "tier": 1,
+      "name": "Lixeira com Pedal Plástico 12 L",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lixeira-com-pedal-plastico-12-l",
+      "bullets": ["Pedal: abre sem tocar", "Tamanho pequeno", "Plástico"]
+    },
+    {
+      "id": "lixeira-inox-com-pedal-brinox-30-l",
+      "tier": 2,
+      "name": "Lixeira Inox com Pedal Brinox 30 L",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lixeira-inox-com-pedal-brinox-30-l",
+      "bullets": ["Inox fácil de limpar", "Cabe o lixo de dois dias", "Balde interno removível"]
+    }
+  ]
+}

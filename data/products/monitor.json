@@ -1,0 +1,50 @@
+{
+  "label": "Monitor",
+  "utensil": false,
+  "options": [
+    {
+      "id": "monitor-lg-24-full-hd-ips-24mr400",
+      "tier": 1,
+      "name": "Monitor LG 24 Full HD IPS 24MR400",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-lg-24-full-hd-ips-24mr400",
+      "bullets": ["24\" Full HD", "IPS: cores boas de qualquer ângulo", "Para planilha e e-mail"]
+    },
+    {
+      "id": "monitor-samsung-27-full-hd-ips-100hz",
+      "tier": 2,
+      "name": "Monitor Samsung 27 Full HD IPS 100Hz",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-samsung-27-full-hd-ips-100hz",
+      "bullets": ["27\": mais espaço de tela", "Borda fina", "100 Hz: rolagem mais suave"]
+    },
+    {
+      "id": "monitor-dell-27-qhd-s2725ds",
+      "tier": 3,
+      "name": "Monitor Dell 27 QHD S2725DS",
+      "price": 1699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-dell-27-qhd-s2725ds",
+      "bullets": [
+        "QHD (2560×1440): textos bem nítidos",
+        "Ajuste de altura e giro",
+        "Alto-falantes embutidos"
+      ]
+    },
+    {
+      "id": "monitor-lg-27-4k-ultrafine-27us550",
+      "tier": 4,
+      "name": "Monitor LG 27 4K UltraFine 27US550",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/monitor-lg-27-4k-ultrafine-27us550",
+      "bullets": ["4K: para foto, vídeo e design", "USB-C carrega o notebook", "Cores calibradas"]
+    }
+  ]
+}

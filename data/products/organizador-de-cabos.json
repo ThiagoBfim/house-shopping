@@ -1,0 +1,27 @@
+{
+  "label": "Organizador de cabos",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "kit-organizador-de-cabos-espiral-e-presilhas",
+      "tier": 1,
+      "name": "Kit Organizador de Cabos Espiral e Presilhas",
+      "price": 29,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-organizador-de-cabos-espiral-e-presilhas",
+      "bullets": ["Junta os fios num só", "Presilhas adesivas na mesa", "Mesa sem bagunça de fios"]
+    },
+    {
+      "id": "calha-organizadora-de-cabos-para-mesa",
+      "tier": 2,
+      "name": "Calha Organizadora de Cabos para Mesa",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/calha-organizadora-de-cabos-para-mesa",
+      "bullets": ["Bandeja sob o tampo", "Esconde régua e fontes", "Fios somem de vista"]
+    }
+  ]
+}

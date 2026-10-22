@@ -1,0 +1,40 @@
+{
+  "label": "Luminária de mesa",
+  "utensil": false,
+  "options": [
+    {
+      "id": "luminaria-de-mesa-led-articulada",
+      "tier": 1,
+      "name": "Luminária de Mesa LED Articulada",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-mesa-led-articulada",
+      "bullets": ["Braço articulado", "LED branco", "Liga na tomada"]
+    },
+    {
+      "id": "luminaria-de-mesa-led-com-regulagem-e-carregador-sem-fio",
+      "tier": 2,
+      "name": "Luminária de Mesa LED com Regulagem e Carregador sem Fio",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-mesa-led-com-regulagem-e-carregador-sem-fio",
+      "bullets": ["Regula cor e intensidade", "Base carrega o celular", "Temporizador"]
+    },
+    {
+      "id": "barra-de-luz-para-monitor-xiaomi-mi-light-bar",
+      "tier": 3,
+      "name": "Barra de Luz para Monitor Xiaomi Mi Light Bar",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/barra-de-luz-para-monitor-xiaomi-mi-light-bar",
+      "bullets": [
+        "Fica em cima do monitor",
+        "Ilumina a mesa sem reflexo na tela",
+        "Controle por botão giratório"
+      ]
+    }
+  ]
+}

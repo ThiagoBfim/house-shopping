@@ -7,7 +7,7 @@ import {
   roomCount,
   type HouseSpec,
 } from '../engine/house.ts'
-import { ROOM_CARDS } from './catalog.ts'
+import { ROOM_CARDS, roomIcon } from './catalog.ts'
 
 interface Props {
   rooms: Rooms
@@ -16,8 +16,8 @@ interface Props {
   onConfirm: (house: HouseSpec) => void
 }
 
-/** "Casa completa": um de cada, menos o quarto do bebê (nem toda casa tem). */
-const FULL_HOUSE_EXCLUDES = ['quarto-bebe']
+/** "Casa completa": um de cada, menos o quarto do bebê e o escritório (nem toda casa tem). */
+const FULL_HOUSE_EXCLUDES = ['quarto-bebe', 'escritorio']
 
 /** Cômodos grandes ocupam duas colunas na planta. */
 const WIDE_ROOMS = ['sala', 'cozinha', 'area-externa']
@@ -27,7 +27,6 @@ export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
   const available = ROOM_CARDS.filter(({ id }) => rooms[id])
   const total = roomCount(normalizeSpec(spec, rooms))
   const { instances } = expandHouse(rooms, products, spec)
-  const iconOf = (roomId: string) => ROOM_CARDS.find((card) => card.id === roomId)?.icon
 
   const setCount = (roomId: string, count: number) =>
     setSpec((current) => ({ ...current, [roomId]: Math.max(0, Math.min(MAX_PER_ROOM, count)) }))
@@ -52,7 +51,7 @@ export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
               key={instance.id}
               class={`plan-room ${WIDE_ROOMS.includes(instance.roomId) ? 'is-wide' : ''}`}
             >
-              <span aria-hidden="true">{iconOf(instance.roomId)}</span>
+              <span aria-hidden="true">{roomIcon(instance.roomId)}</span>
               {instance.title}
             </div>
           ))
@@ -83,9 +82,19 @@ export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
       </div>
 
       <ul class="room-rows">
-        {ROOM_CARDS.map(({ id, name, icon }) => {
+        {ROOM_CARDS.map(({ id: baseId, name, icon: baseIcon, variant }) => {
+          // Com a versão alternativa ligada (ex.: escritório gamer), a linha conta ela.
+          const useVariant = variant !== undefined && (spec[variant.id] ?? 0) > 0
+          const id = useVariant ? variant.id : baseId
+          const icon = useVariant ? variant.icon : baseIcon
           const room = rooms[id]
           const count = spec[id] ?? 0
+          const switchVariant = (on: boolean) =>
+            variant &&
+            setSpec((current) => {
+              const [from, to] = on ? [baseId, variant.id] : [variant.id, baseId]
+              return { ...current, [from]: 0, [to]: Math.max(1, current[from] ?? 0) }
+            })
           if (!room) {
             return (
               <li key={id} class="room-row is-soon">
@@ -108,9 +117,20 @@ export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
                 <span class="room-row-icon" aria-hidden="true">
                   {icon}
                 </span>
-                <span class="room-row-name">{room.name}</span>
+                <span class="room-row-name">{variant ? name : room.name}</span>
                 <span class="room-row-meta">{room.items.length} itens</span>
               </button>
+              {variant && rooms[variant.id] && (
+                <button
+                  type="button"
+                  class={`variant-toggle ${useVariant ? 'is-on' : ''}`}
+                  aria-pressed={useVariant}
+                  aria-label={`${name} ${variant.label.toLowerCase()}`}
+                  onClick={() => switchVariant(!useVariant)}
+                >
+                  <span aria-hidden="true">{variant.icon}</span> {variant.label}
+                </button>
+              )}
               <div class="stepper" role="group" aria-label={`Quantidade de ${room.name}`}>
                 <button
                   type="button"

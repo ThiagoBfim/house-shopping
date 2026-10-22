@@ -1,0 +1,35 @@
+{
+  "label": "Sacos a vácuo para roupas",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "kit-6-sacos-a-vacuo-para-roupas-e-edredom",
+      "tier": 1,
+      "name": "Kit 6 Sacos a Vácuo para Roupas e Edredom",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-6-sacos-a-vacuo-para-roupas-e-edredom",
+      "bullets": [
+        "Tira o ar com o aspirador",
+        "Edredom ocupa 1/3 do espaço",
+        "Protege de mofo e ácaro"
+      ]
+    },
+    {
+      "id": "kit-8-sacos-a-vacuo-com-bomba-eletrica",
+      "tier": 2,
+      "name": "Kit 8 Sacos a Vácuo com Bomba Elétrica",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-8-sacos-a-vacuo-com-bomba-eletrica",
+      "bullets": [
+        "Bomba elétrica própria",
+        "Tamanhos variados",
+        "Válvula que não deixa o ar voltar"
+      ]
+    }
+  ]
+}

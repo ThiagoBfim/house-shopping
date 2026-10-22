@@ -1,0 +1,30 @@
+{
+  "label": "Suporte para notebook",
+  "utensil": false,
+  "options": [
+    {
+      "id": "suporte-para-notebook-ajustavel-plastico",
+      "tier": 1,
+      "name": "Suporte para Notebook Ajustável Plástico",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/suporte-para-notebook-ajustavel-plastico",
+      "bullets": ["Tela na altura dos olhos", "Alguns níveis de altura", "Leve"]
+    },
+    {
+      "id": "suporte-para-notebook-aluminio-dobravel",
+      "tier": 2,
+      "name": "Suporte para Notebook Alumínio Dobrável",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/suporte-para-notebook-aluminio-dobravel",
+      "bullets": [
+        "Alumínio ajuda a esfriar o notebook",
+        "Ajuste fino de altura e ângulo",
+        "Dobra e vai na mochila"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "label": "Porta-temperos",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "porta-temperos-giratorio-12-potes",
+      "tier": 1,
+      "name": "Porta-temperos Giratório 12 Potes",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/porta-temperos-giratorio-12-potes",
+      "bullets": ["Gira na bancada", "12 potes com tampa dosadora", "Plástico e vidro"]
+    },
+    {
+      "id": "kit-12-potes-de-vidro-para-temperos-com-etiquetas",
+      "tier": 2,
+      "name": "Kit 12 Potes de Vidro para Temperos com Etiquetas",
+      "price": 119,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-12-potes-de-vidro-para-temperos-com-etiquetas",
+      "bullets": ["Vidro com tampa de bambu", "Etiquetas prontas", "Cabem na gaveta ou prateleira"]
+    },
+    {
+      "id": "porta-temperos-giratorio-brinox-inox-16-potes",
+      "tier": 3,
+      "name": "Porta-temperos Giratório Brinox Inox 16 Potes",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/porta-temperos-giratorio-brinox-inox-16-potes",
+      "bullets": ["Estrutura inox", "16 potes", "Bonito na bancada"]
+    }
+  ]
+}

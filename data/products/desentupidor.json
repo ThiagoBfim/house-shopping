@@ -1,0 +1,30 @@
+{
+  "label": "Desentupidor",
+  "utensil": true,
+  "options": [
+    {
+      "id": "desentupidor-de-vaso-sanitario-borracha",
+      "tier": 1,
+      "name": "Desentupidor de Vaso Sanitário Borracha",
+      "price": 19,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/desentupidor-de-vaso-sanitario-borracha",
+      "bullets": ["Ventosa de borracha", "Resolve entupimento leve", "Cabo de madeira"]
+    },
+    {
+      "id": "desentupidor-sanfonado-de-alta-pressao",
+      "tier": 2,
+      "name": "Desentupidor Sanfonado de Alta Pressão",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/desentupidor-sanfonado-de-alta-pressao",
+      "bullets": [
+        "Sanfona faz mais pressão",
+        "Resolve entupimento mais difícil",
+        "Serve no vaso e no ralo"
+      ]
+    }
+  ]
+}

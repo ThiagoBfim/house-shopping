@@ -1,0 +1,54 @@
+{
+  "label": "Máquina de lavar",
+  "utensil": false,
+  "options": [
+    {
+      "id": "maquina-de-lavar-electrolux-9-kg-essential-care-led09",
+      "tier": 1,
+      "name": "Máquina de Lavar Electrolux 9 kg Essential Care LED09",
+      "price": 1599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/maquina-de-lavar-electrolux-9-kg-essential-care-led09",
+      "bullets": ["9 kg", "Para casal ou pouca roupa", "Centrifugação básica"]
+    },
+    {
+      "id": "maquina-de-lavar-brastemp-12-kg-bwk12ab",
+      "tier": 2,
+      "name": "Máquina de Lavar Brastemp 12 kg BWK12AB",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/maquina-de-lavar-brastemp-12-kg-bwk12ab",
+      "bullets": ["12 kg: família e edredom", "Ciclos rápidos", "Melhor custo-benefício"]
+    },
+    {
+      "id": "lava-e-seca-samsung-11-kg-wd11t",
+      "tier": 3,
+      "name": "Lava e Seca Samsung 11 kg WD11T",
+      "price": 3799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-e-seca-samsung-11-kg-wd11t",
+      "bullets": [
+        "Lava e seca (sem varal)",
+        "Abertura frontal, gasta menos água",
+        "Motor inverter silencioso"
+      ]
+    },
+    {
+      "id": "lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
+      "tier": 4,
+      "name": "Lava e Seca LG VC4 12 kg Inteligência Artificial",
+      "price": 4999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
+      "bullets": [
+        "12 kg com secagem completa",
+        "Ajusta o ciclo ao tecido sozinha",
+        "Controle pelo app, motor com 10 anos de garantia"
+      ]
+    }
+  ]
+}

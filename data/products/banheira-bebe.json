@@ -1,0 +1,44 @@
+{
+  "label": "Banheira de bebê",
+  "utensil": false,
+  "options": [
+    {
+      "id": "banheira-infantil-burigotto-tchibum",
+      "tier": 1,
+      "name": "Banheira Infantil Burigotto Tchibum",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/banheira-infantil-burigotto-tchibum",
+      "bullets": ["Plástico com encosto", "Usa no box ou na pia", "Sem suporte"]
+    },
+    {
+      "id": "banheira-dobravel-com-termometro-safety-1st",
+      "tier": 2,
+      "name": "Banheira Dobrável com Termômetro Safety 1st",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/banheira-dobravel-com-termometro-safety-1st",
+      "bullets": [
+        "Dobra e guarda fácil",
+        "Termômetro mostra a temperatura da água",
+        "Assento para recém-nascido"
+      ]
+    },
+    {
+      "id": "banheira-com-suporte-e-trocador-galzerano",
+      "tier": 3,
+      "name": "Banheira com Suporte e Trocador Galzerano",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/banheira-com-suporte-e-trocador-galzerano",
+      "bullets": [
+        "Altura de bancada: poupa as costas",
+        "Trocador em cima da banheira",
+        "Ralo para esvaziar"
+      ]
+    }
+  ]
+}

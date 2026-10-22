@@ -1,0 +1,58 @@
+{
+  "label": "Videogame",
+  "utensil": false,
+  "options": [
+    {
+      "id": "console-xbox-series-s-512-gb",
+      "tier": 1,
+      "name": "Console Xbox Series S 512 GB",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-xbox-series-s-512-gb",
+      "bullets": [
+        "O console atual mais barato",
+        "Game Pass: centenas de jogos na assinatura",
+        "Só digital (sem disco)"
+      ]
+    },
+    {
+      "id": "console-playstation-5-slim-digital",
+      "tier": 2,
+      "name": "Console PlayStation 5 Slim Digital",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-playstation-5-slim-digital",
+      "bullets": ["Exclusivos da Sony", "Gráficos 4K", "Só digital"]
+    },
+    {
+      "id": "console-nintendo-switch-2",
+      "tier": 3,
+      "name": "Console Nintendo Switch 2",
+      "price": 4499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-nintendo-switch-2",
+      "bullets": [
+        "Joga na TV e no modo portátil",
+        "Mario, Zelda e Pokémon",
+        "Bom para jogar com a família"
+      ]
+    },
+    {
+      "id": "console-playstation-5-pro",
+      "tier": 4,
+      "name": "Console PlayStation 5 Pro",
+      "price": 6999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-playstation-5-pro",
+      "bullets": [
+        "O PlayStation mais potente",
+        "Gráficos e taxa de quadros melhores",
+        "SSD de 2 TB"
+      ]
+    }
+  ]
+}

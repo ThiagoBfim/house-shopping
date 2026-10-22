@@ -1,0 +1,44 @@
+{
+  "label": "Kit de limpeza",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-limpeza-vassoura-rodo-pa-e-balde",
+      "tier": 1,
+      "name": "Kit Limpeza Vassoura, Rodo, Pá e Balde",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-limpeza-vassoura-rodo-pa-e-balde",
+      "bullets": ["O básico para varrer e puxar água", "Plástico simples", "Cerdas gastam rápido"]
+    },
+    {
+      "id": "kit-mop-giratorio-flash-limp-com-vassoura-e-rodo",
+      "tier": 2,
+      "name": "Kit Mop Giratório Flash Limp com Vassoura e Rodo",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-mop-giratorio-flash-limp-com-vassoura-e-rodo",
+      "bullets": [
+        "Mop giratório: limpa sem abaixar",
+        "Balde com centrífuga",
+        "Vassoura e rodo inclusos"
+      ]
+    },
+    {
+      "id": "kit-mop-spray-mor-com-balde-centrifugo-e-vassoura-condor",
+      "tier": 3,
+      "name": "Kit Mop Spray Mor com Balde Centrífugo e Vassoura Condor",
+      "price": 279,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-mop-spray-mor-com-balde-centrifugo-e-vassoura-condor",
+      "bullets": [
+        "Mop spray para piso e mop giratório",
+        "Refis de microfibra extras",
+        "Cabos de alumínio mais duráveis"
+      ]
+    }
+  ]
+}

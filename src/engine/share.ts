@@ -37,6 +37,8 @@ interface Wire {
   n?: number
   /** Utensílios: 0 = sem (ausente = com). */
   u?: number
+  /** Facilitadores: 1 = com (ausente = sem). */
+  f?: number
 }
 
 export function encodeState(state: ListState): string {
@@ -52,6 +54,7 @@ export function encodeState(state: ListState): string {
   }
   if (state.choices.minNeed !== 1) wire.n = state.choices.minNeed
   if (!state.choices.utensils) wire.u = 0
+  if (state.choices.helpers) wire.f = 1
   return compressToEncodedURIComponent(JSON.stringify(wire))
 }
 
@@ -118,6 +121,7 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
       excluded,
       minNeed: isNeed(wire.n) ? wire.n : 1,
       utensils: wire.u !== 0,
+      helpers: wire.f === 1,
     },
   }
 }

@@ -1,0 +1,26 @@
+{
+  "label": "Suporte articulado para monitor",
+  "utensil": false,
+  "options": [
+    {
+      "id": "suporte-de-mesa-para-monitor-articulado-17-a-32",
+      "tier": 1,
+      "name": "Suporte de Mesa para Monitor Articulado 17 a 32",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/suporte-de-mesa-para-monitor-articulado-17-a-32",
+      "bullets": ["Libera espaço na mesa", "Ajusta altura e ângulo", "Fixa com grampo"]
+    },
+    {
+      "id": "suporte-articulado-a-gas-para-2-monitores-elg",
+      "tier": 2,
+      "name": "Suporte Articulado a Gás para 2 Monitores ELG",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/suporte-articulado-a-gas-para-2-monitores-elg",
+      "bullets": ["Dois monitores", "Pistão a gás: move com um dedo", "Passa-cabos no braço"]
+    }
+  ]
+}

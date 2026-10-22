@@ -1,8 +1,10 @@
+import { useState } from 'preact/hooks'
 import type { Choices, ListEntry, ListView, Plan } from '../engine/budget.ts'
 import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices.ts'
 import { splitItemKey, type RoomInstance } from '../engine/house.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
-import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
+import { matchesSearch } from '../engine/search.ts'
+import { categoryIcon, NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
 import { ProductCard } from './ProductCard.tsx'
 import { ShareBar } from './ShareBar.tsx'
@@ -27,6 +29,26 @@ interface Props {
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
 
+/** Cômodos recolhidos ficam salvos só neste navegador (conveniência, não vai no link). */
+const COLLAPSED_KEY = 'house-shopping:collapsed'
+
+function readCollapsed(): string[] {
+  try {
+    const value: unknown = JSON.parse(localStorage.getItem(COLLAPSED_KEY) ?? '[]')
+    return Array.isArray(value) ? value.filter((id) => typeof id === 'string') : []
+  } catch {
+    return []
+  }
+}
+
+function saveCollapsed(ids: string[]) {
+  try {
+    localStorage.setItem(COLLAPSED_KEY, JSON.stringify(ids))
+  } catch {
+    // Sem localStorage (aba anônima, bloqueado): vale só até recarregar a página.
+  }
+}
+
 export function ListScreen({
   roomName,
   instances,
@@ -41,28 +63,56 @@ export function ListScreen({
   onChangeRoom,
   share,
 }: Props) {
+  const [query, setQuery] = useState('')
+  const [collapsed, setCollapsed] = useState<string[]>(readCollapsed)
+  const updateCollapsed = (ids: string[]) => {
+    setCollapsed(ids)
+    saveCollapsed(ids)
+  }
+  const toggleRoom = (id: string) =>
+    updateCollapsed(collapsed.includes(id) ? collapsed.filter((c) => c !== id) : [...collapsed, id])
+
   const over = view.remaining < 0
   const used = view.budget > 0 ? Math.min(100, (view.total / view.budget) * 100) : 100
   // Só conta quem saiu por falta de saldo (não quem foi escondido pelos filtros).
   const removed = view.skipped.filter((s) => changes[s.item.category] === 'removed').length
-  const filters = { minNeed: choices.minNeed, utensils: choices.utensils }
+  const filters = { minNeed: choices.minNeed, utensils: choices.utensils, helpers: choices.helpers }
   const activeFilters = [
     choices.minNeed > 1 && `necessidade ${choices.minNeed}+`,
     !choices.utensils && 'sem utensílios',
+    choices.helpers && 'com facilitadores',
   ].filter(Boolean)
+  // Facilitadores começam fora: em vez de listar um por um, um convite para incluir.
+  const hiddenHelpers = view.filtered.filter((f) => f.reason === 'helper')
+  const hiddenOthers = view.filtered.filter((f) => f.reason !== 'helper')
 
   const grouped = instances.length > 1
   const titles = new Map(instances.map((instance) => [instance.id, instance.title]))
   /** Nome do item para avisos e listas: "Colchão (Quarto 2)" quando há vários cômodos. */
   const nameOf = (key: string, label: string) =>
     grouped ? `${label} (${titles.get(splitItemKey(key).instanceId)})` : label
+  const searching = query.trim() !== ''
+  const found = view.entries.filter((entry) =>
+    matchesSearch(query, [
+      entry.label,
+      entry.option.name,
+      titles.get(splitItemKey(entry.item.category).instanceId) ?? '',
+    ]),
+  )
   const entriesOf = (instanceId: string) =>
-    view.entries.filter((entry) => splitItemKey(entry.item.category).instanceId === instanceId)
+    found.filter((entry) => splitItemKey(entry.item.category).instanceId === instanceId)
+  // Na busca, mostra só os cômodos com resultado, todos abertos.
+  const shownInstances = searching
+    ? instances.filter((instance) => entriesOf(instance.id).length)
+    : instances
+  const allCollapsed = instances.every((instance) => collapsed.includes(instance.id))
 
   const renderCard = (entry: ListEntry) => {
     const { category } = entry.item
     const { option, options } = entry
     const name = nameOf(category, entry.label)
+    const { instanceId, category: productId } = splitItemKey(category)
+    const roomId = instances.find((instance) => instance.id === instanceId)?.roomId ?? ''
     const moveTo = (direction: -1 | 1) => {
       const target = options[options.indexOf(option) + direction]
       onChoices(
@@ -74,6 +124,7 @@ export function ListScreen({
       <ProductCard
         key={category}
         entry={entry}
+        icon={categoryIcon(productId, roomId)}
         change={changes[category]}
         onCheaper={() => moveTo(-1)}
         onPricier={() => moveTo(1)}
@@ -158,50 +209,110 @@ export function ListScreen({
         </p>
       )}
 
-      {grouped && (
+      {view.entries.length > 0 && (
+        <div class="list-tools">
+          <label class="search-field">
+            <span class="visually-hidden">Buscar produto</span>
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m15.5 15.5 5 5" />
+            </svg>
+            <input
+              type="search"
+              placeholder="Buscar produto na lista…"
+              value={query}
+              onInput={(e) => setQuery(e.currentTarget.value)}
+            />
+          </label>
+        </div>
+      )}
+
+      {searching && (
+        <p class="search-summary muted" role="status">
+          {found.length
+            ? `${found.length} ${found.length === 1 ? 'item encontrado' : 'itens encontrados'} para “${query.trim()}”.`
+            : `Nenhum item da lista com “${query.trim()}”.`}
+        </p>
+      )}
+
+      {grouped && !searching && (
         <nav class="room-jump" aria-label="Ir para o cômodo">
           {instances.map((instance) => (
             <button
               key={instance.id}
               type="button"
               class="chip"
-              onClick={() =>
+              onClick={() => {
+                if (collapsed.includes(instance.id)) toggleRoom(instance.id)
                 document
                   .getElementById(`room-${instance.id}`)
                   ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }
+              }}
             >
               {instance.title}
             </button>
           ))}
+          <button
+            type="button"
+            class="link-button"
+            onClick={() =>
+              updateCollapsed(allCollapsed ? [] : instances.map((instance) => instance.id))
+            }
+          >
+            {allCollapsed ? 'Abrir todos' : 'Recolher todos'}
+          </button>
         </nav>
       )}
 
       {!view.entries.length ? (
         <p class="empty-state">Nenhum item na lista.</p>
       ) : grouped ? (
-        instances.map((instance) => {
+        shownInstances.map((instance) => {
           const entries = entriesOf(instance.id)
-          const subtotal = entries.reduce((sum, entry) => sum + entry.subtotal, 0)
+          const all = view.entries.filter(
+            (entry) => splitItemKey(entry.item.category).instanceId === instance.id,
+          )
+          const subtotal = all.reduce((sum, entry) => sum + entry.subtotal, 0)
+          const open = searching || !collapsed.includes(instance.id)
+          const bodyId = `room-items-${instance.id}`
           return (
-            <section key={instance.id} id={`room-${instance.id}`} class="room-group">
+            <section
+              key={instance.id}
+              id={`room-${instance.id}`}
+              class={`room-group ${open ? '' : 'is-collapsed'}`}
+            >
               <header class="room-group-header">
-                <h3>{instance.title}</h3>
+                <h3>
+                  <button
+                    type="button"
+                    class="room-toggle"
+                    aria-expanded={open}
+                    aria-controls={bodyId}
+                    disabled={searching}
+                    onClick={() => toggleRoom(instance.id)}
+                  >
+                    {instance.title}
+                  </button>
+                </h3>
                 <span>
-                  {entries.length} {entries.length === 1 ? 'item' : 'itens'} ·{' '}
+                  {all.length} {all.length === 1 ? 'item' : 'itens'} ·{' '}
                   <strong>{formatBRL(subtotal)}</strong>
                 </span>
               </header>
-              {entries.length ? (
-                <div class="product-list">{entries.map(renderCard)}</div>
-              ) : (
-                <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>
+              {open && (
+                <div id={bodyId}>
+                  {entries.length ? (
+                    <div class="product-list">{entries.map(renderCard)}</div>
+                  ) : (
+                    <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>
+                  )}
+                </div>
               )}
             </section>
           )
         })
       ) : (
-        <div class="product-list">{view.entries.map(renderCard)}</div>
+        <div class="product-list">{found.map(renderCard)}</div>
       )}
 
       {view.skipped.length > 0 && (
@@ -232,11 +343,34 @@ export function ListScreen({
         </section>
       )}
 
-      {view.filtered.length > 0 && (
+      {hiddenHelpers.length > 0 && (
+        <section class="side-section helper-invite">
+          <h3>✨ Facilitadores</h3>
+          <p class="muted">
+            {hiddenHelpers.length === 1
+              ? '1 item que facilita'
+              : `${hiddenHelpers.length} itens que facilitam`}{' '}
+            o dia a dia:{' '}
+            {[...new Set(hiddenHelpers.map(({ label }) => label.toLowerCase()))]
+              .slice(0, 4)
+              .join(', ')}
+            …
+          </p>
+          <button
+            type="button"
+            class="small-button"
+            onClick={() => onFilters({ ...filters, helpers: true })}
+          >
+            + Incluir facilitadores
+          </button>
+        </section>
+      )}
+
+      {hiddenOthers.length > 0 && (
         <section class="side-section">
           <h3>Escondidos pelos filtros</h3>
           <ul class="compact-list">
-            {view.filtered.map(({ item, label, reason }) => (
+            {hiddenOthers.map(({ item, label, reason }) => (
               <li key={item.category}>
                 <span>{nameOf(item.category, label)}</span>
                 <span class="muted">

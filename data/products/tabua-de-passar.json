@@ -1,0 +1,26 @@
+{
+  "label": "Tábua de passar",
+  "utensil": true,
+  "options": [
+    {
+      "id": "tabua-de-passar-roupa-mor-compacta",
+      "tier": 1,
+      "name": "Tábua de Passar Roupa Mor Compacta",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/tabua-de-passar-roupa-mor-compacta",
+      "bullets": ["Dobrável", "Altura ajustável", "Tampo pequeno"]
+    },
+    {
+      "id": "tabua-de-passar-secalux-com-suporte-para-ferro",
+      "tier": 2,
+      "name": "Tábua de Passar Secalux com Suporte para Ferro",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/tabua-de-passar-secalux-com-suporte-para-ferro",
+      "bullets": ["Tampo grande e firme", "Apoio para o ferro", "Capa térmica mais grossa"]
+    }
+  ]
+}

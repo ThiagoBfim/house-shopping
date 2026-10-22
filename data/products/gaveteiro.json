@@ -1,0 +1,30 @@
+{
+  "label": "Gaveteiro",
+  "utensil": false,
+  "options": [
+    {
+      "id": "gaveteiro-3-gavetas-com-rodizios-mdp",
+      "tier": 1,
+      "name": "Gaveteiro 3 Gavetas com Rodízios MDP",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gaveteiro-3-gavetas-com-rodizios-mdp",
+      "bullets": ["Cabe embaixo da mesa", "Rodízios", "Gavetas simples"]
+    },
+    {
+      "id": "gaveteiro-volante-4-gavetas-com-chave",
+      "tier": 2,
+      "name": "Gaveteiro Volante 4 Gavetas com Chave",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/gaveteiro-volante-4-gavetas-com-chave",
+      "bullets": [
+        "Gaveta com chave para documentos",
+        "Corrediças mais firmes",
+        "Pasta suspensa na última gaveta"
+      ]
+    }
+  ]
+}

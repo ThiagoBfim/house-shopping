@@ -1,8 +1,8 @@
 import type { Need } from '../data/schema.ts'
-import type { Choices } from '../engine/budget.ts'
+import type { FilterChoices } from '../engine/budget.ts'
 import { NEED_LABELS, NEEDS } from './catalog.ts'
 
-export type FilterValues = Pick<Choices, 'minNeed' | 'utensils'>
+export type FilterValues = FilterChoices
 
 interface Props {
   value: FilterValues
@@ -38,7 +38,24 @@ export function Filters({ value, onChange }: Props) {
         />
         <span class="switch-track" aria-hidden="true" />
         <span>
-          Incluir utensílios <span class="muted">(pratos, talheres, panelas, toalhas…)</span>
+          Incluir utensílios{' '}
+          <span class="muted">(panelas, toalhas, régua de tomada, escada, lanterna…)</span>
+        </span>
+      </label>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          role="switch"
+          checked={value.helpers}
+          onChange={(e) => onChange({ ...value, helpers: e.currentTarget.checked })}
+        />
+        <span class="switch-track" aria-hidden="true" />
+        <span>
+          Incluir facilitadores{' '}
+          <span class="muted">
+            (organizadores, potes de silicone para congelar, sacos a vácuo…)
+          </span>
         </span>
       </label>
     </fieldset>

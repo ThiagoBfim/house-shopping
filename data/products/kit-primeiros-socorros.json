@@ -1,0 +1,30 @@
+{
+  "label": "Kit de primeiros socorros",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-primeiros-socorros-basico",
+      "tier": 1,
+      "name": "Kit Primeiros Socorros Básico",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-primeiros-socorros-basico",
+      "bullets": ["Curativos, gaze e esparadrapo", "Tesoura e luvas", "Caixa pequena"]
+    },
+    {
+      "id": "kit-primeiros-socorros-completo-com-maleta",
+      "tier": 2,
+      "name": "Kit Primeiros Socorros Completo com Maleta",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-primeiros-socorros-completo-com-maleta",
+      "bullets": [
+        "Mais de 50 itens",
+        "Termômetro e bolsa térmica",
+        "Maleta organizada para o armário"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "label": "Régua de tomada",
+  "utensil": true,
+  "options": [
+    {
+      "id": "regua-de-tomada-elgin-5-tomadas",
+      "tier": 1,
+      "name": "Régua de Tomada Elgin 5 Tomadas",
+      "price": 35,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/regua-de-tomada-elgin-5-tomadas",
+      "bullets": ["5 tomadas padrão novo", "Sem proteção contra surto", "Cabo curto (1 m)"]
+    },
+    {
+      "id": "filtro-de-linha-clamper-energia-8-tomadas",
+      "tier": 2,
+      "name": "Filtro de Linha Clamper Energia 8 Tomadas",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/filtro-de-linha-clamper-energia-8-tomadas",
+      "bullets": [
+        "Protege contra surtos de energia",
+        "8 tomadas com espaço para fonte",
+        "Cabo de 1,5 m"
+      ]
+    },
+    {
+      "id": "filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
+      "tier": 3,
+      "name": "Filtro de Linha iClamper Energia 5 Tomadas com USB",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
+      "bullets": [
+        "Proteção contra surto e raio",
+        "2 portas USB para carregar o celular",
+        "Garantia longa do fabricante"
+      ]
+    }
+  ]
+}

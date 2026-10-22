@@ -61,6 +61,8 @@ export const ProductCategorySchema = z.strictObject({
   label: z.string().min(2),
   /** Pratos, talheres, panelas, toalhas… (o usuário pode tirar todos da lista de uma vez). */
   utensil: z.boolean({ error: 'informe true ou false' }),
+  /** Facilitador: organizadores, potes de congelar… Só entra na lista se o usuário pedir. */
+  helper: z.boolean().optional(),
   options: z.array(ProductOptionSchema).min(1),
 })
 

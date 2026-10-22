@@ -1,0 +1,50 @@
+{
+  "label": "Fone com microfone",
+  "utensil": false,
+  "options": [
+    {
+      "id": "headset-logitech-h390-usb",
+      "tier": 1,
+      "name": "Headset Logitech H390 USB",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/headset-logitech-h390-usb",
+      "bullets": ["Microfone com redução de ruído", "Bom para reuniões", "Com fio USB"]
+    },
+    {
+      "id": "fone-bluetooth-jbl-tune-520bt",
+      "tier": 2,
+      "name": "Fone Bluetooth JBL Tune 520BT",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fone-bluetooth-jbl-tune-520bt",
+      "bullets": ["Sem fio, ~50 h de bateria", "Também serve para a rua", "Microfone embutido"]
+    },
+    {
+      "id": "fone-jbl-tune-770nc-com-cancelamento-de-ruido",
+      "tier": 3,
+      "name": "Fone JBL Tune 770NC com Cancelamento de Ruído",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fone-jbl-tune-770nc-com-cancelamento-de-ruido",
+      "bullets": ["Cancelamento de ruído", "Bateria de ~70 h", "Conecta em 2 aparelhos"]
+    },
+    {
+      "id": "fone-sony-wh-1000xm5-com-cancelamento-de-ruido",
+      "tier": 4,
+      "name": "Fone Sony WH-1000XM5 com Cancelamento de Ruído",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fone-sony-wh-1000xm5-com-cancelamento-de-ruido",
+      "bullets": [
+        "Um dos melhores cancelamentos",
+        "Microfones ótimos em chamadas",
+        "Muito confortável"
+      ]
+    }
+  ]
+}

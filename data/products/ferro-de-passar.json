@@ -1,0 +1,40 @@
+{
+  "label": "Ferro de passar",
+  "utensil": false,
+  "options": [
+    {
+      "id": "ferro-de-passar-a-seco-black-decker",
+      "tier": 1,
+      "name": "Ferro de Passar a Seco Black+Decker",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ferro-de-passar-a-seco-black-decker",
+      "bullets": ["Sem vapor", "Simples e leve", "Mais trabalho em roupa amassada"]
+    },
+    {
+      "id": "ferro-de-passar-a-vapor-arno-ultragliss",
+      "tier": 2,
+      "name": "Ferro de Passar a Vapor Arno Ultragliss",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ferro-de-passar-a-vapor-arno-ultragliss",
+      "bullets": ["Vapor tira vincos mais rápido", "Base antiaderente", "Jato de vapor vertical"]
+    },
+    {
+      "id": "vaporizador-de-roupas-philips-serie-3000",
+      "tier": 3,
+      "name": "Vaporizador de Roupas Philips Série 3000",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/vaporizador-de-roupas-philips-serie-3000",
+      "bullets": [
+        "Passa sem tábua, com a roupa no cabide",
+        "Não queima tecido",
+        "Bom para camisa e vestido"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "label": "Aspirador de pó",
+  "utensil": false,
+  "options": [
+    {
+      "id": "aspirador-de-po-vertical-mondial-turbo-cycle-1000w",
+      "tier": 1,
+      "name": "Aspirador de Pó Vertical Mondial Turbo Cycle 1000W",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-vertical-mondial-turbo-cycle-1000w",
+      "bullets": ["Vira aspirador de mão", "Com fio", "Reservatório pequeno"]
+    },
+    {
+      "id": "aspirador-de-po-wap-power-speed-2000w",
+      "tier": 2,
+      "name": "Aspirador de Pó WAP Power Speed 2000W",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-wap-power-speed-2000w",
+      "bullets": ["Bem mais potente", "Filtro HEPA", "Bocais para sofá e cantos"]
+    },
+    {
+      "id": "aspirador-vertical-sem-fio-electrolux-ergorapido",
+      "tier": 3,
+      "name": "Aspirador Vertical sem Fio Electrolux ErgoRapido",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aspirador-vertical-sem-fio-electrolux-ergorapido",
+      "bullets": [
+        "Sem fio: aspira a casa toda sem tomada",
+        "Bateria de ~40 min",
+        "Leve e fica em pé sozinho"
+      ]
+    },
+    {
+      "id": "robo-aspirador-roborock-q7-max",
+      "tier": 4,
+      "name": "Robô Aspirador Roborock Q7 Max",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/robo-aspirador-roborock-q7-max",
+      "bullets": ["Limpa sozinho com mapa da casa", "Aspira e passa pano", "Controle pelo app"]
+    }
+  ]
+}

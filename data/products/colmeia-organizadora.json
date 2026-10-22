@@ -1,0 +1,31 @@
+{
+  "label": "Organizadores de gaveta (colmeia)",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "kit-4-colmeias-organizadoras-de-gaveta",
+      "tier": 1,
+      "name": "Kit 4 Colmeias Organizadoras de Gaveta",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-4-colmeias-organizadoras-de-gaveta",
+      "bullets": ["Meias, cuecas e calcinhas separadas", "Encaixam na gaveta", "Plástico"]
+    },
+    {
+      "id": "kit-6-organizadores-de-gaveta-tecido-com-divisorias",
+      "tier": 2,
+      "name": "Kit 6 Organizadores de Gaveta Tecido com Divisórias",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-6-organizadores-de-gaveta-tecido-com-divisorias",
+      "bullets": [
+        "Tamanhos diferentes (camiseta, roupa íntima)",
+        "Tecido não risca a gaveta",
+        "Dobram quando não usa"
+      ]
+    }
+  ]
+}

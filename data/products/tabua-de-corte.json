@@ -1,0 +1,40 @@
+{
+  "label": "Tábua de corte",
+  "utensil": true,
+  "options": [
+    {
+      "id": "tabua-de-corte-polietileno-tramontina-40-cm",
+      "tier": 1,
+      "name": "Tábua de Corte Polietileno Tramontina 40 cm",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/tabua-de-corte-polietileno-tramontina-40-cm",
+      "bullets": ["Plástico: fácil de higienizar", "Boa para carne crua", "Risca com o tempo"]
+    },
+    {
+      "id": "kit-2-tabuas-de-corte-bambu-tramontina",
+      "tier": 2,
+      "name": "Kit 2 Tábuas de Corte Bambu Tramontina",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-2-tabuas-de-corte-bambu-tramontina",
+      "bullets": [
+        "Uma para carne, outra para legumes",
+        "Bambu não cega a faca",
+        "Bonita para servir"
+      ]
+    },
+    {
+      "id": "tabua-de-corte-teca-tramontina-provence-49-cm",
+      "tier": 3,
+      "name": "Tábua de Corte Teca Tramontina Provence 49 cm",
+      "price": 229,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/tabua-de-corte-teca-tramontina-provence-49-cm",
+      "bullets": ["Madeira teca maciça", "Canaleta para o caldo da carne", "Dura muitos anos"]
+    }
+  ]
+}

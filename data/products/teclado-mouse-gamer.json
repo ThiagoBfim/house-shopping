@@ -1,0 +1,50 @@
+{
+  "label": "Teclado e mouse gamer",
+  "utensil": false,
+  "options": [
+    {
+      "id": "kit-teclado-e-mouse-gamer-redragon-com-led",
+      "tier": 1,
+      "name": "Kit Teclado e Mouse Gamer Redragon com LED",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-gamer-redragon-com-led",
+      "bullets": ["Teclado de membrana com LED", "Mouse com botões extras", "Para começar"]
+    },
+    {
+      "id": "teclado-mecanico-redragon-kumara-e-mouse-logitech-g203",
+      "tier": 2,
+      "name": "Teclado Mecânico Redragon Kumara e Mouse Logitech G203",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/teclado-mecanico-redragon-kumara-e-mouse-logitech-g203",
+      "bullets": ["Teclado mecânico: resposta precisa", "Mouse leve e preciso", "RGB"]
+    },
+    {
+      "id": "teclado-logitech-g-pro-x-tkl-e-mouse-g502-x",
+      "tier": 3,
+      "name": "Teclado Logitech G Pro X TKL e Mouse G502 X",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/teclado-logitech-g-pro-x-tkl-e-mouse-g502-x",
+      "bullets": [
+        "Sem fio e baixa latência",
+        "Switches de alta qualidade",
+        "Mouse com peso ajustável"
+      ]
+    },
+    {
+      "id": "teclado-razer-huntsman-v3-pro-e-mouse-razer-deathadder-v3-pro",
+      "tier": 4,
+      "name": "Teclado Razer Huntsman V3 Pro e Mouse Razer DeathAdder V3 Pro",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/teclado-razer-huntsman-v3-pro-e-mouse-razer-deathadder-v3-pro",
+      "bullets": ["Switches analógicos ajustáveis", "Mouse ultraleve sem fio", "Para competitivo"]
+    }
+  ]
+}

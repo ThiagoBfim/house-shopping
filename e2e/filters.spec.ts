@@ -96,3 +96,21 @@ test('link compartilhado mantém os filtros', async ({ page, browser }) => {
   )
   await other.close()
 })
+
+test('facilitadores ficam fora até incluir', async ({ page }) => {
+  await page.goto('./')
+  await pickRooms(page, { Cozinha: 1 })
+  await page.getByLabel('Orçamento em reais').fill('30000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const helperCards = page.getByRole('article').filter({ hasText: 'Facilitador' })
+  await expect(page.getByRole('heading', { name: /Facilitadores/ })).toBeVisible()
+  await expect(helperCards).toHaveCount(0)
+
+  await page.getByRole('button', { name: '+ Incluir facilitadores' }).click()
+  await expect(page.getByText('com facilitadores')).toBeVisible()
+  await expect(
+    page.getByRole('article', { name: /^Potes de silicone para congelar:/ }),
+  ).toBeVisible()
+  await expect(page.getByRole('button', { name: '+ Incluir facilitadores' })).toHaveCount(0)
+})

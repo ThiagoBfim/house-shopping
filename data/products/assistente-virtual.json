@@ -1,0 +1,41 @@
+{
+  "label": "Assistente virtual (Alexa)",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "echo-pop-smart-speaker-com-alexa",
+      "tier": 1,
+      "name": "Echo Pop Smart Speaker com Alexa",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/echo-pop-smart-speaker-com-alexa",
+      "bullets": [
+        "Toca música e responde perguntas",
+        "Lembretes, alarmes e lista de compras",
+        "Liga lâmpadas inteligentes"
+      ]
+    },
+    {
+      "id": "echo-dot-5-geracao-com-relogio",
+      "tier": 2,
+      "name": "Echo Dot 5ª Geração com Relógio",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/echo-dot-5-geracao-com-relogio",
+      "bullets": ["Som melhor", "Relógio no visor", "Sensor de temperatura"]
+    },
+    {
+      "id": "echo-show-5-com-tela-e-alexa",
+      "tier": 3,
+      "name": "Echo Show 5 com Tela e Alexa",
+      "price": 649,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/echo-show-5-com-tela-e-alexa",
+      "bullets": ["Tela: receitas, vídeo e câmeras", "Chamadas de vídeo", "Despertador com luz"]
+    }
+  ]
+}

@@ -276,6 +276,21 @@ describe('filtros', () => {
     ])
   })
 
+  it('facilitadores ficam fora até o usuário incluir', () => {
+    const withHelper: Products = {
+      ...products,
+      liquidificador: { ...products.liquidificador, helper: true },
+    }
+    const off = buildList(room, withHelper, 1_000_000)
+    expect(off.entries.map((e) => e.item.category)).not.toContain('liquidificador')
+    expect(off.filtered).toEqual([
+      expect.objectContaining({ label: 'Liquidificador', reason: 'helper' }),
+    ])
+    const on = buildList(room, withHelper, 1_000_000, choices({ helpers: true }))
+    expect(on.entries.find((e) => e.item.category === 'liquidificador')?.helper).toBe(true)
+    expect(on.entries.find((e) => e.item.category === 'fogao')?.helper).toBe(false)
+  })
+
   it('marca os utensílios na lista', () => {
     const view = buildList(room, withUtensil, 1_000_000)
     const blender = view.entries.find((e) => e.item.category === 'liquidificador')
@@ -296,11 +311,13 @@ describe('filtros', () => {
   })
 
   it('budgetRange considera só os itens que passam pelos filtros', () => {
-    expect(budgetRange(room, withUtensil, { minNeed: 2, utensils: false })).toEqual({
-      required: 2900,
-      allCheapest: 2000 + 900 + 500 + 1900,
-      allTop: 15000 + 8000 + 3300 + 9000,
-    })
+    expect(budgetRange(room, withUtensil, { minNeed: 2, utensils: false, helpers: false })).toEqual(
+      {
+        required: 2900,
+        allCheapest: 2000 + 900 + 500 + 1900,
+        allTop: 15000 + 8000 + 3300 + 9000,
+      },
+    )
   })
 })
 
@@ -312,7 +329,7 @@ describe('tierTotal / budgetPresets', () => {
   })
 
   it('respeita os filtros', () => {
-    expect(tierTotal(room, products, 1, { minNeed: 4, utensils: true })).toBe(2900)
+    expect(tierTotal(room, products, 1, { minNeed: 4, utensils: true, helpers: false })).toBe(2900)
   })
 
   it('três opções arredondadas para cima, em ordem crescente', () => {

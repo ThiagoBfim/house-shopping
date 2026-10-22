@@ -1,0 +1,35 @@
+{
+  "label": "Organizadores de geladeira",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "kit-4-organizadores-de-geladeira-plastico",
+      "tier": 1,
+      "name": "Kit 4 Organizadores de Geladeira Plástico",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-4-organizadores-de-geladeira-plastico",
+      "bullets": [
+        "Separa frutas, frios e laticínios",
+        "Encaixam nas prateleiras",
+        "Plástico simples"
+      ]
+    },
+    {
+      "id": "kit-6-organizadores-de-geladeira-acrilico-transparente",
+      "tier": 2,
+      "name": "Kit 6 Organizadores de Geladeira Acrílico Transparente",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-6-organizadores-de-geladeira-acrilico-transparente",
+      "bullets": [
+        "Transparentes: vê tudo de longe",
+        "Inclui porta-ovos e porta-latas",
+        "Empilháveis"
+      ]
+    }
+  ]
+}

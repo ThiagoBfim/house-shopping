@@ -1,0 +1,40 @@
+{
+  "label": "Chaleira elétrica",
+  "utensil": false,
+  "options": [
+    {
+      "id": "chaleira-eletrica-mondial-1-8-l",
+      "tier": 1,
+      "name": "Chaleira Elétrica Mondial 1,8 L",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-mondial-1-8-l",
+      "bullets": ["Ferve água em ~4 min", "Desliga sozinha", "Corpo de plástico"]
+    },
+    {
+      "id": "chaleira-eletrica-inox-oster-1-7-l",
+      "tier": 2,
+      "name": "Chaleira Elétrica Inox Oster 1,7 L",
+      "price": 179,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-inox-oster-1-7-l",
+      "bullets": ["Inox: sem gosto de plástico", "Base giratória sem fio", "Visor de nível"]
+    },
+    {
+      "id": "chaleira-eletrica-philips-walita-com-controle-de-temperatura",
+      "tier": 3,
+      "name": "Chaleira Elétrica Philips Walita com Controle de Temperatura",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-philips-walita-com-controle-de-temperatura",
+      "bullets": [
+        "Escolhe a temperatura (chá, café, mamadeira)",
+        "Mantém aquecida",
+        "Acabamento premium"
+      ]
+    }
+  ]
+}

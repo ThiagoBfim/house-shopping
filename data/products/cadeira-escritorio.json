@@ -1,0 +1,54 @@
+{
+  "label": "Cadeira de escritório",
+  "utensil": false,
+  "options": [
+    {
+      "id": "cadeira-de-escritorio-giratoria-secretaria",
+      "tier": 1,
+      "name": "Cadeira de Escritório Giratória Secretária",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-de-escritorio-giratoria-secretaria",
+      "bullets": ["Giratória com rodízios", "Regula a altura", "Para poucas horas por dia"]
+    },
+    {
+      "id": "cadeira-ergonomica-mesh-com-apoio-lombar",
+      "tier": 2,
+      "name": "Cadeira Ergonômica Mesh com Apoio Lombar",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-mesh-com-apoio-lombar",
+      "bullets": [
+        "Encosto de tela (mesh): não esquenta",
+        "Apoio lombar ajustável",
+        "Braços reguláveis"
+      ]
+    },
+    {
+      "id": "cadeira-ergonomica-mesh-cavaletti-newnet",
+      "tier": 3,
+      "name": "Cadeira Ergonômica Mesh Cavaletti NewNet",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-mesh-cavaletti-newnet",
+      "bullets": [
+        "Marca de escritório, NR-17",
+        "Encosto reclinável com trava",
+        "Feita para 8 h por dia"
+      ]
+    },
+    {
+      "id": "cadeira-ergonomica-herman-miller-sayl",
+      "tier": 4,
+      "name": "Cadeira Ergonômica Herman Miller Sayl",
+      "price": 6999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-herman-miller-sayl",
+      "bullets": ["Ícone de design ergonômico", "Ajustes completos", "Garantia de 12 anos"]
+    }
+  ]
+}

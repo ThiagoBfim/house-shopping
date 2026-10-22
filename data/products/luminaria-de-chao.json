@@ -1,0 +1,26 @@
+{
+  "label": "Luminária de chão",
+  "utensil": false,
+  "options": [
+    {
+      "id": "luminaria-de-chao-coluna-tripe",
+      "tier": 1,
+      "name": "Luminária de Chão Coluna Tripé",
+      "price": 179,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-chao-coluna-tripe",
+      "bullets": ["Luz indireta aconchegante", "Tripé de madeira", "Lâmpada à parte"]
+    },
+    {
+      "id": "luminaria-de-chao-arco-moderna",
+      "tier": 2,
+      "name": "Luminária de Chão Arco Moderna",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/luminaria-de-chao-arco-moderna",
+      "bullets": ["Arco que alcança o sofá", "Base de mármore sintético", "Peça de decoração"]
+    }
+  ]
+}

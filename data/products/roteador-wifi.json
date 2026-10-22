@@ -1,0 +1,40 @@
+{
+  "label": "Roteador Wi-Fi",
+  "utensil": false,
+  "options": [
+    {
+      "id": "roteador-wi-fi-tp-link-archer-c20-ac750",
+      "tier": 1,
+      "name": "Roteador Wi-Fi TP-Link Archer C20 AC750",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/roteador-wi-fi-tp-link-archer-c20-ac750",
+      "bullets": ["Dual band", "Para apartamento pequeno", "Até ~100 Mbps de verdade"]
+    },
+    {
+      "id": "roteador-wi-fi-6-tp-link-archer-ax12",
+      "tier": 2,
+      "name": "Roteador Wi-Fi 6 TP-Link Archer AX12",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/roteador-wi-fi-6-tp-link-archer-ax12",
+      "bullets": [
+        "Wi-Fi 6: mais aparelhos ao mesmo tempo",
+        "Internet de até 500 Mbps",
+        "Melhor alcance"
+      ]
+    },
+    {
+      "id": "sistema-mesh-wi-fi-6-tp-link-deco-x20-2-unidades",
+      "tier": 3,
+      "name": "Sistema Mesh Wi-Fi 6 TP-Link Deco X20 2 Unidades",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sistema-mesh-wi-fi-6-tp-link-deco-x20-2-unidades",
+      "bullets": ["Dois pontos: sinal na casa toda", "Sem área sem internet", "Configura pelo app"]
+    }
+  ]
+}

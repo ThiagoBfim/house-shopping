@@ -1,0 +1,26 @@
+{
+  "label": "Protetor de colchão",
+  "utensil": true,
+  "options": [
+    {
+      "id": "protetor-de-colchao-impermeavel-casal-malha",
+      "tier": 1,
+      "name": "Protetor de Colchão Impermeável Casal Malha",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-impermeavel-casal-malha",
+      "bullets": ["Impermeável", "Malha simples", "Pode esquentar um pouco"]
+    },
+    {
+      "id": "protetor-de-colchao-altenburg-impermeavel-casal",
+      "tier": 2,
+      "name": "Protetor de Colchão Altenburg Impermeável Casal",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-altenburg-impermeavel-casal",
+      "bullets": ["Impermeável e respirável", "Não faz barulho", "Elástico que não solta"]
+    }
+  ]
+}

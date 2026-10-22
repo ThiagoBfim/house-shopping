@@ -1,0 +1,50 @@
+{
+  "label": "Headset gamer",
+  "utensil": false,
+  "options": [
+    {
+      "id": "headset-gamer-hyperx-cloud-stinger-2",
+      "tier": 1,
+      "name": "Headset Gamer HyperX Cloud Stinger 2",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/headset-gamer-hyperx-cloud-stinger-2",
+      "bullets": ["Leve", "Microfone que levanta e muta", "Com fio"]
+    },
+    {
+      "id": "headset-gamer-hyperx-cloud-iii",
+      "tier": 2,
+      "name": "Headset Gamer HyperX Cloud III",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/headset-gamer-hyperx-cloud-iii",
+      "bullets": ["Som espacial", "Almofadas confortáveis por horas", "Microfone melhor"]
+    },
+    {
+      "id": "headset-gamer-sem-fio-logitech-g-pro-x-2-lightspeed",
+      "tier": 3,
+      "name": "Headset Gamer sem Fio Logitech G Pro X 2 Lightspeed",
+      "price": 1599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/headset-gamer-sem-fio-logitech-g-pro-x-2-lightspeed",
+      "bullets": ["Sem fio de baixa latência", "Bateria de ~50 h", "Drivers de grafeno"]
+    },
+    {
+      "id": "headset-steelseries-arctis-nova-pro-wireless",
+      "tier": 4,
+      "name": "Headset SteelSeries Arctis Nova Pro Wireless",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/headset-steelseries-arctis-nova-pro-wireless",
+      "bullets": [
+        "Cancelamento de ruído",
+        "Duas baterias que se trocam",
+        "Liga no PC e no console ao mesmo tempo"
+      ]
+    }
+  ]
+}

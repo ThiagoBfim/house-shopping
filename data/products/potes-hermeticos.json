@@ -1,0 +1,30 @@
+{
+  "label": "Potes para alimentos",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-10-potes-plasticos-hermeticos",
+      "tier": 1,
+      "name": "Kit 10 Potes Plásticos Herméticos",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-10-potes-plasticos-hermeticos",
+      "bullets": ["Tampas com trava", "Para geladeira e marmita", "Mancha com molho"]
+    },
+    {
+      "id": "kit-10-potes-de-vidro-hermeticos-electrolux",
+      "tier": 2,
+      "name": "Kit 10 Potes de Vidro Herméticos Electrolux",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-10-potes-de-vidro-hermeticos-electrolux",
+      "bullets": [
+        "Vidro vai ao micro-ondas e forno",
+        "Não pega cheiro",
+        "Tampas com trava e vedação"
+      ]
+    }
+  ]
+}

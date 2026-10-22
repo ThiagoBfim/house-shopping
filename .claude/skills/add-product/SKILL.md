@@ -50,6 +50,7 @@ O nome do arquivo (kebab-case, sem acento) é o id da categoria.
 ```
 
 - `utensil`: `true` para pratos, talheres, panelas, copos, toalhas, enxoval (cama, berço), kits. Móveis e eletros = `false`.
+- `helper` (opcional): `true` para **facilitadores** — itens que facilitam o dia a dia mas ninguém precisa para morar (organizadores, potes de silicone para congelar, sacos a vácuo, fechadura digital, Alexa). Só entram na lista quando o usuário liga "Incluir facilitadores". Facilitador usa `utensil: false`.
 - `id`: kebab-case único no catálogo inteiro (use marca + modelo).
 - `url`: até existir link de afiliado, use a busca do modelo no Mercado Livre: `https://lista.mercadolivre.com.br/<termos-com-hifen>`.
 - `bullets`: **3–5**, curtos, em pt-BR, explicando **o que muda em relação aos outros tiers** (ex.: "Frost free (o barato não é)"), não a ficha técnica inteira.

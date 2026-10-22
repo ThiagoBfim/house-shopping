@@ -1,0 +1,40 @@
+{
+  "label": "Extensão elétrica",
+  "utensil": true,
+  "options": [
+    {
+      "id": "extensao-eletrica-5-m-3-tomadas-10a",
+      "tier": 1,
+      "name": "Extensão Elétrica 5 m 3 Tomadas 10A",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/extensao-eletrica-5-m-3-tomadas-10a",
+      "bullets": ["5 m de cabo", "3 tomadas", "Para uso leve (10A)"]
+    },
+    {
+      "id": "extensao-eletrica-fame-10-m-10a",
+      "tier": 2,
+      "name": "Extensão Elétrica Fame 10 m 10A",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/extensao-eletrica-fame-10-m-10a",
+      "bullets": ["10 m: alcança varanda e quintal", "Cabo mais grosso", "Plugue reforçado"]
+    },
+    {
+      "id": "extensao-carretel-20-m-20a-com-disjuntor",
+      "tier": 3,
+      "name": "Extensão Carretel 20 m 20A com Disjuntor",
+      "price": 189,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/extensao-carretel-20-m-20a-com-disjuntor",
+      "bullets": [
+        "Carretel enrola o cabo",
+        "Aguenta lavadora de alta pressão e furadeira (20A)",
+        "Disjuntor de segurança"
+      ]
+    }
+  ]
+}

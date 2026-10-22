@@ -1,0 +1,44 @@
+{
+  "label": "Lanterna",
+  "utensil": true,
+  "options": [
+    {
+      "id": "lanterna-led-recarregavel-usb",
+      "tier": 1,
+      "name": "Lanterna LED Recarregável USB",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lanterna-led-recarregavel-usb",
+      "bullets": [
+        "Recarrega no carregador do celular",
+        "Pequena, cabe na gaveta",
+        "Luz suficiente para queda de energia"
+      ]
+    },
+    {
+      "id": "lanterna-tatica-nautika-recarregavel",
+      "tier": 2,
+      "name": "Lanterna Tática Nautika Recarregável",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lanterna-tatica-nautika-recarregavel",
+      "bullets": ["Bem mais forte (foco ajustável)", "Resistente a chuva", "Bateria dura horas"]
+    },
+    {
+      "id": "lanterna-fenix-e28r-recarregavel-1500-lumens",
+      "tier": 3,
+      "name": "Lanterna Fenix E28R Recarregável 1500 lúmens",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lanterna-fenix-e28r-recarregavel-1500-lumens",
+      "bullets": [
+        "Muito forte e compacta",
+        "Corpo de alumínio à prova d’água",
+        "Bateria de longa duração"
+      ]
+    }
+  ]
+}

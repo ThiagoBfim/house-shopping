@@ -1,0 +1,44 @@
+{
+  "label": "Lâmpadas LED",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-10-lampadas-led-bulbo-9w-empalux",
+      "tier": 1,
+      "name": "Kit 10 Lâmpadas LED Bulbo 9W Empalux",
+      "price": 69,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-10-lampadas-led-bulbo-9w-empalux",
+      "bullets": [
+        "10 lâmpadas brancas",
+        "Gastam bem menos que as antigas",
+        "Para trocar as que vierem queimadas"
+      ]
+    },
+    {
+      "id": "kit-10-lampadas-led-bulbo-9w-philips",
+      "tier": 2,
+      "name": "Kit 10 Lâmpadas LED Bulbo 9W Philips",
+      "price": 119,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-10-lampadas-led-bulbo-9w-philips",
+      "bullets": ["Marca com vida útil maior", "Luz mais uniforme", "Escolha branca ou amarela"]
+    },
+    {
+      "id": "kit-4-lampadas-inteligentes-wi-fi-positivo-casa-inteligente",
+      "tier": 3,
+      "name": "Kit 4 Lâmpadas Inteligentes Wi-Fi Positivo Casa Inteligente",
+      "price": 239,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-4-lampadas-inteligentes-wi-fi-positivo-casa-inteligente",
+      "bullets": [
+        "Mudam de cor e intensidade",
+        "Controle pelo celular e Alexa",
+        "Só 4 unidades: para sala e quartos"
+      ]
+    }
+  ]
+}

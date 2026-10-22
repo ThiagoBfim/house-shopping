@@ -1,0 +1,31 @@
+{
+  "label": "Prateleira de box",
+  "utensil": false,
+  "helper": true,
+  "options": [
+    {
+      "id": "prateleira-de-canto-para-box-com-ventosa",
+      "tier": 1,
+      "name": "Prateleira de Canto para Box com Ventosa",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/prateleira-de-canto-para-box-com-ventosa",
+      "bullets": [
+        "Xampu e sabonete fora do chão",
+        "Fixa sem furar",
+        "Ventosa pode soltar com o tempo"
+      ]
+    },
+    {
+      "id": "prateleira-de-canto-para-box-inox-sem-furos-3-andares",
+      "tier": 2,
+      "name": "Prateleira de Canto para Box Inox Sem Furos 3 Andares",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/prateleira-de-canto-para-box-inox-sem-furos-3-andares",
+      "bullets": ["Três andares", "Inox não enferruja", "Fixação por pressão do chão ao teto"]
+    }
+  ]
+}

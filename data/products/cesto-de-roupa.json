@@ -1,0 +1,26 @@
+{
+  "label": "Cesto de roupa",
+  "utensil": true,
+  "options": [
+    {
+      "id": "cesto-de-roupa-plastico-40-l",
+      "tier": 1,
+      "name": "Cesto de Roupa Plástico 40 L",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cesto-de-roupa-plastico-40-l",
+      "bullets": ["Para roupa suja", "Fácil de lavar", "Sem tampa"]
+    },
+    {
+      "id": "cesto-de-roupa-bambu-com-tampa-e-saco-removivel",
+      "tier": 2,
+      "name": "Cesto de Roupa Bambu com Tampa e Saco Removível",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cesto-de-roupa-bambu-com-tampa-e-saco-removivel",
+      "bullets": ["Com tampa", "Saco interno sai para lavar", "Fica bonito no quarto ou banheiro"]
+    }
+  ]
+}

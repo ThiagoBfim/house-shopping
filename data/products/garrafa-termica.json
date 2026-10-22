@@ -1,0 +1,40 @@
+{
+  "label": "Garrafa térmica",
+  "utensil": true,
+  "options": [
+    {
+      "id": "garrafa-termica-invicta-1-l",
+      "tier": 1,
+      "name": "Garrafa Térmica Invicta 1 L",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/garrafa-termica-invicta-1-l",
+      "bullets": ["Ampola de vidro", "Café quente por ~6 h", "Quebra se cair"]
+    },
+    {
+      "id": "garrafa-termica-termolar-inox-1-l",
+      "tier": 2,
+      "name": "Garrafa Térmica Termolar Inox 1 L",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/garrafa-termica-termolar-inox-1-l",
+      "bullets": ["Inox: não quebra", "Quente por ~12 h", "Tampa de pressão"]
+    },
+    {
+      "id": "garrafa-termica-stanley-classic-1-l",
+      "tier": 3,
+      "name": "Garrafa Térmica Stanley Classic 1 L",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/garrafa-termica-stanley-classic-1-l",
+      "bullets": [
+        "Quente por 24 h, gelado por mais",
+        "Praticamente indestrutível",
+        "Garantia vitalícia"
+      ]
+    }
+  ]
+}

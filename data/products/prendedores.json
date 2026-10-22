@@ -1,0 +1,26 @@
+{
+  "label": "Prendedores de roupa",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-48-prendedores-de-roupa-plastico",
+      "tier": 1,
+      "name": "Kit 48 Prendedores de Roupa Plástico",
+      "price": 19,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-48-prendedores-de-roupa-plastico",
+      "bullets": ["48 unidades", "Plástico", "Ressecam no sol"]
+    },
+    {
+      "id": "kit-24-prendedores-de-roupa-inox",
+      "tier": 2,
+      "name": "Kit 24 Prendedores de Roupa Inox",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-24-prendedores-de-roupa-inox",
+      "bullets": ["Inox: não quebra nem enferruja", "Não marca a roupa", "Duram anos"]
+    }
+  ]
+}

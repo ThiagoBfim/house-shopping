@@ -1,0 +1,30 @@
+{
+  "label": "Espelho de corpo inteiro",
+  "utensil": false,
+  "options": [
+    {
+      "id": "espelho-de-porta-30x110-cm",
+      "tier": 1,
+      "name": "Espelho de Porta 30x110 cm",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espelho-de-porta-30x110-cm",
+      "bullets": ["Pendura atrás da porta", "Não ocupa espaço", "Estreito"]
+    },
+    {
+      "id": "espelho-de-chao-com-moldura-60x160-cm",
+      "tier": 2,
+      "name": "Espelho de Chão com Moldura 60x160 cm",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espelho-de-chao-com-moldura-60x160-cm",
+      "bullets": [
+        "Largo, mostra a roupa inteira",
+        "Moldura decorativa",
+        "Apoia no chão ou na parede"
+      ]
+    }
+  ]
+}

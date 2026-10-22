@@ -140,7 +140,11 @@ export function App() {
           room={room}
           products={products}
           initial={session.budget}
-          initialFilters={{ minNeed: session.choices.minNeed, utensils: session.choices.utensils }}
+          initialFilters={{
+            minNeed: session.choices.minNeed,
+            utensils: session.choices.utensils,
+            helpers: session.choices.helpers,
+          }}
           onBack={changeRooms}
           onSubmit={(budget, filters) => {
             const choices = { ...session.choices, ...filters }

@@ -1,0 +1,36 @@
+{
+  "label": "Teclado e mouse",
+  "utensil": false,
+  "options": [
+    {
+      "id": "kit-teclado-e-mouse-sem-fio-logitech-mk270",
+      "tier": 1,
+      "name": "Kit Teclado e Mouse sem Fio Logitech MK270",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-sem-fio-logitech-mk270",
+      "bullets": ["Sem fio, um receptor USB", "Pilha dura meses", "Básico e confiável"]
+    },
+    {
+      "id": "kit-teclado-e-mouse-logitech-mk540-advanced",
+      "tier": 2,
+      "name": "Kit Teclado e Mouse Logitech MK540 Advanced",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-logitech-mk540-advanced",
+      "bullets": ["Teclas mais confortáveis", "Mouse maior", "Teclas de atalho"]
+    },
+    {
+      "id": "kit-teclado-e-mouse-logitech-signature-mk650",
+      "tier": 3,
+      "name": "Kit Teclado e Mouse Logitech Signature MK650",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-logitech-signature-mk650",
+      "bullets": ["Bluetooth: liga em até 3 aparelhos", "Mouse silencioso", "Apoio de pulso"]
+    }
+  ]
+}

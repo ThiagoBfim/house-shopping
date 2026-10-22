@@ -1,0 +1,44 @@
+{
+  "label": "Furadeira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "furadeira-de-impacto-black-decker-560w",
+      "tier": 1,
+      "name": "Furadeira de Impacto Black+Decker 560W",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/furadeira-de-impacto-black-decker-560w",
+      "bullets": ["Com fio", "Fura parede, madeira e metal", "Para pendurar quadros e prateleiras"]
+    },
+    {
+      "id": "parafusadeira-e-furadeira-bosch-gsr-120-li-12v",
+      "tier": 2,
+      "name": "Parafusadeira e Furadeira Bosch GSR 120-LI 12V",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/parafusadeira-e-furadeira-bosch-gsr-120-li-12v",
+      "bullets": [
+        "Sem fio, bateria de lítio",
+        "Monta móveis e fura madeira",
+        "Leve; não tem impacto para concreto"
+      ]
+    },
+    {
+      "id": "furadeira-de-impacto-bosch-gsb-180-li-18v",
+      "tier": 3,
+      "name": "Furadeira de Impacto Bosch GSB 180-LI 18V",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/furadeira-de-impacto-bosch-gsb-180-li-18v",
+      "bullets": [
+        "Sem fio e com impacto (concreto)",
+        "Duas baterias",
+        "Serve para qualquer serviço da casa"
+      ]
+    }
+  ]
+}

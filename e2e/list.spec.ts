@@ -97,7 +97,17 @@ test('item que não coube pode ser adicionado', async ({ page }) => {
   await expect(page.getByText('Faltam')).toBeVisible()
 })
 
-for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Banheiro', 'Área externa']) {
+for (const room of [
+  'Cozinha',
+  'Quarto',
+  'Sala',
+  'Quarto do bebê',
+  'Banheiro',
+  'Área externa',
+  'Lavanderia',
+  'Utilidades',
+  'Escritório',
+]) {
   test(`${room}: monta a lista com R$ 15.000`, async ({ page }) => {
     await page.goto('./')
     await pickRooms(page, { [room]: 1 })
