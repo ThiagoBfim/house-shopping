@@ -13,7 +13,7 @@
 - [ ] Comparar duas opções lado a lado
 - [ ] Exportar lista em PDF / checklist "comprado"
 - [ ] Listas públicas prontas ("Cozinha de apartamento pequeno — R$ 15k")
-- [ ] Outros cômodos: Banheiro, Lavanderia, Home office
+- [x] ~~Outros cômodos: Banheiro, Lavanderia, Home office~~ → Drops 13, 14 e 15
 - [ ] Outras lojas afiliadas (Magalu, Shopee)
 
 ## Registro
