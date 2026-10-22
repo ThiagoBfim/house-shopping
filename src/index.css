@@ -1205,6 +1205,24 @@ h3 {
 
 /* Recalcular */
 
+.summary-saved {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.summary-saved strong,
+.savings-breakdown strong,
+.saved-value {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.savings-breakdown {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+
 .reload-button {
   width: 100%;
   min-height: 40px;

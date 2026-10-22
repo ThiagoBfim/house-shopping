@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { expect, test, type Page } from '@playwright/test'
 import { pickRooms } from './helpers.ts'
 
@@ -69,6 +70,44 @@ test('desfazer uma recusa traz o item de volta', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Desfazer' }).click()
   await expect(card(page, 'Fogão')).toBeVisible()
+})
+
+/** Preço da opção mais barata de uma categoria do catálogo real. */
+const cheapestPrice = (category: string) =>
+  Math.min(
+    ...(
+      JSON.parse(readFileSync(`data/products/${category}.json`, 'utf8')) as {
+        options: { price: number }[]
+      }
+    ).options.map((o) => o.price),
+  )
+
+/** "R$ 1.234,50" → 1234.5 */
+const reais = (text: string | null) => Number(text!.replace(/[^\d,]/g, '').replace(',', '.'))
+
+test('mostra quanto economiza com "já tenho" e recusados', async ({ page }) => {
+  await openKitchen(page, '30000')
+  await expect(page.getByTestId('saved')).toHaveCount(0)
+
+  await card(page, 'Geladeira').getByRole('button', { name: 'Já tenho' }).click()
+  await card(page, 'Fogão').getByRole('button', { name: 'Recusar' }).click()
+
+  const expected = cheapestPrice('geladeira') + cheapestPrice('fogao')
+  await expect(page.getByTestId('saved')).toContainText('Você economiza')
+  expect(reais(await page.getByTestId('saved').locator('strong').textContent())).toBe(expected)
+
+  const section = page.locator('.side-section', { hasText: 'Recusados' })
+  await expect(section).toContainText('Economia de')
+  const row = (label: string) => section.getByRole('listitem').filter({ hasText: label })
+  expect(reais(await row('Geladeira').locator('.saved-value').textContent())).toBe(
+    cheapestPrice('geladeira'),
+  )
+
+  // reativar tira da economia
+  await row('Fogão').getByRole('button', { name: 'Reativar' }).click()
+  expect(reais(await page.getByTestId('saved').locator('strong').textContent())).toBe(
+    cheapestPrice('geladeira'),
+  )
 })
 
 test('mais barato trava o item e o recalcular respeita a trava', async ({ page }) => {

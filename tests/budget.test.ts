@@ -248,6 +248,25 @@ describe('excluded', () => {
     const view = buildList(room, products, 30000, choices({ excluded: { fogao: 'refused' } }))
     expect(view.excluded[0]).toMatchObject({ label: 'Fogao', cheapest: { tier: 1, price: 900 } })
   })
+
+  it('soma a economia dos recusados e dos "já tenho" pelo preço mais barato × quantidade', () => {
+    const view = buildList(
+      room,
+      products,
+      30000,
+      choices({ excluded: { fogao: 'refused', micro: 'owned', freezer: 'owned' } }),
+    )
+    expect(view.saved).toEqual({ refused: 900, owned: 500 + 1900 })
+    expect(view.excluded.find((e) => e.item.category === 'micro')?.saved).toBe(500)
+
+    const fourMicros: Room = { name: 'Copa', items: [{ category: 'micro', need: 5, qty: 4 }] }
+    const owned = buildList(fourMicros, products, 30000, choices({ excluded: { micro: 'owned' } }))
+    expect(owned.saved).toEqual({ refused: 0, owned: 2000 })
+  })
+
+  it('sem exclusões, economia zero', () => {
+    expect(buildList(room, products, 30000).saved).toEqual({ refused: 0, owned: 0 })
+  })
 })
 
 describe('filtros', () => {

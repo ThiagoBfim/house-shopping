@@ -48,6 +48,8 @@ export interface ExcludedEntry {
   label: string
   reason: ExclusionReason
   cheapest: ProductOption
+  /** Quanto deixou de gastar: a opção mais barata × quantidade (o mínimo que custaria). */
+  saved: number
 }
 
 export type FilterReason = 'need' | 'helper' | 'utensil'
@@ -69,6 +71,8 @@ export interface ListView {
   total: number
   /** Saldo; negativo quando a lista passa do orçamento ("faltam R$ X"). */
   remaining: number
+  /** Economia com os recusados e os "já tenho" (soma de `saved` de cada um). */
+  saved: Record<ExclusionReason, number>
 }
 
 export const emptyChoices = (): Choices => ({
@@ -199,8 +203,10 @@ export function describeList(
     budget,
     total: 0,
     remaining: 0,
+    saved: { refused: 0, owned: 0 },
   }
   let total = 0
+  const saved = { refused: 0, owned: 0 }
 
   for (const item of [...room.items].sort(byImportance)) {
     const { label, utensil, helper = false } = products[item.category]
@@ -210,7 +216,9 @@ export function describeList(
     const tier = choices.locked[item.category] ?? plan[item.category]
 
     if (reason) {
-      view.excluded.push({ item, label, reason, cheapest: options[0] })
+      const cost = cents(options[0].price) * item.qty
+      saved[reason] += cost
+      view.excluded.push({ item, label, reason, cheapest: options[0], saved: cost / 100 })
     } else if (hiddenBy) {
       view.filtered.push({ item, label, reason: hiddenBy })
     } else if (tier === undefined) {
@@ -234,6 +242,7 @@ export function describeList(
 
   view.total = total / 100
   view.remaining = (cents(budget) - total) / 100
+  view.saved = { refused: saved.refused / 100, owned: saved.owned / 100 }
   return view
 }
 

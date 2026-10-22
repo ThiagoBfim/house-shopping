@@ -73,6 +73,7 @@ export function ListScreen({
     updateCollapsed(collapsed.includes(id) ? collapsed.filter((c) => c !== id) : [...collapsed, id])
 
   const over = view.remaining < 0
+  const saved = view.saved.owned + view.saved.refused
   const used = view.budget > 0 ? Math.min(100, (view.total / view.budget) * 100) : 100
   // Só conta quem saiu por falta de saldo (não quem foi escondido pelos filtros).
   const removed = view.skipped.filter((s) => changes[s.item.category] === 'removed').length
@@ -174,6 +175,12 @@ export function ListScreen({
         >
           <span style={{ width: `${used}%` }} />
         </div>
+        {saved > 0 && (
+          <p class="summary-saved" data-testid="saved">
+            <span aria-hidden="true">💰</span> Você economiza <strong>{formatBRL(saved)}</strong>{' '}
+            com “já tenho” e recusados
+          </p>
+        )}
         <button
           type="button"
           class={`reload-button ${dirty ? 'is-pending' : ''}`}
@@ -387,12 +394,24 @@ export function ListScreen({
       {view.excluded.length > 0 && (
         <section class="side-section">
           <h3>Recusados e “já tenho”</h3>
+          <p class="savings-breakdown">
+            Economia de <strong>{formatBRL(saved)}</strong>
+            <span class="muted">
+              {' '}
+              (já tenho: {formatBRL(view.saved.owned)} · recusados: {formatBRL(view.saved.refused)}
+              ), contando o modelo mais barato de cada item.
+            </span>
+          </p>
           <ul class="compact-list">
-            {view.excluded.map(({ item, label, reason, cheapest }) => (
+            {view.excluded.map(({ item, label, reason, cheapest, saved: itemSaved }) => (
               <li key={item.category}>
                 <span>
                   {nameOf(item.category, label)}
-                  <span class="muted"> · {REASON_LABELS[reason]}</span>
+                  <span class="muted">
+                    {' '}
+                    · {REASON_LABELS[reason]} ·{' '}
+                    <span class="saved-value">{formatBRL(itemSaved)}</span>
+                  </span>
                 </span>
                 <button
                   type="button"
