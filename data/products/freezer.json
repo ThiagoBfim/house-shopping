@@ -17,14 +17,27 @@
       ]
     },
     {
-      "id": "freezer-vertical-electrolux-fe27",
+      "id": "freezer-vertical-electrolux-fei27t",
       "tier": 2,
-      "name": "Freezer Vertical Electrolux 234 L FE27",
-      "price": 3099,
+      "name": "Freezer Vertical Electrolux Inverter 249 L FEI27T",
+      "price": 2999,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/freezer-vertical-electrolux-fe27",
-      "bullets": ["234 L", "Cycle Defrost (degelo mais fácil)", "Gavetas transparentes"]
+      "url": "https://meli.la/2iyXDhW",
+      "bullets": ["249 L", "Compressor inverter (gasta menos energia)", "Bivolt"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_757060-MLB111525579454_062026-O-freezer-vertical-electrolux-249l-smartbivolt-inverter-fei27t.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2iyXDhW",
+          "price": 2999,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4728968743",
+          "catalogId": "MLB73479286",
+          "history": [{ "date": "2026-10-22", "price": 2999 }]
+        }
+      ]
     },
     {
       "id": "freezer-horizontal-electrolux-hi550",

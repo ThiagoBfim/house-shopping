@@ -114,8 +114,10 @@ export function createLookup(accessToken: string): Lookup {
     const items = await catalogItems(catalogId)
     if (!items) return undefined
     if (itemId !== catalogId) {
+      // Anúncio fora da lista do catálogo (comum nos /up/MLBU…) não prova que acabou:
+      // sem dados, o sync mantém o preço da planilha e só avisa.
       const item = items.find((i) => i.item_id === itemId)
-      return item ? quoteOf(item) : { available: false }
+      return item ? quoteOf(item) : undefined
     }
     // Link só do catálogo: a oferta nova mais barata de vendedor confiável.
     const candidates = items.filter((i) => i.condition === 'new').sort((a, b) => a.price - b.price)

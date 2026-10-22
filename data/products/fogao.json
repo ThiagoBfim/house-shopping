@@ -16,28 +16,54 @@
       "id": "fogao-electrolux-fe5iw",
       "tier": 2,
       "name": "Fogão Electrolux 5 Bocas Mesa Inox FE5IW",
-      "price": 2299,
+      "price": 1760.32,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fogao-electrolux-fe5iw",
+      "url": "https://meli.la/2iPsT3L",
       "bullets": [
         "5 bocas com tripla chama",
         "Forno com função PerfectCook (assa por igual)",
         "Mesa inox"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_819027-MLB118063589191_092026-O-fogao-5-bocas-electrolux-inox-branco-efficient-fe5iw.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2iPsT3L",
+          "price": 1760.32,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7471492298",
+          "catalogId": "MLB58819383",
+          "history": [{ "date": "2026-10-22", "price": 1760.32 }]
+        }
       ]
     },
     {
       "id": "fogao-brastemp-bfs5ncr",
       "tier": 3,
       "name": "Fogão Brastemp 5 Bocas Inox BFS5NCR",
-      "price": 3299,
+      "price": 1879,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fogao-brastemp-bfs5ncr",
+      "url": "https://meli.la/2ecE65h",
       "bullets": [
         "Inox com botões removíveis (limpeza fácil)",
         "Grades duplas de ferro",
         "Forno com vidro interno removível"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_950046-MLA95640132384_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2ecE65h",
+          "price": 1879,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2048022318",
+          "catalogId": "MLB18949054",
+          "history": [{ "date": "2026-10-22", "price": 1879 }]
+        }
       ]
     },
     {

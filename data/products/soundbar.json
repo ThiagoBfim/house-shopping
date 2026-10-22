@@ -27,17 +27,30 @@
       ]
     },
     {
-      "id": "soundbar-samsung-hw-q800",
+      "id": "soundbar-samsung-hw-q800h",
       "tier": 3,
-      "name": "Soundbar Samsung HW-Q800 5.1.2 com Subwoofer",
-      "price": 3999,
+      "name": "Soundbar Samsung HW-Q800H 5.1.2 com Subwoofer",
+      "price": 3904.21,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/soundbar-samsung-hw-q800",
+      "url": "https://meli.la/13BBLsc",
       "bullets": [
         "5.1.2 com subwoofer sem fio",
         "Som que vem de cima (Atmos)",
         "Integração com TV Samsung"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_870359-MLA112693793185_062026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/13BBLsc",
+          "price": 3904.21,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4749629825",
+          "catalogId": "MLB72007944",
+          "history": [{ "date": "2026-10-22", "price": 3904.21 }]
+        }
       ]
     },
     {

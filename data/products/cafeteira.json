@@ -44,15 +44,28 @@
       "id": "delonghi-magnifica-s",
       "tier": 4,
       "name": "Cafeteira Superautomática De'Longhi Magnifica S",
-      "price": 3499,
+      "price": 3479.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/delonghi-magnifica-s",
+      "url": "https://meli.la/2S25SwA",
       "bullets": [
         "Moedor embutido: café em grão moído na hora",
         "Um botão faz o espresso",
         "Vaporizador de leite",
         "Melhor café da lista"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_765434-MLA99498285222_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2S25SwA",
+          "price": 3479.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4621491908",
+          "catalogId": "MLB15166291",
+          "history": [{ "date": "2026-10-22", "price": 3479.99 }]
+        }
       ]
     }
   ]

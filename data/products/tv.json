@@ -33,14 +33,27 @@
       "id": "smart-tv-tcl-55-c6k",
       "tier": 2,
       "name": "Smart TV TCL 55\" QD-Mini LED 144 Hz C6K",
-      "price": 3499,
+      "price": 3229.05,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/smart-tv-tcl-55-c6k",
+      "url": "https://meli.la/1Z76hQr",
       "bullets": [
         "55\" Mini LED: muito mais brilho e contraste",
         "144 Hz: ótima para games",
         "Som 2.1 embutido"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_976857-MLA114607312864_082026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1Z76hQr",
+          "price": 3229.05,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7574364080",
+          "catalogId": "MLB48808732",
+          "history": [{ "date": "2026-10-22", "price": 3229.05 }]
+        }
       ]
     },
     {

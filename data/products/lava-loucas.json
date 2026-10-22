@@ -44,14 +44,27 @@
       "id": "lava-loucas-brastemp-blf61ar",
       "tier": 4,
       "name": "Lava-louças Brastemp 15 Serviços BLF61AR",
-      "price": 3999,
+      "price": 3965.17,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-loucas-brastemp-blf61ar",
+      "url": "https://meli.la/15KhrBV",
       "bullets": [
         "15 serviços, a maior da lista",
         "Melhor resultado de lavagem em testes",
         "Painel digital com início programado"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_855884-MLA80484781925_112024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/15KhrBV",
+          "price": 3965.17,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5336931524",
+          "catalogId": "MLB43068829",
+          "history": [{ "date": "2026-10-22", "price": 3965.17 }]
+        }
       ]
     }
   ]
