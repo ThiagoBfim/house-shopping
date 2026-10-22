@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { expect, test, type Page } from '@playwright/test'
 import { pickRooms } from './helpers.ts'
 
@@ -92,4 +93,32 @@ test('voltar aos cômodos mantém a seleção e a lista salva', async ({ page })
     'true',
   )
   await expect(page).toHaveURL(/#l=/)
+})
+
+test('baixar a lista em Excel', async ({ page }, testInfo) => {
+  await page.goto('./')
+  await pickRooms(page, { Cozinha: 1 })
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    page.getByRole('button', { name: 'Baixar Excel' }).click(),
+  ])
+  expect(download.suggestedFilename()).toMatch(/^lista-house-shopping-\d{4}-\d{2}-\d{2}\.xlsx$/)
+  await expect(page.getByText('Planilha baixada.')).toBeVisible()
+
+  const path = testInfo.outputPath('lista.xlsx')
+  await download.saveAs(path)
+  if (process.env.XLSX_COPY) await download.saveAs(process.env.XLSX_COPY)
+  // zip sem compressão: o XML da planilha aparece em texto puro
+  const bytes = readFileSync(path)
+  expect(bytes.subarray(0, 2).toString()).toBe('PK')
+  const text = bytes.toString('utf8')
+  const fridge = await page
+    .getByRole('article', { name: /^Geladeira:/ })
+    .getByRole('heading')
+    .textContent()
+  expect(text).toContain(fridge!)
+  expect(text).toContain('Link do anúncio')
+  expect(text).toContain('TargetMode="External"')
 })

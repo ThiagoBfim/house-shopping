@@ -15,6 +15,7 @@ import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
 import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
+import { downloadList } from './download.ts'
 import { loadCatalog, type Catalog } from './catalog.ts'
 import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
@@ -329,6 +330,11 @@ export function App() {
                   ? 'Link copiado!'
                   : 'Não foi possível copiar. Copie o endereço da barra.',
               }),
+            onExport: () =>
+              downloadList(view, house.instances).then(
+                () => setToast({ message: 'Planilha baixada.' }),
+                () => setToast({ message: 'Não foi possível gerar a planilha. Tente de novo.' }),
+              ),
           }}
         />
       </>

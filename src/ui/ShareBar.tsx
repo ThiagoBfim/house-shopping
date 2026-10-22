@@ -2,9 +2,11 @@ interface Props {
   url: string
   text: string
   onCopied: (ok: boolean) => void
+  /** Baixa a lista em Excel (.xlsx). */
+  onExport: () => void
 }
 
-export function ShareBar({ url, text, onCopied }: Props) {
+export function ShareBar({ url, text, onCopied, onExport }: Props) {
   const whatsapp = `https://wa.me/?text=${encodeURIComponent(`${text}\n${url}`)}`
   const canShare = typeof navigator !== 'undefined' && 'share' in navigator
 
@@ -39,6 +41,9 @@ export function ShareBar({ url, text, onCopied }: Props) {
           Compartilhar…
         </button>
       )}
+      <button type="button" class="small-button" onClick={onExport}>
+        Baixar Excel
+      </button>
     </div>
   )
 }

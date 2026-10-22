@@ -41,6 +41,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [16](drop-16-tema-claro-escuro.md)                         | Tema claro / escuro               | ✅ Concluído                    | 2026-10-22 18:08 | 2026-10-22 18:10 | 2min    |
 | [17](drop-17-economia-dos-recusados.md)                    | Economia com já tenho e recusados | ✅ Concluído                    | 2026-10-22 18:27 | 2026-10-22 18:30 | 3min    |
 | [18](drop-18-assistente-monte-pra-mim.md)                  | Assistente "Monte pra mim"        | ✅ Concluído                    | 2026-10-22 19:14 | 2026-10-22 19:34 | 20min   |
+| [19](drop-19-exportar-excel.md)                            | Exportar a lista em Excel         | ✅ Concluído                    | 2026-10-22 20:12 | 2026-10-22 20:16 | 4min    |
 
 ### 2ª wave — publicação e automação
 

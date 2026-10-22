@@ -25,7 +25,7 @@ interface Props {
   onEditBudget: () => void
   onChangeRoom: () => void
   onAssistant: () => void
-  share: { url: string; text: string; onCopied: (ok: boolean) => void }
+  share: { url: string; text: string; onCopied: (ok: boolean) => void; onExport: () => void }
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
