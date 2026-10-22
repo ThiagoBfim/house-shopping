@@ -88,6 +88,7 @@ describe('importRows', () => {
         updatedAt: '2026-10-23',
         available: true,
         externalId: 'MLB123456',
+        catalogId: 'MLB123456',
         history: [{ date: '2026-10-23', price: 119.9 }],
       },
     ])
@@ -236,6 +237,7 @@ describe('syncOffers', () => {
           updatedAt: '2026-10-01',
           available: true,
           externalId: 'MLB1',
+          catalogId: 'MLB900',
         },
       ],
     }
@@ -248,7 +250,7 @@ describe('syncOffers', () => {
     }
     const { products: next, report } = await syncOffers(
       withOffer(),
-      async (id) => quotes[id],
+      async ({ itemId }) => quotes[itemId],
       '2026-10-23',
     )
     expect(next.liquidificador.options[0]).toMatchObject({
@@ -288,6 +290,51 @@ describe('syncOffers', () => {
     })
   })
 
+  it('consulta pelo anúncio e pelo produto de catálogo', async () => {
+    const calls: unknown[] = []
+    await syncOffers(withOffer(), async (ids) => (calls.push(ids), undefined), '2026-10-23')
+    expect(calls).toEqual([{ itemId: 'MLB1', catalogId: 'MLB900' }])
+  })
+
+  it('anúncio sumiu das ofertas: indisponível, mantém o último preço', async () => {
+    const { products: next, report } = await syncOffers(
+      withOffer(),
+      async () => ({ available: false }),
+      '2026-10-23',
+    )
+    expect(next.liquidificador.options[0].offers?.[0]).toMatchObject({
+      price: 119,
+      updatedAt: '2026-10-01',
+      available: false,
+    })
+    expect(report).toMatchObject({ unavailable: ['liq-barato'], updated: [], noCommission: [] })
+  })
+
+  it('sem produto de catálogo: pula e avisa', async () => {
+    const base = withOffer()
+    delete base.liquidificador.options[0].offers![0].catalogId
+    let calls = 0
+    const { report } = await syncOffers(base, async () => (calls++, undefined), '2026-10-23')
+    expect(calls).toBe(0)
+    expect(report.noCatalog).toEqual(['liq-barato'])
+  })
+
+  it('rebase: recomeça o histórico no preço da API, sem registrar mudança', async () => {
+    const { products: next, report } = await syncOffers(
+      withOffer(),
+      async () => ({ price: 125, available: true }),
+      '2026-10-23',
+      { rebase: true },
+    )
+    expect(next.liquidificador.options[0].offers?.[0]).toMatchObject({
+      price: 125,
+      updatedAt: '2026-10-23',
+      history: [{ date: '2026-10-23', price: 125 }],
+    })
+    expect(next.liquidificador.options[0].price).toBe(125)
+    expect(report.updated).toEqual([])
+  })
+
   it('não encontrado na API: não mexe na oferta', async () => {
     const before = withOffer()
     const { products: next, report } = await syncOffers(before, async () => undefined, '2026-10-23')
@@ -302,11 +349,26 @@ describe('syncOffers', () => {
   })
 
   it.each([
-    [{ price: 1, available: true, condition: 'new', sellerLevel: '5_green' }, true],
+    [
+      { price: 1, available: true, condition: 'new', sellerLevel: '5_green', sellerSales: 300 },
+      true,
+    ],
     [{ price: 1, available: true, condition: 'new', sellerLevel: '4_light_green' }, true],
     [{ price: 1, available: true }, true],
     [{ price: 1, available: true, condition: 'used', sellerLevel: '5_green' }, false],
     [{ price: 1, available: true, condition: 'new', sellerLevel: '3_yellow' }, false],
+    // loja oficial vale mesmo "amarela" (ex.: Electrolux)
+    [
+      { price: 1, available: true, condition: 'new', sellerLevel: '3_yellow', official: true },
+      true,
+    ],
+    // sem reputação e sem vendas: arriscado
+    [{ price: 1, available: true, condition: 'new', sellerLevel: 'none', sellerSales: 0 }, false],
+    // verde, mas quase sem vendas
+    [
+      { price: 1, available: true, condition: 'new', sellerLevel: '5_green', sellerSales: 3 },
+      false,
+    ],
   ])('earnsCommission(%o) = %s', (quote, expected) => {
     expect(earnsCommission(quote)).toBe(expected)
   })

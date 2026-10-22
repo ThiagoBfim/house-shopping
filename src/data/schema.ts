@@ -27,8 +27,13 @@ export const OfferSchema = z.strictObject({
   url: httpsUrl,
   price: z.number().positive(),
   updatedAt: isoDate,
-  /** Id do produto na loja, usado pelo sync de preços (Mercado Livre: MLB…; Amazon: ASIN). */
+  /** Id do anúncio na loja (Mercado Livre: MLB…; Amazon: ASIN). */
   externalId: z.string().min(3).optional(),
+  /** Mercado Livre: produto de catálogo (`/p/MLB…`). Sem ele, a API não informa o preço. */
+  catalogId: z
+    .string()
+    .regex(/^MLB\d+$/)
+    .optional(),
   /** false = sem estoque / anúncio pausado na última sincronização. */
   available: z.boolean().default(true),
   /** Preços já vistos, em ordem de data; só ganha ponto novo quando o preço muda. */

@@ -16,7 +16,10 @@ loadEnvLocal()
 
 try {
   const lookup = createLookup(await getAccessToken())
-  const { products, report } = await syncOffers(readProducts(), lookup, today())
+  const rebase = process.argv.includes('--rebase')
+  const { products, report } = await syncOffers(readProducts(), lookup, today(), { rebase })
+  if (rebase)
+    console.log('↺ --rebase: histórico recomeçado no preço da API (sem registrar mudança).')
 
   const result = validateCatalog(readJson(new URL('rooms.json', dataDir)), products)
   if (!result.ok) {
@@ -33,8 +36,12 @@ try {
   const warn = (label: string, ids: string[]) =>
     ids.length && console.warn(`⚠ ${label} (${ids.length}): ${ids.join(', ')}`)
   warn('Indisponível no Mercado Livre', report.unavailable)
-  warn('Não gera comissão (usado ou vendedor sem reputação verde)', report.noCommission)
+  warn('Produto usado ou vendedor pouco confiável (pode não gerar comissão)', report.noCommission)
   warn('Não encontrado na API', report.notFound)
+  warn(
+    'Sem produto de catálogo: a API não informa o preço (mantido o da planilha)',
+    report.noCatalog,
+  )
 } catch (error) {
   console.error(`✖ ${(error as Error).message}`)
   process.exit(1)

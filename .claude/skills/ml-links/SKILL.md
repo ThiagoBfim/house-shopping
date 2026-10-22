@@ -46,7 +46,7 @@ await new Promise(r => setTimeout(r, 1500));
              [...c.querySelectorAll('a')].map(a => a.href.split('#')[0]).find(h => /\/p\/MLB|\/up\/MLBU|MLB-\d/.test(h))])
 ```
 
-Escolha pelo modelo certo + vendedor confiável. Prefira links com `/p/MLB…` ou `pdp_filters=item_id:MLB…`.
+Escolha pelo modelo certo + vendedor confiável. **Prefira a página de catálogo** (`/p/MLB…`, de preferência com `pdp_filters=item_id:MLB…`): sem catálogo (`/up/MLBU…`), a API não informa o preço e o `sync:ml` não atualiza o produto.
 
 ## 2. Abrir, conferir e gerar o link (1 produto = 1 `browser_batch`)
 
@@ -68,7 +68,7 @@ if (bar && ok) [...document.querySelectorAll('button')].find(b => b.textContent.
 
 3. `computer wait 4`, depois `computer zoom` em `[540, 160, 1090, 330]` (scale 0.6) e leia o **Link do produto** `https://meli.la/…`.
 
-- `price` = preço em destaque (à vista/Pix). `img` = foto. `item` = id do anúncio: use quando a URL for `/up/MLBU…` sem `item_id` (senão o sync de preço não acha o produto).
+- `price` = preço normal do anúncio (`meta[itemprop=price]`). Se a página mostrar só o preço no Pix, use o "ou R$ X em N vezes"/preço cheio: a API trabalha com o preço normal. `img` = foto. `item` = id do anúncio: use quando a URL for `/up/MLBU…` sem `item_id` (senão o sync de preço não acha o produto).
 - O painel é um iframe de outro domínio: **não dá para ler o link por JS**, só pelo zoom. Por isso o passo 3 (conferência) é obrigatório.
 
 ## 3. Conferir os links (todos de uma vez)
@@ -90,6 +90,7 @@ O link abre o perfil social do afiliado com o produto em destaque. O título tem
 
 ```bash
 npm run ml:links import   # aplica ofertas, preço, histórico e foto; não grava se o catálogo ficar inválido
+npm run sync:ml           # confere o preço pela API (precisa de npm run ml:auth uma vez)
 npm run validate && npm test
 ```
 

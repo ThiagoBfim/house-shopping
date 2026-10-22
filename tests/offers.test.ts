@@ -4,7 +4,7 @@ import {
   bestOffer,
   isAffiliateUrl,
   otherOffers,
-  parseMercadoLivreId,
+  parseMercadoLivreIds,
 } from '../src/data/offers.ts'
 import type { Offer, ProductOption } from '../src/data/schema.ts'
 import { validateCatalog } from '../src/data/validate.ts'
@@ -79,34 +79,42 @@ describe('isAffiliateUrl', () => {
   })
 })
 
-describe('parseMercadoLivreId', () => {
+describe('parseMercadoLivreIds', () => {
   it('produto de catálogo (/p/MLB…)', () => {
     expect(
-      parseMercadoLivreId(
+      parseMercadoLivreIds(
         'https://www.mercadolivre.com.br/geladeira-consul-crm39ab/p/MLB19615251?pdp_filters=x',
       ),
-    ).toEqual({ kind: 'product', id: 'MLB19615251' })
+    ).toEqual({ catalogId: 'MLB19615251' })
   })
 
-  it('anúncio (MLB-123…)', () => {
+  it('catálogo + anúncio escolhido', () => {
     expect(
-      parseMercadoLivreId(
+      parseMercadoLivreIds(
+        'https://www.mercadolivre.com.br/freezer/p/MLB44408808?pdp_filters=item_id%3AMLB7534915934',
+      ),
+    ).toEqual({ catalogId: 'MLB44408808', itemId: 'MLB7534915934' })
+  })
+
+  it('anúncio clássico (MLB-123…) ou só o id', () => {
+    expect(
+      parseMercadoLivreIds(
         'https://produto.mercadolivre.com.br/MLB-3456789012-geladeira-consul-_JM',
       ),
-    ).toEqual({ kind: 'item', id: 'MLB3456789012' })
-    expect(parseMercadoLivreId('MLB3456789012')).toEqual({ kind: 'item', id: 'MLB3456789012' })
+    ).toEqual({ itemId: 'MLB3456789012' })
+    expect(parseMercadoLivreIds('MLB3456789012')).toEqual({ itemId: 'MLB3456789012' })
   })
 
-  it('anúncio escolhido dentro de /up/MLBU… (pdp_filters=item_id)', () => {
+  it('anúncio escolhido dentro de /up/MLBU… (sem catálogo)', () => {
     expect(
-      parseMercadoLivreId(
+      parseMercadoLivreIds(
         'https://www.mercadolivre.com.br/geladeira-consul/up/MLBU4867972163?pdp_filters=item_id%3AMLB7479712988',
       ),
-    ).toEqual({ kind: 'item', id: 'MLB7479712988' })
+    ).toEqual({ itemId: 'MLB7479712988' })
   })
 
   it('link sem id', () => {
-    expect(parseMercadoLivreId('https://mercadolivre.com/sec/2b4M3eb')).toBeUndefined()
+    expect(parseMercadoLivreIds('https://mercadolivre.com/sec/2b4M3eb')).toBeUndefined()
   })
 })
 

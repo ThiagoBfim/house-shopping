@@ -1,5 +1,5 @@
 // Planilha de links de afiliado do Mercado Livre ↔ catálogo (lógica pura, sem arquivos).
-import { applyBestOffer, isAffiliateUrl, parseMercadoLivreId } from '../../src/data/offers.ts'
+import { applyBestOffer, isAffiliateUrl, parseMercadoLivreIds } from '../../src/data/offers.ts'
 import { recordPrice } from '../../src/data/price-history.ts'
 import type { Offer, Products } from '../../src/data/schema.ts'
 import { parsePrice } from './csv.ts'
@@ -41,6 +41,13 @@ export function exportRows(products: Products): string[][] {
         .sort((a, b) => a.tier - b.tier)
         .map((option) => {
           const offer = mlOffer(option.offers)
+          // Reconstrói o link do produto com os dois ids (catálogo + anúncio escolhido).
+          const productLink = offer?.catalogId
+            ? `https://www.mercadolivre.com.br/p/${offer.catalogId}` +
+              (offer.externalId && offer.externalId !== offer.catalogId
+                ? `?pdp_filters=item_id%3A${offer.externalId}`
+                : '')
+            : (offer?.externalId ?? '')
           return [
             option.id,
             category,
@@ -48,7 +55,7 @@ export function exportRows(products: Products): string[][] {
             option.name,
             String(option.price),
             `https://lista.mercadolivre.com.br/${option.id}`,
-            offer?.externalId ?? '',
+            productLink,
             offer?.url ?? '',
             offer ? String(offer.price) : '',
             offer?.updatedAt ?? '',
@@ -104,8 +111,9 @@ export function importRows(
     }
     const options = next[found.category].options
     const option = options[found.i]
-    const externalId =
-      parseMercadoLivreId(row.link_produto ?? '')?.id ?? parseMercadoLivreId(link)?.id
+    const ids = parseMercadoLivreIds(row.link_produto ?? '') ?? parseMercadoLivreIds(link)
+    const externalId = ids?.itemId ?? ids?.catalogId
+    const catalogId = ids?.catalogId
     const existing = mlOffer(option.offers)
     const date = row.data && isIsoDate(row.data) ? row.data : today
     if (row.data && date !== row.data) report.badDates.push(row.id)
@@ -114,7 +122,11 @@ export function importRows(
     const base: Offer = existing
       ? { ...existing, url: link, available: true }
       : { store: 'mercadolivre', url: link, price, updatedAt: date, available: true }
-    const offer = recordPrice({ ...base, ...(externalId && { externalId }) }, date, price)
+    const offer = recordPrice(
+      { ...base, ...(externalId && { externalId }), ...(catalogId && { catalogId }) },
+      date,
+      price,
+    )
     const others = (option.offers ?? []).filter((o) => o.store !== 'mercadolivre')
 
     let image = option.image

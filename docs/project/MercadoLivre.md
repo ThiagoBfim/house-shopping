@@ -24,7 +24,7 @@ Para cada linha (dá para fazer aos poucos; linhas vazias são ignoradas):
 1. Abra o link da coluna **`busca`** e escolha o anúncio certo. Prefira **Loja oficial** ou "MercadoLíder" (reputação verde) e produto **novo**. Se o modelo saiu de linha (só usados ou "indisponível"), troque pelo sucessor no catálogo antes.
 2. Copie o endereço da página do produto para **`link_produto`**. Ele tem um id `MLB…` (inclusive dentro de `pdp_filters=item_id:MLB…`), que o sync de preço usa.
 3. Logado como afiliado, a página do produto mostra no topo a barra **Afiliados → "GANHOS x%" → Compartilhar**. Clique em **Compartilhar** e copie o **Link do produto** (`https://meli.la/…`) para **`link_afiliado`**. Isso também adiciona o produto à sua lista "Minhas recomendações". O Gerador de links do painel (Ferramentas) faz o mesmo.
-4. Em **`preco`**, coloque o preço em destaque (à vista/Pix quando houver; ex.: `4.104,78`).
+4. Em **`preco`**, coloque o **preço normal** do anúncio (não o do Pix), que é o mesmo que a API informa (ex.: `4.105,16`).
 5. Em **`data`**, a data em que viu o preço (`AAAA-MM-DD`; vazia = hoje). Em **`imagem`**, a URL da foto (botão direito na foto → copiar endereço; a página tem em `og:image`). A imagem só é trocada se a coluna vier preenchida.
 
 > O link `meli.la` abre o seu perfil social de afiliado (`/social/<etiqueta>?matt_word=…&matt_tool=…`) com o produto em destaque e o botão "Ir para produto". É assim que a comissão é rastreada.
@@ -75,6 +75,22 @@ Se o catálogo ganhar produtos novos, gere a planilha de novo com `npm run ml:li
 O refresh token muda a cada uso; o script guarda o novo em `.ml-token.json` (também fora do git). Ele atualiza o preço e a disponibilidade de cada produto que tem `link_produto` e mostra o que mudou, o que ficou indisponível e o que não gera comissão.
 
 > Os campos lidos da API (`buy_box_winner`, `price`, `status`, `condition`, `seller_reputation.level_id`) seguem a documentação pública, mas ainda não foram testados com um token real. Se o primeiro `sync:ml` der erro, a mensagem mostra a resposta da API.
+
+## Como o sync de preço funciona (testado com a API real em 2026-10-22)
+
+| Endpoint                                            | Com o token do app | Uso                                                         |
+| --------------------------------------------------- | ------------------ | ----------------------------------------------------------- |
+| `/products/{catálogo}/items`                        | ✅                 | ofertas do produto: preço, condição, vendedor, loja oficial |
+| `/users/{vendedor}`                                 | ✅                 | reputação e vendas do vendedor                              |
+| `/items/{anúncio}`, busca, `/user-products/{MLBU…}` | ❌ 403             | bloqueados para anúncios de terceiros                       |
+
+- Cada oferta guarda o **anúncio** (`externalId`) e o **produto de catálogo** (`catalogId`, do `/p/MLB…`). O sync acha o anúncio escolhido nas ofertas do catálogo. Se ele sumiu, a oferta fica **indisponível** e mantém o último preço.
+- Link **só de catálogo** (sem anúncio específico): vale a oferta nova mais barata de **vendedor confiável**.
+- **Sem catálogo** (`/up/MLBU…`): a API não informa o preço. O sync avisa e mantém o preço da planilha. Por isso, ao gerar o link, prefira a página de catálogo (`/p/…`).
+- **Vendedor confiável** = loja oficial (mesmo com reputação amarela, como a Electrolux) ou reputação verde com pelo menos 50 vendas. Vendedor sem reputação e sem vendas é descartado.
+- **Preço = preço normal do anúncio** (o que a API informa), não o preço no Pix.
+- `npm run sync:ml -- --rebase` recomeça o histórico no preço da API, sem registrar mudança. Usado uma vez, na primeira sincronização, porque a planilha tinha preços no Pix.
+- `npm run ml:auth` autoriza o app e guarda o token em `.ml-token.json`, que fica fora do git. O token se renova sozinho a cada sync.
 
 ## Histórico de preço e promoções
 

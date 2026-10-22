@@ -6,7 +6,7 @@
       "id": "smart-tv-samsung-50-u8000h",
       "tier": 1,
       "name": "Smart TV Samsung Crystal UHD 50\" 4K U8000H",
-      "price": 2674,
+      "price": 2519,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1khtRfy",
@@ -19,11 +19,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1khtRfy",
-          "price": 2674,
+          "price": 2519,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB78576179",
-          "history": [{ "date": "2026-10-22", "price": 2674 }]
+          "history": [{ "date": "2026-10-22", "price": 2519 }],
+          "catalogId": "MLB78576179"
         }
       ],
       "image": "https://http2.mlstatic.com/D_NQ_NP_972857-MLA116658596194_092026-O.webp"
@@ -46,7 +47,7 @@
       "id": "smart-tv-lg-oled-55-c6",
       "tier": 3,
       "name": "Smart TV LG OLED evo 55\" C6",
-      "price": 6858.1,
+      "price": 7219.05,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/2RvShAm",
@@ -60,11 +61,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2RvShAm",
-          "price": 6858.1,
+          "price": 7219.05,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7608133612",
-          "history": [{ "date": "2026-10-22", "price": 6858.1 }]
+          "history": [{ "date": "2026-10-22", "price": 7219.05 }],
+          "catalogId": "MLB68214240"
         }
       ]
     },
@@ -72,7 +74,7 @@
       "id": "smart-tv-samsung-oled-65-s95h",
       "tier": 4,
       "name": "Smart TV Samsung OLED 65\" 4K S95H",
-      "price": 14379,
+      "price": 13372.47,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/12ivCtv",
@@ -86,11 +88,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/12ivCtv",
-          "price": 14379,
+          "price": 13372.47,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5325874311",
-          "history": [{ "date": "2026-10-22", "price": 14379 }]
+          "history": [{ "date": "2026-10-22", "price": 13372.47 }],
+          "catalogId": "MLB79674454"
         }
       ]
     }

@@ -57,26 +57,30 @@ export function isAffiliateUrl(url: string): boolean {
   )
 }
 
-export type MercadoLivreId = { kind: 'product' | 'item'; id: string }
+export interface MercadoLivreIds {
+  /** Anúncio (MLB + número): o que foi escolhido para o link de afiliado. */
+  itemId?: string
+  /** Produto de catálogo (`/p/MLB…`): é por ele que a API informa preço e disponibilidade. */
+  catalogId?: string
+}
 
 /**
- * Extrai o id de uma página de produto do Mercado Livre:
- * - anúncio escolhido (`?pdp_filters=item_id:MLB123…`, também em `/up/MLBU…`) → item MLB123…
- * - catálogo: `…/p/MLB19615251` → produto MLB19615251
- * - anúncio: `produto.mercadolivre.com.br/MLB-1234567890-…` → item MLB1234567890
+ * Extrai os ids de uma página de produto do Mercado Livre:
+ * - catálogo: `…/p/MLB19615251` → catalogId
+ * - anúncio escolhido: `?pdp_filters=item_id:MLB123…` (também em `/up/MLBU…`) → itemId
+ * - anúncio clássico: `produto.mercadolivre.com.br/MLB-1234567890-…` ou só `MLB1234567890` → itemId
  */
-export function parseMercadoLivreId(url: string): MercadoLivreId | undefined {
+export function parseMercadoLivreIds(url: string): MercadoLivreIds | undefined {
   let decoded = url
   try {
     decoded = decodeURIComponent(url)
   } catch {
     // URL com % inválido: usa como veio
   }
-  const chosen = decoded.match(/item_id:(MLB\d+)/i)
-  if (chosen) return { kind: 'item', id: chosen[1].toUpperCase() }
-  const product = decoded.match(/\/p\/(MLB\d+)/i)
-  if (product) return { kind: 'product', id: product[1].toUpperCase() }
-  const item = decoded.match(/\b(MLB)-?(\d{6,})/i)
-  if (item) return { kind: 'item', id: `MLB${item[2]}` }
-  return undefined
+  const catalogId = decoded.match(/\/p\/(MLB\d+)/i)?.[1].toUpperCase()
+  const chosen = decoded.match(/item_id:(MLB\d+)/i)?.[1].toUpperCase()
+  const classic = catalogId ? undefined : decoded.match(/\b(MLB)-?(\d{6,})/i)
+  const itemId = chosen ?? (classic ? `MLB${classic[2]}` : undefined)
+  if (!itemId && !catalogId) return undefined
+  return { ...(itemId && { itemId }), ...(catalogId && { catalogId }) }
 }

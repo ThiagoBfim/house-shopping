@@ -44,7 +44,7 @@
       "id": "fogao-electrolux-5-bocas-airfry",
       "tier": 4,
       "name": "Fogão Electrolux 5 Bocas Airfry Gás/Elétrico Inox",
-      "price": 4323.08,
+      "price": 4699,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1phX4ru",
@@ -59,11 +59,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1phX4ru",
-          "price": 4323.08,
+          "price": 4699,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB6258830598",
-          "history": [{ "date": "2026-10-22", "price": 4323.08 }]
+          "history": [{ "date": "2026-10-22", "price": 4699 }],
+          "catalogId": "MLB64611576"
         }
       ]
     }

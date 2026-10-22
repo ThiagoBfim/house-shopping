@@ -1,7 +1,7 @@
 // Cliente mínimo da API do Mercado Livre. Desde 2025 todos os endpoints exigem token
 // (sem token: 403 "PolicyAgent"). Ver docs/project/MercadoLivre.md.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import type { Lookup, Quote } from './ml-sync.ts'
+import { isTrustedSeller, type Lookup } from './ml-sync.ts'
 
 export const API = 'https://api.mercadolibre.com'
 const TOKEN_FILE = new URL('../../.ml-token.json', import.meta.url)
@@ -59,45 +59,70 @@ export function createLookup(accessToken: string): Lookup {
     return (await response.json()) as T
   }
 
-  const sellerLevels = new Map<number, string | undefined>()
-  const sellerLevel = async (sellerId: number | undefined) => {
-    if (sellerId === undefined) return undefined
-    if (!sellerLevels.has(sellerId)) {
-      const user = await get<{ seller_reputation?: { level_id?: string } }>(`/users/${sellerId}`)
-      sellerLevels.set(sellerId, user?.seller_reputation?.level_id)
+  interface Seller {
+    sellerLevel?: string
+    sellerSales?: number
+  }
+  const sellers = new Map<number, Seller>()
+  const seller = async (sellerId: number | undefined): Promise<Seller> => {
+    if (sellerId === undefined) return {}
+    if (!sellers.has(sellerId)) {
+      const user = await get<{
+        seller_reputation?: { level_id?: string | null; transactions?: { total?: number } }
+      }>(`/users/${sellerId}`)
+      const reputation = user?.seller_reputation
+      sellers.set(sellerId, {
+        sellerLevel: reputation ? (reputation.level_id ?? 'none') : undefined,
+        sellerSales: reputation?.transactions?.total,
+      })
     }
-    return sellerLevels.get(sellerId)
+    return sellers.get(sellerId)!
   }
 
-  interface Item {
+  interface CatalogItem {
+    item_id: string
     price: number
-    status: string
     condition?: string
     seller_id?: number
-    pictures?: { secure_url?: string }[]
-    thumbnail?: string
+    official_store_id?: number | null
   }
 
-  const fromItem = async (item: Item): Promise<Quote> => ({
+  // Desde 2025, /items/{id} de outros vendedores dá 403. As ofertas de um produto de
+  // catálogo continuam abertas: é por elas que achamos o anúncio escolhido.
+  const catalogItems = async (catalogId: string) => {
+    const all: CatalogItem[] = []
+    for (let offset = 0; offset < 500; offset += 100) {
+      const page = await get<{ results: CatalogItem[]; paging: { total: number } }>(
+        `/products/${catalogId}/items?limit=100&offset=${offset}`,
+      )
+      if (!page) return undefined
+      all.push(...page.results)
+      if (all.length >= page.paging.total) break
+    }
+    return all
+  }
+
+  const quoteOf = async (item: CatalogItem) => ({
     price: item.price,
-    available: item.status === 'active',
+    available: true,
     condition: item.condition,
-    sellerLevel: await sellerLevel(item.seller_id),
-    image: item.pictures?.[0]?.secure_url ?? item.thumbnail?.replace(/^http:/, 'https:'),
+    official: item.official_store_id != null,
+    ...(await seller(item.seller_id)),
   })
 
-  return async (externalId) => {
-    // Produto de catálogo (/p/MLB…): o preço é o do anúncio que ganha a "buy box".
-    const product = await get<{ buy_box_winner?: { item_id: string } | null }>(
-      `/products/${externalId}`,
-    )
-    if (product) {
-      const winner = product.buy_box_winner
-      if (!winner) return undefined
-      const item = await get<Item>(`/items/${winner.item_id}`)
-      return item && fromItem(item)
+  return async ({ itemId, catalogId }) => {
+    const items = await catalogItems(catalogId)
+    if (!items) return undefined
+    if (itemId !== catalogId) {
+      const item = items.find((i) => i.item_id === itemId)
+      return item ? quoteOf(item) : { available: false }
     }
-    const item = await get<Item>(`/items/${externalId}`)
-    return item && fromItem(item)
+    // Link só do catálogo: a oferta nova mais barata de vendedor confiável.
+    const candidates = items.filter((i) => i.condition === 'new').sort((a, b) => a.price - b.price)
+    for (const item of candidates) {
+      const quote = await quoteOf(item)
+      if (isTrustedSeller(quote)) return quote
+    }
+    return { available: false }
   }
 }

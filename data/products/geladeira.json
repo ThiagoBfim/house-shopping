@@ -32,7 +32,7 @@
       "id": "geladeira-electrolux-it70s",
       "tier": 2,
       "name": "Geladeira Electrolux Frost Free Inverter 480 L IT70S",
-      "price": 4104.78,
+      "price": 3899,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1kohmr4",
@@ -45,11 +45,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1kohmr4",
-          "price": 4104.78,
+          "price": 3899,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB36520314",
-          "history": [{ "date": "2026-10-22", "price": 4104.78 }]
+          "history": [{ "date": "2026-10-22", "price": 3899 }],
+          "catalogId": "MLB36520314"
         }
       ],
       "image": "https://http2.mlstatic.com/D_NQ_NP_780538-MLU76901817142_062024-O.webp"
@@ -76,7 +77,8 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB65575170",
-          "history": [{ "date": "2026-10-22", "price": 4299 }]
+          "history": [{ "date": "2026-10-22", "price": 4299 }],
+          "catalogId": "MLB65575170"
         }
       ]
     },
@@ -84,7 +86,7 @@
       "id": "geladeira-brastemp-bro88ab",
       "tier": 4,
       "name": "Geladeira Brastemp French Door Inteligente 630 L BRO88AB",
-      "price": 5749,
+      "price": 5503,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1HR2kHx",
@@ -99,11 +101,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1HR2kHx",
-          "price": 5749,
+          "price": 5503,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7657831126",
-          "history": [{ "date": "2026-10-22", "price": 5749 }]
+          "history": [{ "date": "2026-10-22", "price": 5503 }],
+          "catalogId": "MLB79147245"
         }
       ]
     }

@@ -30,7 +30,7 @@
       "id": "freezer-horizontal-electrolux-hi550",
       "tier": 3,
       "name": "Freezer Horizontal Electrolux Inverter 513 L HI550",
-      "price": 3463.88,
+      "price": 3646.19,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1UJ4rCV",
@@ -44,11 +44,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1UJ4rCV",
-          "price": 3463.88,
+          "price": 3646.19,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7534915934",
-          "history": [{ "date": "2026-10-22", "price": 3463.88 }]
+          "history": [{ "date": "2026-10-22", "price": 3646.19 }],
+          "catalogId": "MLB44408808"
         }
       ]
     },
@@ -56,7 +57,7 @@
       "id": "freezer-brastemp-bvr28pb",
       "tier": 4,
       "name": "Freezer Vertical Brastemp Frost Free 276 L BVR28PB",
-      "price": 3467.5,
+      "price": 3650,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://meli.la/1YxsxSf",
@@ -70,11 +71,12 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1YxsxSf",
-          "price": 3467.5,
+          "price": 3650,
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB6214393636",
-          "history": [{ "date": "2026-10-22", "price": 3467.5 }]
+          "history": [{ "date": "2026-10-22", "price": 3650 }],
+          "catalogId": "MLB64967165"
         }
       ]
     }
