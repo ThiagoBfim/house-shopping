@@ -3,47 +3,86 @@
   "utensil": false,
   "options": [
     {
-      "id": "aspirador-de-po-vertical-mondial-turbo-cycle-1000w",
+      "id": "aspirador-de-po-mondial-turbo-cycle-1500w",
       "tier": 1,
-      "name": "Aspirador de Pó Vertical Mondial Turbo Cycle 1000W",
-      "price": 199,
+      "name": "Aspirador de Pó Mondial Turbo Cycle 1500 W AP-40",
+      "price": 159.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-vertical-mondial-turbo-cycle-1000w",
+      "url": "https://meli.la/2vRjDxF",
       "bullets": [
         "2 em 1: vertical para o chão e de mão para o sofá",
-        "Com fio",
+        "Com fio, 1500 W",
         "Reservatório pequeno"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_977457-MLA99531856406_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2vRjDxF",
+          "price": 159.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5232784214",
+          "catalogId": "MLB44673154",
+          "history": [{ "date": "2026-10-22", "price": 159.9 }]
+        }
       ]
     },
     {
       "id": "aspirador-de-po-e-agua-wap-gtw-10",
       "tier": 2,
       "name": "Aspirador de Pó e Água WAP GTW 10",
-      "price": 399,
+      "price": 246.15,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/aspirador-de-po-e-agua-wap-gtw-10",
+      "url": "https://meli.la/2AMLWub",
       "bullets": [
         "Aspira pó e líquidos (água derramada, box, quintal)",
         "Função sopro",
         "Bocais para sofá, frestas e carro",
         "Reservatório grande de 10 L"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_912762-MLB92318815045_092025-O-aspirador-de-po-e-agua-wap-gtw-10-10l-amarelo-e-preto-127v.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2AMLWub",
+          "price": 246.15,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2631836695",
+          "catalogId": "MLB8923630",
+          "history": [{ "date": "2026-10-22", "price": 246.15 }]
+        }
       ]
     },
     {
-      "id": "aspirador-vertical-sem-fio-electrolux-ergorapido",
+      "id": "aspirador-vertical-sem-fio-electrolux-ergorapido-erg019",
       "tier": 3,
-      "name": "Aspirador Vertical sem Fio Electrolux ErgoRapido",
-      "price": 899,
+      "name": "Aspirador Vertical sem Fio Electrolux Ergorapido ERG019",
+      "price": 659.66,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/aspirador-vertical-sem-fio-electrolux-ergorapido",
+      "url": "https://meli.la/2BS74fw",
       "bullets": [
         "Sem fio: aspira a casa toda sem tomada",
         "Vira aspirador de mão (sofá, carro)",
-        "Bateria de ~40 min",
-        "Fica em pé sozinho"
+        "Bateria de ~30 min",
+        "Luz LED na frente"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_932880-MLA112170417900_062026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2BS74fw",
+          "price": 659.66,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4040705625",
+          "catalogId": "MLB48927504",
+          "history": [{ "date": "2026-10-22", "price": 659.66 }]
+        }
       ]
     },
     {

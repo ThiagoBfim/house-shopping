@@ -5,12 +5,25 @@
     {
       "id": "caixa-termica-coleman-28-qt",
       "tier": 1,
-      "name": "Caixa Térmica Coleman 28 QT (26 L)",
-      "price": 149,
+      "name": "Caixa Térmica Coleman 28 qt (26,5 L)",
+      "price": 240.13,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/caixa-termica-coleman-28-qt",
-      "bullets": ["26 L", "Mantém gelo por ~1 dia", "Leve"]
+      "url": "https://meli.la/2PtYc6N",
+      "bullets": ["26 L", "Mantém gelo por ~1 dia", "Leve"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_711486-MLA99443561882_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2PtYc6N",
+          "price": 240.13,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3865313671",
+          "catalogId": "MLB41252431",
+          "history": [{ "date": "2026-10-22", "price": 240.13 }]
+        }
+      ]
     },
     {
       "id": "caixa-termica-coleman-48-qt",

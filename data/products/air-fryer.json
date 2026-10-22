@@ -6,11 +6,24 @@
       "id": "air-fryer-mondial-family-af-30",
       "tier": 1,
       "name": "Air Fryer Mondial Family IV 3,5 L AF-30",
-      "price": 279,
+      "price": 289.79,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/air-fryer-mondial-family-af-30",
-      "bullets": ["3,5 L: porção para 1–2 pessoas", "1500 W", "Timer e desligamento automático"]
+      "url": "https://meli.la/1LgyKAP",
+      "bullets": ["3,5 L: porção para 1–2 pessoas", "1500 W", "Timer e desligamento automático"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_972484-MLA100185503291_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1LgyKAP",
+          "price": 289.79,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5167532703",
+          "catalogId": "MLB19693313",
+          "history": [{ "date": "2026-10-22", "price": 289.79 }]
+        }
+      ]
     },
     {
       "id": "air-fryer-electrolux-eaf50",

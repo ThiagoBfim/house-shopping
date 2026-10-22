@@ -5,12 +5,29 @@
     {
       "id": "batedeira-mondial-pratica-400w",
       "tier": 1,
-      "name": "Batedeira Mondial Prática 400W",
-      "price": 119,
+      "name": "Batedeira Mondial Prática 400 W B-44",
+      "price": 75.94,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/batedeira-mondial-pratica-400w",
-      "bullets": ["Batedeira de mão (sem tigela)", "Para bolo simples", "Guarda em qualquer gaveta"]
+      "url": "https://meli.la/2mv7Mk8",
+      "bullets": [
+        "Batedeira de mão (sem tigela)",
+        "Para bolo simples",
+        "Guarda em qualquer gaveta"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_877834-MLA99469550350_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2mv7Mk8",
+          "price": 75.94,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3602385150",
+          "catalogId": "MLB16016316",
+          "history": [{ "date": "2026-10-22", "price": 75.94 }]
+        }
+      ]
     },
     {
       "id": "batedeira-planetaria-philco-php500-turbo",

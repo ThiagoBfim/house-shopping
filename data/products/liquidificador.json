@@ -6,11 +6,24 @@
       "id": "liquidificador-mondial-turbo-power-l-99",
       "tier": 1,
       "name": "Liquidificador Mondial Turbo Power L-99",
-      "price": 129,
+      "price": 139,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/liquidificador-mondial-turbo-power-l-99",
-      "bullets": ["550 W", "Copo de plástico", "3 velocidades + pulsar"]
+      "url": "https://meli.la/2j7wXqT",
+      "bullets": ["550 W", "Copo de plástico", "3 velocidades + pulsar"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_795957-MLA115402306061_072026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2j7wXqT",
+          "price": 139,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5226595363",
+          "catalogId": "MLB76159966",
+          "history": [{ "date": "2026-10-22", "price": 139 }]
+        }
+      ]
     },
     {
       "id": "liquidificador-philips-walita-serie-3000",

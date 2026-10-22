@@ -5,12 +5,25 @@
     {
       "id": "purificador-ibbl-e-due",
       "tier": 1,
-      "name": "Purificador de Água IBBL E-Due Freedom",
-      "price": 349,
+      "name": "Purificador de Água IBBL E-Due Equilibrium",
+      "price": 448,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/purificador-ibbl-e-due",
-      "bullets": ["Água natural filtrada", "Instalação simples", "Refil barato (cerca de R$ 40)"]
+      "url": "https://meli.la/17EDmju",
+      "bullets": ["Água gelada e natural", "Instalação simples", "Refil barato"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_653811-MLA99516892260_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/17EDmju",
+          "price": 448,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6844611576",
+          "catalogId": "MLB23641514",
+          "history": [{ "date": "2026-10-22", "price": 448 }]
+        }
+      ]
     },
     {
       "id": "purificador-electrolux-pe11b",
