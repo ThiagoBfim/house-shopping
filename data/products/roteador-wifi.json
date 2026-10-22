@@ -5,25 +5,51 @@
     {
       "id": "roteador-wi-fi-tp-link-archer-c20-ac750",
       "tier": 1,
-      "name": "Roteador Wi-Fi TP-Link Archer C20 AC750",
-      "price": 149,
+      "name": "Roteador Wi-Fi TP-Link Archer C20 Dual Band",
+      "price": 176,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/roteador-wi-fi-tp-link-archer-c20-ac750",
-      "bullets": ["Dual band", "Para apartamento pequeno", "Até ~100 Mbps de verdade"]
+      "url": "https://meli.la/2gjmVLZ",
+      "bullets": ["Dual band", "Para apartamento pequeno", "Até ~100 Mbps de verdade"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_715937-MLA105968268874_022026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2gjmVLZ",
+          "price": 176,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4580688095",
+          "catalogId": "MLB29272262",
+          "history": [{ "date": "2026-10-22", "price": 176 }]
+        }
+      ]
     },
     {
       "id": "roteador-wi-fi-6-tp-link-archer-ax12",
       "tier": 2,
       "name": "Roteador Wi-Fi 6 TP-Link Archer AX12",
-      "price": 299,
+      "price": 332.64,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/roteador-wi-fi-6-tp-link-archer-ax12",
+      "url": "https://meli.la/26Lwub6",
       "bullets": [
         "Wi-Fi 6: mais aparelhos ao mesmo tempo",
         "Internet de até 500 Mbps",
         "Melhor alcance"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_743249-MLB119274357325_102026-O-roteador-wireless-tplink-archer-ax12-wifi-6-easymesh-ax1500.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/26Lwub6",
+          "price": 332.64,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3481165679",
+          "catalogId": "MLB59029690",
+          "history": [{ "date": "2026-10-22", "price": 332.64 }]
+        }
       ]
     },
     {
