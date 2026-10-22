@@ -276,13 +276,48 @@ function roundUpNicely(value: number): number {
   return Math.ceil(value / step) * step
 }
 
+export type PresetId = 'economico' | 'equilibrado' | 'premium'
+
+export interface BudgetPreset {
+  id: PresetId
+  /** Tier que a maior parte dos itens alcança com este orçamento. */
+  tier: Tier
+  value: number
+}
+
+const PRESET_TIERS: [PresetId, Tier][] = [
+  ['economico', 1],
+  ['equilibrado', 2],
+  ['premium', 3],
+]
+
+/** Total com todos os itens (que passam pelos filtros) no tier pedido (ou o mais próximo abaixo). */
+export function tierTotal(
+  room: Room,
+  products: Products,
+  tier: Tier,
+  filters: Pick<Choices, 'minNeed' | 'utensils'> = emptyChoices(),
+): number {
+  let total = 0
+  for (const item of room.items) {
+    if (filterReason(item, products, filters)) continue
+    total += cents(optionForTier(sortedOptions(products, item.category), tier).price) * item.qty
+  }
+  return total / 100
+}
+
 /**
- * Valores sugeridos de orçamento a partir da faixa da seleção: tudo no mais barato,
- * 1/4 e 1/2 do caminho até o topo, e tudo no topo (sem repetidos).
+ * Três orçamentos prontos: econômico (tudo no tier 1), equilibrado (tudo no 2) e
+ * premium (tudo no 3), arredondados para cima para caberem com folga.
  */
-export function suggestBudgets(range: BudgetRange): number[] {
-  const { allCheapest: low, allTop: high } = range
-  if (high <= 0) return []
-  const points = [low, low + (high - low) / 4, low + (high - low) / 2, high].map(roundUpNicely)
-  return [...new Set(points)]
+export function budgetPresets(
+  room: Room,
+  products: Products,
+  filters: Pick<Choices, 'minNeed' | 'utensils'> = emptyChoices(),
+): BudgetPreset[] {
+  return PRESET_TIERS.map(([id, tier]) => ({
+    id,
+    tier,
+    value: roundUpNicely(tierTotal(room, products, tier, filters)),
+  }))
 }

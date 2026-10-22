@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import type { Products, Room } from '../data/schema.ts'
-import { budgetRange, suggestBudgets } from '../engine/budget.ts'
+import { budgetPresets, budgetRange, type PresetId } from '../engine/budget.ts'
 import { formatBRLWhole, formatInteger, parseDigits } from '../engine/money.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
 
@@ -13,11 +13,34 @@ interface Props {
   onBack: () => void
 }
 
+const PRESET_TEXT: Record<PresetId, { name: string; description: string }> = {
+  economico: {
+    name: 'Econômico',
+    description: 'Tudo o que a casa precisa, nos modelos mais em conta.',
+  },
+  equilibrado: {
+    name: 'Equilibrado',
+    description: 'Bons modelos na maior parte, com melhor custo-benefício.',
+  },
+  premium: {
+    name: 'Premium',
+    description: 'Os itens mais importantes em modelos caros e topo de linha.',
+  },
+}
+
 export function BudgetForm({ room, products, initial, initialFilters, onSubmit, onBack }: Props) {
-  const [value, setValue] = useState(initial ?? 0)
   const [filters, setFilters] = useState(initialFilters)
+  const presets = budgetPresets(room, products, filters)
   const range = budgetRange(room, products, filters)
-  const suggestions = suggestBudgets(range)
+
+  // Opção escolhida acompanha os filtros (o valor muda com eles); valor digitado fica fixo.
+  const [preset, setPreset] = useState<PresetId | undefined>(() =>
+    initial === undefined
+      ? 'equilibrado'
+      : budgetPresets(room, products, initialFilters).find((p) => p.value === initial)?.id,
+  )
+  const [custom, setCustom] = useState(initial ?? 0)
+  const value = preset ? presets.find((p) => p.id === preset)!.value : custom
 
   return (
     <section>
@@ -33,44 +56,48 @@ export function BudgetForm({ room, products, initial, initialFilters, onSubmit, 
           if (value > 0) onSubmit(value, filters)
         }}
       >
-        <label class="budget-field">
-          <span class="budget-prefix">R$</span>
-          <input
-            inputMode="numeric"
-            autoComplete="off"
-            aria-label="Orçamento em reais"
-            placeholder="30.000"
-            value={value ? formatInteger(value) : ''}
-            onInput={(e) => setValue(parseDigits(e.currentTarget.value))}
-          />
-        </label>
-
-        <div class="chips">
-          {suggestions.map((suggestion) => (
-            <button
-              key={suggestion}
-              type="button"
-              class={`chip ${suggestion === value ? 'chip-active' : ''}`}
-              onClick={() => setValue(suggestion)}
-            >
-              {formatBRLWhole(suggestion)}
-            </button>
+        <div class="presets" role="radiogroup" aria-label="Orçamentos sugeridos">
+          {presets.map(({ id, value: presetValue }) => (
+            <label key={id} class={`preset ${preset === id ? 'is-selected' : ''}`}>
+              <input
+                type="radio"
+                name="preset"
+                checked={preset === id}
+                onChange={() => setPreset(id)}
+              />
+              <span class="preset-name">{PRESET_TEXT[id].name}</span>
+              <strong class="preset-value">{formatBRLWhole(presetValue)}</strong>
+              <span class="preset-description">{PRESET_TEXT[id].description}</span>
+            </label>
           ))}
         </div>
 
-        <Filters value={filters} onChange={setFilters} />
+        <div class="custom-budget">
+          <span class="custom-budget-label" id="custom-budget-label">
+            Ou digite outro valor
+          </span>
+          <label class={`budget-field ${preset ? '' : 'is-active'}`}>
+            <span class="budget-prefix">R$</span>
+            <input
+              inputMode="numeric"
+              autoComplete="off"
+              aria-label="Orçamento em reais"
+              aria-describedby="custom-budget-label budget-range"
+              placeholder={formatInteger(presets[1]?.value ?? 30000)}
+              value={value ? formatInteger(value) : ''}
+              onInput={(e) => {
+                setPreset(undefined)
+                setCustom(parseDigits(e.currentTarget.value))
+              }}
+            />
+          </label>
+          <p class="budget-range" id="budget-range">
+            Só o necessário sai por {formatBRLWhole(range.required)}; tudo topo de linha, por{' '}
+            {formatBRLWhole(range.allTop)}.
+          </p>
+        </div>
 
-        <ul class="range-hints">
-          <li>
-            Só o necessário, no mais barato: <strong>{formatBRLWhole(range.required)}</strong>
-          </li>
-          <li>
-            Tudo, no mais barato: <strong>{formatBRLWhole(range.allCheapest)}</strong>
-          </li>
-          <li>
-            Tudo, topo de linha: <strong>{formatBRLWhole(range.allTop)}</strong>
-          </li>
-        </ul>
+        <Filters value={filters} onChange={setFilters} />
 
         <button type="submit" class="primary-button" disabled={value <= 0}>
           Montar minha lista

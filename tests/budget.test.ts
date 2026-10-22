@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { products as realProducts, rooms as realRooms } from '../src/data/catalog-data.ts'
 import type { Products, Room, RoomItem, Tier } from '../src/data/schema.ts'
 import {
+  budgetPresets,
   budgetRange,
   buildList,
   describeList,
@@ -10,7 +11,7 @@ import {
   optionForTier,
   planList,
   sortedOptions,
-  suggestBudgets,
+  tierTotal,
   type Choices,
 } from '../src/engine/budget.ts'
 
@@ -303,21 +304,31 @@ describe('filtros', () => {
   })
 })
 
-describe('suggestBudgets', () => {
-  it('sugere valores redondos entre tudo barato e tudo no topo', () => {
-    expect(suggestBudgets({ required: 2900, allCheapest: 5450, allTop: 35650 })).toEqual([
-      6000, 13000, 25000, 40000,
+describe('tierTotal / budgetPresets', () => {
+  it('soma todos os itens no tier pedido (tier inexistente usa o mais próximo abaixo)', () => {
+    expect(tierTotal(room, products, 1)).toBe(CHEAPEST_TOTAL)
+    expect(tierTotal(room, products, 2)).toBe(3500 + 1600 + 900 + 3000 + 350)
+    expect(tierTotal(room, products, 4)).toBe(15000 + 8000 + 3300 + 9000 + 350)
+  })
+
+  it('respeita os filtros', () => {
+    expect(tierTotal(room, products, 1, { minNeed: 4, utensils: true })).toBe(2900)
+  })
+
+  it('três opções arredondadas para cima, em ordem crescente', () => {
+    expect(budgetPresets(room, products)).toEqual([
+      { id: 'economico', tier: 1, value: 6000 },
+      { id: 'equilibrado', tier: 2, value: 10000 },
+      { id: 'premium', tier: 3, value: 17000 },
     ])
   })
 
-  it('casa grande usa passos maiores', () => {
-    expect(suggestBudgets({ required: 0, allCheapest: 40_100, allTop: 260_000 })).toEqual([
-      45000, 100000, 160000, 260000,
-    ])
-  })
-
-  it('sem itens, sem sugestões; valores iguais não repetem', () => {
-    expect(suggestBudgets({ required: 0, allCheapest: 0, allTop: 0 })).toEqual([])
-    expect(suggestBudgets({ required: 0, allCheapest: 990, allTop: 1000 })).toEqual([1000])
+  it('com o orçamento premium, os itens mais necessários ficam no tier 3 ou acima', () => {
+    const premium = budgetPresets(room, products)[2].value
+    const view = buildList(room, products, premium)
+    for (const category of ['geladeira', 'fogao']) {
+      const entry = view.entries.find((e) => e.item.category === category)
+      expect(entry?.option.tier).toBeGreaterThanOrEqual(3)
+    }
   })
 })

@@ -91,7 +91,7 @@ Cada categoria de produto diz se é **utensílio** (`utensil: true`): pratos, ta
 - Na tela inicial, cada cômodo tem um contador (0–5). Um cômodo só = lista daquele cômodo; vários = lista da casa. A "planta" no topo mostra o que foi escolhido. Atalho "Casa completa" = um de cada (menos o quarto do bebê).
 - A casa vira **instâncias de cômodo** (`quarto-1`, `quarto-2`…) e cada item ganha a chave `instância:categoria` (`src/engine/house.ts`). O motor planeja tudo com **um orçamento só**: necessários de todos os cômodos primeiro, depois os demais e os upgrades pela necessidade, sem um cômodo "comer" o orçamento.
 - Recusar/travar/trocar tier é por cômodo (o colchão do Quarto 1 é independente do do Quarto 2). A lista aparece agrupada por cômodo, com subtotal e atalhos.
-- As sugestões de orçamento saem da faixa real da seleção (tudo no mais barato → tudo no topo).
+- Ao escolher os cômodos, a tela de orçamento sugere **três orçamentos prontos**, calculados para a seleção (e para os filtros): **Econômico** (soma com tudo no tier 1), **Equilibrado** (tudo no 2, já vem marcado) e **Premium** (tudo no 3), arredondados para cima. Também dá para digitar outro valor.
 
 ### 4.5 Motor de orçamento (resumo)
 

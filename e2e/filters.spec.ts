@@ -24,13 +24,13 @@ async function openKitchenForm(page: Page) {
 
 test('necessidade mínima 3+ e sem utensílios', async ({ page }) => {
   await openKitchenForm(page)
-  const required = page.locator('.range-hints li').first()
-  const before = await required.textContent()
+  const economic = page.locator('.preset', { hasText: 'Econômico' }).locator('.preset-value')
+  const before = await economic.textContent()
 
   await page.getByRole('radio', { name: /3\+/ }).click()
   await page.getByRole('switch', { name: /Incluir utensílios/ }).uncheck()
-  // sem pratos/talheres/panelas, o mínimo necessário cai
-  await expect(required).not.toHaveText(before!)
+  // sem pratos/talheres/panelas e sem os itens de necessidade 1–2, o econômico fica mais barato
+  await expect(economic).not.toHaveText(before!)
 
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   const names = await cardNames(page)

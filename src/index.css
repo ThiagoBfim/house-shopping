@@ -206,6 +206,108 @@ h3 {
   font-size: 0.85rem;
 }
 
+/* Orçamentos sugeridos */
+
+.presets {
+  display: grid;
+  gap: 8px;
+}
+
+.preset {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  padding: 14px 16px 14px 44px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+/* O "rádio" desenhado; o input real fica invisível por cima do card inteiro. */
+.preset::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.preset.is-selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.preset.is-selected::before {
+  border-color: var(--accent);
+  background: radial-gradient(var(--accent) 0 4px, var(--surface) 5px);
+}
+
+.preset input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.preset:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.preset-name {
+  font-weight: 700;
+}
+
+.preset-value {
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.preset.is-selected .preset-value {
+  color: var(--accent);
+}
+
+.preset-description {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.custom-budget {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.custom-budget-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.budget-field:not(.is-active) input {
+  color: var(--muted);
+}
+
+.budget-field input {
+  font-size: 1.6rem;
+}
+
+.budget-range {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 /* Escolha de cômodos: a planta */
 
 .picker-hint {
@@ -1150,6 +1252,19 @@ h3 {
 
   .floor-plan:not(.is-empty) {
     grid-template-columns: repeat(6, 1fr);
+  }
+
+  .presets {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .preset {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
+  .budget-form {
+    max-width: 720px;
   }
 
   .primary-button {
