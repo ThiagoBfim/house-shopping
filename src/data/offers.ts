@@ -48,6 +48,7 @@ export function isAffiliateUrl(url: string): boolean {
   const host = parsed.hostname.replace(/^www\./, '')
   const path = parsed.pathname
   return (
+    host === 'meli.la' ||
     (host === 'mercadolivre.com' && path.startsWith('/sec/')) ||
     (host === 'mercadolivre.com.br' && path.startsWith('/social/')) ||
     parsed.searchParams.has('matt_tool') ||
@@ -60,13 +61,22 @@ export type MercadoLivreId = { kind: 'product' | 'item'; id: string }
 
 /**
  * Extrai o id de uma página de produto do Mercado Livre:
+ * - anúncio escolhido (`?pdp_filters=item_id:MLB123…`, também em `/up/MLBU…`) → item MLB123…
  * - catálogo: `…/p/MLB19615251` → produto MLB19615251
  * - anúncio: `produto.mercadolivre.com.br/MLB-1234567890-…` → item MLB1234567890
  */
 export function parseMercadoLivreId(url: string): MercadoLivreId | undefined {
-  const product = url.match(/\/p\/(MLB\d+)/i)
+  let decoded = url
+  try {
+    decoded = decodeURIComponent(url)
+  } catch {
+    // URL com % inválido: usa como veio
+  }
+  const chosen = decoded.match(/item_id:(MLB\d+)/i)
+  if (chosen) return { kind: 'item', id: chosen[1].toUpperCase() }
+  const product = decoded.match(/\/p\/(MLB\d+)/i)
   if (product) return { kind: 'product', id: product[1].toUpperCase() }
-  const item = url.match(/\b(MLB)-?(\d{6,})/i)
+  const item = decoded.match(/\b(MLB)-?(\d{6,})/i)
   if (item) return { kind: 'item', id: `MLB${item[2]}` }
   return undefined
 }

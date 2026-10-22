@@ -66,6 +66,7 @@ describe('applyBestOffer', () => {
 describe('isAffiliateUrl', () => {
   it.each([
     ['https://mercadolivre.com/sec/2b4M3eb', true],
+    ['https://meli.la/1kohmr4', true],
     ['https://www.mercadolivre.com.br/social/meucanal?matt_word=x', true],
     ['https://produto.mercadolivre.com.br/MLB-123?matt_tool=123&matt_word=abc', true],
     ['https://amzn.to/3abcdef', true],
@@ -94,6 +95,14 @@ describe('parseMercadoLivreId', () => {
       ),
     ).toEqual({ kind: 'item', id: 'MLB3456789012' })
     expect(parseMercadoLivreId('MLB3456789012')).toEqual({ kind: 'item', id: 'MLB3456789012' })
+  })
+
+  it('anúncio escolhido dentro de /up/MLBU… (pdp_filters=item_id)', () => {
+    expect(
+      parseMercadoLivreId(
+        'https://www.mercadolivre.com.br/geladeira-consul/up/MLBU4867972163?pdp_filters=item_id%3AMLB7479712988',
+      ),
+    ).toEqual({ kind: 'item', id: 'MLB7479712988' })
   })
 
   it('link sem id', () => {

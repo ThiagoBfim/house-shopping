@@ -3,31 +3,51 @@
   "utensil": false,
   "options": [
     {
-      "id": "geladeira-consul-crm39ab",
+      "id": "geladeira-consul-crm40mb",
       "tier": 1,
-      "name": "Geladeira Consul Frost Free Duplex 340 L CRM39AB",
-      "price": 2799,
+      "name": "Geladeira Consul Frost Free Duplex 333 L CRM40MB",
+      "price": 2249,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/geladeira-consul-crm39ab",
+      "url": "https://meli.la/1pSxEZp",
       "bullets": [
-        "Frost free duplex, 340 L",
+        "Frost free duplex, 333 L",
         "Sem compressor inverter (gasta mais energia que as outras)",
         "Boa para casal ou família pequena"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1pSxEZp",
+          "price": 2249,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7479712988"
+        }
       ]
     },
     {
       "id": "geladeira-electrolux-it70s",
       "tier": 2,
       "name": "Geladeira Electrolux Frost Free Inverter 480 L IT70S",
-      "price": 4299,
+      "price": 4104.78,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/geladeira-electrolux-it70s",
+      "url": "https://meli.la/1kohmr4",
       "bullets": [
         "Compressor inverter: mais econômica e silenciosa",
         "480 L, cabe compra do mês de família de 4",
         "Acabamento inox"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1kohmr4",
+          "price": 4104.78,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB36520314"
+        }
       ]
     },
     {

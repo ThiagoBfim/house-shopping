@@ -21,10 +21,14 @@ A planilha `data/affiliate/mercadolivre.csv` já tem os 192 produtos do catálog
 
 Para cada linha (dá para fazer aos poucos; linhas vazias são ignoradas):
 
-1. Abra o link da coluna **`busca`** e escolha o anúncio certo. Prefira **Loja oficial** ou "MercadoLíder" (reputação verde) e produto **novo**.
-2. Copie o endereço da página do produto para **`link_produto`**. Ele tem um id `MLB…`, que o sync de preço usa.
-3. No painel de afiliados: **Ferramentas → Gerador de links**. Cole a URL do produto e copie o link gerado (`https://mercadolivre.com/sec/…`) para **`link_afiliado`**.
-4. Em **`preco`**, coloque o preço que aparece (ex.: `2.649,90`).
+1. Abra o link da coluna **`busca`** e escolha o anúncio certo. Prefira **Loja oficial** ou "MercadoLíder" (reputação verde) e produto **novo**. Se o modelo saiu de linha (só usados ou "indisponível"), troque pelo sucessor no catálogo antes.
+2. Copie o endereço da página do produto para **`link_produto`**. Ele tem um id `MLB…` (inclusive dentro de `pdp_filters=item_id:MLB…`), que o sync de preço usa.
+3. Logado como afiliado, a página do produto mostra no topo a barra **Afiliados → "GANHOS x%" → Compartilhar**. Clique em **Compartilhar** e copie o **Link do produto** (`https://meli.la/…`) para **`link_afiliado`**. Isso também adiciona o produto à sua lista "Minhas recomendações". O Gerador de links do painel (Ferramentas) faz o mesmo.
+4. Em **`preco`**, coloque o preço em destaque (à vista/Pix quando houver; ex.: `4.104,78`).
+
+> O link `meli.la` abre o seu perfil social de afiliado (`/social/<etiqueta>?matt_word=…&matt_tool=…`) com o produto em destaque e o botão "Ir para produto". É assim que a comissão é rastreada.
+
+**Com a extensão Claude in Chrome conectada**, o Claude faz os passos 1–4 no seu navegador (logado), confere os links abrindo cada um e roda o import. Foi assim no piloto de 2026-10-22.
 
 Salve como CSV (UTF-8, separador `;`) no mesmo lugar e rode:
 

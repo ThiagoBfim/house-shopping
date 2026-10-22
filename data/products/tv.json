@@ -3,17 +3,27 @@
   "utensil": false,
   "options": [
     {
-      "id": "smart-tv-samsung-50-du8000",
+      "id": "smart-tv-samsung-50-u8000h",
       "tier": 1,
-      "name": "Smart TV Samsung Crystal UHD 50\" 4K DU8000",
-      "price": 1899,
+      "name": "Smart TV Samsung Crystal UHD 50\" 4K U8000H",
+      "price": 2674,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/smart-tv-samsung-50-du8000",
+      "url": "https://meli.la/1khtRfy",
       "bullets": [
-        "50\" 4K",
-        "Tizen com os principais apps",
+        "50\" 4K, linha 2026/27",
+        "Tizen com os principais apps e Alexa",
         "Imagem boa de dia; contraste limitado no escuro"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1khtRfy",
+          "price": 2674,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB78576179"
+        }
       ]
     },
     {
