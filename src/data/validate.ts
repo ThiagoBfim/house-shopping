@@ -22,12 +22,23 @@ function formatIssues(file: string, error: z.ZodError): string[] {
   })
 }
 
+/** Erros de products: o primeiro trecho do caminho é a categoria, ou seja, o arquivo. */
+function formatProductIssues(error: z.ZodError): string[] {
+  return error.issues.map((issue) => {
+    const [category, ...rest] = issue.path.map(String)
+    const path = rest.length ? rest.join('.') : '(raiz)'
+    return `${productFile(category)} › ${path}: ${issue.message}`
+  })
+}
+
+export const productFile = (category: string) => `products/${category}.json`
+
 function checkProducts(products: Products): string[] {
   const errors: string[] = []
   const seenIds = new Map<string, string>()
 
   for (const [category, { options }] of Object.entries(products)) {
-    const at = `products.json › ${category}`
+    const at = productFile(category)
 
     for (const option of options) {
       const other = seenIds.get(option.id)
@@ -68,7 +79,9 @@ function checkRooms(rooms: Rooms, products: Products): string[] {
     const seen = new Set<string>()
     for (const item of room.items) {
       const at = `rooms.json › ${roomId} › ${item.category}`
-      if (!(item.category in products)) errors.push(`${at}: categoria não existe em products.json`)
+      if (!(item.category in products)) {
+        errors.push(`${at}: categoria não existe (falta ${productFile(item.category)})`)
+      }
       if (seen.has(item.category)) errors.push(`${at}: categoria repetida no cômodo`)
       seen.add(item.category)
     }
@@ -86,10 +99,10 @@ export function validateCatalog(rawRooms: unknown, rawProducts: unknown): Valida
 
   const errors = [
     ...(rooms.success ? [] : formatIssues('rooms.json', rooms.error)),
-    ...(products.success ? [] : formatIssues('products.json', products.error)),
+    ...(products.success ? [] : formatProductIssues(products.error)),
   ]
 
-  // Regras de negócio rodam também nas categorias válidas de um products.json com erros.
+  // Regras de negócio rodam também nas categorias válidas de um catálogo com erros.
   const validProducts: Products = {}
   if (rawProducts && typeof rawProducts === 'object') {
     for (const [category, raw] of Object.entries(rawProducts)) {

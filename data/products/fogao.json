@@ -1,0 +1,59 @@
+{
+  "label": "Fogão",
+  "utensil": false,
+  "options": [
+    {
+      "id": "fogao-atlas-monaco-top-glass-4-bocas",
+      "tier": 1,
+      "name": "Fogão Atlas Mônaco Top Glass 4 Bocas",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fogao-atlas-monaco-top-glass-4-bocas",
+      "bullets": ["4 bocas com mesa de vidro", "Acendimento automático", "Forno simples, sem timer"]
+    },
+    {
+      "id": "fogao-electrolux-fe5iw",
+      "tier": 2,
+      "name": "Fogão Electrolux 5 Bocas Mesa Inox FE5IW",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fogao-electrolux-fe5iw",
+      "bullets": [
+        "5 bocas com tripla chama",
+        "Forno com função PerfectCook (assa por igual)",
+        "Mesa inox"
+      ]
+    },
+    {
+      "id": "fogao-brastemp-bfs5ncr",
+      "tier": 3,
+      "name": "Fogão Brastemp 5 Bocas Inox BFS5NCR",
+      "price": 3299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fogao-brastemp-bfs5ncr",
+      "bullets": [
+        "Inox com botões removíveis (limpeza fácil)",
+        "Grades duplas de ferro",
+        "Forno com vidro interno removível"
+      ]
+    },
+    {
+      "id": "fogao-electrolux-fe5ad",
+      "tier": 4,
+      "name": "Fogão Electrolux 5 Bocas Dois Fornos com Air Fryer FE5AD",
+      "price": 4799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/fogao-electrolux-fe5ad",
+      "bullets": [
+        "Dois fornos: assa doce e salgado ao mesmo tempo",
+        "Função air fryer no forno",
+        "Timer digital",
+        "Topo de linha em fogão de piso"
+      ]
+    }
+  ]
+}

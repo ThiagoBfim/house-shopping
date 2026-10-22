@@ -1,0 +1,36 @@
+{
+  "label": "Toalha de mesa",
+  "utensil": true,
+  "options": [
+    {
+      "id": "toalha-de-mesa-6-lugares",
+      "tier": 1,
+      "name": "Toalha de Mesa Poliéster 6 Lugares",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/toalha-de-mesa-6-lugares",
+      "bullets": ["6 lugares", "Poliéster", "Lisa, combina com tudo"]
+    },
+    {
+      "id": "toalha-de-mesa-impermeavel-6-lugares",
+      "tier": 2,
+      "name": "Toalha de Mesa Impermeável 6 Lugares",
+      "price": 139,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/toalha-de-mesa-impermeavel-6-lugares",
+      "bullets": ["Impermeável: não mancha", "Toque de tecido", "Fácil de limpar"]
+    },
+    {
+      "id": "toalha-de-mesa-linho-8-lugares",
+      "tier": 3,
+      "name": "Toalha de Mesa de Linho 8 Lugares",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/toalha-de-mesa-linho-8-lugares",
+      "bullets": ["8 lugares", "Linho puro", "Para ocasiões especiais"]
+    }
+  ]
+}

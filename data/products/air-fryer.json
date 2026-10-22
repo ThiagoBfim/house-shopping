@@ -1,0 +1,55 @@
+{
+  "label": "Air fryer",
+  "utensil": false,
+  "options": [
+    {
+      "id": "air-fryer-mondial-family-af-30",
+      "tier": 1,
+      "name": "Air Fryer Mondial Family IV 3,5 L AF-30",
+      "price": 279,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/air-fryer-mondial-family-af-30",
+      "bullets": ["3,5 L: porção para 1–2 pessoas", "1500 W", "Timer e desligamento automático"]
+    },
+    {
+      "id": "air-fryer-electrolux-eaf50",
+      "tier": 2,
+      "name": "Air Fryer Electrolux 5 L EAF50",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/air-fryer-electrolux-eaf50",
+      "bullets": ["Cesto de 5 L: família pequena", "1700 W", "8 receitas pré-programadas"]
+    },
+    {
+      "id": "air-fryer-philips-walita-na341",
+      "tier": 3,
+      "name": "Air Fryer Philips Walita Série 3000 XL 7,2 L NA341",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/air-fryer-philips-walita-na341",
+      "bullets": [
+        "7,2 L com visor e luz interna",
+        "12 programas automáticos",
+        "Marca premium em air fryer"
+      ]
+    },
+    {
+      "id": "air-fryer-philips-walita-xxl-hd9867",
+      "tier": 4,
+      "name": "Air Fryer Philips Walita XXL Premium Smart Sensing HD9867",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/air-fryer-philips-walita-xxl-hd9867",
+      "bullets": [
+        "XXL: frango inteiro de até 1,4 kg",
+        "Ajusta tempo e temperatura sozinha",
+        "Tira a gordura (Fat Removal)",
+        "Peças vão à lava-louças"
+      ]
+    }
+  ]
+}

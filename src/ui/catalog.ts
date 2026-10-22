@@ -5,13 +5,10 @@ export interface Catalog {
   products: Products
 }
 
-/** Carrega o catálogo em um chunk separado (validado no CI por `npm run validate`). */
+/** Carrega o catálogo em um chunk separado (validado por `npm run validate`). */
 export async function loadCatalog(): Promise<Catalog> {
-  const [rooms, products] = await Promise.all([
-    import('../../data/rooms.json'),
-    import('../../data/products.json'),
-  ])
-  return { rooms: rooms.default as Rooms, products: products.default as Products }
+  const { rooms, products } = await import('../data/catalog-data.ts')
+  return { rooms, products }
 }
 
 export const TIER_LABELS: Record<Tier, string> = {

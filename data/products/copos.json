@@ -1,0 +1,36 @@
+{
+  "label": "Copos",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-de-copos-nadir-americano-12",
+      "tier": 1,
+      "name": "Jogo de Copos Nadir Americano 12 Peças",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-nadir-americano-12",
+      "bullets": ["12 copos de vidro", "O clássico copo americano", "Barato para repor"]
+    },
+    {
+      "id": "jogo-de-copos-long-drink-nadir-12-pecas",
+      "tier": 2,
+      "name": "Jogo de Copos Nadir Long Drink e Baixos 12 Peças",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-long-drink-nadir-12-pecas",
+      "bullets": ["6 altos + 6 baixos", "Vidro mais grosso", "Bom para receber visitas"]
+    },
+    {
+      "id": "jogo-de-copos-cristal-bohemia",
+      "tier": 3,
+      "name": "Jogo de Copos de Cristal Bohemia 12 Peças",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-cristal-bohemia",
+      "bullets": ["Cristal tcheco", "Mais brilho e som de cristal", "Lavar à mão"]
+    }
+  ]
+}

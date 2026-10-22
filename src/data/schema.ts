@@ -37,7 +37,7 @@ export const ProductCategorySchema = z.strictObject({
   options: z.array(ProductOptionSchema).min(1),
 })
 
-/** products.json: categoria (slug) → opções por tier */
+/** Catálogo: categoria (nome do arquivo em data/products/) → opções por tier */
 export const ProductsSchema = z.record(slug, ProductCategorySchema)
 
 export const RoomItemSchema = z.strictObject({

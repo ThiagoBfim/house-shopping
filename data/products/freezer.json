@@ -1,0 +1,54 @@
+{
+  "label": "Freezer",
+  "utensil": false,
+  "options": [
+    {
+      "id": "freezer-vertical-consul-cvu20",
+      "tier": 1,
+      "name": "Freezer Vertical Consul 142 L CVU20GB",
+      "price": 2199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/freezer-vertical-consul-cvu20",
+      "bullets": [
+        "Vertical, 142 L: cabe em apartamento",
+        "Degelo manual",
+        "Conversível em refrigerador"
+      ]
+    },
+    {
+      "id": "freezer-vertical-electrolux-fe27",
+      "tier": 2,
+      "name": "Freezer Vertical Electrolux 234 L FE27",
+      "price": 3099,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/freezer-vertical-electrolux-fe27",
+      "bullets": ["234 L", "Cycle Defrost (degelo mais fácil)", "Gavetas transparentes"]
+    },
+    {
+      "id": "freezer-brastemp-bvr28",
+      "tier": 3,
+      "name": "Freezer Vertical Brastemp Frost Free 228 L BVR28HR",
+      "price": 4399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/freezer-brastemp-bvr28",
+      "bullets": [
+        "Frost free: nunca precisa descongelar",
+        "Vira geladeira com um toque",
+        "Controle eletrônico"
+      ]
+    },
+    {
+      "id": "freezer-horizontal-electrolux-hi550",
+      "tier": 4,
+      "name": "Freezer Horizontal Electrolux 513 L HI550",
+      "price": 5299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/freezer-horizontal-electrolux-hi550",
+      "bullets": ["Horizontal 513 L: para quem estoca muito", "Duas tampas", "Classe A+"]
+    }
+  ]
+}

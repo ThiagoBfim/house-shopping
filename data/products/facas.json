@@ -1,0 +1,51 @@
+{
+  "label": "Facas",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-de-facas-tramontina-plenus",
+      "tier": 1,
+      "name": "Jogo de Facas Tramontina Plenus 6 Peças",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-tramontina-plenus",
+      "bullets": ["6 facas de inox", "Cabo de polipropileno", "Perde o fio mais rápido"]
+    },
+    {
+      "id": "jogo-de-facas-tramontina-polywood-cepo",
+      "tier": 2,
+      "name": "Jogo de Facas Tramontina Polywood com Cepo 7 Peças",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-tramontina-polywood-cepo",
+      "bullets": ["Cabo de madeira tratada", "Cepo para guardar", "Inclui faca de churrasco"]
+    },
+    {
+      "id": "jogo-de-facas-tramontina-century-cepo",
+      "tier": 3,
+      "name": "Jogo de Facas Tramontina Century com Cepo 7 Peças",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-tramontina-century-cepo",
+      "bullets": ["Lâmina forjada (mais fio, dura mais)", "Cabo ergonômico", "Cepo de madeira"]
+    },
+    {
+      "id": "jogo-de-facas-zwilling-pro-cepo",
+      "tier": 4,
+      "name": "Jogo de Facas Zwilling Pro com Cepo 7 Peças",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-zwilling-pro-cepo",
+      "bullets": [
+        "Aço alemão forjado em peça única",
+        "Balanço profissional",
+        "Afiador incluso",
+        "Para quem cozinha muito"
+      ]
+    }
+  ]
+}

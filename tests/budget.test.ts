@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import realProducts from '../data/products.json'
-import realRooms from '../data/rooms.json'
+import { products as realProducts, rooms as realRooms } from '../src/data/catalog-data.ts'
 import type { Products, Room, RoomItem, Tier } from '../src/data/schema.ts'
 import {
   budgetRange,

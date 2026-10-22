@@ -1,0 +1,51 @@
+{
+  "label": "Talheres (faqueiro)",
+  "utensil": true,
+  "options": [
+    {
+      "id": "faqueiro-tramontina-laguna-24-pecas",
+      "tier": 1,
+      "name": "Faqueiro Tramontina Laguna 24 Peças",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-laguna-24-pecas",
+      "bullets": ["24 peças (6 pessoas)", "Inox simples", "Cabo fino"]
+    },
+    {
+      "id": "faqueiro-tramontina-buzios-42-pecas",
+      "tier": 2,
+      "name": "Faqueiro Tramontina Búzios 42 Peças",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-buzios-42-pecas",
+      "bullets": ["42 peças (6 pessoas)", "Inox mais grosso", "Inclui colheres de sobremesa e chá"]
+    },
+    {
+      "id": "faqueiro-tramontina-amalfi-72-pecas",
+      "tier": 3,
+      "name": "Faqueiro Tramontina Amalfi 72 Peças Inox 18/10",
+      "price": 799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-amalfi-72-pecas",
+      "bullets": ["72 peças (12 pessoas)", "Inox 18/10: não mancha", "Acompanha estojo"]
+    },
+    {
+      "id": "faqueiro-zwilling-68-pecas",
+      "tier": 4,
+      "name": "Faqueiro Zwilling Inox 18/10 68 Peças",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/faqueiro-zwilling-68-pecas",
+      "bullets": [
+        "Marca alemã premium",
+        "Inox 18/10 polido espelhado",
+        "Inclui talheres de servir",
+        "Garantia longa"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "label": "Jogo americano",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-americano-pvc-6-pecas",
+      "tier": 1,
+      "name": "Jogo Americano PVC 6 Peças",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-americano-pvc-6-pecas",
+      "bullets": ["6 peças", "Limpa com pano úmido", "Várias cores"]
+    },
+    {
+      "id": "jogo-americano-fibra-natural-6-pecas",
+      "tier": 2,
+      "name": "Jogo Americano Fibra Natural 6 Peças",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-americano-fibra-natural-6-pecas",
+      "bullets": ["6 peças", "Fibra natural trançada", "Visual rústico"]
+    },
+    {
+      "id": "jogo-americano-linho-guardanapo",
+      "tier": 3,
+      "name": "Jogo Americano de Linho com Guardanapos 6 Lugares",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-americano-linho-guardanapo",
+      "bullets": ["6 lugares + 6 guardanapos", "Linho lavável", "Acabamento bordado"]
+    }
+  ]
+}

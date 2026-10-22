@@ -1,0 +1,58 @@
+{
+  "label": "Lava-louças",
+  "utensil": false,
+  "options": [
+    {
+      "id": "lava-loucas-midea-8-servicos",
+      "tier": 1,
+      "name": "Lava-louças Midea 8 Serviços MDWTF08W1",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-loucas-midea-8-servicos",
+      "bullets": [
+        "8 serviços (casal ou família pequena)",
+        "Compacta, cabe na bancada",
+        "Programas básicos"
+      ]
+    },
+    {
+      "id": "lava-loucas-brastemp-blf08",
+      "tier": 2,
+      "name": "Lava-louças Brastemp 8 Serviços BLF08BS",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-loucas-brastemp-blf08",
+      "bullets": ["8 serviços, a mais vendida do Brasil", "Inox", "Ciclo rápido para o dia a dia"]
+    },
+    {
+      "id": "lava-loucas-electrolux-ll14x",
+      "tier": 3,
+      "name": "Lava-louças Electrolux 14 Serviços LL14X",
+      "price": 3299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-loucas-electrolux-ll14x",
+      "bullets": [
+        "14 serviços: família de 4 a 6",
+        "Cesto superior com altura ajustável",
+        "Vários programas (inclusive panelas)"
+      ]
+    },
+    {
+      "id": "lava-loucas-brastemp-blf61ar",
+      "tier": 4,
+      "name": "Lava-louças Brastemp 15 Serviços BLF61AR",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lava-loucas-brastemp-blf61ar",
+      "bullets": [
+        "15 serviços, a maior da lista",
+        "Melhor resultado de lavagem em testes",
+        "Painel digital com início programado"
+      ]
+    }
+  ]
+}

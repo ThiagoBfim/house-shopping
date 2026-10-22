@@ -9,6 +9,19 @@ async function remaining(page: Page): Promise<number> {
   return Number(text!.replace(/[^\d,]/g, '').replace(',', '.'))
 }
 
+/** Tier exibido de cada item da lista, por nome da categoria. */
+const tiersByLabel = (page: Page) =>
+  page
+    .getByRole('article')
+    .evaluateAll((cards) =>
+      Object.fromEntries(
+        cards.map((c) => [
+          c.getAttribute('aria-label')!.split(':')[0],
+          c.querySelector('.tier-badge')!.textContent,
+        ]),
+      ),
+    )
+
 async function openKitchen(page: Page, budget: string) {
   await page.goto('./')
   await page.getByRole('button', { name: /Cozinha/ }).click()
@@ -20,24 +33,26 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
   page,
 }) => {
   await openKitchen(page, '30000')
-  const freezer = card(page, 'Freezer')
-  await expect(freezer.locator('.tier-badge')).toHaveText('Médio')
   const before = await remaining(page)
+  const fridgePrice = await card(page, 'Geladeira').locator('.product-price strong').textContent()
+  const freed = Number(fridgePrice!.replace(/[^\d,]/g, '').replace(',', '.'))
+  const tiersBefore = await tiersByLabel(page)
+  delete tiersBefore.Geladeira
 
   await card(page, 'Geladeira').getByRole('button', { name: 'Recusar' }).click()
 
-  // sem reload, a lista não muda sozinha: só libera o saldo
+  // sem reload, a lista não muda sozinha: só libera o saldo da geladeira
   await expect(card(page, 'Geladeira')).toHaveCount(0)
-  expect(await remaining(page)).toBeGreaterThan(before + 5_000)
-  await expect(freezer.locator('.tier-badge')).toHaveText('Médio')
+  expect(await remaining(page)).toBeCloseTo(before + freed, 2)
+  expect(await tiersByLabel(page)).toEqual(tiersBefore)
   await expect(page.getByRole('button', { name: /Recalcular lista com o saldo/ })).toBeVisible()
 
   await page.getByRole('button', { name: /Recalcular lista/ }).click()
 
-  await expect(freezer.locator('.tier-badge')).toHaveText('Caro')
-  await expect(freezer.getByText('↑ Melhorou')).toBeVisible()
-  await expect(page.getByText(/Lista recalculada: \d+ itens mudaram/)).toBeVisible()
-  expect(await remaining(page)).toBeLessThan(before + 5_000)
+  // o dinheiro liberado vira upgrade em outros itens
+  await expect(page.getByText('↑ Melhorou').first()).toBeVisible()
+  await expect(page.getByText(/Lista recalculada: \d+ ite(m mudou|ns mudaram)/)).toBeVisible()
+  expect(await remaining(page)).toBeLessThan(before + freed)
 
   // a geladeira continua fora e pode ser reativada
   const excluded = page.locator('.side-section', { hasText: 'Recusados' })

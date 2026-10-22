@@ -1,0 +1,63 @@
+{
+  "label": "Coifa / depurador",
+  "utensil": false,
+  "options": [
+    {
+      "id": "depurador-suggar-slim-60-cm",
+      "tier": 1,
+      "name": "Depurador de Ar Suggar Slim 60 cm DI61",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/depurador-suggar-slim-60-cm",
+      "bullets": [
+        "Depurador: filtra e devolve o ar (sem duto)",
+        "60 cm, para fogão de 4 bocas",
+        "3 velocidades"
+      ]
+    },
+    {
+      "id": "depurador-suggar-slim-80-cm-inox",
+      "tier": 2,
+      "name": "Depurador de Ar Suggar Slim 80 cm Inox DPS182IX",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/depurador-suggar-slim-80-cm-inox",
+      "bullets": [
+        "80 cm, para fogão de 5 bocas",
+        "Inox",
+        "Ainda é depurador (não joga a fumaça para fora)"
+      ]
+    },
+    {
+      "id": "coifa-fogatti-vidro-curvo-70-cm",
+      "tier": 3,
+      "name": "Coifa de Parede Fogatti Vidro Curvo 70 cm",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/coifa-fogatti-vidro-curvo-70-cm",
+      "bullets": [
+        "Coifa de verdade: exaure a fumaça para fora (com duto)",
+        "Também funciona como depurador",
+        "Vidro curvo"
+      ]
+    },
+    {
+      "id": "coifa-parede-tramontina-90-cm-inox",
+      "tier": 4,
+      "name": "Coifa de Parede Tramontina 90 cm Inox",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/coifa-parede-tramontina-90-cm-inox",
+      "bullets": [
+        "90 cm, para cooktop grande",
+        "Motor mais forte e silencioso",
+        "Iluminação de LED",
+        "Inox de alto padrão"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "label": "Cafeteira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "cafeteira-eletrica-electrolux-ecm30",
+      "tier": 1,
+      "name": "Cafeteira Elétrica Electrolux 1,5 L ECM30",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cafeteira-eletrica-electrolux-ecm30",
+      "bullets": [
+        "Café coado, 38 xícaras",
+        "Jarra de vidro com placa aquecedora",
+        "O mais barato por xícara"
+      ]
+    },
+    {
+      "id": "nespresso-essenza-mini",
+      "tier": 2,
+      "name": "Cafeteira Nespresso Essenza Mini",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/nespresso-essenza-mini",
+      "bullets": ["Cápsulas: espresso sem sujeira", "Compacta", "Cápsula custa mais por xícara"]
+    },
+    {
+      "id": "cafeteira-oster-primalatte-ii",
+      "tier": 3,
+      "name": "Cafeteira Espresso Oster PrimaLatte II",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cafeteira-oster-primalatte-ii",
+      "bullets": [
+        "Espresso com pó, sachê ou cápsula",
+        "Leite vaporizado automático (cappuccino)",
+        "Reservatório de leite removível"
+      ]
+    },
+    {
+      "id": "delonghi-magnifica-s",
+      "tier": 4,
+      "name": "Cafeteira Superautomática De'Longhi Magnifica S",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/delonghi-magnifica-s",
+      "bullets": [
+        "Moedor embutido: café em grão moído na hora",
+        "Um botão faz o espresso",
+        "Vaporizador de leite",
+        "Melhor café da lista"
+      ]
+    }
+  ]
+}

@@ -13,6 +13,11 @@
         "qty": 1
       },
       {
+        "category": "panelas",
+        "need": 4,
+        "qty": 1
+      },
+      {
         "category": "pratos",
         "need": 4,
         "qty": 1
@@ -23,7 +28,7 @@
         "qty": 1
       },
       {
-        "category": "panelas",
+        "category": "copos",
         "need": 4,
         "qty": 1
       },
@@ -38,18 +43,48 @@
         "qty": 1
       },
       {
+        "category": "facas",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "purificador",
+        "need": 3,
+        "qty": 1
+      },
+      {
         "category": "liquidificador",
         "need": 2,
         "qty": 1
       },
       {
-        "category": "freezer",
+        "category": "air-fryer",
         "need": 2,
         "qty": 1
       },
       {
-        "category": "jogo-americano",
+        "category": "cafeteira",
         "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "lava-loucas",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "coifa",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "freezer",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "jogo-americano",
+        "need": 1,
         "qty": 1
       },
       {

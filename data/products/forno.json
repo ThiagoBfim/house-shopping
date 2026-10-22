@@ -1,0 +1,59 @@
+{
+  "label": "Forno",
+  "utensil": false,
+  "options": [
+    {
+      "id": "forno-eletrico-mondial-grand-family-52-litros",
+      "tier": 1,
+      "name": "Forno Elétrico Mondial Grand Family II 52 L",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/forno-eletrico-mondial-grand-family-52-litros",
+      "bullets": ["De bancada, sem obra", "52 L e 1800 W", "Timer de 60 minutos"]
+    },
+    {
+      "id": "forno-eletrico-fischer-gourmet-grill-44-litros",
+      "tier": 2,
+      "name": "Forno Elétrico Fischer Gourmet Grill 44 L",
+      "price": 1099,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/forno-eletrico-fischer-gourmet-grill-44-litros",
+      "bullets": [
+        "De bancada, chega a 320 °C (pizza de verdade)",
+        "Grill e dupla resistência",
+        "Vidro duplo: esquenta menos por fora"
+      ]
+    },
+    {
+      "id": "forno-de-embutir-eos-47-litros",
+      "tier": 3,
+      "name": "Forno de Embutir Elétrico EOS 47 L EFE47EP",
+      "price": 1799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-eos-47-litros",
+      "bullets": [
+        "De embutir, visual planejado",
+        "47 L com convecção",
+        "Melhor custo-benefício de embutir"
+      ]
+    },
+    {
+      "id": "forno-de-embutir-electrolux-oe8ea",
+      "tier": 4,
+      "name": "Forno de Embutir Elétrico Electrolux 80 L OE8EA",
+      "price": 4299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-electrolux-oe8ea",
+      "bullets": [
+        "80 L: cabe ceia de Natal",
+        "Convecção + função AirFry",
+        "Painel digital com receitas",
+        "Limpeza facilitada"
+      ]
+    }
+  ]
+}

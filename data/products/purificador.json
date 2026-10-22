@@ -1,0 +1,36 @@
+{
+  "label": "Purificador de água",
+  "utensil": false,
+  "options": [
+    {
+      "id": "purificador-ibbl-e-due",
+      "tier": 1,
+      "name": "Purificador de Água IBBL E-Due Freedom",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/purificador-ibbl-e-due",
+      "bullets": ["Água natural filtrada", "Instalação simples", "Refil barato (cerca de R$ 40)"]
+    },
+    {
+      "id": "purificador-electrolux-pe11b",
+      "tier": 2,
+      "name": "Purificador de Água Electrolux PE11B",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/purificador-electrolux-pe11b",
+      "bullets": ["Água natural, fria e gelada", "Painel touch", "Refrigeração eletrônica"]
+    },
+    {
+      "id": "purificador-electrolux-pe12b",
+      "tier": 3,
+      "name": "Purificador de Água Electrolux Pure 4X PE12B",
+      "price": 799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/purificador-electrolux-pe12b",
+      "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"]
+    }
+  ]
+}

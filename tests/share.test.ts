@@ -1,7 +1,6 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
 import { describe, expect, it } from 'vitest'
-import realProducts from '../data/products.json'
-import realRooms from '../data/rooms.json'
+import { products as realProducts, rooms as realRooms } from '../src/data/catalog-data.ts'
 import type { Products, Rooms } from '../src/data/schema.ts'
 import { describeList, planList, type Choices } from '../src/engine/budget.ts'
 import { decodeState, encodeState, STATE_VERSION, type ListState } from '../src/engine/share.ts'

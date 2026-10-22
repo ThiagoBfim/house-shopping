@@ -1,0 +1,59 @@
+{
+  "label": "Panelas",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-de-panelas-tramontina-paris-5-pecas",
+      "tier": 1,
+      "name": "Jogo de Panelas Tramontina Paris 5 Peças Antiaderente",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-tramontina-paris-5-pecas",
+      "bullets": [
+        "Alumínio com antiaderente Starflon",
+        "5 peças",
+        "Não serve para cooktop de indução"
+      ]
+    },
+    {
+      "id": "jogo-de-panelas-tramontina-solar-inox-fundo-triplo",
+      "tier": 2,
+      "name": "Jogo de Panelas Tramontina Solar Inox Fundo Triplo 6 Peças",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-tramontina-solar-inox-fundo-triplo",
+      "bullets": [
+        "Inox com fundo triplo (calor por igual)",
+        "Serve para indução",
+        "Vai à lava-louças"
+      ]
+    },
+    {
+      "id": "jogo-de-panelas-tramontina-trento-corpo-triplo",
+      "tier": 3,
+      "name": "Jogo de Panelas Tramontina Trento Inox Corpo Triplo 5 Peças",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-tramontina-trento-corpo-triplo",
+      "bullets": ["Corpo triplo inteiro (não só o fundo)", "Linha profissional", "Dura a vida toda"]
+    },
+    {
+      "id": "jogo-de-panelas-le-creuset-signature",
+      "tier": 4,
+      "name": "Jogo de Panelas Le Creuset Signature Ferro Fundido 3 Peças",
+      "price": 7499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-le-creuset-signature",
+      "bullets": [
+        "Ferro fundido esmaltado",
+        "Vai do fogão ao forno e à mesa",
+        "Ícone de cozinha (dura décadas)",
+        "Menos peças pelo preço"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "label": "Micro-ondas",
+  "utensil": false,
+  "options": [
+    {
+      "id": "micro-ondas-electrolux-mi41t",
+      "tier": 1,
+      "name": "Micro-ondas Electrolux 31 L MI41T",
+      "price": 579,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/micro-ondas-electrolux-mi41t",
+      "bullets": ["31 L", "Teclas de receitas prontas", "Sem inverter (aquece menos por igual)"]
+    },
+    {
+      "id": "micro-ondas-panasonic-nn-st65",
+      "tier": 2,
+      "name": "Micro-ondas Panasonic 34 L NN-ST65LWRU",
+      "price": 859,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/micro-ondas-panasonic-nn-st65",
+      "bullets": [
+        "34 L, cabe travessa grande",
+        "Menus automáticos e trava de segurança",
+        "Marca com boa durabilidade"
+      ]
+    },
+    {
+      "id": "micro-ondas-lg-neochef-ms3033",
+      "tier": 3,
+      "name": "Micro-ondas LG NeoChef Smart Inverter 30 L MS3033DS",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/micro-ondas-lg-neochef-ms3033",
+      "bullets": [
+        "Inverter: aquece e descongela por igual",
+        "Interior antiaderente fácil de limpar",
+        "Visual espelhado"
+      ]
+    },
+    {
+      "id": "micro-ondas-de-embutir-electrolux-34-litros",
+      "tier": 4,
+      "name": "Micro-ondas de Embutir Electrolux 34 L Inox com Grill",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/micro-ondas-de-embutir-electrolux-34-litros",
+      "bullets": ["De embutir: fica no armário planejado", "Grill para gratinar", "Acabamento inox"]
+    }
+  ]
+}

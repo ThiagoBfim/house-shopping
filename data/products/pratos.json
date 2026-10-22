@@ -1,0 +1,54 @@
+{
+  "label": "Pratos (aparelho de jantar)",
+  "utensil": true,
+  "options": [
+    {
+      "id": "aparelho-de-jantar-opaline-20-pecas",
+      "tier": 1,
+      "name": "Aparelho de Jantar Opaline Nadir 20 Peças",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aparelho-de-jantar-opaline-20-pecas",
+      "bullets": ["20 peças (6 pessoas)", "Vidro opaline: leve e resistente", "Vai ao micro-ondas"]
+    },
+    {
+      "id": "aparelho-de-jantar-oxford-porcelana-30-pecas",
+      "tier": 2,
+      "name": "Aparelho de Jantar Oxford Porcelana 30 Peças",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aparelho-de-jantar-oxford-porcelana-30-pecas",
+      "bullets": ["30 peças (6 pessoas)", "Porcelana branca", "Inclui pratos de sobremesa"]
+    },
+    {
+      "id": "aparelho-de-jantar-porto-brasil-42-pecas",
+      "tier": 3,
+      "name": "Aparelho de Jantar Porto Brasil Cerâmica 42 Peças",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aparelho-de-jantar-porto-brasil-42-pecas",
+      "bullets": [
+        "42 peças: jantar, chá e café",
+        "Cerâmica com acabamento artesanal",
+        "Lava-louças e micro-ondas"
+      ]
+    },
+    {
+      "id": "aparelho-de-jantar-vista-alegre",
+      "tier": 4,
+      "name": "Aparelho de Jantar Vista Alegre Porcelana 30 Peças",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/aparelho-de-jantar-vista-alegre",
+      "bullets": [
+        "Porcelana fina portuguesa",
+        "Marca premium, peças avulsas para repor",
+        "Para receber visitas"
+      ]
+    }
+  ]
+}

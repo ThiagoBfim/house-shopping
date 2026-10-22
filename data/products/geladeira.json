@@ -1,0 +1,63 @@
+{
+  "label": "Geladeira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "geladeira-consul-crm39ab",
+      "tier": 1,
+      "name": "Geladeira Consul Frost Free Duplex 342 L CRM39AB",
+      "price": 2799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/geladeira-consul-crm39ab",
+      "bullets": [
+        "Frost free duplex, 342 L",
+        "Sem compressor inverter (gasta mais energia que as outras)",
+        "Boa para casal ou família pequena"
+      ]
+    },
+    {
+      "id": "geladeira-electrolux-it70s",
+      "tier": 2,
+      "name": "Geladeira Electrolux Frost Free Inverter 480 L IT70S",
+      "price": 4299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/geladeira-electrolux-it70s",
+      "bullets": [
+        "Compressor inverter: mais econômica e silenciosa",
+        "480 L, cabe compra do mês de família de 4",
+        "Acabamento inox"
+      ]
+    },
+    {
+      "id": "geladeira-brastemp-bre57fk",
+      "tier": 3,
+      "name": "Geladeira Brastemp Inverse Inverter 463 L BRE57FK",
+      "price": 5999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/geladeira-brastemp-bre57fk",
+      "bullets": [
+        "Freezer embaixo (inverse): o que você mais usa fica na altura dos olhos",
+        "Inverter e classe A",
+        "Painel eletrônico externo"
+      ]
+    },
+    {
+      "id": "geladeira-brastemp-french-door-bro85ak",
+      "tier": 4,
+      "name": "Geladeira Brastemp French Door Inverter 554 L BRO85AK",
+      "price": 12499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/geladeira-brastemp-french-door-bro85ak",
+      "bullets": [
+        "French door: 2 portas em cima + gaveta freezer",
+        "554 L, a maior da lista",
+        "Inverter, classificação A+++",
+        "Visual de cozinha planejada"
+      ]
+    }
+  ]
+}

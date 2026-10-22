@@ -1,11 +1,17 @@
-// Valida data/rooms.json e data/products.json. Uso: npm run validate
-import { readFileSync } from 'node:fs'
+// Valida data/rooms.json e data/products/*.json. Uso: npm run validate
+import { readdirSync, readFileSync } from 'node:fs'
 import { validateCatalog } from '../src/data/validate.ts'
 
-const read = (file: string): unknown =>
-  JSON.parse(readFileSync(new URL(`../data/${file}`, import.meta.url), 'utf8'))
+const dataDir = new URL('../data/', import.meta.url)
+const read = (file: string): unknown => JSON.parse(readFileSync(new URL(file, dataDir), 'utf8'))
 
-const result = validateCatalog(read('rooms.json'), read('products.json'))
+const products = Object.fromEntries(
+  readdirSync(new URL('products/', dataDir))
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => [file.slice(0, -5), read(`products/${file}`)]),
+)
+
+const result = validateCatalog(read('rooms.json'), products)
 
 if (result.ok) {
   const categories = Object.keys(result.products).length

@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import realProducts from '../data/products.json'
-import realRooms from '../data/rooms.json'
+import { products as realProducts, rooms as realRooms } from '../src/data/catalog-data.ts'
 import { validateCatalog } from '../src/data/validate.ts'
 
 const option = (tier: number, price: number, overrides: Record<string, unknown> = {}) => ({
@@ -49,7 +48,7 @@ describe('validateCatalog', () => {
   it('exige os 4 tiers em produto caro', () => {
     const errors = errorsOf(rooms(), products([option(1, 2000), option(2, 3500)]))
     expect(errors).toEqual([
-      'products.json › geladeira: produto caro (até R$ 3500) precisa dos 4 tiers — faltando tier 3, 4',
+      'products/geladeira.json: produto caro (até R$ 3500) precisa dos 4 tiers — faltando tier 3, 4',
     ])
   })
 
@@ -57,14 +56,14 @@ describe('validateCatalog', () => {
     const options = fourTiers()
     options[2].price = 3000
     expect(errorsOf(rooms(), products(options))).toContainEqual(
-      'products.json › geladeira: preço do tier 3 (R$ 3000) deve ser maior que o do tier 2 (R$ 3500)',
+      'products/geladeira.json: preço do tier 3 (R$ 3000) deve ser maior que o do tier 2 (R$ 3500)',
     )
   })
 
   it('rejeita tier repetido', () => {
     const options = [...fourTiers(), option(4, 20000, { id: 'outra' })]
     expect(errorsOf(rooms(), products(options))).toContainEqual(
-      'products.json › geladeira: tier 4 repetido',
+      'products/geladeira.json: tier 4 repetido',
     )
   })
 
@@ -74,7 +73,7 @@ describe('validateCatalog', () => {
       freezer: { label: 'Freezer', utensil: false, options: [option(1, 500)] },
     }
     expect(errorsOf(rooms(), data)).toContainEqual(
-      'products.json › freezer: id "geladeira-t1" repetido (também em geladeira)',
+      'products/freezer.json: id "geladeira-t1" repetido (também em geladeira)',
     )
   })
 
@@ -85,7 +84,7 @@ describe('validateCatalog', () => {
     const options = fourTiers()
     options[0] = option(1, 2000, { url })
     expect(errorsOf(rooms(), products(options))).toContainEqual(
-      'products.json › geladeira.options.0.url: deve ser uma URL https válida',
+      'products/geladeira.json › options.0.url: deve ser uma URL https válida',
     )
   })
 
@@ -96,14 +95,16 @@ describe('validateCatalog', () => {
     const options = fourTiers()
     options[1] = option(2, 3500, { bullets })
     expect(errorsOf(rooms(), products(options))).toContainEqual(
-      `products.json › geladeira.options.1.bullets: ${message}`,
+      `products/geladeira.json › options.1.bullets: ${message}`,
     )
   })
 
   it('rejeita campos desconhecidos (pega erros de digitação)', () => {
     const options = fourTiers()
     options[0] = option(1, 2000, { prcie: 10 })
-    expect(errorsOf(rooms(), products(options)).join('\n')).toMatch(/geladeira\.options\.0.*prcie/)
+    expect(errorsOf(rooms(), products(options)).join('\n')).toMatch(
+      /products\/geladeira\.json › options\.0.*prcie/,
+    )
   })
 
   it('reporta erro de formato e de regra de negócio juntos', () => {
@@ -120,14 +121,14 @@ describe('validateCatalog', () => {
       },
     }
     expect(errorsOf(rooms(), data)).toEqual([
-      'products.json › fogao.options.0.url: deve ser uma URL https válida',
-      'products.json › geladeira: produto caro (até R$ 3500) precisa dos 4 tiers — faltando tier 3, 4',
+      'products/fogao.json › options.0.url: deve ser uma URL https válida',
+      'products/geladeira.json: produto caro (até R$ 3500) precisa dos 4 tiers — faltando tier 3, 4',
     ])
   })
 
   it('rejeita cômodo com categoria inexistente', () => {
     expect(errorsOf(rooms('lava-loucas'), products())).toEqual([
-      'rooms.json › cozinha › lava-loucas: categoria não existe em products.json',
+      'rooms.json › cozinha › lava-loucas: categoria não existe (falta products/lava-loucas.json)',
     ])
   })
 
@@ -140,7 +141,7 @@ describe('validateCatalog', () => {
   it('exige o campo utensil na categoria', () => {
     const data = { geladeira: { label: 'Geladeira', options: fourTiers() } }
     expect(errorsOf(rooms(), data)).toContainEqual(
-      'products.json › geladeira.utensil: informe true ou false',
+      'products/geladeira.json › utensil: informe true ou false',
     )
   })
 })

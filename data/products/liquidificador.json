@@ -1,0 +1,51 @@
+{
+  "label": "Liquidificador",
+  "utensil": false,
+  "options": [
+    {
+      "id": "liquidificador-mondial-turbo-power-l-99",
+      "tier": 1,
+      "name": "Liquidificador Mondial Turbo Power L-99",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/liquidificador-mondial-turbo-power-l-99",
+      "bullets": ["550 W", "Copo de plástico", "3 velocidades + pulsar"]
+    },
+    {
+      "id": "liquidificador-philips-walita-serie-3000",
+      "tier": 2,
+      "name": "Liquidificador Philips Walita Série 3000 1200 W",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/liquidificador-philips-walita-serie-3000",
+      "bullets": ["1200 W, tritura gelo", "Copo resistente de 3 L", "5 velocidades"]
+    },
+    {
+      "id": "liquidificador-oster-xpert",
+      "tier": 3,
+      "name": "Liquidificador Oster Xpert Series 1400 W",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/liquidificador-oster-xpert",
+      "bullets": ["1400 W", "Copo de vidro", "Programas automáticos (smoothie, gelo)"]
+    },
+    {
+      "id": "liquidificador-oster-versa-pro",
+      "tier": 4,
+      "name": "Liquidificador de Alta Rotação Oster Versa Pro",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/liquidificador-oster-versa-pro",
+      "bullets": [
+        "Alta rotação: faz pasta de amendoim e sopa quente",
+        "Motor de 1400 W profissional",
+        "Copo Tritan inquebrável",
+        "Garantia estendida"
+      ]
+    }
+  ]
+}

@@ -26,3 +26,6 @@ dist-ssr
 coverage
 playwright-report
 test-results
+
+# Claude Code (configuração local)
+.claude/settings.local.json

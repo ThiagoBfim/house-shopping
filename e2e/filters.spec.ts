@@ -1,6 +1,14 @@
 import { expect, test, type Page } from '@playwright/test'
 
-const UTENSILS = ['Pratos', 'Talheres', 'Panelas', 'Jogo americano', 'Toalha de mesa']
+const UTENSILS = [
+  'Pratos (aparelho de jantar)',
+  'Talheres (faqueiro)',
+  'Panelas',
+  'Copos',
+  'Facas',
+  'Jogo americano',
+  'Toalha de mesa',
+]
 
 const cardNames = (page: Page) =>
   page
@@ -41,7 +49,7 @@ test('necessidade mínima 3+ e sem utensílios', async ({ page }) => {
 test('card mostra necessidade e selo de utensílio', async ({ page }) => {
   await openKitchenForm(page)
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
-  const plates = page.getByRole('article', { name: /^Pratos:/ })
+  const plates = page.getByRole('article', { name: /^Pratos/ })
   await expect(plates.getByText('Utensílio')).toBeVisible()
   await expect(plates.getByText('Necessidade: necessário (4/5)')).toBeVisible()
   const fridge = page.getByRole('article', { name: /^Geladeira:/ })
@@ -53,15 +61,15 @@ test('mudar filtro na lista recalcula e pode ser desfeito', async ({ page }) => 
   await openKitchenForm(page)
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   const original = await cardNames(page)
-  expect(original).toContain('Pratos')
+  expect(original).toContain('Pratos (aparelho de jantar)')
 
   await page.locator('.filters-panel summary').click()
   await page.getByRole('switch', { name: /Incluir utensílios/ }).uncheck()
   await expect(page.getByText(/Filtros aplicados/)).toBeVisible()
-  expect(await cardNames(page)).not.toContain('Pratos')
+  expect(await cardNames(page)).not.toContain('Pratos (aparelho de jantar)')
 
   await page.getByRole('button', { name: 'Desfazer' }).click()
-  await expect(page.getByRole('article', { name: /^Pratos:/ })).toBeVisible()
+  await expect(page.getByRole('article', { name: /^Pratos/ })).toBeVisible()
   expect(await cardNames(page)).toEqual(original)
 })
 
