@@ -1,6 +1,24 @@
 {
   "label": "Protetor de colchão",
   "utensil": true,
+  "variants": [
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
+  ],
   "options": [
     {
       "id": "protetor-de-colchao-impermeavel-casal-malha",
@@ -10,7 +28,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-impermeavel-casal-malha",
-      "bullets": ["Impermeável", "Malha simples", "Pode esquentar um pouco"]
+      "bullets": ["Impermeável", "Malha simples", "Pode esquentar um pouco"],
+      "variants": ["casal"]
     },
     {
       "id": "protetor-de-colchao-altenburg-impermeavel-casal",
@@ -20,7 +39,74 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-altenburg-impermeavel-casal",
-      "bullets": ["Impermeável e respirável", "Não faz barulho", "Elástico que não solta"]
+      "bullets": ["Impermeável e respirável", "Não faz barulho", "Elástico que não solta"],
+      "variants": ["casal"]
+    },
+    {
+      "id": "protetor-de-colchao-impermeavel-solteiro-malha",
+      "tier": 1,
+      "name": "Protetor de Colchão Impermeável Solteiro Malha",
+      "price": 49,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-impermeavel-solteiro-malha",
+      "bullets": ["Impermeável", "Malha simples", "Solteiro"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "protetor-de-colchao-altenburg-impermeavel-solteiro",
+      "tier": 2,
+      "name": "Protetor de Colchão Altenburg Impermeável Solteiro",
+      "price": 109,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-altenburg-impermeavel-solteiro",
+      "bullets": ["Impermeável e respirável", "Não faz barulho", "Solteiro"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "protetor-de-colchao-impermeavel-queen-malha",
+      "tier": 1,
+      "name": "Protetor de Colchão Impermeável Queen Malha",
+      "price": 79,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-impermeavel-queen-malha",
+      "bullets": ["Impermeável", "Malha simples", "Queen"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "protetor-de-colchao-altenburg-impermeavel-queen",
+      "tier": 2,
+      "name": "Protetor de Colchão Altenburg Impermeável Queen",
+      "price": 169,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-altenburg-impermeavel-queen",
+      "bullets": ["Impermeável e respirável", "Não faz barulho", "Queen"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "protetor-de-colchao-impermeavel-king-malha",
+      "tier": 1,
+      "name": "Protetor de Colchão Impermeável King Malha",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-impermeavel-king-malha",
+      "bullets": ["Impermeável", "Malha simples", "King"],
+      "variants": ["king"]
+    },
+    {
+      "id": "protetor-de-colchao-altenburg-impermeavel-king",
+      "tier": 2,
+      "name": "Protetor de Colchão Altenburg Impermeável King",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/protetor-de-colchao-altenburg-impermeavel-king",
+      "bullets": ["Impermeável e respirável", "Não faz barulho", "King"],
+      "variants": ["king"]
     }
   ]
 }

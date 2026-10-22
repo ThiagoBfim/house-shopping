@@ -34,7 +34,9 @@ test('necessidade mínima 3+ e sem utensílios', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   const names = await cardNames(page)
-  expect(names).toEqual(expect.arrayContaining(['Geladeira', 'Fogão', 'Forno', 'Micro-ondas']))
+  expect(names).toEqual(
+    expect.arrayContaining(['Geladeira', 'Fogão ou cooktop', 'Forno', 'Micro-ondas']),
+  )
   for (const hidden of [...UTENSILS, 'Freezer', 'Liquidificador'])
     expect(names).not.toContain(hidden)
 
@@ -81,7 +83,7 @@ test('link compartilhado mantém os filtros', async ({ page, browser }) => {
   await page.getByRole('switch', { name: /Incluir utensílios/ }).uncheck()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   const names = await cardNames(page)
-  expect(names).toEqual(['Fogão', 'Geladeira'])
+  expect(names).toEqual(['Fogão ou cooktop', 'Geladeira'])
 
   await page.getByRole('button', { name: 'Copiar link' }).click()
   const link = await page.evaluate(() => navigator.clipboard.readText())

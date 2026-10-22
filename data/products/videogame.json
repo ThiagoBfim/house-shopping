@@ -1,24 +1,15 @@
 {
   "label": "Videogame",
   "utensil": false,
+  "variants": [
+    { "id": "playstation", "label": "PlayStation" },
+    { "id": "xbox", "label": "Xbox" },
+    { "id": "nintendo", "label": "Nintendo" }
+  ],
   "options": [
     {
-      "id": "console-xbox-series-s-512-gb",
-      "tier": 1,
-      "name": "Console Xbox Series S 512 GB",
-      "price": 2999,
-      "priceUpdatedAt": "2026-10-22",
-      "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/console-xbox-series-s-512-gb",
-      "bullets": [
-        "O console atual mais barato",
-        "Game Pass: centenas de jogos na assinatura",
-        "Só digital (sem disco)"
-      ]
-    },
-    {
       "id": "console-playstation-5-slim-digital",
-      "tier": 2,
+      "tier": 1,
       "name": "Console PlayStation 5 Slim Digital 825 GB",
       "price": 4399.9,
       "priceUpdatedAt": "2026-10-22",
@@ -37,34 +28,34 @@
           "catalogId": "MLB29001054",
           "history": [{ "date": "2026-10-22", "price": 4399.9 }]
         }
-      ]
+      ],
+      "variants": ["playstation"]
     },
     {
-      "id": "console-nintendo-switch-2",
-      "tier": 3,
-      "name": "Console Nintendo Switch 2 + Mario Kart World",
-      "price": 4599.9,
+      "id": "console-playstation-5-slim-com-leitor-de-disco",
+      "tier": 2,
+      "name": "Console PlayStation 5 Slim com Leitor de Disco",
+      "price": 4799,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://meli.la/18iifuT",
+      "url": "https://lista.mercadolivre.com.br/console-playstation-5-slim-com-leitor-de-disco",
+      "bullets": ["Lê jogo em disco (dá para comprar usado)", "Exclusivos da Sony", "SSD de 1 TB"],
+      "variants": ["playstation"]
+    },
+    {
+      "id": "kit-playstation-5-slim-com-leitor-e-controle-dualsense-extra",
+      "tier": 3,
+      "name": "Kit PlayStation 5 Slim com Leitor e Controle DualSense Extra",
+      "price": 5199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-playstation-5-slim-com-leitor-e-controle-dualsense-extra",
       "bullets": [
-        "Joga na TV e no modo portátil",
-        "Mario, Zelda e Pokémon",
-        "Bom para jogar com a família"
+        "Com leitor de disco",
+        "Segundo controle para jogar a dois",
+        "Exclusivos da Sony"
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_642168-MLA118780566083_102026-O.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/18iifuT",
-          "price": 4599.9,
-          "updatedAt": "2026-10-22",
-          "available": true,
-          "externalId": "MLB5335958389",
-          "catalogId": "MLB80167828",
-          "history": [{ "date": "2026-10-22", "price": 4599.9 }]
-        }
-      ]
+      "variants": ["playstation"]
     },
     {
       "id": "console-playstation-5-pro",
@@ -91,7 +82,117 @@
           "catalogId": "MLB41975964",
           "history": [{ "date": "2026-10-22", "price": 7599 }]
         }
-      ]
+      ],
+      "variants": ["playstation"]
+    },
+    {
+      "id": "console-xbox-series-s-512-gb",
+      "tier": 1,
+      "name": "Console Xbox Series S 512 GB",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-xbox-series-s-512-gb",
+      "bullets": [
+        "O console atual mais barato",
+        "Game Pass: centenas de jogos na assinatura",
+        "Só digital (sem disco)"
+      ],
+      "variants": ["xbox"]
+    },
+    {
+      "id": "console-xbox-series-s-1-tb",
+      "tier": 2,
+      "name": "Console Xbox Series S 1 TB",
+      "price": 3299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-xbox-series-s-1-tb",
+      "bullets": ["Dobro de espaço do Series S comum", "Game Pass", "Só digital"],
+      "variants": ["xbox"]
+    },
+    {
+      "id": "console-xbox-series-x-digital",
+      "tier": 3,
+      "name": "Console Xbox Series X Digital",
+      "price": 4499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-xbox-series-x-digital",
+      "bullets": ["4K de verdade", "Bem mais potente que o Series S", "Só digital"],
+      "variants": ["xbox"]
+    },
+    {
+      "id": "console-xbox-series-x-1-tb",
+      "tier": 4,
+      "name": "Console Xbox Series X 1 TB",
+      "price": 4999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-xbox-series-x-1-tb",
+      "bullets": ["4K e leitor de disco", "O Xbox mais potente", "Game Pass"],
+      "variants": ["xbox"]
+    },
+    {
+      "id": "console-nintendo-switch-lite",
+      "tier": 1,
+      "name": "Console Nintendo Switch Lite",
+      "price": 1599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-nintendo-switch-lite",
+      "bullets": ["Só portátil", "Leve e barato", "Jogos da Nintendo"],
+      "variants": ["nintendo"]
+    },
+    {
+      "id": "console-nintendo-switch-oled",
+      "tier": 2,
+      "name": "Console Nintendo Switch OLED",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-nintendo-switch-oled",
+      "bullets": ["Tela OLED", "Joga na TV e no portátil", "Controles destacáveis"],
+      "variants": ["nintendo"]
+    },
+    {
+      "id": "console-nintendo-switch-2",
+      "tier": 3,
+      "name": "Console Nintendo Switch 2 + Mario Kart World",
+      "price": 4599.9,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://meli.la/18iifuT",
+      "bullets": [
+        "Joga na TV e no modo portátil",
+        "Mario, Zelda e Pokémon",
+        "Bom para jogar com a família"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_642168-MLA118780566083_102026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/18iifuT",
+          "price": 4599.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5335958389",
+          "catalogId": "MLB80167828",
+          "history": [{ "date": "2026-10-22", "price": 4599.9 }]
+        }
+      ],
+      "variants": ["nintendo"]
+    },
+    {
+      "id": "console-nintendo-switch-2-com-mario-kart-world-e-controle-pro",
+      "tier": 4,
+      "name": "Console Nintendo Switch 2 com Mario Kart World e Controle Pro",
+      "price": 5199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/console-nintendo-switch-2-com-mario-kart-world-e-controle-pro",
+      "bullets": ["Switch 2 com Mario Kart", "Controle Pro para jogar na TV", "Kit completo"],
+      "variants": ["nintendo"]
     }
   ]
 }

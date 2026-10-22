@@ -1,6 +1,24 @@
 {
   "label": "Edredom",
   "utensil": true,
+  "variants": [
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
+  ],
   "options": [
     {
       "id": "edredom-casal-microfibra",
@@ -10,7 +28,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-casal-microfibra",
-      "bullets": ["Microfibra", "Leve", "Lava na máquina"]
+      "bullets": ["Microfibra", "Leve", "Lava na máquina"],
+      "variants": ["casal"]
     },
     {
       "id": "edredom-casal-dupla-face-algodao",
@@ -20,7 +39,63 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-casal-dupla-face-algodao",
-      "bullets": ["Algodão", "Dupla face (duas cores)", "Respira melhor"]
+      "bullets": ["Algodão", "Dupla face (duas cores)", "Respira melhor"],
+      "variants": ["casal"]
+    },
+    {
+      "id": "edredom-casal-pena-de-ganso",
+      "tier": 3,
+      "name": "Edredom Casal Pena de Ganso",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-casal-pena-de-ganso",
+      "bullets": ["Pena de ganso: quente e leve", "Casal", "Capa de algodão"],
+      "variants": ["casal"]
+    },
+    {
+      "id": "edredom-solteiro-microfibra",
+      "tier": 1,
+      "name": "Edredom Solteiro Microfibra",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-solteiro-microfibra",
+      "bullets": ["Microfibra", "Leve", "Lava na máquina"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "edredom-solteiro-dupla-face-algodao",
+      "tier": 2,
+      "name": "Edredom Solteiro Dupla Face Algodão",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-solteiro-dupla-face-algodao",
+      "bullets": ["Dupla face", "Algodão", "Mais quente"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "edredom-queen-microfibra",
+      "tier": 1,
+      "name": "Edredom Queen Microfibra",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-queen-microfibra",
+      "bullets": ["Microfibra", "Queen", "Lava na máquina"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "edredom-queen-dupla-face-algodao",
+      "tier": 2,
+      "name": "Edredom Queen Dupla Face Algodão",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-queen-dupla-face-algodao",
+      "bullets": ["Dupla face", "Algodão", "Mais quente"],
+      "variants": ["queen"]
     },
     {
       "id": "edredom-pena-de-ganso-queen",
@@ -30,7 +105,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-pena-de-ganso-queen",
-      "bullets": ["Mistura de pena e pluma", "Bem quente e leve", "Lavanderia recomendada"]
+      "bullets": ["Mistura de pena e pluma", "Bem quente e leve", "Lavanderia recomendada"],
+      "variants": ["queen"]
     },
     {
       "id": "edredom-100-pluma-de-ganso",
@@ -40,7 +116,30 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-100-pluma-de-ganso",
-      "bullets": ["100% pluma: o mais quente e leve", "Para inverno rigoroso", "Dura muitos anos"]
+      "bullets": ["100% pluma: o mais quente e leve", "Para inverno rigoroso", "Dura muitos anos"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "edredom-king-microfibra",
+      "tier": 1,
+      "name": "Edredom King Microfibra",
+      "price": 179,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-king-microfibra",
+      "bullets": ["Microfibra", "King", "Lava na máquina"],
+      "variants": ["king"]
+    },
+    {
+      "id": "edredom-king-pena-de-ganso",
+      "tier": 2,
+      "name": "Edredom King Pena de Ganso",
+      "price": 799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-king-pena-de-ganso",
+      "bullets": ["Pena de ganso: quente e leve", "King", "Capa de algodão"],
+      "variants": ["king"]
     }
   ]
 }

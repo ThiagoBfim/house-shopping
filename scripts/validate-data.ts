@@ -11,13 +11,13 @@ const products = Object.fromEntries(
     .map((file) => [file.slice(0, -5), read(`products/${file}`)]),
 )
 
-const result = validateCatalog(read('rooms.json'), products)
+const result = validateCatalog(read('rooms.json'), products, read('assistant.json'))
 
 if (result.ok) {
   const categories = Object.keys(result.products).length
   const options = Object.values(result.products).reduce((n, c) => n + c.options.length, 0)
   console.log(
-    `✔ Catálogo válido: ${Object.keys(result.rooms).length} cômodo(s), ${categories} categoria(s), ${options} opção(ões).`,
+    `✔ Catálogo válido: ${Object.keys(result.rooms).length} cômodo(s), ${categories} categoria(s), ${options} opção(ões), ${result.assistant?.questions.length ?? 0} pergunta(s) do assistente.`,
   )
 } else {
   console.error(`✖ Catálogo inválido (${result.errors.length} erro(s)):`)

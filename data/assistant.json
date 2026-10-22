@@ -1,0 +1,905 @@
+{
+  "questions": [
+    {
+      "id": "moradores",
+      "icon": "🏠",
+      "text": "Quem vai morar na casa?",
+      "short": "Casa",
+      "kind": "single",
+      "answers": [
+        {
+          "id": "sozinho",
+          "icon": "🙋",
+          "label": "Só eu",
+          "effects": [
+            {
+              "rooms": {
+                "cozinha": 1,
+                "sala": 1,
+                "banheiro": 1,
+                "lavanderia": 1,
+                "utilidades": 1,
+                "quarto": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "casal",
+          "icon": "💑",
+          "label": "Casal",
+          "effects": [
+            {
+              "rooms": {
+                "cozinha": 1,
+                "sala": 1,
+                "banheiro": 1,
+                "lavanderia": 1,
+                "utilidades": 1,
+                "quarto": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "filhos",
+          "icon": "👨‍👩‍👧",
+          "label": "Casal com filhos",
+          "effects": [
+            {
+              "rooms": {
+                "cozinha": 1,
+                "sala": 1,
+                "banheiro": 1,
+                "lavanderia": 1,
+                "utilidades": 1,
+                "quarto": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "familia-grande",
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Família grande",
+          "effects": [
+            {
+              "rooms": {
+                "cozinha": 1,
+                "sala": 1,
+                "banheiro": 2,
+                "lavanderia": 1,
+                "utilidades": 1,
+                "quarto": 3
+              }
+            }
+          ]
+        },
+        {
+          "id": "bebe",
+          "icon": "🍼",
+          "label": "Com bebê (ou chegando)",
+          "effects": [
+            {
+              "rooms": {
+                "cozinha": 1,
+                "sala": 1,
+                "banheiro": 1,
+                "lavanderia": 1,
+                "utilidades": 1,
+                "quarto": 1,
+                "quarto-bebe": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "home-office",
+      "icon": "💻",
+      "text": "Você trabalha ou estuda em casa?",
+      "short": "Home office",
+      "kind": "single",
+      "answers": [
+        {
+          "id": "sim",
+          "icon": "✅",
+          "label": "Sim",
+          "effects": [
+            {
+              "rooms": {
+                "escritorio": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "nao",
+          "icon": "🚶",
+          "label": "Não",
+          "effects": []
+        }
+      ]
+    },
+    {
+      "id": "videogame",
+      "icon": "🎮",
+      "text": "Você joga videogame?",
+      "short": "Videogame",
+      "kind": "single",
+      "why": "Gamer ganha um escritório gamer: cadeira, mesa que levanta, monitor rápido…",
+      "answers": [
+        {
+          "id": "nao",
+          "icon": "🙅",
+          "label": "Não jogo",
+          "effects": []
+        },
+        {
+          "id": "playstation",
+          "icon": "🎮",
+          "label": "PlayStation",
+          "effects": [
+            {
+              "roomVariant": {
+                "from": "escritorio",
+                "to": "escritorio-gamer"
+              }
+            },
+            {
+              "variant": {
+                "category": "videogame",
+                "variant": "playstation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "xbox",
+          "icon": "🟢",
+          "label": "Xbox",
+          "effects": [
+            {
+              "roomVariant": {
+                "from": "escritorio",
+                "to": "escritorio-gamer"
+              }
+            },
+            {
+              "variant": {
+                "category": "videogame",
+                "variant": "xbox"
+              }
+            }
+          ]
+        },
+        {
+          "id": "nintendo",
+          "icon": "🍄",
+          "label": "Nintendo",
+          "effects": [
+            {
+              "roomVariant": {
+                "from": "escritorio",
+                "to": "escritorio-gamer"
+              }
+            },
+            {
+              "variant": {
+                "category": "videogame",
+                "variant": "nintendo"
+              }
+            }
+          ]
+        },
+        {
+          "id": "pc",
+          "icon": "🖥️",
+          "label": "Só no PC",
+          "effects": [
+            {
+              "roomVariant": {
+                "from": "escritorio",
+                "to": "escritorio-gamer"
+              }
+            },
+            {
+              "skip": ["videogame"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "area-externa",
+      "icon": "🌿",
+      "text": "Tem quintal, varanda ou área de churrasco?",
+      "short": "Área externa",
+      "kind": "single",
+      "answers": [
+        {
+          "id": "sim",
+          "icon": "🔥",
+          "label": "Tem sim",
+          "effects": [
+            {
+              "rooms": {
+                "area-externa": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "nao",
+          "icon": "🏢",
+          "label": "Não tem",
+          "effects": []
+        }
+      ]
+    },
+    {
+      "id": "estilo",
+      "icon": "💰",
+      "text": "Na hora de gastar, você é…",
+      "short": "Orçamento",
+      "kind": "single",
+      "answers": [
+        {
+          "id": "economico",
+          "icon": "🪙",
+          "label": "Econômico",
+          "effects": [
+            {
+              "preset": "economico"
+            }
+          ]
+        },
+        {
+          "id": "equilibrado",
+          "icon": "⚖️",
+          "label": "Equilibrado",
+          "effects": [
+            {
+              "preset": "equilibrado"
+            }
+          ]
+        },
+        {
+          "id": "premium",
+          "icon": "💎",
+          "label": "Quero o melhor",
+          "effects": [
+            {
+              "preset": "premium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fogao",
+      "icon": "🍳",
+      "text": "Na cozinha, você prefere…",
+      "short": "Fogão",
+      "kind": "single",
+      "when": {
+        "rooms": ["cozinha"]
+      },
+      "why": "Cooktop vem com forno de embutir; indução precisa de panela própria — a gente já ajusta.",
+      "answers": [
+        {
+          "id": "piso",
+          "icon": "🔥",
+          "label": "Fogão a gás de piso",
+          "effects": []
+        },
+        {
+          "id": "cooktop-gas",
+          "icon": "🔥",
+          "label": "Cooktop a gás",
+          "effects": [
+            {
+              "variant": {
+                "category": "fogao",
+                "variant": "cooktop-gas"
+              }
+            },
+            {
+              "variant": {
+                "category": "forno",
+                "variant": "embutir"
+              }
+            },
+            {
+              "need": {
+                "category": "forno",
+                "need": 4
+              }
+            }
+          ]
+        },
+        {
+          "id": "cooktop-inducao",
+          "icon": "⚡",
+          "label": "Cooktop de indução",
+          "effects": [
+            {
+              "variant": {
+                "category": "fogao",
+                "variant": "cooktop-inducao"
+              }
+            },
+            {
+              "variant": {
+                "category": "forno",
+                "variant": "embutir"
+              }
+            },
+            {
+              "need": {
+                "category": "forno",
+                "need": 4
+              }
+            },
+            {
+              "variant": {
+                "category": "panelas",
+                "variant": "inducao"
+              }
+            }
+          ]
+        },
+        {
+          "id": "tanto-faz",
+          "icon": "🤷",
+          "label": "Tanto faz",
+          "effects": []
+        }
+      ]
+    },
+    {
+      "id": "cozinhar",
+      "icon": "🥘",
+      "text": "Com que frequência você cozinha?",
+      "short": "Cozinhar",
+      "kind": "single",
+      "when": {
+        "rooms": ["cozinha"]
+      },
+      "answers": [
+        {
+          "id": "todo-dia",
+          "icon": "👩‍🍳",
+          "label": "Todo dia",
+          "effects": [
+            {
+              "need": {
+                "category": "air-fryer",
+                "need": 3
+              }
+            },
+            {
+              "need": {
+                "category": "lava-loucas",
+                "need": 3
+              }
+            },
+            {
+              "need": {
+                "category": "batedeira",
+                "need": 3
+              }
+            },
+            {
+              "need": {
+                "category": "liquidificador",
+                "need": 3
+              }
+            },
+            {
+              "need": {
+                "category": "forno",
+                "need": 4
+              }
+            },
+            {
+              "need": {
+                "category": "assadeiras",
+                "need": 4
+              }
+            }
+          ]
+        },
+        {
+          "id": "fim-de-semana",
+          "icon": "📅",
+          "label": "Fim de semana",
+          "effects": []
+        },
+        {
+          "id": "quase-nunca",
+          "icon": "🛵",
+          "label": "Quase nunca",
+          "effects": [
+            {
+              "need": {
+                "category": "micro-ondas",
+                "need": 5
+              }
+            },
+            {
+              "need": {
+                "category": "air-fryer",
+                "need": 4
+              }
+            },
+            {
+              "need": {
+                "category": "batedeira",
+                "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "assadeiras",
+                "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "forno",
+                "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "lava-loucas",
+                "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "liquidificador",
+                "need": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cafe",
+      "icon": "☕",
+      "text": "Café em casa é…",
+      "short": "Café",
+      "kind": "single",
+      "when": {
+        "rooms": ["cozinha"]
+      },
+      "answers": [
+        {
+          "id": "nao",
+          "icon": "🚫",
+          "label": "Não tomo",
+          "effects": [
+            {
+              "skip": ["cafeteira"]
+            }
+          ]
+        },
+        {
+          "id": "coado",
+          "icon": "☕",
+          "label": "Coado",
+          "effects": [
+            {
+              "variant": {
+                "category": "cafeteira",
+                "variant": "coado"
+              }
+            },
+            {
+              "need": {
+                "category": "cafeteira",
+                "need": 3
+              }
+            }
+          ]
+        },
+        {
+          "id": "capsula",
+          "icon": "💊",
+          "label": "Cápsula",
+          "effects": [
+            {
+              "variant": {
+                "category": "cafeteira",
+                "variant": "capsula"
+              }
+            },
+            {
+              "need": {
+                "category": "cafeteira",
+                "need": 3
+              }
+            }
+          ]
+        },
+        {
+          "id": "espresso",
+          "icon": "🤎",
+          "label": "Espresso de verdade",
+          "effects": [
+            {
+              "variant": {
+                "category": "cafeteira",
+                "variant": "espresso"
+              }
+            },
+            {
+              "need": {
+                "category": "cafeteira",
+                "need": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calor",
+      "icon": "🌡️",
+      "text": "Faz calor aí?",
+      "short": "Calor",
+      "kind": "single",
+      "when": {
+        "rooms": ["quarto", "sala", "quarto-bebe"]
+      },
+      "answers": [
+        {
+          "id": "ar",
+          "icon": "🥵",
+          "label": "Muito: quero ar-condicionado",
+          "effects": [
+            {
+              "need": {
+                "category": "ar-condicionado",
+                "need": 4
+              }
+            }
+          ]
+        },
+        {
+          "id": "ventilador",
+          "icon": "🌀",
+          "label": "Ventilador resolve",
+          "effects": [
+            {
+              "variant": {
+                "category": "ar-condicionado",
+                "variant": "ventilador"
+              }
+            }
+          ]
+        },
+        {
+          "id": "nao",
+          "icon": "😌",
+          "label": "Não precisa",
+          "effects": [
+            {
+              "skip": ["ar-condicionado"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cama",
+      "icon": "🛏️",
+      "text": "Qual o tamanho da cama?",
+      "short": "Cama",
+      "kind": "single",
+      "when": {
+        "rooms": ["quarto"]
+      },
+      "why": "Cama, colchão e roupa de cama vêm no mesmo tamanho.",
+      "answers": [
+        {
+          "id": "solteiro",
+          "icon": "🛏️",
+          "label": "Solteiro",
+          "effects": [
+            {
+              "variant": {
+                "category": "cama-box",
+                "variant": "solteiro"
+              }
+            },
+            {
+              "variant": {
+                "category": "colchao",
+                "variant": "solteiro"
+              }
+            },
+            {
+              "variant": {
+                "category": "jogo-de-cama",
+                "variant": "solteiro"
+              }
+            },
+            {
+              "variant": {
+                "category": "edredom",
+                "variant": "solteiro"
+              }
+            },
+            {
+              "variant": {
+                "category": "protetor-de-colchao",
+                "variant": "solteiro"
+              }
+            }
+          ]
+        },
+        {
+          "id": "casal",
+          "icon": "🛏️",
+          "label": "Casal",
+          "effects": [
+            {
+              "variant": {
+                "category": "cama-box",
+                "variant": "casal"
+              }
+            },
+            {
+              "variant": {
+                "category": "colchao",
+                "variant": "casal"
+              }
+            },
+            {
+              "variant": {
+                "category": "jogo-de-cama",
+                "variant": "casal"
+              }
+            },
+            {
+              "variant": {
+                "category": "edredom",
+                "variant": "casal"
+              }
+            },
+            {
+              "variant": {
+                "category": "protetor-de-colchao",
+                "variant": "casal"
+              }
+            }
+          ]
+        },
+        {
+          "id": "queen",
+          "icon": "👑",
+          "label": "Queen",
+          "effects": [
+            {
+              "variant": {
+                "category": "cama-box",
+                "variant": "queen"
+              }
+            },
+            {
+              "variant": {
+                "category": "colchao",
+                "variant": "queen"
+              }
+            },
+            {
+              "variant": {
+                "category": "jogo-de-cama",
+                "variant": "queen"
+              }
+            },
+            {
+              "variant": {
+                "category": "edredom",
+                "variant": "queen"
+              }
+            },
+            {
+              "variant": {
+                "category": "protetor-de-colchao",
+                "variant": "queen"
+              }
+            }
+          ]
+        },
+        {
+          "id": "king",
+          "icon": "🏰",
+          "label": "King",
+          "effects": [
+            {
+              "variant": {
+                "category": "cama-box",
+                "variant": "king"
+              }
+            },
+            {
+              "variant": {
+                "category": "colchao",
+                "variant": "king"
+              }
+            },
+            {
+              "variant": {
+                "category": "jogo-de-cama",
+                "variant": "king"
+              }
+            },
+            {
+              "variant": {
+                "category": "edredom",
+                "variant": "king"
+              }
+            },
+            {
+              "variant": {
+                "category": "protetor-de-colchao",
+                "variant": "king"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ja-tenho",
+      "icon": "📦",
+      "text": "O que você já tem?",
+      "short": "Já tem",
+      "kind": "multiple",
+      "why": "Marque o que vai levar para a casa nova.",
+      "answers": [
+        {
+          "id": "geladeira",
+          "icon": "🧊",
+          "label": "Geladeira",
+          "effects": [
+            {
+              "owned": ["geladeira"]
+            }
+          ]
+        },
+        {
+          "id": "fogao",
+          "icon": "🍳",
+          "label": "Fogão",
+          "effects": [
+            {
+              "owned": ["fogao"]
+            }
+          ]
+        },
+        {
+          "id": "micro-ondas",
+          "icon": "♨️",
+          "label": "Micro-ondas",
+          "effects": [
+            {
+              "owned": ["micro-ondas"]
+            }
+          ]
+        },
+        {
+          "id": "lava-roupas",
+          "icon": "🫧",
+          "label": "Máquina de lavar",
+          "effects": [
+            {
+              "owned": ["lava-roupas"]
+            }
+          ]
+        },
+        {
+          "id": "cama",
+          "icon": "🛏️",
+          "label": "Cama e colchão",
+          "effects": [
+            {
+              "owned": ["cama-box", "colchao"]
+            }
+          ]
+        },
+        {
+          "id": "sofa",
+          "icon": "🛋️",
+          "label": "Sofá",
+          "effects": [
+            {
+              "owned": ["sofa"]
+            }
+          ]
+        },
+        {
+          "id": "tv",
+          "icon": "📺",
+          "label": "TV",
+          "effects": [
+            {
+              "owned": ["tv"]
+            }
+          ]
+        },
+        {
+          "id": "mesa",
+          "icon": "🍽️",
+          "label": "Mesa de jantar",
+          "effects": [
+            {
+              "owned": ["mesa-de-jantar"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "utensilios",
+      "icon": "🍽️",
+      "text": "Já tem pratos, panelas, toalhas e afins?",
+      "short": "Utensílios",
+      "kind": "single",
+      "answers": [
+        {
+          "id": "sim",
+          "icon": "👍",
+          "label": "Já tenho",
+          "effects": [
+            {
+              "filters": {
+                "utensils": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "nao",
+          "icon": "🛒",
+          "label": "Preciso comprar",
+          "effects": []
+        }
+      ]
+    },
+    {
+      "id": "facilitadores",
+      "icon": "✨",
+      "text": "Quer itens que facilitam o dia a dia?",
+      "short": "Facilitadores",
+      "kind": "single",
+      "why": "Organizadores, potes de silicone para congelar, sacos a vácuo…",
+      "answers": [
+        {
+          "id": "sim",
+          "icon": "✨",
+          "label": "Quero",
+          "effects": [
+            {
+              "filters": {
+                "helpers": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "nao",
+          "icon": "🙂",
+          "label": "Não precisa",
+          "effects": []
+        }
+      ]
+    }
+  ]
+}

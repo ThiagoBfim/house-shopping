@@ -21,6 +21,7 @@ interface Props {
   onToggleLock: () => void
   onOwned: () => void
   onRefuse: () => void
+  onVariant: (variant: string) => void
 }
 
 const CHANGE_LABELS: Partial<Record<Change, string>> = {
@@ -38,6 +39,7 @@ export function ProductCard({
   onToggleLock,
   onOwned,
   onRefuse,
+  onVariant,
 }: Props) {
   const { option, options, item, label, subtotal, locked, utensil, helper } = entry
   const offer = shownOffer(option)
@@ -75,6 +77,22 @@ export function ProductCard({
             <span class={`change-badge change-${change}`}>{CHANGE_LABELS[change]}</span>
           )}
         </header>
+        {entry.variants && (
+          <div class="variant-picker" role="radiogroup" aria-label={`Tipo de ${label}`}>
+            {entry.variants.map((variant) => (
+              <button
+                key={variant.id}
+                type="button"
+                role="radio"
+                aria-checked={variant.id === entry.variant}
+                class={variant.id === entry.variant ? 'is-active' : ''}
+                onClick={() => variant.id !== entry.variant && onVariant(variant.id)}
+              >
+                {variant.label}
+              </button>
+            ))}
+          </div>
+        )}
         <h3 class="product-name">{option.name}</h3>
         <p class="need-meter" title={`Necessidade ${item.need} de 5`}>
           <span class="need-dots" aria-hidden="true">

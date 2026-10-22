@@ -26,7 +26,7 @@ async function buildCustomList(page: Page) {
   await pickRooms(page, { Cozinha: 1 })
   await page.getByLabel('Orçamento em reais').fill('20000')
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
-  await card(page, 'Fogão').getByRole('button', { name: 'Recusar' }).click()
+  await card(page, 'Fogão ou cooktop').getByRole('button', { name: 'Recusar' }).click()
   await card(page, 'Geladeira')
     .getByRole('button', { name: /Mais barato/ })
     .click()

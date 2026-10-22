@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { products as realProducts, rooms as realRooms } from '../src/data/catalog-data.ts'
+import {
+  assistant as realAssistant,
+  products as realProducts,
+  rooms as realRooms,
+} from '../src/data/catalog-data.ts'
 import { validateCatalog } from '../src/data/validate.ts'
 
 const option = (tier: number, price: number, overrides: Record<string, unknown> = {}) => ({
@@ -30,8 +34,8 @@ function errorsOf(rawRooms: unknown, rawProducts: unknown): string[] {
 }
 
 describe('validateCatalog', () => {
-  it('aceita o catálogo real em data/', () => {
-    expect(errorsOf(realRooms, realProducts)).toEqual([])
+  it('aceita o catálogo real em data/ (com as perguntas do assistente)', () => {
+    expect(validateCatalog(realRooms, realProducts, realAssistant)).toMatchObject({ ok: true })
   })
 
   it('aceita um catálogo mínimo válido e aplica qty = 1 por padrão', () => {
@@ -65,6 +69,69 @@ describe('validateCatalog', () => {
     expect(errorsOf(rooms(), products(options))).toContainEqual(
       'products/geladeira.json: tier 4 repetido',
     )
+  })
+
+  describe('variantes', () => {
+    const withVariants = (options: unknown[], variants = ['piso', 'cooktop']) => ({
+      geladeira: {
+        label: 'Fogão ou cooktop',
+        utensil: false,
+        variants: variants.map((id) => ({ id, label: `Tipo ${id}` })),
+        options,
+      },
+    })
+    const piso = (tier: number, price: number) =>
+      option(tier, price, { id: `piso-${tier}`, variants: ['piso'] })
+    const cooktop = (tier: number, price: number) =>
+      option(tier, price, { id: `cooktop-${tier}`, variants: ['cooktop'] })
+
+    it('cada variante tem a sua escada de tiers (o mesmo tier pode repetir entre variantes)', () => {
+      const options = [piso(1, 300), piso(2, 600), cooktop(1, 400), cooktop(2, 800)]
+      expect(errorsOf(rooms(), withVariants(options))).toEqual([])
+    })
+
+    it('uma opção pode entrar em várias variantes', () => {
+      const options = [
+        piso(1, 300),
+        option(2, 600, { id: 'serve-nos-dois', variants: ['piso', 'cooktop'] }),
+        cooktop(1, 400),
+      ]
+      expect(errorsOf(rooms(), withVariants(options))).toEqual([])
+    })
+
+    it('aplica as regras de tier dentro de cada variante', () => {
+      const options = [
+        piso(1, 300),
+        option(1, 350, { id: 'piso-outro', variants: ['piso'] }),
+        cooktop(1, 2000),
+        cooktop(2, 1500),
+      ]
+      expect(errorsOf(rooms(), withVariants(options))).toEqual([
+        'products/geladeira.json (variante piso): tier 1 repetido',
+        'products/geladeira.json (variante cooktop): produto caro (até R$ 2000) precisa dos 4 tiers — faltando tier 3, 4',
+        'products/geladeira.json (variante cooktop): preço do tier 2 (R$ 1500) deve ser maior que o do tier 1 (R$ 2000)',
+      ])
+    })
+
+    it('rejeita opção sem variante, variante inexistente e variante vazia', () => {
+      const options = [
+        option(1, 300, { id: 'sem-variante' }),
+        option(2, 600, { id: 'variante-errada', variants: ['inducao'] }),
+        piso(3, 900),
+      ]
+      expect(errorsOf(rooms(), withVariants(options))).toEqual([
+        'products/geladeira.json: "sem-variante" precisa dizer em quais variantes entra',
+        'products/geladeira.json: "variante-errada" usa a variante "inducao", que não existe',
+        'products/geladeira.json: variante "cooktop" sem nenhuma opção',
+      ])
+    })
+
+    it('rejeita variants na opção quando a categoria não tem variantes', () => {
+      const options = [option(1, 149, { variants: ['piso'] })]
+      expect(errorsOf(rooms(), products(options))).toEqual([
+        'products/geladeira.json: "geladeira-t1" tem variants, mas a categoria não declara variantes',
+      ])
+    })
   })
 
   it('rejeita id repetido entre categorias', () => {

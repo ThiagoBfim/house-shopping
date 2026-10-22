@@ -55,7 +55,12 @@ export const ProductOptionSchema = z.strictObject({
   image: httpsUrl.optional(),
   bullets: z.array(z.string().min(3)).min(3, 'mínimo de 3 bullets').max(5, 'máximo de 5 bullets'),
   offers: z.array(OfferSchema).min(1).optional(),
+  /** Variantes da categoria em que esta opção entra (obrigatório quando a categoria tem variantes). */
+  variants: z.array(slug).min(1).optional(),
 })
+
+/** Tipo de produto dentro da categoria (fogão de piso × cooktop, PlayStation × Xbox, casal × queen). */
+export const VariantSchema = z.strictObject({ id: slug, label: z.string().min(2) })
 
 export const ProductCategorySchema = z.strictObject({
   label: z.string().min(2),
@@ -63,6 +68,11 @@ export const ProductCategorySchema = z.strictObject({
   utensil: z.boolean({ error: 'informe true ou false' }),
   /** Facilitador: organizadores, potes de congelar… Só entra na lista se o usuário pedir. */
   helper: z.boolean().optional(),
+  /**
+   * Cada variante tem a sua escada de tiers (as opções dizem em quais variantes entram).
+   * A primeira é a padrão; o usuário troca no card ou pelo assistente.
+   */
+  variants: z.array(VariantSchema).min(2).optional(),
   options: z.array(ProductOptionSchema).min(1),
 })
 
@@ -90,8 +100,63 @@ export type Store = z.infer<typeof StoreSchema>
 export type Offer = z.infer<typeof OfferSchema>
 export type PricePoint = z.infer<typeof PricePointSchema>
 export type ProductOption = z.infer<typeof ProductOptionSchema>
+export type Variant = z.infer<typeof VariantSchema>
 export type ProductCategory = z.infer<typeof ProductCategorySchema>
 export type Products = z.infer<typeof ProductsSchema>
 export type RoomItem = z.infer<typeof RoomItemSchema>
 export type Room = z.infer<typeof RoomSchema>
 export type Rooms = z.infer<typeof RoomsSchema>
+
+// Assistente "Monte pra mim" (data/assistant.json). Ver docs/project/Assistente.md.
+
+const PresetIdSchema = z.enum(['economico', 'equilibrado', 'premium'])
+
+/** O que uma resposta muda. Cada efeito é um objeto com uma chave só. */
+export const EffectSchema = z.union([
+  /** Soma cômodos à casa (fica o maior número pedido). */
+  z.strictObject({ rooms: z.record(slug, z.int().min(1).max(5)) }),
+  /** Troca um cômodo pela versão alternativa (escritório → escritório gamer). */
+  z.strictObject({ roomVariant: z.strictObject({ from: slug, to: slug }) }),
+  z.strictObject({ preset: PresetIdSchema }),
+  /** "Já tenho" nestas categorias, em todos os cômodos. */
+  z.strictObject({ owned: z.array(slug).min(1) }),
+  /** Tira estas categorias da lista (recusadas). */
+  z.strictObject({ skip: z.array(slug).min(1) }),
+  z.strictObject({
+    filters: z.strictObject({ utensils: z.boolean().optional(), helpers: z.boolean().optional() }),
+  }),
+  /** Escolhe a variante da categoria (fogão → cooktop de indução). */
+  z.strictObject({ variant: z.strictObject({ category: slug, variant: slug }) }),
+  /** Ajusta a necessidade da categoria (quem quase não cozinha: batedeira → 1). */
+  z.strictObject({ need: z.strictObject({ category: slug, need: NeedSchema }) }),
+])
+
+export const AnswerSchema = z.strictObject({
+  id: slug,
+  icon: z.string().min(1),
+  label: z.string().min(2),
+  effects: z.array(EffectSchema).default([]),
+})
+
+export const QuestionSchema = z.strictObject({
+  id: slug,
+  icon: z.string().min(1),
+  text: z.string().min(5),
+  /** Nome curto no resumo final ("Fogão", "Café"). */
+  short: z.string().min(2),
+  /** Uma linha de "por que perguntamos", quando não for óbvio. */
+  why: z.string().min(5).optional(),
+  /** single: um toque responde e avança; multiple: marca vários e confirma. */
+  kind: z.enum(['single', 'multiple']),
+  /** Só aparece se a casa tiver algum destes cômodos (casa ainda desconhecida = aparece). */
+  when: z.strictObject({ rooms: z.array(slug).min(1) }).optional(),
+  answers: z.array(AnswerSchema).min(2),
+})
+
+export const AssistantSchema = z.strictObject({ questions: z.array(QuestionSchema).min(1) })
+
+export type PresetId = z.infer<typeof PresetIdSchema>
+export type Effect = z.infer<typeof EffectSchema>
+export type Answer = z.infer<typeof AnswerSchema>
+export type Question = z.infer<typeof QuestionSchema>
+export type Assistant = z.infer<typeof AssistantSchema>

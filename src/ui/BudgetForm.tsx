@@ -8,6 +8,8 @@ interface Props {
   room: Room
   products: Products
   initial?: number
+  /** Opção já escolhida (ex.: no assistente); vale enquanto não houver valor digitado. */
+  initialPreset?: PresetId
   initialFilters: FilterValues
   onSubmit: (budget: number, filters: FilterValues) => void
   onBack: () => void
@@ -28,7 +30,15 @@ const PRESET_TEXT: Record<PresetId, { name: string; description: string }> = {
   },
 }
 
-export function BudgetForm({ room, products, initial, initialFilters, onSubmit, onBack }: Props) {
+export function BudgetForm({
+  room,
+  products,
+  initial,
+  initialPreset,
+  initialFilters,
+  onSubmit,
+  onBack,
+}: Props) {
   const [filters, setFilters] = useState(initialFilters)
   const presets = budgetPresets(room, products, filters)
   const range = budgetRange(room, products, filters)
@@ -36,7 +46,7 @@ export function BudgetForm({ room, products, initial, initialFilters, onSubmit, 
   // Opção escolhida acompanha os filtros (o valor muda com eles); valor digitado fica fixo.
   const [preset, setPreset] = useState<PresetId | undefined>(() =>
     initial === undefined
-      ? 'equilibrado'
+      ? (initialPreset ?? 'equilibrado')
       : budgetPresets(room, products, initialFilters).find((p) => p.value === initial)?.id,
   )
   const [custom, setCustom] = useState(initial ?? 0)

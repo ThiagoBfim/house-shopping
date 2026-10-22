@@ -14,6 +14,8 @@ interface Props {
   products: Products
   initial: HouseSpec
   onConfirm: (house: HouseSpec) => void
+  /** Abre o "Monte pra mim". */
+  onAssistant: () => void
 }
 
 /** "Casa completa": um de cada, menos o quarto do bebê e o escritório (nem toda casa tem). */
@@ -22,7 +24,7 @@ const FULL_HOUSE_EXCLUDES = ['quarto-bebe', 'escritorio']
 /** Cômodos grandes ocupam duas colunas na planta. */
 const WIDE_ROOMS = ['sala', 'cozinha', 'area-externa']
 
-export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
+export function RoomPicker({ rooms, products, initial, onConfirm, onAssistant }: Props) {
   const [spec, setSpec] = useState<HouseSpec>(initial)
   const available = ROOM_CARDS.filter(({ id }) => rooms[id])
   const total = roomCount(normalizeSpec(spec, rooms))
@@ -33,6 +35,19 @@ export function RoomPicker({ rooms, products, initial, onConfirm }: Props) {
 
   return (
     <section class="picker">
+      <div class="assistant-entry">
+        <div>
+          <h2 class="assistant-entry-title">✨ Monte pra mim</h2>
+          <p class="assistant-entry-text">
+            Responda umas perguntas rápidas, só tocando, e a gente monta a lista. Leva 1 minuto.
+          </p>
+        </div>
+        <button type="button" class="primary-button" onClick={onAssistant}>
+          Começar →
+        </button>
+      </div>
+      <p class="picker-or">ou escolha os cômodos você mesmo</p>
+
       <h2 class="step-title">Quais cômodos você vai montar?</h2>
       <p class="picker-hint">Pode ser um só. Com vários, o orçamento vale para a casa toda.</p>
 

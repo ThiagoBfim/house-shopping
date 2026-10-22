@@ -14,6 +14,8 @@ const choices: Choices = {
   minNeed: 2,
   utensils: false,
   helpers: true,
+  variants: { 'quarto-2:cama-box': 'queen' },
+  needs: { 'cozinha:air-fryer': 1 },
 }
 const state: ListState = {
   house,
@@ -95,6 +97,8 @@ describe('encodeState / decodeState', () => {
         minNeed: 1,
         utensils: true,
         helpers: false,
+        variants: {},
+        needs: {},
       },
     })
   })
@@ -123,6 +127,8 @@ describe('encodeState / decodeState', () => {
         minNeed: 3,
         utensils: false,
         helpers: false,
+        variants: {},
+        needs: {},
       },
     })
   })
@@ -138,16 +144,40 @@ describe('encodeState / decodeState', () => {
     expect(decode({ n: 9, u: 1 })).toMatchObject({ minNeed: 1, utensils: true, helpers: false })
   })
 
+  it('lê variantes e necessidades ajustadas, descartando itens fora da casa e valores inválidos', () => {
+    const decoded = decodeState(
+      wire({
+        v: STATE_VERSION,
+        h: { cozinha: 1 },
+        b: 5000,
+        t: { 'cozinha:fogao': 'cooktop-inducao', 'quarto-1:colchao': 'queen', 'cozinha:tv': 3 },
+        e: { 'cozinha:air-fryer': 1, 'cozinha:forno': 9 },
+      }),
+      rooms,
+    )
+    expect(decoded?.choices.variants).toEqual({ 'cozinha:fogao': 'cooktop-inducao' })
+    expect(decoded?.choices.needs).toEqual({ 'cozinha:air-fryer': 1 })
+  })
+
   it('não grava filtros no padrão', () => {
     const plain = {
       ...state,
-      choices: { ...choices, minNeed: 1 as const, utensils: true, helpers: false },
+      choices: {
+        ...choices,
+        minNeed: 1 as const,
+        utensils: true,
+        helpers: false,
+        variants: {},
+        needs: {},
+      },
     }
     const wireOf = (s: ListState) =>
       JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
     expect(wireOf(plain)).not.toHaveProperty('n')
     expect(wireOf(plain)).not.toHaveProperty('u')
     expect(wireOf(plain)).not.toHaveProperty('f')
+    expect(wireOf(plain)).not.toHaveProperty('t')
+    expect(wireOf(plain)).not.toHaveProperty('e')
     expect(wireOf(state)).toMatchObject({ n: 2, u: 0, f: 1, h: house })
     expect(wireOf(state)).not.toHaveProperty('r')
   })

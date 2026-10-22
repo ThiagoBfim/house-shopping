@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import type { Choices, ListEntry, ListView, Plan } from '../engine/budget.ts'
-import { exclude, lockAt, restore, unlock, type Change } from '../engine/choices.ts'
+import { exclude, lockAt, restore, setVariant, unlock, type Change } from '../engine/choices.ts'
 import { splitItemKey, type RoomInstance } from '../engine/house.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { matchesSearch } from '../engine/search.ts'
@@ -24,6 +24,7 @@ interface Props {
   onFilters: (next: FilterValues) => void
   onEditBudget: () => void
   onChangeRoom: () => void
+  onAssistant: () => void
   share: { url: string; text: string; onCopied: (ok: boolean) => void }
 }
 
@@ -61,6 +62,7 @@ export function ListScreen({
   onFilters,
   onEditBudget,
   onChangeRoom,
+  onAssistant,
   share,
 }: Props) {
   const [query, setQuery] = useState('')
@@ -138,6 +140,12 @@ export function ListScreen({
           onChoices(exclude(choices, category, 'owned'), `${name}: marcado como “já tenho”.`)
         }
         onRefuse={() => onChoices(exclude(choices, category, 'refused'), `${name} recusado.`)}
+        onVariant={(variant) =>
+          onChoices(
+            setVariant(choices, category, variant),
+            `${name}: ${entry.variants?.find((v) => v.id === variant)?.label.toLowerCase()}.`,
+          )
+        }
       />
     )
   }
@@ -150,6 +158,9 @@ export function ListScreen({
         </button>
         <button type="button" class="link-button" onClick={onEditBudget}>
           Alterar orçamento
+        </button>
+        <button type="button" class="link-button list-nav-assistant" onClick={onAssistant}>
+          ✨ Refazer com perguntas
         </button>
       </div>
 

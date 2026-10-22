@@ -1,4 +1,5 @@
 import type { Rooms } from '../data/schema.ts'
+import type { Answers } from '../engine/assistant.ts'
 import { decodeState, encodeState, type ListState } from '../engine/share.ts'
 
 const STORAGE_KEY = 'house-shopping:list'
@@ -56,4 +57,29 @@ export function shareUrl(state: ListState): string {
   const url = new URL(window.location.href)
   url.hash = `${LIST_PARAM}=${encodeState(state)}&${SHARED_PARAM}=1`
   return url.href
+}
+
+const ANSWERS_KEY = 'house-shopping:assistant'
+
+/** Respostas do "Monte pra mim" da última vez (só neste navegador; o link leva o resultado). */
+export function readAnswers(): Answers {
+  try {
+    const value: unknown = JSON.parse(localStorage.getItem(ANSWERS_KEY) ?? '{}')
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+    return Object.fromEntries(
+      Object.entries(value).filter(
+        ([, ids]) => Array.isArray(ids) && ids.every((id) => typeof id === 'string'),
+      ),
+    ) as Answers
+  } catch {
+    return {}
+  }
+}
+
+export function saveAnswers(answers: Answers): void {
+  try {
+    localStorage.setItem(ANSWERS_KEY, JSON.stringify(answers))
+  } catch {
+    // sem localStorage: as respostas não ficam marcadas da próxima vez
+  }
 }

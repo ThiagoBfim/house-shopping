@@ -1,6 +1,10 @@
 {
   "label": "Panelas",
   "utensil": true,
+  "variants": [
+    { "id": "comum", "label": "Qualquer fogão" },
+    { "id": "inducao", "label": "Para indução" }
+  ],
   "options": [
     {
       "id": "jogo-de-panelas-tramontina-paris-5-pecas",
@@ -14,7 +18,8 @@
         "Alumínio com antiaderente Starflon",
         "5 peças",
         "Não serve para cooktop de indução"
-      ]
+      ],
+      "variants": ["comum"]
     },
     {
       "id": "jogo-de-panelas-tramontina-solar-inox-fundo-triplo",
@@ -28,7 +33,8 @@
         "Inox com fundo triplo (calor por igual)",
         "Serve para indução",
         "Vai à lava-louças"
-      ]
+      ],
+      "variants": ["comum", "inducao"]
     },
     {
       "id": "jogo-de-panelas-tramontina-trento-corpo-triplo",
@@ -38,7 +44,12 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-tramontina-trento-corpo-triplo",
-      "bullets": ["Corpo triplo inteiro (não só o fundo)", "Linha profissional", "Dura a vida toda"]
+      "bullets": [
+        "Corpo triplo inteiro (não só o fundo)",
+        "Linha profissional",
+        "Dura a vida toda"
+      ],
+      "variants": ["comum", "inducao"]
     },
     {
       "id": "kit-le-creuset-2-panelas-20-22",
@@ -65,7 +76,19 @@
           "history": [{ "date": "2026-10-22", "price": 4948 }],
           "externalId": "MLB4776706002"
         }
-      ]
+      ],
+      "variants": ["comum", "inducao"]
+    },
+    {
+      "id": "jogo-de-panelas-antiaderente-com-fundo-de-inducao-5-pecas",
+      "tier": 1,
+      "name": "Jogo de Panelas Antiaderente com Fundo de Indução 5 Peças",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-panelas-antiaderente-com-fundo-de-inducao-5-pecas",
+      "bullets": ["Fundo que funciona na indução", "Antiaderente", "Também vai no fogão a gás"],
+      "variants": ["inducao"]
     }
   ]
 }

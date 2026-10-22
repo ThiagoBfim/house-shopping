@@ -1,14 +1,31 @@
 import { useEffect, useState } from 'preact/hooks'
-import { describeList, emptyChoices, planList, type Choices, type Plan } from '../engine/budget.ts'
+import { applyAnswers, type Answers } from '../engine/assistant.ts'
+import {
+  budgetPresets,
+  describeList,
+  emptyChoices,
+  planList,
+  type Choices,
+  type Plan,
+  type PresetId,
+} from '../engine/budget.ts'
 import { diffPlans, displayedTiers, type Change } from '../engine/choices.ts'
 import { expandHouse, type HouseSpec } from '../engine/house.ts'
+import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
 import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
 import { loadCatalog, type Catalog } from './catalog.ts'
 import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
-import { persistState, readInitialState, shareUrl } from './persistence.ts'
+import { Assistant, type AssistantNext } from './Assistant.tsx'
+import {
+  persistState,
+  readAnswers,
+  readInitialState,
+  saveAnswers,
+  shareUrl,
+} from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
 import { ThemeToggle } from './ThemeToggle.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
@@ -26,6 +43,10 @@ interface Session {
   choices: Choices
   /** Mostra o formulário de orçamento mesmo já tendo um orçamento. */
   editingBudget: boolean
+  /** Mostra o assistente "Monte pra mim". */
+  assisting?: boolean
+  /** Orçamento sugerido escolhido no assistente (pré-seleciona a tela de orçamento). */
+  preset?: PresetId
 }
 
 const listState = ({ house, budget, plan, choices }: Session): ListState | undefined =>
@@ -111,9 +132,62 @@ export function App() {
       )
     }
 
-    const { rooms } = load.catalog
+    const { rooms, assistant } = load.catalog
+
+    if (session.assisting) {
+      const finish = (answers: Answers, next: AssistantNext) => {
+        saveAnswers(answers)
+        const previous = listState(session) && { ...session, assisting: false }
+        const result = applyAnswers(assistant, answers, rooms)
+        const choices = { ...result.choices }
+        if (!Object.keys(result.house).length) {
+          // Sem as perguntas da casa: segue o fluxo normal a partir da escolha de cômodos.
+          setSession({ ...newSession(), choices, preset: result.preset })
+          return
+        }
+        const expanded = expandHouse(rooms, load.catalog.products, result.house)
+        const custom = applyPreferences(expanded.room, expanded.products, choices)
+        const presetId = result.preset ?? 'equilibrado'
+        const budget = budgetPresets(custom.room, custom.products, choices).find(
+          (p) => p.id === presetId,
+        )!.value
+        setSession({
+          house: result.house,
+          picking: false,
+          budget,
+          choices,
+          plan: next === 'list' ? planList(custom.room, custom.products, budget, choices) : {},
+          editingBudget: next === 'budget',
+          preset: presetId,
+        })
+        setChanges({})
+        setDirty(false)
+        setShared(false)
+        if (previous) {
+          setToast({
+            message: 'Lista montada com as suas respostas.',
+            action: { label: 'Desfazer', run: () => setSession(previous) },
+          })
+        }
+      }
+      return (
+        <Assistant
+          assistant={assistant}
+          rooms={rooms}
+          initial={readAnswers()}
+          onFinish={finish}
+          onSkipAll={(answers) =>
+            Object.keys(answers).length
+              ? finish(answers, 'budget')
+              : setSession({ ...session, assisting: false })
+          }
+        />
+      )
+    }
+
     const house = expandHouse(rooms, load.catalog.products, session.house)
-    const { room, products } = house
+    // Variantes e necessidades ajustadas valem para tudo o que o motor calcula.
+    const { room, products } = applyPreferences(house.room, house.products, session.choices)
 
     const changeRooms = () => {
       setSession({ ...session, picking: true })
@@ -128,6 +202,7 @@ export function App() {
           rooms={rooms}
           products={load.catalog.products}
           initial={session.house}
+          onAssistant={() => setSession({ ...session, assisting: true })}
           onConfirm={(spec) => {
             // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora.
             setSession({ ...session, house: spec, picking: false, editingBudget: true })
@@ -142,6 +217,7 @@ export function App() {
           room={room}
           products={products}
           initial={session.budget}
+          initialPreset={session.preset}
           initialFilters={{
             minNeed: session.choices.minNeed,
             utensils: session.choices.utensils,
@@ -242,6 +318,7 @@ export function App() {
           onReload={reload}
           onFilters={applyFilters}
           onEditBudget={() => setSession({ ...session, editingBudget: true })}
+          onAssistant={() => setSession({ ...session, assisting: true })}
           onChangeRoom={changeRooms}
           share={{
             url,

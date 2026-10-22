@@ -7,6 +7,7 @@ import {
   exclude,
   lockAt,
   restore,
+  setVariant,
   unlock,
 } from '../src/engine/choices.ts'
 
@@ -22,6 +23,14 @@ describe('escolhas', () => {
   it('restore reativa o item', () => {
     const choices = exclude(emptyChoices(), 'fogao', 'refused')
     expect(restore(choices, 'fogao')).toEqual(emptyChoices())
+  })
+
+  it('setVariant troca a variante e tira a trava (o tier era de outra escada)', () => {
+    const locked = lockAt(emptyChoices(), 'fogao', 3)
+    expect(setVariant(locked, 'fogao', 'cooktop-inducao')).toEqual({
+      ...emptyChoices(),
+      variants: { fogao: 'cooktop-inducao' },
+    })
   })
 
   it('lockAt / unlock', () => {

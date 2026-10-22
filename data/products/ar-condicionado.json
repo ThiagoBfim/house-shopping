@@ -1,6 +1,10 @@
 {
-  "label": "Ar-condicionado",
+  "label": "Ar-condicionado ou ventilador",
   "utensil": false,
+  "variants": [
+    { "id": "ar", "label": "Ar-condicionado" },
+    { "id": "ventilador", "label": "Ventilador" }
+  ],
   "options": [
     {
       "id": "ar-condicionado-midea-ai-ecomaster-12000",
@@ -27,7 +31,8 @@
           "catalogId": "MLB53383984",
           "history": [{ "date": "2026-10-22", "price": 2483.1 }]
         }
-      ]
+      ],
+      "variants": ["ar"]
     },
     {
       "id": "ar-condicionado-samsung-windfree-12000-quente-frio",
@@ -54,7 +59,8 @@
           "catalogId": "MLB67177421",
           "history": [{ "date": "2026-10-22", "price": 2771 }]
         }
-      ]
+      ],
+      "variants": ["ar"]
     },
     {
       "id": "ar-condicionado-lg-dual-inverter-voice-12000",
@@ -81,7 +87,8 @@
           "catalogId": "MLB66187058",
           "history": [{ "date": "2026-10-22", "price": 3109 }]
         }
-      ]
+      ],
+      "variants": ["ar"]
     },
     {
       "id": "ar-condicionado-daikin-inverter-12000-quente-frio",
@@ -109,7 +116,41 @@
           "history": [{ "date": "2026-10-22", "price": 4105.16 }],
           "catalogId": "MLB58476909"
         }
-      ]
+      ],
+      "variants": ["ar"]
+    },
+    {
+      "id": "ventilador-de-mesa-mondial-40-cm",
+      "tier": 1,
+      "name": "Ventilador de Mesa Mondial 40 cm",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ventilador-de-mesa-mondial-40-cm",
+      "bullets": ["Mesa ou parede", "3 velocidades", "Barulho moderado"],
+      "variants": ["ventilador"]
+    },
+    {
+      "id": "ventilador-de-coluna-arno-turbo-silence-maxx-40-cm",
+      "tier": 2,
+      "name": "Ventilador de Coluna Arno Turbo Silence Maxx 40 cm",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ventilador-de-coluna-arno-turbo-silence-maxx-40-cm",
+      "bullets": ["Coluna: altura ajustável", "Silencioso", "Vento forte"],
+      "variants": ["ventilador"]
+    },
+    {
+      "id": "ventilador-de-teto-spirit-maxximus-com-luz",
+      "tier": 3,
+      "name": "Ventilador de Teto Spirit Maxximus com Luz",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ventilador-de-teto-spirit-maxximus-com-luz",
+      "bullets": ["Não ocupa espaço no chão", "Luminária embutida", "Controle remoto"],
+      "variants": ["ventilador"]
     }
   ]
 }

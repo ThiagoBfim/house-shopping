@@ -1,4 +1,14 @@
-import type { Need, ProductOption, Products, Room, RoomItem, Tier } from '../data/schema.ts'
+import type {
+  Need,
+  PresetId,
+  ProductOption,
+  Products,
+  Room,
+  RoomItem,
+  Tier,
+  Variant,
+} from '../data/schema.ts'
+import { chosenVariant } from './preferences.ts'
 
 /** Tier escolhido para cada categoria incluída na lista. */
 export type Plan = Record<string, Tier>
@@ -17,6 +27,10 @@ export interface Choices {
   utensils: boolean
   /** Filtro: incluir facilitadores (organizadores, potes de congelar…). Começa desligado. */
   helpers: boolean
+  /** Variante escolhida por item (cooktop de indução, Xbox, queen…); ausente = a padrão. */
+  variants: Record<string, string>
+  /** Necessidade ajustada por item (ex.: quem quase não cozinha); ausente = a do catálogo. */
+  needs: Record<string, Need>
 }
 
 /** Escolhas que funcionam como filtro da lista. */
@@ -35,6 +49,9 @@ export interface ListEntry {
   locked: boolean
   utensil: boolean
   helper: boolean
+  /** Variantes da categoria e a escolhida (só quando a categoria tem variantes). */
+  variants?: Variant[]
+  variant?: string
 }
 
 export interface SkippedEntry {
@@ -81,6 +98,8 @@ export const emptyChoices = (): Choices => ({
   minNeed: 1,
   utensils: true,
   helpers: false,
+  variants: {},
+  needs: {},
 })
 
 // Cálculos em centavos para não acumular erro de ponto flutuante.
@@ -103,8 +122,19 @@ export function filterReason(
   return undefined
 }
 
+/**
+ * Opções do item, do tier mais barato ao mais caro. Categoria com variantes que não passou
+ * por `applyPreferences` (tiers repetidos) usa a escada da variante padrão: o motor nunca
+ * vê dois produtos no mesmo tier.
+ */
 export function sortedOptions(products: Products, category: string): ProductOption[] {
-  return [...products[category].options].sort((a, b) => a.tier - b.tier)
+  const { options, variants } = products[category]
+  const tiers = new Set(options.map((o) => o.tier))
+  const ladder =
+    variants && tiers.size < options.length
+      ? options.filter((o) => o.variants?.includes(variants[0].id))
+      : options
+  return [...ladder].sort((a, b) => a.tier - b.tier)
 }
 
 /**
@@ -209,7 +239,7 @@ export function describeList(
   const saved = { refused: 0, owned: 0 }
 
   for (const item of [...room.items].sort(byImportance)) {
-    const { label, utensil, helper = false } = products[item.category]
+    const { label, utensil, helper = false, variants } = products[item.category]
     const options = sortedOptions(products, item.category)
     const reason = choices.excluded[item.category]
     const hiddenBy = filterReason(item, products, choices)
@@ -236,6 +266,10 @@ export function describeList(
         locked: choices.locked[item.category] !== undefined,
         utensil,
         helper,
+        ...(variants && {
+          variants,
+          variant: chosenVariant(variants, choices.variants[item.category]),
+        }),
       })
     }
   }
@@ -294,7 +328,7 @@ function roundUpNicely(value: number): number {
   return Math.ceil(value / step) * step
 }
 
-export type PresetId = 'economico' | 'equilibrado' | 'premium'
+export type { PresetId }
 
 export interface BudgetPreset {
   id: PresetId

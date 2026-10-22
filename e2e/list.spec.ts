@@ -65,22 +65,21 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
 
 test('desfazer uma recusa traz o item de volta', async ({ page }) => {
   await openKitchen(page, '30000')
-  await card(page, 'Fogão').getByRole('button', { name: 'Já tenho' }).click()
-  await expect(card(page, 'Fogão')).toHaveCount(0)
+  await card(page, 'Fogão ou cooktop').getByRole('button', { name: 'Já tenho' }).click()
+  await expect(card(page, 'Fogão ou cooktop')).toHaveCount(0)
 
   await page.getByRole('button', { name: 'Desfazer' }).click()
-  await expect(card(page, 'Fogão')).toBeVisible()
+  await expect(card(page, 'Fogão ou cooktop')).toBeVisible()
 })
 
-/** Preço da opção mais barata de uma categoria do catálogo real. */
-const cheapestPrice = (category: string) =>
-  Math.min(
-    ...(
-      JSON.parse(readFileSync(`data/products/${category}.json`, 'utf8')) as {
-        options: { price: number }[]
-      }
-    ).options.map((o) => o.price),
-  )
+/** Preço da opção mais barata de uma categoria do catálogo real (na variante padrão). */
+function cheapestPrice(category: string): number {
+  const { options, variants } = JSON.parse(
+    readFileSync(`data/products/${category}.json`, 'utf8'),
+  ) as { options: { price: number; variants?: string[] }[]; variants?: { id: string }[] }
+  const ladder = variants ? options.filter((o) => o.variants?.includes(variants[0].id)) : options
+  return Math.min(...ladder.map((o) => o.price))
+}
 
 /** "R$ 1.234,50" → 1234.5 */
 const reais = (text: string | null) => Number(text!.replace(/[^\d,]/g, '').replace(',', '.'))
@@ -90,7 +89,7 @@ test('mostra quanto economiza com "já tenho" e recusados', async ({ page }) => 
   await expect(page.getByTestId('saved')).toHaveCount(0)
 
   await card(page, 'Geladeira').getByRole('button', { name: 'Já tenho' }).click()
-  await card(page, 'Fogão').getByRole('button', { name: 'Recusar' }).click()
+  await card(page, 'Fogão ou cooktop').getByRole('button', { name: 'Recusar' }).click()
 
   const expected = cheapestPrice('geladeira') + cheapestPrice('fogao')
   await expect(page.getByTestId('saved')).toContainText('Você economiza')
@@ -112,7 +111,7 @@ test('mostra quanto economiza com "já tenho" e recusados', async ({ page }) => 
 
 test('mais barato trava o item e o recalcular respeita a trava', async ({ page }) => {
   await openKitchen(page, '30000')
-  const stove = card(page, 'Fogão')
+  const stove = card(page, 'Fogão ou cooktop')
   await expect(stove.getByRole('button', { name: /Mais caro/ })).toBeDisabled()
 
   await stove.getByRole('button', { name: /Mais barato/ }).click()

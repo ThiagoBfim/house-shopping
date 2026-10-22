@@ -1,6 +1,24 @@
 {
   "label": "Cama / base box",
   "utensil": false,
+  "variants": [
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
+  ],
   "options": [
     {
       "id": "base-box-casal-ortobom",
@@ -10,7 +28,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/base-box-casal-ortobom",
-      "bullets": ["Base box casal simples", "Sem baú", "Monta com o colchão por cima"]
+      "bullets": ["Base box casal simples", "Sem baú", "Monta com o colchão por cima"],
+      "variants": ["casal"]
     },
     {
       "id": "cama-box-bau-casal",
@@ -24,7 +43,96 @@
         "Baú com pistão: guarda roupa de cama e malas",
         "Fácil de abrir",
         "Tecido sintético"
-      ]
+      ],
+      "variants": ["casal"]
+    },
+    {
+      "id": "cama-box-bau-casal-com-cabeceira-estofada",
+      "tier": 3,
+      "name": "Cama Box Baú Casal com Cabeceira Estofada",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-casal-com-cabeceira-estofada",
+      "bullets": ["Baú para guardar edredom", "Cabeceira estofada", "Pistão a gás"],
+      "variants": ["casal"]
+    },
+    {
+      "id": "cama-casal-de-madeira-macica",
+      "tier": 4,
+      "name": "Cama Casal de Madeira Maciça",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-casal-de-madeira-macica",
+      "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "variants": ["casal"]
+    },
+    {
+      "id": "base-box-solteiro-ortobom",
+      "tier": 1,
+      "name": "Base Box Solteiro Ortobom",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/base-box-solteiro-ortobom",
+      "bullets": ["Base simples", "Sem baú", "Montagem fácil"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "cama-box-bau-solteiro",
+      "tier": 2,
+      "name": "Cama Box Baú Solteiro",
+      "price": 799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-solteiro",
+      "bullets": ["Baú para guardar coisas", "Pistão a gás", "Bom para quarto pequeno"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "bicama-box-solteiro-com-auxiliar",
+      "tier": 3,
+      "name": "Bicama Box Solteiro com Auxiliar",
+      "price": 1199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/bicama-box-solteiro-com-auxiliar",
+      "bullets": ["Cama extra embaixo (visitas)", "Rodízios", "Ideal para quarto de criança"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "cama-solteiro-de-madeira-macica",
+      "tier": 4,
+      "name": "Cama Solteiro de Madeira Maciça",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-solteiro-de-madeira-macica",
+      "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "variants": ["solteiro"]
+    },
+    {
+      "id": "base-box-queen-ortobom",
+      "tier": 1,
+      "name": "Base Box Queen Ortobom",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/base-box-queen-ortobom",
+      "bullets": ["Base simples queen (1,58 m)", "Sem baú", "Montagem fácil"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "cama-box-bau-queen",
+      "tier": 2,
+      "name": "Cama Box Baú Queen",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-queen",
+      "bullets": ["Baú grande", "Pistão a gás", "Queen (1,58 m)"],
+      "variants": ["queen"]
     },
     {
       "id": "cama-box-bau-queen-cabeceira-estofada",
@@ -38,7 +146,8 @@
         "Tamanho queen (mais espaço que casal)",
         "Cabeceira estofada inclusa",
         "Baú com pistão"
-      ]
+      ],
+      "variants": ["queen"]
     },
     {
       "id": "cama-queen-madeira-macica",
@@ -48,7 +157,52 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-queen-madeira-macica",
-      "bullets": ["Madeira maciça: dura décadas", "Visual de cama de hotel", "Sem baú"]
+      "bullets": ["Madeira maciça: dura décadas", "Visual de cama de hotel", "Sem baú"],
+      "variants": ["queen"]
+    },
+    {
+      "id": "base-box-king-ortobom",
+      "tier": 1,
+      "name": "Base Box King Ortobom",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/base-box-king-ortobom",
+      "bullets": ["Base simples king (1,93 m)", "Bipartida (passa na porta)", "Sem baú"],
+      "variants": ["king"]
+    },
+    {
+      "id": "cama-box-bau-king",
+      "tier": 2,
+      "name": "Cama Box Baú King",
+      "price": 2199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-king",
+      "bullets": ["Baú enorme", "Bipartida", "Pistão a gás"],
+      "variants": ["king"]
+    },
+    {
+      "id": "cama-box-bau-king-com-cabeceira-estofada",
+      "tier": 3,
+      "name": "Cama Box Baú King com Cabeceira Estofada",
+      "price": 3299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-king-com-cabeceira-estofada",
+      "bullets": ["Baú e cabeceira estofada", "Visual de hotel", "Bipartida"],
+      "variants": ["king"]
+    },
+    {
+      "id": "cama-king-de-madeira-macica",
+      "tier": 4,
+      "name": "Cama King de Madeira Maciça",
+      "price": 6499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-king-de-madeira-macica",
+      "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "variants": ["king"]
     }
   ]
 }

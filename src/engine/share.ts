@@ -39,6 +39,10 @@ interface Wire {
   u?: number
   /** Facilitadores: 1 = com (ausente = sem). */
   f?: number
+  /** Variante escolhida por item (ausente = todas na padrão). */
+  t?: Record<string, string>
+  /** Necessidade ajustada por item. */
+  e?: Record<string, number>
 }
 
 export function encodeState(state: ListState): string {
@@ -55,6 +59,8 @@ export function encodeState(state: ListState): string {
   if (state.choices.minNeed !== 1) wire.n = state.choices.minNeed
   if (!state.choices.utensils) wire.u = 0
   if (state.choices.helpers) wire.f = 1
+  if (Object.keys(state.choices.variants).length) wire.t = state.choices.variants
+  if (Object.keys(state.choices.needs).length) wire.e = state.choices.needs
   return compressToEncodedURIComponent(JSON.stringify(wire))
 }
 
@@ -122,6 +128,13 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
       minNeed: isNeed(wire.n) ? wire.n : 1,
       utensils: wire.u !== 0,
       helpers: wire.f === 1,
+      variants: Object.fromEntries(
+        entries(wire.t).filter(([, variant]) => typeof variant === 'string'),
+      ) as Record<string, string>,
+      needs: Object.fromEntries(entries(wire.e).filter(([, need]) => isNeed(need))) as Record<
+        string,
+        Need
+      >,
     },
   }
 }

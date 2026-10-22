@@ -1,14 +1,15 @@
-import type { Need, Products, Rooms, Tier } from '../data/schema.ts'
+import type { Assistant, Need, Products, Rooms, Tier } from '../data/schema.ts'
 
 export interface Catalog {
   rooms: Rooms
   products: Products
+  assistant: Assistant
 }
 
 /** Carrega o catálogo em um chunk separado (validado por `npm run validate`). */
 export async function loadCatalog(): Promise<Catalog> {
-  const { rooms, products } = await import('../data/catalog-data.ts')
-  return { rooms, products }
+  const { rooms, products, assistant } = await import('../data/catalog-data.ts')
+  return { rooms, products, assistant }
 }
 
 export const TIER_LABELS: Record<Tier, string> = {

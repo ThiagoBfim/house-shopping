@@ -15,6 +15,11 @@ export function restore(choices: Choices, category: string): Choices {
   return { ...choices, excluded }
 }
 
+/** Troca a variante do item (fogão → cooktop). A trava sai: o tier era de outra escada. */
+export function setVariant(choices: Choices, category: string, variant: string): Choices {
+  return { ...unlock(choices, category), variants: { ...choices.variants, [category]: variant } }
+}
+
 export function lockAt(choices: Choices, category: string, tier: Tier): Choices {
   return { ...choices, locked: { ...choices.locked, [category]: tier } }
 }
