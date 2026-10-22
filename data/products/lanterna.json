@@ -27,17 +27,29 @@
       "bullets": ["Bem mais forte (foco ajustável)", "Resistente a chuva", "Bateria dura horas"]
     },
     {
-      "id": "lanterna-fenix-e28r-recarregavel-1500-lumens",
+      "id": "lanterna-fenix-e28r-v2-recarregavel-1700-lumens",
       "tier": 3,
-      "name": "Lanterna Fenix E28R Recarregável 1500 lúmens",
-      "price": 399,
+      "name": "Lanterna Fenix E28R V2.0 Recarregável 1700 Lúmens",
+      "price": 482.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lanterna-fenix-e28r-recarregavel-1500-lumens",
+      "url": "https://meli.la/2yJDpwb",
       "bullets": [
         "Muito forte e compacta",
         "Corpo de alumínio à prova d’água",
         "Bateria de longa duração"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_712021-MLB80060578889_102024-O-lanterna-de-mao-led-fenix-e28r-v20-1700-lumens-273-metros.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2yJDpwb",
+          "price": 482.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3881419527",
+          "history": [{ "date": "2026-10-22", "price": 482.99 }]
+        }
       ]
     }
   ]

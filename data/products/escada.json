@@ -6,38 +6,77 @@
       "id": "escada-de-aluminio-mor-5-degraus",
       "tier": 1,
       "name": "Escada de Alumínio Mor 5 Degraus",
-      "price": 179,
+      "price": 265,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/escada-de-aluminio-mor-5-degraus",
-      "bullets": ["Alcança ~2,7 m", "Leve e dobrável", "Troca lâmpada e cortina"]
+      "url": "https://meli.la/2KQV3MB",
+      "bullets": ["Alcança ~2,7 m", "Leve e dobrável", "Troca lâmpada e cortina"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_718627-MLA99564871142_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2KQV3MB",
+          "price": 265,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4975214477",
+          "catalogId": "MLB26823329",
+          "history": [{ "date": "2026-10-22", "price": 265 }]
+        }
+      ]
     },
     {
       "id": "escada-de-aluminio-botafogo-7-degraus",
       "tier": 2,
       "name": "Escada de Alumínio Botafogo 7 Degraus",
-      "price": 289,
+      "price": 358,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/escada-de-aluminio-botafogo-7-degraus",
+      "url": "https://meli.la/22SKnzh",
       "bullets": [
         "Alcança ~3,2 m (pé-direito alto)",
         "Degraus largos antiderrapantes",
         "Suporta 120 kg"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_801948-MLB118138498277_092026-O-escada-aluminio-7-degraus-botafogo-lar--lazer.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/22SKnzh",
+          "price": 358,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5283084083",
+          "catalogId": "MLB36308120",
+          "history": [{ "date": "2026-10-22", "price": 358 }]
+        }
       ]
     },
     {
       "id": "escada-multifuncional-mor-4x3-12-degraus",
       "tier": 3,
       "name": "Escada Multifuncional Mor 4x3 12 Degraus",
-      "price": 599,
+      "price": 760.36,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/escada-multifuncional-mor-4x3-12-degraus",
+      "url": "https://meli.la/1BTvhPv",
       "bullets": [
         "Vira escada de abrir, extensível ou andaime",
         "Até 3,4 m de altura",
         "Para obra e pintura"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_644695-MLA95657748532_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1BTvhPv",
+          "price": 760.36,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3853658061",
+          "catalogId": "MLB21241180",
+          "history": [{ "date": "2026-10-22", "price": 760.36 }]
+        }
       ]
     }
   ]

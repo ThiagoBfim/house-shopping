@@ -15,22 +15,48 @@
     {
       "id": "ducha-higienica-docol",
       "tier": 2,
-      "name": "Ducha Higiênica Docol Metal Cromado",
-      "price": 249,
+      "name": "Ducha Higiênica Docol Nova Pertutti",
+      "price": 239.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ducha-higienica-docol",
-      "bullets": ["Metal cromado", "Marca de referência em metais", "Mais durável"]
+      "url": "https://meli.la/1sByQko",
+      "bullets": ["Metal cromado", "Marca de referência em metais", "Mais durável"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_719788-MLA100069116371_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1sByQko",
+          "price": 239.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7624698754",
+          "catalogId": "MLB21317832",
+          "history": [{ "date": "2026-10-22", "price": 239.9 }]
+        }
+      ]
     },
     {
-      "id": "ducha-higienica-deca-monocomando",
+      "id": "ducha-higienica-deca-20411197",
       "tier": 3,
-      "name": "Ducha Higiênica Deca com Misturador Monocomando",
-      "price": 599,
+      "name": "Ducha Higiênica Deca 20411197",
+      "price": 654.72,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ducha-higienica-deca-monocomando",
-      "bullets": ["Misturador: água quente e fria", "Monocomando", "Acabamento premium"]
+      "url": "https://meli.la/2QMG9zV",
+      "bullets": ["Marca Deca", "Metal cromado", "Acabamento premium"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_966025-MLA113973610523_062026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2QMG9zV",
+          "price": 654.72,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4835196015",
+          "catalogId": "MLB74730517",
+          "history": [{ "date": "2026-10-22", "price": 654.72 }]
+        }
+      ]
     }
   ]
 }

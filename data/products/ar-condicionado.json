@@ -16,7 +16,7 @@
       "url": "https://meli.la/1pRETsK",
       "bullets": [
         "Inverter: economiza energia",
-        "Só frio",
+        "Quente e frio",
         "12.000 BTUs (até ~20 m²); instalação à parte"
       ],
       "image": "https://http2.mlstatic.com/D_NQ_NP_605968-MLB111869184762_062026-O-ar-condicionado-split-midea-ai-ecomaster-12000-inverter-qf.webp",
@@ -122,35 +122,78 @@
     {
       "id": "ventilador-de-mesa-mondial-40-cm",
       "tier": 1,
-      "name": "Ventilador de Mesa Mondial 40 cm",
-      "price": 149,
+      "name": "Ventilador de Mesa Mondial Super Power 40 cm VSP-40",
+      "price": 163.13,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ventilador-de-mesa-mondial-40-cm",
-      "bullets": ["Mesa ou parede", "3 velocidades", "Barulho moderado"],
-      "variants": ["ventilador"]
+      "url": "https://meli.la/2mNjPq7",
+      "bullets": ["40 cm, 6 pás", "3 velocidades", "Barulho moderado"],
+      "variants": ["ventilador"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_843498-MLA113779468044_072026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2mNjPq7",
+          "price": 163.13,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2795953656",
+          "catalogId": "MLB18623660",
+          "history": [{ "date": "2026-10-22", "price": 163.13 }]
+        }
+      ]
     },
     {
-      "id": "ventilador-de-coluna-arno-turbo-silence-maxx-40-cm",
+      "id": "ventilador-de-coluna-arno-x-treme-7-40-cm",
       "tier": 2,
-      "name": "Ventilador de Coluna Arno Turbo Silence Maxx 40 cm",
-      "price": 299,
+      "name": "Ventilador de Coluna Arno X-Treme 7 40 cm VE7C",
+      "price": 549.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ventilador-de-coluna-arno-turbo-silence-maxx-40-cm",
-      "bullets": ["Coluna: altura ajustável", "Silencioso", "Vento forte"],
-      "variants": ["ventilador"]
+      "url": "https://meli.la/1U4vyA1",
+      "bullets": ["Coluna: altura ajustável", "7 pás: vento forte", "Função turbo"],
+      "variants": ["ventilador"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_844899-MLA100002963415_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1U4vyA1",
+          "price": 549.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4841867037",
+          "catalogId": "MLB45203935",
+          "history": [{ "date": "2026-10-22", "price": 549.9 }]
+        }
+      ]
     },
     {
-      "id": "ventilador-de-teto-spirit-maxximus-com-luz",
+      "id": "ventilador-de-teto-spirit-202-com-lustre",
       "tier": 3,
-      "name": "Ventilador de Teto Spirit Maxximus com Luz",
-      "price": 599,
+      "name": "Ventilador de Teto Spirit 202 com Lustre",
+      "price": 639.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ventilador-de-teto-spirit-maxximus-com-luz",
-      "bullets": ["Não ocupa espaço no chão", "Luminária embutida", "Controle remoto"],
-      "variants": ["ventilador"]
+      "url": "https://meli.la/1ubiDeh",
+      "bullets": [
+        "Não ocupa espaço no chão",
+        "Lustre globo embutido",
+        "Marca especialista em ventilador de teto"
+      ],
+      "variants": ["ventilador"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_897554-MLA117758447304_102026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1ubiDeh",
+          "price": 639.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4357127811",
+          "catalogId": "MLB28116466",
+          "history": [{ "date": "2026-10-22", "price": 639.9 }]
+        }
+      ]
     }
   ]
 }

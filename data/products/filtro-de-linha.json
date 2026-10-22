@@ -16,14 +16,27 @@
       "id": "filtro-de-linha-clamper-energia-8-tomadas",
       "tier": 2,
       "name": "Filtro de Linha Clamper Energia 8 Tomadas",
-      "price": 89,
+      "price": 113.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/filtro-de-linha-clamper-energia-8-tomadas",
+      "url": "https://meli.la/1qCVqtA",
       "bullets": [
         "Protege contra surtos de energia",
         "8 tomadas com espaço para fonte",
         "Cabo de 1,5 m"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_688880-MLA96146060311_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1qCVqtA",
+          "price": 113.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5008222132",
+          "catalogId": "MLB22881386",
+          "history": [{ "date": "2026-10-22", "price": 113.99 }]
+        }
       ]
     },
     {
