@@ -15,25 +15,51 @@
     {
       "id": "ferro-de-passar-a-vapor-arno-ultragliss",
       "tier": 2,
-      "name": "Ferro de Passar a Vapor Arno Ultragliss",
-      "price": 199,
+      "name": "Ferro a Vapor Arno Ultragliss Plus",
+      "price": 245.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ferro-de-passar-a-vapor-arno-ultragliss",
-      "bullets": ["Vapor tira vincos mais rápido", "Base antiaderente", "Jato de vapor vertical"]
+      "url": "https://meli.la/1cZqusT",
+      "bullets": ["Vapor tira vincos mais rápido", "Base antiaderente", "Jato de vapor vertical"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_732213-MLA118357600592_102026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1cZqusT",
+          "price": 245.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7568051894",
+          "catalogId": "MLB68773047",
+          "history": [{ "date": "2026-10-22", "price": 245.99 }]
+        }
+      ]
     },
     {
       "id": "vaporizador-de-roupas-philips-serie-3000",
       "tier": 3,
-      "name": "Vaporizador de Roupas Philips Série 3000",
-      "price": 499,
+      "name": "Vaporizador de Roupas Philips Walita Série 3000",
+      "price": 319.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/vaporizador-de-roupas-philips-serie-3000",
+      "url": "https://meli.la/2JpDAV5",
       "bullets": [
         "Passa sem tábua, com a roupa no cabide",
         "Não queima tecido",
         "Bom para camisa e vestido"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_844688-MLA96183118553_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2JpDAV5",
+          "price": 319.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6556906064",
+          "catalogId": "MLB54409377",
+          "history": [{ "date": "2026-10-22", "price": 319.99 }]
+        }
       ]
     }
   ]

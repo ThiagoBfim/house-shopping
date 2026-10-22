@@ -9,7 +9,7 @@
 **Meta:** produtos do Mercado Livre com link de afiliado e preço atualizado.
 
 - [x] Cadastro no programa **Afiliados e Criadores** (o usuário já era afiliado; etiqueta `master_sold`)
-- [ ] Preencher `data/affiliate/mercadolivre.csv` e rodar `npm run ml:links import` — **73/484 feitos** (lotes de 10) (via Claude in Chrome; agora com a skill `/ml-links`)
+- [ ] Preencher `data/affiliate/mercadolivre.csv` e rodar `npm run ml:links import` — **82/484 feitos** (lotes de 10) (via Claude in Chrome; agora com a skill `/ml-links`)
 - [x] App de desenvolvedor criado (o usuário preencheu; Claude marcou Refresh Token + unidade Mercado Livre) e autorizado com `npm run ml:auth`
 - [x] Links de afiliado em lote: `npm run ml:links export|import` (planilha ↔ JSON, com validação antes de gravar)
 - [x] Script `scripts/sync-mercadolivre.ts` (`npm run sync:ml`): preço e disponibilidade pela API com OAuth (a API pública exige token desde 2025)

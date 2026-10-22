@@ -36,17 +36,26 @@
       ]
     },
     {
-      "id": "air-fryer-philips-walita-na341",
+      "id": "air-fryer-philips-walita-serie-3000-7-2-l",
       "tier": 3,
-      "name": "Air Fryer Philips Walita Série 3000 XL 7,2 L NA341",
-      "price": 899,
+      "name": "Air Fryer Philips Walita Série 3000 7,2 L Digital",
+      "price": 834.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/air-fryer-philips-walita-na341",
-      "bullets": [
-        "7,2 L com visor e luz interna",
-        "12 programas automáticos",
-        "Marca premium em air fryer"
+      "url": "https://meli.la/24oyfHz",
+      "bullets": ["7,2 L com visor", "Painel digital", "Marca premium em air fryer"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_857055-MLA108910060062_032026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/24oyfHz",
+          "price": 834.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4186343565",
+          "catalogId": "MLB49198498",
+          "history": [{ "date": "2026-10-22", "price": 834.9 }]
+        }
       ]
     },
     {

@@ -23,17 +23,29 @@
       "bullets": ["Motor elétrico: sobe num botão", "Memória de altura", "Joga e trabalha em pé"]
     },
     {
-      "id": "mesa-eletrica-flexispot-e7-dois-motores-160-cm",
+      "id": "mesa-eletrica-flexispot-ew9wm",
       "tier": 3,
-      "name": "Mesa Elétrica FlexiSpot E7 Dois Motores 160 cm",
-      "price": 3299,
+      "name": "Mesa Elétrica com Regulagem de Altura Flexispot EW9WM",
+      "price": 1999,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/mesa-eletrica-flexispot-e7-dois-motores-160-cm",
+      "url": "https://meli.la/1QgKnh4",
       "bullets": [
-        "Dois motores: mais estável e rápida",
-        "160 cm: setup com 2 monitores",
-        "Aguenta 125 kg"
+        "Regulagem elétrica de altura",
+        "Marca especialista em standing desk",
+        "Trabalhe em pé ou sentado"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_607981-MLB108551273773_032026-O-mesa-de-escritorio-eletrica-altura-ajustavel-flexispot-ew9wm.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1QgKnh4",
+          "price": 1999,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4523689727",
+          "history": [{ "date": "2026-10-22", "price": 1999 }]
+        }
       ]
     },
     {

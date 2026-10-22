@@ -13,14 +13,27 @@
       "bullets": ["Ferve água em ~4 min", "Desliga sozinha", "Corpo de plástico"]
     },
     {
-      "id": "chaleira-eletrica-inox-oster-1-7-l",
+      "id": "chaleira-eletrica-digital-oster-1-7-l",
       "tier": 2,
-      "name": "Chaleira Elétrica Inox Oster 1,7 L",
-      "price": 179,
+      "name": "Chaleira Elétrica Digital Oster 1,7 L",
+      "price": 253,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-inox-oster-1-7-l",
-      "bullets": ["Inox: sem gosto de plástico", "Base giratória sem fio", "Visor de nível"]
+      "url": "https://meli.la/19i8RA8",
+      "bullets": ["Controle de temperatura (chá, café)", "Base giratória sem fio", "1,7 L"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_671740-MLA100021190141_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/19i8RA8",
+          "price": 253,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5682518854",
+          "catalogId": "MLB24034047",
+          "history": [{ "date": "2026-10-22", "price": 253 }]
+        }
+      ]
     },
     {
       "id": "chaleira-eletrica-philips-walita-com-controle-de-temperatura",

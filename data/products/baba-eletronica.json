@@ -56,11 +56,24 @@
       "price": 2499,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/nanit-pro",
+      "url": "https://meli.la/2a7gGej",
       "bullets": [
         "Câmera Wi-Fi vista de cima",
         "Acompanha sono e respiração no app",
         "Vê pelo celular de qualquer lugar"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_647139-MLA99473150754_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2a7gGej",
+          "price": 2499,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5837771638",
+          "catalogId": "MLB25029780",
+          "history": [{ "date": "2026-10-22", "price": 2499 }]
+        }
       ]
     }
   ]

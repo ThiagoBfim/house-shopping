@@ -15,22 +15,48 @@
     {
       "id": "liquidificador-philips-walita-serie-3000",
       "tier": 2,
-      "name": "Liquidificador Philips Walita Série 3000 1200 W",
-      "price": 299,
+      "name": "Liquidificador Philips Walita Série 3000 Turbo 1000 W",
+      "price": 159,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/liquidificador-philips-walita-serie-3000",
-      "bullets": ["1200 W, tritura gelo", "Copo resistente de 3 L", "5 velocidades"]
+      "url": "https://meli.la/1MgJzNw",
+      "bullets": ["1000 W, tritura gelo", "Função turbo", "Marca Philips Walita"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_655313-MLA99850319379_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1MgJzNw",
+          "price": 159,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5461200402",
+          "catalogId": "MLB39292033",
+          "history": [{ "date": "2026-10-22", "price": 159 }]
+        }
+      ]
     },
     {
-      "id": "liquidificador-oster-xpert",
+      "id": "liquidificador-oster-xtreme-mix-2-l",
       "tier": 3,
-      "name": "Liquidificador Oster Xpert Series 1400 W",
-      "price": 549,
+      "name": "Liquidificador Oster Profissional Xtreme Mix 2 L",
+      "price": 888,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/liquidificador-oster-xpert",
-      "bullets": ["1400 W", "Copo de vidro", "Programas automáticos (smoothie, gelo)"]
+      "url": "https://meli.la/2esa92J",
+      "bullets": ["Linha profissional", "Copo de 2 L", "Tritura gelo e faz smoothie"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_620173-MLA99937056099_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2esa92J",
+          "price": 888,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4207610531",
+          "catalogId": "MLB49409322",
+          "history": [{ "date": "2026-10-22", "price": 888 }]
+        }
+      ]
     },
     {
       "id": "liquidificador-oster-versa-pro",
