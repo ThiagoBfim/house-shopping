@@ -6,7 +6,8 @@
 
 **Meta:** site público, com deploy automático.
 
-- [ ] Configurar `base` do Vite para `/house-shopping/`
+- [ ] Criar repositório público `house-shopping` no GitHub e fazer o push (veio do Drop 0)
+- [x] Configurar `base` do Vite para `/house-shopping/` (feito no Drop 0)
 - [ ] Workflow `.github/workflows/deploy.yml` (build + validate + test → `actions/deploy-pages`)
 - [ ] Ativar GitHub Pages (source: GitHub Actions)
 - [ ] Página `404.html` e favicon
