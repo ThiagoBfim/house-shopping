@@ -20,7 +20,7 @@ No topo de cada drop há uma tabela:
 | ---------------------------------------------------------- | ------------------------------- | ------------ | ---------------- | ---------------- | ------- |
 | [0](drop-00-fundacao-do-repositorio.md)                    | Fundação do repositório         | ✅ Concluído | 2026-10-22 09:16 | 2026-10-22 09:19 | 3min    |
 | [1](drop-01-modelo-de-dados-e-validacao.md)                | Modelo de dados e validação     | ✅ Concluído | 2026-10-22 09:21 | 2026-10-22 09:23 | 2min    |
-| [2](drop-02-motor-de-orcamento.md)                         | Motor de orçamento              | ⏳ A fazer   | —                | —                | —       |
+| [2](drop-02-motor-de-orcamento.md)                         | Motor de orçamento              | ✅ Concluído | 2026-10-22 09:35 | 2026-10-22 09:37 | 2min    |
 | [3](drop-03-interface-basica.md)                           | Interface básica                | ⏳ A fazer   | —                | —                | —       |
 | [4](drop-04-interacoes-recusar-mais-barato-caro-reload.md) | Interações                      | ⏳ A fazer   | —                | —                | —       |
 | [5](drop-05-persistencia-e-compartilhamento.md)            | Persistência e compartilhamento | ⏳ A fazer   | —                | —                | —       |

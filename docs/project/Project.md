@@ -69,7 +69,7 @@ Cada item de um cômodo tem uma prioridade:
 
 1. Coloca todos os **essenciais no tier mais barato**. Se nem isso cabe → avisa quanto falta.
 2. Adiciona **importantes** e depois **desejáveis** no tier mais barato, enquanto couber.
-3. Com o que sobra, faz **upgrades de tier** priorizando os itens com maior "peso" (impacto no dia a dia), até não caber mais nenhum upgrade.
+3. Com o que sobra, faz **upgrades de um tier por vez**, sempre no item com maior `peso ÷ tier atual` (impacto no dia a dia, sem concentrar tudo num só item), até não caber mais nenhum upgrade. Itens travados não sobem.
 4. Resultado: lista + total + saldo restante.
 
 ### 4.3 Interações do usuário

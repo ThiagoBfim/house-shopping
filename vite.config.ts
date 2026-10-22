@@ -8,5 +8,9 @@ export default defineConfig({
   plugins: [preact()],
   test: {
     include: ['tests/**/*.test.ts', 'src/**/*.test.ts'],
+    coverage: {
+      include: ['src/engine/**', 'src/data/**'],
+      thresholds: { lines: 90, branches: 90, functions: 90, statements: 90 },
+    },
   },
 })
