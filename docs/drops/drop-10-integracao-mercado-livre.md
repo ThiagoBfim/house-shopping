@@ -21,7 +21,7 @@
 
 ## Registro
 
-- **Código pronto às 10:59** (11 min). O drop fecha quando os links reais forem importados; anotar o fim aqui nesse dia.
+- **Código pronto às 10:54** (6 min). O drop fecha quando os links reais forem importados; anotar o fim aqui nesse dia.
 - **API sem login não funciona mais:** testado em 2026-10-22, `/sites/MLB/search`, `/products/search`, `/sites/MLB` e `/items/…` devolvem `403 PolicyAgent` sem token. O sync usa OAuth: `ML_ACCESS_TOKEN`, ou client id/secret + refresh token, que muda a cada uso e é salvo em `.ml-token.json` (fora do git).
 - **Não há API de link de afiliado** (o link vem do "Gerador de links" do painel, no formato `mercadolivre.com/sec/…`). Por isso existe a planilha `data/affiliate/mercadolivre.csv`, com 192 linhas, separador `;` para abrir direto no Excel/Planilhas em pt-BR, e uma coluna `busca` com o link para achar o produto.
 - **Modelo de dados:** `offers[]` por opção, com loja, link, preço, data, `externalId` (MLB…) e `available`. Os campos exibidos são sempre os da oferta mais barata disponível (`applyBestOffer` em `src/data/offers.ts`), e o validador acusa quando não batem. Opções sem `offers` continuam como estavam (preço de referência + link de busca).
