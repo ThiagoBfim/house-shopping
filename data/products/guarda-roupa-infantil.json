@@ -1,0 +1,46 @@
+{
+  "label": "Guarda-roupa infantil",
+  "utensil": false,
+  "options": [
+    {
+      "id": "guarda-roupa-infantil-2-portas",
+      "tier": 1,
+      "name": "Guarda-roupa Infantil 2 Portas",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-2-portas",
+      "bullets": ["2 portas", "MDP", "Compacto"]
+    },
+    {
+      "id": "guarda-roupa-infantil-3-portas-henn",
+      "tier": 2,
+      "name": "Guarda-roupa Infantil 3 Portas Henn",
+      "price": 1199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-3-portas-henn",
+      "bullets": ["3 portas e gavetas", "Combina com berço Henn", "Puxadores arredondados"]
+    },
+    {
+      "id": "guarda-roupa-matic-unique-3-portas",
+      "tier": 3,
+      "name": "Guarda-roupa Infantil Matic Unique 3 Portas",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-matic-unique-3-portas",
+      "bullets": ["3 portas", "Acabamento Eco Wood", "Combina com a linha Unique"]
+    },
+    {
+      "id": "guarda-roupa-infantil-madeira-macica",
+      "tier": 4,
+      "name": "Guarda-roupa Infantil de Madeira Maciça",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-madeira-macica",
+      "bullets": ["Madeira maciça", "Serve até a adolescência", "Montagem inclusa (em geral)"]
+    }
+  ]
+}

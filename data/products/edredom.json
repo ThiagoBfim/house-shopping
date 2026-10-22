@@ -1,0 +1,46 @@
+{
+  "label": "Edredom",
+  "utensil": true,
+  "options": [
+    {
+      "id": "edredom-casal-microfibra",
+      "tier": 1,
+      "name": "Edredom Casal Microfibra",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-casal-microfibra",
+      "bullets": ["Microfibra", "Leve", "Lava na máquina"]
+    },
+    {
+      "id": "edredom-casal-dupla-face-algodao",
+      "tier": 2,
+      "name": "Edredom Casal Dupla Face Algodão",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-casal-dupla-face-algodao",
+      "bullets": ["Algodão", "Dupla face (duas cores)", "Respira melhor"]
+    },
+    {
+      "id": "edredom-pena-de-ganso-queen",
+      "tier": 3,
+      "name": "Edredom Queen Pena e Pluma de Ganso",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-pena-de-ganso-queen",
+      "bullets": ["Mistura de pena e pluma", "Bem quente e leve", "Lavanderia recomendada"]
+    },
+    {
+      "id": "edredom-100-pluma-de-ganso",
+      "tier": 4,
+      "name": "Edredom Queen 100% Pluma de Ganso",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/edredom-100-pluma-de-ganso",
+      "bullets": ["100% pluma: o mais quente e leve", "Para inverno rigoroso", "Dura muitos anos"]
+    }
+  ]
+}

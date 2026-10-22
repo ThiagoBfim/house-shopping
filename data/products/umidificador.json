@@ -1,0 +1,36 @@
+{
+  "label": "Umidificador",
+  "utensil": false,
+  "options": [
+    {
+      "id": "umidificador-ultrassonico-2-2-litros",
+      "tier": 1,
+      "name": "Umidificador Ultrassônico 2,2 L",
+      "price": 99,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/umidificador-ultrassonico-2-2-litros",
+      "bullets": ["2,2 L: até ~8 h", "Silencioso", "Desliga sozinho sem água"]
+    },
+    {
+      "id": "umidificador-philco-4-litros",
+      "tier": 2,
+      "name": "Umidificador Philco 4 L",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/umidificador-philco-4-litros",
+      "bullets": ["4 L: noite inteira", "Luz noturna", "Saída de vapor regulável"]
+    },
+    {
+      "id": "umidificador-higrometro-digital",
+      "tier": 3,
+      "name": "Umidificador com Higrômetro Digital",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/umidificador-higrometro-digital",
+      "bullets": ["Mede a umidade e liga/desliga sozinho", "Vapor quente ou frio", "Timer"]
+    }
+  ]
+}

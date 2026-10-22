@@ -1,0 +1,50 @@
+{
+  "label": "Guarda-roupa",
+  "utensil": false,
+  "options": [
+    {
+      "id": "guarda-roupa-casal-6-portas",
+      "tier": 1,
+      "name": "Guarda-roupa Casal 6 Portas MDP",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-casal-6-portas",
+      "bullets": ["6 portas e gavetas", "MDP: leve e barato", "Montagem à parte"]
+    },
+    {
+      "id": "guarda-roupa-casal-3-portas-de-correr-espelho",
+      "tier": 2,
+      "name": "Guarda-roupa Casal 3 Portas de Correr com Espelho",
+      "price": 1799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-casal-3-portas-de-correr-espelho",
+      "bullets": [
+        "Portas de correr: bom para quarto pequeno",
+        "Espelho na porta",
+        "Corrediças metálicas"
+      ]
+    },
+    {
+      "id": "guarda-roupa-casal-mdf-4-portas-pes",
+      "tier": 3,
+      "name": "Guarda-roupa Casal 4 Portas MDF com Pés",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/guarda-roupa-casal-mdf-4-portas-pes",
+      "bullets": ["MDF: mais resistente que MDP", "Acabamento laqueado", "Puxadores metálicos"]
+    },
+    {
+      "id": "closet-modulado-casal-kappesberg",
+      "tier": 4,
+      "name": "Closet Modulado Casal Kappesberg",
+      "price": 5999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/closet-modulado-casal-kappesberg",
+      "bullets": ["Closet aberto modulado", "Monta do jeito que quiser", "Visual de loja"]
+    }
+  ]
+}

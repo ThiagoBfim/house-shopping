@@ -1,0 +1,50 @@
+{
+  "label": "Berço",
+  "utensil": false,
+  "options": [
+    {
+      "id": "berco-cercado-portatil-burigotto-aconchego",
+      "tier": 1,
+      "name": "Berço Cercado Portátil Burigotto Aconchego",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/berco-cercado-portatil-burigotto-aconchego",
+      "bullets": [
+        "Portátil: dobra e leva em viagem",
+        "Mais baixo e menor que berço fixo",
+        "Bem avaliado (4,7)"
+      ]
+    },
+    {
+      "id": "berco-mini-cama-henn",
+      "tier": 2,
+      "name": "Berço Mini Cama 3 em 1 Henn",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/berco-mini-cama-henn",
+      "bullets": ["Vira mini cama quando a criança cresce", "3 alturas de estrado", "MDF"]
+    },
+    {
+      "id": "berco-madeira-macica",
+      "tier": 3,
+      "name": "Berço de Madeira Maciça",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/berco-madeira-macica",
+      "bullets": ["Madeira maciça", "Grades com espaçamento de norma", "Vira mini cama"]
+    },
+    {
+      "id": "berco-stokke-sleepi",
+      "tier": 4,
+      "name": "Berço Evolutivo Stokke Sleepi",
+      "price": 9999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/berco-stokke-sleepi",
+      "bullets": ["Design escandinavo oval", "Cresce com a criança (berço → cama)", "Marca premium"]
+    }
+  ]
+}

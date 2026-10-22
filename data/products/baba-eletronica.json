@@ -1,0 +1,54 @@
+{
+  "label": "Babá eletrônica",
+  "utensil": false,
+  "options": [
+    {
+      "id": "baba-eletronica-motorola-am21",
+      "tier": 1,
+      "name": "Babá Eletrônica Motorola AM21 (áudio)",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/baba-eletronica-motorola-am21",
+      "bullets": ["Só áudio", "Alcance de 300 m", "Pilha recarregável"]
+    },
+    {
+      "id": "baba-eletronica-motorola-mbp481",
+      "tier": 2,
+      "name": "Babá Eletrônica com Vídeo Motorola MBP481",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/baba-eletronica-motorola-mbp481",
+      "bullets": ["Vídeo com visão noturna", "Tela de 2,4\"", "Conversa pelos dois lados"]
+    },
+    {
+      "id": "baba-eletronica-philips-avent-video",
+      "tier": 3,
+      "name": "Babá Eletrônica com Vídeo Philips Avent",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/baba-eletronica-philips-avent-video",
+      "bullets": [
+        "Tela maior e conexão segura",
+        "Bateria dura a noite toda",
+        "Sensor de temperatura"
+      ]
+    },
+    {
+      "id": "nanit-pro",
+      "tier": 4,
+      "name": "Babá Eletrônica Nanit Pro (Wi-Fi)",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/nanit-pro",
+      "bullets": [
+        "Câmera Wi-Fi vista de cima",
+        "Acompanha sono e respiração no app",
+        "Vê pelo celular de qualquer lugar"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "label": "Poltrona de amamentação",
+  "utensil": false,
+  "options": [
+    {
+      "id": "poltrona-amamentacao",
+      "tier": 1,
+      "name": "Poltrona de Amamentação Fixa",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao",
+      "bullets": ["Fixa", "Encosto alto", "Estofada"]
+    },
+    {
+      "id": "poltrona-amamentacao-balanco",
+      "tier": 2,
+      "name": "Poltrona de Amamentação com Balanço",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao-balanco",
+      "bullets": ["Balanço suave: ajuda a fazer o bebê dormir", "Braços largos", "Tecido lavável"]
+    },
+    {
+      "id": "poltrona-amamentacao-balanco-puff",
+      "tier": 3,
+      "name": "Poltrona de Amamentação com Balanço e Puff",
+      "price": 1799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao-balanco-puff",
+      "bullets": [
+        "Balanço + puff com balanço",
+        "Muito confortável para a madrugada",
+        "Tecido antimanchas"
+      ]
+    },
+    {
+      "id": "poltrona-amamentacao-reclinavel",
+      "tier": 4,
+      "name": "Poltrona de Amamentação Reclinável Elétrica",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao-reclinavel",
+      "bullets": ["Reclina com botão", "Giratória", "Vira poltrona da sala depois"]
+    }
+  ]
+}

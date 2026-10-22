@@ -16,16 +16,28 @@ Objetivo final: comprar móveis e eletrodomésticos online de forma **fácil e r
 
 ---
 
-## 2. Cômodos (escopo inicial)
+## 2. Cômodos
 
-| Cômodo         | Exemplos de itens                                                                                                                                  |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cozinha        | Geladeira, freezer, fogão/cooktop, forno, micro-ondas, lava-louças, coifa/depurador, air fryer, liquidificador, cafeteira, panelas, mesa de jantar |
-| Quarto (casal) | Cama, colchão, guarda-roupa, criados-mudos, cômoda, ar-condicionado, TV                                                                            |
-| Sala           | Sofá, rack/painel, TV, soundbar, mesa de centro, poltrona, tapete, ar-condicionado                                                                 |
-| Quarto do bebê | Berço, colchão de berço, cômoda/trocador, poltrona de amamentação, guarda-roupa, babá eletrônica, umidificador                                     |
-| Área externa   | Churrasqueira, mesa e cadeiras externas, espreguiçadeiras, ombrelone, lavadora de alta pressão                                                     |
-| (futuro)       | Banheiro, Lavanderia, Home office, Escritório                                                                                                      |
+Necessidade entre parênteses; **negrito** = utensílio/enxoval; ×2 = quantidade. Fonte: `data/rooms.json`.
+
+| Cômodo              | Itens                                                                                                                                                                                                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cozinha (18)        | Geladeira (5), fogão (5), **panelas** (4), **pratos** (4), **talheres** (4), **copos** (4), micro-ondas (3), forno (3), **facas** (3), purificador (3), liquidificador (2), air fryer (2), cafeteira (2), lava-louças (2), coifa (2), freezer (1), **jogo americano** (1), **toalha de mesa** (1) |
+| Quarto (11)         | Cama/box (5), colchão (5), guarda-roupa (5), **jogo de cama** (4), **travesseiro** ×2 (4), criado-mudo ×2 (3), cortina (3), ar-condicionado (3), **edredom** (3), cômoda (2), TV (2)                                                                                                              |
+| Sala (10)           | Sofá (5), TV (4), rack/painel (4), mesa de jantar com cadeiras (4), ar-condicionado (3), cortina (2), tapete (2), mesa de centro (2), soundbar (2), poltrona (1)                                                                                                                                  |
+| Quarto do bebê (10) | Berço (5), colchão de berço (5), cômoda com trocador (4), **kit berço** (4), guarda-roupa infantil (3), babá eletrônica (3), poltrona de amamentação (3), cortina (3), umidificador (2), ar-condicionado (2)                                                                                      |
+| Área externa (7)    | Churrasqueira (4), mesa externa com cadeiras (4), **kit churrasco** (3), lavadora de alta pressão (3), espreguiçadeira ×2 (2), ombrelone (2), cooler (2)                                                                                                                                          |
+| (futuro)            | Banheiro, Lavanderia, Home office                                                                                                                                                                                                                                                                 |
+
+TV, ar-condicionado e cortina são categorias compartilhadas: o mesmo produto, com necessidade diferente em cada cômodo.
+
+-------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cozinha | Geladeira, freezer, fogão/cooktop, forno, micro-ondas, lava-louças, coifa/depurador, air fryer, liquidificador, cafeteira, panelas, mesa de jantar |
+| Quarto (casal) | Cama, colchão, guarda-roupa, criados-mudos, cômoda, ar-condicionado, TV |
+| Sala | Sofá, rack/painel, TV, soundbar, mesa de centro, poltrona, tapete, ar-condicionado |
+| Quarto do bebê | Berço, colchão de berço, cômoda/trocador, poltrona de amamentação, guarda-roupa, babá eletrônica, umidificador |
+| Área externa | Churrasqueira, mesa e cadeiras externas, espreguiçadeiras, ombrelone, lavadora de alta pressão |
+| (futuro) | Banheiro, Lavanderia, Home office, Escritório |
 
 ---
 

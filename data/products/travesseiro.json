@@ -1,0 +1,40 @@
+{
+  "label": "Travesseiro",
+  "utensil": true,
+  "options": [
+    {
+      "id": "travesseiro-fibra-siliconada",
+      "tier": 1,
+      "name": "Travesseiro Fibra Siliconada",
+      "price": 39,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/travesseiro-fibra-siliconada",
+      "bullets": ["Fibra siliconada", "Macio", "Deforma com o tempo"]
+    },
+    {
+      "id": "travesseiro-viscoelastico-nasa",
+      "tier": 2,
+      "name": "Travesseiro Viscoelástico (Nasa)",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/travesseiro-viscoelastico-nasa",
+      "bullets": [
+        "Espuma viscoelástica: molda ao pescoço",
+        "Bom para dor no pescoço",
+        "Esquenta um pouco"
+      ]
+    },
+    {
+      "id": "travesseiro-latex",
+      "tier": 3,
+      "name": "Travesseiro de Látex",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/travesseiro-latex",
+      "bullets": ["Látex: firme e ventilado", "Antiácaro", "Mantém a forma por anos"]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "label": "Criado-mudo",
+  "utensil": false,
+  "options": [
+    {
+      "id": "mesa-de-cabeceira-1-gaveta",
+      "tier": 1,
+      "name": "Mesa de Cabeceira MDP 1 Gaveta",
+      "price": 129,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-de-cabeceira-1-gaveta",
+      "bullets": ["1 gaveta", "MDP", "Compacta"]
+    },
+    {
+      "id": "criado-mudo-2-gavetas-pes-palito",
+      "tier": 2,
+      "name": "Criado-mudo 2 Gavetas Pés Palito",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/criado-mudo-2-gavetas-pes-palito",
+      "bullets": ["2 gavetas", "Pés palito (estilo retrô)", "Mais espaço para guardar"]
+    },
+    {
+      "id": "criado-mudo-madeira-macica",
+      "tier": 3,
+      "name": "Criado-mudo de Madeira Maciça",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/criado-mudo-madeira-macica",
+      "bullets": ["Madeira maciça", "Acabamento artesanal", "Combina com cama de madeira"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "label": "Poltrona",
+  "utensil": false,
+  "options": [
+    {
+      "id": "poltrona-decorativa-pes-palito",
+      "tier": 1,
+      "name": "Poltrona Decorativa Pés Palito",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-decorativa-pes-palito",
+      "bullets": ["Decorativa", "Pés palito", "Ocupa pouco espaço"]
+    },
+    {
+      "id": "poltrona-costela",
+      "tier": 2,
+      "name": "Poltrona Costela Estofada",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-costela",
+      "bullets": ["Estofada e confortável", "Clássico do design brasileiro", "Boa para leitura"]
+    },
+    {
+      "id": "poltrona-charles-eames-com-puff",
+      "tier": 3,
+      "name": "Poltrona Charles Eames com Puff (réplica)",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-charles-eames-com-puff",
+      "bullets": ["Réplica do ícone de design", "Com puff para os pés", "Couro ecológico"]
+    },
+    {
+      "id": "poltrona-do-papai-reclinavel-couro",
+      "tier": 4,
+      "name": "Poltrona do Papai Reclinável de Couro",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/poltrona-do-papai-reclinavel-couro",
+      "bullets": ["Reclina quase deitado", "Couro", "A mais confortável da lista"]
+    }
+  ]
+}

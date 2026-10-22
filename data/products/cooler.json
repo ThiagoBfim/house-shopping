@@ -1,0 +1,50 @@
+{
+  "label": "Cooler / caixa térmica",
+  "utensil": false,
+  "options": [
+    {
+      "id": "caixa-termica-coleman-28-qt",
+      "tier": 1,
+      "name": "Caixa Térmica Coleman 28 QT (26 L)",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caixa-termica-coleman-28-qt",
+      "bullets": ["26 L", "Mantém gelo por ~1 dia", "Leve"]
+    },
+    {
+      "id": "caixa-termica-coleman-48-qt",
+      "tier": 2,
+      "name": "Caixa Térmica Coleman 48 QT (45 L) com Rodas",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caixa-termica-coleman-48-qt",
+      "bullets": ["45 L", "Rodas e alça", "Gelo por ~2 dias"]
+    },
+    {
+      "id": "caixa-termica-coleman-xtreme-100",
+      "tier": 3,
+      "name": "Caixa Térmica Coleman Xtreme 100 QT (95 L)",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/caixa-termica-coleman-xtreme-100",
+      "bullets": ["95 L", "Gelo por até 5 dias", "Para festa grande"]
+    },
+    {
+      "id": "yeti-tundra-45",
+      "tier": 4,
+      "name": "Caixa Térmica YETI Tundra 45",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/yeti-tundra-45",
+      "bullets": [
+        "Rotomoldada: praticamente indestrutível",
+        "Gelo por vários dias",
+        "Marca premium"
+      ]
+    }
+  ]
+}

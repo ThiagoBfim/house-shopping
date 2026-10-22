@@ -1,0 +1,50 @@
+{
+  "label": "Rack / painel para TV",
+  "utensil": false,
+  "options": [
+    {
+      "id": "rack-para-tv-55-polegadas",
+      "tier": 1,
+      "name": "Rack para TV até 55\" MDP",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/rack-para-tv-55-polegadas",
+      "bullets": ["Para TV até 55\"", "2 portas", "MDP"]
+    },
+    {
+      "id": "painel-com-rack-para-tv-65",
+      "tier": 2,
+      "name": "Painel com Rack para TV até 65\"",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/painel-com-rack-para-tv-65",
+      "bullets": ["Painel na parede: esconde os fios", "Nichos para decoração", "Para TV até 65\""]
+    },
+    {
+      "id": "home-suspenso-ripado-tv-75",
+      "tier": 3,
+      "name": "Home Suspenso Ripado para TV até 75\"",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/home-suspenso-ripado-tv-75",
+      "bullets": [
+        "Suspenso: visual leve, fácil de limpar o chão",
+        "Painel ripado",
+        "Iluminação de LED"
+      ]
+    },
+    {
+      "id": "rack-madeira-macica-tv",
+      "tier": 4,
+      "name": "Rack de Madeira Maciça para TV",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/rack-madeira-macica-tv",
+      "bullets": ["Madeira maciça", "Gavetas com fechamento suave", "Peça de design"]
+    }
+  ]
+}

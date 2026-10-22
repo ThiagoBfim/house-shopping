@@ -1,0 +1,58 @@
+{
+  "label": "Soundbar",
+  "utensil": false,
+  "options": [
+    {
+      "id": "soundbar-samsung-hw-c400",
+      "tier": 1,
+      "name": "Soundbar Samsung HW-C400 2.0",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/soundbar-samsung-hw-c400",
+      "bullets": ["2.0 canais: voz mais clara que a da TV", "Subwoofer embutido", "Bluetooth"]
+    },
+    {
+      "id": "soundbar-jbl-bar-300",
+      "tier": 2,
+      "name": "Soundbar JBL Bar 300 5.0 Dolby Atmos",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/soundbar-jbl-bar-300",
+      "bullets": [
+        "5.0 canais com Dolby Atmos",
+        "Graves fortes sem subwoofer separado",
+        "Wi-Fi e AirPlay"
+      ]
+    },
+    {
+      "id": "soundbar-samsung-hw-q800",
+      "tier": 3,
+      "name": "Soundbar Samsung HW-Q800 5.1.2 com Subwoofer",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/soundbar-samsung-hw-q800",
+      "bullets": [
+        "5.1.2 com subwoofer sem fio",
+        "Som que vem de cima (Atmos)",
+        "Integração com TV Samsung"
+      ]
+    },
+    {
+      "id": "sonos-arc-ultra",
+      "tier": 4,
+      "name": "Soundbar Sonos Arc Ultra",
+      "price": 7999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sonos-arc-ultra",
+      "bullets": [
+        "Referência em som para TV",
+        "Dolby Atmos 9.1.4",
+        "Expande com caixas e sub Sonos"
+      ]
+    }
+  ]
+}

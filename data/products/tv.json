@@ -1,0 +1,62 @@
+{
+  "label": "Smart TV",
+  "utensil": false,
+  "options": [
+    {
+      "id": "smart-tv-samsung-50-du8000",
+      "tier": 1,
+      "name": "Smart TV Samsung Crystal UHD 50\" 4K DU8000",
+      "price": 1899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/smart-tv-samsung-50-du8000",
+      "bullets": [
+        "50\" 4K",
+        "Tizen com os principais apps",
+        "Imagem boa de dia; contraste limitado no escuro"
+      ]
+    },
+    {
+      "id": "smart-tv-tcl-55-c6k",
+      "tier": 2,
+      "name": "Smart TV TCL 55\" QD-Mini LED 144 Hz C6K",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/smart-tv-tcl-55-c6k",
+      "bullets": [
+        "55\" Mini LED: muito mais brilho e contraste",
+        "144 Hz: ótima para games",
+        "Som 2.1 embutido"
+      ]
+    },
+    {
+      "id": "smart-tv-lg-oled-55-c5",
+      "tier": 3,
+      "name": "Smart TV LG OLED evo 55\" C5",
+      "price": 6999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/smart-tv-lg-oled-55-c5",
+      "bullets": [
+        "OLED: preto perfeito, melhor para filmes",
+        "Ângulo de visão amplo",
+        "webOS e 4 entradas HDMI 2.1"
+      ]
+    },
+    {
+      "id": "smart-tv-samsung-oled-65-s90f",
+      "tier": 4,
+      "name": "Smart TV Samsung OLED 65\" S90F",
+      "price": 12999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/smart-tv-samsung-oled-65-s90f",
+      "bullets": [
+        "65\": tela de cinema",
+        "QD-OLED: cores mais vivas que o OLED comum",
+        "Topo de linha para sala grande"
+      ]
+    }
+  ]
+}

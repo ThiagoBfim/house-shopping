@@ -1,0 +1,46 @@
+{
+  "label": "Cômoda",
+  "utensil": false,
+  "options": [
+    {
+      "id": "comoda-4-gavetas",
+      "tier": 1,
+      "name": "Cômoda 4 Gavetas MDP",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-4-gavetas",
+      "bullets": ["4 gavetas", "MDP", "Corrediças simples"]
+    },
+    {
+      "id": "comoda-6-gavetas-henn",
+      "tier": 2,
+      "name": "Cômoda 6 Gavetas Henn",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-6-gavetas-henn",
+      "bullets": ["6 gavetas", "Marca conhecida em móveis de quarto", "Corrediças metálicas"]
+    },
+    {
+      "id": "comoda-pes-palito-mdf",
+      "tier": 3,
+      "name": "Cômoda Pés Palito 6 Gavetas MDF",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-pes-palito-mdf",
+      "bullets": ["MDF laqueado", "Pés palito", "Corrediças telescópicas"]
+    },
+    {
+      "id": "comoda-madeira-macica",
+      "tier": 4,
+      "name": "Cômoda de Madeira Maciça",
+      "price": 2799,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-madeira-macica",
+      "bullets": ["Madeira maciça", "Gavetas com fechamento suave", "Peça para a vida toda"]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "label": "Kit berço (enxoval)",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-berco-9-pecas",
+      "tier": 1,
+      "name": "Kit Berço 9 Peças",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-berco-9-pecas",
+      "bullets": ["Protetor, lençóis e edredom", "Tecido misto", "9 peças"]
+    },
+    {
+      "id": "kit-berco-algodao-10-pecas",
+      "tier": 2,
+      "name": "Kit Berço 100% Algodão 10 Peças",
+      "price": 449,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-berco-algodao-10-pecas",
+      "bullets": ["100% algodão", "Protetor respirável", "10 peças"]
+    },
+    {
+      "id": "kit-berco-premium-bordado",
+      "tier": 3,
+      "name": "Kit Berço Premium Bordado",
+      "price": 999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-berco-premium-bordado",
+      "bullets": ["Bordado à mão", "Algodão egípcio", "Para quarto temático"]
+    }
+  ]
+}

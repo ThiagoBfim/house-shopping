@@ -1,0 +1,54 @@
+{
+  "label": "Sofá",
+  "utensil": false,
+  "options": [
+    {
+      "id": "sofa-retratil-reclinavel-hanover-mobly",
+      "tier": 1,
+      "name": "Sofá 3 Lugares Retrátil e Reclinável Hanôver 180 cm (Mobly)",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sofa-retratil-reclinavel-hanover-mobly",
+      "bullets": ["Retrátil e reclinável", "180 cm, suede", "Bom para sala pequena"]
+    },
+    {
+      "id": "sofa-retratil-reclinavel-blenda-mobly",
+      "tier": 2,
+      "name": "Sofá 3 Lugares Retrátil e Reclinável Blenda 230 cm (Mobly)",
+      "price": 1699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sofa-retratil-reclinavel-blenda-mobly",
+      "bullets": ["230 cm: cabe a família deitada", "Molas no assento", "Suede"]
+    },
+    {
+      "id": "sofa-retratil-reclinavel-prime-linho",
+      "tier": 3,
+      "name": "Sofá 3 Lugares Retrátil e Reclinável Prime Linho 210 cm",
+      "price": 3199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sofa-retratil-reclinavel-prime-linho",
+      "bullets": [
+        "Tecido de linho: mais bonito e respirável",
+        "Espuma de alta densidade",
+        "Encosto com regulagem"
+      ]
+    },
+    {
+      "id": "sofa-retratil-reclinavel-couro-3-lugares",
+      "tier": 4,
+      "name": "Sofá 3 Lugares Retrátil e Reclinável de Couro",
+      "price": 7999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/sofa-retratil-reclinavel-couro-3-lugares",
+      "bullets": [
+        "Couro natural: dura e fica mais bonito com o tempo",
+        "Fácil de limpar",
+        "Acabamento premium"
+      ]
+    }
+  ]
+}

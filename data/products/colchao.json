@@ -1,0 +1,58 @@
+{
+  "label": "Colchão",
+  "utensil": false,
+  "options": [
+    {
+      "id": "colchao-casal-ortobom-light-d33",
+      "tier": 1,
+      "name": "Colchão Casal Ortobom Light D33",
+      "price": 1199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-casal-ortobom-light-d33",
+      "bullets": ["Espuma D33: firme", "Bom custo-benefício", "Dura menos que espumas mais densas"]
+    },
+    {
+      "id": "colchao-castor-sleep-double-face-d45",
+      "tier": 2,
+      "name": "Colchão Casal Castor Sleep Double Face D45",
+      "price": 2699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-castor-sleep-double-face-d45",
+      "bullets": [
+        "Espuma D45: mais durável",
+        "Dupla face (lado verão e inverno)",
+        "Pode virar: dura mais"
+      ]
+    },
+    {
+      "id": "colchao-emma-original-queen",
+      "tier": 3,
+      "name": "Colchão Queen Emma Original",
+      "price": 3499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-emma-original-queen",
+      "bullets": [
+        "3 camadas de espuma com alívio de pressão",
+        "100 noites de teste",
+        "Chega enrolado na caixa"
+      ]
+    },
+    {
+      "id": "colchao-simmons-beautyrest-black-queen",
+      "tier": 4,
+      "name": "Colchão Queen Simmons Beautyrest Black",
+      "price": 7999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-simmons-beautyrest-black-queen",
+      "bullets": [
+        "Molas ensacadas: não transmite movimento",
+        "Camadas de conforto premium",
+        "Topo de linha em colchão"
+      ]
+    }
+  ]
+}

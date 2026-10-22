@@ -1,0 +1,54 @@
+{
+  "label": "Cama / base box",
+  "utensil": false,
+  "options": [
+    {
+      "id": "base-box-casal-ortobom",
+      "tier": 1,
+      "name": "Base Box Casal Ortobom",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/base-box-casal-ortobom",
+      "bullets": ["Base box casal simples", "Sem baú", "Monta com o colchão por cima"]
+    },
+    {
+      "id": "cama-box-bau-casal",
+      "tier": 2,
+      "name": "Cama Box Baú Casal",
+      "price": 1199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-casal",
+      "bullets": [
+        "Baú com pistão: guarda roupa de cama e malas",
+        "Fácil de abrir",
+        "Tecido sintético"
+      ]
+    },
+    {
+      "id": "cama-box-bau-queen-cabeceira-estofada",
+      "tier": 3,
+      "name": "Cama Box Baú Queen com Cabeceira Estofada",
+      "price": 2199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-box-bau-queen-cabeceira-estofada",
+      "bullets": [
+        "Tamanho queen (mais espaço que casal)",
+        "Cabeceira estofada inclusa",
+        "Baú com pistão"
+      ]
+    },
+    {
+      "id": "cama-queen-madeira-macica",
+      "tier": 4,
+      "name": "Cama Queen de Madeira Maciça",
+      "price": 4999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cama-queen-madeira-macica",
+      "bullets": ["Madeira maciça: dura décadas", "Visual de cama de hotel", "Sem baú"]
+    }
+  ]
+}

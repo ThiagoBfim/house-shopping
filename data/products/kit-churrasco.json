@@ -1,0 +1,36 @@
+{
+  "label": "Kit churrasco",
+  "utensil": true,
+  "options": [
+    {
+      "id": "kit-churrasco-tramontina-3-pecas",
+      "tier": 1,
+      "name": "Kit Churrasco Tramontina 3 Peças",
+      "price": 59,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-churrasco-tramontina-3-pecas",
+      "bullets": ["Faca, garfo e pegador", "Inox com cabo de madeira", "O básico"]
+    },
+    {
+      "id": "kit-churrasco-12-pecas-maleta",
+      "tier": 2,
+      "name": "Kit Churrasco 12 Peças com Maleta",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/kit-churrasco-12-pecas-maleta",
+      "bullets": ["12 peças", "Maleta para guardar", "Inclui espetos"]
+    },
+    {
+      "id": "facas-churrasco-forjadas-tramontina",
+      "tier": 3,
+      "name": "Kit de Facas para Churrasco Forjadas Tramontina",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/facas-churrasco-forjadas-tramontina",
+      "bullets": ["Facas forjadas: fio que dura", "Tábua de madeira", "Para churrasqueiro exigente"]
+    }
+  ]
+}

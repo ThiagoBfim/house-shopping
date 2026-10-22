@@ -93,5 +93,215 @@
         "qty": 1
       }
     ]
+  },
+  "quarto": {
+    "name": "Quarto",
+    "items": [
+      {
+        "category": "cama-box",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "colchao",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "guarda-roupa",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "jogo-de-cama",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "travesseiro",
+        "need": 4,
+        "qty": 2
+      },
+      {
+        "category": "criado-mudo",
+        "need": 3,
+        "qty": 2
+      },
+      {
+        "category": "cortina",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "ar-condicionado",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "edredom",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "comoda",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "tv",
+        "need": 2,
+        "qty": 1
+      }
+    ]
+  },
+  "sala": {
+    "name": "Sala",
+    "items": [
+      {
+        "category": "sofa",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "tv",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "rack",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "mesa-de-jantar",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "ar-condicionado",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "cortina",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "tapete",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "mesa-de-centro",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "soundbar",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "poltrona",
+        "need": 1,
+        "qty": 1
+      }
+    ]
+  },
+  "quarto-bebe": {
+    "name": "Quarto do bebê",
+    "items": [
+      {
+        "category": "berco",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "colchao-berco",
+        "need": 5,
+        "qty": 1
+      },
+      {
+        "category": "comoda-trocador",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "kit-berco",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "guarda-roupa-infantil",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "baba-eletronica",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "poltrona-amamentacao",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "cortina",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "umidificador",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "ar-condicionado",
+        "need": 2,
+        "qty": 1
+      }
+    ]
+  },
+  "area-externa": {
+    "name": "Área externa",
+    "items": [
+      {
+        "category": "churrasqueira",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "mesa-externa",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "kit-churrasco",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "lavadora-alta-pressao",
+        "need": 3,
+        "qty": 1
+      },
+      {
+        "category": "espreguicadeira",
+        "need": 2,
+        "qty": 2
+      },
+      {
+        "category": "ombrelone",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "cooler",
+        "need": 2,
+        "qty": 1
+      }
+    ]
   }
 }

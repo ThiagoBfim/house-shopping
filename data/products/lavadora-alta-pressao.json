@@ -1,0 +1,50 @@
+{
+  "label": "Lavadora de alta pressão",
+  "utensil": false,
+  "options": [
+    {
+      "id": "lavadora-alta-pressao-wap-ousada",
+      "tier": 1,
+      "name": "Lavadora de Alta Pressão WAP Ousada Plus 2200",
+      "price": 349,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lavadora-alta-pressao-wap-ousada",
+      "bullets": ["Para limpeza leve (calçada, carro)", "Compacta", "Mangueira curta"]
+    },
+    {
+      "id": "lavadora-karcher-k2",
+      "tier": 2,
+      "name": "Lavadora de Alta Pressão Kärcher K2 Power",
+      "price": 549,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k2",
+      "bullets": ["Kärcher: marca referência", "Bico turbo", "Mais durável"]
+    },
+    {
+      "id": "lavadora-karcher-k3-power-control",
+      "tier": 3,
+      "name": "Lavadora de Alta Pressão Kärcher K3 Power Control",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k3-power-control",
+      "bullets": ["Mais pressão e vazão", "Controle de pressão na pistola", "Para quintal maior"]
+    },
+    {
+      "id": "lavadora-karcher-k5",
+      "tier": 4,
+      "name": "Lavadora de Alta Pressão Kärcher K5",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k5",
+      "bullets": [
+        "Motor refrigerado a água (dura mais)",
+        "Alta pressão para pedra e piscina",
+        "Uso frequente"
+      ]
+    }
+  ]
+}

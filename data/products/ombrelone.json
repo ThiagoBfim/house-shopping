@@ -1,0 +1,46 @@
+{
+  "label": "Ombrelone",
+  "utensil": false,
+  "options": [
+    {
+      "id": "ombrelone-2-metros-com-base",
+      "tier": 1,
+      "name": "Ombrelone 2 m com Base",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ombrelone-2-metros-com-base",
+      "bullets": ["2 m", "Haste central", "Base inclusa"]
+    },
+    {
+      "id": "ombrelone-2-4-aluminio-manivela",
+      "tier": 2,
+      "name": "Ombrelone 2,4 m de Alumínio com Manivela",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ombrelone-2-4-aluminio-manivela",
+      "bullets": ["Alumínio", "Abre com manivela", "Inclinável"]
+    },
+    {
+      "id": "ombrelone-lateral-3-metros",
+      "tier": 3,
+      "name": "Ombrelone Lateral 3 m",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ombrelone-lateral-3-metros",
+      "bullets": ["Haste lateral: sombra sem poste no meio", "3 m", "Gira 360°"]
+    },
+    {
+      "id": "ombrelone-lateral-4-metros",
+      "tier": 4,
+      "name": "Ombrelone Lateral 4 m Premium com Base Giratória",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ombrelone-lateral-4-metros",
+      "bullets": ["4 m: cobre uma mesa grande", "Lona com proteção UV", "Base pesada giratória"]
+    }
+  ]
+}

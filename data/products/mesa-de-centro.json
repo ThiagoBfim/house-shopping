@@ -1,0 +1,46 @@
+{
+  "label": "Mesa de centro",
+  "utensil": false,
+  "options": [
+    {
+      "id": "mesa-de-centro-mdp",
+      "tier": 1,
+      "name": "Mesa de Centro MDP",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-de-centro-mdp",
+      "bullets": ["MDP", "Prateleira inferior", "Simples"]
+    },
+    {
+      "id": "mesa-de-centro-pes-palito",
+      "tier": 2,
+      "name": "Mesa de Centro Pés Palito",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-de-centro-pes-palito",
+      "bullets": ["Pés palito (retrô)", "Tampo laqueado", "Leve de mover"]
+    },
+    {
+      "id": "mesa-de-centro-tampo-marmore",
+      "tier": 3,
+      "name": "Mesa de Centro Tampo de Mármore",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-de-centro-tampo-marmore",
+      "bullets": ["Tampo de mármore", "Base metálica", "Visual sofisticado"]
+    },
+    {
+      "id": "mesa-de-centro-madeira-macica-organica",
+      "tier": 4,
+      "name": "Mesa de Centro de Madeira Maciça Orgânica",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/mesa-de-centro-madeira-macica-organica",
+      "bullets": ["Madeira maciça com formato orgânico", "Peça de design", "Única (veios naturais)"]
+    }
+  ]
+}

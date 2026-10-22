@@ -95,3 +95,14 @@ test('item que não coube pode ser adicionado', async ({ page }) => {
   await expect(card(page, 'Freezer')).toBeVisible()
   await expect(page.getByText('Faltam')).toBeVisible()
 })
+
+for (const room of ['Cozinha', 'Quarto', 'Sala', 'Quarto do bebê', 'Área externa']) {
+  test(`${room}: monta a lista com R$ 15.000`, async ({ page }) => {
+    await page.goto('./')
+    await page.getByRole('button', { name: new RegExp(`^${room} \\d+ itens$`) }).click()
+    await page.getByLabel('Orçamento em reais').fill('15000')
+    await page.getByRole('button', { name: 'Montar minha lista' }).click()
+    expect(await page.getByRole('article').count()).toBeGreaterThan(3)
+    expect(await remaining(page)).toBeGreaterThanOrEqual(0)
+  })
+}

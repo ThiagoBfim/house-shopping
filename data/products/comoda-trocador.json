@@ -1,0 +1,46 @@
+{
+  "label": "Cômoda com trocador",
+  "utensil": false,
+  "options": [
+    {
+      "id": "comoda-infantil-4-gavetas-trocador",
+      "tier": 1,
+      "name": "Cômoda Infantil 4 Gavetas com Trocador",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-infantil-4-gavetas-trocador",
+      "bullets": ["4 gavetas", "Trocador em cima", "MDP"]
+    },
+    {
+      "id": "comoda-infantil-6-gavetas-henn",
+      "tier": 2,
+      "name": "Cômoda Infantil 6 Gavetas com Trocador Henn",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-infantil-6-gavetas-henn",
+      "bullets": ["6 gavetas", "Trocador removível", "Marca conhecida"]
+    },
+    {
+      "id": "comoda-matic-unique-6-gavetas",
+      "tier": 3,
+      "name": "Cômoda Infantil Matic Unique 6 Gavetas",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-matic-unique-6-gavetas",
+      "bullets": ["6 gavetas com corrediças metálicas", "Acabamento Eco Wood", "Trocador incluso"]
+    },
+    {
+      "id": "comoda-infantil-madeira-macica",
+      "tier": 4,
+      "name": "Cômoda Infantil de Madeira Maciça",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/comoda-infantil-madeira-macica",
+      "bullets": ["Madeira maciça", "Vira cômoda comum depois", "Fechamento suave"]
+    }
+  ]
+}

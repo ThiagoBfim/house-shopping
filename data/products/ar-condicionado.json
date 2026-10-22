@@ -1,0 +1,63 @@
+{
+  "label": "Ar-condicionado",
+  "utensil": false,
+  "options": [
+    {
+      "id": "ar-condicionado-midea-ai-ecomaster-12000",
+      "tier": 1,
+      "name": "Ar-condicionado Split Midea AI Ecomaster Inverter 12.000 BTUs Frio",
+      "price": 2299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ar-condicionado-midea-ai-ecomaster-12000",
+      "bullets": [
+        "Inverter: economiza energia",
+        "Só frio",
+        "12.000 BTUs (até ~20 m²); instalação à parte"
+      ]
+    },
+    {
+      "id": "ar-condicionado-lg-dual-inverter-voice-12000",
+      "tier": 2,
+      "name": "Ar-condicionado Split LG Dual Inverter Voice 12.000 BTUs",
+      "price": 3199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ar-condicionado-lg-dual-inverter-voice-12000",
+      "bullets": [
+        "Dual Inverter: até 70% mais econômico (fabricante)",
+        "Comando de voz e app",
+        "Mais silencioso"
+      ]
+    },
+    {
+      "id": "ar-condicionado-samsung-windfree-12000-quente-frio",
+      "tier": 3,
+      "name": "Ar-condicionado Split Samsung WindFree Connect 12.000 BTUs Quente/Frio",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ar-condicionado-samsung-windfree-12000-quente-frio",
+      "bullets": [
+        "WindFree: gela sem vento batendo no corpo",
+        "Quente e frio",
+        "Controle pelo celular"
+      ]
+    },
+    {
+      "id": "ar-condicionado-daikin-inverter-12000-quente-frio",
+      "tier": 4,
+      "name": "Ar-condicionado Split Daikin Full Inverter 12.000 BTUs Quente/Frio",
+      "price": 5499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/ar-condicionado-daikin-inverter-12000-quente-frio",
+      "bullets": [
+        "Referência em eficiência e durabilidade",
+        "Temperatura muito estável",
+        "Quente e frio",
+        "Marca premium japonesa"
+      ]
+    }
+  ]
+}

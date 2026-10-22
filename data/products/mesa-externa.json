@@ -1,0 +1,46 @@
+{
+  "label": "Mesa externa (com cadeiras)",
+  "utensil": false,
+  "options": [
+    {
+      "id": "conjunto-mesa-4-cadeiras-plastico-tramontina",
+      "tier": 1,
+      "name": "Conjunto Mesa e 4 Cadeiras de Plástico Tramontina",
+      "price": 399,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/conjunto-mesa-4-cadeiras-plastico-tramontina",
+      "bullets": ["Plástico: não enferruja", "Empilhável", "Leve"]
+    },
+    {
+      "id": "conjunto-mesa-cadeiras-aluminio-corda-nautica",
+      "tier": 2,
+      "name": "Conjunto Mesa e 4 Cadeiras de Alumínio e Corda Náutica",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/conjunto-mesa-cadeiras-aluminio-corda-nautica",
+      "bullets": ["Alumínio + corda náutica", "Aguenta sol e chuva", "Visual de área gourmet"]
+    },
+    {
+      "id": "conjunto-mesa-6-cadeiras-fibra-sintetica",
+      "tier": 3,
+      "name": "Conjunto Mesa e 6 Cadeiras de Fibra Sintética",
+      "price": 3999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/conjunto-mesa-6-cadeiras-fibra-sintetica",
+      "bullets": ["Fibra sintética trançada", "6 lugares", "Almofadas inclusas"]
+    },
+    {
+      "id": "conjunto-mesa-cadeiras-madeira-teca",
+      "tier": 4,
+      "name": "Conjunto Mesa e 6 Cadeiras de Madeira Teca",
+      "price": 7999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/conjunto-mesa-cadeiras-madeira-teca",
+      "bullets": ["Madeira teca: a mais resistente ao tempo", "6 lugares", "Envelhece bonito"]
+    }
+  ]
+}

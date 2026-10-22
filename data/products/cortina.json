@@ -1,0 +1,44 @@
+{
+  "label": "Cortina",
+  "utensil": false,
+  "options": [
+    {
+      "id": "cortina-blackout-pvc-2-80",
+      "tier": 1,
+      "name": "Cortina Blackout PVC 2,80 x 2,30 m",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cortina-blackout-pvc-2-80",
+      "bullets": [
+        "Blackout de PVC: escurece bem",
+        "Instalação simples em varão",
+        "Aparência mais simples"
+      ]
+    },
+    {
+      "id": "cortina-blackout-tecido-com-voil",
+      "tier": 2,
+      "name": "Cortina Blackout de Tecido com Voil 3,00 x 2,50 m",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/cortina-blackout-tecido-com-voil",
+      "bullets": ["Tecido blackout + voil (duas camadas)", "Visual mais acabado", "Lavável"]
+    },
+    {
+      "id": "persiana-rolo-blackout-sob-medida",
+      "tier": 3,
+      "name": "Persiana Rolô Blackout Sob Medida",
+      "price": 699,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/persiana-rolo-blackout-sob-medida",
+      "bullets": [
+        "Sob medida para a janela",
+        "Rolô: ocupa pouco espaço",
+        "Bloqueio de luz quase total"
+      ]
+    }
+  ]
+}

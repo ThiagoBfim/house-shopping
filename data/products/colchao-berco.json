@@ -1,0 +1,40 @@
+{
+  "label": "Colchão de berço",
+  "utensil": false,
+  "options": [
+    {
+      "id": "colchao-berco-americano-d18",
+      "tier": 1,
+      "name": "Colchão de Berço Americano Ortobom D18",
+      "price": 149,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-berco-americano-d18",
+      "bullets": [
+        "Espuma D18 (a recomendada para bebê)",
+        "Tamanho berço americano",
+        "Tecido simples"
+      ]
+    },
+    {
+      "id": "colchao-berco-antialergico-d18",
+      "tier": 2,
+      "name": "Colchão de Berço Antialérgico D18",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-berco-antialergico-d18",
+      "bullets": ["Tecido antialérgico e antiácaro", "Capa removível", "Espuma D18"]
+    },
+    {
+      "id": "colchao-berco-respiravel",
+      "tier": 3,
+      "name": "Colchão de Berço Respirável Premium",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/colchao-berco-respiravel",
+      "bullets": ["Tecido 3D respirável", "Lavável", "Melhor ventilação"]
+    }
+  ]
+}

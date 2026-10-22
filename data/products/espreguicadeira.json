@@ -1,0 +1,46 @@
+{
+  "label": "Espreguiçadeira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "espreguicadeira-plastico-tramontina",
+      "tier": 1,
+      "name": "Espreguiçadeira de Plástico Tramontina",
+      "price": 299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espreguicadeira-plastico-tramontina",
+      "bullets": ["Plástico", "Encosto regulável", "Empilhável"]
+    },
+    {
+      "id": "espreguicadeira-aluminio-tela",
+      "tier": 2,
+      "name": "Espreguiçadeira de Alumínio com Tela",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espreguicadeira-aluminio-tela",
+      "bullets": ["Alumínio leve", "Tela que seca rápido", "Rodinhas"]
+    },
+    {
+      "id": "espreguicadeira-fibra-sintetica",
+      "tier": 3,
+      "name": "Espreguiçadeira de Fibra Sintética",
+      "price": 1499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espreguicadeira-fibra-sintetica",
+      "bullets": ["Fibra sintética trançada", "Com almofada", "Visual de resort"]
+    },
+    {
+      "id": "espreguicadeira-madeira-teca",
+      "tier": 4,
+      "name": "Espreguiçadeira de Madeira Teca",
+      "price": 2999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/espreguicadeira-madeira-teca",
+      "bullets": ["Madeira teca", "Muito durável ao sol", "Peça premium"]
+    }
+  ]
+}

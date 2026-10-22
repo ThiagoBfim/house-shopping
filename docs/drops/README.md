@@ -30,7 +30,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [5](drop-05-persistencia-e-compartilhamento.md)            | Persistência e compartilhamento | ✅ Concluído | 2026-10-22 09:44 | 2026-10-22 09:47 | 3min    |
 | [5.1](drop-05-1-necessidade-e-utensilios.md)               | Necessidade e utensílios        | ✅ Concluído | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
 | [7](drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha          | ✅ Concluído | 2026-10-22 10:19 | 2026-10-22 10:24 | 5min    |
-| [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | ⏳ A fazer   | —                | —                | —       |
+| [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos   | ✅ Concluído | 2026-10-22 10:25 | 2026-10-22 10:30 | 5min    |
 | [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre        | ⏳ A fazer   | —                | —                | —       |
 | [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas     | ⏳ A fazer   | —                | —                | —       |
 

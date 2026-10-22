@@ -1,0 +1,62 @@
+{
+  "label": "Churrasqueira",
+  "utensil": false,
+  "options": [
+    {
+      "id": "churrasqueira-eletrica-cadence-grl805",
+      "tier": 1,
+      "name": "Churrasqueira Elétrica Cadence Short GRL805",
+      "price": 249,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/churrasqueira-eletrica-cadence-grl805",
+      "bullets": [
+        "Elétrica: pode usar em apartamento",
+        "Sem fumaça de carvão",
+        "Pequena (2–4 pessoas)"
+      ]
+    },
+    {
+      "id": "churrasqueira-tramontina-tcp-320",
+      "tier": 2,
+      "name": "Churrasqueira a Carvão Tramontina TCP-320L",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/churrasqueira-tramontina-tcp-320",
+      "bullets": [
+        "Carvão: sabor de churrasco de verdade",
+        "Grelha regulável",
+        "Para varanda ou quintal"
+      ]
+    },
+    {
+      "id": "churrasqueira-a-gas-tramontina-vancouver",
+      "tier": 3,
+      "name": "Churrasqueira a Gás Tramontina Vancouver 4 Queimadores",
+      "price": 2499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/churrasqueira-a-gas-tramontina-vancouver",
+      "bullets": [
+        "Gás: acende e controla a temperatura na hora",
+        "4 queimadores",
+        "Tampa com termômetro"
+      ]
+    },
+    {
+      "id": "churrasqueira-weber-spirit-e-310",
+      "tier": 4,
+      "name": "Churrasqueira a Gás Weber Spirit E-310",
+      "price": 6999,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/churrasqueira-weber-spirit-e-310",
+      "bullets": [
+        "Referência mundial em churrasqueira a gás",
+        "3 queimadores com calor uniforme",
+        "Dura muitos anos"
+      ]
+    }
+  ]
+}

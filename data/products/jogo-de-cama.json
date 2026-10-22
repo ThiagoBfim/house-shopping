@@ -1,0 +1,50 @@
+{
+  "label": "Jogo de cama",
+  "utensil": true,
+  "options": [
+    {
+      "id": "jogo-de-cama-casal-microfibra-4-pecas",
+      "tier": 1,
+      "name": "Jogo de Cama Casal Microfibra 4 Peças",
+      "price": 89,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-cama-casal-microfibra-4-pecas",
+      "bullets": ["Microfibra: barata e não amassa", "Esquenta mais no verão", "4 peças"]
+    },
+    {
+      "id": "jogo-de-cama-casal-percal-200-fios",
+      "tier": 2,
+      "name": "Jogo de Cama Casal Percal 200 Fios",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-cama-casal-percal-200-fios",
+      "bullets": ["100% algodão", "Percal 200 fios: respira melhor", "4 peças"]
+    },
+    {
+      "id": "jogo-de-cama-queen-percal-400-fios",
+      "tier": 3,
+      "name": "Jogo de Cama Queen Percal 400 Fios",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-cama-queen-percal-400-fios",
+      "bullets": [
+        "Percal 400 fios: toque macio de hotel",
+        "Algodão egípcio ou pima",
+        "Dura mais lavagens"
+      ]
+    },
+    {
+      "id": "jogo-de-cama-trussardi-600-fios",
+      "tier": 4,
+      "name": "Jogo de Cama Queen Trussardi 600 Fios",
+      "price": 1299,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://lista.mercadolivre.com.br/jogo-de-cama-trussardi-600-fios",
+      "bullets": ["600 fios", "Marca premium de cama e banho", "Acabamento acetinado"]
+    }
+  ]
+}
