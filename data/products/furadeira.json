@@ -6,38 +6,77 @@
       "id": "furadeira-de-impacto-black-decker-560w",
       "tier": 1,
       "name": "Furadeira de Impacto Black+Decker 560W",
-      "price": 199,
+      "price": 187.74,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/furadeira-de-impacto-black-decker-560w",
-      "bullets": ["Com fio", "Fura parede, madeira e metal", "Para pendurar quadros e prateleiras"]
+      "url": "https://meli.la/1vc97GH",
+      "bullets": ["Com fio", "Fura parede, madeira e metal", "Para pendurar quadros e prateleiras"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_887228-MLB114659264218_082026-O-furadeira-impacto-38-10mm-560w-black-decker.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1vc97GH",
+          "price": 187.74,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5046678773",
+          "catalogId": "MLB44836489",
+          "history": [{ "date": "2026-10-22", "price": 187.74 }]
+        }
+      ]
     },
     {
       "id": "parafusadeira-e-furadeira-bosch-gsr-120-li-12v",
       "tier": 2,
       "name": "Parafusadeira e Furadeira Bosch GSR 120-LI 12V",
-      "price": 549,
+      "price": 399.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/parafusadeira-e-furadeira-bosch-gsr-120-li-12v",
+      "url": "https://meli.la/2shxr5u",
       "bullets": [
         "Sem fio, bateria de lítio",
         "Monta móveis e fura madeira",
         "Leve; não tem impacto para concreto"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_923337-MLA113455559253_062026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2shxr5u",
+          "price": 399.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4118781885",
+          "catalogId": "MLB44894619",
+          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+        }
       ]
     },
     {
       "id": "furadeira-de-impacto-bosch-gsb-180-li-18v",
       "tier": 3,
       "name": "Furadeira de Impacto Bosch GSB 180-LI 18V",
-      "price": 899,
+      "price": 749.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/furadeira-de-impacto-bosch-gsb-180-li-18v",
+      "url": "https://meli.la/2harE21",
       "bullets": [
         "Sem fio e com impacto (concreto)",
         "Duas baterias",
         "Serve para qualquer serviço da casa"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_948562-MLA99538818868_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2harE21",
+          "price": 749.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4269454089",
+          "catalogId": "MLB21740544",
+          "history": [{ "date": "2026-10-22", "price": 749.99 }]
+        }
       ]
     }
   ]

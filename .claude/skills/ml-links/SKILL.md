@@ -38,13 +38,16 @@ Navegue para `https://lista.mercadolivre.com.br/<termos-com-hifen>` e rode:
 ```js
 await new Promise(r => setTimeout(r, 1500));
 [...document.querySelectorAll('.poly-card, li.ui-search-layout__item')]
-  .filter((c, i, all) => !all.some(o => o !== c && o.contains(c))).slice(0, 10)
-  .filter(c => !c.querySelector('a[href*="click1."]') && !/internacional|usado/i.test(c.textContent))
-  .map(c => [c.querySelector('.poly-component__title, h3, h2')?.textContent.trim().slice(0, 60),
+  .filter((c, i, all) => !all.some(o => o !== c && o.contains(c)))
+  .map(c => [c.querySelector('.poly-component__title, h3, h2')?.textContent.trim().slice(0, 55),
              c.querySelector('.poly-price__current .andes-money-amount__fraction, .andes-money-amount__fraction')?.textContent,
              c.querySelector('.poly-component__seller')?.textContent.trim(),
-             [...c.querySelectorAll('a')].map(a => a.href.split('#')[0]).find(h => /\/p\/MLB|\/up\/MLBU|MLB-\d/.test(h))])
+             [...c.querySelectorAll('a')].map(a => a.href.split('#')[0]).find(h => /\/p\/MLB|\/up\/MLBU|MLB-\d/.test(h)),
+             /internacional|usado/i.test(c.textContent)])
+  .filter(x => x[3] && !x[4]).slice(0, 5).map(x => x.slice(0, 4))
 ```
+
+Filtre **antes** de cortar: os primeiros cards costumam ser patrocinados (sem link de produto) e, cortando antes, a busca volta vazia mesmo com o produto à venda.
 
 Escolha pelo modelo certo + vendedor confiável. **Prefira a página de catálogo** (`/p/MLB…`, de preferência com `pdp_filters=item_id:MLB…`): sem catálogo (`/up/MLBU…`), a API não informa o preço e o `sync:ml` não atualiza o produto.
 
@@ -59,7 +62,8 @@ const intl = [...document.querySelectorAll('a')].some(a => /Ver produtos\s+Inter
 const sub = document.querySelector('.ui-pdp-header__subtitle')?.textContent.trim() || '';
 const ok = !intl && /^Novo/.test(sub);
 const bar = [...document.querySelectorAll('nav')].find(n => /Afiliados/.test(n.textContent));
-if (bar && ok) [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Compartilhar')?.click();
+const btn = bar && [...bar.querySelectorAll('button')].find(b => b.textContent.trim() === 'Compartilhar');
+if (ok) btn?.click();
 ({ t: document.querySelector('h1')?.textContent.trim().slice(0, 80), sub, ok, bar: !!bar,
    price: document.querySelector('meta[itemprop=price]')?.content,
    img: document.querySelector('meta[property="og:image"]')?.content,
@@ -99,7 +103,11 @@ npm run validate && npm test
 ## Armadilhas já vistas
 
 - **Busca "internacional" no texto da página inteira dá falso positivo** (carrosséis de relacionados). Use o link "Ver produtos Internacional" do próprio produto, como no snippet.
-- **`find` "Compartilhar"** às vezes devolve o botão de compartilhar do produto (que não é o de afiliado). O snippet clica no primeiro "Compartilhar" do DOM, que é o da barra.
+- **"Compartilhar" fora da barra** abre o compartilhamento comum (WhatsApp, Facebook…), sem link de afiliado. O snippet só clica no botão de dentro da barra de afiliado; se aparecer esse diálogo, feche com Esc.
+- O painel do link fica em `[390, 180, 830, 320]` com a janela em ~1080 px de largura; se o zoom falhar por "region exceeds viewport", tire um screenshot e ajuste.
+- **Vendedor:** o `sync:ml` avisa "vendedor pouco confiável" quando a reputação não é verde/≥50 vendas nem loja oficial. Troque de anúncio ou volte a opção ao estado anterior (sem `offers`), senão o link pode não gerar comissão.
+- **Preço ≥ R$ 1.000 numa categoria de 3 tiers** quebra a regra dos 4 tiers: escolha um modelo abaixo de R$ 1.000.
+- Lotes longos derrubam a extensão: no máximo 2 produtos (ou 3 buscas) por `browser_batch`.
 - A página demora para montar a área de compra: espere ~2,5 s antes de ler. A barra de afiliado só existe em produto elegível.
 - **Preço da busca ≠ preço da página** (desconto Pix, outro anúncio vencedor). Vale o da página.
 - Gerar o link adiciona o produto à lista "Minhas recomendações" do usuário (sem problema).

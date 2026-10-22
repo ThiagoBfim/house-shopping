@@ -16,34 +16,88 @@
       "id": "secador-taiff-style",
       "tier": 2,
       "name": "Secador de Cabelo Taiff Style 2000 W",
-      "price": 299,
+      "price": 228,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/secador-taiff-style",
-      "bullets": ["Motor profissional AC", "Íons (menos frizz)", "Mais durável"]
+      "url": "https://meli.la/2rdJBEY",
+      "bullets": ["Motor profissional AC", "Íons (menos frizz)", "Mais durável"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_701108-MLA105261068161_012026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2rdJBEY",
+          "price": 228,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3872180501",
+          "catalogId": "MLB18920578",
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 228
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "secador-taiff-titanium",
       "tier": 3,
       "name": "Secador de Cabelo Taiff Titanium Profissional",
-      "price": 699,
+      "price": 528.49,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/secador-taiff-titanium",
-      "bullets": ["Profissional", "2500 W", "Cerâmica e íons"]
+      "url": "https://meli.la/1ECdw9E",
+      "bullets": ["Profissional", "2500 W", "Cerâmica e íons"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_620867-MLA113968528299_062026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1ECdw9E",
+          "price": 528.49,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4832484883",
+          "catalogId": "MLB74655218",
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 528.49
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "secador-dyson-supersonic",
       "tier": 4,
-      "name": "Secador de Cabelo Dyson Supersonic",
-      "price": 3499,
+      "name": "Secador Dyson Supersonic Origin",
+      "price": 2731,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/secador-dyson-supersonic",
+      "url": "https://meli.la/1wAdJeF",
       "bullets": [
         "Motor digital: seca rápido sem calor excessivo",
         "Leve e silencioso",
         "Topo de linha"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_602897-MLA82943597096_032025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1wAdJeF",
+          "price": 2731,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6500817246",
+          "catalogId": "MLB47332875",
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2731
+            }
+          ]
+        }
       ]
     }
   ]

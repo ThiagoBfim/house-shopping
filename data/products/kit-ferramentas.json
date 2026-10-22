@@ -20,24 +20,50 @@
       "id": "kit-de-ferramentas-tramontina-110-pecas",
       "tier": 2,
       "name": "Kit de Ferramentas Tramontina 110 Peças",
-      "price": 299,
+      "price": 380.02,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-de-ferramentas-tramontina-110-pecas",
-      "bullets": ["Inclui soquetes e chaves combinadas", "Aço cromo-vanádio", "Maleta organizada"]
+      "url": "https://meli.la/31x3YNM",
+      "bullets": ["Inclui soquetes e chaves combinadas", "Aço cromo-vanádio", "Maleta organizada"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_622582-MLB76141308403_052024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/31x3YNM",
+          "price": 380.02,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3448131925",
+          "catalogId": "MLB2126162888",
+          "history": [{ "date": "2026-10-22", "price": 380.02 }]
+        }
+      ]
     },
     {
       "id": "kit-de-ferramentas-stanley-150-pecas",
       "tier": 3,
-      "name": "Kit de Ferramentas Stanley 150 Peças",
-      "price": 599,
+      "name": "Jogo de Ferramentas Stanley 183 Peças STMT71662",
+      "price": 694.4,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-de-ferramentas-stanley-150-pecas",
+      "url": "https://meli.la/12exw83",
       "bullets": [
-        "Mais completo (catraca, torx, bits)",
+        "Mais completo: 183 peças (catraca, torx, chaves de boca)",
         "Marca profissional",
-        "Garantia vitalícia em ferramentas manuais"
+        "Vem em maleta organizadora"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_681068-MLA96401192651_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/12exw83",
+          "price": 694.4,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6747609922",
+          "catalogId": "MLB32987803",
+          "history": [{ "date": "2026-10-22", "price": 694.4 }]
+        }
       ]
     }
   ]

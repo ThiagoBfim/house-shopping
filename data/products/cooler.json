@@ -16,11 +16,24 @@
       "id": "caixa-termica-coleman-48-qt",
       "tier": 2,
       "name": "Caixa Térmica Coleman 48 QT (45 L) com Rodas",
-      "price": 349,
+      "price": 449,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/caixa-termica-coleman-48-qt",
-      "bullets": ["45 L", "Rodas e alça", "Gelo por ~2 dias"]
+      "url": "https://meli.la/2MMbQoY",
+      "bullets": ["45 L", "Rodas e alça", "Gelo por ~2 dias"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_999644-MLA93087001532_092025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2MMbQoY",
+          "price": 449,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3829598962",
+          "catalogId": "MLB23210943",
+          "history": [{ "date": "2026-10-22", "price": 449 }]
+        }
+      ]
     },
     {
       "id": "caixa-termica-coleman-xtreme-100",
