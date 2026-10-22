@@ -5,12 +5,25 @@
     {
       "id": "kit-churrasco-tramontina-3-pecas",
       "tier": 1,
-      "name": "Kit Churrasco Tramontina 3 Peças",
-      "price": 59,
+      "name": "Kit Churrasco Tramontina Plenus 3 Peças",
+      "price": 59.85,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-churrasco-tramontina-3-pecas",
-      "bullets": ["Faca, garfo e pegador", "Inox com cabo de madeira", "O básico"]
+      "url": "https://meli.la/1GLortp",
+      "bullets": ["3 peças da linha Plenus", "Lâminas de inox", "O básico"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_666142-MLA99949094353_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1GLortp",
+          "price": 59.85,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5131259102",
+          "catalogId": "MLB35064127",
+          "history": [{ "date": "2026-10-22", "price": 59.85 }]
+        }
+      ]
     },
     {
       "id": "kit-churrasco-12-pecas-maleta",
@@ -23,14 +36,26 @@
       "bullets": ["12 peças", "Maleta para guardar", "Inclui espetos"]
     },
     {
-      "id": "facas-churrasco-forjadas-tramontina",
+      "id": "kit-churrasco-tramontina-century-faca-chef-e-garra",
       "tier": 3,
-      "name": "Kit de Facas para Churrasco Forjadas Tramontina",
-      "price": 699,
+      "name": "Kit Churrasco Tramontina Century: Faca Chef 8\" + Garra de Urso",
+      "price": 681.75,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/facas-churrasco-forjadas-tramontina",
-      "bullets": ["Facas forjadas: fio que dura", "Tábua de madeira", "Para churrasqueiro exigente"]
+      "url": "https://meli.la/11BwLYG",
+      "bullets": ["Faca chef Century 8\"", "Garra de urso para desfiar carne", "Base de madeira"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_767354-MLB117111492960_102026-O-kit-churrasco-faca-chef-tramontina-century-8-inoxpreto--garra-de-urso-com-base-de-madeira.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/11BwLYG",
+          "price": 681.75,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5328749023",
+          "history": [{ "date": "2026-10-22", "price": 681.75 }]
+        }
+      ]
     }
   ]
 }

@@ -6,21 +6,46 @@
       "id": "faqueiro-tramontina-laguna-24-pecas",
       "tier": 1,
       "name": "Faqueiro Tramontina Laguna 24 Peças",
-      "price": 89,
+      "price": 138.69,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-laguna-24-pecas",
-      "bullets": ["24 peças (6 pessoas)", "Inox simples", "Cabo fino"]
+      "url": "https://meli.la/22upnWK",
+      "bullets": ["24 peças (6 pessoas)", "Inox simples", "Cabo fino"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_601437-MLA99991828051_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/22upnWK",
+          "price": 138.69,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3703826291",
+          "catalogId": "MLB35161770",
+          "history": [{ "date": "2026-10-22", "price": 138.69 }]
+        }
+      ]
     },
     {
-      "id": "faqueiro-tramontina-buzios-42-pecas",
+      "id": "faqueiro-tramontina-buzios-48-pecas",
       "tier": 2,
-      "name": "Faqueiro Tramontina Búzios 42 Peças",
-      "price": 249,
+      "name": "Faqueiro Tramontina Búzios 48 Peças",
+      "price": 199.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/faqueiro-tramontina-buzios-42-pecas",
-      "bullets": ["42 peças (6 pessoas)", "Inox mais grosso", "Inclui colheres de sobremesa e chá"]
+      "url": "https://meli.la/1CCv4xu",
+      "bullets": ["48 peças (12 pessoas)", "Aço inox", "Linha Búzios da Tramontina"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_862909-MLB114826388138_082026-O-kit-faqueiros-tramontina-buzios-48-pecas-aco-inox-12-pessoas.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1CCv4xu",
+          "price": 199.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5064857305",
+          "history": [{ "date": "2026-10-22", "price": 199.99 }]
+        }
+      ]
     },
     {
       "id": "faqueiro-tramontina-pacific-72-pecas",

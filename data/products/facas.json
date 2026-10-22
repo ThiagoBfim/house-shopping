@@ -5,12 +5,25 @@
     {
       "id": "jogo-de-facas-tramontina-plenus",
       "tier": 1,
-      "name": "Jogo de Facas Tramontina Plenus 6 Peças",
-      "price": 79,
+      "name": "Jogo de Facas Tramontina Plenus 9 Peças",
+      "price": 69.75,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-tramontina-plenus",
-      "bullets": ["6 facas de inox", "Cabo de polipropileno", "Perde o fio mais rápido"]
+      "url": "https://meli.la/1XzDWWq",
+      "bullets": ["Jogo de 9 peças em inox", "Cabo de polipropileno", "Perde o fio mais rápido"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_736022-MLA92610004880_092025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1XzDWWq",
+          "price": 69.75,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3782589243",
+          "catalogId": "MLB28408264",
+          "history": [{ "date": "2026-10-22", "price": 69.75 }]
+        }
+      ]
     },
     {
       "id": "jogo-de-facas-tramontina-polywood-cepo",

@@ -31,14 +31,27 @@
       ]
     },
     {
-      "id": "kit-utensilios-tramontina-utilita-inox-6-pecas",
+      "id": "kit-utensilios-tramontina-utilita-inox-10-pecas",
       "tier": 3,
-      "name": "Kit Utensílios Tramontina Utilità Inox 6 Peças",
-      "price": 249,
+      "name": "Kit Utensílios Tramontina Utilitá Inox 10 Peças",
+      "price": 225.54,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-utensilios-tramontina-utilita-inox-6-pecas",
-      "bullets": ["Inox: dura a vida toda", "Cabo firme e pesado", "Vai na lava-louças"]
+      "url": "https://meli.la/2cdM64C",
+      "bullets": ["Inox: dura a vida toda", "Cabo firme e pesado", "Vai na lava-louças"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_817972-MLA100004960547_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2cdM64C",
+          "price": 225.54,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4264155631",
+          "catalogId": "MLB52194544",
+          "history": [{ "date": "2026-10-22", "price": 225.54 }]
+        }
+      ]
     }
   ]
 }

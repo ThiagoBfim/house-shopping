@@ -13,17 +13,26 @@
       "bullets": ["Três tamanhos", "Leves", "Precisa untar"]
     },
     {
-      "id": "kit-5-formas-antiaderentes-tramontina-brasil",
+      "id": "jogo-de-assadeiras-tramontina-brasil-3-pecas",
       "tier": 2,
-      "name": "Kit 5 Formas Antiaderentes Tramontina Brasil",
-      "price": 169,
+      "name": "Jogo de Assadeiras Tramontina Brasil Antiaderente 3 Peças",
+      "price": 150.55,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-5-formas-antiaderentes-tramontina-brasil",
-      "bullets": [
-        "Antiaderente: bolo e lasanha soltam fácil",
-        "Inclui forma de bolo e de pudim",
-        "Lava rápido"
+      "url": "https://meli.la/2GsVMmG",
+      "bullets": ["Antiaderente Starflon Max", "3 assadeiras de alumínio", "Lava rápido"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_908696-MLA95835439355_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2GsVMmG",
+          "price": 150.55,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB3609900427",
+          "catalogId": "MLB27670124",
+          "history": [{ "date": "2026-10-22", "price": 150.55 }]
+        }
       ]
     },
     {
