@@ -22,10 +22,10 @@ As tarefas, o status e os tempos de cada drop ficam em [`docs/drops/`](../drops/
 
 ### 2ª wave — publicação e automação
 
-| Drop                                                 | Tema                   | Meta                                         |
-| ---------------------------------------------------- | ---------------------- | -------------------------------------------- |
-| [6](../drops/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages | Site no ar com deploy automático + analytics |
-| [9](../drops/drop-09-integracao-amazon-afiliados.md) | Integração Amazon      | Preços e links via Creators API (cron)       |
+| Drop                                                        | Tema                   | Meta                                         |
+| ----------------------------------------------------------- | ---------------------- | -------------------------------------------- |
+| [6](../drops/wave-2/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages | Site no ar com deploy automático + analytics |
+| [9](../drops/wave-2/drop-09-integracao-amazon-afiliados.md) | Integração Amazon      | Preços e links via Creators API (cron)       |
 
 ### Backlog
 

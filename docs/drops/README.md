@@ -1,6 +1,6 @@
 # Drops
 
-Cada drop é um arquivo neste diretório. Visão geral do plano em [../project/Plan.md](../project/Plan.md).
+Cada drop é um arquivo neste diretório; os da 2ª wave ficam em [`wave-2/`](wave-2/). Visão geral do plano em [../project/Plan.md](../project/Plan.md).
 
 ## Como registrar o tempo
 
@@ -38,10 +38,10 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 
 Site no ar no GitHub Pages e preços da Amazon atualizados sozinhos (o agendamento do sync do Mercado Livre vem junto).
 
-| Drop                                        | Tema                   | Status     | Iniciado em | Terminado em | Duração |
-| ------------------------------------------- | ---------------------- | ---------- | ----------- | ------------ | ------- |
-| [6](drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages | ⏳ A fazer | —           | —            | —       |
-| [9](drop-09-integracao-amazon-afiliados.md) | Integração Amazon      | ⏳ A fazer | —           | —            | —       |
+| Drop                                               | Tema                   | Status     | Iniciado em | Terminado em | Duração |
+| -------------------------------------------------- | ---------------------- | ---------- | ----------- | ------------ | ------- |
+| [6](wave-2/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages | ⏳ A fazer | —           | —            | —       |
+| [9](wave-2/drop-09-integracao-amazon-afiliados.md) | Integração Amazon      | ⏳ A fazer | —           | —            | —       |
 
 ### Backlog
 
