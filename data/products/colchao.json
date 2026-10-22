@@ -30,14 +30,27 @@
       "id": "colchao-emma-original-queen",
       "tier": 3,
       "name": "Colchão Queen Emma Original",
-      "price": 3499,
+      "price": 2739,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-emma-original-queen",
+      "url": "https://meli.la/24GbjRZ",
       "bullets": [
         "3 camadas de espuma com alívio de pressão",
         "100 noites de teste",
         "Chega enrolado na caixa"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_734791-MLA107665706897_022026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/24GbjRZ",
+          "price": 2739,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2171387384",
+          "catalogId": "MLB17351734",
+          "history": [{ "date": "2026-10-22", "price": 2739 }]
+        }
       ]
     },
     {

@@ -16,11 +16,24 @@
       "id": "air-fryer-electrolux-eaf50",
       "tier": 2,
       "name": "Air Fryer Electrolux 5 L EAF50",
-      "price": 449,
+      "price": 399.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/air-fryer-electrolux-eaf50",
-      "bullets": ["Cesto de 5 L: família pequena", "1700 W", "8 receitas pré-programadas"]
+      "url": "https://meli.la/1Bstow5",
+      "bullets": ["Cesto de 5 L: família pequena", "1700 W", "8 receitas pré-programadas"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_776720-MLU77395573263_072024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1Bstow5",
+          "price": 399.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4716190659",
+          "catalogId": "MLB36521729",
+          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+        }
+      ]
     },
     {
       "id": "air-fryer-philips-walita-na341",

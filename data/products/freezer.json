@@ -5,15 +5,28 @@
     {
       "id": "freezer-vertical-consul-cvu20",
       "tier": 1,
-      "name": "Freezer Vertical Consul 142 L CVU20GB",
-      "price": 2199,
+      "name": "Freezer Vertical Consul 189 L CVU20MB",
+      "price": 1946.55,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/freezer-vertical-consul-cvu20",
+      "url": "https://meli.la/2QQTVPF",
       "bullets": [
-        "Vertical, 142 L: cabe em apartamento",
+        "Vertical, 189 L: cabe em apartamento",
         "Degelo manual",
         "Conversível em refrigerador"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_767188-MLA106083103551_012026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2QQTVPF",
+          "price": 1946.55,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5054857741",
+          "catalogId": "MLB65037956",
+          "history": [{ "date": "2026-10-22", "price": 1946.55 }]
+        }
       ]
     },
     {

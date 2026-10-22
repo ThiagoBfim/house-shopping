@@ -16,28 +16,54 @@
       "id": "micro-ondas-panasonic-nn-st65",
       "tier": 2,
       "name": "Micro-ondas Panasonic 34 L NN-ST65LWRU",
-      "price": 859,
+      "price": 726.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/micro-ondas-panasonic-nn-st65",
+      "url": "https://meli.la/17j5LAo",
       "bullets": [
         "34 L, cabe travessa grande",
         "Menus automáticos e trava de segurança",
         "Marca com boa durabilidade"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_745163-MLA99472693170_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/17j5LAo",
+          "price": 726.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2134345887",
+          "catalogId": "MLB18324158",
+          "history": [{ "date": "2026-10-22", "price": 726.9 }]
+        }
       ]
     },
     {
       "id": "micro-ondas-lg-neochef-ms3033",
       "tier": 3,
-      "name": "Micro-ondas LG NeoChef Smart Inverter 30 L MS3033DS",
-      "price": 999,
+      "name": "Micro-ondas LG NeoChef 30 L Limpa Fácil",
+      "price": 749,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/micro-ondas-lg-neochef-ms3033",
+      "url": "https://meli.la/16WwVih",
       "bullets": [
         "Inverter: aquece e descongela por igual",
         "Interior antiaderente fácil de limpar",
         "Visual espelhado"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_737863-MLU75739915931_042024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/16WwVih",
+          "price": 749,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6489555852",
+          "catalogId": "MLB35731341",
+          "history": [{ "date": "2026-10-22", "price": 749 }]
+        }
       ]
     },
     {

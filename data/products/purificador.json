@@ -26,11 +26,24 @@
       "id": "purificador-electrolux-pe12b",
       "tier": 3,
       "name": "Purificador de Água Electrolux Pure 4X PE12B",
-      "price": 799,
+      "price": 720.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/purificador-electrolux-pe12b",
-      "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"]
+      "url": "https://meli.la/174L6dj",
+      "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_761091-MLA99918405251_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/174L6dj",
+          "price": 720.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4830318106",
+          "catalogId": "MLB20708251",
+          "history": [{ "date": "2026-10-22", "price": 720.9 }]
+        }
+      ]
     }
   ]
 }

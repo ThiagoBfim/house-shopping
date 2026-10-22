@@ -36,14 +36,27 @@
       "id": "lavadora-karcher-k5",
       "tier": 4,
       "name": "Lavadora de Alta Pressão Kärcher K5",
-      "price": 2499,
+      "price": 899.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k5",
+      "url": "https://meli.la/1qDwQ1R",
       "bullets": [
         "Motor refrigerado a água (dura mais)",
         "Alta pressão para pedra e piscina",
         "Uso frequente"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_724354-MLA99989590201_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1qDwQ1R",
+          "price": 899.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2098257351",
+          "catalogId": "MLB18611173",
+          "history": [{ "date": "2026-10-22", "price": 899.99 }]
+        }
       ]
     }
   ]

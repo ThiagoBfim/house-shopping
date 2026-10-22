@@ -20,14 +20,27 @@
       "id": "churrasqueira-tramontina-tcp-320",
       "tier": 2,
       "name": "Churrasqueira a Carvão Tramontina TCP-320L",
-      "price": 599,
+      "price": 747,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/churrasqueira-tramontina-tcp-320",
+      "url": "https://meli.la/2x8FviX",
       "bullets": [
         "Carvão: sabor de churrasco de verdade",
         "Grelha regulável",
         "Para varanda ou quintal"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_600528-MLA96875125213_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2x8FviX",
+          "price": 747,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4001908237",
+          "catalogId": "MLB15058434",
+          "history": [{ "date": "2026-10-22", "price": 747 }]
+        }
       ]
     },
     {

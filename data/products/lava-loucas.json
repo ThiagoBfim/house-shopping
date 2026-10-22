@@ -5,15 +5,28 @@
     {
       "id": "lava-loucas-midea-8-servicos",
       "tier": 1,
-      "name": "Lava-louças Midea 8 Serviços MDWTF08W1",
-      "price": 1899,
+      "name": "Lava-louças Midea 8 Serviços Touch Plus",
+      "price": 1709.1,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-loucas-midea-8-servicos",
+      "url": "https://meli.la/1KrpNKW",
       "bullets": [
         "8 serviços (casal ou família pequena)",
         "Compacta, cabe na bancada",
         "Programas básicos"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_923908-MLB99264602870_112025-O-lava-loucas-8-servicos-cinza-touch-plus-midea.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1KrpNKW",
+          "price": 1709.1,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4332264349",
+          "catalogId": "MLB62844446",
+          "history": [{ "date": "2026-10-22", "price": 1709.1 }]
+        }
       ]
     },
     {
