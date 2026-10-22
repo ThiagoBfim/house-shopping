@@ -23,17 +23,26 @@
       "bullets": ["Planetária: bate sozinha", "Tigela de 4 L", "Bate massa mais pesada"]
     },
     {
-      "id": "batedeira-planetaria-oster-750w",
+      "id": "batedeira-planetaria-oster-obat610",
       "tier": 3,
-      "name": "Batedeira Planetária Oster 750W",
-      "price": 699,
+      "name": "Batedeira Planetária Oster OBAT610",
+      "price": 719.91,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-oster-750w",
-      "bullets": [
-        "Mais potente (pão e massa de pizza)",
-        "Tigela inox de 4,5 L",
-        "Batedor, gancho e pá"
+      "url": "https://meli.la/19dZVfj",
+      "bullets": ["Mais potente (pão e massa de pizza)", "Tigela de inox", "Batedor, gancho e pá"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_616612-MLA99507464348_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/19dZVfj",
+          "price": 719.91,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7657444156",
+          "catalogId": "MLB15380252",
+          "history": [{ "date": "2026-10-22", "price": 719.91 }]
+        }
       ]
     },
     {

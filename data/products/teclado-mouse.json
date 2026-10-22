@@ -6,21 +6,47 @@
       "id": "kit-teclado-e-mouse-sem-fio-logitech-mk270",
       "tier": 1,
       "name": "Kit Teclado e Mouse sem Fio Logitech MK270",
-      "price": 149,
+      "price": 149.63,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-sem-fio-logitech-mk270",
-      "bullets": ["Sem fio, um receptor USB", "Pilha dura meses", "Básico e confiável"]
+      "url": "https://meli.la/1S9qPPZ",
+      "bullets": ["Sem fio, um receptor USB", "Pilha dura meses", "Básico e confiável"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_726866-MLA96074321453_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1S9qPPZ",
+          "price": 149.63,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2117505161",
+          "catalogId": "MLB18611634",
+          "history": [{ "date": "2026-10-22", "price": 149.63 }]
+        }
+      ]
     },
     {
       "id": "kit-teclado-e-mouse-logitech-mk540-advanced",
       "tier": 2,
       "name": "Kit Teclado e Mouse Logitech MK540 Advanced",
-      "price": 299,
+      "price": 335,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-logitech-mk540-advanced",
-      "bullets": ["Teclas mais confortáveis", "Mouse maior", "Teclas de atalho"]
+      "url": "https://meli.la/2iyh92M",
+      "bullets": ["Teclas mais confortáveis", "Mouse maior", "Teclas de atalho"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_861453-MLA99371740620_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2iyh92M",
+          "price": 335,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB6501875746",
+          "catalogId": "MLB37454280",
+          "history": [{ "date": "2026-10-22", "price": 335 }]
+        }
+      ]
     },
     {
       "id": "kit-teclado-e-mouse-logitech-signature-mk650",

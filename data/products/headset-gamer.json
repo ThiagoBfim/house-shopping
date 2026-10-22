@@ -6,21 +6,47 @@
       "id": "headset-gamer-hyperx-cloud-stinger-2",
       "tier": 1,
       "name": "Headset Gamer HyperX Cloud Stinger 2",
-      "price": 249,
+      "price": 219.89,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/headset-gamer-hyperx-cloud-stinger-2",
-      "bullets": ["Leve", "Microfone que levanta e muta", "Com fio"]
+      "url": "https://meli.la/1NXaszX",
+      "bullets": ["Leve", "Microfone que levanta e muta", "Com fio"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_622352-MLU77375274783_072024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1NXaszX",
+          "price": 219.89,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5880318722",
+          "catalogId": "MLB22448503",
+          "history": [{ "date": "2026-10-22", "price": 219.89 }]
+        }
+      ]
     },
     {
       "id": "headset-gamer-hyperx-cloud-iii",
       "tier": 2,
       "name": "Headset Gamer HyperX Cloud III",
-      "price": 599,
+      "price": 409.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/headset-gamer-hyperx-cloud-iii",
-      "bullets": ["Som espacial", "Almofadas confortáveis por horas", "Microfone melhor"]
+      "url": "https://meli.la/1626bPb",
+      "bullets": ["Som espacial", "Almofadas confortáveis por horas", "Microfone melhor"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_755901-MLA99541967716_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1626bPb",
+          "price": 409.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7246087426",
+          "catalogId": "MLB26217738",
+          "history": [{ "date": "2026-10-22", "price": 409.9 }]
+        }
+      ]
     },
     {
       "id": "headset-gamer-sem-fio-logitech-g-pro-x-2-lightspeed",

@@ -7,11 +7,24 @@
       "id": "fechadura-digital-intelbras-fr-101-com-senha",
       "tier": 1,
       "name": "Fechadura Digital Intelbras FR 101 com Senha",
-      "price": 399,
+      "price": 399.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fechadura-digital-intelbras-fr-101-com-senha",
-      "bullets": ["Abre com senha", "Sem chave para perder", "Pilhas comuns"]
+      "url": "https://meli.la/1wW51gL",
+      "bullets": ["Abre com senha", "Sem chave para perder", "Pilhas comuns"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_800197-MLA114321695445_072026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1wW51gL",
+          "price": 399.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7851790418",
+          "catalogId": "MLB75276861",
+          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+        }
+      ]
     },
     {
       "id": "fechadura-digital-intelbras-fr-220-com-biometria",
