@@ -36,14 +36,27 @@
       "id": "fone-sony-wh-1000xm5-com-cancelamento-de-ruido",
       "tier": 4,
       "name": "Fone Sony WH-1000XM5 com Cancelamento de Ruído",
-      "price": 2299,
+      "price": 2019,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fone-sony-wh-1000xm5-com-cancelamento-de-ruido",
+      "url": "https://meli.la/2Nmaoxq",
       "bullets": [
         "Um dos melhores cancelamentos",
         "Microfones ótimos em chamadas",
         "Muito confortável"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_860917-MLA99501528462_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2Nmaoxq",
+          "price": 2019,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7594568986",
+          "catalogId": "MLB19176887",
+          "history": [{ "date": "2026-10-22", "price": 2019 }]
+        }
       ]
     }
   ]

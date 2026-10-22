@@ -5,49 +5,101 @@
     {
       "id": "maquina-de-lavar-electrolux-9-kg-essential-care-led09",
       "tier": 1,
-      "name": "Máquina de Lavar Electrolux 9 kg Essential Care LED09",
-      "price": 1599,
+      "name": "Máquina de Lavar Electrolux 9 kg Efficient Care LED09",
+      "price": 1884.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/maquina-de-lavar-electrolux-9-kg-essential-care-led09",
-      "bullets": ["9 kg", "Para casal ou pouca roupa", "Centrifugação básica"]
+      "url": "https://meli.la/1rmby8j",
+      "bullets": ["9 kg", "Para casal ou pouca roupa", "Centrifugação básica"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_979820-MLA99986842265_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1rmby8j",
+          "price": 1884.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4019556345",
+          "catalogId": "MLB37799152",
+          "history": [{ "date": "2026-10-22", "price": 1884.9 }]
+        }
+      ]
     },
     {
-      "id": "maquina-de-lavar-brastemp-12-kg-bwk12ab",
+      "id": "maquina-de-lavar-brastemp-12-kg-bwr12bb",
       "tier": 2,
-      "name": "Máquina de Lavar Brastemp 12 kg BWK12AB",
-      "price": 2299,
+      "name": "Máquina de Lavar Brastemp 12 kg Água Quente BWR12BB",
+      "price": 2299.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/maquina-de-lavar-brastemp-12-kg-bwk12ab",
-      "bullets": ["12 kg: família e edredom", "Ciclos rápidos", "Melhor custo-benefício"]
+      "url": "https://meli.la/1dsJqMf",
+      "bullets": ["12 kg: família e edredom", "Ciclos rápidos", "Melhor custo-benefício"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_762830-MLA99941960501_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1dsJqMf",
+          "price": 2299.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4074950354",
+          "catalogId": "MLB27155216",
+          "history": [{ "date": "2026-10-22", "price": 2299.99 }]
+        }
+      ]
     },
     {
       "id": "lava-e-seca-samsung-11-kg-wd11t",
       "tier": 3,
       "name": "Lava e Seca Samsung 11 kg WD11T",
-      "price": 3799,
+      "price": 4010.99,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-e-seca-samsung-11-kg-wd11t",
+      "url": "https://meli.la/2xVQGuM",
       "bullets": [
         "Lava e seca (sem varal)",
         "Abertura frontal, gasta menos água",
         "Motor inverter silencioso"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_611589-MLA99509527892_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2xVQGuM",
+          "price": 4010.99,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2977679790",
+          "catalogId": "MLB19106390",
+          "history": [{ "date": "2026-10-22", "price": 4010.99 }]
+        }
       ]
     },
     {
       "id": "lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
       "tier": 4,
       "name": "Lava e Seca LG VC4 12 kg Inteligência Artificial",
-      "price": 4999,
+      "price": 5305.15,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
+      "url": "https://meli.la/2chzJVA",
       "bullets": [
         "12 kg com secagem completa",
         "Ajusta o ciclo ao tecido sozinha",
         "Controle pelo app, motor com 10 anos de garantia"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_695680-MLA115904967298_092026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2chzJVA",
+          "price": 5305.15,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4841897845",
+          "catalogId": "MLB36477115",
+          "history": [{ "date": "2026-10-22", "price": 5305.15 }]
+        }
       ]
     }
   ]

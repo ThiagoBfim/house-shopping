@@ -50,14 +50,27 @@
       "id": "robo-aspirador-roborock-q7-max",
       "tier": 4,
       "name": "Robô Aspirador Roborock Q7 Max",
-      "price": 2499,
+      "price": 1990,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/robo-aspirador-roborock-q7-max",
+      "url": "https://meli.la/1vVXmZR",
       "bullets": [
         "Limpa sozinho com mapa da casa",
         "Aspira e passa pano (não substitui o mop na faxina pesada)",
         "Controle pelo app"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_823223-MLA79628751012_102024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1vVXmZR",
+          "price": 1990,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4598100045",
+          "catalogId": "MLB41746107",
+          "history": [{ "date": "2026-10-22", "price": 1990 }]
+        }
       ]
     }
   ]

@@ -19,39 +19,78 @@
     {
       "id": "console-playstation-5-slim-digital",
       "tier": 2,
-      "name": "Console PlayStation 5 Slim Digital",
-      "price": 3499,
+      "name": "Console PlayStation 5 Slim Digital 825 GB",
+      "price": 4399.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/console-playstation-5-slim-digital",
-      "bullets": ["Exclusivos da Sony", "Gráficos 4K", "Só digital"]
+      "url": "https://meli.la/1KXQDey",
+      "bullets": ["Exclusivos da Sony", "Gráficos 4K", "Só digital"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_756435-MLA95500672926_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1KXQDey",
+          "price": 4399.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4227636027",
+          "catalogId": "MLB29001054",
+          "history": [{ "date": "2026-10-22", "price": 4399.9 }]
+        }
+      ]
     },
     {
       "id": "console-nintendo-switch-2",
       "tier": 3,
-      "name": "Console Nintendo Switch 2",
-      "price": 4499,
+      "name": "Console Nintendo Switch 2 + Mario Kart World",
+      "price": 4599.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/console-nintendo-switch-2",
+      "url": "https://meli.la/18iifuT",
       "bullets": [
         "Joga na TV e no modo portátil",
         "Mario, Zelda e Pokémon",
         "Bom para jogar com a família"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_642168-MLA118780566083_102026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/18iifuT",
+          "price": 4599.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5335958389",
+          "catalogId": "MLB80167828",
+          "history": [{ "date": "2026-10-22", "price": 4599.9 }]
+        }
       ]
     },
     {
       "id": "console-playstation-5-pro",
       "tier": 4,
       "name": "Console PlayStation 5 Pro",
-      "price": 6999,
+      "price": 7599,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/console-playstation-5-pro",
+      "url": "https://meli.la/2Ae2Epe",
       "bullets": [
         "O PlayStation mais potente",
         "Gráficos e taxa de quadros melhores",
         "SSD de 2 TB"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_727482-MLA99962144409_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2Ae2Epe",
+          "price": 7599,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7613817060",
+          "catalogId": "MLB41975964",
+          "history": [{ "date": "2026-10-22", "price": 7599 }]
+        }
       ]
     }
   ]

@@ -39,15 +39,28 @@
     {
       "id": "batedeira-planetaria-kitchenaid-artisan-4-8-l",
       "tier": 4,
-      "name": "Batedeira Planetária KitchenAid Artisan 4,8 L",
-      "price": 3499,
+      "name": "Batedeira Planetária KitchenAid Artisan KEA33 4,8 L",
+      "price": 2690,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-kitchenaid-artisan-4-8-l",
+      "url": "https://meli.la/221ULPA",
       "bullets": [
         "Ícone de cozinha, motor muito durável",
         "Acessórios opcionais (moedor, massa)",
         "Várias cores"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_915655-MLA99539357236_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/221ULPA",
+          "price": 2690,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB4621054575",
+          "catalogId": "MLB18760059",
+          "history": [{ "date": "2026-10-22", "price": 2690 }]
+        }
       ]
     }
   ]
