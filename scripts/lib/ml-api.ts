@@ -25,7 +25,9 @@ export async function getAccessToken(): Promise<string> {
   const refreshToken = saved.refresh_token ?? ML_REFRESH_TOKEN
   if (!ML_CLIENT_ID || !ML_CLIENT_SECRET || !refreshToken) {
     throw new Error(
-      'Sem credenciais do Mercado Livre. Defina ML_ACCESS_TOKEN, ou ML_CLIENT_ID + ML_CLIENT_SECRET + ML_REFRESH_TOKEN em .env.local (passo a passo em docs/project/MercadoLivre.md).',
+      !ML_CLIENT_ID || !ML_CLIENT_SECRET
+        ? 'Preencha ML_CLIENT_ID e ML_CLIENT_SECRET no .env.local (passo a passo em docs/project/MercadoLivre.md).'
+        : 'App ainda não autorizado: rode "npm run ml:auth" e siga as instruções (gera o token em .ml-token.json).',
     )
   }
 
