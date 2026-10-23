@@ -44,7 +44,7 @@ JSON.stringify({
   captcha: /captcha|complete esta etapa/i.test(location.href + document.title),
   ids: [...new Set(document.documentElement.innerHTML.match(/MLBU?\d{8,11}(?!\d)/g) || [])].slice(0, 4),
   title: ((document.body.innerText.split('Seguir')[1] || '').trim().split('\n').filter(Boolean)
-           .find(l => !/^MAIS VENDIDO$|^OFERTA|cupom/i.test(l)) || '').slice(0, 120),
+           .find(l => !/^MAIS VENDIDO$|^OFERTA|cupom|Compra m/i.test(l)) || '').slice(0, 120),
 })
 ```
 
@@ -92,6 +92,9 @@ Não edite o catálogo nem a planilha sem o usuário pedir.
 
 ## Armadilhas
 
-- A página social às vezes mostra "MAIS VENDIDO" ou uma linha de cupom antes do título: o snippet pula essas linhas.
+- A página social às vezes mostra "MAIS VENDIDO" ou uma linha de cupom ("Compra mínima R$ 400") antes do título: o snippet pula essas linhas.
+- Link que cai em `/social/master_sold/lists` ("Minhas listas") sem `matt_tool` perdeu o produto: regenere.
+- "Produto diferente" com um `MLBU…` do link original entre os ids é o mesmo produto em outra variante ou anúncio (ex.: 110 V × 220 V). O link funciona, mas regenerar para o anúncio do catálogo mantém o `sync:ml` certo.
+- Leva ~1 min por lote de 5 (140 links ≈ 30 min).
 - O preço na página social pode ser o preço cheio, diferente do catálogo: não use para validar. Preço se confere com `npm run sync:ml`.
 - Anúncios `/up/MLBU…` sem produto de catálogo têm só `externalId`: a comparação usa esse id.
