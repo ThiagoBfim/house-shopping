@@ -1,67 +1,11 @@
 {
   "label": "Aspirador de pó",
   "utensil": false,
-  "variants": [
-    {
-      "id": "vertical",
-      "label": "Vertical"
-    },
-    {
-      "id": "tradicional",
-      "label": "Pó e água"
-    }
-  ],
   "options": [
-    {
-      "id": "aspirador-de-po-e-agua-wap-gtw-10",
-      "tier": 1,
-      "name": "Aspirador de Pó e Água WAP GTW 10",
-      "price": 246.15,
-      "priceUpdatedAt": "2026-10-22",
-      "store": "mercadolivre",
-      "url": "https://meli.la/2AMLWub",
-      "bullets": [
-        "Aspira pó e líquidos (água derramada, box, quintal)",
-        "Função sopro",
-        "Bocais para sofá, frestas e carro",
-        "Reservatório grande de 10 L"
-      ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_912762-MLB92318815045_092025-O-aspirador-de-po-e-agua-wap-gtw-10-10l-amarelo-e-preto-127v.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/2AMLWub",
-          "price": 246.15,
-          "updatedAt": "2026-10-22",
-          "available": true,
-          "externalId": "MLB2631836695",
-          "catalogId": "MLB8923630",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 246.15
-            }
-          ]
-        }
-      ],
-      "variants": ["tradicional"]
-    },
-    {
-      "id": "aspirador-de-po-e-agua-electrolux-12-l",
-      "tier": 2,
-      "name": "Aspirador de Pó e Água Electrolux 1400 W 12 L",
-      "price": 323,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB6339793?pdp_filters=item_id%3AMLB3259697043",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_977365-MLA112063523985_052026-O.webp",
-      "bullets": ["Aspira pó e líquidos", "Reservatório de 12 L", "Marca com assistência fácil"],
-      "variants": ["tradicional"]
-    },
     {
       "id": "aspirador-de-po-mondial-turbo-cycle-1500w",
       "tier": 1,
-      "name": "Aspirador de Pó Mondial Turbo Cycle 1500 W AP-40",
+      "name": "Aspirador Vertical Mondial Turbo Cycle 1500 W AP-40",
       "price": 161.15,
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
@@ -92,8 +36,7 @@
             }
           ]
         }
-      ],
-      "variants": ["vertical"]
+      ]
     },
     {
       "id": "aspirador-vertical-sem-fio-electrolux-ergorapido-erg019",
@@ -126,8 +69,7 @@
             }
           ]
         }
-      ],
-      "variants": ["vertical"]
+      ]
     },
     {
       "id": "aspirador-vertical-xiaomi-g20-lite",
@@ -143,8 +85,7 @@
         "Sucção forte para tapete",
         "Vira aspirador de mão",
         "Carrega na parede"
-      ],
-      "variants": ["vertical"]
+      ]
     },
     {
       "id": "aspirador-vertical-dyson-v8-absolute",
@@ -160,8 +101,7 @@
         "Até ~40 min de bateria",
         "Filtro que segura alergênicos",
         "Vários bocais (tapete, sofá, frestas)"
-      ],
-      "variants": ["vertical"]
+      ]
     }
   ]
 }

@@ -159,9 +159,9 @@ describe('assistente: respostas viram lista', () => {
       { moradores: ['casal'], limpeza: ['vertical'], reparos: ['faco-tudo'] },
       rooms,
     )
-    expect(r.choices.variants['utilidades:aspirador']).toBe('vertical')
     expect(r.choices.excluded['utilidades:robo-aspirador']).toBe('refused')
     expect(r.choices.needs).toMatchObject({
+      'utilidades:aspirador': 4,
       'utilidades:furadeira': 4,
       'utilidades:kit-ferramentas': 5,
     })

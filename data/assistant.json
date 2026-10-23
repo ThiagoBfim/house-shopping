@@ -813,34 +813,6 @@
           "label": "Aspirador vertical",
           "effects": [
             {
-              "variant": {
-                "category": "aspirador",
-                "variant": "vertical"
-              }
-            },
-            {
-              "need": {
-                "category": "aspirador",
-                "need": 4
-              }
-            },
-            {
-              "skip": ["robo-aspirador"]
-            }
-          ]
-        },
-        {
-          "id": "tradicional",
-          "icon": "🌀",
-          "label": "Aspirador de pó e água",
-          "effects": [
-            {
-              "variant": {
-                "category": "aspirador",
-                "variant": "tradicional"
-              }
-            },
-            {
               "need": {
                 "category": "aspirador",
                 "need": 4
