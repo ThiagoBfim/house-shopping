@@ -181,6 +181,26 @@
         "category": "dispenser-detergente",
         "need": 1,
         "qty": 1
+      },
+      {
+        "category": "multiprocessador",
+        "need": 2,
+        "qty": 1
+      },
+      {
+        "category": "panela-de-pressao",
+        "need": 4,
+        "qty": 1
+      },
+      {
+        "category": "sanduicheira",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "panela-de-arroz",
+        "need": 1,
+        "qty": 1
       }
     ]
   },
@@ -605,6 +625,16 @@
       {
         "category": "fechadura-digital",
         "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "robo-aspirador",
+        "need": 1,
+        "qty": 1
+      },
+      {
+        "category": "alicates",
+        "need": 2,
         "qty": 1
       }
     ]

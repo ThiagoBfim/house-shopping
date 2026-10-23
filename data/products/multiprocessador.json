@@ -1,0 +1,63 @@
+{
+  "label": "Multiprocessador",
+  "utensil": false,
+  "options": [
+    {
+      "id": "multiprocessador-britania-bmp900",
+      "tier": 1,
+      "name": "Multiprocessador Britânia BMP900 3 em 1 1000 W",
+      "price": 269,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB49822223?pdp_filters=item_id%3AMLB5409970690",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_683164-MLA84324524124_052025-O.webp",
+      "bullets": ["Pica, rala e fatia", "Motor de 1000 W", "O básico para picar legumes sem faca"]
+    },
+    {
+      "id": "processador-philips-walita-powerchop-ri7301",
+      "tier": 2,
+      "name": "Processador Philips Walita Powerchop RI7301 750 W",
+      "price": 404,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB21323093?pdp_filters=item_id%3AMLB5185025128",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_712356-MLA99592437148_122025-O.webp",
+      "bullets": [
+        "Lâminas Powerchop que picam por igual",
+        "Marca com assistência fácil",
+        "Tigela grande para receitas de família"
+      ]
+    },
+    {
+      "id": "multiprocessador-philco-pmp1600-9-em-1",
+      "tier": 3,
+      "name": "Multiprocessador Philco PMP1600 9 em 1 1700 W",
+      "price": 509,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB47433943?pdp_filters=item_id%3AMLB7285010844",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_779155-MLA118156631088_102026-O.webp",
+      "bullets": [
+        "9 em 1: liquidificador, espremedor e processador",
+        "Motor de 1700 W",
+        "Troca vários aparelhos por um só"
+      ]
+    },
+    {
+      "id": "processador-kitchenaid-9-xicaras",
+      "tier": 4,
+      "name": "Processador de Alimentos KitchenAid 9 Xícaras",
+      "price": 1988,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB69083102?pdp_filters=item_id%3AMLB4980900139",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_857272-MLA111168955171_052026-O.webp",
+      "bullets": [
+        "Tigela de 9 xícaras, para receitas grandes",
+        "Discos de fatiar e ralar ajustáveis",
+        "Construção robusta e durável",
+        "Design premium da KitchenAid"
+      ]
+    }
+  ]
+}

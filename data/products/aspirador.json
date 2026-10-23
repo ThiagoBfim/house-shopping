@@ -1,7 +1,63 @@
 {
   "label": "Aspirador de pó",
   "utensil": false,
+  "variants": [
+    {
+      "id": "vertical",
+      "label": "Vertical"
+    },
+    {
+      "id": "tradicional",
+      "label": "Pó e água"
+    }
+  ],
   "options": [
+    {
+      "id": "aspirador-de-po-e-agua-wap-gtw-10",
+      "tier": 1,
+      "name": "Aspirador de Pó e Água WAP GTW 10",
+      "price": 246.15,
+      "priceUpdatedAt": "2026-10-22",
+      "store": "mercadolivre",
+      "url": "https://meli.la/2AMLWub",
+      "bullets": [
+        "Aspira pó e líquidos (água derramada, box, quintal)",
+        "Função sopro",
+        "Bocais para sofá, frestas e carro",
+        "Reservatório grande de 10 L"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_912762-MLB92318815045_092025-O-aspirador-de-po-e-agua-wap-gtw-10-10l-amarelo-e-preto-127v.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2AMLWub",
+          "price": 246.15,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB2631836695",
+          "catalogId": "MLB8923630",
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 246.15
+            }
+          ]
+        }
+      ],
+      "variants": ["tradicional"]
+    },
+    {
+      "id": "aspirador-de-po-e-agua-electrolux-12-l",
+      "tier": 2,
+      "name": "Aspirador de Pó e Água Electrolux 1400 W 12 L",
+      "price": 323,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB6339793?pdp_filters=item_id%3AMLB3259697043",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_977365-MLA112063523985_052026-O.webp",
+      "bullets": ["Aspira pó e líquidos", "Reservatório de 12 L", "Marca com assistência fácil"],
+      "variants": ["tradicional"]
+    },
     {
       "id": "aspirador-de-po-mondial-turbo-cycle-1500w",
       "tier": 1,
@@ -36,44 +92,12 @@
             }
           ]
         }
-      ]
-    },
-    {
-      "id": "aspirador-de-po-e-agua-wap-gtw-10",
-      "tier": 2,
-      "name": "Aspirador de Pó e Água WAP GTW 10",
-      "price": 246.15,
-      "priceUpdatedAt": "2026-10-22",
-      "store": "mercadolivre",
-      "url": "https://meli.la/2AMLWub",
-      "bullets": [
-        "Aspira pó e líquidos (água derramada, box, quintal)",
-        "Função sopro",
-        "Bocais para sofá, frestas e carro",
-        "Reservatório grande de 10 L"
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_912762-MLB92318815045_092025-O-aspirador-de-po-e-agua-wap-gtw-10-10l-amarelo-e-preto-127v.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/2AMLWub",
-          "price": 246.15,
-          "updatedAt": "2026-10-22",
-          "available": true,
-          "externalId": "MLB2631836695",
-          "catalogId": "MLB8923630",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 246.15
-            }
-          ]
-        }
-      ]
+      "variants": ["vertical"]
     },
     {
       "id": "aspirador-vertical-sem-fio-electrolux-ergorapido-erg019",
-      "tier": 3,
+      "tier": 2,
       "name": "Aspirador Vertical sem Fio Electrolux Ergorapido ERG019",
       "price": 659.66,
       "priceUpdatedAt": "2026-10-23",
@@ -102,39 +126,42 @@
             }
           ]
         }
-      ]
+      ],
+      "variants": ["vertical"]
     },
     {
-      "id": "robo-aspirador-roborock-q7-max",
-      "tier": 4,
-      "name": "Robô Aspirador Roborock Q7 Max",
-      "price": 1990,
+      "id": "aspirador-vertical-xiaomi-g20-lite",
+      "tier": 3,
+      "name": "Aspirador Vertical Sem Fio Xiaomi G20 Lite",
+      "price": 1045,
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://meli.la/1vVXmZR",
+      "url": "https://www.mercadolivre.com.br/p/MLB39209594?pdp_filters=item_id%3AMLB5283417621",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_606648-MLA99987035337_112025-O.webp",
       "bullets": [
-        "Limpa sozinho com mapa da casa",
-        "Aspira e passa pano (não substitui o mop na faxina pesada)",
-        "Controle pelo app"
+        "Sem fio, com bateria de longa duração",
+        "Sucção forte para tapete",
+        "Vira aspirador de mão",
+        "Carrega na parede"
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_823223-MLA79628751012_102024-O.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/1vVXmZR",
-          "price": 1990,
-          "updatedAt": "2026-10-23",
-          "available": true,
-          "externalId": "MLB4598100045",
-          "catalogId": "MLB41746107",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1990
-            }
-          ]
-        }
-      ]
+      "variants": ["vertical"]
+    },
+    {
+      "id": "aspirador-vertical-dyson-v8-absolute",
+      "tier": 4,
+      "name": "Aspirador Vertical Sem Fio Dyson V8 Absolute",
+      "price": 4505,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB47115872?pdp_filters=item_id%3AMLB4099033991",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_645095-MLA96077920675_102025-O.webp",
+      "bullets": [
+        "Topo de linha: sucção muito forte",
+        "Até ~40 min de bateria",
+        "Filtro que segura alergênicos",
+        "Vários bocais (tapete, sofá, frestas)"
+      ],
+      "variants": ["vertical"]
     }
   ]
 }

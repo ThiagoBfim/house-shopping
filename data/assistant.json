@@ -408,6 +408,18 @@
                 "category": "assadeiras",
                 "need": 4
               }
+            },
+            {
+              "need": {
+                "category": "multiprocessador",
+                "need": 3
+              }
+            },
+            {
+              "need": {
+                "category": "panela-de-pressao",
+                "need": 5
+              }
             }
           ]
         },
@@ -462,6 +474,24 @@
               "need": {
                 "category": "liquidificador",
                 "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "multiprocessador",
+                "need": 1
+              }
+            },
+            {
+              "need": {
+                "category": "panela-de-pressao",
+                "need": 2
+              }
+            },
+            {
+              "need": {
+                "category": "sanduicheira",
+                "need": 3
               }
             }
           ]
@@ -751,6 +781,150 @@
                 "category": "protetor-de-colchao",
                 "variant": "king"
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limpeza",
+      "icon": "🧹",
+      "text": "Como você quer limpar o chão?",
+      "short": "Limpeza",
+      "why": "Aspirador e robô pesam no orçamento; só entram se fizerem sentido para você.",
+      "kind": "single",
+      "when": {
+        "rooms": ["utilidades"]
+      },
+      "answers": [
+        {
+          "id": "vassoura",
+          "icon": "🧽",
+          "label": "Vassoura e rodo resolvem",
+          "effects": [
+            {
+              "skip": ["aspirador", "robo-aspirador"]
+            }
+          ]
+        },
+        {
+          "id": "vertical",
+          "icon": "🪄",
+          "label": "Aspirador vertical",
+          "effects": [
+            {
+              "variant": {
+                "category": "aspirador",
+                "variant": "vertical"
+              }
+            },
+            {
+              "need": {
+                "category": "aspirador",
+                "need": 4
+              }
+            },
+            {
+              "skip": ["robo-aspirador"]
+            }
+          ]
+        },
+        {
+          "id": "tradicional",
+          "icon": "🌀",
+          "label": "Aspirador de pó e água",
+          "effects": [
+            {
+              "variant": {
+                "category": "aspirador",
+                "variant": "tradicional"
+              }
+            },
+            {
+              "need": {
+                "category": "aspirador",
+                "need": 4
+              }
+            },
+            {
+              "skip": ["robo-aspirador"]
+            }
+          ]
+        },
+        {
+          "id": "robo",
+          "icon": "🤖",
+          "label": "Robô aspirador",
+          "effects": [
+            {
+              "need": {
+                "category": "robo-aspirador",
+                "need": 4
+              }
+            },
+            {
+              "need": {
+                "category": "aspirador",
+                "need": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reparos",
+      "icon": "🛠️",
+      "text": "Quem faz os reparos e monta os móveis?",
+      "short": "Reparos",
+      "why": "Furadeira, ferramentas e alicates só entram se você for usar.",
+      "kind": "single",
+      "when": {
+        "rooms": ["utilidades"]
+      },
+      "answers": [
+        {
+          "id": "faco-tudo",
+          "icon": "🧰",
+          "label": "Eu mesmo, faço de tudo",
+          "effects": [
+            {
+              "need": {
+                "category": "kit-ferramentas",
+                "need": 5
+              }
+            },
+            {
+              "need": {
+                "category": "furadeira",
+                "need": 4
+              }
+            },
+            {
+              "need": {
+                "category": "alicates",
+                "need": 3
+              }
+            }
+          ]
+        },
+        {
+          "id": "basico",
+          "icon": "🪛",
+          "label": "Só o básico (apertar um parafuso)",
+          "effects": [
+            {
+              "skip": ["furadeira", "alicates"]
+            }
+          ]
+        },
+        {
+          "id": "chamo-alguem",
+          "icon": "📞",
+          "label": "Chamo alguém",
+          "effects": [
+            {
+              "skip": ["kit-ferramentas", "furadeira", "alicates"]
             }
           ]
         }

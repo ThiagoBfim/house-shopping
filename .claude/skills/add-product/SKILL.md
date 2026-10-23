@@ -65,7 +65,7 @@ O nome do arquivo (kebab-case, sem acento) é o id da categoria.
 Adicione `{ "category": "<categoria>", "need": N, "qty": Q }` no cômodo:
 
 - `need`: 5 essencial · 4 necessário (entra sempre) · 3 importante · 2 útil · 1 supérfluo. Depende do cômodo.
-- `qty`: unidades (preço é por unidade). Padrão 1.
+- `qty`: unidades (preço é por unidade). Sempre escreva, mesmo quando for 1: a lista lê o JSON direto e item sem `qty` vira total NaN.
 - Cômodo novo também precisa estar em `ROOM_CARDS` (`src/ui/catalog.ts`) para aparecer na tela inicial.
 
 ## 5. Validar

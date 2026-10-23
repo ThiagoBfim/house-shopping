@@ -1,0 +1,36 @@
+{
+  "label": "Alicates",
+  "utensil": false,
+  "options": [
+    {
+      "id": "kit-alicates-tramontina-bico-corte-universal",
+      "tier": 1,
+      "name": "Kit 3 Alicates Tramontina (Bico, Corte e Universal)",
+      "price": 100,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB27157886?pdp_filters=item_id%3AMLB5577742806",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_861759-MLA99467985726_112025-O.webp",
+      "bullets": [
+        "Bico, corte e universal",
+        "Resolve fios, pregos e pequenos reparos",
+        "Cabo emborrachado"
+      ]
+    },
+    {
+      "id": "jogo-de-alicates-stanley-vde-3-pecas",
+      "tier": 2,
+      "name": "Jogo de Alicates Isolados Stanley VDE 3 Peças",
+      "price": 364,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB2081213733?pdp_filters=item_id%3AMLB3167210034",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_903512-MLB54951560489_042023-O.webp",
+      "bullets": [
+        "Isolados até 1000 V (seguro para elétrica)",
+        "Aço de alta resistência",
+        "Stanley: ferramenta para a vida toda"
+      ]
+    }
+  ]
+}

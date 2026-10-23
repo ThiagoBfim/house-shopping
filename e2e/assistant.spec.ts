@@ -28,6 +28,8 @@ async function answerAll(page: Page, fromList = false) {
   await skip(page) // café
   await skip(page) // calor
   await tap(page, 'Queen')
+  await tap(page, 'Robô aspirador')
+  await tap(page, 'Chamo alguém')
   await tap(page, 'Geladeira')
   await tap(page, 'Continuar')
   await skip(page) // utensílios
@@ -58,6 +60,10 @@ test('monte pra mim: as respostas viram a lista', async ({ page }) => {
   await expect(variant(page, 'Colchão', 'Queen').first()).toBeChecked()
   await expect(card(page, 'Geladeira')).toHaveCount(0)
   await expect(page.locator('.side-section', { hasText: 'Recusados' })).toContainText('Geladeira')
+  // reparos: "Chamo alguém" tira as ferramentas; limpeza: robô aspirador entra
+  await expect(card(page, 'Furadeira')).toHaveCount(0)
+  await expect(card(page, 'Kit de ferramentas')).toHaveCount(0)
+  await expect(card(page, 'Robô aspirador')).toHaveCount(1)
 
   // o link (URL) reproduz a mesma lista
   await page.reload()
@@ -79,11 +85,11 @@ test('voltar e mudar uma resposta pelo resumo', async ({ page }) => {
   await page.getByRole('button', { name: 'Pergunta anterior' }).click()
   await expect(page.getByRole('button', { name: 'Só eu' })).toHaveAttribute('aria-pressed', 'true')
   await tap(page, 'Casal')
-  for (let i = 0; i < 12; i++) await skip(page)
+  for (let i = 0; i < 14; i++) await skip(page)
 
   await page.getByRole('button', { name: /^Casa: Casal/ }).click()
   await tap(page, 'Com bebê (ou chegando)')
-  for (let i = 0; i < 12; i++) await skip(page)
+  for (let i = 0; i < 14; i++) await skip(page)
   await expect(page.getByRole('button', { name: /^Casa: Com bebê/ })).toBeVisible()
 
   await tap(page, 'Ajustar orçamento antes')

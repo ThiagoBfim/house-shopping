@@ -135,6 +135,37 @@ describe('assistente: respostas viram lista', () => {
     expect(r.choices.variants['quarto:ar-condicionado']).toBe('ventilador')
     expect(r.choices.variants['sala:ar-condicionado']).toBe('ventilador')
   })
+
+  it('limpeza com robô e reparos com alguém: robô sobe, ferramentas saem', () => {
+    const r = applyAnswers(
+      assistant,
+      { moradores: ['sozinho'], limpeza: ['robo'], reparos: ['chamo-alguem'] },
+      rooms,
+    )
+    expect(r.choices.needs).toMatchObject({
+      'utilidades:robo-aspirador': 4,
+      'utilidades:aspirador': 2,
+    })
+    expect(r.choices.excluded).toMatchObject({
+      'utilidades:kit-ferramentas': 'refused',
+      'utilidades:furadeira': 'refused',
+      'utilidades:alicates': 'refused',
+    })
+  })
+
+  it('aspirador vertical tira o robô; quem faz de tudo ganha furadeira', () => {
+    const r = applyAnswers(
+      assistant,
+      { moradores: ['casal'], limpeza: ['vertical'], reparos: ['faco-tudo'] },
+      rooms,
+    )
+    expect(r.choices.variants['utilidades:aspirador']).toBe('vertical')
+    expect(r.choices.excluded['utilidades:robo-aspirador']).toBe('refused')
+    expect(r.choices.needs).toMatchObject({
+      'utilidades:furadeira': 4,
+      'utilidades:kit-ferramentas': 5,
+    })
+  })
 })
 
 describe('assistente: validação contra o catálogo', () => {
