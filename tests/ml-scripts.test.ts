@@ -238,20 +238,27 @@ describe('importRows', () => {
     )
   })
 
-  it('coluna generico liga e desliga a flag; exporta "sim"', () => {
+  it('coluna generico liga e desliga a flag; exporta "sim" ou "não"', () => {
     const { products: next } = importRows(
       products(),
       [
         { id: 'liq-barato', generico: 'sim' },
-        { id: 'liq-medio', generico: '' },
+        { id: 'liq-medio', generico: 'não' },
       ],
       '2026-10-23',
     )
     expect(next.liquidificador.options[0].generic).toBe(true)
     expect('generic' in next.liquidificador.options[1]).toBe(false)
     const col = LINK_COLUMNS.indexOf('generico')
-    expect(exportRows(next).map((row) => row[col])).toEqual(['sim', ''])
-    const { products: back } = importRows(next, [{ id: 'liq-barato', generico: '' }], '2026-10-23')
+    expect(exportRows(next).map((row) => row[col])).toEqual(['sim', 'não'])
+    // Vazio não mexe na flag.
+    const { products: same } = importRows(next, [{ id: 'liq-barato', generico: '' }], '2026-10-23')
+    expect(same.liquidificador.options[0].generic).toBe(true)
+    const { products: back } = importRows(
+      next,
+      [{ id: 'liq-barato', generico: 'nao' }],
+      '2026-10-23',
+    )
     expect('generic' in back.liquidificador.options[0]).toBe(false)
   })
 

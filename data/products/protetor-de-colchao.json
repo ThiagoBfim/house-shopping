@@ -40,6 +40,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/up/MLBU3963020143?pdp_filters=item_id%3AMLB4681062671",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_975669-MLB118633942503_102026-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "Elástico que não solta"],
       "variants": ["casal"]
     },
@@ -63,6 +64,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22767070?pdp_filters=item_id%3AMLB5288070656",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_700302-MLA99986821367_112025-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "Solteiro"],
       "variants": ["solteiro"]
     },
@@ -86,6 +88,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/up/MLBU3868873335?pdp_filters=item_id%3AMLB6543674920",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_722528-MLA99978723385_112025-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "Queen"],
       "variants": ["queen"]
     },
@@ -109,6 +112,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22799788?pdp_filters=item_id%3AMLB5287940978",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_835827-MLA99463667648_112025-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "King"],
       "variants": ["king"]
     }

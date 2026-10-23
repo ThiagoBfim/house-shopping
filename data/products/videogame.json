@@ -53,6 +53,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_688343-MLA88139322691_072025-O.webp",
       "bullets": ["Lê jogo em disco (dá para comprar usado)", "Exclusivos da Sony", "SSD de 1 TB"],
       "variants": ["playstation"]
     },
@@ -64,6 +65,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/up/MLBU5553482348?pdp_filters=item_id%3AMLB7821597258",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_880706-MLB118054571386_102026-O.webp",
       "bullets": [
         "Com leitor de disco",
         "Segundo controle para jogar a dois",
@@ -112,6 +114,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/up/MLBU785249875?pdp_filters=item_id%3AMLB4957084586",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_916359-MLA74806232531_022024-O.webp",
       "bullets": [
         "O console atual mais barato",
         "Game Pass: centenas de jogos na assinatura",
@@ -127,6 +130,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB27934244?pdp_filters=item_id%3AMLB7786931948",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_791517-MLA96137484483_102025-O.webp",
       "bullets": ["Dobro de espaço do Series S comum", "Game Pass", "Só digital"],
       "variants": ["xbox"]
     },
@@ -138,6 +142,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB40162063?pdp_filters=item_id%3AMLB7251645140",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_934481-MLA99443130554_112025-O.webp",
       "bullets": ["4K de verdade", "Bem mais potente que o Series S", "Só digital"],
       "variants": ["xbox"]
     },
@@ -149,6 +154,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB29577429?pdp_filters=item_id%3AMLB7672638312",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_697067-MLA99415751252_112025-O.webp",
       "bullets": ["4K e leitor de disco", "O Xbox mais potente", "Game Pass"],
       "variants": ["xbox"]
     },
@@ -160,6 +166,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB17974763?pdp_filters=item_id%3AMLB5358212849",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_743607-MLA99448480554_112025-O.webp",
       "bullets": ["Só portátil", "Leve e barato", "Jogos da Nintendo"],
       "variants": ["nintendo"]
     },
@@ -171,6 +178,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB31000132?pdp_filters=item_id%3AMLB7777270522",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_925310-MLA96862732927_102025-O.webp",
       "bullets": ["Tela OLED", "Joga na TV e no portátil", "Controles destacáveis"],
       "variants": ["nintendo"]
     },
@@ -215,6 +223,7 @@
       "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/up/MLBU5360744228?pdp_filters=item_id%3AMLB5317666823",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_944168-MLB118840895123_102026-O.webp",
       "bullets": ["Switch 2 com Mario Kart", "Controle Pro para jogar na TV", "Kit completo"],
       "variants": ["nintendo"]
     }

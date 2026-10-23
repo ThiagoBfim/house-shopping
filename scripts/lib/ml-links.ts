@@ -60,7 +60,7 @@ export function exportRows(products: Products): string[][] {
             category,
             String(option.tier),
             option.name,
-            option.generic ? 'sim' : '',
+            option.generic ? 'sim' : 'não',
             String(option.price),
             `https://lista.mercadolivre.com.br/${option.id}`,
             productLink,
@@ -114,7 +114,8 @@ export function importRows(
 
   for (const row of rows) {
     const found = index.get(row.id)
-    if (found && row.generico !== undefined) {
+    // generico: "sim" liga a flag, "não" desliga, vazio não mexe.
+    if (found && row.generico?.trim()) {
       const option = next[found.category].options[found.i]
       const generic = /^(sim|s|true|1|x)$/i.test(row.generico.trim())
       if (generic !== Boolean(option.generic)) {
