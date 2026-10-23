@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks'
-import { applyAnswers, type Answers } from '../engine/assistant.ts'
+import { applyAnswers, reapplyAnswers, type Answers } from '../engine/assistant.ts'
 import {
   budgetPresets,
   describeList,
@@ -20,6 +20,7 @@ import { expandHouse, type HouseSpec } from '../engine/house.ts'
 import { keepManualIn } from '../engine/manual.ts'
 import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
+import type { Question } from '../data/schema.ts'
 import type { ListState } from '../engine/share.ts'
 import { BudgetForm } from './BudgetForm.tsx'
 import { downloadList } from './download.ts'
@@ -55,10 +56,14 @@ interface Session {
   assisting?: boolean
   /** Orçamento sugerido escolhido no assistente (pré-seleciona a tela de orçamento). */
   preset?: PresetId
+  /** Respostas do assistente que montaram a lista (painel "Suas respostas"). */
+  answers?: Answers
 }
 
-const listState = ({ house, budget, plan, choices }: Session): ListState | undefined =>
-  Object.keys(house).length && budget !== undefined ? { house, budget, plan, choices } : undefined
+const listState = ({ house, budget, plan, choices, answers }: Session): ListState | undefined =>
+  Object.keys(house).length && budget !== undefined
+    ? { house, budget, plan, choices, ...(answers && { answers }) }
+    : undefined
 
 const newSession = (): Session => ({
   house: {},
@@ -154,7 +159,7 @@ export function App() {
         )
         if (!Object.keys(result.house).length) {
           // Sem as perguntas da casa: segue o fluxo normal a partir da escolha de cômodos.
-          setSession({ ...newSession(), choices, preset: result.preset })
+          setSession({ ...newSession(), choices, preset: result.preset, answers })
           return
         }
         const expanded = expandHouse(rooms, load.catalog.products, result.house)
@@ -171,6 +176,7 @@ export function App() {
           plan: next === 'list' ? planList(custom.room, custom.products, budget, choices) : {},
           editingBudget: next === 'budget',
           preset: presetId,
+          answers,
         })
         setChanges({})
         setDirty(false)
@@ -186,7 +192,7 @@ export function App() {
         <Assistant
           assistant={assistant}
           rooms={rooms}
-          initial={readAnswers()}
+          initial={session.answers ?? readAnswers()}
           onFinish={finish}
           onSkipAll={(answers) =>
             Object.keys(answers).length
@@ -297,6 +303,59 @@ export function App() {
 
     const reload = () => setToast({ message: `Lista recalculada: ${replan(choices)}.` })
 
+    /** Painel "Suas respostas": troca uma resposta e refaz a lista mantendo os ajustes à mão. */
+    const changeAnswer = (question: Question, ids: string[]) => {
+      const answers = { ...session.answers }
+      if (ids.length) answers[question.id] = ids
+      else delete answers[question.id]
+      const result = reapplyAnswers(assistant, rooms, session.answers ?? {}, answers, {
+        house: session.house,
+        choices,
+      })
+      const nextHouse = expandHouse(rooms, load.catalog.products, result.house)
+      const nextChoices = keepManualIn(
+        result.choices,
+        nextHouse.instances.map((instance) => instance.id),
+      )
+      const custom = applyPreferences(nextHouse.room, nextHouse.products, nextChoices)
+      const nextBudget = result.preset
+        ? budgetPresets(custom.room, custom.products, nextChoices).find(
+            (p) => p.id === result.preset,
+          )!.value
+        : budget
+      const nextPlan = planList(custom.room, custom.products, nextBudget, nextChoices)
+      const nextView = describeList(custom.room, custom.products, nextBudget, nextPlan, nextChoices)
+      const diff = diffPlans(displayedTiers(view), displayedTiers(nextView))
+      const previous = session
+      saveAnswers(answers)
+      setSession({
+        ...session,
+        house: result.house,
+        budget: nextBudget,
+        plan: nextPlan,
+        choices: nextChoices,
+        answers,
+        preset: result.preset ?? session.preset,
+      })
+      setChanges(diff)
+      setDirty(false)
+      const picked = question.answers.filter((a) => ids.includes(a.id)).map((a) => a.label)
+      const count = Object.keys(diff).length
+      setToast({
+        message: `${question.short}: ${picked.length ? picked.join(', ') : 'sem resposta'}. ${
+          count ? `${count} ${count === 1 ? 'item mudou' : 'itens mudaram'}` : 'Nada mudou'
+        }.`,
+        action: {
+          label: 'Desfazer',
+          run: () => {
+            saveAnswers(previous.answers ?? {})
+            setSession(previous)
+            setChanges({})
+          },
+        },
+      })
+    }
+
     const applyFilters = (filters: FilterValues) => {
       const previous = { choices, plan }
       const nextChoices = { ...choices, ...filters }
@@ -355,6 +414,12 @@ export function App() {
           onEditBudget={() => setSession({ ...session, editingBudget: true })}
           onAssistant={() => setSession({ ...session, assisting: true })}
           onChangeRoom={changeRooms}
+          answers={{
+            assistant,
+            house: session.house,
+            answers: session.answers ?? {},
+            onChange: changeAnswer,
+          }}
           share={{
             url,
             text: shareText,

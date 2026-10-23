@@ -1507,7 +1507,8 @@ h3 {
   outline-offset: 2px;
 }
 
-.filters-panel {
+.filters-panel,
+.answers-panel {
   margin-bottom: 16px;
   padding: 12px 14px;
   border: 1px solid var(--border);
@@ -1515,14 +1516,129 @@ h3 {
   background: var(--surface);
 }
 
-.filters-panel summary {
+.filters-panel summary,
+.answers-panel summary {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
 }
 
-.filters-panel[open] summary {
+.filters-panel[open] summary,
+.answers-panel[open] summary {
   margin-bottom: 12px;
+}
+
+/* Suas respostas (perguntas do assistente na lista) */
+
+.answers-hint {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+}
+
+.answers-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.answers-list li + li {
+  border-top: 1px solid var(--border);
+}
+
+.answers-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  background: none;
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.answers-icon {
+  flex: none;
+  width: 28px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.answers-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.answers-question {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.answers-current {
+  font-weight: 600;
+}
+
+.answers-current.is-empty {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.answers-chevron {
+  flex: none;
+  color: var(--muted);
+}
+
+.answers-options {
+  padding: 0 0 12px 38px;
+}
+
+.answers-why {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+}
+
+.answers-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.answers-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.answers-chip.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.answers-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.answers-actions:empty {
+  display: none;
+}
+
+.primary-button.answers-apply {
+  width: auto;
+  min-height: 36px;
+  padding: 0 18px;
 }
 
 /* Toast */

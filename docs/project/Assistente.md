@@ -23,7 +23,10 @@ Um caminho opcional, com **perguntas rápidas de tocar** (múltipla escolha ou s
 - **Pergunta:** ícone, texto, uma linha de "por que perguntamos" quando ajuda; respostas em cartões (2 colunas). Escolha única avança no toque; múltipla escolha marca e confirma ("Continuar" / "Não tenho nada disso"). Voltar (←), progresso em pontos, foco no título a cada tela, animação curta (desligada com `prefers-reduced-motion`).
 - **Resumo:** uma linha por pergunta respondida ("Fogão: Cooktop de indução"); tocar volta àquela pergunta. "Ver minha lista →" monta a lista com o orçamento escolhido; "Ajustar orçamento antes" abre a tela de orçamento com tudo preenchido.
 - **Pular tudo:** sem nenhuma resposta, volta à tela de onde veio sem mudar nada. Com respostas, aplica o que tem e segue para o próximo passo que faltar (cômodos → orçamento).
-- **Refazer:** recomeça com as respostas anteriores marcadas (salvas no navegador). O resultado substitui a lista, com "Desfazer" no aviso.
+- **Refazer:** recomeça com as respostas anteriores marcadas (as da lista aberta; sem elas, as salvas no navegador). O resultado substitui a lista, com "Desfazer" no aviso.
+- **Suas respostas (na lista):** painel recolhido logo abaixo de "Filtros" ("✨ Suas respostas · 11 de 15"). Mostra as perguntas que valem para a casa (as que dependem de um cômodo só aparecem se ele existir), cada uma com a resposta atual. Tocar numa pergunta abre as respostas ali mesmo, em pílulas; escolher outra refaz a lista na hora, com aviso ("Reparos: Eu mesmo, faço de tudo. 4 itens mudaram") e "Desfazer". Pergunta de múltipla escolha tem "Aplicar"; qualquer uma tem "Tirar resposta". No fim, "Refazer todas as perguntas" abre o assistente.
+  - A troca aplica **só a diferença** entre as respostas antigas e as novas (`reapplyAnswers`, `src/engine/assistant.ts`): o que a pessoa mexeu à mão (travas, recusas, variantes, itens adicionados) continua. Cômodos mudam só se a resposta mexer neles (ex.: "Trabalha em casa? Sim" acrescenta o escritório). Trocar o estilo de gasto troca o orçamento pelo sugerido; trocar a variante de um item solta a trava dele.
+  - As respostas vão no link da lista (campo `a` em `share.ts`), então quem abre um link compartilhado vê e muda as mesmas respostas.
 
 ## 4. Perguntas
 

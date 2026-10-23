@@ -70,6 +70,37 @@ test('monte pra mim: as respostas viram a lista', async ({ page }) => {
   await expect(variant(page, 'Fogão ou cooktop', 'Cooktop de indução')).toBeChecked()
 })
 
+test('suas respostas: mudar uma resposta na lista refaz só o que ela afeta', async ({ page }) => {
+  await answerAll(page)
+  await tap(page, 'Ver minha lista →')
+  await expect(card(page, 'Furadeira')).toHaveCount(0)
+  // ajuste à mão que tem de continuar
+  await card(page, 'Sofá')
+    .getByRole('button', { name: /Recusar/ })
+    .click()
+
+  const panel = page.locator('details.answers-panel')
+  await expect(panel).not.toHaveAttribute('open', '')
+  await panel.locator('summary').click()
+  await expect(panel.locator('summary')).toContainText(/Suas respostas · \d+ de \d+/)
+  const repairs = panel.getByRole('button', { name: /Quem faz os reparos/ })
+  await expect(repairs).toContainText('Chamo alguém')
+  await repairs.click()
+  await panel.getByRole('radio', { name: /faço de tudo/ }).click()
+
+  await expect(page.getByText(/Reparos: Eu mesmo, faço de tudo\. \d+ itens? mud/)).toBeVisible()
+  await expect(card(page, 'Furadeira')).toHaveCount(1)
+  await expect(card(page, 'Sofá')).toHaveCount(0)
+  await expect(repairs).toContainText('faço de tudo')
+
+  // vai no link: recarregar mantém a resposta nova
+  await page.reload()
+  await page.locator('details.answers-panel summary').click()
+  await expect(page.getByRole('button', { name: /Quem faz os reparos/ })).toContainText(
+    'faço de tudo',
+  )
+})
+
 test('pular tudo na primeira pergunta deixa o fluxo atual intacto', async ({ page }) => {
   await page.goto('./')
   await page.getByRole('button', { name: 'Começar →' }).click()

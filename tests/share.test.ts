@@ -257,4 +257,22 @@ describe('encodeState / decodeState', () => {
     )
     expect(decoded?.choices.manual).toHaveLength(MAX_MANUAL_ITEMS)
   })
+
+  it('respostas do assistente: ida e volta; formato inválido é descartado', () => {
+    const answers = { limpeza: ['robo'], 'ja-tenho': ['geladeira', 'tv'] }
+    expect(decodeState(encodeState({ ...state, answers }), rooms)?.answers).toEqual(answers)
+    // sem respostas, o campo nem vai no link
+    expect(decodeState(encodeState(state), rooms)).not.toHaveProperty('answers')
+
+    const decoded = decodeState(
+      wire({
+        v: STATE_VERSION,
+        h: { cozinha: 1 },
+        b: 5000,
+        a: { limpeza: ['robo', 7, 'NÃO VALE'], cafe: 'coado', 'x y': ['a'], vazio: [] },
+      }),
+      rooms,
+    )
+    expect(decoded?.answers).toEqual({ limpeza: ['robo'] })
+  })
 })

@@ -13,6 +13,7 @@ import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { matchesSearch } from '../engine/search.ts'
 import { categoryIcon, NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
+import { AnswersPanel } from './AnswersPanel.tsx'
 import { ManualCard } from './ManualCard.tsx'
 import { ManualForm } from './ManualForm.tsx'
 import { ProductCard } from './ProductCard.tsx'
@@ -34,6 +35,8 @@ interface Props {
   onEditBudget: () => void
   onChangeRoom: () => void
   onAssistant: () => void
+  /** Painel "Suas respostas" (perguntas do assistente que valem para a casa). */
+  answers: Omit<Parameters<typeof AnswersPanel>[0], 'onRedo'>
   share: { url: string; text: string; onCopied: (ok: boolean) => void; onExport: () => void }
 }
 
@@ -72,6 +75,7 @@ export function ListScreen({
   onEditBudget,
   onChangeRoom,
   onAssistant,
+  answers,
   share,
 }: Props) {
   const [query, setQuery] = useState('')
@@ -324,6 +328,8 @@ export function ListScreen({
         </summary>
         <Filters value={filters} onChange={onFilters} />
       </details>
+
+      <AnswersPanel {...answers} onRedo={onAssistant} />
 
       {over && (
         <p class="notice notice-warn">

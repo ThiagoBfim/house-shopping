@@ -2,6 +2,7 @@ import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from
 import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
 import { expandHouse, houseItemKeys, itemKey, normalizeSpec, type HouseSpec } from './house.ts'
+import type { Answers } from './assistant.ts'
 import { isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
@@ -12,6 +13,8 @@ export interface ListState {
   /** Chaves "instância:categoria" (ver house.ts). */
   plan: Plan
   choices: Choices
+  /** Respostas do "Monte pra mim" que montaram a lista (painel "Suas respostas"). */
+  answers?: Answers
 }
 
 /**
@@ -46,6 +49,8 @@ interface Wire {
   e?: Record<string, number>
   /** Itens adicionados pelo usuário: [cômodo, nome, preço, link, quantidade (ausente = 1)]. */
   m?: WireManual[]
+  /** Respostas do assistente: pergunta → ids das respostas. */
+  a?: Answers
 }
 
 type WireManual = [string, string, number, string, number?]
@@ -71,6 +76,7 @@ export function encodeState(state: ListState): string {
       qty === 1 ? [instanceId, name, price, url] : [instanceId, name, price, url, qty],
     )
   }
+  if (state.answers && Object.keys(state.answers).length) wire.a = state.answers
   return compressToEncodedURIComponent(JSON.stringify(wire))
 }
 
@@ -147,7 +153,26 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
       >,
       manual: manualItems(wire.m, house, rooms),
     },
+    ...(answers(wire.a) && { answers: answers(wire.a) }),
   }
+}
+
+const ID = /^[a-z0-9-]{1,40}$/
+
+/** Respostas com formato válido (ids curtos); pergunta ou resposta que não existe é ignorada depois. */
+function answers(raw: unknown): Answers | undefined {
+  if (!isRecord(raw)) return undefined
+  const valid = Object.entries(raw)
+    .filter(([question]) => ID.test(question))
+    .map(([question, ids]) => [
+      question,
+      Array.isArray(ids)
+        ? ids.filter((id): id is string => typeof id === 'string' && ID.test(id))
+        : [],
+    ])
+    .filter(([, ids]) => ids.length)
+    .slice(0, 40)
+  return valid.length ? (Object.fromEntries(valid) as Answers) : undefined
 }
 
 /** Itens adicionados válidos e de cômodos que estão na casa; ids regerados pela posição. */

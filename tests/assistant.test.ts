@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { assistant, products, rooms } from '../src/data/catalog-data.ts'
 import type { Assistant } from '../src/data/schema.ts'
-import { applyAnswers, visibleQuestions, type Answers } from '../src/engine/assistant.ts'
+import {
+  applyAnswers,
+  reapplyAnswers,
+  visibleQuestions,
+  type Answers,
+} from '../src/engine/assistant.ts'
 import { buildList } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { applyPreferences } from '../src/engine/preferences.ts'
@@ -165,6 +170,68 @@ describe('assistente: respostas viram lista', () => {
       'utilidades:furadeira': 4,
       'utilidades:kit-ferramentas': 5,
     })
+  })
+})
+
+describe('assistente: trocar uma resposta na lista (reapplyAnswers)', () => {
+  const before: Answers = { moradores: ['casal'], limpeza: ['vertical'], reparos: ['basico'] }
+  const start = applyAnswers(assistant, before, rooms)
+  // ajustes à mão depois do assistente
+  const mine = {
+    ...start.choices,
+    excluded: { ...start.choices.excluded, 'cozinha:freezer': 'refused' as const },
+    locked: { 'sala:sofa': 3 as const },
+  }
+  const current = { house: start.house, choices: mine }
+
+  it('troca só o efeito da pergunta e mantém os ajustes à mão', () => {
+    const after = { ...before, limpeza: ['robo'] }
+    const r = reapplyAnswers(assistant, rooms, before, after, current)
+    expect(r.house).toEqual(start.house)
+    expect(r.choices.excluded).toMatchObject({
+      'cozinha:freezer': 'refused',
+      'utilidades:furadeira': 'refused',
+    })
+    // o robô deixou de ser recusado e subiu
+    expect(r.choices.excluded['utilidades:robo-aspirador']).toBeUndefined()
+    expect(r.choices.needs['utilidades:robo-aspirador']).toBe(4)
+    expect(r.choices.needs['utilidades:aspirador']).toBe(2)
+    expect(r.choices.locked).toEqual({ 'sala:sofa': 3 })
+    expect(r.preset).toBeUndefined()
+  })
+
+  it('tirar uma resposta desfaz o efeito dela', () => {
+    const after = { ...before }
+    delete after.reparos
+    const r = reapplyAnswers(assistant, rooms, before, after, current)
+    expect(r.choices.excluded['utilidades:furadeira']).toBeUndefined()
+    expect(r.choices.excluded['cozinha:freezer']).toBe('refused')
+  })
+
+  it('casa: home office acrescenta o escritório sem apagar os cômodos escolhidos à mão', () => {
+    const picked = { house: { cozinha: 1, sala: 1, utilidades: 1 }, choices: mine }
+    const r = reapplyAnswers(assistant, rooms, {}, { 'home-office': ['sim'] }, picked)
+    expect(r.house).toEqual({ cozinha: 1, sala: 1, utilidades: 1, escritorio: 1 })
+  })
+
+  it('efeito vale na casa atual mesmo sem a pergunta da casa respondida', () => {
+    const picked = { house: { utilidades: 1 }, choices: mine }
+    const r = reapplyAnswers(assistant, rooms, {}, { reparos: ['chamo-alguem'] }, picked)
+    expect(r.choices.excluded['utilidades:kit-ferramentas']).toBe('refused')
+  })
+
+  it('estilo novo devolve o orçamento sugerido; variante trocada solta a trava', () => {
+    const locked = { ...mine, locked: { 'cozinha:fogao': 2 as const } }
+    const r = reapplyAnswers(
+      assistant,
+      rooms,
+      before,
+      { ...before, estilo: ['premium'], fogao: ['cooktop-gas'] },
+      { house: start.house, choices: locked },
+    )
+    expect(r.preset).toBe('premium')
+    expect(r.choices.variants['cozinha:fogao']).toBe('cooktop-gas')
+    expect(r.choices.locked['cozinha:fogao']).toBeUndefined()
   })
 })
 

@@ -44,6 +44,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [19](drop-19-exportar-excel.md)                            | Exportar a lista em Excel             | ✅ Concluído                    | 2026-10-22 20:12 | 2026-10-22 20:16 | 4min    |
 | [20](drop-20-itens-manuais.md)                             | Adicionar itens manualmente           | ✅ Concluído                    | 2026-10-23 13:55 | 2026-10-23 14:01 | 6min    |
 | [21](drop-21-limpeza-reparos-e-itens-faltando.md)          | Limpeza, reparos e itens que faltavam | ✅ Concluído                    | 2026-10-23 17:44 | 2026-10-23 17:52 | 8min    |
+| [22](drop-22-suas-respostas-na-lista.md)                   | Suas respostas na lista               | ✅ Concluído                    | 2026-10-23 18:02 | 2026-10-23 18:20 | 18min   |
 
 ### 2ª wave — publicação e automação
 

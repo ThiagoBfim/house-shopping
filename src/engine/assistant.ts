@@ -62,15 +62,19 @@ function walk(questions: Question[], answers: Answers) {
 export const visibleQuestions = (assistant: Assistant, answers: Answers): Question[] =>
   walk(assistant.questions, answers).visible
 
-/** Transforma as respostas em casa, orçamento sugerido e escolhas (o estado normal da lista). */
+/**
+ * Transforma as respostas em casa, orçamento sugerido e escolhas (o estado normal da lista).
+ * `target`: casa sobre a qual os efeitos valem (padrão: a casa das respostas).
+ */
 export function applyAnswers(
   assistant: Assistant,
   answers: Answers,
   rooms: Rooms,
+  target?: HouseSpec,
 ): AssistantResult {
   const { house: rawHouse, visible, effects } = walk(assistant.questions, answers)
   const house = normalizeSpec(rawHouse, rooms)
-  const keys = [...houseItemKeys(rooms, house)]
+  const keys = [...houseItemKeys(rooms, target ?? house)]
   const keysOf = (category: string) => keys.filter((key) => splitItemKey(key).category === category)
 
   const choices = emptyChoices()
@@ -102,4 +106,66 @@ export function applyAnswers(
     }))
 
   return { house, preset, choices, summary }
+}
+
+export interface Reapplied {
+  house: HouseSpec
+  choices: Choices
+  /** Orçamento sugerido novo, quando a resposta de "estilo" mudou. */
+  preset?: PresetId
+}
+
+/**
+ * Troca respostas numa lista que já existe (painel "Suas respostas"): aplica só a diferença
+ * entre as respostas antigas e as novas, mantendo o que a pessoa ajustou à mão (travas,
+ * recusas, variantes e necessidades que não vieram do assistente, itens adicionados).
+ */
+export function reapplyAnswers(
+  assistant: Assistant,
+  rooms: Rooms,
+  before: Answers,
+  after: Answers,
+  current: { house: HouseSpec; choices: Choices },
+): Reapplied {
+  const oldHouse = applyAnswers(assistant, before, rooms).house
+  const newHouse = applyAnswers(assistant, after, rooms).house
+  const merged: HouseSpec = { ...current.house }
+  for (const roomId of new Set([...Object.keys(oldHouse), ...Object.keys(newHouse)])) {
+    if (oldHouse[roomId] === newHouse[roomId]) continue
+    if (newHouse[roomId]) merged[roomId] = newHouse[roomId]
+    else delete merged[roomId]
+  }
+  // Sem nenhum cômodo, fica a casa atual (ex.: tirou a resposta de "Quem vai morar").
+  const house = normalizeSpec(merged, rooms)
+  const finalHouse = Object.keys(house).length ? house : current.house
+
+  const old = applyAnswers(assistant, before, rooms, finalHouse)
+  const next = applyAnswers(assistant, after, rooms, finalHouse)
+  const swap = <T>(mine: Record<string, T>, from: Record<string, T>, to: Record<string, T>) => {
+    const result = { ...mine }
+    for (const [key, value] of Object.entries(from)) if (result[key] === value) delete result[key]
+    return Object.assign(result, to)
+  }
+  const { choices } = current
+  const variants = swap(choices.variants, old.choices.variants, next.choices.variants)
+  const locked = { ...choices.locked }
+  for (const key of Object.keys(locked)) {
+    if (variants[key] !== choices.variants[key]) delete locked[key]
+  }
+  const pick = <K extends 'utensils' | 'helpers'>(field: K) =>
+    old.choices[field] !== next.choices[field] ? next.choices[field] : choices[field]
+
+  return {
+    house: finalHouse,
+    choices: {
+      ...choices,
+      locked,
+      excluded: swap(choices.excluded, old.choices.excluded, next.choices.excluded),
+      variants,
+      needs: swap(choices.needs, old.choices.needs, next.choices.needs),
+      utensils: pick('utensils'),
+      helpers: pick('helpers'),
+    },
+    preset: next.preset !== old.preset ? next.preset : undefined,
+  }
 }
