@@ -8,8 +8,10 @@ import {
   lockAt,
   restore,
   setVariant,
+  summarizeChanges,
   unlock,
 } from '../src/engine/choices.ts'
+import type { Tier } from '../src/data/schema.ts'
 
 describe('escolhas', () => {
   it('exclude marca o motivo e remove a trava do item', () => {
@@ -83,5 +85,35 @@ describe('displayedTiers', () => {
       ],
     } as unknown as ListView
     expect(displayedTiers(view)).toEqual({ a: 2, b: 4 })
+  })
+})
+
+describe('summarizeChanges', () => {
+  const entry = (category: string, tier: Tier, subtotal: number) =>
+    ({
+      item: { category, need: 3, qty: 1 },
+      option: { tier },
+      subtotal,
+    }) as ListView['entries'][number]
+  const view = (entries: ListView['entries']) =>
+    ({ entries, total: entries.reduce((s, e) => s + e.subtotal, 0) }) as ListView
+
+  it('conta itens que entraram/saíram e quantos ficaram mais baratos ou caros', () => {
+    const before = view([entry('sofa', 3, 3000), entry('tv', 2, 2000), entry('rack', 1, 500)])
+    const after = view([
+      entry('sofa', 2, 1800),
+      entry('tv', 2, 2000),
+      entry('pratos', 1, 129),
+      entry('copos', 1, 59),
+    ])
+    expect(summarizeChanges(before, after)).toEqual({
+      added: 2,
+      addedCost: 188,
+      removed: 1,
+      removedCost: 500,
+      cheaper: 1,
+      pricier: 0,
+      totalDelta: 3988 - 5500,
+    })
   })
 })

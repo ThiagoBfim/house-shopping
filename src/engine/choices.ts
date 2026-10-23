@@ -37,6 +37,36 @@ export function displayedTiers(view: ListView): Plan {
 
 export type Change = 'added' | 'removed' | 'up' | 'down'
 
+/** Resumo de uma mudança na lista (ex.: ligar utensílios), em itens e reais. */
+export interface ChangeSummary {
+  added: number
+  addedCost: number
+  removed: number
+  removedCost: number
+  /** Itens que ficaram num tier mais barato / mais caro. */
+  cheaper: number
+  pricier: number
+  totalDelta: number
+}
+
+export function summarizeChanges(before: ListView, after: ListView): ChangeSummary {
+  const diff = diffPlans(displayedTiers(before), displayedTiers(after))
+  const cost = (view: ListView, change: Change) =>
+    view.entries
+      .filter((e) => diff[e.item.category] === change)
+      .reduce((sum, e) => sum + e.subtotal, 0)
+  const count = (change: Change) => Object.values(diff).filter((c) => c === change).length
+  return {
+    added: count('added'),
+    addedCost: cost(after, 'added'),
+    removed: count('removed'),
+    removedCost: cost(before, 'removed'),
+    cheaper: count('down'),
+    pricier: count('up'),
+    totalDelta: after.total - before.total,
+  }
+}
+
 /** O que mudou entre duas listas (usado para destacar o resultado do reload). */
 export function diffPlans(before: Plan, after: Plan): Record<string, Change> {
   const changes: Record<string, Change> = {}

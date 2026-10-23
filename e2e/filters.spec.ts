@@ -68,7 +68,8 @@ test('mudar filtro na lista recalcula e pode ser desfeito', async ({ page }) => 
 
   await page.locator('.filters-panel summary').click()
   await page.getByRole('switch', { name: /Incluir utensílios/ }).uncheck()
-  await expect(page.getByText(/Filtros aplicados/)).toBeVisible()
+  // o aviso diz quantos utensílios saíram e quanto valiam
+  await expect(page.getByText(/Filtros aplicados: saíram \d+ itens \(R\$/)).toBeVisible()
   expect(await cardNames(page)).not.toContain('Pratos (aparelho de jantar)')
 
   await page.getByRole('button', { name: 'Desfazer' }).click()

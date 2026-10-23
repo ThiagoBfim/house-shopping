@@ -9,7 +9,13 @@ import {
   type Plan,
   type PresetId,
 } from '../engine/budget.ts'
-import { diffPlans, displayedTiers, type Change } from '../engine/choices.ts'
+import {
+  diffPlans,
+  displayedTiers,
+  summarizeChanges,
+  type Change,
+  type ChangeSummary,
+} from '../engine/choices.ts'
 import { expandHouse, type HouseSpec } from '../engine/house.ts'
 import { keepManualIn } from '../engine/manual.ts'
 import { applyPreferences } from '../engine/preferences.ts'
@@ -293,8 +299,18 @@ export function App() {
 
     const applyFilters = (filters: FilterValues) => {
       const previous = { choices, plan }
+      const nextChoices = { ...choices, ...filters }
+      const nextView = describeList(
+        room,
+        products,
+        budget,
+        planList(room, products, budget, nextChoices),
+        nextChoices,
+      )
+      const summary = summarizeChanges(view, nextView)
+      replan(nextChoices)
       setToast({
-        message: `Filtros aplicados: ${replan({ ...choices, ...filters })}.`,
+        message: `Filtros aplicados: ${filterChangeText(summary)}.`,
         action: {
           label: 'Desfazer',
           run: () => {
@@ -358,4 +374,27 @@ export function App() {
       </>
     )
   }
+}
+
+const items = (n: number) => `${n} ${n === 1 ? 'item' : 'itens'}`
+
+/**
+ * Ex.: "+40 itens (R$ 3.110); para caber no orçamento, saíram 4 itens (R$ 3.007) e 2 itens
+ * ficaram mais baratos". Explica por que o total quase não muda: o orçamento é o mesmo.
+ */
+function filterChangeText(s: ChangeSummary): string {
+  const parts: string[] = []
+  if (s.added) parts.push(`+${items(s.added)} (${formatBRLWhole(s.addedCost)})`)
+  const out = s.removed ? `saíram ${items(s.removed)} (${formatBRLWhole(s.removedCost)})` : ''
+  const cheaper = s.cheaper ? `${items(s.cheaper)} ficaram mais baratos` : ''
+  const fit = [out, cheaper].filter(Boolean).join(' e ')
+  if (fit) parts.push(s.added ? `para caber no orçamento, ${fit}` : fit)
+  if (s.pricier) {
+    parts.push(
+      s.removed
+        ? `com o que sobrou, ${items(s.pricier)} melhoraram`
+        : `${items(s.pricier)} melhoraram`,
+    )
+  }
+  return parts.length ? parts.join('; ') : 'nada mudou'
 }
