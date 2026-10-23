@@ -93,8 +93,8 @@ Não edite o catálogo nem a planilha sem o usuário pedir.
 ## Armadilhas
 
 - A página social às vezes mostra "MAIS VENDIDO" ou uma linha de cupom ("Compra mínima R$ 400") antes do título: o snippet pula essas linhas.
-- Link que cai em `/social/master_sold/lists` ("Minhas listas") sem `matt_tool` perdeu o produto: regenere.
-- "Produto diferente" com um `MLBU…` do link original entre os ids é o mesmo produto em outra variante ou anúncio (ex.: 110 V × 220 V). O link funciona, mas regenerar para o anúncio do catálogo mantém o `sync:ml` certo.
+- Link que cai em `/social/master_sold/lists` ("Minhas listas") sem `matt_tool` perdeu o produto: em geral o anúncio de catálogo ficou sem vendedor ativo (sem preço e sem barra de afiliado). Regenere com outro anúncio do mesmo modelo, apagando antes a oferta antiga (`offers`) da opção, porque o `ml:links import` mantém os ids de uma oferta existente.
+- "Produto diferente" com um `MLBU…` do link original entre os ids é o mesmo produto em outra variante ou anúncio (ex.: 110 V × 220 V). Confirme abrindo `https://www.mercadolivre.com.br/up/<MLBU>`: se o `item_id` da página for o `externalId` do catálogo, o anúncio original continua ativo e o link está ok (falso alarme). Só regenere se o anúncio original sumiu.
 - Leva ~1 min por lote de 5 (140 links ≈ 30 min).
 - O preço na página social pode ser o preço cheio, diferente do catálogo: não use para validar. Preço se confere com `npm run sync:ml`.
 - Anúncios `/up/MLBU…` sem produto de catálogo têm só `externalId`: a comparação usa esse id.
