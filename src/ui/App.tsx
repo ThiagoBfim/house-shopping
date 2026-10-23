@@ -11,6 +11,7 @@ import {
 } from '../engine/budget.ts'
 import { diffPlans, displayedTiers, type Change } from '../engine/choices.ts'
 import { expandHouse, type HouseSpec } from '../engine/house.ts'
+import { keepManualIn } from '../engine/manual.ts'
 import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
 import type { ListState } from '../engine/share.ts'
@@ -140,7 +141,11 @@ export function App() {
         saveAnswers(answers)
         const previous = listState(session) && { ...session, assisting: false }
         const result = applyAnswers(assistant, answers, rooms)
-        const choices = { ...result.choices }
+        // Itens adicionados pelo usuário seguem nos cômodos que continuam na casa.
+        const choices = keepManualIn(
+          { ...result.choices, manual: session.choices.manual },
+          expandHouse(rooms, {}, result.house).instances.map((instance) => instance.id),
+        )
         if (!Object.keys(result.house).length) {
           // Sem as perguntas da casa: segue o fluxo normal a partir da escolha de cômodos.
           setSession({ ...newSession(), choices, preset: result.preset })
@@ -205,8 +210,21 @@ export function App() {
           initial={session.house}
           onAssistant={() => setSession({ ...session, assisting: true })}
           onConfirm={(spec) => {
-            // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora.
-            setSession({ ...session, house: spec, picking: false, editingBudget: true })
+            // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora. Os
+            // adicionados pelo usuário saem junto com o cômodo (com "Desfazer").
+            const choices = keepManualIn(
+              session.choices,
+              expandHouse(rooms, {}, spec).instances.map((instance) => instance.id),
+            )
+            const lost = session.choices.manual.length - choices.manual.length
+            const previous = session
+            setSession({ ...session, house: spec, choices, picking: false, editingBudget: true })
+            if (lost) {
+              setToast({
+                message: `${lost === 1 ? '1 item adicionado por você saiu' : `${lost} itens adicionados por você saíram`} junto com o cômodo.`,
+                action: { label: 'Desfazer', run: () => setSession(previous) },
+              })
+            }
           }}
         />
       )

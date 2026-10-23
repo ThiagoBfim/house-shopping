@@ -1,0 +1,175 @@
+import { describe, expect, it } from 'vitest'
+import { emptyChoices } from '../src/engine/budget.ts'
+import {
+  addManual,
+  isValidManual,
+  isWebUrl,
+  keepManualIn,
+  newManualId,
+  parseManualInput,
+  parsePrice,
+  removeManual,
+  storeFromUrl,
+  updateManual,
+  type ManualItem,
+} from '../src/engine/manual.ts'
+
+const item = (partial: Partial<ManualItem> = {}): ManualItem => ({
+  id: 'a1',
+  instanceId: 'cozinha',
+  name: 'Cadeira',
+  price: 399.9,
+  qty: 4,
+  url: 'https://www.amazon.com.br/dp/B0TESTE',
+  ...partial,
+})
+
+describe('parsePrice', () => {
+  it.each([
+    ['399,90', 399.9],
+    ['399,9', 399.9],
+    ['1.599,90', 1599.9],
+    ['R$ 1.599', 1599],
+    ['r$1599', 1599],
+    ['399.90', 399.9],
+    ['12.000', 12000],
+    ['1.234.567', 1234567],
+    ['0,005', 0.01],
+    [' 25 ', 25],
+  ])('%s → %s', (text, value) => {
+    expect(parsePrice(text)).toBe(value)
+  })
+
+  it.each(['', 'abc', '12a', '1,2,3', '-5'])('inválido: "%s"', (text) => {
+    expect(parsePrice(text)).toBeUndefined()
+  })
+})
+
+describe('isWebUrl', () => {
+  it('aceita http(s) com domínio', () => {
+    expect(isWebUrl('https://loja.com/p')).toBe(true)
+    expect(isWebUrl('http://loja.com.br')).toBe(true)
+  })
+
+  it('recusa outros protocolos, sem domínio e texto solto', () => {
+    expect(isWebUrl('javascript:alert(1)')).toBe(false)
+    expect(isWebUrl('ftp://loja.com')).toBe(false)
+    expect(isWebUrl('https://localhost')).toBe(false)
+    expect(isWebUrl('loja.com')).toBe(false)
+  })
+})
+
+describe('parseManualInput', () => {
+  const input = {
+    name: '  Cadeira   Tok&Stok ',
+    price: '399,90',
+    qty: '4',
+    url: ' https://a.com/p ',
+  }
+
+  it('normaliza nome, preço, quantidade e link', () => {
+    expect(parseManualInput(input)).toEqual({
+      ok: true,
+      value: { name: 'Cadeira Tok&Stok', price: 399.9, qty: 4, url: 'https://a.com/p' },
+    })
+  })
+
+  it('quantidade vazia = 1', () => {
+    const parsed = parseManualInput({ ...input, qty: ' ' })
+    expect(parsed.ok && parsed.value.qty).toBe(1)
+  })
+
+  it('campos vazios: uma mensagem por campo', () => {
+    expect(parseManualInput({ name: '', price: '', qty: '1', url: '' })).toEqual({
+      ok: false,
+      errors: {
+        name: 'Informe o nome do produto.',
+        price: 'Informe o preço (ex.: 399,90).',
+        url: 'Cole o link do produto.',
+      },
+    })
+  })
+
+  it('valores fora dos limites', () => {
+    const parsed = parseManualInput({
+      name: 'x'.repeat(81),
+      price: '2.000.000',
+      qty: '100',
+      url: 'javascript:alert(1)',
+    })
+    expect(parsed.ok).toBe(false)
+    expect(!parsed.ok && Object.keys(parsed.errors)).toEqual(['name', 'price', 'qty', 'url'])
+  })
+
+  it.each(['0', '1,5', '-1', 'dois'])('quantidade inválida: %s', (qty) => {
+    const parsed = parseManualInput({ ...input, qty })
+    expect(!parsed.ok && parsed.errors.qty).toBe('Quantidade de 1 a 99.')
+  })
+
+  it('preço zero é recusado', () => {
+    const parsed = parseManualInput({ ...input, price: '0,00' })
+    expect(!parsed.ok && parsed.errors.price).toBeTruthy()
+  })
+})
+
+describe('isValidManual', () => {
+  it('confere os mesmos limites do formulário', () => {
+    expect(isValidManual(item())).toBe(true)
+    expect(isValidManual(item({ qty: 0 }))).toBe(false)
+    expect(isValidManual(item({ price: -1 }))).toBe(false)
+    expect(isValidManual(item({ name: '' }))).toBe(false)
+    expect(isValidManual(item({ url: 'data:text/html,oi' }))).toBe(false)
+  })
+})
+
+describe('storeFromUrl', () => {
+  it.each([
+    ['https://produto.mercadolivre.com.br/MLB-123', 'mercadolivre'],
+    ['https://www.mercadolivre.com.br/p/MLB123', 'mercadolivre'],
+    ['https://meli.la/abc', 'mercadolivre'],
+    ['https://www.amazon.com.br/dp/B0', 'amazon'],
+    ['https://amzn.to/xyz', 'amazon'],
+    ['https://www.tokstok.com.br/cadeira', 'other'],
+    ['https://notamazon.com.br/x', 'other'],
+    ['não é link', 'other'],
+  ])('%s → %s', (url, store) => {
+    expect(storeFromUrl(url)).toBe(store)
+  })
+})
+
+describe('adicionar, editar e remover', () => {
+  it('não altera as escolhas originais', () => {
+    const base = emptyChoices()
+    const added = addManual(base, item())
+    expect(base.manual).toEqual([])
+    expect(added.manual).toEqual([item()])
+
+    const updated = updateManual(added, 'a1', {
+      name: 'Banco',
+      price: 100,
+      qty: 2,
+      url: 'https://b.com',
+    })
+    expect(added.manual[0].name).toBe('Cadeira')
+    expect(updated.manual).toEqual([
+      item({ name: 'Banco', price: 100, qty: 2, url: 'https://b.com' }),
+    ])
+
+    expect(removeManual(updated, 'a1').manual).toEqual([])
+    expect(removeManual(updated, 'zz').manual).toHaveLength(1)
+  })
+
+  it('keepManualIn: só os de cômodos que continuam na casa', () => {
+    const choices = addManual(
+      addManual(emptyChoices(), item()),
+      item({ id: 'b2', instanceId: 'quarto-2' }),
+    )
+    expect(keepManualIn(choices, ['cozinha', 'quarto-1']).manual.map((m) => m.id)).toEqual(['a1'])
+  })
+
+  it('newManualId: 8 caracteres, diferentes a cada chamada', () => {
+    const a = newManualId()
+    expect(a).toHaveLength(8)
+    expect(newManualId()).not.toBe(a)
+  })
+})

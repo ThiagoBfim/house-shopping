@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { products, rooms } from '../src/data/catalog-data.ts'
 import { describeList, planList, type Choices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
+import { MAX_MANUAL_ITEMS } from '../src/engine/manual.ts'
 import { decodeState, encodeState, STATE_VERSION, type ListState } from '../src/engine/share.ts'
 
 const house = { cozinha: 1, quarto: 2, banheiro: 1 }
@@ -16,6 +17,24 @@ const choices: Choices = {
   helpers: true,
   variants: { 'quarto-2:cama-box': 'queen' },
   needs: { 'cozinha:air-fryer': 1 },
+  manual: [
+    {
+      id: 'm1',
+      instanceId: 'quarto-2',
+      name: 'Cadeira Tok&Stok',
+      price: 399.9,
+      qty: 4,
+      url: 'https://www.amazon.com.br/dp/B0TESTE',
+    },
+    {
+      id: 'm2',
+      instanceId: 'cozinha',
+      name: 'Fruteira',
+      price: 59,
+      qty: 1,
+      url: 'https://x.com/a',
+    },
+  ],
 }
 const state: ListState = {
   house,
@@ -99,6 +118,7 @@ describe('encodeState / decodeState', () => {
         helpers: false,
         variants: {},
         needs: {},
+        manual: [],
       },
     })
   })
@@ -129,6 +149,7 @@ describe('encodeState / decodeState', () => {
         helpers: false,
         variants: {},
         needs: {},
+        manual: [],
       },
     })
   })
@@ -169,6 +190,7 @@ describe('encodeState / decodeState', () => {
         helpers: false,
         variants: {},
         needs: {},
+        manual: [],
       },
     }
     const wireOf = (s: ListState) =>
@@ -178,7 +200,61 @@ describe('encodeState / decodeState', () => {
     expect(wireOf(plain)).not.toHaveProperty('f')
     expect(wireOf(plain)).not.toHaveProperty('t')
     expect(wireOf(plain)).not.toHaveProperty('e')
+    expect(wireOf(plain)).not.toHaveProperty('m')
     expect(wireOf(state)).toMatchObject({ n: 2, u: 0, f: 1, h: house })
     expect(wireOf(state)).not.toHaveProperty('r')
+  })
+
+  it('itens adicionados: quantidade 1 não vai no link', () => {
+    const wireOf = (s: ListState) =>
+      JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
+    expect(wireOf(state).m).toEqual([
+      ['quarto-2', 'Cadeira Tok&Stok', 399.9, 'https://www.amazon.com.br/dp/B0TESTE', 4],
+      ['cozinha', 'Fruteira', 59, 'https://x.com/a'],
+    ])
+  })
+
+  it('itens adicionados: descarta inválidos e de cômodos fora da casa; ids pela posição', () => {
+    const ok = 'https://loja.com/p'
+    const decoded = decodeState(
+      wire({
+        v: STATE_VERSION,
+        h: { cozinha: 1, quarto: 2 },
+        b: 5000,
+        m: [
+          ['cozinha', ' Mesa ', 300, ok],
+          ['banheiro', 'Toalha', 50, ok],
+          ['quarto-3', 'Abajur', 80, ok],
+          ['quarto-1', 'Abajur', 80, ok, 2],
+          ['cozinha', '', 10, ok],
+          ['cozinha', 'Grátis', 0, ok],
+          ['cozinha', 'Caro', 2_000_000, ok],
+          ['cozinha', 'Script', 10, 'javascript:alert(1)'],
+          ['cozinha', 'Muitos', 10, ok, 100],
+          ['cozinha', 'Meio', 10, ok, 1.5],
+          ['cozinha', 10, 'Trocado', ok],
+          'lixo',
+        ],
+      }),
+      rooms,
+    )
+    expect(decoded?.choices.manual).toEqual([
+      { id: 'm1', instanceId: 'cozinha', name: 'Mesa', price: 300, qty: 1, url: ok },
+      { id: 'm2', instanceId: 'quarto-1', name: 'Abajur', price: 80, qty: 2, url: ok },
+    ])
+    const notArray = decodeState(
+      wire({ v: STATE_VERSION, h: { cozinha: 1 }, b: 5000, m: { x: 1 } }),
+      rooms,
+    )
+    expect(notArray?.choices.manual).toEqual([])
+  })
+
+  it('itens adicionados: no máximo MAX_MANUAL_ITEMS', () => {
+    const many = Array.from({ length: 40 }, (_, i) => ['cozinha', `Item ${i}`, 10, 'https://a.com'])
+    const decoded = decodeState(
+      wire({ v: STATE_VERSION, h: { cozinha: 1 }, b: 5000, m: many }),
+      rooms,
+    )
+    expect(decoded?.choices.manual).toHaveLength(MAX_MANUAL_ITEMS)
   })
 })

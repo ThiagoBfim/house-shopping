@@ -1812,3 +1812,215 @@ h3 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Itens adicionados pelo usuário */
+
+.manual-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 14px;
+  padding: 14px;
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.manual-card.is-editing {
+  display: block;
+  border-style: solid;
+}
+
+.product-list + .manual-card {
+  margin-top: 12px;
+}
+
+.manual-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  font-size: 1.6rem;
+}
+
+.manual-body {
+  min-width: 0;
+}
+
+.manual-body .product-name {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+}
+
+.manual-body .product-price {
+  margin: 0;
+}
+
+.manual-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.manual-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.manual-actions .card-actions {
+  gap: 4px;
+}
+
+.manual-add {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+.manual-add .small-button:disabled {
+  opacity: 0.5;
+}
+
+.manual-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.manual-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.manual-field-name,
+.manual-field-url,
+.manual-form-actions {
+  grid-column: 1 / -1;
+}
+
+.manual-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.manual-field input,
+.manual-money,
+.manual-qty {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 1rem;
+}
+
+.manual-field input {
+  width: 100%;
+  padding: 0 12px;
+}
+
+.manual-field > input:focus,
+.manual-money:focus-within,
+.manual-qty:focus-within {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.manual-field input[aria-invalid='true'],
+.manual-money:has(input[aria-invalid='true']),
+.manual-qty:has(input[aria-invalid='true']) {
+  border-color: var(--warn);
+}
+
+.manual-money,
+.manual-qty {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.manual-money {
+  padding-left: 12px;
+  color: var(--muted);
+}
+
+.manual-money input,
+.manual-qty input {
+  min-height: 42px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.manual-money input {
+  padding-left: 6px;
+}
+
+.manual-qty input {
+  padding: 0;
+  text-align: center;
+}
+
+.manual-qty button {
+  flex-shrink: 0;
+  width: 40px;
+  min-height: 42px;
+  border: none;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.manual-qty button:disabled {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.manual-error {
+  font-size: 0.8rem;
+  color: var(--warn);
+}
+
+.manual-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.manual-save {
+  min-height: 40px;
+  padding-inline: 20px;
+}
+
+@media (min-width: 640px) {
+  .manual-form {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .manual-field-name {
+    grid-column: 1 / 2;
+  }
+
+  .manual-field-url {
+    grid-column: 1 / -1;
+  }
+}

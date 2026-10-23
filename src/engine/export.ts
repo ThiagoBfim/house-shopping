@@ -23,14 +23,19 @@ const STORE_NAMES: Record<Store, string> = {
   other: 'Outra loja',
 }
 
-/** Itens da lista exibida, agrupados por cômodo na ordem da casa. */
+/** Coluna "Item" dos itens adicionados pelo usuário. */
+export const MANUAL_ITEM_LABEL = 'Adicionado por você'
+
+/**
+ * Itens da lista exibida, agrupados por cômodo na ordem da casa; em cada cômodo, os
+ * adicionados pelo usuário vêm depois dos do catálogo.
+ */
 export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[] {
-  const order = (key: string) =>
-    instances.findIndex((instance) => instance.id === splitItemKey(key).instanceId)
-  return [...view.entries]
-    .sort((a, b) => order(a.item.category) - order(b.item.category))
-    .map(({ item, label, option, subtotal }) => ({
-      room: instances[order(item.category)]?.title ?? '',
+  const order = (instanceId: string) =>
+    instances.findIndex((instance) => instance.id === instanceId)
+  const catalogRows = view.entries.map(({ item, label, option, subtotal }) => ({
+    instanceId: splitItemKey(item.category).instanceId,
+    row: {
       item: label,
       product: option.name,
       qty: item.qty,
@@ -38,7 +43,23 @@ export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[]
       total: subtotal,
       store: STORE_NAMES[option.store],
       url: option.url,
-    }))
+    },
+  }))
+  const manualRows = view.manual.map(({ item, store, subtotal }) => ({
+    instanceId: item.instanceId,
+    row: {
+      item: MANUAL_ITEM_LABEL,
+      product: item.name,
+      qty: item.qty,
+      price: item.price,
+      total: subtotal,
+      store: STORE_NAMES[store],
+      url: item.url,
+    },
+  }))
+  return [...catalogRows, ...manualRows]
+    .sort((a, b) => order(a.instanceId) - order(b.instanceId))
+    .map(({ instanceId, row }) => ({ room: instances[order(instanceId)]?.title ?? '', ...row }))
 }
 
 const HEADER = [

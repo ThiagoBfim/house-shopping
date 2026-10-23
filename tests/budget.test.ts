@@ -368,3 +368,34 @@ describe('tierTotal / budgetPresets', () => {
     }
   })
 })
+
+describe('itens adicionados pelo usuário', () => {
+  const cadeira = {
+    id: 'a1',
+    instanceId: 'cozinha',
+    name: 'Cadeira',
+    price: 399.9,
+    qty: 4,
+    url: 'https://www.amazon.com.br/dp/B0',
+  }
+  const withManual = choices({ manual: [cadeira] })
+
+  it('saem do orçamento antes do motor planejar o catálogo', () => {
+    expect(tiersOf(CHEAPEST_TOTAL + 1599.6, withManual)).toEqual(tiersOf(CHEAPEST_TOTAL))
+    expect(tiersOf(CHEAPEST_TOTAL, withManual)).not.toEqual(tiersOf(CHEAPEST_TOTAL))
+  })
+
+  it('entram na lista com preço × quantidade e somam no total', () => {
+    const view = buildList(room, products, CHEAPEST_TOTAL + 1599.6, withManual)
+    expect(view.manual).toEqual([{ item: cadeira, store: 'amazon', subtotal: 1599.6 }])
+    expect(view.total).toBeCloseTo(CHEAPEST_TOTAL + 1599.6, 2)
+    expect(view.remaining).toBe(0)
+  })
+
+  it('entram sempre, mesmo passando do orçamento (só os necessários continuam)', () => {
+    const view = buildList(room, products, 1000, withManual)
+    expect(view.manual).toHaveLength(1)
+    expect(view.entries.map((e) => e.item.category)).toEqual(['geladeira', 'fogao'])
+    expect(view.remaining).toBeCloseTo(1000 - 1599.6 - 2900, 2)
+  })
+})

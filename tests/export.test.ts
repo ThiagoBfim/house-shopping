@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { products, rooms } from '../src/data/catalog-data.ts'
 import { buildList } from '../src/engine/budget.ts'
-import { exportFileName, listRows, listSheet } from '../src/engine/export.ts'
+import { exportFileName, listRows, listSheet, MANUAL_ITEM_LABEL } from '../src/engine/export.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { applyPreferences } from '../src/engine/preferences.ts'
 import { emptyChoices } from '../src/engine/budget.ts'
@@ -56,6 +56,36 @@ describe('exportar a lista', () => {
     expect(listSheet(over, house.instances).rows.at(-1)![4]).toMatchObject({ text: 'Faltam' })
     const empty = { ...view, entries: [], total: 0 }
     expect(listSheet(empty, house.instances).rows.at(-3)![5]).toMatchObject({ formula: '0' })
+  })
+
+  it('itens adicionados entram no cômodo deles, depois dos do catálogo', () => {
+    const manual = {
+      id: 'a1',
+      instanceId: 'quarto-1',
+      name: 'Abajur Tok&Stok',
+      price: 80,
+      qty: 2,
+      url: 'https://www.tokstok.com.br/abajur',
+    }
+    const withManual = buildList(custom.room, custom.products, 60_000, {
+      ...emptyChoices(),
+      manual: [manual],
+    })
+    const all = listRows(withManual, house.instances)
+    expect(all).toHaveLength(withManual.entries.length + 1)
+    const index = all.findIndex((r) => r.item === MANUAL_ITEM_LABEL)
+    expect(all[index]).toEqual({
+      room: 'Quarto 1',
+      item: 'Adicionado por você',
+      product: 'Abajur Tok&Stok',
+      qty: 2,
+      price: 80,
+      total: 160,
+      store: 'Outra loja',
+      url: manual.url,
+    })
+    expect(all[index - 1].room).toBe('Quarto 1')
+    expect(all[index + 1].room).toBe('Quarto 2')
   })
 
   it('nome do arquivo com a data', () => {

@@ -1,7 +1,8 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
 import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
-import { houseItemKeys, itemKey, normalizeSpec, type HouseSpec } from './house.ts'
+import { expandHouse, houseItemKeys, itemKey, normalizeSpec, type HouseSpec } from './house.ts'
+import { isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
 export interface ListState {
@@ -43,7 +44,11 @@ interface Wire {
   t?: Record<string, string>
   /** Necessidade ajustada por item. */
   e?: Record<string, number>
+  /** Itens adicionados pelo usuário: [cômodo, nome, preço, link, quantidade (ausente = 1)]. */
+  m?: WireManual[]
 }
+
+type WireManual = [string, string, number, string, number?]
 
 export function encodeState(state: ListState): string {
   const wire: Wire = {
@@ -61,6 +66,11 @@ export function encodeState(state: ListState): string {
   if (state.choices.helpers) wire.f = 1
   if (Object.keys(state.choices.variants).length) wire.t = state.choices.variants
   if (Object.keys(state.choices.needs).length) wire.e = state.choices.needs
+  if (state.choices.manual.length) {
+    wire.m = state.choices.manual.map(({ instanceId, name, price, url, qty }) =>
+      qty === 1 ? [instanceId, name, price, url] : [instanceId, name, price, url, qty],
+    )
+  }
   return compressToEncodedURIComponent(JSON.stringify(wire))
 }
 
@@ -135,6 +145,25 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
         string,
         Need
       >,
+      manual: manualItems(wire.m, house, rooms),
     },
   }
+}
+
+/** Itens adicionados válidos e de cômodos que estão na casa; ids regerados pela posição. */
+function manualItems(raw: unknown, house: HouseSpec, rooms: Rooms): ManualItem[] {
+  if (!Array.isArray(raw)) return []
+  const instances = new Set(expandHouse(rooms, {}, house).instances.map((i) => i.id))
+  const items: ManualItem[] = []
+  for (const entry of raw) {
+    if (!Array.isArray(entry)) continue
+    const [instanceId, name, price, url, qty = 1] = entry as unknown[]
+    if (typeof instanceId !== 'string' || !instances.has(instanceId)) continue
+    if (typeof name !== 'string' || typeof price !== 'number') continue
+    if (typeof url !== 'string' || typeof qty !== 'number') continue
+    const fields = { name: name.trim(), price, qty, url }
+    if (!isValidManual(fields)) continue
+    items.push({ id: `m${items.length + 1}`, instanceId, ...fields })
+  }
+  return items.slice(0, MAX_MANUAL_ITEMS)
 }

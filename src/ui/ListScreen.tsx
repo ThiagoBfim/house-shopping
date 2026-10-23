@@ -1,11 +1,20 @@
 import { useState } from 'preact/hooks'
-import type { Choices, ListEntry, ListView, Plan } from '../engine/budget.ts'
+import type { Choices, ListEntry, ListView, ManualEntry, Plan } from '../engine/budget.ts'
 import { exclude, lockAt, restore, setVariant, unlock, type Change } from '../engine/choices.ts'
 import { splitItemKey, type RoomInstance } from '../engine/house.ts'
+import {
+  addManual,
+  MAX_MANUAL_ITEMS,
+  newManualId,
+  removeManual,
+  updateManual,
+} from '../engine/manual.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { matchesSearch } from '../engine/search.ts'
 import { categoryIcon, NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
+import { ManualCard } from './ManualCard.tsx'
+import { ManualForm } from './ManualForm.tsx'
 import { ProductCard } from './ProductCard.tsx'
 import { ShareBar } from './ShareBar.tsx'
 
@@ -67,6 +76,10 @@ export function ListScreen({
 }: Props) {
   const [query, setQuery] = useState('')
   const [collapsed, setCollapsed] = useState<string[]>(readCollapsed)
+  /** Cômodo com o formulário de "Adicionar item" aberto. */
+  const [adding, setAdding] = useState<string>()
+  /** Item adicionado pelo usuário sendo editado. */
+  const [editing, setEditing] = useState<string>()
   const updateCollapsed = (ids: string[]) => {
     setCollapsed(ids)
     saveCollapsed(ids)
@@ -102,12 +115,19 @@ export function ListScreen({
       titles.get(splitItemKey(entry.item.category).instanceId) ?? '',
     ]),
   )
+  const manualFound = view.manual.filter(({ item }) =>
+    matchesSearch(query, [item.name, titles.get(item.instanceId) ?? '']),
+  )
   const entriesOf = (instanceId: string) =>
     found.filter((entry) => splitItemKey(entry.item.category).instanceId === instanceId)
+  const manualOf = (instanceId: string) =>
+    manualFound.filter(({ item }) => item.instanceId === instanceId)
   // Na busca, mostra só os cômodos com resultado, todos abertos.
   const shownInstances = searching
-    ? instances.filter((instance) => entriesOf(instance.id).length)
+    ? instances.filter((instance) => entriesOf(instance.id).length || manualOf(instance.id).length)
     : instances
+  const hasItems = view.entries.length > 0 || view.manual.length > 0
+  const manualFull = choices.manual.length >= MAX_MANUAL_ITEMS
   const allCollapsed = instances.every((instance) => collapsed.includes(instance.id))
 
   const renderCard = (entry: ListEntry) => {
@@ -147,6 +167,97 @@ export function ListScreen({
           )
         }
       />
+    )
+  }
+
+  const renderManual = ({ item, ...rest }: ManualEntry) => {
+    const name = grouped ? `${item.name} (${titles.get(item.instanceId)})` : item.name
+    if (editing === item.id) {
+      return (
+        <div key={item.id} class="manual-card is-editing">
+          <ManualForm
+            id={`manual-edit-${item.id}`}
+            initial={item}
+            submitLabel="Salvar"
+            onCancel={() => setEditing(undefined)}
+            onSave={(fields) => {
+              setEditing(undefined)
+              onChoices(updateManual(choices, item.id, fields), `${fields.name} atualizado.`)
+            }}
+          />
+        </div>
+      )
+    }
+    return (
+      <ManualCard
+        key={item.id}
+        entry={{ item, ...rest }}
+        onEdit={() => {
+          setAdding(undefined)
+          setEditing(item.id)
+        }}
+        onRemove={() => onChoices(removeManual(choices, item.id), `${name} removido.`)}
+      />
+    )
+  }
+
+  /** "+ Adicionar item" (ou o formulário aberto) no fim do cômodo. */
+  const renderAdd = (instance: RoomInstance) =>
+    adding === instance.id ? (
+      <div class="manual-card is-editing">
+        <ManualForm
+          id={`manual-add-${instance.id}`}
+          submitLabel="Adicionar"
+          onCancel={() => setAdding(undefined)}
+          onSave={(fields) => {
+            setAdding(undefined)
+            onChoices(
+              addManual(choices, { id: newManualId(), instanceId: instance.id, ...fields }),
+              `${fields.name} adicionado ${grouped ? `em ${instance.title}` : 'à lista'}.`,
+            )
+          }}
+        />
+      </div>
+    ) : (
+      <div class="manual-add">
+        <button
+          type="button"
+          class="small-button"
+          aria-label={`Adicionar item em ${instance.title}`}
+          disabled={manualFull}
+          onClick={() => {
+            setEditing(undefined)
+            setAdding(instance.id)
+          }}
+        >
+          + Adicionar item
+        </button>
+        <span class="muted">
+          {manualFull
+            ? `Limite de ${MAX_MANUAL_ITEMS} itens adicionados por lista.`
+            : 'Algo fora da lista? Cole o link, o nome e o preço.'}
+        </span>
+      </div>
+    )
+
+  /** Itens do cômodo (catálogo + adicionados) e o "Adicionar item". */
+  const renderRoomBody = (instance: RoomInstance) => {
+    const entries = entriesOf(instance.id)
+    const manual = manualOf(instance.id)
+    return (
+      <>
+        {entries.length || manual.length ? (
+          <div class="product-list">
+            {entries.map(renderCard)}
+            {manual.map(renderManual)}
+          </div>
+        ) : searching ? null : grouped ? (
+          <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>
+        ) : (
+          <p class="empty-state">Nenhum item na lista.</p>
+        )}
+        {!searching && renderAdd(instance)}
+      </>
     )
   }
 
@@ -227,7 +338,7 @@ export function ListScreen({
         </p>
       )}
 
-      {view.entries.length > 0 && (
+      {hasItems && (
         <div class="list-tools">
           <label class="search-field">
             <span class="visually-hidden">Buscar produto</span>
@@ -247,8 +358,8 @@ export function ListScreen({
 
       {searching && (
         <p class="search-summary muted" role="status">
-          {found.length
-            ? `${found.length} ${found.length === 1 ? 'item encontrado' : 'itens encontrados'} para “${query.trim()}”.`
+          {found.length + manualFound.length
+            ? `${found.length + manualFound.length} ${found.length + manualFound.length === 1 ? 'item encontrado' : 'itens encontrados'} para “${query.trim()}”.`
             : `Nenhum item da lista com “${query.trim()}”.`}
         </p>
       )}
@@ -282,56 +393,46 @@ export function ListScreen({
         </nav>
       )}
 
-      {!view.entries.length ? (
-        <p class="empty-state">Nenhum item na lista.</p>
-      ) : grouped ? (
-        shownInstances.map((instance) => {
-          const entries = entriesOf(instance.id)
-          const all = view.entries.filter(
-            (entry) => splitItemKey(entry.item.category).instanceId === instance.id,
-          )
-          const subtotal = all.reduce((sum, entry) => sum + entry.subtotal, 0)
-          const open = searching || !collapsed.includes(instance.id)
-          const bodyId = `room-items-${instance.id}`
-          return (
-            <section
-              key={instance.id}
-              id={`room-${instance.id}`}
-              class={`room-group ${open ? '' : 'is-collapsed'}`}
-            >
-              <header class="room-group-header">
-                <h3>
-                  <button
-                    type="button"
-                    class="room-toggle"
-                    aria-expanded={open}
-                    aria-controls={bodyId}
-                    disabled={searching}
-                    onClick={() => toggleRoom(instance.id)}
-                  >
-                    {instance.title}
-                  </button>
-                </h3>
-                <span>
-                  {all.length} {all.length === 1 ? 'item' : 'itens'} ·{' '}
-                  <strong>{formatBRL(subtotal)}</strong>
-                </span>
-              </header>
-              {open && (
-                <div id={bodyId}>
-                  {entries.length ? (
-                    <div class="product-list">{entries.map(renderCard)}</div>
-                  ) : (
-                    <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>
-                  )}
-                </div>
-              )}
-            </section>
-          )
-        })
-      ) : (
-        <div class="product-list">{found.map(renderCard)}</div>
-      )}
+      {grouped
+        ? shownInstances.map((instance) => {
+            const all = [
+              ...view.entries.filter(
+                (entry) => splitItemKey(entry.item.category).instanceId === instance.id,
+              ),
+              ...view.manual.filter(({ item }) => item.instanceId === instance.id),
+            ]
+            const subtotal = all.reduce((sum, entry) => sum + entry.subtotal, 0)
+            const open = searching || !collapsed.includes(instance.id)
+            const bodyId = `room-items-${instance.id}`
+            return (
+              <section
+                key={instance.id}
+                id={`room-${instance.id}`}
+                class={`room-group ${open ? '' : 'is-collapsed'}`}
+              >
+                <header class="room-group-header">
+                  <h3>
+                    <button
+                      type="button"
+                      class="room-toggle"
+                      aria-expanded={open}
+                      aria-controls={bodyId}
+                      disabled={searching}
+                      onClick={() => toggleRoom(instance.id)}
+                    >
+                      {instance.title}
+                    </button>
+                  </h3>
+                  <span>
+                    {all.length} {all.length === 1 ? 'item' : 'itens'} ·{' '}
+                    <strong>{formatBRL(subtotal)}</strong>
+                  </span>
+                </header>
+                {open && <div id={bodyId}>{renderRoomBody(instance)}</div>}
+              </section>
+            )
+          })
+        : instances.map((instance) => <div key={instance.id}>{renderRoomBody(instance)}</div>)}
 
       {view.skipped.length > 0 && (
         <section class="side-section">

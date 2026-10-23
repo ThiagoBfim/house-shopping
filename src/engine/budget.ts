@@ -5,9 +5,11 @@ import type {
   Products,
   Room,
   RoomItem,
+  Store,
   Tier,
   Variant,
 } from '../data/schema.ts'
+import { storeFromUrl, type ManualItem } from './manual.ts'
 import { chosenVariant } from './preferences.ts'
 
 /** Tier escolhido para cada categoria incluída na lista. */
@@ -31,6 +33,8 @@ export interface Choices {
   variants: Record<string, string>
   /** Necessidade ajustada por item (ex.: quem quase não cozinha); ausente = a do catálogo. */
   needs: Record<string, Need>
+  /** Itens adicionados pelo usuário (fora do catálogo); entram sempre, antes do motor. */
+  manual: ManualItem[]
 }
 
 /** Escolhas que funcionam como filtro da lista. */
@@ -69,6 +73,13 @@ export interface ExcludedEntry {
   saved: number
 }
 
+export interface ManualEntry {
+  item: ManualItem
+  store: Store
+  /** Preço × quantidade. */
+  subtotal: number
+}
+
 export type FilterReason = 'need' | 'helper' | 'utensil'
 
 export interface FilteredEntry {
@@ -79,6 +90,8 @@ export interface FilteredEntry {
 
 export interface ListView {
   entries: ListEntry[]
+  /** Itens adicionados pelo usuário, na ordem em que foram adicionados. */
+  manual: ManualEntry[]
   /** Itens que não couberam no orçamento. */
   skipped: SkippedEntry[]
   excluded: ExcludedEntry[]
@@ -100,10 +113,15 @@ export const emptyChoices = (): Choices => ({
   helpers: false,
   variants: {},
   needs: {},
+  manual: [],
 })
 
 // Cálculos em centavos para não acumular erro de ponto flutuante.
 const cents = (reais: number) => Math.round(reais * 100)
+
+/** Total dos itens adicionados pelo usuário, em centavos. */
+const manualCents = (items: ManualItem[]) =>
+  items.reduce((sum, item) => sum + cents(item.price) * item.qty, 0)
 
 /** Ordem de importância: maior necessidade primeiro, depois nome (determinístico). */
 export function byImportance(a: RoomItem, b: RoomItem): number {
@@ -157,7 +175,8 @@ export function neighborOption(
 }
 
 /**
- * Decide o tier de cada item (fora os recusados e os escondidos pelos filtros):
+ * Decide o tier de cada item (fora os recusados e os escondidos pelos filtros). Os itens
+ * adicionados pelo usuário saem do orçamento antes de tudo:
  * 1. travados entram com o tier escolhido;
  * 2. os demais entram no tier mais barato, da maior necessidade para a menor —
  *    necessários (≥ REQUIRED_NEED) sempre, os outros só se couberem;
@@ -169,7 +188,7 @@ export function planList(room: Room, products: Products, budget: number, choices
   const plan: Plan = {}
   const limit = cents(budget)
   const cost = (item: RoomItem, option: ProductOption) => cents(option.price) * item.qty
-  let spent = 0
+  let spent = manualCents(choices.manual)
 
   const active = room.items
     .filter((item) => !choices.excluded[item.category] && !filterReason(item, products, choices))
@@ -227,6 +246,7 @@ export function describeList(
 ): ListView {
   const view: ListView = {
     entries: [],
+    manual: [],
     skipped: [],
     excluded: [],
     filtered: [],
@@ -235,8 +255,13 @@ export function describeList(
     remaining: 0,
     saved: { refused: 0, owned: 0 },
   }
-  let total = 0
+  let total = manualCents(choices.manual)
   const saved = { refused: 0, owned: 0 }
+  view.manual = choices.manual.map((item) => ({
+    item,
+    store: storeFromUrl(item.url),
+    subtotal: (cents(item.price) * item.qty) / 100,
+  }))
 
   for (const item of [...room.items].sort(byImportance)) {
     const { label, utensil, helper = false, variants } = products[item.category]

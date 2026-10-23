@@ -42,6 +42,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [17](drop-17-economia-dos-recusados.md)                    | Economia com já tenho e recusados | ✅ Concluído                    | 2026-10-22 18:27 | 2026-10-22 18:30 | 3min    |
 | [18](drop-18-assistente-monte-pra-mim.md)                  | Assistente "Monte pra mim"        | ✅ Concluído                    | 2026-10-22 19:14 | 2026-10-22 19:34 | 20min   |
 | [19](drop-19-exportar-excel.md)                            | Exportar a lista em Excel         | ✅ Concluído                    | 2026-10-22 20:12 | 2026-10-22 20:16 | 4min    |
+| [20](drop-20-itens-manuais.md)                             | Adicionar itens manualmente       | ✅ Concluído                    | 2026-10-23 13:55 | 2026-10-23 14:01 | 6min    |
 
 ### 2ª wave — publicação e automação
 
