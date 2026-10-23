@@ -16,11 +16,27 @@
       "id": "mousepad-gamer-logitech-g840-xl",
       "tier": 2,
       "name": "Mousepad Gamer Logitech G840 XL",
-      "price": 249,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 299.99,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/mousepad-gamer-logitech-g840-xl",
-      "bullets": ["Superfície de alta precisão", "Não escorrega", "Dura muito mais"]
+      "url": "https://meli.la/1CGwJpU",
+      "bullets": ["Superfície de alta precisão", "Não escorrega", "Dura muito mais"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_687696-MLA108909937388_032026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1CGwJpU",
+          "price": 299.99,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB5039194998",
+          "catalogId": "MLB23470126",
+          "history": [
+            { "date": "2026-10-22", "price": 299 },
+            { "date": "2026-10-23", "price": 299.99 }
+          ]
+        }
+      ]
     }
   ]
 }

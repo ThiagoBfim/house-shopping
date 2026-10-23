@@ -3,14 +3,26 @@
   "utensil": false,
   "options": [
     {
-      "id": "kit-teclado-e-mouse-gamer-redragon-com-led",
+      "id": "kit-gamer-redragon-cobra-m711-e-teclado",
       "tier": 1,
-      "name": "Kit Teclado e Mouse Gamer Redragon com LED",
-      "price": 199,
+      "name": "Kit Gamer Mouse Redragon Cobra M711 + Teclado RGB",
+      "price": 183.32,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-gamer-redragon-com-led",
-      "bullets": ["Teclado de membrana com LED", "Mouse com botões extras", "Para começar"]
+      "url": "https://meli.la/26XmPeW",
+      "bullets": ["Teclado com LED", "Mouse Redragon Cobra M711 RGB", "Para começar"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_965263-MLB115159242006_082026-O-kit-gamer-mouse-redragon-cobra-m711-rgb-e-teclado-gamer-tgt.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/26XmPeW",
+          "price": 183.32,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB5025350193",
+          "history": [{ "date": "2026-10-22", "price": 183.32 }]
+        }
+      ]
     },
     {
       "id": "teclado-mecanico-redragon-kumara-e-mouse-logitech-g203",

@@ -3,14 +3,27 @@
   "utensil": false,
   "options": [
     {
-      "id": "soundbar-samsung-hw-c400",
+      "id": "soundbar-samsung-hw-b400f",
       "tier": 1,
-      "name": "Soundbar Samsung HW-C400 2.0",
-      "price": 599,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Soundbar Samsung HW-B400F 2.0 Canais",
+      "price": 629,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/soundbar-samsung-hw-c400",
-      "bullets": ["2.0 canais: voz mais clara que a da TV", "Subwoofer embutido", "Bluetooth"]
+      "url": "https://meli.la/1C6yToH",
+      "bullets": ["2.0 canais: voz mais clara que a da TV", "Subwoofer embutido", "Bluetooth"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_943427-MLA95129467414_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1C6yToH",
+          "price": 629,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4259137583",
+          "catalogId": "MLB53174105",
+          "history": [{ "date": "2026-10-22", "price": 629 }]
+        }
+      ]
     },
     {
       "id": "soundbar-jbl-bar-300",

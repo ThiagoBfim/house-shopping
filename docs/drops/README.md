@@ -31,7 +31,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [5.1](drop-05-1-necessidade-e-utensilios.md)               | Necessidade e utensílios          | ✅ Concluído                    | 2026-10-22 09:58 | 2026-10-22 10:04 | 6min    |
 | [7](drop-07-catalogo-real-cozinha.md)                      | Catálogo real: Cozinha            | ✅ Concluído                    | 2026-10-22 10:19 | 2026-10-22 10:24 | 5min    |
 | [8](drop-08-catalogo-real-demais-comodos.md)               | Catálogo real: demais cômodos     | ✅ Concluído                    | 2026-10-22 10:25 | 2026-10-22 10:30 | 5min    |
-| [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre          | 🚧 Em andamento — 131/484 links | 2026-10-22 10:48 | —                | —       |
+| [10](drop-10-integracao-mercado-livre.md)                  | Integração Mercado Livre          | 🚧 Em andamento — 140/484 links | 2026-10-22 10:48 | —                | —       |
 | [10.1](drop-10-1-historico-de-preco-e-imagem.md)           | Histórico de preço e imagem       | ✅ Concluído                    | 2026-10-22 11:54 | 2026-10-22 11:58 | 4min    |
 | [11](drop-11-qualidade-legal-e-metricas.md)                | Qualidade, legal e métricas       | ⏳ A fazer                      | —                | —                | —       |
 | [13](drop-13-casa-inteira-e-banheiro.md)                   | Casa inteira e banheiro           | ✅ Concluído                    | 2026-10-22 16:26 | 2026-10-22 16:33 | 7min    |

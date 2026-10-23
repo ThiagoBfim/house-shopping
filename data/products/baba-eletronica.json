@@ -13,14 +13,27 @@
       "bullets": ["Só áudio", "Alcance de 300 m", "Pilha recarregável"]
     },
     {
-      "id": "baba-eletronica-motorola-mbp481",
+      "id": "baba-eletronica-motorola-vm481",
       "tier": 2,
-      "name": "Babá Eletrônica com Vídeo Motorola MBP481",
-      "price": 599,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Babá Eletrônica Motorola VM481 com Vídeo",
+      "price": 299.9,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/baba-eletronica-motorola-mbp481",
-      "bullets": ["Vídeo com visão noturna", "Tela de 2,4\"", "Conversa pelos dois lados"]
+      "url": "https://meli.la/2S7Tcpm",
+      "bullets": ["Vídeo com visão noturna", "Tela de 2\"", "Zoom digital"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_804133-MLA99866311117_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2S7Tcpm",
+          "price": 299.9,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB3353587915",
+          "catalogId": "MLB22515039",
+          "history": [{ "date": "2026-10-22", "price": 299.9 }]
+        }
+      ]
     },
     {
       "id": "baba-eletronica-philips-avent-video",

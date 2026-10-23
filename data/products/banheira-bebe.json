@@ -6,24 +6,48 @@
       "id": "banheira-infantil-burigotto-tchibum",
       "tier": 1,
       "name": "Banheira Infantil Burigotto Tchibum",
-      "price": 89,
+      "price": 189.9,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/banheira-infantil-burigotto-tchibum",
-      "bullets": ["Plástico com encosto", "Usa no box ou na pia", "Sem suporte"]
+      "url": "https://meli.la/1T8pety",
+      "bullets": ["Plástico com encosto", "Usa no box ou na pia", "Sem suporte"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_864854-MLB117417031274_102026-O-banheira-de-bebe-avulsa-tchibum--burigotto.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1T8pety",
+          "price": 189.9,
+          "updatedAt": "2026-10-22",
+          "available": true,
+          "externalId": "MLB7739328622",
+          "history": [{ "date": "2026-10-22", "price": 189.9 }]
+        }
+      ]
     },
     {
-      "id": "banheira-dobravel-com-termometro-safety-1st",
+      "id": "banheira-safety-1st-smile",
       "tier": 2,
-      "name": "Banheira Dobrável com Termômetro Safety 1st",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Banheira Safety 1st Smile",
+      "price": 250.46,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/banheira-dobravel-com-termometro-safety-1st",
-      "bullets": [
-        "Dobra e guarda fácil",
-        "Termômetro mostra a temperatura da água",
-        "Assento para recém-nascido"
+      "url": "https://meli.la/2ZC5xoj",
+      "bullets": ["Formato anatômico", "Marca Safety 1st", "Mais firme que as básicas"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_892588-MLU75081093211_032024-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2ZC5xoj",
+          "price": 250.46,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4202925354",
+          "catalogId": "MLB23550906",
+          "history": [
+            { "date": "2026-10-22", "price": 462 },
+            { "date": "2026-10-23", "price": 250.46 }
+          ]
+        }
       ]
     },
     {

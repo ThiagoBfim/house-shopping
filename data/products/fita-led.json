@@ -16,11 +16,24 @@
       "id": "fita-led-rgb-wi-fi-positivo-casa-inteligente-5-m",
       "tier": 2,
       "name": "Fita LED RGB Wi-Fi Positivo Casa Inteligente 5 m",
-      "price": 149,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 100.64,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fita-led-rgb-wi-fi-positivo-casa-inteligente-5-m",
-      "bullets": ["Controle pelo celular e Alexa", "Rotinas e cenas", "Sincroniza com música"]
+      "url": "https://meli.la/2s9Eupk",
+      "bullets": ["Controle pelo celular e Alexa", "Rotinas e cenas", "Sincroniza com música"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_661869-MLA95974857684_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2s9Eupk",
+          "price": 100.64,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB6881640268",
+          "catalogId": "MLB22636671",
+          "history": [{ "date": "2026-10-22", "price": 100.64 }]
+        }
+      ]
     },
     {
       "id": "kit-2-barras-de-luz-philips-hue-play",

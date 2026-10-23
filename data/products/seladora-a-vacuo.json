@@ -14,17 +14,26 @@
       "bullets": ["Tira o ar e sela", "Carne congelada dura muito mais", "Rolos de saco à parte"]
     },
     {
-      "id": "seladora-a-vacuo-oster-com-corte-de-saco",
+      "id": "seladora-a-vacuo-electrolux-portatil",
       "tier": 2,
-      "name": "Seladora a Vácuo Oster com Corte de Saco",
-      "price": 349,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Seladora a Vácuo Electrolux Portátil",
+      "price": 265.99,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/seladora-a-vacuo-oster-com-corte-de-saco",
-      "bullets": [
-        "Guarda o rolo e corta o saco",
-        "Função para alimentos úmidos",
-        "Vedação mais forte"
+      "url": "https://meli.la/1GKmppY",
+      "bullets": ["Portátil", "Marca Electrolux", "Conserva alimentos por mais tempo"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_777040-MLA96129806113_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1GKmppY",
+          "price": 265.99,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4451395583",
+          "catalogId": "MLB27648718",
+          "history": [{ "date": "2026-10-22", "price": 265.99 }]
+        }
       ]
     }
   ]
