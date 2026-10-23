@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/desentupidor-de-vaso-sanitario-borracha",
-      "bullets": ["Ventosa de borracha", "Resolve entupimento leve", "Cabo de madeira"]
+      "bullets": ["Ventosa de borracha", "Resolve entupimento leve", "Cabo de madeira"],
+      "generic": true
     },
     {
       "id": "desentupidor-sanfonado-de-alta-pressao",
@@ -24,7 +25,8 @@
         "Sanfona faz mais pressão",
         "Resolve entupimento mais difícil",
         "Serve no vaso e no ralo"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

@@ -5,11 +5,11 @@
     {
       "id": "tabua-de-passar-roupa-mor-compacta",
       "tier": 1,
-      "name": "Tábua de Passar Roupa Mor Compacta",
-      "price": 99,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Tábua de Passar Roupa Mor Maxi",
+      "price": 78,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/tabua-de-passar-roupa-mor-compacta",
+      "url": "https://www.mercadolivre.com.br/p/MLB26416228?pdp_filters=item_id%3AMLB5672755096",
       "bullets": ["Dobrável", "Altura ajustável", "Tampo pequeno"]
     },
     {
@@ -31,7 +31,12 @@
           "available": true,
           "externalId": "MLB4439273903",
           "catalogId": "MLB55982369",
-          "history": [{ "date": "2026-10-22", "price": 149.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 149.9
+            }
+          ]
         }
       ]
     }

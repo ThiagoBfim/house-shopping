@@ -89,7 +89,7 @@ O link abre o perfil social do afiliado com o produto em destaque. O título tem
 ## 4. Gravar e importar
 
 1. Atualize `data/affiliate/mercadolivre.csv` (separador `;`, via `csv` do Python): `link_produto` (URL com o id), `link_afiliado`, `preco` (`4323,08`), `data` (hoje, `AAAA-MM-DD`), `imagem`.
-2. Modelo trocado: no **mesmo script**, mude no `data/products/<categoria>.json` e na planilha o `id` (marca + modelo, kebab-case), `name`, `bullets` (o que muda em relação aos outros tiers) e o `url` de busca; se o preço inverter tiers, troque o `tier` e reordene as opções.
+2. Modelo trocado: no **mesmo script**, mude no `data/products/<categoria>.json` e na planilha o `id` (marca + modelo, kebab-case), `name`, `bullets` (o que muda em relação aos outros tiers) e o `url` (link do produto); se o preço inverter tiers, troque o `tier` e reordene as opções. Produto com `generic: true` (coluna `generico` = `sim`) que virou modelo de marca perde a flag.
 3. Rode e corrija até passar:
 
 ```bash

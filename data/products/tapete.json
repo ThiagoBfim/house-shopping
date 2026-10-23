@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/tapete-sala-2-00-x-1-50",
-      "bullets": ["2 x 1,5 m", "Fibra sintética", "Fácil de lavar"]
+      "bullets": ["2 x 1,5 m", "Fibra sintética", "Fácil de lavar"],
+      "generic": true
     },
     {
       "id": "tapete-sala-2-50-x-2-00",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/tapete-sala-2-50-x-2-00",
-      "bullets": ["2,5 x 2 m: pega o sofá todo", "Pelo baixo, não junta poeira", "Antiderrapante"]
+      "bullets": ["2,5 x 2 m: pega o sofá todo", "Pelo baixo, não junta poeira", "Antiderrapante"],
+      "generic": true
     },
     {
       "id": "tapete-kilim-algodao-3x2",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/tapete-kilim-algodao-3x2",
-      "bullets": ["3 x 2 m", "Algodão tecido à mão", "Estampa étnica"]
+      "bullets": ["3 x 2 m", "Algodão tecido à mão", "Estampa étnica"],
+      "generic": true
     }
   ]
 }

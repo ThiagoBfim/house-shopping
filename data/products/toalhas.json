@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-4-pecas-algodao",
-      "bullets": ["2 de banho + 2 de rosto", "Algodão simples", "Seca mais devagar"]
+      "bullets": ["2 de banho + 2 de rosto", "Algodão simples", "Seca mais devagar"],
+      "generic": true
     },
     {
       "id": "jogo-de-toalhas-karsten-5-pecas",
@@ -32,8 +33,14 @@
           "externalId": "MLB4024851797",
           "catalogId": "MLB45635848",
           "history": [
-            { "date": "2026-10-22", "price": 186.71 },
-            { "date": "2026-10-23", "price": 207.95 }
+            {
+              "date": "2026-10-22",
+              "price": 186.71
+            },
+            {
+              "date": "2026-10-23",
+              "price": 207.95
+            }
           ]
         }
       ]
@@ -41,12 +48,13 @@
     {
       "id": "jogo-de-toalhas-trussardi",
       "tier": 3,
-      "name": "Jogo de Toalhas Trussardi 5 Peças Gramatura Alta",
+      "name": "Jogo de Toalhas 5 Peças Gramatura Alta",
       "price": 499,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-trussardi",
-      "bullets": ["Gramatura alta: toque de hotel", "Algodão egípcio", "Dura muitas lavagens"]
+      "bullets": ["Gramatura alta: toque de hotel", "Algodão egípcio", "Dura muitas lavagens"],
+      "generic": true
     }
   ]
 }

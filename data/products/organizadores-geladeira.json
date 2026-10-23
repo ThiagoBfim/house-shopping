@@ -15,7 +15,8 @@
         "Separa frutas, frios e laticínios",
         "Encaixam nas prateleiras",
         "Plástico simples"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-6-organizadores-de-geladeira-acrilico-transparente",
@@ -29,7 +30,8 @@
         "Transparentes: vê tudo de longe",
         "Inclui porta-ovos e porta-latas",
         "Empilháveis"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

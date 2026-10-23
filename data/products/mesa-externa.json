@@ -5,11 +5,11 @@
     {
       "id": "conjunto-mesa-4-cadeiras-plastico-tramontina",
       "tier": 1,
-      "name": "Conjunto Mesa e 4 Cadeiras de Plástico Tramontina",
-      "price": 399,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Conjunto Mesa Tambaú e 4 Cadeiras Iguape Tramontina",
+      "price": 539,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/conjunto-mesa-4-cadeiras-plastico-tramontina",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3160696768?pdp_filters=item_id%3AMLB4051104699",
       "bullets": ["Plástico: não enferruja", "Empilhável", "Leve"]
     },
     {
@@ -20,7 +20,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/conjunto-mesa-cadeiras-aluminio-corda-nautica",
-      "bullets": ["Alumínio + corda náutica", "Aguenta sol e chuva", "Visual de área gourmet"]
+      "bullets": ["Alumínio + corda náutica", "Aguenta sol e chuva", "Visual de área gourmet"],
+      "generic": true
     },
     {
       "id": "conjunto-mesa-6-cadeiras-fibra-sintetica",
@@ -30,7 +31,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/conjunto-mesa-6-cadeiras-fibra-sintetica",
-      "bullets": ["Fibra sintética trançada", "6 lugares", "Almofadas inclusas"]
+      "bullets": ["Fibra sintética trançada", "6 lugares", "Almofadas inclusas"],
+      "generic": true
     },
     {
       "id": "conjunto-mesa-cadeiras-madeira-teca",
@@ -40,7 +42,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/conjunto-mesa-cadeiras-madeira-teca",
-      "bullets": ["Madeira teca: a mais resistente ao tempo", "6 lugares", "Envelhece bonito"]
+      "bullets": ["Madeira teca: a mais resistente ao tempo", "6 lugares", "Envelhece bonito"],
+      "generic": true
     }
   ]
 }

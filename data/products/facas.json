@@ -21,18 +21,23 @@
           "available": true,
           "externalId": "MLB3782589243",
           "catalogId": "MLB28408264",
-          "history": [{ "date": "2026-10-22", "price": 69.75 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 69.75
+            }
+          ]
         }
       ]
     },
     {
       "id": "jogo-de-facas-tramontina-polywood-cepo",
       "tier": 2,
-      "name": "Jogo de Facas Tramontina Polywood com Cepo 7 Peças",
-      "price": 299,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Jogo de Facas Tramontina Polywood com Cepo 6 Peças",
+      "price": 425,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-tramontina-polywood-cepo",
+      "url": "https://www.mercadolivre.com.br/jogo-de-facas-6-pecas-tramontina-polywood-21199983-castanho/p/MLB27397280?pdp_filters=item_id%3AMLB4574259617",
       "bullets": ["Cabo de madeira tratada", "Cepo para guardar", "Inclui faca de churrasco"]
     },
     {
@@ -58,18 +63,23 @@
           "available": true,
           "externalId": "MLB4099950342",
           "catalogId": "MLB27370892",
-          "history": [{ "date": "2026-10-22", "price": 436.19 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 436.19
+            }
+          ]
         }
       ]
     },
     {
       "id": "jogo-de-facas-zwilling-pro-cepo",
       "tier": 4,
-      "name": "Jogo de Facas Zwilling Pro com Cepo 7 Peças",
-      "price": 2499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Conjunto de Facas Zwilling Profissional com Bloco 7 Peças",
+      "price": 2079,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-facas-zwilling-pro-cepo",
+      "url": "https://www.mercadolivre.com.br/p/MLB27415380?pdp_filters=item_id%3AMLB5832029482",
       "bullets": [
         "Aço alemão forjado em peça única",
         "Balanço profissional",

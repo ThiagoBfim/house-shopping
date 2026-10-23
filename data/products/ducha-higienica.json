@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/ducha-higienica-com-registro",
-      "bullets": ["Com registro", "Gatilho de plástico", "Mangueira flexível"]
+      "bullets": ["Com registro", "Gatilho de plástico", "Mangueira flexível"],
+      "generic": true
     },
     {
       "id": "ducha-higienica-docol",
@@ -31,7 +32,12 @@
           "available": true,
           "externalId": "MLB7624698754",
           "catalogId": "MLB21317832",
-          "history": [{ "date": "2026-10-22", "price": 239.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 239.9
+            }
+          ]
         }
       ]
     },
@@ -54,7 +60,12 @@
           "available": true,
           "externalId": "MLB4835196015",
           "catalogId": "MLB74730517",
-          "history": [{ "date": "2026-10-22", "price": 654.72 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 654.72
+            }
+          ]
         }
       ]
     }

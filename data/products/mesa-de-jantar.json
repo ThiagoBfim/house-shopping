@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/conjunto-mesa-de-jantar-4-cadeiras",
-      "bullets": ["Mesa + 4 cadeiras", "MDP", "Para cozinha ou sala pequena"]
+      "bullets": ["Mesa + 4 cadeiras", "MDP", "Para cozinha ou sala pequena"],
+      "generic": true
     },
     {
       "id": "conjunto-mesa-de-jantar-6-cadeiras-tampo-de-vidro",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/conjunto-mesa-de-jantar-6-cadeiras-tampo-de-vidro",
-      "bullets": ["Mesa + 6 cadeiras estofadas", "Tampo de vidro", "Bom para receber"]
+      "bullets": ["Mesa + 6 cadeiras estofadas", "Tampo de vidro", "Bom para receber"],
+      "generic": true
     },
     {
       "id": "mesa-de-jantar-madeira-macica-6-lugares",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-jantar-madeira-macica-6-lugares",
-      "bullets": ["Madeira maciça", "6 cadeiras estofadas", "Muito resistente"]
+      "bullets": ["Madeira maciça", "6 cadeiras estofadas", "Muito resistente"],
+      "generic": true
     },
     {
       "id": "mesa-de-jantar-tampo-marmore-8-lugares",
@@ -40,7 +43,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-jantar-tampo-marmore-8-lugares",
-      "bullets": ["8 lugares", "Tampo de mármore", "Cadeiras de design"]
+      "bullets": ["8 lugares", "Tampo de mármore", "Cadeiras de design"],
+      "generic": true
     }
   ]
 }

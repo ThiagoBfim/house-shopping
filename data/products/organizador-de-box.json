@@ -15,7 +15,8 @@
         "Xampu e sabonete fora do chão",
         "Fixa sem furar",
         "Ventosa pode soltar com o tempo"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "prateleira-de-canto-para-box-inox-sem-furos-3-andares",
@@ -25,7 +26,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/prateleira-de-canto-para-box-inox-sem-furos-3-andares",
-      "bullets": ["Três andares", "Inox não enferruja", "Fixação por pressão do chão ao teto"]
+      "bullets": ["Três andares", "Inox não enferruja", "Fixação por pressão do chão ao teto"],
+      "generic": true
     }
   ]
 }

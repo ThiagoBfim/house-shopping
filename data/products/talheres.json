@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB3703826291",
           "catalogId": "MLB35161770",
-          "history": [{ "date": "2026-10-22", "price": 138.69 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 138.69
+            }
+          ]
         }
       ]
     },
@@ -43,7 +48,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5064857305",
-          "history": [{ "date": "2026-10-22", "price": 199.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 199.99
+            }
+          ]
         }
       ]
     },
@@ -66,18 +76,23 @@
           "available": true,
           "externalId": "MLB3964324909",
           "catalogId": "MLB32486578",
-          "history": [{ "date": "2026-10-22", "price": 537.6 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 537.6
+            }
+          ]
         }
       ]
     },
     {
       "id": "faqueiro-zwilling-68-pecas",
       "tier": 4,
-      "name": "Faqueiro Zwilling Inox 18/10 68 Peças",
-      "price": 2499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Faqueiro Zwilling Dinner Inox 68 Peças",
+      "price": 3509,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/faqueiro-zwilling-68-pecas",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3114469366?pdp_filters=item_id%3AMLB4025835135",
       "bullets": [
         "Marca alemã premium",
         "Inox 18/10 polido espelhado",

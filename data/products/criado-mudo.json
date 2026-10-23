@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-cabeceira-1-gaveta",
-      "bullets": ["1 gaveta", "MDP", "Compacta"]
+      "bullets": ["1 gaveta", "MDP", "Compacta"],
+      "generic": true
     },
     {
       "id": "criado-mudo-2-gavetas-pes-palito",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/criado-mudo-2-gavetas-pes-palito",
-      "bullets": ["2 gavetas", "Pés palito (estilo retrô)", "Mais espaço para guardar"]
+      "bullets": ["2 gavetas", "Pés palito (estilo retrô)", "Mais espaço para guardar"],
+      "generic": true
     },
     {
       "id": "criado-mudo-madeira-macica",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/criado-mudo-madeira-macica",
-      "bullets": ["Madeira maciça", "Acabamento artesanal", "Combina com cama de madeira"]
+      "bullets": ["Madeira maciça", "Acabamento artesanal", "Combina com cama de madeira"],
+      "generic": true
     }
   ]
 }

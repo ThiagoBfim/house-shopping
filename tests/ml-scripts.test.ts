@@ -211,6 +211,50 @@ describe('importRows', () => {
     expect(row.slice(-2)).toEqual(['2026-10-21', 'https://img/x.jpg'])
   })
 
+  it('sem afiliado: grava o link direto do produto (e a foto), sem criar oferta', () => {
+    const { products: next, report } = importRows(
+      products(),
+      [
+        {
+          id: 'liq-barato',
+          link_afiliado: '',
+          link_produto: 'https://www.mercadolivre.com.br/liq/p/MLB123',
+          imagem: 'https://img/l.jpg',
+        },
+        { id: 'liq-medio', link_afiliado: '', link_produto: 'https://lista.mercadolivre.com.br/x' },
+      ],
+      '2026-10-23',
+    )
+    expect(next.liquidificador.options[0]).toMatchObject({
+      url: 'https://www.mercadolivre.com.br/liq/p/MLB123',
+      image: 'https://img/l.jpg',
+      price: 129,
+    })
+    expect(next.liquidificador.options[0].offers).toBeUndefined()
+    expect(next.liquidificador.options[1].url).toBe('https://lista.mercadolivre.com.br/liq-medio')
+    expect(report.direct).toEqual(['liq-barato'])
+    expect(exportRows(next)[0][LINK_COLUMNS.indexOf('link_produto')]).toBe(
+      'https://www.mercadolivre.com.br/liq/p/MLB123',
+    )
+  })
+
+  it('coluna generico liga e desliga a flag; exporta "sim"', () => {
+    const { products: next } = importRows(
+      products(),
+      [
+        { id: 'liq-barato', generico: 'sim' },
+        { id: 'liq-medio', generico: '' },
+      ],
+      '2026-10-23',
+    )
+    expect(next.liquidificador.options[0].generic).toBe(true)
+    expect('generic' in next.liquidificador.options[1]).toBe(false)
+    const col = LINK_COLUMNS.indexOf('generico')
+    expect(exportRows(next).map((row) => row[col])).toEqual(['sim', ''])
+    const { products: back } = importRows(next, [{ id: 'liq-barato', generico: '' }], '2026-10-23')
+    expect('generic' in back.liquidificador.options[0]).toBe(false)
+  })
+
   it('não altera o catálogo recebido', () => {
     const base = products()
     importRows(

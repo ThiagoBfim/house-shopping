@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-decorativa-pes-palito",
-      "bullets": ["Decorativa", "Pés palito", "Ocupa pouco espaço"]
+      "bullets": ["Decorativa", "Pés palito", "Ocupa pouco espaço"],
+      "generic": true
     },
     {
       "id": "poltrona-costela",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-costela",
-      "bullets": ["Estofada e confortável", "Clássico do design brasileiro", "Boa para leitura"]
+      "bullets": ["Estofada e confortável", "Clássico do design brasileiro", "Boa para leitura"],
+      "generic": true
     },
     {
       "id": "poltrona-charles-eames-com-puff",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-charles-eames-com-puff",
-      "bullets": ["Réplica do ícone de design", "Com puff para os pés", "Couro ecológico"]
+      "bullets": ["Réplica do ícone de design", "Com puff para os pés", "Couro ecológico"],
+      "generic": true
     },
     {
       "id": "poltrona-do-papai-reclinavel-couro",
@@ -40,7 +43,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-do-papai-reclinavel-couro",
-      "bullets": ["Reclina quase deitado", "Couro", "A mais confortável da lista"]
+      "bullets": ["Reclina quase deitado", "Couro", "A mais confortável da lista"],
+      "generic": true
     }
   ]
 }

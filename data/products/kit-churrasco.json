@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB5131259102",
           "catalogId": "MLB35064127",
-          "history": [{ "date": "2026-10-22", "price": 59.85 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 59.85
+            }
+          ]
         }
       ]
     },
@@ -33,7 +38,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-churrasco-12-pecas-maleta",
-      "bullets": ["12 peças", "Maleta para guardar", "Inclui espetos"]
+      "bullets": ["12 peças", "Maleta para guardar", "Inclui espetos"],
+      "generic": true
     },
     {
       "id": "kit-churrasco-tramontina-century-faca-chef-e-garra",
@@ -53,7 +59,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5328749023",
-          "history": [{ "date": "2026-10-22", "price": 681.75 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 681.75
+            }
+          ]
         }
       ]
     }

@@ -21,14 +21,19 @@
           "available": true,
           "externalId": "MLB4259137583",
           "catalogId": "MLB53174105",
-          "history": [{ "date": "2026-10-22", "price": 629 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 629
+            }
+          ]
         }
       ]
     },
     {
       "id": "soundbar-jbl-bar-300",
       "tier": 2,
-      "name": "Soundbar JBL Bar 300 5.0 Dolby Atmos",
+      "name": "Soundbar 5.0 com Dolby Atmos",
       "price": 2299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -37,7 +42,8 @@
         "5.0 canais com Dolby Atmos",
         "Graves fortes sem subwoofer separado",
         "Wi-Fi e AirPlay"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "soundbar-samsung-hw-q800h",
@@ -62,7 +68,12 @@
           "available": true,
           "externalId": "MLB4749629825",
           "catalogId": "MLB72007944",
-          "history": [{ "date": "2026-10-22", "price": 3904.21 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 3904.21
+            }
+          ]
         }
       ]
     },
@@ -70,10 +81,10 @@
       "id": "sonos-arc-ultra",
       "tier": 4,
       "name": "Soundbar Sonos Arc Ultra",
-      "price": 7999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 11296,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/sonos-arc-ultra",
+      "url": "https://www.mercadolivre.com.br/p/MLB78709835?pdp_filters=item_id%3AMLB7633920252",
       "bullets": [
         "Referência em som para TV",
         "Dolby Atmos 9.1.4",

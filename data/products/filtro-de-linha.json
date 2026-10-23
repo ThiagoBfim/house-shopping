@@ -22,8 +22,14 @@
           "externalId": "MLB4198469495",
           "catalogId": "MLB22834020",
           "history": [
-            { "date": "2026-10-22", "price": 39 },
-            { "date": "2026-10-23", "price": 39.5 }
+            {
+              "date": "2026-10-22",
+              "price": 39
+            },
+            {
+              "date": "2026-10-23",
+              "price": 39.5
+            }
           ]
         }
       ]
@@ -51,18 +57,23 @@
           "available": true,
           "externalId": "MLB5008222132",
           "catalogId": "MLB22881386",
-          "history": [{ "date": "2026-10-22", "price": 113.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 113.99
+            }
+          ]
         }
       ]
     },
     {
       "id": "filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
       "tier": 3,
-      "name": "Filtro de Linha iClamper Energia 5 Tomadas com USB",
-      "price": 149,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Filtro de Linha iClamper Energia 5 Tomadas com DPS",
+      "price": 120,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3527734020?pdp_filters=item_id%3AMLB5873589912",
       "bullets": [
         "Proteção contra surto e raio",
         "2 portas USB para carregar o celular",

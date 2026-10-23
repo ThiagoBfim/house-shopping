@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/seladora-a-vacuo-domestica-compacta",
-      "bullets": ["Tira o ar e sela", "Carne congelada dura muito mais", "Rolos de saco à parte"]
+      "bullets": ["Tira o ar e sela", "Carne congelada dura muito mais", "Rolos de saco à parte"],
+      "generic": true
     },
     {
       "id": "seladora-a-vacuo-electrolux-portatil",
@@ -32,7 +33,12 @@
           "available": true,
           "externalId": "MLB4451395583",
           "catalogId": "MLB27648718",
-          "history": [{ "date": "2026-10-22", "price": 265.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 265.99
+            }
+          ]
         }
       ]
     }

@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/organizador-de-talheres-plastico-para-gaveta",
-      "bullets": ["Divisórias para talheres", "Tamanho padrão de gaveta", "Plástico"]
+      "bullets": ["Divisórias para talheres", "Tamanho padrão de gaveta", "Plástico"],
+      "generic": true
     },
     {
       "id": "organizador-de-gaveta-extensivel-de-bambu",
@@ -25,7 +26,8 @@
         "Abre para caber em qualquer gaveta",
         "Espaço para utensílios grandes",
         "Bambu bonito e resistente"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

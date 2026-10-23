@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/espelho-de-porta-30x110-cm",
-      "bullets": ["Pendura atrás da porta", "Não ocupa espaço", "Estreito"]
+      "bullets": ["Pendura atrás da porta", "Não ocupa espaço", "Estreito"],
+      "generic": true
     },
     {
       "id": "espelho-de-chao-com-moldura-60x160-cm",
@@ -24,7 +25,8 @@
         "Largo, mostra a roupa inteira",
         "Moldura decorativa",
         "Apoia no chão ou na parede"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

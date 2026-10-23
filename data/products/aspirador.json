@@ -26,8 +26,14 @@
           "externalId": "MLB5232784214",
           "catalogId": "MLB44673154",
           "history": [
-            { "date": "2026-10-22", "price": 159.9 },
-            { "date": "2026-10-23", "price": 161.15 }
+            {
+              "date": "2026-10-22",
+              "price": 159.9
+            },
+            {
+              "date": "2026-10-23",
+              "price": 161.15
+            }
           ]
         }
       ]
@@ -56,7 +62,12 @@
           "available": true,
           "externalId": "MLB2631836695",
           "catalogId": "MLB8923630",
-          "history": [{ "date": "2026-10-22", "price": 246.15 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 246.15
+            }
+          ]
         }
       ]
     },
@@ -84,7 +95,12 @@
           "available": true,
           "externalId": "MLB4040705625",
           "catalogId": "MLB48927504",
-          "history": [{ "date": "2026-10-22", "price": 659.66 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 659.66
+            }
+          ]
         }
       ]
     },
@@ -111,7 +127,12 @@
           "available": true,
           "externalId": "MLB4598100045",
           "catalogId": "MLB41746107",
-          "history": [{ "date": "2026-10-22", "price": 1990 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1990
+            }
+          ]
         }
       ]
     }

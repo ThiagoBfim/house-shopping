@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-berco-9-pecas",
-      "bullets": ["Protetor, lençóis e edredom", "Tecido misto", "9 peças"]
+      "bullets": ["Protetor, lençóis e edredom", "Tecido misto", "9 peças"],
+      "generic": true
     },
     {
       "id": "kit-berco-algodao-10-pecas",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-berco-algodao-10-pecas",
-      "bullets": ["100% algodão", "Protetor respirável", "10 peças"]
+      "bullets": ["100% algodão", "Protetor respirável", "10 peças"],
+      "generic": true
     },
     {
       "id": "kit-berco-premium-bordado",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-berco-premium-bordado",
-      "bullets": ["Bordado à mão", "Algodão egípcio", "Para quarto temático"]
+      "bullets": ["Bordado à mão", "Algodão egípcio", "Para quarto temático"],
+      "generic": true
     }
   ]
 }

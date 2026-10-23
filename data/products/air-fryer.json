@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB5167532703",
           "catalogId": "MLB19693313",
-          "history": [{ "date": "2026-10-22", "price": 289.79 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 289.79
+            }
+          ]
         }
       ]
     },
@@ -44,7 +49,12 @@
           "available": true,
           "externalId": "MLB4716190659",
           "catalogId": "MLB36521729",
-          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 399.9
+            }
+          ]
         }
       ]
     },
@@ -67,14 +77,19 @@
           "available": true,
           "externalId": "MLB4186343565",
           "catalogId": "MLB49198498",
-          "history": [{ "date": "2026-10-22", "price": 834.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 834.9
+            }
+          ]
         }
       ]
     },
     {
       "id": "air-fryer-philips-walita-xxl-hd9867",
       "tier": 4,
-      "name": "Air Fryer Philips Walita XXL Premium Smart Sensing HD9867",
+      "name": "Air Fryer Premium XXL Digital 7 L ou mais",
       "price": 2299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -84,7 +99,8 @@
         "Ajusta tempo e temperatura sozinha",
         "Tira a gordura (Fat Removal)",
         "Peças vão à lava-louças"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

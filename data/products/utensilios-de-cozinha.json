@@ -14,7 +14,8 @@
         "Concha, escumadeira, espátula…",
         "Não risca panela antiaderente",
         "Nylon derrete se esquecer no fogo"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-12-utensilios-de-silicone-com-suporte",
@@ -28,7 +29,8 @@
         "Mais peças (pegador, batedor, pincel)",
         "Silicone aguenta calor",
         "Suporte para a bancada"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-utensilios-tramontina-utilita-inox-10-pecas",
@@ -49,7 +51,12 @@
           "available": true,
           "externalId": "MLB4264155631",
           "catalogId": "MLB52194544",
-          "history": [{ "date": "2026-10-22", "price": 225.54 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 225.54
+            }
+          ]
         }
       ]
     }

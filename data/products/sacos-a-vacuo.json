@@ -15,7 +15,8 @@
         "Tira o ar com o aspirador",
         "Edredom ocupa 1/3 do espaço",
         "Protege de mofo e ácaro"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-8-sacos-a-vacuo-com-bomba-eletrica",
@@ -29,7 +30,8 @@
         "Bomba elétrica própria",
         "Tamanhos variados",
         "Válvula que não deixa o ar voltar"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB5226595363",
           "catalogId": "MLB76159966",
-          "history": [{ "date": "2026-10-22", "price": 139 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 139
+            }
+          ]
         }
       ]
     },
@@ -44,7 +49,12 @@
           "available": true,
           "externalId": "MLB5461200402",
           "catalogId": "MLB39292033",
-          "history": [{ "date": "2026-10-22", "price": 159 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 159
+            }
+          ]
         }
       ]
     },
@@ -67,14 +77,19 @@
           "available": true,
           "externalId": "MLB4207610531",
           "catalogId": "MLB49409322",
-          "history": [{ "date": "2026-10-22", "price": 888 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 888
+            }
+          ]
         }
       ]
     },
     {
       "id": "liquidificador-oster-versa-pro",
       "tier": 4,
-      "name": "Liquidificador de Alta Rotação Oster Versa Pro",
+      "name": "Liquidificador de Alta Rotação Profissional",
       "price": 1899,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -84,7 +99,8 @@
         "Motor de 1400 W profissional",
         "Copo Tritan inquebrável",
         "Garantia estendida"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

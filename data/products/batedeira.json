@@ -25,7 +25,12 @@
           "available": true,
           "externalId": "MLB3602385150",
           "catalogId": "MLB16016316",
-          "history": [{ "date": "2026-10-22", "price": 75.94 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 75.94
+            }
+          ]
         }
       ]
     },
@@ -33,10 +38,11 @@
       "id": "batedeira-planetaria-philco-php500-turbo",
       "tier": 2,
       "name": "Batedeira Planetária Philco PHP500 Turbo",
-      "price": 349,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 344,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/batedeira-planetaria-philco-php500-turbo",
+      "url": "https://www.mercadolivre.com.br/batedeira-planetaria-php500-turbo-vermelha-philco/p/MLB15280065?pdp_filters=item_id%3AMLB5336830041",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_959222-MLA99415769656_112025-E.webp",
       "bullets": ["Planetária: bate sozinha", "Tigela de 4 L", "Bate massa mais pesada"]
     },
     {
@@ -58,7 +64,12 @@
           "available": true,
           "externalId": "MLB7657444156",
           "catalogId": "MLB15380252",
-          "history": [{ "date": "2026-10-22", "price": 719.91 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 719.91
+            }
+          ]
         }
       ]
     },
@@ -85,7 +96,12 @@
           "available": true,
           "externalId": "MLB4621054575",
           "catalogId": "MLB18760059",
-          "history": [{ "date": "2026-10-22", "price": 2690 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2690
+            }
+          ]
         }
       ]
     }

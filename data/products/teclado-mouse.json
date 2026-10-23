@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB2117505161",
           "catalogId": "MLB18611634",
-          "history": [{ "date": "2026-10-22", "price": 149.63 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 149.63
+            }
+          ]
         }
       ]
     },
@@ -44,7 +49,12 @@
           "available": true,
           "externalId": "MLB6501875746",
           "catalogId": "MLB37454280",
-          "history": [{ "date": "2026-10-22", "price": 335 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 335
+            }
+          ]
         }
       ]
     },
@@ -52,10 +62,10 @@
       "id": "kit-teclado-e-mouse-logitech-signature-mk650",
       "tier": 3,
       "name": "Kit Teclado e Mouse Logitech Signature MK650",
-      "price": 449,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 501,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-teclado-e-mouse-logitech-signature-mk650",
+      "url": "https://www.mercadolivre.com.br/p/MLB45611694?pdp_filters=item_id%3AMLB5724595558",
       "bullets": ["Bluetooth: liga em até 3 aparelhos", "Mouse silencioso", "Apoio de pulso"]
     }
   ]

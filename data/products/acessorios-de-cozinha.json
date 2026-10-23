@@ -14,7 +14,8 @@
         "Abridor de lata, ralador, descascador de legumes",
         "Espremedor e descascador de alho",
         "Plástico e aço simples"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "conjunto-de-pegadores-tramontina-utility-6-pecas",
@@ -39,14 +40,19 @@
           "available": true,
           "externalId": "MLB5218860098",
           "catalogId": "MLB24676611",
-          "history": [{ "date": "2026-10-22", "price": 132 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 132
+            }
+          ]
         }
       ]
     },
     {
       "id": "kit-acessorios-oxo-good-grips-6-pecas",
       "tier": 3,
-      "name": "Kit Acessórios OXO Good Grips 6 Peças",
+      "name": "Kit Acessórios de Cozinha Premium Inox 6 Peças",
       "price": 299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -55,7 +61,8 @@
         "Cabo emborrachado que não escorrega",
         "Lâminas mais afiadas",
         "Feito para durar anos"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

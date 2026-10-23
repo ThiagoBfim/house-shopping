@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/escorredor-de-louca-plastico-com-porta-talheres",
-      "bullets": ["Cabe a louça do dia", "Plástico simples", "Ocupa pouco espaço"]
+      "bullets": ["Cabe a louça do dia", "Plástico simples", "Ocupa pouco espaço"],
+      "generic": true
     },
     {
       "id": "escorredor-de-louca-arthi-2-andares",
@@ -31,7 +32,12 @@
           "available": true,
           "externalId": "MLB7165405422",
           "catalogId": "MLB22964138",
-          "history": [{ "date": "2026-10-22", "price": 69.52 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 69.52
+            }
+          ]
         }
       ]
     }

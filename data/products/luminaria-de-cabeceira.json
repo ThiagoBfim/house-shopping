@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/luminaria-de-mesa-abajur-cupula-tecido",
-      "bullets": ["Abajur clássico", "Luz amarela para leitura", "Lâmpada à parte"]
+      "bullets": ["Abajur clássico", "Luz amarela para leitura", "Lâmpada à parte"],
+      "generic": true
     },
     {
       "id": "luminaria-de-cabeceira-led-touch-com-carregador-usb",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/luminaria-de-cabeceira-led-touch-com-carregador-usb",
-      "bullets": ["Liga com toque, 3 intensidades", "Carrega o celular", "LED não esquenta"]
+      "bullets": ["Liga com toque, 3 intensidades", "Carrega o celular", "LED não esquenta"],
+      "generic": true
     }
   ]
 }

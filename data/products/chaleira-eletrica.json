@@ -5,11 +5,11 @@
     {
       "id": "chaleira-eletrica-mondial-1-8-l",
       "tier": 1,
-      "name": "Chaleira Elétrica Mondial 1,8 L",
-      "price": 99,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Chaleira Elétrica Mondial Pratic CE-06",
+      "price": 189,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-mondial-1-8-l",
+      "url": "https://www.mercadolivre.com.br/chaleira-eletrica-pratic-mondial-1200w-ce-06/p/MLB8980300?pdp_filters=item_id%3AMLB3808423334",
       "bullets": ["Ferve água em ~4 min", "Desliga sozinha", "Corpo de plástico"]
     },
     {
@@ -31,18 +31,23 @@
           "available": true,
           "externalId": "MLB5682518854",
           "catalogId": "MLB24034047",
-          "history": [{ "date": "2026-10-22", "price": 253 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 253
+            }
+          ]
         }
       ]
     },
     {
       "id": "chaleira-eletrica-philips-walita-com-controle-de-temperatura",
       "tier": 3,
-      "name": "Chaleira Elétrica Philips Walita com Controle de Temperatura",
-      "price": 399,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Chaleira Elétrica Philips Walita 1200 W 1,7 L",
+      "price": 499,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/chaleira-eletrica-philips-walita-com-controle-de-temperatura",
+      "url": "https://www.mercadolivre.com.br/chaleira-eletrica-philips-walita-1200w-17-l-preta-110v/up/MLBU3450284006?pdp_filters=item_id%3AMLB4223594245",
       "bullets": [
         "Escolhe a temperatura (chá, café, mamadeira)",
         "Mantém aquecida",

@@ -42,6 +42,7 @@ if (command === 'export') {
   }
   await writeCategories(products, report.changedCategories)
   console.log(`✔ ${report.applied.length} link(s) aplicado(s).`)
+  if (report.direct.length) console.log(`✔ ${report.direct.length} link(s) direto(s) sem afiliado.`)
   const warn = (label: string, ids: string[]) =>
     ids.length && console.warn(`⚠ ${label} (${ids.length}): ${ids.join(', ')}`)
   warn('Sem id do produto (o sync de preço vai pular)', report.withoutId)

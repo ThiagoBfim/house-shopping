@@ -25,7 +25,12 @@
           "available": true,
           "externalId": "MLB7496386298",
           "catalogId": "MLB57960838",
-          "history": [{ "date": "2026-10-22", "price": 124.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 124.99
+            }
+          ]
         }
       ]
     },
@@ -52,14 +57,19 @@
           "available": true,
           "externalId": "MLB4001908237",
           "catalogId": "MLB15058434",
-          "history": [{ "date": "2026-10-22", "price": 747 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 747
+            }
+          ]
         }
       ]
     },
     {
       "id": "churrasqueira-a-gas-tramontina-vancouver",
       "tier": 3,
-      "name": "Churrasqueira a Gás Tramontina Vancouver 4 Queimadores",
+      "name": "Churrasqueira a Gás 4 Queimadores",
       "price": 2499,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -68,7 +78,8 @@
         "Gás: acende e controla a temperatura na hora",
         "4 queimadores",
         "Tampa com termômetro"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "churrasqueira-weber-spirit-e-310",
@@ -92,7 +103,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7540392888",
-          "history": [{ "date": "2026-10-22", "price": 8561 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 8561
+            }
+          ]
         }
       ]
     }

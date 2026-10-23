@@ -166,6 +166,16 @@ describe('validateCatalog', () => {
     )
   })
 
+  it('modelo específico precisa de link do produto; genérico pode ficar com a busca', () => {
+    const search = 'https://lista.mercadolivre.com.br/geladeira'
+    const options = fourTiers()
+    options[0] = option(1, 2000, { url: search })
+    options[1] = option(2, 3500, { url: search, generic: true })
+    expect(errorsOf(rooms(), products(options))).toEqual([
+      'products/geladeira.json: "geladeira-t1" é um modelo específico, mas o link é de busca: use o link do produto (ou marque "generic": true)',
+    ])
+  })
+
   it('rejeita campos desconhecidos (pega erros de digitação)', () => {
     const options = fourTiers()
     options[0] = option(1, 2000, { prcie: 10 })

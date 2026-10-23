@@ -6,10 +6,11 @@
       "id": "cadeira-gamer-mymax-mx5",
       "tier": 1,
       "name": "Cadeira Gamer Mymax MX5",
-      "price": 699,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 819,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cadeira-gamer-mymax-mx5",
+      "url": "https://www.mercadolivre.com.br/cadeira-de-escritorio-mymax-mx5-gamer-ergonomica-preto-e-verde-com-estofado-em-tecido-sintetico/p/MLB15904598?pdp_filters=item_id%3AMLB6665738938",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_921247-MLA99466436266_112025-E.webp",
       "bullets": ["Visual gamer, reclina 180°", "Almofadas de pescoço e lombar", "Courino esquenta"]
     },
     {
@@ -20,17 +21,19 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-mesh-com-apoio-de-cabeca-e-lombar",
-      "bullets": ["Mesh: fresca para muitas horas", "Apoio de cabeça ajustável", "Braços 3D"]
+      "bullets": ["Mesh: fresca para muitas horas", "Apoio de cabeça ajustável", "Braços 3D"],
+      "generic": true
     },
     {
       "id": "cadeira-gamer-dt3-sports-gt-fabric",
       "tier": 3,
-      "name": "Cadeira Gamer DT3 Sports GT Fabric",
+      "name": "Cadeira Gamer Ergonômica de Tecido",
       "price": 1899,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cadeira-gamer-dt3-sports-gt-fabric",
-      "bullets": ["Tecido respirável", "Estrutura reforçada", "Braços 4D e reclínio com trava"]
+      "bullets": ["Tecido respirável", "Estrutura reforçada", "Braços 4D e reclínio com trava"],
+      "generic": true
     },
     {
       "id": "cadeira-gamer-dt3-sports-rhino-fabric-v3",
@@ -55,7 +58,12 @@
           "available": true,
           "externalId": "MLB7127851450",
           "catalogId": "MLB75238239",
-          "history": [{ "date": "2026-10-22", "price": 3299.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 3299.9
+            }
+          ]
         }
       ]
     }

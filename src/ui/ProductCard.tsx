@@ -1,5 +1,5 @@
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
-import { otherOffers, STORE_WHERE } from '../data/offers.ts'
+import { isSearchUrl, otherOffers, STORE_WHERE } from '../data/offers.ts'
 import {
   isPromo,
   priceTrend,
@@ -157,7 +157,7 @@ export function ProductCard({
           ))}
         </div>
         <a class="buy-button" href={option.url} target="_blank" rel="sponsored noopener noreferrer">
-          Comprar {STORE_WHERE[option.store]} ↗
+          {isSearchUrl(option.url) ? 'Buscar' : 'Comprar'} {STORE_WHERE[option.store]} ↗
         </a>
       </footer>
     </article>

@@ -6,10 +6,10 @@
       "id": "kit-10-lampadas-led-bulbo-9w-empalux",
       "tier": 1,
       "name": "Kit 10 Lâmpadas LED Bulbo 9W Empalux",
-      "price": 69,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 38,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-10-lampadas-led-bulbo-9w-empalux",
+      "url": "https://www.mercadolivre.com.br/p/MLB27622140?pdp_filters=item_id%3AMLB4665301287",
       "bullets": [
         "10 lâmpadas brancas",
         "Gastam bem menos que as antigas",
@@ -20,10 +20,10 @@
       "id": "kit-10-lampadas-led-bulbo-9w-philips",
       "tier": 2,
       "name": "Kit 10 Lâmpadas LED Bulbo 9W Philips",
-      "price": 119,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 44,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-10-lampadas-led-bulbo-9w-philips",
+      "url": "https://www.mercadolivre.com.br/p/MLB63419872?pdp_filters=item_id%3AMLB5319733005",
       "bullets": ["Marca com vida útil maior", "Luz mais uniforme", "Escolha branca ou amarela"]
     },
     {
@@ -49,7 +49,12 @@
           "available": true,
           "externalId": "MLB7398837644",
           "catalogId": "MLB53818381",
-          "history": [{ "date": "2026-10-22", "price": 197 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 197
+            }
+          ]
         }
       ]
     }

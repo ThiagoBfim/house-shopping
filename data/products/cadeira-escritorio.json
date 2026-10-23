@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cadeira-de-escritorio-giratoria-secretaria",
-      "bullets": ["Giratória com rodízios", "Regula a altura", "Para poucas horas por dia"]
+      "bullets": ["Giratória com rodízios", "Regula a altura", "Para poucas horas por dia"],
+      "generic": true
     },
     {
       "id": "cadeira-ergonomica-mesh-com-apoio-lombar",
@@ -24,16 +25,18 @@
         "Encosto de tela (mesh): não esquenta",
         "Apoio lombar ajustável",
         "Braços reguláveis"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "cadeira-ergonomica-mesh-cavaletti-newnet",
       "tier": 3,
-      "name": "Cadeira Ergonômica Mesh Cavaletti NewNet",
-      "price": 1499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Cadeira Ergonômica Cavaletti Syncron Premium",
+      "price": 1490,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-mesh-cavaletti-newnet",
+      "url": "https://www.mercadolivre.com.br/cadeira-ergonomica-cavaletti-syncron-giratoria-premium/up/MLBU4610355180",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_800937-MLB115666772701_082026-O-cadeira-ergonomica-cavaletti-syncron-giratoria-premium.webp",
       "bullets": [
         "Marca de escritório, NR-17",
         "Encosto reclinável com trava",
@@ -44,10 +47,11 @@
       "id": "cadeira-ergonomica-herman-miller-sayl",
       "tier": 4,
       "name": "Cadeira Ergonômica Herman Miller Sayl",
-      "price": 6999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 5650,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cadeira-ergonomica-herman-miller-sayl",
+      "url": "https://www.mercadolivre.com.br/cadeira-sayl-para-escritorio-da-herman-miller/up/MLBU5306009337",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_746968-MLB118453728253_092026-E--cadeira-sayl-para-escritorio-da-herman-miller.webp",
       "bullets": ["Ícone de design ergonômico", "Ajustes completos", "Garantia de 12 anos"]
     }
   ]

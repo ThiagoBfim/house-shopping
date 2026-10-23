@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/tapete-banheiro-antiderrapante",
-      "bullets": ["Antiderrapante", "Lava na máquina", "Básico"]
+      "bullets": ["Antiderrapante", "Lava na máquina", "Básico"],
+      "generic": true
     },
     {
       "id": "kit-tapete-banheiro-3-pecas",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-tapete-banheiro-3-pecas",
-      "bullets": ["3 peças (box, pia e vaso)", "Microfibra macia", "Seca rápido"]
+      "bullets": ["3 peças (box, pia e vaso)", "Microfibra macia", "Seca rápido"],
+      "generic": true
     },
     {
       "id": "tapete-banheiro-algodao",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/tapete-banheiro-algodao",
-      "bullets": ["Algodão grosso", "Absorve bem", "Visual de hotel"]
+      "bullets": ["Algodão grosso", "Absorve bem", "Visual de hotel"],
+      "generic": true
     }
   ]
 }

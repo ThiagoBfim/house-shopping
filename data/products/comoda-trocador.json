@@ -10,26 +10,28 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/comoda-infantil-4-gavetas-trocador",
-      "bullets": ["4 gavetas", "Trocador em cima", "MDP"]
+      "bullets": ["4 gavetas", "Trocador em cima", "MDP"],
+      "generic": true
     },
     {
       "id": "comoda-infantil-6-gavetas-henn",
-      "tier": 2,
-      "name": "Cômoda Infantil 6 Gavetas com Trocador Henn",
+      "tier": 3,
+      "name": "Cômoda Infantil 6 Gavetas com Trocador",
       "price": 899,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/comoda-infantil-6-gavetas-henn",
-      "bullets": ["6 gavetas", "Trocador removível", "Marca conhecida"]
+      "bullets": ["6 gavetas", "Trocador removível", "Marca conhecida"],
+      "generic": true
     },
     {
       "id": "comoda-matic-unique-6-gavetas",
-      "tier": 3,
+      "tier": 2,
       "name": "Cômoda Infantil Matic Unique 6 Gavetas",
-      "price": 1299,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 761,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/comoda-matic-unique-6-gavetas",
+      "url": "https://www.mercadolivre.com.br/comoda-6-gavetas-unique-off-white-eco-wood--matic/up/MLBU750656583?pdp_filters=item_id%3AMLB2704558082",
       "bullets": ["6 gavetas com corrediças metálicas", "Acabamento Eco Wood", "Trocador incluso"]
     },
     {
@@ -40,7 +42,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/comoda-infantil-madeira-macica",
-      "bullets": ["Madeira maciça", "Vira cômoda comum depois", "Fechamento suave"]
+      "bullets": ["Madeira maciça", "Vira cômoda comum depois", "Fechamento suave"],
+      "generic": true
     }
   ]
 }

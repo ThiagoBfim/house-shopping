@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-organizador-de-cabos-espiral-e-presilhas",
-      "bullets": ["Junta os fios num só", "Presilhas adesivas na mesa", "Mesa sem bagunça de fios"]
+      "bullets": ["Junta os fios num só", "Presilhas adesivas na mesa", "Mesa sem bagunça de fios"],
+      "generic": true
     },
     {
       "id": "calha-organizadora-de-cabos-para-mesa",
@@ -21,7 +22,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/calha-organizadora-de-cabos-para-mesa",
-      "bullets": ["Bandeja sob o tampo", "Esconde régua e fontes", "Fios somem de vista"]
+      "bullets": ["Bandeja sob o tampo", "Esconde régua e fontes", "Fios somem de vista"],
+      "generic": true
     }
   ]
 }

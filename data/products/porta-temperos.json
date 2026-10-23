@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/porta-temperos-giratorio-12-potes",
-      "bullets": ["Gira na bancada", "12 potes com tampa dosadora", "Plástico e vidro"]
+      "bullets": ["Gira na bancada", "12 potes com tampa dosadora", "Plástico e vidro"],
+      "generic": true
     },
     {
       "id": "kit-12-potes-de-vidro-para-temperos-com-etiquetas",
@@ -21,7 +22,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-12-potes-de-vidro-para-temperos-com-etiquetas",
-      "bullets": ["Vidro com tampa de bambu", "Etiquetas prontas", "Cabem na gaveta ou prateleira"]
+      "bullets": ["Vidro com tampa de bambu", "Etiquetas prontas", "Cabem na gaveta ou prateleira"],
+      "generic": true
     },
     {
       "id": "porta-temperos-giratorio-inox-16-potes",
@@ -42,7 +44,12 @@
           "available": true,
           "externalId": "MLB5096430747",
           "catalogId": "MLB22705930",
-          "history": [{ "date": "2026-10-22", "price": 125 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 125
+            }
+          ]
         }
       ]
     }

@@ -42,7 +42,7 @@ O nome do arquivo (kebab-case, sem acento) é o id da categoria.
       "price": 1899,
       "priceUpdatedAt": "AAAA-MM-DD",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-roupas-electrolux-les11",
+      "url": "https://www.mercadolivre.com.br/p/MLB…?pdp_filters=item_id%3AMLB…",
       "bullets": ["11 kg", "Diferença em relação aos outros tiers", "..."]
     }
   ]
@@ -53,7 +53,8 @@ O nome do arquivo (kebab-case, sem acento) é o id da categoria.
 - `helper` (opcional): `true` para **facilitadores** — itens que facilitam o dia a dia mas ninguém precisa para morar (organizadores, potes de silicone para congelar, sacos a vácuo, fechadura digital, Alexa). Só entram na lista quando o usuário liga "Incluir facilitadores". Facilitador usa `utensil: false`.
 - `variants` (opcional): quando a categoria tem **tipos diferentes de produto** (fogão de piso × cooktop, PlayStation × Xbox, casal × queen), declare `"variants": [{ "id": "piso", "label": "Fogão de piso" }, …]` (a primeira é a padrão) e diga em cada opção em quais entra (`"variants": ["piso"]`). Cada variante tem a sua escada: tiers sem repetir, preço subindo e 4 tiers se passar de R$ 1.000 — **dentro da variante**. Ao mexer em categoria com variantes, confira se o assistente (`data/assistant.json`) usa alguma delas.
 - `id`: kebab-case único no catálogo inteiro (use marca + modelo).
-- `url`: até existir link de afiliado, use a busca do modelo no Mercado Livre: `https://lista.mercadolivre.com.br/<termos-com-hifen>`.
+- `url`: modelo específico (marca + modelo) precisa do **link direto do produto** no Mercado Livre (`…/p/MLB…` ou `…/up/MLBU…`, com `?pdp_filters=item_id%3AMLB…` quando escolher o anúncio), mesmo sem afiliado. O validador recusa link de busca em modelo específico. Ache o produto **novo e nacional** na busca do ML. Se a marca não tiver o modelo, use o sucessor da mesma marca (e renomeie) ou torne a opção genérica.
+- `generic` (opcional): `true` para produto **sem marca/modelo** (ex.: "Tapete Sala 2,00 x 1,50 m", "Varal de Chão Sanfonado"). Só nesse caso o `url` pode ser a busca: `https://lista.mercadolivre.com.br/<termos-com-hifen>`. Nome genérico não leva marca. Vai depois de `bullets`.
 - `bullets`: **3–5**, curtos, em pt-BR, explicando **o que muda em relação aos outros tiers** (ex.: "Frost free (o barato não é)"), não a ficha técnica inteira.
 - `priceUpdatedAt`: data de hoje.
 - `image` (opcional): URL https da foto (no Mercado Livre, `og:image` da página do produto).

@@ -27,6 +27,8 @@ Para cada linha (dá para fazer aos poucos; linhas vazias são ignoradas):
 4. Em **`preco`**, coloque o **preço normal** do anúncio (não o do Pix), que é o mesmo que a API informa (ex.: `4.105,16`).
 5. Em **`data`**, a data em que viu o preço (`AAAA-MM-DD`; vazia = hoje). Em **`imagem`**, a URL da foto (botão direito na foto → copiar endereço; a página tem em `og:image`). A imagem só é trocada se a coluna vier preenchida.
 
+Sem afiliado ainda? Preencha só **`link_produto`**: o import grava esse link direto no catálogo (sem criar oferta; o preço continua o de referência). A coluna **`generico`** (`sim` ou vazio) marca o produto como genérico (sem marca/modelo): só ele pode ficar com link de busca. Um modelo específico precisa de link do produto, senão o `npm run validate` acusa.
+
 > O link `meli.la` abre o seu perfil social de afiliado (`/social/<etiqueta>?matt_word=…&matt_tool=…`) com o produto em destaque e o botão "Ir para produto". É assim que a comissão é rastreada.
 
 **Com a extensão Claude in Chrome conectada**, rode a skill **`/ml-links`** (ex.: `/ml-links 20`, `/ml-links banheiro`): o Claude faz os passos 1–5 no seu navegador logado, só com produtos **novos e nacionais**, confere cada link abrindo-o e roda o import.

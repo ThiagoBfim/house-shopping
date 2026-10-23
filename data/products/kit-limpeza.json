@@ -10,16 +10,17 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-limpeza-vassoura-rodo-pa-e-balde",
-      "bullets": ["O básico para varrer e puxar água", "Plástico simples", "Cerdas gastam rápido"]
+      "bullets": ["O básico para varrer e puxar água", "Plástico simples", "Cerdas gastam rápido"],
+      "generic": true
     },
     {
       "id": "kit-mop-giratorio-flash-limp-com-vassoura-e-rodo",
       "tier": 2,
-      "name": "Kit Mop Giratório Flash Limp com Vassoura e Rodo",
-      "price": 149,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Mop Giratório Flash Limp Evo",
+      "price": 139,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-mop-giratorio-flash-limp-com-vassoura-e-rodo",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3971685878?pdp_filters=item_id%3AMLB6768622800",
       "bullets": [
         "Mop giratório: limpa sem abaixar",
         "Balde com centrífuga",
@@ -29,7 +30,7 @@
     {
       "id": "kit-mop-spray-mor-com-balde-centrifugo-e-vassoura-condor",
       "tier": 3,
-      "name": "Kit Mop Spray Mor com Balde Centrífugo e Vassoura Condor",
+      "name": "Kit Mop com Balde Centrífugo e Vassoura",
       "price": 279,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -38,7 +39,8 @@
         "Mop spray para piso e mop giratório",
         "Refis de microfibra extras",
         "Cabos de alumínio mais duráveis"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/gaveteiro-3-gavetas-com-rodizios-mdp",
-      "bullets": ["Cabe embaixo da mesa", "Rodízios", "Gavetas simples"]
+      "bullets": ["Cabe embaixo da mesa", "Rodízios", "Gavetas simples"],
+      "generic": true
     },
     {
       "id": "gaveteiro-volante-4-gavetas-com-chave",
@@ -24,7 +25,8 @@
         "Gaveta com chave para documentos",
         "Corrediças mais firmes",
         "Pasta suspensa na última gaveta"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

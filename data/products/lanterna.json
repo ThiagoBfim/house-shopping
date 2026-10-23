@@ -14,16 +14,17 @@
         "Recarrega no carregador do celular",
         "Pequena, cabe na gaveta",
         "Luz suficiente para queda de energia"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "lanterna-tatica-nautika-recarregavel",
       "tier": 2,
-      "name": "Lanterna Tática Nautika Recarregável",
-      "price": 99,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Lanterna Tática Nautika Taclite LED 150 Lúmens",
+      "price": 181,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lanterna-tatica-nautika-recarregavel",
+      "url": "https://www.mercadolivre.com.br/p/MLB21366935?pdp_filters=item_id%3AMLB3204421753",
       "bullets": ["Bem mais forte (foco ajustável)", "Resistente a chuva", "Bateria dura horas"]
     },
     {
@@ -48,7 +49,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB3881419527",
-          "history": [{ "date": "2026-10-22", "price": 482.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 482.99
+            }
+          ]
         }
       ]
     }

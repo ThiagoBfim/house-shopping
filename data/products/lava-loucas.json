@@ -25,28 +25,33 @@
           "available": true,
           "externalId": "MLB4332264349",
           "catalogId": "MLB62844446",
-          "history": [{ "date": "2026-10-22", "price": 1709.1 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1709.1
+            }
+          ]
         }
       ]
     },
     {
       "id": "lava-loucas-brastemp-blf08",
       "tier": 2,
-      "name": "Lava-louças Brastemp 8 Serviços BLF08BS",
-      "price": 2499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Lava-louças Brastemp 8 Serviços BLF08BB",
+      "price": 2019,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-loucas-brastemp-blf08",
+      "url": "https://www.mercadolivre.com.br/p/MLB19745915?pdp_filters=item_id%3AMLB2933408332",
       "bullets": ["8 serviços, a mais vendida do Brasil", "Inox", "Ciclo rápido para o dia a dia"]
     },
     {
       "id": "lava-loucas-electrolux-ll14x",
-      "tier": 3,
-      "name": "Lava-louças Electrolux 14 Serviços LL14X",
-      "price": 3299,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 4,
+      "name": "Lava-louças Electrolux 14 Serviços Inox",
+      "price": 8309,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lava-loucas-electrolux-ll14x",
+      "url": "https://www.mercadolivre.com.br/p/MLB19714947?pdp_filters=item_id%3AMLB7525161176",
       "bullets": [
         "14 serviços: família de 4 a 6",
         "Cesto superior com altura ajustável",
@@ -55,7 +60,7 @@
     },
     {
       "id": "lava-loucas-brastemp-blf61ar",
-      "tier": 4,
+      "tier": 3,
       "name": "Lava-louças Brastemp 15 Serviços BLF61AR",
       "price": 3965.17,
       "priceUpdatedAt": "2026-10-22",
@@ -76,7 +81,12 @@
           "available": true,
           "externalId": "MLB5336931524",
           "catalogId": "MLB43068829",
-          "history": [{ "date": "2026-10-22", "price": 3965.17 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 3965.17
+            }
+          ]
         }
       ]
     }

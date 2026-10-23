@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao",
-      "bullets": ["Fixa", "Encosto alto", "Estofada"]
+      "bullets": ["Fixa", "Encosto alto", "Estofada"],
+      "generic": true
     },
     {
       "id": "poltrona-amamentacao-balanco",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao-balanco",
-      "bullets": ["Balanço suave: ajuda a fazer o bebê dormir", "Braços largos", "Tecido lavável"]
+      "bullets": ["Balanço suave: ajuda a fazer o bebê dormir", "Braços largos", "Tecido lavável"],
+      "generic": true
     },
     {
       "id": "poltrona-amamentacao-balanco-puff",
@@ -34,7 +36,8 @@
         "Balanço + puff com balanço",
         "Muito confortável para a madrugada",
         "Tecido antimanchas"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "poltrona-amamentacao-reclinavel",
@@ -44,7 +47,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/poltrona-amamentacao-reclinavel",
-      "bullets": ["Reclina com botão", "Giratória", "Vira poltrona da sala depois"]
+      "bullets": ["Reclina com botão", "Giratória", "Vira poltrona da sala depois"],
+      "generic": true
     }
   ]
 }

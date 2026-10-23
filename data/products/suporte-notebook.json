@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/suporte-para-notebook-ajustavel-plastico",
-      "bullets": ["Tela na altura dos olhos", "Alguns níveis de altura", "Leve"]
+      "bullets": ["Tela na altura dos olhos", "Alguns níveis de altura", "Leve"],
+      "generic": true
     },
     {
       "id": "suporte-para-notebook-aluminio-dobravel",
@@ -24,7 +25,8 @@
         "Alumínio ajuda a esfriar o notebook",
         "Ajuste fino de altura e ângulo",
         "Dobra e vai na mochila"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

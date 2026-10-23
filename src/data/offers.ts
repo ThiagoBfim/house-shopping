@@ -37,6 +37,17 @@ export function applyBestOffer(option: ProductOption): ProductOption {
   }
 }
 
+/** Link de busca (lista de resultados), não de um produto: só serve para produto genérico. */
+export function isSearchUrl(url: string): boolean {
+  try {
+    const { hostname, pathname } = new URL(url)
+    const host = hostname.replace(/^www\./, '')
+    return host === 'lista.mercadolivre.com.br' || (host.startsWith('amazon.') && pathname === '/s')
+  } catch {
+    return false
+  }
+}
+
 /** Link que gera comissão (link curto do gerador do Mercado Livre ou com tag de afiliado). */
 export function isAffiliateUrl(url: string): boolean {
   let parsed: URL

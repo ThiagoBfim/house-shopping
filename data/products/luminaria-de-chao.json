@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/luminaria-de-chao-coluna-tripe",
-      "bullets": ["Luz indireta aconchegante", "Tripé de madeira", "Lâmpada à parte"]
+      "bullets": ["Luz indireta aconchegante", "Tripé de madeira", "Lâmpada à parte"],
+      "generic": true
     },
     {
       "id": "luminaria-de-chao-arco-moderna",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/luminaria-de-chao-arco-moderna",
-      "bullets": ["Arco que alcança o sofá", "Base de mármore sintético", "Peça de decoração"]
+      "bullets": ["Arco que alcança o sofá", "Base de mármore sintético", "Peça de decoração"],
+      "generic": true
     }
   ]
 }

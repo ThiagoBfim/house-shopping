@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB4580688095",
           "catalogId": "MLB29272262",
-          "history": [{ "date": "2026-10-22", "price": 176 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 176
+            }
+          ]
         }
       ]
     },
@@ -48,18 +53,23 @@
           "available": true,
           "externalId": "MLB3481165679",
           "catalogId": "MLB59029690",
-          "history": [{ "date": "2026-10-22", "price": 332.64 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 332.64
+            }
+          ]
         }
       ]
     },
     {
       "id": "sistema-mesh-wi-fi-6-tp-link-deco-x20-2-unidades",
       "tier": 3,
-      "name": "Sistema Mesh Wi-Fi 6 TP-Link Deco X20 2 Unidades",
-      "price": 899,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Sistema Mesh Wi-Fi 6 TP-Link Deco X50 2 Unidades",
+      "price": 769,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/sistema-mesh-wi-fi-6-tp-link-deco-x20-2-unidades",
+      "url": "https://www.mercadolivre.com.br/p/MLB38062594?pdp_filters=item_id%3AMLB6768205556",
       "bullets": ["Dois pontos: sinal na casa toda", "Sem área sem internet", "Configura pelo app"]
     }
   ]

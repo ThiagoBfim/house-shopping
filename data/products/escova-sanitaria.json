@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/escova-sanitaria-com-suporte-plastico",
-      "bullets": ["Escova de cerdas com suporte", "Simples e barata", "Acumula água no suporte"]
+      "bullets": ["Escova de cerdas com suporte", "Simples e barata", "Acumula água no suporte"],
+      "generic": true
     },
     {
       "id": "escova-sanitaria-de-silicone-com-suporte-de-parede",
@@ -24,16 +25,17 @@
         "Silicone não acumula sujeira",
         "Seca rápido",
         "Fica pendurada, sem ocupar o chão"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "escova-sanitaria-inox-brinox-com-suporte",
       "tier": 3,
-      "name": "Escova Sanitária Inox Brinox com Suporte",
-      "price": 129,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Escova Sanitária com Suporte Brinox Decorline",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/escova-sanitaria-inox-brinox-com-suporte",
+      "url": "https://www.mercadolivre.com.br/suporte-com-escova-para-banheiro-brinox-decorline/p/MLB21027787?pdp_filters=item_id%3AMLB4497793604",
       "bullets": ["Suporte de inox", "Refil de escova trocável", "Mais bonita no banheiro"]
     }
   ]

@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-4-colmeias-organizadoras-de-gaveta",
-      "bullets": ["Meias, cuecas e calcinhas separadas", "Encaixam na gaveta", "Plástico"]
+      "bullets": ["Meias, cuecas e calcinhas separadas", "Encaixam na gaveta", "Plástico"],
+      "generic": true
     },
     {
       "id": "kit-6-organizadores-de-gaveta-tecido-com-divisorias",
@@ -25,7 +26,8 @@
         "Tamanhos diferentes (camiseta, roupa íntima)",
         "Tecido não risca a gaveta",
         "Dobram quando não usa"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

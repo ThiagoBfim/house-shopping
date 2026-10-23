@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/rack-para-tv-55-polegadas",
-      "bullets": ["Para TV até 55\"", "2 portas", "MDP"]
+      "bullets": ["Para TV até 55\"", "2 portas", "MDP"],
+      "generic": true
     },
     {
       "id": "painel-com-rack-para-tv-65",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/painel-com-rack-para-tv-65",
-      "bullets": ["Painel na parede: esconde os fios", "Nichos para decoração", "Para TV até 65\""]
+      "bullets": ["Painel na parede: esconde os fios", "Nichos para decoração", "Para TV até 65\""],
+      "generic": true
     },
     {
       "id": "home-suspenso-ripado-tv-75",
@@ -34,7 +36,8 @@
         "Suspenso: visual leve, fácil de limpar o chão",
         "Painel ripado",
         "Iluminação de LED"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "rack-madeira-macica-tv",
@@ -44,7 +47,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/rack-madeira-macica-tv",
-      "bullets": ["Madeira maciça", "Gavetas com fechamento suave", "Peça de design"]
+      "bullets": ["Madeira maciça", "Gavetas com fechamento suave", "Peça de design"],
+      "generic": true
     }
   ]
 }

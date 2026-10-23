@@ -4,32 +4,33 @@
   "options": [
     {
       "id": "guarda-roupa-infantil-2-portas",
-      "tier": 1,
+      "tier": 2,
       "name": "Guarda-roupa Infantil 2 Portas",
       "price": 599,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-2-portas",
-      "bullets": ["2 portas", "MDP", "Compacto"]
+      "bullets": ["2 portas", "MDP", "Compacto"],
+      "generic": true
     },
     {
       "id": "guarda-roupa-infantil-3-portas-henn",
-      "tier": 2,
-      "name": "Guarda-roupa Infantil 3 Portas Henn",
-      "price": 1199,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 1,
+      "name": "Guarda-roupa Infantil Henn 3 Portas 2 Gavetas",
+      "price": 555,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-3-portas-henn",
+      "url": "https://www.mercadolivre.com.br/p/MLB29009936?pdp_filters=item_id%3AMLB5829525100",
       "bullets": ["3 portas e gavetas", "Combina com berço Henn", "Puxadores arredondados"]
     },
     {
       "id": "guarda-roupa-matic-unique-3-portas",
       "tier": 3,
       "name": "Guarda-roupa Infantil Matic Unique 3 Portas",
-      "price": 1899,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1151,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/guarda-roupa-matic-unique-3-portas",
+      "url": "https://www.mercadolivre.com.br/p/MLB28186716?pdp_filters=item_id%3AMLB3814947329",
       "bullets": ["3 portas", "Acabamento Eco Wood", "Combina com a linha Unique"]
     },
     {
@@ -40,7 +41,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/guarda-roupa-infantil-madeira-macica",
-      "bullets": ["Madeira maciça", "Serve até a adolescência", "Montagem inclusa (em geral)"]
+      "bullets": ["Madeira maciça", "Serve até a adolescência", "Montagem inclusa (em geral)"],
+      "generic": true
     }
   ]
 }

@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-para-escritorio-120-cm-mdp",
-      "bullets": ["120 cm: notebook e um monitor", "Montagem simples", "Sem gavetas"]
+      "bullets": ["120 cm: notebook e um monitor", "Montagem simples", "Sem gavetas"],
+      "generic": true
     },
     {
       "id": "mesa-escrivaninha-em-l-150-cm",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-escrivaninha-em-l-150-cm",
-      "bullets": ["Formato em L: muito espaço", "Cabe dois monitores", "Passa-fios"]
+      "bullets": ["Formato em L: muito espaço", "Cabe dois monitores", "Passa-fios"],
+      "generic": true
     },
     {
       "id": "mesa-com-regulagem-de-altura-manual-120-cm",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-com-regulagem-de-altura-manual-120-cm",
-      "bullets": ["Sobe com manivela: trabalha em pé", "Estrutura de aço", "Tampo de 120 cm"]
+      "bullets": ["Sobe com manivela: trabalha em pé", "Estrutura de aço", "Tampo de 120 cm"],
+      "generic": true
     }
   ]
 }

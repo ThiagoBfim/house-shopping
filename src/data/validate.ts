@@ -1,5 +1,5 @@
 import type { z } from 'zod'
-import { applyBestOffer } from './offers.ts'
+import { applyBestOffer, isSearchUrl } from './offers.ts'
 import {
   AssistantSchema,
   ProductCategorySchema,
@@ -50,6 +50,12 @@ function checkProducts(products: Products): string[] {
       const other = seenIds.get(option.id)
       if (other) errors.push(`${at}: id "${option.id}" repetido (também em ${other})`)
       seenIds.set(option.id, category)
+
+      if (!option.generic && isSearchUrl(option.url)) {
+        errors.push(
+          `${at}: "${option.id}" é um modelo específico, mas o link é de busca: use o link do produto (ou marque "generic": true)`,
+        )
+      }
 
       const shown = applyBestOffer(option)
       const fields = (['price', 'priceUpdatedAt', 'store', 'url'] as const).filter(

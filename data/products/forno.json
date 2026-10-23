@@ -2,8 +2,14 @@
   "label": "Forno",
   "utensil": false,
   "variants": [
-    { "id": "bancada", "label": "Forno elétrico de bancada" },
-    { "id": "embutir", "label": "Forno de embutir" }
+    {
+      "id": "bancada",
+      "label": "Forno elétrico de bancada"
+    },
+    {
+      "id": "embutir",
+      "label": "Forno de embutir"
+    }
   ],
   "options": [
     {
@@ -13,7 +19,7 @@
       "price": 549,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-eletrico-mondial-grand-family-52-litros",
+      "url": "https://www.mercadolivre.com.br/p/MLB53802029?pdp_filters=item_id%3AMLB5997009972",
       "bullets": ["De bancada, sem obra", "52 L e 1800 W", "Timer de 60 minutos"],
       "variants": ["bancada"]
     },
@@ -21,10 +27,10 @@
       "id": "forno-eletrico-fischer-gourmet-grill-44-litros",
       "tier": 2,
       "name": "Forno Elétrico Fischer Gourmet Grill 44 L",
-      "price": 1099,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 895,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-eletrico-fischer-gourmet-grill-44-litros",
+      "url": "https://www.mercadolivre.com.br/p/MLB69943592?pdp_filters=item_id%3AMLB6311070146",
       "bullets": [
         "De bancada, chega a 320 °C (pizza de verdade)",
         "Grill e dupla resistência",
@@ -35,22 +41,22 @@
     {
       "id": "forno-eletrico-oster-air-fryer-2-em-1-50-l",
       "tier": 3,
-      "name": "Forno Elétrico Oster Air Fryer 2 em 1 50 L",
-      "price": 1299,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Forno Elétrico Air Fryer Oster Digital Pro 8 em 1 25 L",
+      "price": 1190,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-eletrico-oster-air-fryer-2-em-1-50-l",
+      "url": "https://www.mercadolivre.com.br/p/MLB77555483?pdp_filters=item_id%3AMLB7536239408",
       "bullets": ["Forno e air fryer no mesmo aparelho", "50 L", "Convecção: assa por igual"],
       "variants": ["bancada"]
     },
     {
       "id": "forno-eletrico-tramontina-by-breville-smart-oven-air",
       "tier": 4,
-      "name": "Forno Elétrico Tramontina by Breville Smart Oven Air",
-      "price": 3499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Forno Elétrico Tramontina by Breville Smart 9 Funções",
+      "price": 4300,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-eletrico-tramontina-by-breville-smart-oven-air",
+      "url": "https://www.mercadolivre.com.br/up/MLBU5176768174?pdp_filters=item_id%3AMLB7626057316",
       "bullets": [
         "Air fry, desidrata e fermenta",
         "Controle preciso de temperatura",
@@ -60,23 +66,23 @@
     },
     {
       "id": "forno-de-embutir-eletrico-fischer-fit-line-44-l",
-      "tier": 1,
+      "tier": 2,
       "name": "Forno de Embutir Elétrico Fischer Fit Line 44 L",
-      "price": 1199,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1149,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-eletrico-fischer-fit-line-44-l",
+      "url": "https://www.mercadolivre.com.br/up/MLBU2877530773?pdp_filters=item_id%3AMLB3924971899",
       "bullets": ["Elétrico de embutir", "Fica no armário (combina com cooktop)", "Grill"],
       "variants": ["embutir"]
     },
     {
       "id": "forno-de-embutir-eos-47-litros",
-      "tier": 2,
+      "tier": 1,
       "name": "Forno de Embutir Elétrico EOS 47 L EFE47EP",
-      "price": 1799,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 939,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-eos-47-litros",
+      "url": "https://www.mercadolivre.com.br/p/MLB25827378?pdp_filters=item_id%3AMLB4086786421",
       "bullets": [
         "De embutir, visual planejado",
         "47 L com convecção",
@@ -107,7 +113,12 @@
           "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB5524387860",
-          "history": [{ "date": "2026-10-22", "price": 2047.79 }],
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2047.79
+            }
+          ],
           "catalogId": "MLB51183658"
         }
       ],
@@ -116,11 +127,11 @@
     {
       "id": "forno-de-embutir-brastemp-eletrico-84-l-com-conveccao",
       "tier": 4,
-      "name": "Forno de Embutir Brastemp Elétrico 84 L com Convecção",
-      "price": 4999,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Forno de Embutir Brastemp Elétrico 84 L com Air Fryer",
+      "price": 2269,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/forno-de-embutir-brastemp-eletrico-84-l-com-conveccao",
+      "url": "https://www.mercadolivre.com.br/up/MLBU5269811511?pdp_filters=item_id%3AMLB5291332385",
       "bullets": ["84 L: assa peru e dois tabuleiros", "Convecção e autolimpeza", "Painel digital"],
       "variants": ["embutir"]
     }

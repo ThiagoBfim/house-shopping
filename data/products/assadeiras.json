@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-3-assadeiras-de-aluminio",
-      "bullets": ["Três tamanhos", "Leves", "Precisa untar"]
+      "bullets": ["Três tamanhos", "Leves", "Precisa untar"],
+      "generic": true
     },
     {
       "id": "jogo-de-assadeiras-tramontina-brasil-3-pecas",
@@ -31,14 +32,19 @@
           "available": true,
           "externalId": "MLB3609900427",
           "catalogId": "MLB27670124",
-          "history": [{ "date": "2026-10-22", "price": 150.55 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 150.55
+            }
+          ]
         }
       ]
     },
     {
       "id": "kit-5-refratarios-de-vidro-pyrex-com-tampa",
       "tier": 3,
-      "name": "Kit 5 Refratários de Vidro Pyrex com Tampa",
+      "name": "Kit 5 Refratários de Vidro com Tampa",
       "price": 249,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -47,7 +53,8 @@
         "Vão do forno à mesa e à geladeira",
         "Tampas para guardar sobras",
         "Vidro não pega cheiro"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

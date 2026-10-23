@@ -29,6 +29,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-casal-microfibra-4-pecas",
       "bullets": ["Microfibra: barata e não amassa", "Esquenta mais no verão", "4 peças"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -40,6 +41,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-casal-percal-200-fios",
       "bullets": ["100% algodão", "Percal 200 fios: respira melhor", "4 peças"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -51,6 +53,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-casal-percal-400-fios",
       "bullets": ["400 fios: toque de hotel", "Algodão egípcio", "4 peças"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -62,6 +65,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-solteiro-microfibra-3-pecas",
       "bullets": ["Microfibra", "Lençol, elástico e fronha", "Seca rápido"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -73,6 +77,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-solteiro-percal-200-fios",
       "bullets": ["Algodão percal", "Mais fresco", "3 peças"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -84,6 +89,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-queen-microfibra-4-pecas",
       "bullets": ["Microfibra", "Queen (1,58 m)", "Seca rápido"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -95,6 +101,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-queen-percal-200-fios",
       "bullets": ["Algodão percal", "Mais fresco", "4 peças"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -110,18 +117,20 @@
         "Algodão egípcio ou pima",
         "Dura mais lavagens"
       ],
+      "generic": true,
       "variants": ["queen"]
     },
     {
       "id": "jogo-de-cama-trussardi-600-fios",
       "tier": 4,
-      "name": "Jogo de Cama Queen Trussardi 600 Fios",
+      "name": "Jogo de Cama Queen Percal 600 Fios",
       "price": 1299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-trussardi-600-fios",
       "bullets": ["600 fios", "Marca premium de cama e banho", "Acabamento acetinado"],
-      "variants": ["queen"]
+      "variants": ["queen"],
+      "generic": true
     },
     {
       "id": "jogo-de-cama-king-microfibra-4-pecas",
@@ -132,6 +141,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-king-microfibra-4-pecas",
       "bullets": ["Microfibra", "King (1,93 m)", "Seca rápido"],
+      "generic": true,
       "variants": ["king"]
     },
     {
@@ -143,6 +153,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/jogo-de-cama-king-percal-400-fios",
       "bullets": ["400 fios: toque de hotel", "Algodão egípcio", "4 peças"],
+      "generic": true,
       "variants": ["king"]
     }
   ]

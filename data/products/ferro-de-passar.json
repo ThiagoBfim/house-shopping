@@ -5,11 +5,11 @@
     {
       "id": "ferro-de-passar-a-seco-black-decker",
       "tier": 1,
-      "name": "Ferro de Passar a Seco Black+Decker",
-      "price": 69,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Ferro de Passar a Seco Black+Decker VFA1110X",
+      "price": 199,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/ferro-de-passar-a-seco-black-decker",
+      "url": "https://www.mercadolivre.com.br/p/MLB15785193?pdp_filters=item_id%3AMLB7762770530",
       "bullets": ["Sem vapor", "Simples e leve", "Mais trabalho em roupa amassada"]
     },
     {
@@ -31,7 +31,12 @@
           "available": true,
           "externalId": "MLB7568051894",
           "catalogId": "MLB68773047",
-          "history": [{ "date": "2026-10-22", "price": 245.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 245.99
+            }
+          ]
         }
       ]
     },
@@ -58,7 +63,12 @@
           "available": true,
           "externalId": "MLB6556906064",
           "catalogId": "MLB54409377",
-          "history": [{ "date": "2026-10-22", "price": 319.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 319.99
+            }
+          ]
         }
       ]
     }

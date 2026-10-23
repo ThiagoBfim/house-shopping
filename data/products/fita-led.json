@@ -10,7 +10,12 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/fita-led-rgb-5-m-com-controle",
-      "bullets": ["Cores e efeitos pelo controle", "Cola atrás da mesa ou monitor", "USB ou tomada"]
+      "bullets": [
+        "Cores e efeitos pelo controle",
+        "Cola atrás da mesa ou monitor",
+        "USB ou tomada"
+      ],
+      "generic": true
     },
     {
       "id": "fita-led-rgb-wi-fi-positivo-casa-inteligente-5-m",
@@ -31,18 +36,23 @@
           "available": true,
           "externalId": "MLB6881640268",
           "catalogId": "MLB22636671",
-          "history": [{ "date": "2026-10-22", "price": 100.64 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 100.64
+            }
+          ]
         }
       ]
     },
     {
       "id": "kit-2-barras-de-luz-philips-hue-play",
       "tier": 3,
-      "name": "Kit 2 Barras de Luz Philips Hue Play",
-      "price": 899,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Barra de Luz Philips Hue Play Color Ambiance",
+      "price": 975,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-2-barras-de-luz-philips-hue-play",
+      "url": "https://www.mercadolivre.com.br/up/MLBU4015354909?pdp_filters=item_id%3AMLB4719155749",
       "bullets": [
         "Luz que acompanha a tela (com Hue Sync)",
         "Cores muito fortes",

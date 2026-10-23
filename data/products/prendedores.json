@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-48-prendedores-de-roupa-plastico",
-      "bullets": ["48 unidades", "Plástico", "Ressecam no sol"]
+      "bullets": ["48 unidades", "Plástico", "Ressecam no sol"],
+      "generic": true
     },
     {
       "id": "kit-24-prendedores-de-roupa-inox",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-24-prendedores-de-roupa-inox",
-      "bullets": ["Inox: não quebra nem enferruja", "Não marca a roupa", "Duram anos"]
+      "bullets": ["Inox: não quebra nem enferruja", "Não marca a roupa", "Duram anos"],
+      "generic": true
     }
   ]
 }

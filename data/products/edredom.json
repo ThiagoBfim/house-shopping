@@ -29,6 +29,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-casal-microfibra",
       "bullets": ["Microfibra", "Leve", "Lava na máquina"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -40,6 +41,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-casal-dupla-face-algodao",
       "bullets": ["Algodão", "Dupla face (duas cores)", "Respira melhor"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -51,6 +53,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-casal-pena-de-ganso",
       "bullets": ["Pena de ganso: quente e leve", "Casal", "Capa de algodão"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -62,6 +65,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-solteiro-microfibra",
       "bullets": ["Microfibra", "Leve", "Lava na máquina"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -73,6 +77,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-solteiro-dupla-face-algodao",
       "bullets": ["Dupla face", "Algodão", "Mais quente"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -84,6 +89,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-queen-microfibra",
       "bullets": ["Microfibra", "Queen", "Lava na máquina"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -95,6 +101,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-queen-dupla-face-algodao",
       "bullets": ["Dupla face", "Algodão", "Mais quente"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -106,6 +113,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-pena-de-ganso-queen",
       "bullets": ["Mistura de pena e pluma", "Bem quente e leve", "Lavanderia recomendada"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -117,6 +125,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-100-pluma-de-ganso",
       "bullets": ["100% pluma: o mais quente e leve", "Para inverno rigoroso", "Dura muitos anos"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -128,6 +137,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-king-microfibra",
       "bullets": ["Microfibra", "King", "Lava na máquina"],
+      "generic": true,
       "variants": ["king"]
     },
     {
@@ -139,6 +149,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/edredom-king-pena-de-ganso",
       "bullets": ["Pena de ganso: quente e leve", "King", "Capa de algodão"],
+      "generic": true,
       "variants": ["king"]
     }
   ]

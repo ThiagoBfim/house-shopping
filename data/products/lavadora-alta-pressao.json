@@ -4,17 +4,17 @@
   "options": [
     {
       "id": "lavadora-alta-pressao-wap-ousada",
-      "tier": 1,
+      "tier": 2,
       "name": "Lavadora de Alta Pressão WAP Ousada Plus 2200",
-      "price": 349,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 649,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lavadora-alta-pressao-wap-ousada",
+      "url": "https://www.mercadolivre.com.br/p/MLB15345687?pdp_filters=item_id%3AMLB2794432256",
       "bullets": ["Para limpeza leve (calçada, carro)", "Compacta", "Mangueira curta"]
     },
     {
       "id": "lavadora-karcher-k2-plus",
-      "tier": 2,
+      "tier": 1,
       "name": "Lavadora de Alta Pressão Kärcher K2 Plus Turbo",
       "price": 402.99,
       "priceUpdatedAt": "2026-10-23",
@@ -31,18 +31,23 @@
           "available": true,
           "externalId": "MLB6676755768",
           "catalogId": "MLB25413983",
-          "history": [{ "date": "2026-10-22", "price": 402.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 402.99
+            }
+          ]
         }
       ]
     },
     {
       "id": "lavadora-karcher-k3-power-control",
       "tier": 3,
-      "name": "Lavadora de Alta Pressão Kärcher K3 Power Control",
-      "price": 899,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Lavadora de Alta Pressão Kärcher K3 Force Turbo",
+      "price": 889,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lavadora-karcher-k3-power-control",
+      "url": "https://www.mercadolivre.com.br/p/MLB22609620?pdp_filters=item_id%3AMLB4096955003",
       "bullets": ["Mais pressão e vazão", "Controle de pressão na pistola", "Para quintal maior"]
     },
     {
@@ -68,7 +73,12 @@
           "available": true,
           "externalId": "MLB2098257351",
           "catalogId": "MLB18611173",
-          "history": [{ "date": "2026-10-22", "price": 899.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 899.99
+            }
+          ]
         }
       ]
     }

@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mousepad-gamer-extra-grande-90x40-cm",
-      "bullets": ["Cobre teclado e mouse", "Base antiderrapante", "Bordas costuradas"]
+      "bullets": ["Cobre teclado e mouse", "Base antiderrapante", "Bordas costuradas"],
+      "generic": true
     },
     {
       "id": "mousepad-gamer-logitech-g840-xl",
@@ -32,8 +33,14 @@
           "externalId": "MLB5039194998",
           "catalogId": "MLB23470126",
           "history": [
-            { "date": "2026-10-22", "price": 299 },
-            { "date": "2026-10-23", "price": 299.99 }
+            {
+              "date": "2026-10-22",
+              "price": 299
+            },
+            {
+              "date": "2026-10-23",
+              "price": 299.99
+            }
           ]
         }
       ]

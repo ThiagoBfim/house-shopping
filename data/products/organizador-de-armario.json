@@ -5,22 +5,23 @@
   "options": [
     {
       "id": "kit-2-prateleiras-organizadoras-de-armario-aramadas",
-      "tier": 1,
+      "tier": 2,
       "name": "Kit 2 Prateleiras Organizadoras de Armário Aramadas",
       "price": 59,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-2-prateleiras-organizadoras-de-armario-aramadas",
-      "bullets": ["Dobram o espaço do armário", "Pratos e copos em dois andares", "Sem furar"]
+      "bullets": ["Dobram o espaço do armário", "Pratos e copos em dois andares", "Sem furar"],
+      "generic": true
     },
     {
       "id": "kit-4-cestos-organizadores-plasticos-ordene",
-      "tier": 2,
+      "tier": 1,
       "name": "Kit 4 Cestos Organizadores Plásticos Ordene",
-      "price": 119,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 50,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-4-cestos-organizadores-plasticos-ordene",
+      "url": "https://www.mercadolivre.com.br/p/MLB28405634?pdp_filters=item_id%3AMLB6225178988",
       "bullets": ["Agrupam pacotes e enlatados", "Puxa o cesto inteiro do fundo", "Fáceis de lavar"]
     }
   ]

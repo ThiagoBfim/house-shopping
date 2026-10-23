@@ -14,7 +14,8 @@
         "Blackout de PVC: escurece bem",
         "Instalação simples em varão",
         "Aparência mais simples"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "cortina-blackout-tecido-com-voil",
@@ -24,7 +25,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cortina-blackout-tecido-com-voil",
-      "bullets": ["Tecido blackout + voil (duas camadas)", "Visual mais acabado", "Lavável"]
+      "bullets": ["Tecido blackout + voil (duas camadas)", "Visual mais acabado", "Lavável"],
+      "generic": true
     },
     {
       "id": "persiana-rolo-blackout-sob-medida",
@@ -38,7 +40,8 @@
         "Sob medida para a janela",
         "Rolô: ocupa pouco espaço",
         "Bloqueio de luz quase total"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

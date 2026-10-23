@@ -55,6 +55,11 @@ export const ProductOptionSchema = z.strictObject({
   image: httpsUrl.optional(),
   bullets: z.array(z.string().min(3)).min(3, 'mínimo de 3 bullets').max(5, 'máximo de 5 bullets'),
   offers: z.array(OfferSchema).min(1).optional(),
+  /**
+   * Produto genérico (sem marca/modelo, ex.: "Tapete Sala 2,00 x 1,50 m"): o link pode ser de
+   * busca. Sem a flag, é um modelo específico e o `url` precisa abrir o produto.
+   */
+  generic: z.boolean().optional(),
   /** Variantes da categoria em que esta opção entra (obrigatório quando a categoria tem variantes). */
   variants: z.array(slug).min(1).optional(),
 })

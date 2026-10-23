@@ -10,7 +10,12 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-gamer-120-cm-com-regulagem-de-altura-manual",
-      "bullets": ["Sobe com manivela", "Tampo de fibra de carbono", "Porta-copo e gancho para fone"]
+      "bullets": [
+        "Sobe com manivela",
+        "Tampo de fibra de carbono",
+        "Porta-copo e gancho para fone"
+      ],
+      "generic": true
     },
     {
       "id": "mesa-com-regulagem-de-altura-eletrica-120-cm",
@@ -20,7 +25,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-com-regulagem-de-altura-eletrica-120-cm",
-      "bullets": ["Motor elétrico: sobe num botão", "Memória de altura", "Joga e trabalha em pé"]
+      "bullets": ["Motor elétrico: sobe num botão", "Memória de altura", "Joga e trabalha em pé"],
+      "generic": true
     },
     {
       "id": "mesa-eletrica-flexispot-ew9wm",
@@ -44,19 +50,29 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB4523689727",
-          "history": [{ "date": "2026-10-22", "price": 1999 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1999
+            }
+          ]
         }
       ]
     },
     {
       "id": "mesa-eletrica-flexispot-e7-pro-com-tampo-de-bambu-180-cm",
       "tier": 4,
-      "name": "Mesa Elétrica FlexiSpot E7 Pro com Tampo de Bambu 180 cm",
+      "name": "Mesa Elétrica Premium com Tampo de Bambu 180 cm",
       "price": 4999,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-eletrica-flexispot-e7-pro-com-tampo-de-bambu-180-cm",
-      "bullets": ["Tampo de bambu maciço de 180 cm", "Antivibração e anticolisão", "Garantia longa"]
+      "bullets": [
+        "Tampo de bambu maciço de 180 cm",
+        "Antivibração e anticolisão",
+        "Garantia longa"
+      ],
+      "generic": true
     }
   ]
 }

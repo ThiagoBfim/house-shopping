@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB6577404612",
           "catalogId": "MLB58973786",
-          "history": [{ "date": "2026-10-22", "price": 29.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 29.99
+            }
+          ]
         }
       ]
     },
@@ -44,18 +49,23 @@
           "available": true,
           "externalId": "MLB6512539354",
           "catalogId": "MLB66986892",
-          "history": [{ "date": "2026-10-22", "price": 65 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 65
+            }
+          ]
         }
       ]
     },
     {
       "id": "jogo-de-copos-cristal-bohemia",
       "tier": 3,
-      "name": "Jogo de Copos de Cristal Bohemia 12 Peças",
-      "price": 399,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Jogo 12 Copos de Cristal Bohemia Ardea 300 ml",
+      "price": 300,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-cristal-bohemia",
+      "url": "https://www.mercadolivre.com.br/jogo-12-copos-cristal-bohemia-300ml-linha-ardea-resistencia-titanio/p/MLB43867226?pdp_filters=item_id%3AMLB5256584631",
       "bullets": ["Cristal tcheco", "Mais brilho e som de cristal", "Lavar à mão"]
     }
   ]

@@ -5,12 +5,13 @@
     {
       "id": "baba-eletronica-motorola-am21",
       "tier": 1,
-      "name": "Babá Eletrônica Motorola AM21 (áudio)",
+      "name": "Babá Eletrônica de Áudio",
       "price": 199,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/baba-eletronica-motorola-am21",
-      "bullets": ["Só áudio", "Alcance de 300 m", "Pilha recarregável"]
+      "bullets": ["Só áudio", "Alcance de 300 m", "Pilha recarregável"],
+      "generic": true
     },
     {
       "id": "baba-eletronica-motorola-vm481",
@@ -31,7 +32,12 @@
           "available": true,
           "externalId": "MLB3353587915",
           "catalogId": "MLB22515039",
-          "history": [{ "date": "2026-10-22", "price": 299.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 299.9
+            }
+          ]
         }
       ]
     },
@@ -58,7 +64,12 @@
           "available": true,
           "externalId": "MLB4580482639",
           "catalogId": "MLB65322285",
-          "history": [{ "date": "2026-10-22", "price": 1299 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1299
+            }
+          ]
         }
       ]
     },
@@ -85,7 +96,12 @@
           "available": true,
           "externalId": "MLB5837771638",
           "catalogId": "MLB25029780",
-          "history": [{ "date": "2026-10-22", "price": 2499 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2499
+            }
+          ]
         }
       ]
     }

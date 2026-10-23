@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-acessorios-banheiro-4-pecas",
-      "bullets": ["Saboneteira, porta-escova e dispenser", "Plástico", "Várias cores"]
+      "bullets": ["Saboneteira, porta-escova e dispenser", "Plástico", "Várias cores"],
+      "generic": true
     },
     {
       "id": "kit-acessorios-banheiro-ceramica-5-pecas",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-acessorios-banheiro-ceramica-5-pecas",
-      "bullets": ["Cerâmica", "5 peças com bandeja", "Visual de hotel"]
+      "bullets": ["Cerâmica", "5 peças com bandeja", "Visual de hotel"],
+      "generic": true
     },
     {
       "id": "kit-acessorios-banheiro-inox-parede",
@@ -34,7 +36,8 @@
         "Inox de parede: porta-toalha, papeleira, cabides",
         "Não enferruja",
         "Fixação com parafuso"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

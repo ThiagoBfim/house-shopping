@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-primeiros-socorros-basico",
-      "bullets": ["Curativos, gaze e esparadrapo", "Tesoura e luvas", "Caixa pequena"]
+      "bullets": ["Curativos, gaze e esparadrapo", "Tesoura e luvas", "Caixa pequena"],
+      "generic": true
     },
     {
       "id": "kit-primeiros-socorros-completo-com-maleta",
@@ -24,7 +25,8 @@
         "Mais de 50 itens",
         "Termômetro e bolsa térmica",
         "Maleta organizada para o armário"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

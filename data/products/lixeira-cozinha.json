@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/lixeira-com-pedal-plastico-12-l",
-      "bullets": ["Pedal: abre sem tocar", "Tamanho pequeno", "Plástico"]
+      "bullets": ["Pedal: abre sem tocar", "Tamanho pequeno", "Plástico"],
+      "generic": true
     },
     {
       "id": "lixeira-inox-com-pedal-brinox-30-l",
@@ -31,7 +32,12 @@
           "available": true,
           "externalId": "MLB4478322979",
           "catalogId": "MLB19856710",
-          "history": [{ "date": "2026-10-22", "price": 359 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 359
+            }
+          ]
         }
       ]
     }

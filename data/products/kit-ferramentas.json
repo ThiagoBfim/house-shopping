@@ -14,7 +14,8 @@
         "Chaves de fenda, alicate e martelo",
         "Resolve consertos simples",
         "Aço mais fraco"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-de-ferramentas-tramontina-110-pecas",
@@ -35,7 +36,12 @@
           "available": true,
           "externalId": "MLB3448131925",
           "catalogId": "MLB2126162888",
-          "history": [{ "date": "2026-10-22", "price": 380.02 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 380.02
+            }
+          ]
         }
       ]
     },
@@ -62,7 +68,12 @@
           "available": true,
           "externalId": "MLB6747609922",
           "catalogId": "MLB32987803",
-          "history": [{ "date": "2026-10-22", "price": 694.4 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 694.4
+            }
+          ]
         }
       ]
     }

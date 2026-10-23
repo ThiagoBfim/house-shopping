@@ -4,23 +4,24 @@
   "options": [
     {
       "id": "espreguicadeira-plastico-tramontina",
-      "tier": 1,
-      "name": "Espreguiçadeira de Plástico Tramontina",
-      "price": 299,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 2,
+      "name": "Espreguiçadeira de Plástico Tramontina Leblon",
+      "price": 659,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/espreguicadeira-plastico-tramontina",
+      "url": "https://www.mercadolivre.com.br/espreguicadeira-4-posicoes-branca-leblon-tramontina/p/MLB26671690?pdp_filters=item_id%3AMLB7174509252",
       "bullets": ["Plástico", "Encosto regulável", "Empilhável"]
     },
     {
       "id": "espreguicadeira-aluminio-tela",
-      "tier": 2,
+      "tier": 1,
       "name": "Espreguiçadeira de Alumínio com Tela",
       "price": 599,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/espreguicadeira-aluminio-tela",
-      "bullets": ["Alumínio leve", "Tela que seca rápido", "Rodinhas"]
+      "bullets": ["Alumínio leve", "Tela que seca rápido", "Rodinhas"],
+      "generic": true
     },
     {
       "id": "espreguicadeira-fibra-sintetica",
@@ -30,7 +31,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/espreguicadeira-fibra-sintetica",
-      "bullets": ["Fibra sintética trançada", "Com almofada", "Visual de resort"]
+      "bullets": ["Fibra sintética trançada", "Com almofada", "Visual de resort"],
+      "generic": true
     },
     {
       "id": "espreguicadeira-madeira-teca",
@@ -40,7 +42,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/espreguicadeira-madeira-teca",
-      "bullets": ["Madeira teca", "Muito durável ao sol", "Peça premium"]
+      "bullets": ["Madeira teca", "Muito durável ao sol", "Peça premium"],
+      "generic": true
     }
   ]
 }

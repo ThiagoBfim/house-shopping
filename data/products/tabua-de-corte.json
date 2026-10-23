@@ -5,11 +5,11 @@
     {
       "id": "tabua-de-corte-polietileno-tramontina-40-cm",
       "tier": 1,
-      "name": "Tábua de Corte Polietileno Tramontina 40 cm",
-      "price": 39,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Tábua de Corte Tramontina Polipropileno",
+      "price": 44,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/tabua-de-corte-polietileno-tramontina-40-cm",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3721351543?pdp_filters=item_id%3AMLB4417424729",
       "bullets": ["Plástico: fácil de higienizar", "Boa para carne crua", "Risca com o tempo"]
     },
     {
@@ -34,7 +34,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5087831523",
-          "history": [{ "date": "2026-10-22", "price": 71.72 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 71.72
+            }
+          ]
         }
       ]
     },
@@ -57,7 +62,12 @@
           "available": true,
           "externalId": "MLB7287696938",
           "catalogId": "MLB68251817",
-          "history": [{ "date": "2026-10-22", "price": 174.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 174.9
+            }
+          ]
         }
       ]
     }

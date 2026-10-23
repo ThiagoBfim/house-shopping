@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/gabinete-banheiro-60-cm-cuba-espelheira",
-      "bullets": ["60 cm, com cuba e espelheira", "MDP", "Para banheiro pequeno"]
+      "bullets": ["60 cm, com cuba e espelheira", "MDP", "Para banheiro pequeno"],
+      "generic": true
     },
     {
       "id": "gabinete-banheiro-cuba-3-gavetas-espelheira",
@@ -24,7 +25,8 @@
         "Porta + 3 gavetas",
         "Espelheira com porta (guarda remédios e cremes)",
         "MDF na frente"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "gabinete-suspenso-80-cm-ripado-cuba",
@@ -38,7 +40,8 @@
         "Suspenso: fácil de limpar o chão",
         "80 cm com frente ripada",
         "Espelheira com LED"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "gabinete-suspenso-100-cm-cuba-esculpida",
@@ -52,7 +55,8 @@
         "Cuba esculpida no tampo",
         "100 cm, gavetas com fechamento suave",
         "Visual de projeto de arquiteto"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

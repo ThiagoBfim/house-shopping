@@ -5,21 +5,22 @@
     {
       "id": "varal-de-chao-sanfonado-mor",
       "tier": 1,
-      "name": "Varal de Chão Sanfonado Mor",
+      "name": "Varal de Chão Sanfonado",
       "price": 69,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/varal-de-chao-sanfonado-mor",
-      "bullets": ["Dobra e guarda atrás da porta", "Cabe pouca roupa", "Plástico e aço simples"]
+      "bullets": ["Dobra e guarda atrás da porta", "Cabe pouca roupa", "Plástico e aço simples"],
+      "generic": true
     },
     {
       "id": "varal-de-teto-secalux-1-2-m",
       "tier": 2,
       "name": "Varal de Teto Secalux 1,2 m",
-      "price": 129,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 139,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/varal-de-teto-secalux-1-2-m",
+      "url": "https://www.mercadolivre.com.br/up/MLBU5485832396?pdp_filters=item_id%3AMLB7791181334",
       "bullets": ["Sobe e desce com cordinha", "Não ocupa o chão", "Precisa instalar no teto"]
     },
     {
@@ -45,7 +46,12 @@
           "available": true,
           "externalId": "MLB5342831241",
           "catalogId": "MLB78846492",
-          "history": [{ "date": "2026-10-22", "price": 166.16 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 166.16
+            }
+          ]
         }
       ]
     }

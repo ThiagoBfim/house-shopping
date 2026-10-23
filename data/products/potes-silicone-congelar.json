@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-4-potes-de-silicone-retrateis-com-tampa",
-      "bullets": ["Encolhem para guardar", "Vão ao freezer e ao micro-ondas", "Marmitas e sobras"]
+      "bullets": ["Encolhem para guardar", "Vão ao freezer e ao micro-ondas", "Marmitas e sobras"],
+      "generic": true
     },
     {
       "id": "kit-3-formas-de-silicone-para-congelar-porcoes-com-tampa",
@@ -25,7 +26,8 @@
         "Congela feijão e caldo em porções",
         "Desenforma o bloco congelado",
         "Tampa encaixa e empilha"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "kit-6-sacos-de-silicone-reutilizaveis-zip-para-congelar",
@@ -39,7 +41,8 @@
         "Substituem saquinhos descartáveis",
         "Congelam deitados (ocupam pouco)",
         "Vão na lava-louças"
-      ]
+      ],
+      "generic": true
     }
   ]
 }

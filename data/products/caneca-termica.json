@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/caneca-termica-inox-com-tampa-450-ml",
-      "bullets": ["Café quente por ~2 h", "Tampa contra derramar", "Inox"]
+      "bullets": ["Café quente por ~2 h", "Tampa contra derramar", "Inox"],
+      "generic": true
     },
     {
       "id": "caneca-termica-stanley-camp-mug-350-ml",
@@ -35,7 +36,12 @@
           "available": true,
           "externalId": "MLB7607716690",
           "catalogId": "MLB19807586",
-          "history": [{ "date": "2026-10-22", "price": 199 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 199
+            }
+          ]
         }
       ]
     },
@@ -62,7 +68,12 @@
           "available": true,
           "externalId": "MLB5310312110",
           "catalogId": "MLB38771174",
-          "history": [{ "date": "2026-10-22", "price": 203.6 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 203.6
+            }
+          ]
         }
       ]
     },
@@ -70,10 +81,11 @@
       "id": "caneca-inteligente-ember-mug-2-295-ml",
       "tier": 4,
       "name": "Caneca Inteligente Ember Mug 2 295 ml",
-      "price": 999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1399,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/caneca-inteligente-ember-mug-2-295-ml",
+      "url": "https://www.mercadolivre.com.br/ember-mug-2-caneca-inteligente-c-aplicativo-copper-295ml/up/MLBU3918402677?pdp_filters=item_id%3AMLB6673113078",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_653666-MLB114198569674_082026-E--ember-mug-2-caneca-inteligente-c-aplicativo-copper-295ml.webp",
       "bullets": ["Mantém o café na temperatura exata", "Controle pelo app", "Base carregadora"]
     }
   ]

@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/dispenser-de-detergente-com-porta-esponja",
-      "bullets": ["Aperta a esponja e sai detergente", "Esponja fica seca e separada", "Plástico"]
+      "bullets": ["Aperta a esponja e sai detergente", "Esponja fica seca e separada", "Plástico"],
+      "generic": true
     },
     {
       "id": "dispenser-de-detergente-com-bomba-inox",
@@ -21,7 +22,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/dispenser-de-detergente-com-bomba-inox",
-      "bullets": ["Bomba de inox", "Pia mais organizada", "Bandeja para esponja"]
+      "bullets": ["Bomba de inox", "Pia mais organizada", "Bandeja para esponja"],
+      "generic": true
     }
   ]
 }

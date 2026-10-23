@@ -3,6 +3,7 @@ import {
   applyBestOffer,
   bestOffer,
   isAffiliateUrl,
+  isSearchUrl,
   otherOffers,
   parseMercadoLivreIds,
 } from '../src/data/offers.ts'
@@ -27,6 +28,8 @@ const option = (offers?: Offer[]): ProductOption => ({
   store: 'mercadolivre',
   url: 'https://lista.mercadolivre.com.br/geladeira-x',
   bullets: ['Bullet um', 'Bullet dois', 'Bullet três'],
+  // Link de busca: só a regra de oferta × campos exibidos entra em jogo aqui.
+  generic: true,
   ...(offers && { offers }),
 })
 
@@ -60,6 +63,19 @@ describe('applyBestOffer', () => {
     expect(applyBestOffer(option())).toEqual(option())
     const unavailable = option([offer('amazon', 10, { available: false })])
     expect(applyBestOffer(unavailable)).toEqual(unavailable)
+  })
+})
+
+describe('isSearchUrl', () => {
+  it.each([
+    ['https://lista.mercadolivre.com.br/geladeira-consul', true],
+    ['https://www.amazon.com.br/s?k=geladeira', true],
+    ['https://www.mercadolivre.com.br/geladeira/p/MLB123', false],
+    ['https://www.amazon.com.br/dp/B0ABC', false],
+    ['https://meli.la/1kohmr4', false],
+    ['não é url', false],
+  ])('%s → %s', (url, expected) => {
+    expect(isSearchUrl(url)).toBe(expected)
   })
 })
 

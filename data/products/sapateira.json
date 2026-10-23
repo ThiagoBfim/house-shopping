@@ -11,7 +11,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/sapateira-vertical-12-pares",
-      "bullets": ["Monta sem ferramenta", "Ocupa pouco espaço", "Estrutura leve"]
+      "bullets": ["Monta sem ferramenta", "Ocupa pouco espaço", "Estrutura leve"],
+      "generic": true
     },
     {
       "id": "sapateira-mdf-18-pares-com-portas",
@@ -21,7 +22,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/sapateira-mdf-18-pares-com-portas",
-      "bullets": ["Fechada: sem pó e sem cheiro", "Serve de aparador na entrada", "Mais firme"]
+      "bullets": ["Fechada: sem pó e sem cheiro", "Serve de aparador na entrada", "Mais firme"],
+      "generic": true
     }
   ]
 }

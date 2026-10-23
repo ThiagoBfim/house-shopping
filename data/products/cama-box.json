@@ -24,10 +24,10 @@
       "id": "base-box-casal-ortobom",
       "tier": 1,
       "name": "Base Box Casal Ortobom",
-      "price": 549,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 559,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/base-box-casal-ortobom",
+      "url": "https://www.mercadolivre.com.br/base-sommier-corino-bege-casal-138x188x23--ortobom/up/MLBU1108619069?pdp_filters=item_id%3AMLB1623695118",
       "bullets": ["Base box casal simples", "Sem baú", "Monta com o colchão por cima"],
       "variants": ["casal"]
     },
@@ -44,6 +44,7 @@
         "Fácil de abrir",
         "Tecido sintético"
       ],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -55,6 +56,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-box-bau-casal-com-cabeceira-estofada",
       "bullets": ["Baú para guardar edredom", "Cabeceira estofada", "Pistão a gás"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
@@ -66,16 +68,17 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-casal-de-madeira-macica",
       "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "generic": true,
       "variants": ["casal"]
     },
     {
       "id": "base-box-solteiro-ortobom",
       "tier": 1,
       "name": "Base Box Solteiro Ortobom",
-      "price": 399,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 468,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/base-box-solteiro-ortobom",
+      "url": "https://www.mercadolivre.com.br/base-cama-solteiro-box-ortobom-sommier-resistente-qualidade/up/MLBU5318358227",
       "bullets": ["Base simples", "Sem baú", "Montagem fácil"],
       "variants": ["solteiro"]
     },
@@ -88,6 +91,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-box-bau-solteiro",
       "bullets": ["Baú para guardar coisas", "Pistão a gás", "Bom para quarto pequeno"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -99,6 +103,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/bicama-box-solteiro-com-auxiliar",
       "bullets": ["Cama extra embaixo (visitas)", "Rodízios", "Ideal para quarto de criança"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
@@ -110,16 +115,17 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-solteiro-de-madeira-macica",
       "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "generic": true,
       "variants": ["solteiro"]
     },
     {
       "id": "base-box-queen-ortobom",
       "tier": 1,
       "name": "Base Box Queen Ortobom",
-      "price": 699,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 692,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/base-box-queen-ortobom",
+      "url": "https://www.mercadolivre.com.br/base-sommier-queen-ortobom-camurca-marrom-madeira-reflorestada/p/MLB23374647?pdp_filters=item_id%3AMLB7026398526",
       "bullets": ["Base simples queen (1,58 m)", "Sem baú", "Montagem fácil"],
       "variants": ["queen"]
     },
@@ -132,6 +138,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-box-bau-queen",
       "bullets": ["Baú grande", "Pistão a gás", "Queen (1,58 m)"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -147,6 +154,7 @@
         "Cabeceira estofada inclusa",
         "Baú com pistão"
       ],
+      "generic": true,
       "variants": ["queen"]
     },
     {
@@ -158,16 +166,17 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-queen-madeira-macica",
       "bullets": ["Madeira maciça: dura décadas", "Visual de cama de hotel", "Sem baú"],
+      "generic": true,
       "variants": ["queen"]
     },
     {
       "id": "base-box-king-ortobom",
       "tier": 1,
       "name": "Base Box King Ortobom",
-      "price": 999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1999,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/base-box-king-ortobom",
+      "url": "https://www.mercadolivre.com.br/base-box-king-size-ortobom-sommier-camurca-madeira-193x203x36cm/p/MLB52067883",
       "bullets": ["Base simples king (1,93 m)", "Bipartida (passa na porta)", "Sem baú"],
       "variants": ["king"]
     },
@@ -180,6 +189,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-box-bau-king",
       "bullets": ["Baú enorme", "Bipartida", "Pistão a gás"],
+      "generic": true,
       "variants": ["king"]
     },
     {
@@ -191,6 +201,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-box-bau-king-com-cabeceira-estofada",
       "bullets": ["Baú e cabeceira estofada", "Visual de hotel", "Bipartida"],
+      "generic": true,
       "variants": ["king"]
     },
     {
@@ -202,6 +213,7 @@
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/cama-king-de-madeira-macica",
       "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
+      "generic": true,
       "variants": ["king"]
     }
   ]

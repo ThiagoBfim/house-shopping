@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB1813853925",
           "catalogId": "MLB6417063",
-          "history": [{ "date": "2026-10-22", "price": 167.44 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 167.44
+            }
+          ]
         }
       ]
     },
@@ -44,7 +49,12 @@
           "available": true,
           "externalId": "MLB6894660916",
           "catalogId": "MLB40871018",
-          "history": [{ "date": "2026-10-22", "price": 259.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 259.99
+            }
+          ]
         }
       ]
     },
@@ -52,10 +62,10 @@
       "id": "fone-jbl-tune-770nc-com-cancelamento-de-ruido",
       "tier": 3,
       "name": "Fone JBL Tune 770NC com Cancelamento de Ruído",
-      "price": 599,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 515,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fone-jbl-tune-770nc-com-cancelamento-de-ruido",
+      "url": "https://www.mercadolivre.com.br/p/MLB50743633",
       "bullets": ["Cancelamento de ruído", "Bateria de ~70 h", "Conecta em 2 aparelhos"]
     },
     {
@@ -81,7 +91,12 @@
           "available": true,
           "externalId": "MLB7594568986",
           "catalogId": "MLB19176887",
-          "history": [{ "date": "2026-10-22", "price": 2019 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2019
+            }
+          ]
         }
       ]
     }

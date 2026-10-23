@@ -10,16 +10,17 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/kit-10-panos-de-prato-algodao",
-      "bullets": ["10 unidades", "Algodão simples", "Para o dia a dia"]
+      "bullets": ["10 unidades", "Algodão simples", "Para o dia a dia"],
+      "generic": true
     },
     {
       "id": "kit-5-panos-de-prato-karsten-felpudos",
       "tier": 2,
       "name": "Kit 5 Panos de Prato Karsten Felpudos",
-      "price": 89,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 109,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/kit-5-panos-de-prato-karsten-felpudos",
+      "url": "https://www.mercadolivre.com.br/p/MLB79721878?pdp_filters=item_id%3AMLB7819304622",
       "bullets": ["Felpudos: secam bem mais", "Marca de enxoval", "Duram mais lavagens"]
     }
   ]

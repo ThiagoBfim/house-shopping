@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-centro-mdp",
-      "bullets": ["MDP", "Prateleira inferior", "Simples"]
+      "bullets": ["MDP", "Prateleira inferior", "Simples"],
+      "generic": true
     },
     {
       "id": "mesa-de-centro-pes-palito",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-centro-pes-palito",
-      "bullets": ["Pés palito (retrô)", "Tampo laqueado", "Leve de mover"]
+      "bullets": ["Pés palito (retrô)", "Tampo laqueado", "Leve de mover"],
+      "generic": true
     },
     {
       "id": "mesa-de-centro-tampo-marmore",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-centro-tampo-marmore",
-      "bullets": ["Tampo de mármore", "Base metálica", "Visual sofisticado"]
+      "bullets": ["Tampo de mármore", "Base metálica", "Visual sofisticado"],
+      "generic": true
     },
     {
       "id": "mesa-de-centro-madeira-macica-organica",
@@ -40,7 +43,12 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/mesa-de-centro-madeira-macica-organica",
-      "bullets": ["Madeira maciça com formato orgânico", "Peça de design", "Única (veios naturais)"]
+      "bullets": [
+        "Madeira maciça com formato orgânico",
+        "Peça de design",
+        "Única (veios naturais)"
+      ],
+      "generic": true
     }
   ]
 }

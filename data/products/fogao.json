@@ -2,19 +2,28 @@
   "label": "Fogão ou cooktop",
   "utensil": false,
   "variants": [
-    { "id": "piso", "label": "Fogão de piso" },
-    { "id": "cooktop-gas", "label": "Cooktop a gás" },
-    { "id": "cooktop-inducao", "label": "Cooktop de indução" }
+    {
+      "id": "piso",
+      "label": "Fogão de piso"
+    },
+    {
+      "id": "cooktop-gas",
+      "label": "Cooktop a gás"
+    },
+    {
+      "id": "cooktop-inducao",
+      "label": "Cooktop de indução"
+    }
   ],
   "options": [
     {
       "id": "fogao-atlas-monaco-top-glass-4-bocas",
       "tier": 1,
       "name": "Fogão Atlas Mônaco Top Glass 4 Bocas",
-      "price": 899,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1159,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fogao-atlas-monaco-top-glass-4-bocas",
+      "url": "https://www.mercadolivre.com.br/p/MLB67291977?pdp_filters=item_id%3AMLB4721957289",
       "bullets": [
         "4 bocas com mesa de vidro",
         "Acendimento automático",
@@ -45,7 +54,12 @@
           "available": true,
           "externalId": "MLB7471492298",
           "catalogId": "MLB58819383",
-          "history": [{ "date": "2026-10-22", "price": 1760.32 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1760.32
+            }
+          ]
         }
       ],
       "variants": ["piso"]
@@ -73,7 +87,12 @@
           "available": true,
           "externalId": "MLB2048022318",
           "catalogId": "MLB18949054",
-          "history": [{ "date": "2026-10-22", "price": 1879 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1879
+            }
+          ]
         }
       ],
       "variants": ["piso"]
@@ -101,7 +120,12 @@
           "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB6258830598",
-          "history": [{ "date": "2026-10-22", "price": 4699 }],
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 4699
+            }
+          ],
           "catalogId": "MLB64611576"
         }
       ],
@@ -110,11 +134,11 @@
     {
       "id": "cooktop-a-gas-mueller-4-bocas",
       "tier": 1,
-      "name": "Cooktop a Gás Mueller 4 Bocas",
-      "price": 299,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Cooktop a Gás Mueller 4 Bocas MCG4BK",
+      "price": 587,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-a-gas-mueller-4-bocas",
+      "url": "https://www.mercadolivre.com.br/p/MLB18718936?pdp_filters=item_id%3AMLB5107006240",
       "bullets": ["4 bocas, acendimento automático", "Mesa de vidro", "Precisa de forno à parte"],
       "variants": ["cooktop-gas"]
     },
@@ -122,21 +146,21 @@
       "id": "cooktop-a-gas-electrolux-5-bocas-tripla-chama",
       "tier": 2,
       "name": "Cooktop a Gás Electrolux 5 Bocas Tripla Chama",
-      "price": 799,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 749,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-a-gas-electrolux-5-bocas-tripla-chama",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3488619683?pdp_filters=item_id%3AMLB4253657319",
       "bullets": ["5 bocas com tripla chama (wok)", "Vidro temperado", "Grades de ferro fundido"],
       "variants": ["cooktop-gas"]
     },
     {
       "id": "cooktop-a-gas-brastemp-5-bocas-gourmand",
-      "tier": 3,
-      "name": "Cooktop a Gás Brastemp 5 Bocas Gourmand",
-      "price": 1399,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 4,
+      "name": "Cooktop a Gás Brastemp 5 Bocas Inox 90 cm",
+      "price": 3929,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-a-gas-brastemp-5-bocas-gourmand",
+      "url": "https://www.mercadolivre.com.br/up/MLBU1139323310?pdp_filters=item_id%3AMLB3523310069",
       "bullets": [
         "Queimadores de alta potência",
         "Acendimento superautomático",
@@ -146,12 +170,12 @@
     },
     {
       "id": "cooktop-a-gas-tramontina-penta-inox-5-bocas",
-      "tier": 4,
-      "name": "Cooktop a Gás Tramontina Penta Inox 5 Bocas",
-      "price": 2499,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 3,
+      "name": "Cooktop a Gás Tramontina Penta 5GX Tri Inox 75 cm",
+      "price": 2799,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-a-gas-tramontina-penta-inox-5-bocas",
+      "url": "https://www.mercadolivre.com.br/p/MLB18616352?pdp_filters=item_id%3AMLB5761405716",
       "bullets": [
         "Mesa de inox de embutir",
         "Visual profissional",
@@ -163,10 +187,10 @@
       "id": "cooktop-de-inducao-philco-2-bocas",
       "tier": 1,
       "name": "Cooktop de Indução Philco 2 Bocas",
-      "price": 549,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 879,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-de-inducao-philco-2-bocas",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3281652084?pdp_filters=item_id%3AMLB4118299411",
       "bullets": [
         "2 zonas: para casal ou apartamento pequeno",
         "Esquenta muito rápido",
@@ -176,12 +200,12 @@
     },
     {
       "id": "cooktop-de-inducao-electrolux-4-bocas-ie60p",
-      "tier": 2,
+      "tier": 3,
       "name": "Cooktop de Indução Electrolux 4 Bocas IE60P",
-      "price": 1999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 4989,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-de-inducao-electrolux-4-bocas-ie60p",
+      "url": "https://www.mercadolivre.com.br/up/MLBU4221609872?pdp_filters=item_id%3AMLB7095005998",
       "bullets": [
         "4 zonas com Power Boost",
         "Trava de segurança para crianças",
@@ -191,12 +215,12 @@
     },
     {
       "id": "cooktop-de-inducao-brastemp-4-bocas-flex",
-      "tier": 3,
-      "name": "Cooktop de Indução Brastemp 4 Bocas Flex",
-      "price": 2999,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 2,
+      "name": "Cooktop de Indução Brastemp 4 Bocas Flexizone",
+      "price": 3180,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cooktop-de-inducao-brastemp-4-bocas-flex",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3469524619?pdp_filters=item_id%3AMLB5773162688",
       "bullets": [
         "Área flex: junta duas zonas para panela grande",
         "Timer por zona",
@@ -207,7 +231,7 @@
     {
       "id": "cooktop-de-inducao-bosch-serie-6-flexinduction",
       "tier": 4,
-      "name": "Cooktop de Indução Bosch Série 6 FlexInduction",
+      "name": "Cooktop de Indução Premium 4 Zonas com Área Flex",
       "price": 5499,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -217,7 +241,8 @@
         "Sensor de fervura",
         "Marca premium alemã"
       ],
-      "variants": ["cooktop-inducao"]
+      "variants": ["cooktop-inducao"],
+      "generic": true
     }
   ]
 }

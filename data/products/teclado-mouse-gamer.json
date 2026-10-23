@@ -20,24 +20,29 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5025350193",
-          "history": [{ "date": "2026-10-22", "price": 183.32 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 183.32
+            }
+          ]
         }
       ]
     },
     {
       "id": "teclado-mecanico-redragon-kumara-e-mouse-logitech-g203",
       "tier": 2,
-      "name": "Teclado Mecânico Redragon Kumara e Mouse Logitech G203",
+      "name": "Kit Gamer Redragon Teclado Kumara e Mouse",
       "price": 399,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/teclado-mecanico-redragon-kumara-e-mouse-logitech-g203",
+      "url": "https://www.mercadolivre.com.br/up/MLBU4336455380?pdp_filters=item_id%3AMLB7177101800",
       "bullets": ["Teclado mecânico: resposta precisa", "Mouse leve e preciso", "RGB"]
     },
     {
       "id": "teclado-logitech-g-pro-x-tkl-e-mouse-g502-x",
       "tier": 3,
-      "name": "Teclado Logitech G Pro X TKL e Mouse G502 X",
+      "name": "Teclado Mecânico TKL Sem Fio e Mouse Gamer Premium",
       "price": 1299,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
@@ -46,17 +51,19 @@
         "Sem fio e baixa latência",
         "Switches de alta qualidade",
         "Mouse com peso ajustável"
-      ]
+      ],
+      "generic": true
     },
     {
       "id": "teclado-razer-huntsman-v3-pro-e-mouse-razer-deathadder-v3-pro",
       "tier": 4,
-      "name": "Teclado Razer Huntsman V3 Pro e Mouse Razer DeathAdder V3 Pro",
+      "name": "Teclado e Mouse Gamer Sem Fio Topo de Linha",
       "price": 2999,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/teclado-razer-huntsman-v3-pro-e-mouse-razer-deathadder-v3-pro",
-      "bullets": ["Switches analógicos ajustáveis", "Mouse ultraleve sem fio", "Para competitivo"]
+      "bullets": ["Switches analógicos ajustáveis", "Mouse ultraleve sem fio", "Para competitivo"],
+      "generic": true
     }
   ]
 }

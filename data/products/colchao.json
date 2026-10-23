@@ -2,31 +2,43 @@
   "label": "Colchão",
   "utensil": false,
   "variants": [
-    { "id": "casal", "label": "Casal" },
-    { "id": "solteiro", "label": "Solteiro" },
-    { "id": "queen", "label": "Queen" },
-    { "id": "king", "label": "King" }
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
   ],
   "options": [
     {
       "id": "colchao-casal-ortobom-light-d33",
       "tier": 1,
       "name": "Colchão Casal Ortobom Light D33",
-      "price": 1199,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1133,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-casal-ortobom-light-d33",
+      "url": "https://www.mercadolivre.com.br/colchao-light-espuma-d33-casal-ortobom/p/MLB65689344?pdp_filters=item_id%3AMLB4476905515",
       "bullets": ["Espuma D33: firme", "Bom custo-benefício", "Dura menos que espumas mais densas"],
       "variants": ["casal"]
     },
     {
       "id": "colchao-castor-sleep-double-face-d45",
       "tier": 2,
-      "name": "Colchão Casal Castor Sleep Double Face D45",
-      "price": 2699,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Colchão Casal Castor Black & White Double Face D45",
+      "price": 2643,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-castor-sleep-double-face-d45",
+      "url": "https://www.mercadolivre.com.br/colchao-casal-d45-castor-black-white-double-face-138x188x27/p/MLB49466023",
       "bullets": [
         "Espuma D45: mais durável",
         "Dupla face (lado verão e inverno)",
@@ -37,11 +49,11 @@
     {
       "id": "colchao-emma-hybrid-casal",
       "tier": 3,
-      "name": "Colchão Emma Hybrid Casal",
-      "price": 3299,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Colchão Casal Emma Duo Comfort Dupla Face",
+      "price": 4220,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-emma-hybrid-casal",
+      "url": "https://www.mercadolivre.com.br/colchao-casal-emma-duo-comfort-138x188cm-dupla-face-vacuo-suporte-ideal-para-o-corpo-alta-durabilidade-capa-lavavel/p/MLB18088316?pdp_filters=item_id%3AMLB2171320205",
       "bullets": [
         "Espuma + molas ensacadas",
         "Bom para casal (não balança)",
@@ -53,10 +65,10 @@
       "id": "colchao-king-koil-attraction-casal",
       "tier": 4,
       "name": "Colchão King Koil Attraction Casal",
-      "price": 3699,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 4269,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-king-koil-attraction-casal",
+      "url": "https://www.mercadolivre.com.br/colchao-de-casal-molas-ensacadas-138x188x27-attraction-king-koil-cr458c-cinza/p/MLB78828397?pdp_filters=item_id%3AMLB7579299860",
       "bullets": ["Molas ensacadas com pillow top", "Conforto de hotel", "Marca premium"],
       "variants": ["casal"]
     },
@@ -64,43 +76,43 @@
       "id": "colchao-ortobom-light-d28-solteiro",
       "tier": 1,
       "name": "Colchão Ortobom Light D28 Solteiro",
-      "price": 499,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 593,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-ortobom-light-d28-solteiro",
+      "url": "https://www.mercadolivre.com.br/colchao-solteiro-d28-ortobom-light-88x188x14/up/MLBU3719968647?pdp_filters=item_id%3AMLB6161558836",
       "bullets": ["Espuma D28 (até ~80 kg)", "Leve", "Para criança ou visitas"],
       "variants": ["solteiro"]
     },
     {
       "id": "colchao-castor-sleep-double-face-d33-solteiro",
       "tier": 2,
-      "name": "Colchão Castor Sleep Double Face D33 Solteiro",
-      "price": 999,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Colchão Castor Sleep Max Double Face D33 Solteiro",
+      "price": 1033,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-castor-sleep-double-face-d33-solteiro",
+      "url": "https://www.mercadolivre.com.br/castor-sleep-max-d33-colchao-solteiro-d33-88cm-188cm-18cm/p/MLB22588155",
       "bullets": ["Dupla face: vira e dura mais", "D33 (até ~100 kg)", "Marca tradicional"],
       "variants": ["solteiro"]
     },
     {
       "id": "colchao-emma-original-solteiro",
-      "tier": 3,
+      "tier": 4,
       "name": "Colchão Emma Original Solteiro",
-      "price": 1799,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 3569,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-emma-original-solteiro",
+      "url": "https://www.mercadolivre.com.br/colchao-solteiro-emma-original-88x188cm-3-camadas-de-espuma-embalado-vacuo-suporte-para-coluna-alta-respirabilidade-capa-lavavel/p/MLB17351732?pdp_filters=item_id%3AMLB2171381925",
       "bullets": ["Espumas em camadas", "Alivia pressão nos ombros", "100 noites de teste"],
       "variants": ["solteiro"]
     },
     {
       "id": "colchao-king-koil-attraction-solteiro",
-      "tier": 4,
+      "tier": 3,
       "name": "Colchão King Koil Attraction Solteiro",
-      "price": 2599,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 3129,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-king-koil-attraction-solteiro",
+      "url": "https://www.mercadolivre.com.br/colchao-de-solteiro-molas-ensacadas-88x188x27-attraction-king-koil-cr458a-cinza/p/MLB25126664",
       "bullets": ["Molas ensacadas com pillow top", "Conforto de hotel", "Marca premium"],
       "variants": ["solteiro"]
     },
@@ -108,10 +120,10 @@
       "id": "colchao-ortobom-light-d33-queen",
       "tier": 1,
       "name": "Colchão Ortobom Light D33 Queen",
-      "price": 1399,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 1234,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-ortobom-light-d33-queen",
+      "url": "https://www.mercadolivre.com.br/colchao-light-d33-queen-size-158x198x20-ortobom/p/MLB34355474?pdp_filters=item_id%3AMLB5399479771",
       "bullets": ["Espuma D33", "Queen (1,58 m)", "Mais firme"],
       "variants": ["queen"]
     },
@@ -139,8 +151,14 @@
           "externalId": "MLB2171387384",
           "catalogId": "MLB17351734",
           "history": [
-            { "date": "2026-10-22", "price": 2739 },
-            { "date": "2026-10-23", "price": 2899.9 }
+            {
+              "date": "2026-10-22",
+              "price": 2739
+            },
+            {
+              "date": "2026-10-23",
+              "price": 2899.9
+            }
           ]
         }
       ],
@@ -168,7 +186,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7181284028",
-          "history": [{ "date": "2026-10-22", "price": 3863.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 3863.99
+            }
+          ]
         }
       ],
       "variants": ["queen"]
@@ -177,54 +200,54 @@
       "id": "colchao-castor-gold-star-molas-ensacadas-queen",
       "tier": 4,
       "name": "Colchão Castor Gold Star Molas Ensacadas Queen",
-      "price": 5499,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 5488,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-castor-gold-star-molas-ensacadas-queen",
+      "url": "https://www.mercadolivre.com.br/colchao-queen-molas-ensacadas-castor-g-star-vitagel-158x32/p/MLB79299536?pdp_filters=item_id%3AMLB5227440141",
       "bullets": ["Molas ensacadas individuais", "Pillow top duplo", "Topo de linha da Castor"],
       "variants": ["queen"]
     },
     {
       "id": "colchao-ortobom-light-d33-king",
       "tier": 1,
-      "name": "Colchão Ortobom Light D33 King",
-      "price": 1799,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Colchão King Ortobom D33 High Foam",
+      "price": 3292,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-ortobom-light-d33-king",
+      "url": "https://www.mercadolivre.com.br/colchao-king-d33-ortobom-hight-foam-193x203x28/up/MLBU3975171303?pdp_filters=item_id%3AMLB6804910746",
       "bullets": ["Espuma D33", "King (1,93 m)", "Mais firme"],
       "variants": ["king"]
     },
     {
       "id": "colchao-emma-original-king",
-      "tier": 2,
+      "tier": 4,
       "name": "Colchão Emma Original King",
-      "price": 3499,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 7349,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-emma-original-king",
+      "url": "https://www.mercadolivre.com.br/colchao-king-emma-original-193x203cm-3-camadas-de-espuma-embalado-vacuo-alta-respirabilidade-capa-lavavel/p/MLB15810522?pdp_filters=item_id%3AMLB4959690446",
       "bullets": ["Espumas em camadas", "King (1,93 m)", "100 noites de teste"],
       "variants": ["king"]
     },
     {
       "id": "colchao-king-koil-attraction-king",
-      "tier": 3,
+      "tier": 2,
       "name": "Colchão King Koil Attraction King",
-      "price": 4999,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 5949,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-king-koil-attraction-king",
+      "url": "https://www.mercadolivre.com.br/colchao-king-molas-ensacadas-193x203x27-attraction-king-koil-cr458e-cinza/p/MLB24976893?pdp_filters=item_id%3AMLB7574910176",
       "bullets": ["Molas ensacadas com pillow top", "Conforto de hotel", "Marca premium"],
       "variants": ["king"]
     },
     {
       "id": "colchao-castor-gold-star-molas-ensacadas-king",
-      "tier": 4,
-      "name": "Colchão Castor Gold Star Molas Ensacadas King",
-      "price": 6999,
-      "priceUpdatedAt": "2026-10-22",
+      "tier": 3,
+      "name": "Colchão King Castor Vitagel Euro One Face Molas Ensacadas",
+      "price": 6839,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-castor-gold-star-molas-ensacadas-king",
+      "url": "https://www.mercadolivre.com.br/colchao-castor-king-size-vitagel-euro-one-face-193x203x32cm-branco/p/MLB25373430?pdp_filters=item_id%3AMLB5204865869",
       "bullets": ["Molas ensacadas individuais", "Pillow top duplo", "Topo de linha da Castor"],
       "variants": ["king"]
     }

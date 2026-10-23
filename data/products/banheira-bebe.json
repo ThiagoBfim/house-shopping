@@ -20,7 +20,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7739328622",
-          "history": [{ "date": "2026-10-22", "price": 189.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 189.9
+            }
+          ]
         }
       ]
     },
@@ -44,8 +49,14 @@
           "externalId": "MLB4202925354",
           "catalogId": "MLB23550906",
           "history": [
-            { "date": "2026-10-22", "price": 462 },
-            { "date": "2026-10-23", "price": 250.46 }
+            {
+              "date": "2026-10-22",
+              "price": 462
+            },
+            {
+              "date": "2026-10-23",
+              "price": 250.46
+            }
           ]
         }
       ]
@@ -54,10 +65,11 @@
       "id": "banheira-com-suporte-e-trocador-galzerano",
       "tier": 3,
       "name": "Banheira com Suporte e Trocador Galzerano",
-      "price": 499,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 599,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/banheira-com-suporte-e-trocador-galzerano",
+      "url": "https://www.mercadolivre.com.br/banheira-bebe-galzerano-com-redutor-suporte-e-trocador-real-cor-branco/p/MLB22547074?pdp_filters=item_id%3AMLB5011732990",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_652875-MLA96871390153_102025-E.webp",
       "bullets": [
         "Altura de bancada: poupa as costas",
         "Trocador em cima da banheira",

@@ -7,10 +7,10 @@
       "id": "echo-pop-smart-speaker-com-alexa",
       "tier": 1,
       "name": "Echo Pop Smart Speaker com Alexa",
-      "price": 349,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 509,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/echo-pop-smart-speaker-com-alexa",
+      "url": "https://www.mercadolivre.com.br/amazon-echo-pop-alexa-preto/p/MLB61265584?pdp_filters=item_id%3AMLB7769212986",
       "bullets": [
         "Toca música e responde perguntas",
         "Lembretes, alarmes e lista de compras",
@@ -19,22 +19,24 @@
     },
     {
       "id": "echo-dot-5-geracao-com-relogio",
-      "tier": 2,
+      "tier": 3,
       "name": "Echo Dot 5ª Geração com Relógio",
-      "price": 499,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/echo-dot-5-geracao-com-relogio",
+      "url": "https://www.mercadolivre.com.br/aexa-echo-dot-5-geracao-com-relogio-azul-claro-amazon-cor-azul-claro/p/MLB19757118?pdp_filters=item_id%3AMLB3393594533",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_736823-MLA99941608271_112025-E.webp",
       "bullets": ["Som melhor", "Relógio no visor", "Sensor de temperatura"]
     },
     {
       "id": "echo-show-5-com-tela-e-alexa",
-      "tier": 3,
+      "tier": 2,
       "name": "Echo Show 5 com Tela e Alexa",
-      "price": 649,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 720,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/echo-show-5-com-tela-e-alexa",
+      "url": "https://www.mercadolivre.com.br/alto-falante-inteligente-echo-show-5-amazon-3-geracao-hd/p/MLB65072053?pdp_filters=item_id%3AMLB4396354205",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_899883-MLA105519313286_012026-E.webp",
       "bullets": ["Tela: receitas, vídeo e câmeras", "Chamadas de vídeo", "Despertador com luz"]
     }
   ]

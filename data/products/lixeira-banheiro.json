@@ -10,7 +10,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/lixeira-banheiro-5-litros",
-      "bullets": ["5 L", "Plástico", "Tampa basculante"]
+      "bullets": ["5 L", "Plástico", "Tampa basculante"],
+      "generic": true
     },
     {
       "id": "lixeira-inox-pedal-5-litros",
@@ -20,7 +21,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/lixeira-inox-pedal-5-litros",
-      "bullets": ["Inox", "Pedal: não precisa tocar", "Balde interno removível"]
+      "bullets": ["Inox", "Pedal: não precisa tocar", "Balde interno removível"],
+      "generic": true
     },
     {
       "id": "lixeira-inox-sensor",
@@ -30,7 +32,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/lixeira-inox-sensor",
-      "bullets": ["Abre sozinha por sensor", "Fechamento suave", "Recarregável"]
+      "bullets": ["Abre sozinha por sensor", "Fechamento suave", "Recarregável"],
+      "generic": true
     }
   ]
 }

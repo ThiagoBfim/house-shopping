@@ -4,12 +4,12 @@
   "options": [
     {
       "id": "colchao-berco-americano-d18",
-      "tier": 1,
+      "tier": 2,
       "name": "Colchão de Berço Americano Ortobom D18",
-      "price": 149,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 350,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/colchao-berco-americano-d18",
+      "url": "https://www.mercadolivre.com.br/colchao-ortobom-berco-americano-130x70x10cm-d18-azul-impermeavel-antialergico/p/MLB47181892?pdp_filters=item_id%3AMLB5370738322",
       "bullets": [
         "Espuma D18 (a recomendada para bebê)",
         "Tamanho berço americano",
@@ -18,13 +18,14 @@
     },
     {
       "id": "colchao-berco-antialergico-d18",
-      "tier": 2,
+      "tier": 1,
       "name": "Colchão de Berço Antialérgico D18",
       "price": 249,
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/colchao-berco-antialergico-d18",
-      "bullets": ["Tecido antialérgico e antiácaro", "Capa removível", "Espuma D18"]
+      "bullets": ["Tecido antialérgico e antiácaro", "Capa removível", "Espuma D18"],
+      "generic": true
     },
     {
       "id": "colchao-berco-respiravel",
@@ -34,7 +35,8 @@
       "priceUpdatedAt": "2026-10-22",
       "store": "mercadolivre",
       "url": "https://lista.mercadolivre.com.br/colchao-berco-respiravel",
-      "bullets": ["Tecido 3D respirável", "Lavável", "Melhor ventilação"]
+      "bullets": ["Tecido 3D respirável", "Lavável", "Melhor ventilação"],
+      "generic": true
     }
   ]
 }

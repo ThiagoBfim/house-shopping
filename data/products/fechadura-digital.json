@@ -22,18 +22,23 @@
           "available": true,
           "externalId": "MLB7851790418",
           "catalogId": "MLB75276861",
-          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 399.9
+            }
+          ]
         }
       ]
     },
     {
       "id": "fechadura-digital-intelbras-fr-220-com-biometria",
       "tier": 2,
-      "name": "Fechadura Digital Intelbras FR 220 com Biometria",
-      "price": 899,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Fechadura Digital Intelbras MFR 3001 V com Biometria",
+      "price": 819,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/fechadura-digital-intelbras-fr-220-com-biometria",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3971219960?pdp_filters=item_id%3AMLB4676901709",
       "bullets": [
         "Abre com digital, senha ou cartão",
         "Senha para visitas e diaristas",
