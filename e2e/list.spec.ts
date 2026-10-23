@@ -167,4 +167,5 @@ test('produto com link real mostra a foto e o botão da loja', async ({ page }) 
     'href',
     /^https:\/\/meli\.la\//,
   )
+  await expect(tv.getByText('Apoia o criador do site, sem custo extra')).toBeVisible()
 })

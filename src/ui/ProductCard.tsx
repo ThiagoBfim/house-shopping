@@ -1,5 +1,5 @@
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
-import { isSearchUrl, otherOffers, STORE_WHERE } from '../data/offers.ts'
+import { isAffiliateUrl, isSearchUrl, otherOffers, STORE_WHERE } from '../data/offers.ts'
 import {
   isPromo,
   priceTrend,
@@ -45,6 +45,7 @@ export function ProductCard({
   const offer = shownOffer(option)
   const trend = offer && priceTrend(offer)
   const promo = offer !== undefined && isPromo(offer, today())
+  const affiliate = isAffiliateUrl(option.url)
   const cheaper = neighborOption(options, option.tier, -1)
   const pricier = neighborOption(options, option.tier, 1)
   const delta = (other: { price: number }) =>
@@ -156,11 +157,39 @@ export function ProductCard({
             </a>
           ))}
         </div>
-        <a class="buy-button" href={option.url} target="_blank" rel="sponsored noopener noreferrer">
-          {isSearchUrl(option.url) ? 'Buscar' : 'Comprar'} {STORE_WHERE[option.store]} ↗
-        </a>
+        <div class="buy-area">
+          <a
+            class="buy-button"
+            href={option.url}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            title={affiliate ? SUPPORT_TEXT : undefined}
+          >
+            {affiliate && <SupportHeart />}
+            {isSearchUrl(option.url) ? 'Buscar' : 'Comprar'} {STORE_WHERE[option.store]} ↗
+          </a>
+          {affiliate && (
+            <p class="support-note">
+              <SupportHeart /> Apoia o criador do site, sem custo extra
+            </p>
+          )}
+        </div>
       </footer>
     </article>
+  )
+}
+
+const SUPPORT_TEXT =
+  'Link de afiliado: comprando por aqui você apoia quem mantém o House Shopping, sem pagar nada a mais.'
+
+/** Coração do link de afiliado (decorativo: o texto ao lado explica). */
+function SupportHeart() {
+  return (
+    <span class="support-heart" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.6h1.8c.8-1.5 2.3-2.6 4.4-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+      </svg>
+    </span>
   )
 }
 
