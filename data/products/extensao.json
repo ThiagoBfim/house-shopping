@@ -16,11 +16,27 @@
       "id": "extensao-eletrica-fame-10-m-10a",
       "tier": 2,
       "name": "Extensão Elétrica Fame 10 m 10A",
-      "price": 79,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 57.64,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/extensao-eletrica-fame-10-m-10a",
-      "bullets": ["10 m: alcança varanda e quintal", "Cabo mais grosso", "Plugue reforçado"]
+      "url": "https://meli.la/2u6r5eM",
+      "bullets": ["10 m: alcança varanda e quintal", "Cabo mais grosso", "Plugue reforçado"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_981079-MLA99422683126_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2u6r5eM",
+          "price": 57.64,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4471219661",
+          "catalogId": "MLB38526343",
+          "history": [
+            { "date": "2026-10-22", "price": 54.76 },
+            { "date": "2026-10-23", "price": 57.64 }
+          ]
+        }
+      ]
     },
     {
       "id": "extensao-carretel-20-m-20a-com-disjuntor",

@@ -119,8 +119,8 @@
       "id": "colchao-emma-original-queen",
       "tier": 2,
       "name": "Colchão Queen Emma Original",
-      "price": 2739,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 2899.9,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://meli.la/24GbjRZ",
       "bullets": [
@@ -133,12 +133,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/24GbjRZ",
-          "price": 2739,
-          "updatedAt": "2026-10-22",
+          "price": 2899.9,
+          "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB2171387384",
           "catalogId": "MLB17351734",
-          "history": [{ "date": "2026-10-22", "price": 2739 }]
+          "history": [
+            { "date": "2026-10-22", "price": 2739 },
+            { "date": "2026-10-23", "price": 2899.9 }
+          ]
         }
       ],
       "variants": ["queen"]

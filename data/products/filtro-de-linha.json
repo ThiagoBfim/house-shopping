@@ -3,14 +3,30 @@
   "utensil": true,
   "options": [
     {
-      "id": "regua-de-tomada-elgin-5-tomadas",
+      "id": "filtro-de-linha-elgin-4-tomadas",
       "tier": 1,
-      "name": "Régua de Tomada Elgin 5 Tomadas",
-      "price": 35,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Filtro de Linha Elgin 4 Tomadas 1,5 m",
+      "price": 39.5,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/regua-de-tomada-elgin-5-tomadas",
-      "bullets": ["5 tomadas padrão novo", "Sem proteção contra surto", "Cabo curto (1 m)"]
+      "url": "https://meli.la/1rGQdnS",
+      "bullets": ["4 tomadas padrão novo", "Sem proteção contra surto", "Cabo de 1,5 m"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_608989-MLA93506389683_092025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1rGQdnS",
+          "price": 39.5,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4198469495",
+          "catalogId": "MLB22834020",
+          "history": [
+            { "date": "2026-10-22", "price": 39 },
+            { "date": "2026-10-23", "price": 39.5 }
+          ]
+        }
+      ]
     },
     {
       "id": "filtro-de-linha-clamper-energia-8-tomadas",

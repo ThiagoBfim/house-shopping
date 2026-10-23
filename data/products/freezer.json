@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Freezer Vertical Consul 189 L CVU20MB",
       "price": 1946.55,
-      "priceUpdatedAt": "2026-10-22",
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://meli.la/2QQTVPF",
       "bullets": [
@@ -21,7 +21,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2QQTVPF",
           "price": 1946.55,
-          "updatedAt": "2026-10-22",
+          "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB5054857741",
           "catalogId": "MLB65037956",
@@ -57,7 +57,7 @@
       "tier": 3,
       "name": "Freezer Horizontal Electrolux Inverter 513 L HI550",
       "price": 3646.19,
-      "priceUpdatedAt": "2026-10-22",
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://meli.la/1UJ4rCV",
       "bullets": [
@@ -71,7 +71,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1UJ4rCV",
           "price": 3646.19,
-          "updatedAt": "2026-10-22",
+          "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB7534915934",
           "history": [{ "date": "2026-10-22", "price": 3646.19 }],
@@ -83,8 +83,8 @@
       "id": "freezer-brastemp-bvr28pb",
       "tier": 4,
       "name": "Freezer Vertical Brastemp Frost Free 276 L BVR28PB",
-      "price": 3650,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 3909,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
       "url": "https://meli.la/1YxsxSf",
       "bullets": [
@@ -97,11 +97,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1YxsxSf",
-          "price": 3650,
-          "updatedAt": "2026-10-22",
+          "price": 3909,
+          "updatedAt": "2026-10-23",
           "available": true,
           "externalId": "MLB6214393636",
-          "history": [{ "date": "2026-10-22", "price": 3650 }],
+          "history": [
+            { "date": "2026-10-22", "price": 3650 },
+            { "date": "2026-10-23", "price": 3909 }
+          ],
           "catalogId": "MLB64967165"
         }
       ]

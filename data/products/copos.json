@@ -6,21 +6,47 @@
       "id": "jogo-de-copos-nadir-americano-12",
       "tier": 1,
       "name": "Jogo de Copos Nadir Americano 12 Peças",
-      "price": 49,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 29.99,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-nadir-americano-12",
-      "bullets": ["12 copos de vidro", "O clássico copo americano", "Barato para repor"]
+      "url": "https://meli.la/1zfZVAp",
+      "bullets": ["12 copos de vidro", "O clássico copo americano", "Barato para repor"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_940471-MLA100080525985_122025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1zfZVAp",
+          "price": 29.99,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB6577404612",
+          "catalogId": "MLB58973786",
+          "history": [{ "date": "2026-10-22", "price": 29.99 }]
+        }
+      ]
     },
     {
       "id": "jogo-de-copos-long-drink-nadir-12-pecas",
       "tier": 2,
-      "name": "Jogo de Copos Nadir Long Drink e Baixos 12 Peças",
-      "price": 149,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Jogo de 12 Copos Long Drink Nadir Dubai 480 ml",
+      "price": 65,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-copos-long-drink-nadir-12-pecas",
-      "bullets": ["6 altos + 6 baixos", "Vidro mais grosso", "Bom para receber visitas"]
+      "url": "https://meli.la/2nzPmzY",
+      "bullets": ["12 copos altos de 480 ml", "Vidro Nadir", "Bom para receber visitas"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_953538-MLA108424783594_032026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2nzPmzY",
+          "price": 65,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB6512539354",
+          "catalogId": "MLB66986892",
+          "history": [{ "date": "2026-10-22", "price": 65 }]
+        }
+      ]
     },
     {
       "id": "jogo-de-copos-cristal-bohemia",

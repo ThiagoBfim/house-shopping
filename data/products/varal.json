@@ -23,17 +23,30 @@
       "bullets": ["Sobe e desce com cordinha", "Não ocupa o chão", "Precisa instalar no teto"]
     },
     {
-      "id": "varal-de-chao-aluminio-mor-com-abas-grande",
+      "id": "varal-de-chao-mahil-cacupe-aluminio",
       "tier": 3,
-      "name": "Varal de Chão Alumínio Mor com Abas Grande",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Varal de Chão Mahil Cacupé Sanfonado de Alumínio",
+      "price": 166.16,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/varal-de-chao-aluminio-mor-com-abas-grande",
+      "url": "https://meli.la/2KCghH8",
       "bullets": [
-        "Muito espaço (lençol e toalhas)",
+        "Sanfonado: dobra e guarda fácil",
         "Alumínio não enferruja",
-        "Abas recolhem quando não usa"
+        "Bom para lençol e toalhas"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_683351-MLA117088467841_092026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2KCghH8",
+          "price": 166.16,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB5342831241",
+          "catalogId": "MLB78846492",
+          "history": [{ "date": "2026-10-22", "price": 166.16 }]
+        }
       ]
     }
   ]

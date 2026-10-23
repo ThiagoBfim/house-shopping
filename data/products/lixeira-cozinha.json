@@ -16,11 +16,24 @@
       "id": "lixeira-inox-com-pedal-brinox-30-l",
       "tier": 2,
       "name": "Lixeira Inox com Pedal Brinox 30 L",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 359,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/lixeira-inox-com-pedal-brinox-30-l",
-      "bullets": ["Inox fácil de limpar", "Cabe o lixo de dois dias", "Balde interno removível"]
+      "url": "https://meli.la/1AWtWWo",
+      "bullets": ["Inox fácil de limpar", "Cabe o lixo de dois dias", "Balde interno removível"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_710270-MLA107009071707_022026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1AWtWWo",
+          "price": 359,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4478322979",
+          "catalogId": "MLB19856710",
+          "history": [{ "date": "2026-10-22", "price": 359 }]
+        }
+      ]
     }
   ]
 }

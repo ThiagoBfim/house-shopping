@@ -13,17 +13,26 @@
       "bullets": ["Cabe a louça do dia", "Plástico simples", "Ocupa pouco espaço"]
     },
     {
-      "id": "escorredor-de-louca-arthi-inox-2-andares",
+      "id": "escorredor-de-louca-arthi-2-andares",
       "tier": 2,
-      "name": "Escorredor de Louça Arthi Inox 2 Andares",
-      "price": 129,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Escorredor de Louça Arthi 2 Andares 14 Pratos",
+      "price": 69.52,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/escorredor-de-louca-arthi-inox-2-andares",
-      "bullets": [
-        "Inox não enferruja",
-        "Dois andares: cabe bem mais",
-        "Bandeja que escoa para a pia"
+      "url": "https://meli.la/1ZjPsdo",
+      "bullets": ["Dois andares: cabe bem mais", "Até 14 pratos", "Marca Arthi"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_877356-MLA95637977512_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1ZjPsdo",
+          "price": 69.52,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB7165405422",
+          "catalogId": "MLB22964138",
+          "history": [{ "date": "2026-10-22", "price": 69.52 }]
+        }
       ]
     }
   ]

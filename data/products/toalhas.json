@@ -15,12 +15,28 @@
     {
       "id": "jogo-de-toalhas-karsten-5-pecas",
       "tier": 2,
-      "name": "Jogo de Toalhas Karsten 5 Peças Fio Penteado",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Jogo de Toalhas Karsten Imperial 5 Peças",
+      "price": 207.95,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/jogo-de-toalhas-karsten-5-pecas",
-      "bullets": ["Fio penteado: mais macio e absorvente", "5 peças", "Marca tradicional"]
+      "url": "https://meli.la/1Fa89th",
+      "bullets": ["100% algodão", "5 peças", "Marca tradicional"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_915129-MLA95659330234_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1Fa89th",
+          "price": 207.95,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4024851797",
+          "catalogId": "MLB45635848",
+          "history": [
+            { "date": "2026-10-22", "price": 186.71 },
+            { "date": "2026-10-23", "price": 207.95 }
+          ]
+        }
+      ]
     },
     {
       "id": "jogo-de-toalhas-trussardi",

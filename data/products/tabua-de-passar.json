@@ -13,14 +13,27 @@
       "bullets": ["Dobrável", "Altura ajustável", "Tampo pequeno"]
     },
     {
-      "id": "tabua-de-passar-secalux-com-suporte-para-ferro",
+      "id": "tabua-de-passar-secalux-extra-forte",
       "tier": 2,
-      "name": "Tábua de Passar Secalux com Suporte para Ferro",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Tábua de Passar Secalux Extra Forte com Porta-Ferro",
+      "price": 149.9,
+      "priceUpdatedAt": "2026-10-23",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/tabua-de-passar-secalux-com-suporte-para-ferro",
-      "bullets": ["Tampo grande e firme", "Apoio para o ferro", "Capa térmica mais grossa"]
+      "url": "https://meli.la/1CzXJEJ",
+      "bullets": ["Estrutura extra forte", "Apoio para o ferro", "Dobrável"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_867513-MLA96422577767_102025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1CzXJEJ",
+          "price": 149.9,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB4439273903",
+          "catalogId": "MLB55982369",
+          "history": [{ "date": "2026-10-22", "price": 149.9 }]
+        }
+      ]
     }
   ]
 }
