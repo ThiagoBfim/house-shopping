@@ -32,7 +32,46 @@ print(len(out), 'links')
 EOF
 ```
 
-## 1. Abrir os links (5 por `browser_batch`)
+## 1. Abrir os links
+
+### Rápido: iframes numa página do Mercado Livre (139 links ≈ 2 min)
+
+Com a aba numa página de `www.mercadolivre.com.br` (qualquer produto), o `meli.la` aberto num iframe termina no mesmo domínio, então dá para ler o resultado direto. Defina `window.__chk` e rode a lista com 4 em paralelo, guardando em `window.__res`:
+
+```js
+window.__chk = async (link) => {
+  const f = document.createElement('iframe')
+  f.style.cssText = 'position:fixed;left:0;top:0;width:1200px;height:900px;opacity:0;pointer-events:none'
+  document.body.appendChild(f); f.src = link
+  let r
+  for (let i = 0; i < 40 && !r; i++) {
+    await new Promise((ok) => setTimeout(ok, 500))
+    try {
+      const d = f.contentDocument
+      if (d?.readyState === 'complete' && d.body?.innerText.includes('Seguir')) {
+        await new Promise((ok) => setTimeout(ok, 1200))
+        const loc = f.contentWindow.location
+        r = { social: loc.pathname.startsWith('/social/master_sold'), tag: loc.search.includes('matt_tool=16097421'),
+              captcha: /captcha|complete esta etapa/i.test(loc.href + d.title),
+              ids: [...new Set(d.documentElement.innerHTML.match(/MLBU?\d{8,11}(?!\d)/g) || [])].slice(0, 4),
+              title: ((d.body.innerText.split('Seguir')[1] || '').trim().split('\n').filter(Boolean)
+                       .find((l) => !/^MAIS VENDIDO$|^OFERTA|cupom|Compra m/i.test(l)) || '').slice(0, 120) }
+      }
+    } catch (e) { r = { err: String(e).slice(0, 60) } }
+  }
+  f.remove(); return r || { timeout: true }
+}
+// window.__L = [[id, codigoDoMeliLa, idsEsperados], ...] (montado do check.json)
+window.__res = {}; const queue = [...window.__L]
+await Promise.all([0, 1, 2, 3].map(async () => {
+  while (queue.length) { const [id, code] = queue.shift(); window.__res[id] = await __chk('https://meli.la/' + code) }
+}))
+```
+
+- A chamada passa dos 45 s da ferramenta e dá timeout, mas o script continua na página: acompanhe com `Object.keys(window.__res).length` (espere ~30 s por chamada) e classifique no próprio navegador, devolvendo só os que não estão ok.
+- Sem a página do Mercado Livre na aba (outro domínio), o iframe não é legível: use o modo de um por um abaixo.
+
+### Um por um (5 por `browser_batch`)
 
 Para cada link: `navigate` para o `meli.la` e rode:
 
@@ -95,6 +134,6 @@ Não edite o catálogo nem a planilha sem o usuário pedir.
 - A página social às vezes mostra "MAIS VENDIDO" ou uma linha de cupom ("Compra mínima R$ 400") antes do título: o snippet pula essas linhas.
 - Link que cai em `/social/master_sold/lists` ("Minhas listas") sem `matt_tool` perdeu o produto: em geral o anúncio de catálogo ficou sem vendedor ativo (sem preço e sem barra de afiliado). Regenere com outro anúncio do mesmo modelo, apagando antes a oferta antiga (`offers`) da opção, porque o `ml:links import` mantém os ids de uma oferta existente.
 - "Produto diferente" com um `MLBU…` do link original entre os ids é o mesmo produto em outra variante ou anúncio (ex.: 110 V × 220 V). Confirme abrindo `https://www.mercadolivre.com.br/up/<MLBU>`: se o `item_id` da página for o `externalId` do catálogo, o anúncio original continua ativo e o link está ok (falso alarme). Só regenere se o anúncio original sumiu.
-- Leva ~1 min por lote de 5 (140 links ≈ 30 min).
+- Um por um leva ~1 min por lote de 5 (140 links ≈ 30 min); com iframes, ~2 min no total.
 - O preço na página social pode ser o preço cheio, diferente do catálogo: não use para validar. Preço se confere com `npm run sync:ml`.
 - Anúncios `/up/MLBU…` sem produto de catálogo têm só `externalId`: a comparação usa esse id.
