@@ -316,11 +316,28 @@ export function App() {
       setSession({ ...session, choices: nextChoices, plan: nextPlan })
       setChanges(diff)
       setDirty(false)
-      const count = Object.keys(diff).length
-      return count ? `${count} ${count === 1 ? 'item mudou' : 'itens mudaram'}` : 'nada mudou'
+      return nextView
     }
 
-    const reload = () => setToast({ message: `Lista recalculada: ${replan(choices)}.` })
+    /** Volta a lista ao que era antes de um recálculo (aviso com "Desfazer"). */
+    const undoTo = () => {
+      const previous = { choices, plan }
+      const wasDirty = dirty
+      return {
+        label: 'Desfazer',
+        run: () => {
+          setSession((current) => ({ ...current, ...previous }))
+          setChanges({})
+          setDirty(wasDirty)
+        },
+      }
+    }
+
+    const reload = () => {
+      const action = undoTo()
+      const summary = summarizeChanges(view, replan(choices))
+      setToast({ message: `Lista recalculada: ${reloadText(summary)}.`, action })
+    }
 
     /** Painel "Suas respostas": troca uma resposta e refaz a lista mantendo os ajustes à mão. */
     const changeAnswer = (question: Question, ids: string[]) => {
@@ -379,30 +396,16 @@ export function App() {
     }
 
     const applyFilters = (filters: FilterValues) => {
-      const previous = { choices, plan }
-      const nextChoices = { ...choices, ...filters }
-      const nextView = describeList(
-        room,
-        products,
-        budget,
-        planList(room, products, keepSpare, nextChoices),
-        nextChoices,
-      )
+      const action = undoTo()
+      const nextView = replan({ ...choices, ...filters }, keepSpare)
       const summary = summarizeChanges(view, nextView)
-      replan(nextChoices, keepSpare)
       setToast({
         message: `Filtros aplicados: ${filterChangeText(summary)}${
           nextView.remaining >= 100
             ? `. Saldo de ${formatBRLWhole(nextView.remaining)} guardado`
             : ''
         }.`,
-        action: {
-          label: 'Desfazer',
-          run: () => {
-            setSession((current) => ({ ...current, ...previous }))
-            setChanges({})
-          },
-        },
+        action,
       })
     }
 
@@ -469,6 +472,25 @@ export function App() {
 }
 
 const items = (n: number) => `${n} ${n === 1 ? 'item' : 'itens'}`
+
+/**
+ * Ex.: "11 itens melhoraram; +2 itens (R$ 640); usou R$ 7.900 do saldo". Mesmo detalhe do
+ * aviso dos filtros, contado do ponto de vista do recálculo (que usa o saldo).
+ */
+function reloadText(s: ChangeSummary): string {
+  const parts: string[] = []
+  if (s.pricier) parts.push(`${items(s.pricier)} ${s.pricier === 1 ? 'melhorou' : 'melhoraram'}`)
+  if (s.added) parts.push(`+${items(s.added)} (${formatBRLWhole(s.addedCost)})`)
+  if (s.cheaper)
+    parts.push(
+      `${items(s.cheaper)} ${s.cheaper === 1 ? 'ficou mais barato' : 'ficaram mais baratos'}`,
+    )
+  if (s.removed) parts.push(`saíram ${items(s.removed)} (${formatBRLWhole(s.removedCost)})`)
+  if (!parts.length) return 'nada mudou'
+  if (s.totalDelta >= 1) parts.push(`usou ${formatBRLWhole(s.totalDelta)} do saldo`)
+  else if (s.totalDelta <= -1) parts.push(`liberou ${formatBRLWhole(-s.totalDelta)}`)
+  return parts.join('; ')
+}
 
 /**
  * Ex.: "+40 itens (R$ 3.110); para caber no orçamento, saíram 4 itens (R$ 3.007) e 2 itens

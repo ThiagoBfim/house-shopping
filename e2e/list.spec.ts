@@ -55,8 +55,18 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
 
   // o dinheiro liberado vira upgrade em outros itens
   await expect(page.getByText('↑ Melhorou').first()).toBeVisible()
-  await expect(page.getByText(/Lista recalculada: \d+ ite(m mudou|ns mudaram)/)).toBeVisible()
+  await expect(
+    page.getByText(
+      /Lista recalculada: \d+ ite(m melhorou|ns melhoraram).*usou R\$\s[\d.]+ do saldo/,
+    ),
+  ).toBeVisible()
   expect(await remaining(page)).toBeLessThan(before + freed)
+
+  // "Desfazer" volta a lista de antes do recálculo, com o saldo de volta
+  await page.getByRole('button', { name: 'Desfazer' }).click()
+  await expect.poll(() => remaining(page)).toBeCloseTo(before + freed, 2)
+  expect(await tiersByLabel(page)).toEqual(tiersBefore)
+  await page.getByRole('button', { name: /Recalcular lista para usar os/ }).click()
 
   // a geladeira continua fora e pode ser reativada
   const excluded = page.locator('.side-section', { hasText: 'Recusados' })
