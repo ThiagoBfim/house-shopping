@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Air Fryer Mondial Family IV 3,5 L AF-30",
       "price": 289.79,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1LgyKAP",
       "bullets": ["3,5 L: porção para 1–2 pessoas", "1500 W", "Timer e desligamento automático"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1LgyKAP",
           "price": 289.79,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5167532703",
           "catalogId": "MLB19693313",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 289.79
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 289.79 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Air Fryer Electrolux 5 L EAF50",
       "price": 399.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1Bstow5",
       "bullets": ["Cesto de 5 L: família pequena", "1700 W", "8 receitas pré-programadas"],
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1Bstow5",
           "price": 399.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4716190659",
           "catalogId": "MLB36521729",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 399.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 399.9 }]
         }
       ]
     },
@@ -63,7 +53,7 @@
       "tier": 3,
       "name": "Air Fryer Philips Walita Série 3000 7,2 L Digital",
       "price": 834.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/24oyfHz",
       "bullets": ["7,2 L com visor", "Painel digital", "Marca premium em air fryer"],
@@ -73,16 +63,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/24oyfHz",
           "price": 834.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4186343565",
           "catalogId": "MLB49198498",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 834.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 834.9 }]
         }
       ]
     },

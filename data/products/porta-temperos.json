@@ -30,7 +30,7 @@
       "tier": 3,
       "name": "Porta-Temperos Giratório Inox 16 Potes de Vidro",
       "price": 125,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1yUWnps",
       "bullets": ["Estrutura inox", "16 potes", "Bonito na bancada"],
@@ -40,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1yUWnps",
           "price": 125,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5096430747",
           "catalogId": "MLB22705930",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 125
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 125 }]
         }
       ]
     }

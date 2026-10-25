@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Escorredor de Louça Arthi 2 Andares 14 Pratos",
       "price": 69.52,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1ZjPsdo",
       "bullets": ["Dois andares: cabe bem mais", "Até 14 pratos", "Marca Arthi"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1ZjPsdo",
           "price": 69.52,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7165405422",
           "catalogId": "MLB22964138",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 69.52
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 69.52 }]
         }
       ]
     }

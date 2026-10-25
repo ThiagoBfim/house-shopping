@@ -33,7 +33,7 @@
       "tier": 3,
       "name": "Kit 3 Lâmpadas Inteligentes Wi-Fi Positivo Casa Inteligente",
       "price": 197,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/28YCcwk",
       "bullets": [
@@ -47,16 +47,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/28YCcwk",
           "price": 197,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7398837644",
           "catalogId": "MLB53818381",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 197
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 197 }]
         }
       ]
     }

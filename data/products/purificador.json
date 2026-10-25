@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Purificador de Água IBBL E-Due Equilibrium",
       "price": 449,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/17EDmju",
       "bullets": ["Água gelada e natural", "Instalação simples", "Refil barato"],
@@ -17,7 +17,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/17EDmju",
           "price": 449,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6844611576",
           "catalogId": "MLB23641514",
@@ -35,22 +35,11 @@
       ]
     },
     {
-      "id": "purificador-electrolux-pe11b",
-      "tier": 2,
-      "name": "Purificador de Água Electrolux PE11B",
-      "price": 697,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB29239222",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_679896-MLU73492940544_122023-O.webp",
-      "bullets": ["Água natural, fria e gelada", "Painel touch", "Refrigeração eletrônica"]
-    },
-    {
       "id": "purificador-electrolux-pe12b",
-      "tier": 3,
+      "tier": 2,
       "name": "Purificador de Água Electrolux Pure 4X PE12B",
-      "price": 720.9,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 689.9,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/174L6dj",
       "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"],
@@ -59,8 +48,8 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/174L6dj",
-          "price": 720.9,
-          "updatedAt": "2026-10-23",
+          "price": 689.9,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4830318106",
           "catalogId": "MLB20708251",
@@ -68,10 +57,25 @@
             {
               "date": "2026-10-22",
               "price": 720.9
+            },
+            {
+              "date": "2026-10-25",
+              "price": 689.9
             }
           ]
         }
       ]
+    },
+    {
+      "id": "purificador-electrolux-pe11b",
+      "tier": 3,
+      "name": "Purificador de Água Electrolux PE11B",
+      "price": 697,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB29239222",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_679896-MLU73492940544_122023-O.webp",
+      "bullets": ["Água natural, fria e gelada", "Painel touch", "Refrigeração eletrônica"]
     }
   ]
 }

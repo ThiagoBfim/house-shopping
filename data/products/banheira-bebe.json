@@ -20,12 +20,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7739328622",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 189.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 189.9 }]
         }
       ]
     },
@@ -33,8 +28,8 @@
       "id": "banheira-safety-1st-smile",
       "tier": 2,
       "name": "Banheira Safety 1st Smile",
-      "price": 250.46,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 283.03,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2ZC5xoj",
       "bullets": ["Formato anatômico", "Marca Safety 1st", "Mais firme que as básicas"],
@@ -43,20 +38,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2ZC5xoj",
-          "price": 250.46,
-          "updatedAt": "2026-10-23",
+          "price": 283.03,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4202925354",
           "catalogId": "MLB23550906",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 462
-            },
-            {
-              "date": "2026-10-23",
-              "price": 250.46
-            }
+            { "date": "2026-10-22", "price": 462 },
+            { "date": "2026-10-23", "price": 250.46 },
+            { "date": "2026-10-25", "price": 283.03 }
           ]
         }
       ]

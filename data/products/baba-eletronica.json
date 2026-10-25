@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Babá Eletrônica Motorola VM481 com Vídeo",
       "price": 299.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2S7Tcpm",
       "bullets": ["Vídeo com visão noturna", "Tela de 2\"", "Zoom digital"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2S7Tcpm",
           "price": 299.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB3353587915",
           "catalogId": "MLB22515039",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 299.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 299.9 }]
         }
       ]
     },
@@ -46,7 +41,7 @@
       "tier": 3,
       "name": "Babá Eletrônica Philips Avent Full HD SCD643/26",
       "price": 1299,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1mKEdE2",
       "bullets": [
@@ -60,16 +55,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1mKEdE2",
           "price": 1299,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4580482639",
           "catalogId": "MLB65322285",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1299
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1299 }]
         }
       ]
     },
@@ -78,7 +68,7 @@
       "tier": 4,
       "name": "Babá Eletrônica Nanit Pro (Wi-Fi)",
       "price": 2499,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2a7gGej",
       "bullets": [
@@ -92,16 +82,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2a7gGej",
           "price": 2499,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5837771638",
           "catalogId": "MLB25029780",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2499
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 2499 }]
         }
       ]
     }

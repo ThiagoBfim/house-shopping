@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Kit Teclado e Mouse sem Fio Logitech MK270",
       "price": 149.63,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1S9qPPZ",
       "bullets": ["Sem fio, um receptor USB", "Pilha dura meses", "Básico e confiável"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1S9qPPZ",
           "price": 149.63,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB2117505161",
           "catalogId": "MLB18611634",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 149.63
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 149.63 }]
         }
       ]
     },
@@ -49,12 +44,7 @@
           "available": true,
           "externalId": "MLB6501875746",
           "catalogId": "MLB37454280",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 335
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 335 }]
         }
       ]
     },

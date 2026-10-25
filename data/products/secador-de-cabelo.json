@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Secador Taiff Style 2000 W SECU20",
       "price": 241.69,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/31NNMgG",
       "bullets": ["Motor profissional AC", "2000 W", "Linha profissional da Taiff"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/31NNMgG",
           "price": 241.69,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6308932384",
           "catalogId": "MLB18920579",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 241.69
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 241.69 }]
         }
       ]
     },
@@ -46,7 +41,7 @@
       "tier": 3,
       "name": "Secador de Cabelo Taiff Titanium Profissional",
       "price": 528.49,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1ECdw9E",
       "bullets": ["Profissional", "2500 W", "Cerâmica e íons"],
@@ -56,16 +51,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1ECdw9E",
           "price": 528.49,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4832484883",
           "catalogId": "MLB74655218",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 528.49
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 528.49 }]
         }
       ]
     },
@@ -74,7 +64,7 @@
       "tier": 4,
       "name": "Secador Dyson Supersonic Origin",
       "price": 2731,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1wAdJeF",
       "bullets": [
@@ -88,16 +78,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1wAdJeF",
           "price": 2731,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6500817246",
           "catalogId": "MLB47332875",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2731
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 2731 }]
         }
       ]
     }

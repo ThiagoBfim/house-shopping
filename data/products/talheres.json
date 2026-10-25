@@ -6,8 +6,8 @@
       "id": "faqueiro-tramontina-laguna-24-pecas",
       "tier": 1,
       "name": "Faqueiro Tramontina Laguna 24 Peças",
-      "price": 138.69,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 135.45,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/22upnWK",
       "bullets": ["24 peças (6 pessoas)", "Inox simples", "Cabo fino"],
@@ -16,16 +16,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/22upnWK",
-          "price": 138.69,
-          "updatedAt": "2026-10-23",
+          "price": 135.45,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB3703826291",
           "catalogId": "MLB35161770",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 138.69
-            }
+            { "date": "2026-10-22", "price": 138.69 },
+            { "date": "2026-10-25", "price": 135.45 }
           ]
         }
       ]
@@ -48,12 +46,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5064857305",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 199.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 199.99 }]
         }
       ]
     },
@@ -62,7 +55,7 @@
       "tier": 3,
       "name": "Faqueiro Tramontina Pacific 72 Peças",
       "price": 537.6,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/167zDqx",
       "bullets": ["72 peças (12 pessoas)", "Aço inox", "Linha Pacific da Tramontina"],
@@ -72,16 +65,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/167zDqx",
           "price": 537.6,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB3964324909",
           "catalogId": "MLB32486578",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 537.6
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 537.6 }]
         }
       ]
     },

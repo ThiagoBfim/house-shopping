@@ -21,12 +21,7 @@
           "available": true,
           "externalId": "MLB5880318722",
           "catalogId": "MLB22448503",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 219.89
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 219.89 }]
         }
       ]
     },
@@ -34,8 +29,8 @@
       "id": "headset-gamer-hyperx-cloud-iii",
       "tier": 2,
       "name": "Headset Gamer HyperX Cloud III",
-      "price": 409.9,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 431.57,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1626bPb",
       "bullets": ["Som espacial", "Almofadas confortáveis por horas", "Microfone melhor"],
@@ -44,16 +39,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1626bPb",
-          "price": 409.9,
-          "updatedAt": "2026-10-23",
+          "price": 431.57,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7246087426",
           "catalogId": "MLB26217738",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 409.9
-            }
+            { "date": "2026-10-22", "price": 409.9 },
+            { "date": "2026-10-25", "price": 431.57 }
           ]
         }
       ]
@@ -63,7 +56,7 @@
       "tier": 3,
       "name": "Headset Gamer sem Fio Logitech G Pro X 2 Lightspeed",
       "price": 1699.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1xeL2yc",
       "bullets": ["Sem fio de baixa latência", "Bateria de ~50 h", "Drivers de grafeno"],
@@ -73,16 +66,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1xeL2yc",
           "price": 1699.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4662952840",
           "catalogId": "MLB28986717",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1699.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1699.99 }]
         }
       ]
     },
@@ -109,12 +97,7 @@
           "available": true,
           "externalId": "MLB5474959840",
           "catalogId": "MLB20770502",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2599
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 2599 }]
         }
       ]
     }

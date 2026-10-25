@@ -22,7 +22,7 @@
       "tier": 2,
       "name": "Kit de Ferramentas Tramontina 110 Peças",
       "price": 380.02,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/31x3YNM",
       "bullets": ["Inclui soquetes e chaves combinadas", "Aço cromo-vanádio", "Maleta organizada"],
@@ -32,16 +32,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/31x3YNM",
           "price": 380.02,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB3448131925",
           "catalogId": "MLB2126162888",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 380.02
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 380.02 }]
         }
       ]
     },
@@ -49,8 +44,8 @@
       "id": "kit-de-ferramentas-stanley-150-pecas",
       "tier": 3,
       "name": "Jogo de Ferramentas Stanley 183 Peças STMT71662",
-      "price": 694.4,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 715.88,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/12exw83",
       "bullets": [
@@ -63,16 +58,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/12exw83",
-          "price": 694.4,
-          "updatedAt": "2026-10-23",
+          "price": 715.88,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6747609922",
           "catalogId": "MLB32987803",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 694.4
-            }
+            { "date": "2026-10-22", "price": 694.4 },
+            { "date": "2026-10-25", "price": 715.88 }
           ]
         }
       ]

@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Micro-ondas Panasonic 34 L NN-ST65LWRU",
       "price": 726.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/17j5LAo",
       "bullets": [
@@ -32,16 +32,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/17j5LAo",
           "price": 726.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB2134345887",
           "catalogId": "MLB18324158",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 726.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 726.9 }]
         }
       ]
     },
@@ -49,8 +44,8 @@
       "id": "micro-ondas-lg-neochef-ms3033",
       "tier": 3,
       "name": "Micro-ondas LG NeoChef 30 L Limpa Fácil",
-      "price": 749,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 844.76,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/16WwVih",
       "bullets": [
@@ -63,16 +58,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/16WwVih",
-          "price": 749,
-          "updatedAt": "2026-10-23",
+          "price": 844.76,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6489555852",
           "catalogId": "MLB35731341",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 749
-            }
+            { "date": "2026-10-22", "price": 749 },
+            { "date": "2026-10-25", "price": 844.76 }
           ]
         }
       ]

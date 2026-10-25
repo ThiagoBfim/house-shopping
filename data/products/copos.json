@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Jogo de Copos Nadir Americano 12 Peças",
       "price": 29.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1zfZVAp",
       "bullets": ["12 copos de vidro", "O clássico copo americano", "Barato para repor"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1zfZVAp",
           "price": 29.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6577404612",
           "catalogId": "MLB58973786",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 29.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 29.99 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Jogo de 12 Copos Long Drink Nadir Dubai 480 ml",
       "price": 65,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2nzPmzY",
       "bullets": ["12 copos altos de 480 ml", "Vidro Nadir", "Bom para receber visitas"],
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2nzPmzY",
           "price": 65,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6512539354",
           "catalogId": "MLB66986892",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 65
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 65 }]
         }
       ]
     },

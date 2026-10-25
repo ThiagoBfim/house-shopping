@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Churrasqueira Elétrica Cadence Short GRL805",
       "price": 124.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1RRQjwF",
       "bullets": [
@@ -21,16 +21,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1RRQjwF",
           "price": 124.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7496386298",
           "catalogId": "MLB57960838",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 124.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 124.99 }]
         }
       ]
     },
@@ -57,12 +52,7 @@
           "available": true,
           "externalId": "MLB4001908237",
           "catalogId": "MLB15058434",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 747
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 747 }]
         }
       ]
     },
@@ -103,12 +93,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7540392888",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 8561
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 8561 }]
         }
       ]
     }

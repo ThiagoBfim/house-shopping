@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Ducha Higiênica Docol Nova Pertutti",
       "price": 239.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1sByQko",
       "bullets": ["Metal cromado", "Marca de referência em metais", "Mais durável"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1sByQko",
           "price": 239.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7624698754",
           "catalogId": "MLB21317832",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 239.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 239.9 }]
         }
       ]
     },
@@ -46,7 +41,7 @@
       "tier": 3,
       "name": "Ducha Higiênica Deca 20411197",
       "price": 654.72,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2QMG9zV",
       "bullets": ["Marca Deca", "Metal cromado", "Acabamento premium"],
@@ -56,16 +51,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2QMG9zV",
           "price": 654.72,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4835196015",
           "catalogId": "MLB74730517",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 654.72
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 654.72 }]
         }
       ]
     }

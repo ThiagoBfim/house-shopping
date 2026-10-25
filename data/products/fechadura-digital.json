@@ -8,7 +8,7 @@
       "tier": 1,
       "name": "Fechadura Digital Intelbras FR 101 com Senha",
       "price": 399.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1wW51gL",
       "bullets": ["Abre com senha", "Sem chave para perder", "Pilhas comuns"],
@@ -18,16 +18,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1wW51gL",
           "price": 399.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7851790418",
           "catalogId": "MLB75276861",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 399.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 399.9 }]
         }
       ]
     },

@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Extensão Elétrica Fame 10 m 10A",
       "price": 57.64,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2u6r5eM",
       "bullets": ["10 m: alcança varanda e quintal", "Cabo mais grosso", "Plugue reforçado"],
@@ -28,19 +28,13 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2u6r5eM",
           "price": 57.64,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4471219661",
           "catalogId": "MLB38526343",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 54.76
-            },
-            {
-              "date": "2026-10-23",
-              "price": 57.64
-            }
+            { "date": "2026-10-22", "price": 54.76 },
+            { "date": "2026-10-23", "price": 57.64 }
           ]
         }
       ]

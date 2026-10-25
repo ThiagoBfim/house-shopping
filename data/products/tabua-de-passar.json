@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Tábua de Passar Secalux Extra Forte com Porta-Ferro",
       "price": 149.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1CzXJEJ",
       "bullets": ["Estrutura extra forte", "Apoio para o ferro", "Dobrável"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1CzXJEJ",
           "price": 149.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4439273903",
           "catalogId": "MLB55982369",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 149.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 149.9 }]
         }
       ]
     }

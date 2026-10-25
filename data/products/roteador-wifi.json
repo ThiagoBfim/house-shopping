@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Roteador Wi-Fi TP-Link Archer C20 Dual Band",
       "price": 176,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2gjmVLZ",
       "bullets": ["Dual band", "Para apartamento pequeno", "Até ~100 Mbps de verdade"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2gjmVLZ",
           "price": 176,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4580688095",
           "catalogId": "MLB29272262",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 176
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 176 }]
         }
       ]
     },
@@ -53,12 +48,7 @@
           "available": true,
           "externalId": "MLB3481165679",
           "catalogId": "MLB59029690",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 332.64
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 332.64 }]
         }
       ]
     },

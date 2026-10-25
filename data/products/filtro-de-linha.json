@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Filtro de Linha Elgin 4 Tomadas 1,5 m",
       "price": 39.5,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1rGQdnS",
       "bullets": ["4 tomadas padrão novo", "Sem proteção contra surto", "Cabo de 1,5 m"],
@@ -17,19 +17,13 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1rGQdnS",
           "price": 39.5,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4198469495",
           "catalogId": "MLB22834020",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 39
-            },
-            {
-              "date": "2026-10-23",
-              "price": 39.5
-            }
+            { "date": "2026-10-22", "price": 39 },
+            { "date": "2026-10-23", "price": 39.5 }
           ]
         }
       ]
@@ -38,8 +32,8 @@
       "id": "filtro-de-linha-clamper-energia-8-tomadas",
       "tier": 2,
       "name": "Filtro de Linha Clamper Energia 8 Tomadas",
-      "price": 113.99,
-      "priceUpdatedAt": "2026-10-22",
+      "price": 113,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1qCVqtA",
       "bullets": [
@@ -52,16 +46,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1qCVqtA",
-          "price": 113.99,
-          "updatedAt": "2026-10-22",
+          "price": 113,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5008222132",
           "catalogId": "MLB22881386",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 113.99
-            }
+            { "date": "2026-10-22", "price": 113.99 },
+            { "date": "2026-10-25", "price": 113 }
           ]
         }
       ]

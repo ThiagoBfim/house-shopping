@@ -6,8 +6,8 @@
       "id": "headset-logitech-h390-usb",
       "tier": 1,
       "name": "Headset Logitech H390 USB",
-      "price": 167.44,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 175,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1xJimAC",
       "bullets": ["Microfone com redução de ruído", "Bom para reuniões", "Com fio USB"],
@@ -16,16 +16,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1xJimAC",
-          "price": 167.44,
-          "updatedAt": "2026-10-23",
+          "price": 175,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB1813853925",
           "catalogId": "MLB6417063",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 167.44
-            }
+            { "date": "2026-10-22", "price": 167.44 },
+            { "date": "2026-10-25", "price": 175 }
           ]
         }
       ]
@@ -35,7 +33,7 @@
       "tier": 2,
       "name": "Fone Bluetooth JBL Tune 520BT",
       "price": 259.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/17eqopx",
       "bullets": ["Sem fio, ~50 h de bateria", "Também serve para a rua", "Microfone embutido"],
@@ -45,16 +43,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/17eqopx",
           "price": 259.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6894660916",
           "catalogId": "MLB40871018",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 259.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 259.99 }]
         }
       ]
     },
@@ -92,12 +85,7 @@
           "available": true,
           "externalId": "MLB7594568986",
           "catalogId": "MLB19176887",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2019
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 2019 }]
         }
       ]
     }

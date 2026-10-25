@@ -25,12 +25,7 @@
           "available": true,
           "externalId": "MLB5054857741",
           "catalogId": "MLB65037956",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1946.55
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1946.55 }]
         }
       ]
     },
@@ -53,12 +48,7 @@
           "available": true,
           "externalId": "MLB4728968743",
           "catalogId": "MLB73479286",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2999
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 2999 }]
         }
       ]
     },
@@ -67,7 +57,7 @@
       "tier": 3,
       "name": "Freezer Horizontal Electrolux Inverter 513 L HI550",
       "price": 3646.19,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1UJ4rCV",
       "bullets": [
@@ -81,15 +71,10 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1UJ4rCV",
           "price": 3646.19,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7534915934",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 3646.19
-            }
-          ],
+          "history": [{ "date": "2026-10-22", "price": 3646.19 }],
           "catalogId": "MLB44408808"
         }
       ]
@@ -99,7 +84,7 @@
       "tier": 4,
       "name": "Freezer Vertical Brastemp Frost Free 276 L BVR28PB",
       "price": 3909,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1YxsxSf",
       "bullets": [
@@ -113,18 +98,12 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1YxsxSf",
           "price": 3909,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6214393636",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 3650
-            },
-            {
-              "date": "2026-10-23",
-              "price": 3909
-            }
+            { "date": "2026-10-22", "price": 3650 },
+            { "date": "2026-10-23", "price": 3909 }
           ],
           "catalogId": "MLB64967165"
         }

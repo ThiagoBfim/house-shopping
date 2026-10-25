@@ -35,12 +35,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB5087831523",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 71.72
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 71.72 }]
         }
       ]
     },
@@ -49,7 +44,7 @@
       "tier": 3,
       "name": "Tábua de Corte de Madeira Teca Tramontina Grande",
       "price": 174.9,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/22xGMUd",
       "bullets": ["Madeira teca maciça", "Canaleta para o caldo da carne", "Dura muitos anos"],
@@ -59,16 +54,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/22xGMUd",
           "price": 174.9,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7287696938",
           "catalogId": "MLB68251817",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 174.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 174.9 }]
         }
       ]
     }

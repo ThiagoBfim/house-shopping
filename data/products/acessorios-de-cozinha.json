@@ -22,7 +22,7 @@
       "tier": 2,
       "name": "Conjunto de Pegadores Tramontina Utility Inox 6 Peças",
       "price": 132,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1RbF3MH",
       "bullets": [
@@ -36,16 +36,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1RbF3MH",
           "price": 132,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5218860098",
           "catalogId": "MLB24676611",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 132
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 132 }]
         }
       ]
     },

@@ -2,18 +2,9 @@
   "label": "Cafeteira",
   "utensil": false,
   "variants": [
-    {
-      "id": "coado",
-      "label": "Café coado"
-    },
-    {
-      "id": "capsula",
-      "label": "Cápsula"
-    },
-    {
-      "id": "espresso",
-      "label": "Espresso"
-    }
+    { "id": "coado", "label": "Café coado" },
+    { "id": "capsula", "label": "Cápsula" },
+    { "id": "espresso", "label": "Espresso" }
   ],
   "options": [
     {
@@ -77,7 +68,7 @@
       "tier": 1,
       "name": "Cafeteira Nespresso Essenza Mini",
       "price": 539,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1qDFWmd",
       "bullets": ["Cápsulas: espresso sem sujeira", "Compacta", "Cápsula custa mais por xícara"],
@@ -87,16 +78,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1qDFWmd",
           "price": 539,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4046267101",
           "catalogId": "MLB15261607",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 539
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 539 }]
         }
       ],
       "variants": ["capsula"]
@@ -173,12 +159,7 @@
           "available": true,
           "externalId": "MLB4621491908",
           "catalogId": "MLB15166291",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 3479.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 3479.99 }]
         }
       ],
       "variants": ["espresso"]

@@ -2,14 +2,8 @@
   "label": "Forno",
   "utensil": false,
   "variants": [
-    {
-      "id": "bancada",
-      "label": "Forno elétrico de bancada"
-    },
-    {
-      "id": "embutir",
-      "label": "Forno de embutir"
-    }
+    { "id": "bancada", "label": "Forno elétrico de bancada" },
+    { "id": "embutir", "label": "Forno de embutir" }
   ],
   "options": [
     {
@@ -101,7 +95,7 @@
       "tier": 3,
       "name": "Forno de Embutir Elétrico Electrolux 80 L OE8EA",
       "price": 2047.79,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2TzFJkW",
       "bullets": [
@@ -116,15 +110,10 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2TzFJkW",
           "price": 2047.79,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5524387860",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2047.79
-            }
-          ],
+          "history": [{ "date": "2026-10-22", "price": 2047.79 }],
           "catalogId": "MLB51183658"
         }
       ],

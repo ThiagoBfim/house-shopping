@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Ferro a Vapor Arno Ultragliss Plus",
       "price": 245.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1cZqusT",
       "bullets": ["Vapor tira vincos mais rápido", "Base antiaderente", "Jato de vapor vertical"],
@@ -28,16 +28,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1cZqusT",
           "price": 245.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7568051894",
           "catalogId": "MLB68773047",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 245.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 245.99 }]
         }
       ]
     },
@@ -46,7 +41,7 @@
       "tier": 3,
       "name": "Vaporizador de Roupas Philips Walita Série 3000",
       "price": 319.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2JpDAV5",
       "bullets": [
@@ -60,16 +55,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2JpDAV5",
           "price": 319.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB6556906064",
           "catalogId": "MLB54409377",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 319.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 319.99 }]
         }
       ]
     }

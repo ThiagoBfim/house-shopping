@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Garrafa Térmica Invicta Firenze 1 L",
       "price": 46,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/12mUW8X",
       "bullets": ["Ampola de vidro", "Café quente por ~6 h", "Quebra se cair"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/12mUW8X",
           "price": 46,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5145754531",
           "catalogId": "MLB19723276",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 46
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 46 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Garrafa Térmica Termolar Lumina Inox 1 L",
       "price": 78.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1rfCqvX",
       "bullets": ["Inox: não quebra", "Mantém quente por horas", "Linha Lumina da Termolar"],
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1rfCqvX",
           "price": 78.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5361809522",
           "catalogId": "MLB29554584",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 78.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 78.99 }]
         }
       ]
     },
@@ -62,8 +52,8 @@
       "id": "garrafa-termica-stanley-classic-1-l",
       "tier": 3,
       "name": "Garrafa Térmica Stanley Classic 1 L",
-      "price": 449,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 435.53,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2X56c6g",
       "bullets": [
@@ -76,16 +66,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2X56c6g",
-          "price": 449,
-          "updatedAt": "2026-10-23",
+          "price": 435.53,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5391778183",
           "catalogId": "MLB35503550",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 449
-            }
+            { "date": "2026-10-22", "price": 449 },
+            { "date": "2026-10-25", "price": 435.53 }
           ]
         }
       ]

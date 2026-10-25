@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Jogo de Toalhas Karsten Imperial 5 Peças",
       "price": 207.95,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1Fa89th",
       "bullets": ["100% algodão", "5 peças", "Marca tradicional"],
@@ -28,19 +28,13 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1Fa89th",
           "price": 207.95,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4024851797",
           "catalogId": "MLB45635848",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 186.71
-            },
-            {
-              "date": "2026-10-23",
-              "price": 207.95
-            }
+            { "date": "2026-10-22", "price": 186.71 },
+            { "date": "2026-10-23", "price": 207.95 }
           ]
         }
       ]

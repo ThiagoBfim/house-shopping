@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Monitor Gamer AOC Hero 24\" 144 Hz IPS",
       "price": 794,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1K7Q1oJ",
       "bullets": ["144 Hz: jogo bem mais fluido", "IPS Full HD", "AMD FreeSync"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1K7Q1oJ",
           "price": 794,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4903536335",
           "catalogId": "MLB44798973",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 794
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 794 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Monitor Gamer Samsung Odyssey G5 32 QHD Curvo 165Hz",
       "price": 1299,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1N6a9EA",
       "bullets": ["32\" curvo: imersão", "QHD 165 Hz", "HDR10"],
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1N6a9EA",
           "price": 1299,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB7729513600",
           "catalogId": "MLB46196451",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1299
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1299 }]
         }
       ]
     },
@@ -77,12 +67,7 @@
           "available": true,
           "externalId": "MLB5325462419",
           "catalogId": "MLB59323822",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1699
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1699 }]
         }
       ]
     },
@@ -91,7 +76,7 @@
       "tier": 4,
       "name": "Monitor Gamer LG UltraGear 27\" OLED 240 Hz 27GX704A",
       "price": 4699,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2PrL83S",
       "bullets": [
@@ -105,16 +90,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2PrL83S",
           "price": 4699,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB5434274025",
           "catalogId": "MLB66833470",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4699
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 4699 }]
         }
       ]
     }

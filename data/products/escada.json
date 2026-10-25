@@ -6,8 +6,8 @@
       "id": "escada-de-aluminio-mor-5-degraus",
       "tier": 1,
       "name": "Escada de Alumínio Mor 5 Degraus",
-      "price": 265,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 263,
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/2KQV3MB",
       "bullets": ["Alcança ~2,7 m", "Leve e dobrável", "Troca lâmpada e cortina"],
@@ -16,16 +16,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2KQV3MB",
-          "price": 265,
-          "updatedAt": "2026-10-23",
+          "price": 263,
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4975214477",
           "catalogId": "MLB26823329",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 265
-            }
+            { "date": "2026-10-22", "price": 265 },
+            { "date": "2026-10-25", "price": 263 }
           ]
         }
       ]
@@ -53,12 +51,7 @@
           "available": true,
           "externalId": "MLB5283084083",
           "catalogId": "MLB36308120",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 358
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 358 }]
         }
       ]
     },
@@ -67,7 +60,7 @@
       "tier": 3,
       "name": "Escada Multifuncional Mor 4x3 12 Degraus",
       "price": 760.36,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1BTvhPv",
       "bullets": [
@@ -81,16 +74,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1BTvhPv",
           "price": 760.36,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB3853658061",
           "catalogId": "MLB21241180",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 760.36
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 760.36 }]
         }
       ]
     }

@@ -19,7 +19,7 @@
       "tier": 2,
       "name": "Seladora a Vácuo Electrolux Portátil",
       "price": 265.99,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-25",
       "store": "mercadolivre",
       "url": "https://meli.la/1GKmppY",
       "bullets": ["Portátil", "Marca Electrolux", "Conserva alimentos por mais tempo"],
@@ -29,16 +29,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1GKmppY",
           "price": 265.99,
-          "updatedAt": "2026-10-23",
+          "updatedAt": "2026-10-25",
           "available": true,
           "externalId": "MLB4451395583",
           "catalogId": "MLB27648718",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 265.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 265.99 }]
         }
       ]
     }
