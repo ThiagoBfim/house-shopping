@@ -28,6 +28,8 @@ interface Props {
   changes: Record<string, Change>
   /** Escolhas mudaram desde o último reload. */
   dirty: boolean
+  /** Saldo que o "Recalcular" usa para melhorar a lista (ausente = nada a melhorar). */
+  spare?: number
   /** `include`: coloca o item de volta na lista (no tier que tinha ou no informado). */
   onChoices: (next: Choices, message: string, include?: Plan) => void
   onReload: () => void
@@ -69,6 +71,7 @@ export function ListScreen({
   choices,
   changes,
   dirty,
+  spare,
   onChoices,
   onReload,
   onFilters,
@@ -309,12 +312,12 @@ export function ListScreen({
         )}
         <button
           type="button"
-          class={`reload-button ${dirty ? 'is-pending' : ''}`}
+          class={`reload-button ${dirty || spare ? 'is-pending' : ''}`}
           onClick={onReload}
         >
           ↻ Recalcular lista
-          {dirty && !over && view.remaining > 0 && (
-            <span> com o saldo de {formatBRLWhole(view.remaining)}</span>
+          {spare !== undefined && !over && (
+            <span> para usar os {formatBRLWhole(spare)} restantes</span>
           )}
         </button>
       </div>

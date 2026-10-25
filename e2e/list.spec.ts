@@ -47,7 +47,9 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
   await expect(card(page, 'Geladeira')).toHaveCount(0)
   expect(await remaining(page)).toBeCloseTo(before + freed, 2)
   expect(await tiersByLabel(page)).toEqual(tiersBefore)
-  await expect(page.getByRole('button', { name: /Recalcular lista com o saldo/ })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: /Recalcular lista para usar os R\$\s[\d.]+ restantes/ }),
+  ).toBeVisible()
 
   await page.getByRole('button', { name: /Recalcular lista/ }).click()
 
@@ -61,6 +63,29 @@ test('recusar a geladeira e recalcular usa o dinheiro liberado em outros itens',
   await expect(excluded).toContainText('Geladeira')
   await excluded.getByRole('button', { name: 'Reativar' }).click()
   await expect(card(page, 'Geladeira')).toBeVisible()
+})
+
+test('mudar filtro depois de recusar guarda o saldo; só o recalcular usa', async ({ page }) => {
+  await openKitchen(page, '30000')
+  await card(page, 'Geladeira').getByRole('button', { name: 'Recusar' }).click()
+  const freed = await remaining(page)
+  expect(freed).toBeGreaterThan(1000)
+
+  // tirar os utensílios libera mais dinheiro, mas o motor não gasta de volta o que foi recusado
+  await page.locator('.filters-panel summary').click()
+  await page.getByRole('switch', { name: /Incluir utensílios/ }).uncheck()
+  await expect(page.getByText(/Saldo de R\$\s[\d.]+ guardado/)).toBeVisible()
+  expect(await remaining(page)).toBeGreaterThanOrEqual(freed)
+
+  // e incluir de volta encaixa os utensílios sem usar o saldo
+  await page.getByRole('switch', { name: /Incluir utensílios/ }).check()
+  expect(await remaining(page)).toBeGreaterThanOrEqual(freed - 1)
+
+  const button = page.getByRole('button', { name: /Recalcular lista para usar os/ })
+  await button.click()
+  await expect(page.getByText(/Lista recalculada/)).toBeVisible()
+  expect(await remaining(page)).toBeLessThan(freed)
+  await expect(button).toHaveCount(0)
 })
 
 test('desfazer uma recusa traz o item de volta', async ({ page }) => {

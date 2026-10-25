@@ -273,6 +273,19 @@ export function App() {
 
     const { budget, plan, choices } = session
     const view = describeList(room, products, budget, plan, choices)
+    // Saldo que o "Recalcular" consegue usar (o reload muda alguma coisa na lista).
+    const fullView = describeList(
+      room,
+      products,
+      budget,
+      planList(room, products, budget, choices),
+      choices,
+    )
+    const spare =
+      view.remaining >= 1 &&
+      Object.keys(diffPlans(displayedTiers(view), displayedTiers(fullView))).length
+        ? view.remaining
+        : undefined
 
     const updateChoices = (next: Choices, message: string, include?: Plan) => {
       const previous = { choices, plan }
@@ -289,9 +302,15 @@ export function App() {
       })
     }
 
+    /**
+     * Saldo que a pessoa liberou (recusou itens, marcou "já tenho") fica guardado: filtros e
+     * respostas replanejam sem passar do total atual. Só o "Recalcular" usa o orçamento todo.
+     */
+    const keepSpare = Math.min(budget, view.total)
+
     /** Recalcula o plano (reload) e destaca o que mudou na lista exibida. */
-    const replan = (nextChoices: Choices) => {
-      const nextPlan = planList(room, products, budget, nextChoices)
+    const replan = (nextChoices: Choices, limit = budget) => {
+      const nextPlan = planList(room, products, limit, nextChoices)
       const nextView = describeList(room, products, budget, nextPlan, nextChoices)
       const diff = diffPlans(displayedTiers(view), displayedTiers(nextView))
       setSession({ ...session, choices: nextChoices, plan: nextPlan })
@@ -323,7 +342,10 @@ export function App() {
             (p) => p.id === result.preset,
           )!.value
         : budget
-      const nextPlan = planList(custom.room, custom.products, nextBudget, nextChoices)
+      // Casa ou orçamento novos: usa o orçamento todo. Senão, guarda o saldo (ver keepSpare).
+      const sameHouse = JSON.stringify(result.house) === JSON.stringify(session.house)
+      const limit = result.preset || !sameHouse ? nextBudget : keepSpare
+      const nextPlan = planList(custom.room, custom.products, limit, nextChoices)
       const nextView = describeList(custom.room, custom.products, nextBudget, nextPlan, nextChoices)
       const diff = diffPlans(displayedTiers(view), displayedTiers(nextView))
       const previous = session
@@ -363,13 +385,17 @@ export function App() {
         room,
         products,
         budget,
-        planList(room, products, budget, nextChoices),
+        planList(room, products, keepSpare, nextChoices),
         nextChoices,
       )
       const summary = summarizeChanges(view, nextView)
-      replan(nextChoices)
+      replan(nextChoices, keepSpare)
       setToast({
-        message: `Filtros aplicados: ${filterChangeText(summary)}.`,
+        message: `Filtros aplicados: ${filterChangeText(summary)}${
+          nextView.remaining >= 100
+            ? `. Saldo de ${formatBRLWhole(nextView.remaining)} guardado`
+            : ''
+        }.`,
         action: {
           label: 'Desfazer',
           run: () => {
@@ -408,6 +434,7 @@ export function App() {
           choices={choices}
           changes={changes}
           dirty={dirty}
+          spare={spare}
           onChoices={updateChoices}
           onReload={reload}
           onFilters={applyFilters}
