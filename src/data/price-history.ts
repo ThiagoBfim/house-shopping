@@ -89,3 +89,30 @@ export function isPromo(offer: Offer, today: string, windowDays = PROMO_WINDOW_D
 export function shownOffer(option: ProductOption): Offer | undefined {
   return option.offers?.find((offer) => offer.store === option.store && offer.url === option.url)
 }
+
+/** Janela do gráfico de preço. */
+export const CHART_MONTHS = 6
+
+/** Data `months` meses antes (AAAA-MM-DD; 31/08 − 6 meses = 28/02 ou 29/02). */
+export function subtractMonths(date: string, months: number): string {
+  const [year, month, day] = date.split('-').map(Number)
+  const target = new Date(Date.UTC(year, month - 1 - months, 1))
+  const lastDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0))
+  target.setUTCDate(Math.min(day, lastDay.getUTCDate()))
+  return target.toISOString().slice(0, 10)
+}
+
+/**
+ * Pontos do gráfico: os dias em que o preço mudou nos últimos CHART_MONTHS meses. Se o preço
+ * em vigor no começo da janela veio de antes dela, ele entra na data de início (o gráfico
+ * começa com o preço que valia), marcado como `carried`.
+ */
+export function chartPoints(offer: Offer, today: string): (PricePoint & { carried?: boolean })[] {
+  const start = subtractMonths(today, CHART_MONTHS)
+  const history = historyOf(offer)
+  const inside = history.filter((point) => point.date >= start && point.date <= today)
+  const before = history.filter((point) => point.date < start).at(-1)
+  return before && inside[0]?.date !== start
+    ? [{ date: start, price: before.price, carried: true }, ...inside]
+    : inside
+}

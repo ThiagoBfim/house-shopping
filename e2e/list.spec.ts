@@ -204,3 +204,24 @@ test('produto com link real mostra a foto e o botão da loja', async ({ page }) 
   )
   await expect(tv.getByText('Apoia o criador do site, sem custo extra')).toBeVisible()
 })
+
+test('variação de preço abre o gráfico com os dias em que o preço mudou', async ({ page }) => {
+  await page.goto('./')
+  await pickRooms(page, { Utilidades: 1 })
+  await page.getByLabel('Orçamento em reais').fill('600')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  // extensão e régua de tomada têm histórico com mudança de preço
+  const trend = page.locator('.price-trend-button').first()
+  await expect(trend).toHaveAttribute('aria-expanded', 'false')
+  await trend.click()
+  await expect(trend).toHaveAttribute('aria-expanded', 'true')
+  const chart = page.locator('.price-chart')
+  await expect(chart).toContainText('Preço nos últimos 6 meses')
+  expect(await chart.getByRole('listitem').count()).toBeGreaterThanOrEqual(2)
+  await expect(chart.getByRole('listitem').first()).toHaveText(/^Em \d\d\/\d\d.*: R\$/)
+  await expect(chart).toContainText(/Menor: R\$\s[\d.,]+ · Maior: R\$\s[\d.,]+/)
+
+  await trend.click()
+  await expect(chart).toHaveCount(0)
+})

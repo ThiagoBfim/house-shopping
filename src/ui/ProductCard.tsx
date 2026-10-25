@@ -1,6 +1,8 @@
+import { useState } from 'preact/hooks'
 import { neighborOption, type ListEntry } from '../engine/budget.ts'
 import { isAffiliateUrl, isSearchUrl, otherOffers, STORE_WHERE } from '../data/offers.ts'
 import {
+  chartPoints,
   isPromo,
   priceTrend,
   PROMO_WINDOW_DAYS,
@@ -10,6 +12,7 @@ import {
 import type { Change } from '../engine/choices.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
+import { PriceChart } from './PriceChart.tsx'
 
 interface Props {
   entry: ListEntry
@@ -45,6 +48,8 @@ export function ProductCard({
   const offer = shownOffer(option)
   const trend = offer && priceTrend(offer)
   const promo = offer !== undefined && isPromo(offer, today())
+  const [charting, setCharting] = useState(false)
+  const chartId = `chart-${item.category}`
   const affiliate = isAffiliateUrl(option.url)
   const cheaper = neighborOption(options, option.tier, -1)
   const pricier = neighborOption(options, option.tier, 1)
@@ -53,7 +58,7 @@ export function ProductCard({
 
   return (
     <article
-      class={`product-card ${change ? `is-${change}` : ''}`}
+      class={`product-card ${change ? `is-${change}` : ''} ${charting && trend ? 'is-charting' : ''}`}
       aria-label={`${label}: ${option.name}`}
     >
       <div class={`product-media ${option.image ? 'has-image' : `tier-${option.tier}`}`}>
@@ -139,7 +144,19 @@ export function ProductCard({
       <footer class="product-footer">
         <div class="product-price">
           <strong>{formatBRL(subtotal)}</strong>
-          {trend && <span class={`price-trend trend-${trend.direction}`}>{trendText(trend)}</span>}
+          {trend && (
+            <button
+              type="button"
+              class={`price-trend price-trend-button trend-${trend.direction}`}
+              aria-expanded={charting}
+              aria-controls={chartId}
+              title={charting ? 'Esconder gráfico de preço' : 'Ver gráfico de preço'}
+              onClick={() => setCharting(!charting)}
+            >
+              {trendText(trend)}
+              <span class="price-trend-chart">{charting ? 'Esconder gráfico' : 'Ver gráfico'}</span>
+            </button>
+          )}
           {item.qty > 1 && (
             <span class="muted">
               {item.qty} × {formatBRL(option.price)}
@@ -175,6 +192,16 @@ export function ProductCard({
           )}
         </div>
       </footer>
+      {charting && trend && offer && (
+        <div class="product-chart">
+          <PriceChart
+            id={chartId}
+            points={chartPoints(offer, today())}
+            today={today()}
+            direction={trend.direction}
+          />
+        </div>
+      )}
     </article>
   )
 }

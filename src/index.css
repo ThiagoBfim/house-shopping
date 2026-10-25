@@ -1043,6 +1043,99 @@ h3 {
   color: var(--warn);
 }
 
+/* Variação de preço vira botão do gráfico */
+.price-trend-button {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.price-trend-chart {
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.product-card.is-charting {
+  grid-template-areas:
+    'media'
+    'body'
+    'actions'
+    'footer'
+    'chart';
+}
+
+.product-chart {
+  grid-area: chart;
+}
+
+.price-chart {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.price-chart figcaption {
+  margin-bottom: 6px;
+  color: var(--fg);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.price-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  overflow: visible;
+}
+
+.price-chart-axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.price-chart-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.price-chart-dot {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+.price-chart-price {
+  fill: var(--fg);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.price-chart-date {
+  fill: var(--muted);
+  font-size: 10px;
+}
+
+.price-chart-range {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+}
+
 .promo-badge {
   padding: 2px 8px;
   border-radius: 999px;
@@ -1706,6 +1799,18 @@ h3 {
       'media footer';
     column-gap: 20px;
     padding: 0;
+  }
+
+  .product-card.is-charting {
+    grid-template-areas:
+      'media body'
+      'media actions'
+      'media footer'
+      'media chart';
+  }
+
+  .product-chart {
+    margin-bottom: 18px;
   }
 
   .product-card > :not(.product-media) {

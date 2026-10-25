@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import {
   addDays,
+  chartPoints,
   HISTORY_MAX_DAYS,
   isPromo,
   priceTrend,
   recordPrice,
   shownOffer,
+  subtractMonths,
 } from '../src/data/price-history.ts'
 import type { Offer, PricePoint } from '../src/data/schema.ts'
 import { validateCatalog } from '../src/data/validate.ts'
@@ -235,6 +237,50 @@ describe('validador do histórico', () => {
     ).toEqual([
       'products/geladeira.json: "g" (mercadolivre) history: datas fora de ordem ou repetidas',
       'products/geladeira.json: "g" (mercadolivre) history: o último ponto deve ter o preço atual (900) e data até 2026-10-22',
+    ])
+  })
+})
+
+describe('chartPoints / subtractMonths', () => {
+  const offer = (history: PricePoint[]): Offer => ({
+    store: 'mercadolivre',
+    url: 'https://meli.la/x',
+    price: history.at(-1)!.price,
+    updatedAt: history.at(-1)!.date,
+    available: true,
+    history,
+  })
+
+  it('6 meses antes, ajustando o fim do mês', () => {
+    expect(subtractMonths('2026-10-23', 6)).toBe('2026-04-23')
+    expect(subtractMonths('2026-08-31', 6)).toBe('2026-02-28')
+    expect(subtractMonths('2026-03-15', 6)).toBe('2025-09-15')
+  })
+
+  it('só os dias em que o preço mudou, dentro dos 6 meses', () => {
+    const points = chartPoints(
+      offer([
+        { date: '2026-05-01', price: 100 },
+        { date: '2026-08-10', price: 90 },
+        { date: '2026-10-22', price: 95 },
+      ]),
+      '2026-10-25',
+    )
+    expect(points.map((p) => p.date)).toEqual(['2026-05-01', '2026-08-10', '2026-10-22'])
+  })
+
+  it('preço que veio de antes da janela começa no início dela', () => {
+    const points = chartPoints(
+      offer([
+        { date: '2025-12-01', price: 120 },
+        { date: '2026-01-10', price: 110 },
+        { date: '2026-09-01', price: 99 },
+      ]),
+      '2026-10-25',
+    )
+    expect(points).toEqual([
+      { date: '2026-04-25', price: 110, carried: true },
+      { date: '2026-09-01', price: 99 },
     ])
   })
 })
