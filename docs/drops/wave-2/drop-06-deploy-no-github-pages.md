@@ -15,7 +15,7 @@
 - [ ] Página `404.html` e favicon
 - [ ] Meta tags Open Graph (preview bonito no WhatsApp)
 - [ ] Analytics leve e sem cookies (ex.: Plausible, GoatCounter) — cliques em "Comprar" e compartilhamentos (veio do Drop 11)
-- [ ] ~~Agendar `npm run check:links` semanalmente no CI~~ → foi para o [Drop 24](drop-24-sync-semanal-com-pr.md)
+- [ ] ~~Agendar `npm run check:links` semanalmente no CI~~ → virou a rotina `/sync-semanal` do [Drop 24](drop-24-sync-semanal-com-pr.md)
 - [ ] (Opcional) domínio próprio
 
 **Pronto quando:** push na `main` publica o site em `https://<user>.github.io/house-shopping/`, e um link compartilhado abre a mesma lista num celular de verdade.
