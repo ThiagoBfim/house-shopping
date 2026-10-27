@@ -13,7 +13,7 @@
 - [ ] Script `scripts/sync-amazon.ts`: busca por ASIN → atualiza preço, imagem, disponibilidade e link
 - [ ] Guardar credenciais em **GitHub Secrets**
 - [ ] Workflow agendado (cron diário) que roda o sync, valida e faz commit → dispara deploy
-- [ ] Incluir o sync do Mercado Livre (`npm run sync:ml`, Drop 10) no mesmo workflow agendado
+- [ ] Incluir o sync da Amazon no workflow semanal do [Drop 24](drop-24-sync-semanal-com-pr.md) (o do Mercado Livre já está lá)
 - [ ] Marcar produtos indisponíveis e cair para o próximo tier no motor
 
 **Pronto quando:** preços Amazon atualizam sozinhos todo dia.

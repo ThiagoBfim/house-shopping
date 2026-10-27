@@ -49,12 +49,13 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 
 ### 2ª wave — publicação e automação
 
-Site no ar no GitHub Pages e preços da Amazon atualizados sozinhos (o agendamento do sync do Mercado Livre vem junto).
+Site no ar no GitHub Pages, preços da Amazon atualizados sozinhos e sync semanal do Mercado Livre (preços e links) com PR.
 
 | Drop                                               | Tema                   | Status     | Iniciado em | Terminado em | Duração |
 | -------------------------------------------------- | ---------------------- | ---------- | ----------- | ------------ | ------- |
 | [6](wave-2/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages | ⏳ A fazer | —           | —            | —       |
 | [9](wave-2/drop-09-integracao-amazon-afiliados.md) | Integração Amazon      | ⏳ A fazer | —           | —            | —       |
+| [24](wave-2/drop-24-sync-semanal-com-pr.md)        | Sync semanal com PR    | ⏳ A fazer | —           | —            | —       |
 
 ### Backlog
 
