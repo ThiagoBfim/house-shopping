@@ -23,7 +23,7 @@
 
 - [ ] Secrets do repositório: `ML_CLIENT_ID`, `ML_CLIENT_SECRET`, `ML_REFRESH_TOKEN`. Sem `.env.local`, o `loadEnvLocal()` não faz nada e o `getAccessToken()` lê `ML_REFRESH_TOKEN` do ambiente (conferido).
 - [ ] **Refresh token rotativo:** o Mercado Livre troca o refresh token a cada uso e invalida o anterior. Depois do sync, o workflow grava o novo token de volta no secret (`gh secret set ML_REFRESH_TOKEN`) com um token do GitHub de escopo mínimo (fine-grained, só este repositório, permissão _Secrets: write_), guardado no secret `GH_SECRETS_TOKEN`. O `.ml-token.json` nunca vai para o commit nem para o log.
-- [ ] Decidir quem é o dono do token: se o CI e a máquina local usarem o mesmo refresh token, um invalida o outro. Proposta: o CI vira o dono; localmente, `npm run ml:auth` gera um token separado (o Mercado Livre permite mais de um por app) ou o sync local fica só para emergência.
+- [ ] Um app do Mercado Livre só para o CI (`house-shopping-ci`, Client ID próprio). O Mercado Livre só aceita o último refresh token gerado para o mesmo app e usuário, então o CI e a máquina local não podem dividir o mesmo app: um invalidaria o token do outro. Com dois apps, cada um tem a sua cadeia de tokens. O app local continua no `.env.local`.
 - [ ] `npm run sync:ml -- --report <arquivo>`: além do log, grava o resumo em Markdown (preços que mudaram, de → para; indisponíveis; sem comissão; não encontrados; avisos do validador).
 
 ### Links de afiliado (`check:links` sem navegador)
