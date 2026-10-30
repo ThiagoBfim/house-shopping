@@ -36,8 +36,8 @@
       "id": "robo-aspirador-roborock-q7-max",
       "tier": 3,
       "name": "Robô Aspirador Roborock Q7 Max",
-      "price": 1990,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 1850,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1vVXmZR",
       "bullets": [
@@ -50,12 +50,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1vVXmZR",
-          "price": 1990,
-          "updatedAt": "2026-10-25",
+          "price": 1850,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4598100045",
           "catalogId": "MLB41746107",
-          "history": [{ "date": "2026-10-22", "price": 1990 }]
+          "history": [
+            { "date": "2026-10-22", "price": 1990 },
+            { "date": "2026-10-30", "price": 1850 }
+          ]
         }
       ]
     },

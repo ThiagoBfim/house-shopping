@@ -6,8 +6,8 @@
       "id": "filtro-de-linha-elgin-4-tomadas",
       "tier": 1,
       "name": "Filtro de Linha Elgin 4 Tomadas 1,5 m",
-      "price": 39.5,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 33,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1rGQdnS",
       "bullets": ["4 tomadas padrão novo", "Sem proteção contra surto", "Cabo de 1,5 m"],
@@ -16,24 +16,40 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1rGQdnS",
-          "price": 39.5,
-          "updatedAt": "2026-10-25",
+          "price": 33,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4198469495",
           "catalogId": "MLB22834020",
           "history": [
             { "date": "2026-10-22", "price": 39 },
-            { "date": "2026-10-23", "price": 39.5 }
+            { "date": "2026-10-23", "price": 39.5 },
+            { "date": "2026-10-30", "price": 33 }
           ]
         }
       ]
     },
     {
-      "id": "filtro-de-linha-clamper-energia-8-tomadas",
+      "id": "filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
       "tier": 2,
+      "name": "Filtro de Linha iClamper Energia 5 Tomadas com DPS",
+      "price": 120,
+      "priceUpdatedAt": "2026-10-23",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/up/MLBU3527734020?pdp_filters=item_id%3AMLB5873589912",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_907244-MLB102652243065_122025-O.webp",
+      "bullets": [
+        "Proteção contra surto e raio",
+        "2 portas USB para carregar o celular",
+        "Garantia longa do fabricante"
+      ]
+    },
+    {
+      "id": "filtro-de-linha-clamper-energia-8-tomadas",
+      "tier": 3,
       "name": "Filtro de Linha Clamper Energia 8 Tomadas",
-      "price": 113,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 129.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1qCVqtA",
       "bullets": [
@@ -46,31 +62,17 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1qCVqtA",
-          "price": 113,
-          "updatedAt": "2026-10-25",
+          "price": 129.99,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB5008222132",
           "catalogId": "MLB22881386",
           "history": [
             { "date": "2026-10-22", "price": 113.99 },
-            { "date": "2026-10-25", "price": 113 }
+            { "date": "2026-10-25", "price": 113 },
+            { "date": "2026-10-30", "price": 129.99 }
           ]
         }
-      ]
-    },
-    {
-      "id": "filtro-de-linha-iclamper-energia-5-tomadas-com-usb",
-      "tier": 3,
-      "name": "Filtro de Linha iClamper Energia 5 Tomadas com DPS",
-      "price": 120,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/up/MLBU3527734020?pdp_filters=item_id%3AMLB5873589912",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_907244-MLB102652243065_122025-O.webp",
-      "bullets": [
-        "Proteção contra surto e raio",
-        "2 portas USB para carregar o celular",
-        "Garantia longa do fabricante"
       ]
     }
   ]

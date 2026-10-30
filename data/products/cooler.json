@@ -6,8 +6,8 @@
       "id": "caixa-termica-coleman-28-qt",
       "tier": 1,
       "name": "Caixa Térmica Coleman 28 qt (26,5 L)",
-      "price": 240.12,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 259.9,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/2PtYc6N",
       "bullets": ["26 L", "Mantém gelo por ~1 dia", "Leve"],
@@ -16,14 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2PtYc6N",
-          "price": 240.12,
-          "updatedAt": "2026-10-25",
+          "price": 259.9,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB3865313671",
           "catalogId": "MLB41252431",
           "history": [
             { "date": "2026-10-22", "price": 240.13 },
-            { "date": "2026-10-25", "price": 240.12 }
+            { "date": "2026-10-25", "price": 240.12 },
+            { "date": "2026-10-30", "price": 259.9 }
           ]
         }
       ]
@@ -33,7 +34,7 @@
       "tier": 2,
       "name": "Caixa Térmica Coleman 48 QT (45 L) com Rodas",
       "price": 449,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/2MMbQoY",
       "bullets": ["45 L", "Rodas e alça", "Gelo por ~2 dias"],
@@ -43,7 +44,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2MMbQoY",
           "price": 449,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB3829598962",
           "catalogId": "MLB23210943",

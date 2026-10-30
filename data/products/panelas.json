@@ -2,14 +2,8 @@
   "label": "Panelas",
   "utensil": true,
   "variants": [
-    {
-      "id": "comum",
-      "label": "Qualquer fogão"
-    },
-    {
-      "id": "inducao",
-      "label": "Para indução"
-    }
+    { "id": "comum", "label": "Qualquer fogão" },
+    { "id": "inducao", "label": "Para indução" }
   ],
   "options": [
     {
@@ -82,12 +76,7 @@
           "price": 4948,
           "updatedAt": "2026-10-22",
           "available": true,
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4948
-            }
-          ],
+          "history": [{ "date": "2026-10-22", "price": 4948 }],
           "externalId": "MLB4776706002"
         }
       ],

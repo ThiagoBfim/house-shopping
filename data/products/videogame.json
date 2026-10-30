@@ -64,7 +64,7 @@
       "tier": 4,
       "name": "Console PlayStation 5 Pro",
       "price": 7599,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/2Ae2Epe",
       "bullets": [
@@ -78,7 +78,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2Ae2Epe",
           "price": 7599,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB7613817060",
           "catalogId": "MLB41975964",
@@ -119,25 +119,49 @@
       "id": "console-xbox-series-x-digital",
       "tier": 3,
       "name": "Console Xbox Series X Digital",
-      "price": 6799,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 6699.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB40162063?pdp_filters=item_id%3AMLB7251645140",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_934481-MLA99443130554_112025-O.webp",
+      "url": "https://meli.la/13FCGfC",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_606926-MLA99870152327_112025-O.webp",
       "bullets": ["4K de verdade", "Bem mais potente que o Series S", "Só digital"],
-      "variants": ["xbox"]
+      "variants": ["xbox"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/13FCGfC",
+          "price": 6699.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5367509002",
+          "catalogId": "MLB43535812",
+          "history": [{ "date": "2026-10-30", "price": 6699.99 }]
+        }
+      ]
     },
     {
       "id": "console-xbox-series-x-1-tb",
       "tier": 4,
       "name": "Console Xbox Series X 1 TB Preto",
-      "price": 6999,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 7199.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB29577429?pdp_filters=item_id%3AMLB7672638312",
+      "url": "https://meli.la/2Qkd9Pb",
       "image": "https://http2.mlstatic.com/D_NQ_NP_697067-MLA99415751252_112025-O.webp",
       "bullets": ["4K e leitor de disco", "O Xbox mais potente", "Game Pass"],
-      "variants": ["xbox"]
+      "variants": ["xbox"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2Qkd9Pb",
+          "price": 7199.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4060039157",
+          "catalogId": "MLB29577429",
+          "history": [{ "date": "2026-10-30", "price": 7199.99 }]
+        }
+      ]
     },
     {
       "id": "console-nintendo-switch-lite",
@@ -167,8 +191,8 @@
       "id": "console-nintendo-switch-2",
       "tier": 3,
       "name": "Console Nintendo Switch 2 + Mario Kart World",
-      "price": 4599.9,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 4899.9,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/18iifuT",
       "bullets": [
@@ -181,12 +205,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/18iifuT",
-          "price": 4599.9,
-          "updatedAt": "2026-10-25",
+          "price": 4899.9,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB5335958389",
           "catalogId": "MLB80167828",
-          "history": [{ "date": "2026-10-22", "price": 4599.9 }]
+          "history": [
+            { "date": "2026-10-22", "price": 4599.9 },
+            { "date": "2026-10-30", "price": 4899.9 }
+          ]
         }
       ],
       "variants": ["nintendo"]

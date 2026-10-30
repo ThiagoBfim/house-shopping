@@ -40,19 +40,31 @@
       "generic": true
     },
     {
-      "id": "berco-stokke-sleepi",
+      "id": "berco-evolutivo-oval-divicar-wave",
       "tier": 4,
-      "name": "Berço Evolutivo Premium de Design",
-      "price": 9999,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Berço Evolutivo 3 em 1 Oval Divicar Wave",
+      "price": 4185.08,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/berco-stokke-sleepi",
+      "url": "https://meli.la/1zG4ZpS",
       "bullets": [
-        "Design escandinavo oval",
-        "Cresce com a criança (berço → cama)",
-        "Marca premium"
+        "Design oval arredondado",
+        "Cresce com a criança (berço → mini cama)",
+        "Rodinhas e colchões inclusos"
       ],
-      "generic": true
+      "image": "https://http2.mlstatic.com/D_NQ_NP_682748-MLA116701511975_082026-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1zG4ZpS",
+          "price": 4185.08,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4152601319",
+          "catalogId": "MLB24220827",
+          "history": [{ "date": "2026-10-30", "price": 4185.08 }]
+        }
+      ]
     }
   ]
 }

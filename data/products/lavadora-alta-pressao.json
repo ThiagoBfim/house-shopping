@@ -17,8 +17,8 @@
       "id": "lavadora-karcher-k2-plus",
       "tier": 1,
       "name": "Lavadora de Alta Pressão Kärcher K2 Plus Turbo",
-      "price": 402.99,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 507.74,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1FR5SJt",
       "bullets": ["Kärcher: marca referência", "Bico turbo", "Mais durável"],
@@ -27,12 +27,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1FR5SJt",
-          "price": 402.99,
-          "updatedAt": "2026-10-25",
+          "price": 507.74,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB6676755768",
           "catalogId": "MLB25413983",
-          "history": [{ "date": "2026-10-22", "price": 402.99 }]
+          "history": [
+            { "date": "2026-10-22", "price": 402.99 },
+            { "date": "2026-10-30", "price": 507.74 }
+          ]
         }
       ]
     },
@@ -51,8 +54,8 @@
       "id": "lavadora-karcher-k5",
       "tier": 4,
       "name": "Lavadora de Alta Pressão Kärcher K5",
-      "price": 899.99,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 899,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1qDwQ1R",
       "bullets": [
@@ -65,12 +68,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1qDwQ1R",
-          "price": 899.99,
-          "updatedAt": "2026-10-25",
+          "price": 899,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB2098257351",
           "catalogId": "MLB18611173",
-          "history": [{ "date": "2026-10-22", "price": 899.99 }]
+          "history": [
+            { "date": "2026-10-22", "price": 899.99 },
+            { "date": "2026-10-30", "price": 899 }
+          ]
         }
       ]
     }

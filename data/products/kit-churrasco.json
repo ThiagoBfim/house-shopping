@@ -6,8 +6,8 @@
       "id": "kit-churrasco-tramontina-3-pecas",
       "tier": 1,
       "name": "Kit Churrasco Tramontina Plenus 3 Peças",
-      "price": 59.85,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 54.96,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1GLortp",
       "bullets": ["3 peças da linha Plenus", "Lâminas de inox", "O básico"],
@@ -16,12 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1GLortp",
-          "price": 59.85,
-          "updatedAt": "2026-10-25",
+          "price": 54.96,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB5131259102",
           "catalogId": "MLB35064127",
-          "history": [{ "date": "2026-10-22", "price": 59.85 }]
+          "history": [
+            { "date": "2026-10-22", "price": 59.85 },
+            { "date": "2026-10-30", "price": 54.96 }
+          ]
         }
       ]
     },

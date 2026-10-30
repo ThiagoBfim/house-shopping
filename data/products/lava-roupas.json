@@ -6,8 +6,8 @@
       "id": "maquina-de-lavar-electrolux-9-kg-essential-care-led09",
       "tier": 1,
       "name": "Máquina de Lavar Electrolux 9 kg Efficient Care LED09",
-      "price": 1884.9,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 1794.9,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1rmby8j",
       "bullets": ["9 kg", "Para casal ou pouca roupa", "Centrifugação básica"],
@@ -16,12 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1rmby8j",
-          "price": 1884.9,
-          "updatedAt": "2026-10-25",
+          "price": 1794.9,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4019556345",
           "catalogId": "MLB37799152",
-          "history": [{ "date": "2026-10-22", "price": 1884.9 }]
+          "history": [
+            { "date": "2026-10-22", "price": 1884.9 },
+            { "date": "2026-10-30", "price": 1794.9 }
+          ]
         }
       ]
     },
@@ -29,8 +32,8 @@
       "id": "maquina-de-lavar-brastemp-12-kg-bwr12bb",
       "tier": 2,
       "name": "Máquina de Lavar Brastemp 12 kg Água Quente BWR12BB",
-      "price": 2299.99,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 2119,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1dsJqMf",
       "bullets": ["12 kg: família e edredom", "Ciclos rápidos", "Melhor custo-benefício"],
@@ -39,12 +42,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1dsJqMf",
-          "price": 2299.99,
-          "updatedAt": "2026-10-25",
+          "price": 2119,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4074950354",
           "catalogId": "MLB27155216",
-          "history": [{ "date": "2026-10-22", "price": 2299.99 }]
+          "history": [
+            { "date": "2026-10-22", "price": 2299.99 },
+            { "date": "2026-10-30", "price": 2119 }
+          ]
         }
       ]
     },
@@ -52,8 +58,8 @@
       "id": "lava-e-seca-samsung-11-kg-wd11t",
       "tier": 3,
       "name": "Lava e Seca Samsung 11 kg WD11T",
-      "price": 4010.99,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 4179.05,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/2xVQGuM",
       "bullets": [
@@ -66,12 +72,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2xVQGuM",
-          "price": 4010.99,
-          "updatedAt": "2026-10-25",
+          "price": 4179.05,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB2977679790",
           "catalogId": "MLB19106390",
-          "history": [{ "date": "2026-10-22", "price": 4010.99 }]
+          "history": [
+            { "date": "2026-10-22", "price": 4010.99 },
+            { "date": "2026-10-30", "price": 4179.05 }
+          ]
         }
       ]
     },
@@ -79,8 +88,8 @@
       "id": "lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
       "tier": 4,
       "name": "Lava e Seca LG VC4 12 kg Inteligência Artificial",
-      "price": 5358.18,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 5151.61,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/2chzJVA",
       "bullets": [
@@ -93,14 +102,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2chzJVA",
-          "price": 5358.18,
-          "updatedAt": "2026-10-25",
+          "price": 5151.61,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4841897845",
           "catalogId": "MLB36477115",
           "history": [
             { "date": "2026-10-22", "price": 5305.15 },
-            { "date": "2026-10-25", "price": 5358.18 }
+            { "date": "2026-10-25", "price": 5358.18 },
+            { "date": "2026-10-30", "price": 5151.61 }
           ]
         }
       ]

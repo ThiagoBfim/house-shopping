@@ -4,25 +4,25 @@
   "helper": true,
   "options": [
     {
-      "id": "fechadura-digital-intelbras-fr-101-com-senha",
+      "id": "fechadura-digital-intelbras-fr-101-v-com-senha",
       "tier": 1,
-      "name": "Fechadura Digital Intelbras FR 101 com Senha",
-      "price": 399.9,
-      "priceUpdatedAt": "2026-10-25",
+      "name": "Fechadura Digital Intelbras FR 101 V com Senha",
+      "price": 220.15,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://meli.la/1wW51gL",
+      "url": "https://meli.la/1V3nexW",
       "bullets": ["Abre com senha", "Sem chave para perder", "Pilhas comuns"],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_800197-MLA114321695445_072026-O.webp",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_916058-MLA109588424588_042026-O.webp",
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://meli.la/1wW51gL",
-          "price": 399.9,
-          "updatedAt": "2026-10-25",
+          "url": "https://meli.la/1V3nexW",
+          "price": 220.15,
+          "updatedAt": "2026-10-30",
           "available": true,
-          "externalId": "MLB7851790418",
-          "catalogId": "MLB75276861",
-          "history": [{ "date": "2026-10-22", "price": 399.9 }]
+          "externalId": "MLB6400344928",
+          "catalogId": "MLB63279922",
+          "history": [{ "date": "2026-10-30", "price": 220.15 }]
         }
       ]
     },

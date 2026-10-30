@@ -2,22 +2,10 @@
   "label": "Cama / base box",
   "utensil": false,
   "variants": [
-    {
-      "id": "casal",
-      "label": "Casal"
-    },
-    {
-      "id": "solteiro",
-      "label": "Solteiro"
-    },
-    {
-      "id": "queen",
-      "label": "Queen"
-    },
-    {
-      "id": "king",
-      "label": "King"
-    }
+    { "id": "casal", "label": "Casal" },
+    { "id": "solteiro", "label": "Solteiro" },
+    { "id": "queen", "label": "Queen" },
+    { "id": "king", "label": "King" }
   ],
   "options": [
     {
@@ -209,16 +197,31 @@
       "variants": ["king"]
     },
     {
-      "id": "cama-king-de-madeira-macica",
+      "id": "cama-king-madeira-e-palha-viena",
       "tier": 4,
-      "name": "Cama King de Madeira Maciça",
-      "price": 6499,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Cama King de Madeira e Palha Natural Viena",
+      "price": 4094.67,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://lista.mercadolivre.com.br/cama-king-de-madeira-macica",
-      "bullets": ["Madeira maciça", "Dura décadas", "Design de marcenaria"],
-      "generic": true,
-      "variants": ["king"]
+      "url": "https://meli.la/22PppAC",
+      "bullets": [
+        "Madeira com palhinha natural",
+        "Cabeceira alta (1,11 m)",
+        "Design de marcenaria"
+      ],
+      "variants": ["king"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_957930-MLB99591633236_122025-O-cama-king-em-madeira-e-palha-natural-viena.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/22PppAC",
+          "price": 4094.67,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3465037001",
+          "history": [{ "date": "2026-10-30", "price": 4094.67 }]
+        }
+      ]
     }
   ]
 }

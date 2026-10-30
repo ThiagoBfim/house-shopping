@@ -32,12 +32,7 @@
           "available": true,
           "externalId": "MLB4478322979",
           "catalogId": "MLB19856710",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 359
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 359 }]
         }
       ]
     }

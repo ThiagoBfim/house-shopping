@@ -67,8 +67,8 @@
       "id": "nespresso-essenza-mini",
       "tier": 1,
       "name": "Cafeteira Nespresso Essenza Mini",
-      "price": 539,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 455.24,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1qDFWmd",
       "bullets": ["Cápsulas: espresso sem sujeira", "Compacta", "Cápsula custa mais por xícara"],
@@ -77,12 +77,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1qDFWmd",
-          "price": 539,
-          "updatedAt": "2026-10-25",
+          "price": 455.24,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4046267101",
           "catalogId": "MLB15261607",
-          "history": [{ "date": "2026-10-22", "price": 539 }]
+          "history": [
+            { "date": "2026-10-22", "price": 539 },
+            { "date": "2026-10-30", "price": 455.24 }
+          ]
         }
       ],
       "variants": ["capsula"]

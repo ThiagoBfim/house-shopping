@@ -17,8 +17,8 @@
       "id": "micro-ondas-panasonic-nn-st65",
       "tier": 2,
       "name": "Micro-ondas Panasonic 34 L NN-ST65LWRU",
-      "price": 726.9,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 792.29,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/17j5LAo",
       "bullets": [
@@ -31,12 +31,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/17j5LAo",
-          "price": 726.9,
-          "updatedAt": "2026-10-25",
+          "price": 792.29,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB2134345887",
           "catalogId": "MLB18324158",
-          "history": [{ "date": "2026-10-22", "price": 726.9 }]
+          "history": [
+            { "date": "2026-10-22", "price": 726.9 },
+            { "date": "2026-10-30", "price": 792.29 }
+          ]
         }
       ]
     },

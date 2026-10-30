@@ -129,7 +129,7 @@
       "tier": 2,
       "name": "Colchão Queen Emma Original",
       "price": 2899.9,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/24GbjRZ",
       "bullets": [
@@ -143,7 +143,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/24GbjRZ",
           "price": 2899.9,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB2171387384",
           "catalogId": "MLB17351734",
@@ -222,25 +222,49 @@
       "id": "colchao-king-koil-attraction-king",
       "tier": 2,
       "name": "Colchão King Koil Attraction King",
-      "price": 5949,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 4759.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/colchao-king-molas-ensacadas-193x203x27-attraction-king-koil-cr458e-cinza/p/MLB24976893?pdp_filters=item_id%3AMLB7574910176",
+      "url": "https://meli.la/32Mwk2W",
       "image": "https://http2.mlstatic.com/D_NQ_NP_783074-MLU74959618537_032024-O.webp",
       "bullets": ["Molas ensacadas com pillow top", "Conforto de hotel", "Marca premium"],
-      "variants": ["king"]
+      "variants": ["king"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/32Mwk2W",
+          "price": 4759.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7574910176",
+          "catalogId": "MLB24976893",
+          "history": [{ "date": "2026-10-30", "price": 4759.99 }]
+        }
+      ]
     },
     {
       "id": "colchao-castor-gold-star-molas-ensacadas-king",
       "tier": 3,
       "name": "Colchão King Castor Vitagel Euro One Face Molas Ensacadas",
-      "price": 6839,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 6535.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/colchao-castor-king-size-vitagel-euro-one-face-193x203x32cm-branco/p/MLB25373430?pdp_filters=item_id%3AMLB5204865869",
+      "url": "https://meli.la/1JPSYjG",
       "image": "https://http2.mlstatic.com/D_NQ_NP_822585-MLA99921471791_112025-O.webp",
       "bullets": ["Molas ensacadas individuais", "Pillow top duplo", "Topo de linha da Castor"],
-      "variants": ["king"]
+      "variants": ["king"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1JPSYjG",
+          "price": 6535.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5204865869",
+          "catalogId": "MLB25373430",
+          "history": [{ "date": "2026-10-30", "price": 6535.99 }]
+        }
+      ]
     }
   ]
 }

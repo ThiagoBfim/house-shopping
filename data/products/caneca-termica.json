@@ -14,8 +14,38 @@
       "generic": true
     },
     {
-      "id": "caneca-termica-stanley-camp-mug-350-ml",
+      "id": "copo-termico-stanley-quencher-887-ml",
       "tier": 2,
+      "name": "Copo Térmico Stanley Quencher 887 ml",
+      "price": 185.28,
+      "priceUpdatedAt": "2026-10-30",
+      "store": "mercadolivre",
+      "url": "https://meli.la/2PY2zgi",
+      "bullets": [
+        "Grande: café, água ou chá gelado",
+        "Alça e canudo",
+        "Cabe no porta-copo do carro"
+      ],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_948790-MLA99419557510_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2PY2zgi",
+          "price": 185.28,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5310312110",
+          "catalogId": "MLB38771174",
+          "history": [
+            { "date": "2026-10-22", "price": 203.6 },
+            { "date": "2026-10-30", "price": 185.28 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caneca-termica-stanley-camp-mug-350-ml",
+      "tier": 3,
       "name": "Caneca Térmica Stanley Camp Mug 350 ml",
       "price": 199,
       "priceUpdatedAt": "2026-10-25",
@@ -37,33 +67,6 @@
           "externalId": "MLB7607716690",
           "catalogId": "MLB19807586",
           "history": [{ "date": "2026-10-22", "price": 199 }]
-        }
-      ]
-    },
-    {
-      "id": "copo-termico-stanley-quencher-887-ml",
-      "tier": 3,
-      "name": "Copo Térmico Stanley Quencher 887 ml",
-      "price": 203.6,
-      "priceUpdatedAt": "2026-10-25",
-      "store": "mercadolivre",
-      "url": "https://meli.la/2PY2zgi",
-      "bullets": [
-        "Grande: café, água ou chá gelado",
-        "Alça e canudo",
-        "Cabe no porta-copo do carro"
-      ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_948790-MLA99419557510_112025-O.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/2PY2zgi",
-          "price": 203.6,
-          "updatedAt": "2026-10-25",
-          "available": true,
-          "externalId": "MLB5310312110",
-          "catalogId": "MLB38771174",
-          "history": [{ "date": "2026-10-22", "price": 203.6 }]
         }
       ]
     },

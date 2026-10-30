@@ -29,33 +29,28 @@
       "generic": true
     },
     {
-      "id": "mesa-eletrica-flexispot-ew9wm",
+      "id": "mesa-eletrica-flexispot-gt2-rgb",
       "tier": 3,
-      "name": "Mesa Elétrica com Regulagem de Altura Flexispot EW9WM",
-      "price": 1999,
-      "priceUpdatedAt": "2026-10-22",
+      "name": "Mesa Elétrica Flexispot GT2 com RGB",
+      "price": 2199,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
-      "url": "https://meli.la/1QgKnh4",
+      "url": "https://meli.la/1eqK148",
       "bullets": [
-        "Regulagem elétrica de altura",
-        "Marca especialista em standing desk",
+        "Regulagem elétrica com 4 memórias de altura",
+        "Anticolisão e iluminação RGB",
         "Trabalhe em pé ou sentado"
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_607981-MLB108551273773_032026-O-mesa-de-escritorio-eletrica-altura-ajustavel-flexispot-ew9wm.webp",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_719957-MLB107810938662_032026-O-mesa-gamer-eletrica-rgb-com-altura-ajustavel-flexispot-gt2.webp",
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://meli.la/1QgKnh4",
-          "price": 1999,
-          "updatedAt": "2026-10-22",
+          "url": "https://meli.la/1eqK148",
+          "price": 2199,
+          "updatedAt": "2026-10-30",
           "available": true,
-          "externalId": "MLB4523689727",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1999
-            }
-          ]
+          "externalId": "MLB6442687300",
+          "history": [{ "date": "2026-10-30", "price": 2199 }]
         }
       ]
     },

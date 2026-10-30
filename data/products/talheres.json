@@ -6,8 +6,8 @@
       "id": "faqueiro-tramontina-laguna-24-pecas",
       "tier": 1,
       "name": "Faqueiro Tramontina Laguna 24 Peças",
-      "price": 135.45,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 142.5,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/22upnWK",
       "bullets": ["24 peças (6 pessoas)", "Inox simples", "Cabo fino"],
@@ -16,14 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/22upnWK",
-          "price": 135.45,
-          "updatedAt": "2026-10-25",
+          "price": 142.5,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB3703826291",
           "catalogId": "MLB35161770",
           "history": [
             { "date": "2026-10-22", "price": 138.69 },
-            { "date": "2026-10-25", "price": 135.45 }
+            { "date": "2026-10-25", "price": 135.45 },
+            { "date": "2026-10-30", "price": 142.5 }
           ]
         }
       ]

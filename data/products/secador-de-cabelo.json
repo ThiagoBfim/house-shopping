@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Secador Taiff Style 2000 W SECU20",
       "price": 241.69,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/31NNMgG",
       "bullets": ["Motor profissional AC", "2000 W", "Linha profissional da Taiff"],
@@ -28,7 +28,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/31NNMgG",
           "price": 241.69,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB6308932384",
           "catalogId": "MLB18920579",
@@ -40,8 +40,8 @@
       "id": "secador-taiff-titanium",
       "tier": 3,
       "name": "Secador de Cabelo Taiff Titanium Profissional",
-      "price": 528.49,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 566.47,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1ECdw9E",
       "bullets": ["Profissional", "2500 W", "Cerâmica e íons"],
@@ -50,12 +50,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1ECdw9E",
-          "price": 528.49,
-          "updatedAt": "2026-10-25",
+          "price": 566.47,
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB4832484883",
           "catalogId": "MLB74655218",
-          "history": [{ "date": "2026-10-22", "price": 528.49 }]
+          "history": [
+            { "date": "2026-10-22", "price": 528.49 },
+            { "date": "2026-10-30", "price": 566.47 }
+          ]
         }
       ]
     },
@@ -64,7 +67,7 @@
       "tier": 4,
       "name": "Secador Dyson Supersonic Origin",
       "price": 2731,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://meli.la/1wAdJeF",
       "bullets": [
@@ -78,7 +81,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1wAdJeF",
           "price": 2731,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB6500817246",
           "catalogId": "MLB47332875",

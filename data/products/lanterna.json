@@ -50,12 +50,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB3881419527",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 482.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 482.99 }]
         }
       ]
     }
