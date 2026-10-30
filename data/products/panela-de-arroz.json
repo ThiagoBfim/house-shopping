@@ -3,11 +3,22 @@
   "utensil": false,
   "options": [
     {
-      "id": "panela-de-arroz-midea-7-xicaras",
+      "id": "panela-de-arroz-oster-pan306",
       "tier": 1,
+      "name": "Panela Elétrica de Arroz Oster PAN306",
+      "price": 138.9,
+      "priceUpdatedAt": "2026-10-30",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB68898509?pdp_filters=item_id%3AMLB7389413560",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_796663-MLA111081037905_042026-O.webp",
+      "bullets": ["Cozinha arroz e legumes no vapor", "Mantém aquecido", "Tampa de vidro"]
+    },
+    {
+      "id": "panela-de-arroz-midea-7-xicaras",
+      "tier": 2,
       "name": "Panela Elétrica de Arroz Midea 7 Xícaras",
-      "price": 179,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 160.53,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB50247850?pdp_filters=item_id%3AMLB5415987536",
       "image": "https://http2.mlstatic.com/D_NQ_NP_663052-MLA99972044161_112025-O.webp",
@@ -16,17 +27,6 @@
         "Mantém aquecido depois de pronto",
         "7 xícaras"
       ]
-    },
-    {
-      "id": "panela-de-arroz-oster-pan306",
-      "tier": 2,
-      "name": "Panela Elétrica de Arroz Oster PAN306",
-      "price": 240,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB68898509?pdp_filters=item_id%3AMLB7389413560",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_796663-MLA111081037905_042026-O.webp",
-      "bullets": ["Cozinha arroz e legumes no vapor", "Mantém aquecido", "Tampa de vidro"]
     }
   ]
 }

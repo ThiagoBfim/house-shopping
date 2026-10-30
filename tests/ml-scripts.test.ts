@@ -424,3 +424,64 @@ describe('syncOffers', () => {
     expect(earnsCommission(quote)).toBe(expected)
   })
 })
+
+describe('syncOffers: produto com link direto (sem afiliado)', () => {
+  const direct = (url: string) => {
+    const base = products()
+    base.liquidificador.options[0] = { ...base.liquidificador.options[0], price: 404, url }
+    return base
+  }
+  const catalogUrl = 'https://www.mercadolivre.com.br/p/MLB900?pdp_filters=item_id%3AMLB1'
+
+  it('atualiza o preço de referência sem criar oferta', async () => {
+    const calls: unknown[] = []
+    const { products: next, report } = await syncOffers(
+      direct(catalogUrl),
+      async (ids) => (calls.push(ids), { price: 349.9, available: true, condition: 'new' }),
+      '2026-10-30',
+    )
+    expect(calls).toEqual([{ itemId: 'MLB1', catalogId: 'MLB900' }])
+    const option = next.liquidificador.options[0]
+    expect(option).toMatchObject({ price: 349.9, priceUpdatedAt: '2026-10-30', url: catalogUrl })
+    expect(option.offers).toBeUndefined()
+    expect(report.updated).toEqual([{ id: 'liq-barato', from: 404, to: 349.9 }])
+    expect(report.changedCategories).toEqual(new Set(['liquidificador']))
+  })
+
+  it('anúncio do link saiu do catálogo: usa a oferta atual do produto', async () => {
+    const calls: { itemId: string }[] = []
+    const { products: next } = await syncOffers(
+      direct(catalogUrl),
+      async (ids) => (
+        calls.push(ids),
+        ids.itemId === 'MLB900' ? { price: 380, available: true } : undefined
+      ),
+      '2026-10-30',
+    )
+    expect(calls.map((c) => c.itemId)).toEqual(['MLB1', 'MLB900'])
+    expect(next.liquidificador.options[0].price).toBe(380)
+  })
+
+  it('link /up sem catálogo: avisa e não consulta', async () => {
+    const calls: unknown[] = []
+    const { products: next, report } = await syncOffers(
+      direct('https://www.mercadolivre.com.br/up/MLBU123?pdp_filters=item_id%3AMLB1'),
+      async (ids) => (calls.push(ids), undefined),
+      '2026-10-30',
+    )
+    expect(calls).toEqual([])
+    expect(report.noCatalog).toEqual(['liq-barato'])
+    expect(next.liquidificador.options[0].price).toBe(404)
+  })
+
+  it('link de busca (genérico) fica de fora', async () => {
+    const calls: unknown[] = []
+    const { report } = await syncOffers(
+      products(),
+      async (ids) => (calls.push(ids), undefined),
+      '2026-10-30',
+    )
+    expect(calls).toEqual([])
+    expect(report.changedCategories.size).toBe(0)
+  })
+})

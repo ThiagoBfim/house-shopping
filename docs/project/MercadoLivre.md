@@ -74,7 +74,7 @@ Se o catálogo ganhar produtos novos, gere a planilha de novo com `npm run ml:li
    npm run sync:ml
    ```
 
-O refresh token muda a cada uso; o script guarda o novo em `.ml-token.json` (também fora do git). Ele atualiza o preço e a disponibilidade de cada produto que tem `link_produto` e mostra o que mudou, o que ficou indisponível e o que não gera comissão.
+O refresh token muda a cada uso; o script guarda o novo em `.ml-token.json` (também fora do git). Ele atualiza o preço e a disponibilidade de cada produto que tem `link_produto` e mostra o que mudou, o que ficou indisponível e o que não gera comissão. Com link de afiliado, o preço vai para a oferta (`offers`, com histórico); sem link de afiliado, mas com link direto do produto de catálogo (`/p/MLB…`), atualiza só o preço de referência (`price` e `priceUpdatedAt`, sem histórico nem gráfico). Link `/up/MLBU…` sem catálogo não tem preço na API e aparece no aviso "Sem produto de catálogo".
 
 > Os campos lidos da API (`buy_box_winner`, `price`, `status`, `condition`, `seller_reputation.level_id`) seguem a documentação pública, mas ainda não foram testados com um token real. Se o primeiro `sync:ml` der erro, a mensagem mostra a resposta da API.
 

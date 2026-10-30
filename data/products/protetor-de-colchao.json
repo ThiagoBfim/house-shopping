@@ -2,22 +2,10 @@
   "label": "Protetor de colchão",
   "utensil": true,
   "variants": [
-    {
-      "id": "casal",
-      "label": "Casal"
-    },
-    {
-      "id": "solteiro",
-      "label": "Solteiro"
-    },
-    {
-      "id": "queen",
-      "label": "Queen"
-    },
-    {
-      "id": "king",
-      "label": "King"
-    }
+    { "id": "casal", "label": "Casal" },
+    { "id": "solteiro", "label": "Solteiro" },
+    { "id": "queen", "label": "Queen" },
+    { "id": "king", "label": "King" }
   ],
   "options": [
     {
@@ -60,8 +48,8 @@
       "id": "protetor-de-colchao-altenburg-impermeavel-solteiro",
       "tier": 2,
       "name": "Protetor de Colchão Altenburg Impermeável Solteiro",
-      "price": 91,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 91.06,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22767070?pdp_filters=item_id%3AMLB5288070656",
       "image": "https://http2.mlstatic.com/D_NQ_NP_700302-MLA99986821367_112025-O.webp",
@@ -109,7 +97,7 @@
       "tier": 2,
       "name": "Protetor de Colchão Altenburg Impermeável King",
       "price": 147,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22799788?pdp_filters=item_id%3AMLB5287940978",
       "image": "https://http2.mlstatic.com/D_NQ_NP_835827-MLA99463667648_112025-O.webp",

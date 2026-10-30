@@ -8,8 +8,20 @@
   ],
   "options": [
     {
-      "id": "cafeteira-eletrica-electrolux-ecm30",
+      "id": "cafeteira-programavel-oster-inox-36-xicaras",
       "tier": 1,
+      "name": "Cafeteira Programável Oster Flavor 36 Xícaras",
+      "price": 263.84,
+      "priceUpdatedAt": "2026-10-30",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/cafeteira-oster-flavor-programavel-4401rd/p/MLB8853735?pdp_filters=item_id%3AMLB4551957871",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_717312-MLA100018691875_122025-E.webp",
+      "bullets": ["Programa a hora do café", "Jarra grande", "Mantém aquecido"],
+      "variants": ["coado"]
+    },
+    {
+      "id": "cafeteira-eletrica-electrolux-ecm30",
+      "tier": 2,
       "name": "Cafeteira Elétrica Electrolux 1,5 L ECM30",
       "price": 378,
       "priceUpdatedAt": "2026-10-23",
@@ -21,18 +33,6 @@
         "Jarra de vidro com placa aquecedora",
         "O mais barato por xícara"
       ],
-      "variants": ["coado"]
-    },
-    {
-      "id": "cafeteira-programavel-oster-inox-36-xicaras",
-      "tier": 2,
-      "name": "Cafeteira Programável Oster Flavor 36 Xícaras",
-      "price": 396,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/cafeteira-oster-flavor-programavel-4401rd/p/MLB8853735?pdp_filters=item_id%3AMLB4551957871",
-      "image": "https://http2.mlstatic.com/D_Q_NP_2X_717312-MLA100018691875_122025-E.webp",
-      "bullets": ["Programa a hora do café", "Jarra grande", "Mantém aquecido"],
       "variants": ["coado"]
     },
     {
@@ -50,18 +50,6 @@
       ],
       "variants": ["coado"],
       "generic": true
-    },
-    {
-      "id": "cafeteira-nescafe-dolce-gusto-mini-me",
-      "tier": 3,
-      "name": "Cafeteira Nescafé Dolce Gusto Mini Me",
-      "price": 579,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/cafeteira-nescafe-dolce-gusto-mini-me-preta/p/MLB15154780?pdp_filters=item_id%3AMLB4129672747",
-      "image": "https://http2.mlstatic.com/D_Q_NP_2X_626577-MLA99520084810_112025-E.webp",
-      "bullets": ["Cápsulas fáceis de achar", "Bebidas com leite (cápsula)", "Compacta"],
-      "variants": ["capsula"]
     },
     {
       "id": "nespresso-essenza-mini",
@@ -91,11 +79,23 @@
       "variants": ["capsula"]
     },
     {
-      "id": "cafeteira-nespresso-vertuo-pop",
+      "id": "cafeteira-nescafe-dolce-gusto-mini-me",
       "tier": 2,
+      "name": "Cafeteira Nescafé Dolce Gusto Mini Me",
+      "price": 591.11,
+      "priceUpdatedAt": "2026-10-30",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/cafeteira-nescafe-dolce-gusto-mini-me-preta/p/MLB15154780?pdp_filters=item_id%3AMLB4129672747",
+      "image": "https://http2.mlstatic.com/D_Q_NP_2X_626577-MLA99520084810_112025-E.webp",
+      "bullets": ["Cápsulas fáceis de achar", "Bebidas com leite (cápsula)", "Compacta"],
+      "variants": ["capsula"]
+    },
+    {
+      "id": "cafeteira-nespresso-vertuo-pop",
+      "tier": 3,
       "name": "Cafeteira Nespresso Vertuo Pop",
-      "price": 549,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 994.9,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/cafeteira-nespresso-vertuo-pop-branco/p/MLB22857430?pdp_filters=item_id%3AMLB7804098050",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_874352-MLA99516933804_112025-E.webp",
@@ -111,7 +111,7 @@
       "tier": 1,
       "name": "Cafeteira Espresso Oster Nova PrimaLatte Inox",
       "price": 836,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/cafeteira-espresso-oster-nova-primalatte-inox-cor-prateado/p/MLB19541077?pdp_filters=item_id%3AMLB4197740839",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_693936-MLA99460834212_112025-E.webp",
@@ -126,8 +126,8 @@
       "id": "cafeteira-espresso-de-longhi-dedica-ec685",
       "tier": 2,
       "name": "Cafeteira Espresso De'Longhi Dedica Deluxe EC680",
-      "price": 2199,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 2099.99,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/maquina-de-cafe-delonghi-dedica-deluxe-15bar-ec680r-cor-vermelho/p/MLB24531257?pdp_filters=item_id%3AMLB5102999501",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_666013-MLU77175597402_072024-E.webp",
@@ -171,8 +171,8 @@
       "id": "cafeteira-espresso-tramontina-by-breville-barista-express",
       "tier": 4,
       "name": "Cafeteira Espresso Tramontina by Breville Express Pro Inox",
-      "price": 5230,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 5490,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/cafeteira-express-tramontina-pro-inox-breville-69066012/p/MLB68861676?pdp_filters=item_id%3AMLB7585502334",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_839767-MLA111053641981_042026-E.webp",

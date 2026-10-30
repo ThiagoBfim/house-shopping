@@ -4,10 +4,10 @@
   "options": [
     {
       "id": "espreguicadeira-plastico-tramontina",
-      "tier": 2,
+      "tier": 1,
       "name": "Espreguiçadeira de Plástico Tramontina Leblon",
-      "price": 659,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 577.9,
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/espreguicadeira-4-posicoes-branca-leblon-tramontina/p/MLB26671690?pdp_filters=item_id%3AMLB7174509252",
       "image": "https://http2.mlstatic.com/D_NQ_NP_914693-MLA93606719240_102025-O.webp",
@@ -15,7 +15,7 @@
     },
     {
       "id": "espreguicadeira-aluminio-tela",
-      "tier": 1,
+      "tier": 2,
       "name": "Espreguiçadeira de Alumínio com Tela",
       "price": 599,
       "priceUpdatedAt": "2026-10-22",

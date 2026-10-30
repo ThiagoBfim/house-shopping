@@ -1,7 +1,7 @@
 // Atualiza as ofertas do Mercado Livre com preço/disponibilidade atuais (lógica pura).
-import { applyBestOffer } from '../../src/data/offers.ts'
+import { applyBestOffer, isSearchUrl, parseMercadoLivreIds } from '../../src/data/offers.ts'
 import { recordPrice } from '../../src/data/price-history.ts'
-import type { Products } from '../../src/data/schema.ts'
+import type { ProductOption, Products } from '../../src/data/schema.ts'
 
 /** Situação atual de um anúncio no Mercado Livre. */
 export interface Quote {
@@ -86,6 +86,14 @@ export async function syncOffers(
     for (const [i, option] of categoryOptions.entries()) {
       const index = option.offers?.findIndex((o) => o.store === 'mercadolivre') ?? -1
       const offer = option.offers?.[index]
+      if (index === -1) {
+        const synced = await syncDirectLink(option, lookup, today, report)
+        if (synced) {
+          categoryOptions[i] = synced
+          report.changedCategories.add(category)
+        }
+        continue
+      }
       if (!option.offers || !offer?.externalId) continue
       if (!offer.catalogId) {
         report.noCatalog.push(option.id)
@@ -124,4 +132,45 @@ export async function syncOffers(
     }
   }
   return { products: next, report }
+}
+
+/**
+ * Produto de marca ainda sem link de afiliado: o `url` abre o anúncio direto e o `price` é de
+ * referência. Atualiza esse preço pela API (sem criar oferta: oferta é só para link de afiliado,
+ * senão o `ml:links export` trataria o link do produto como afiliado).
+ */
+async function syncDirectLink(
+  option: ProductOption,
+  lookup: Lookup,
+  today: string,
+  report: SyncReport,
+): Promise<ProductOption | undefined> {
+  if (option.store !== 'mercadolivre' || isSearchUrl(option.url)) return undefined
+  const ids = parseMercadoLivreIds(option.url)
+  if (!ids) return undefined
+  if (!ids.catalogId) {
+    report.noCatalog.push(option.id)
+    return undefined
+  }
+  const { catalogId } = ids
+  let quote = await lookup({ itemId: ids.itemId ?? catalogId, catalogId })
+  // O anúncio do link saiu do catálogo: vale a oferta que a página do produto mostra hoje.
+  if (quote?.price === undefined && ids.itemId)
+    quote = await lookup({ itemId: catalogId, catalogId })
+  if (!quote) {
+    report.notFound.push(option.id)
+    return undefined
+  }
+  if (!quote.available) report.unavailable.push(option.id)
+  if (quote.price === undefined) return undefined
+  if (!earnsCommission(quote)) report.noCommission.push(option.id)
+  if (quote.price !== option.price) {
+    report.updated.push({ id: option.id, from: option.price, to: quote.price })
+  }
+  return {
+    ...option,
+    price: quote.price,
+    priceUpdatedAt: today,
+    ...(!option.image && quote.image && { image: quote.image }),
+  }
 }

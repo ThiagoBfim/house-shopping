@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Monitor LG 24 Full HD IPS 100 Hz",
       "price": 661,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB43961379?pdp_filters=item_id%3AMLB4894062283",
       "image": "https://http2.mlstatic.com/D_NQ_NP_921982-MLA99962503055_112025-O.webp",
@@ -18,15 +18,26 @@
       "tier": 2,
       "name": "Monitor Samsung 27 Full HD IPS 100Hz",
       "price": 755,
-      "priceUpdatedAt": "2026-10-23",
+      "priceUpdatedAt": "2026-10-30",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB46564887?pdp_filters=item_id%3AMLB4279211521",
       "image": "https://http2.mlstatic.com/D_NQ_NP_946816-MLA99885422877_112025-O.webp",
       "bullets": ["27\": mais espaço de tela", "Borda fina", "100 Hz: rolagem mais suave"]
     },
     {
-      "id": "monitor-dell-27-qhd-s2725ds",
+      "id": "monitor-lg-27-4k-ultrafine-27us550",
       "tier": 3,
+      "name": "Monitor LG 27 4K UltraFine IPS HDR10",
+      "price": 1242,
+      "priceUpdatedAt": "2026-10-30",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB48778915",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_912843-MLA99938852799_112025-O.webp",
+      "bullets": ["4K: para foto, vídeo e design", "USB-C carrega o notebook", "Cores calibradas"]
+    },
+    {
+      "id": "monitor-dell-27-qhd-s2725ds",
+      "tier": 4,
       "name": "Monitor 27 QHD IPS",
       "price": 1699,
       "priceUpdatedAt": "2026-10-22",
@@ -38,17 +49,6 @@
         "Alto-falantes embutidos"
       ],
       "generic": true
-    },
-    {
-      "id": "monitor-lg-27-4k-ultrafine-27us550",
-      "tier": 4,
-      "name": "Monitor LG 27 4K UltraFine IPS HDR10",
-      "price": 1781,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB48778915",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_912843-MLA99938852799_112025-O.webp",
-      "bullets": ["4K: para foto, vídeo e design", "USB-C carrega o notebook", "Cores calibradas"]
     }
   ]
 }
