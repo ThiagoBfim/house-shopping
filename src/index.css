@@ -2297,7 +2297,7 @@ h3 {
 /* Variação da lista (ontem / 7 dias / 30 dias) */
 
 .list-change {
-  margin: 12px 0 0;
+  margin: 0 0 16px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);
