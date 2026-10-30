@@ -16,7 +16,7 @@
 - [x] `scripts/agendar-sync-semanal.sh`: agenda no `launchd` toda **segunda às 18h** abrir o Chrome e um Terminal com `claude /sync-semanal` no projeto. `mostrar` imprime o agendamento, `remover` desfaz. O usuário roda o comando.
 - [x] Ajustar os Drops 6 e 9: a conferência semanal dos links e o sync do Mercado Livre ficam aqui.
 - [ ] Usuário instala o agendamento: `sh scripts/agendar-sync-semanal.sh` (na 1ª vez o macOS pede permissão para o `osascript` controlar o Terminal e o Chrome).
-- [ ] Primeira rodada de verdade (segunda, 18h, ou na hora com `launchctl kickstart gui/$(id -u)/com.house-shopping.sync-semanal`) e ajustes na skill com o que aparecer.
+- [x] Primeira rodada de verdade (segunda, 18h, ou na hora com `launchctl kickstart gui/$(id -u)/com.house-shopping.sync-semanal`) e ajustes na skill com o que aparecer.
 - [ ] Com o repositório no GitHub (Drop 6): conferir o push e o `gh pr create` no fim da skill.
 
 **Pronto quando:** numa segunda às 18h o Terminal abre sozinho, a rotina roda do começo ao fim com o usuário só resolvendo captcha (se aparecer), e fica uma branch `sync/…` com preços novos, links conferidos e o relatório.
@@ -40,3 +40,4 @@ Só preços no GitHub Actions, com um **segundo app** do Mercado Livre (Client I
 ## Registro
 
 - 2026-10-27: primeira versão era um workflow do GitHub Actions no sábado 00:00 abrindo PR. Trocado, a pedido do usuário, por uma rotina local com o Claude (segunda 18h, quando o PC está ligado), porque só na máquina dá para gerar e conferir links de afiliado. O agendamento abre uma sessão interativa em vez de `claude -p`, para não depender do Chrome no modo sem janela e para o usuário ver permissões e captcha.
+- 2026-10-30: primeira rodada, à mão (11:43–12:01, 18min): 39 preços, 2 categorias com tiers trocados, 139 links conferidos (6 refeitos), 7 links novos de 10, check ok. Relatório em [`docs/sync/2026-10-30.md`](../../sync/2026-10-30.md). Aprendizados: anúncio de catálogo sem vendedor ativo é a causa comum de "sem afiliado"; promoção forte pode inverter tiers (Emma King ficou pendente); descartar vendedor pessoa física sem vendas em item caro (Sonos, Herman Miller).
