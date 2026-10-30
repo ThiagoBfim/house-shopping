@@ -2,9 +2,18 @@
   "label": "Fogão ou cooktop",
   "utensil": false,
   "variants": [
-    { "id": "piso", "label": "Fogão de piso" },
-    { "id": "cooktop-gas", "label": "Cooktop a gás" },
-    { "id": "cooktop-inducao", "label": "Cooktop de indução" }
+    {
+      "id": "piso",
+      "label": "Fogão de piso"
+    },
+    {
+      "id": "cooktop-gas",
+      "label": "Cooktop a gás"
+    },
+    {
+      "id": "cooktop-inducao",
+      "label": "Cooktop de indução"
+    }
   ],
   "options": [
     {
@@ -21,7 +30,28 @@
         "Acendimento automático",
         "Forno simples, sem timer"
       ],
-      "variants": ["piso"]
+      "variants": ["piso"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB67291977?pdp_filters=item_id%3AMLB4721957289",
+          "price": 1029.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4721957289",
+          "catalogId": "MLB67291977",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1159
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1029.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fogao-electrolux-fe5iw",
@@ -46,7 +76,12 @@
           "available": true,
           "externalId": "MLB7471492298",
           "catalogId": "MLB58819383",
-          "history": [{ "date": "2026-10-22", "price": 1760.32 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1760.32
+            }
+          ]
         }
       ],
       "variants": ["piso"]
@@ -74,7 +109,12 @@
           "available": true,
           "externalId": "MLB2048022318",
           "catalogId": "MLB18949054",
-          "history": [{ "date": "2026-10-22", "price": 1879 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1879
+            }
+          ]
         }
       ],
       "variants": ["piso"]
@@ -103,9 +143,18 @@
           "available": true,
           "externalId": "MLB6258830598",
           "history": [
-            { "date": "2026-10-22", "price": 4699 },
-            { "date": "2026-10-25", "price": 4349 },
-            { "date": "2026-10-30", "price": 4499 }
+            {
+              "date": "2026-10-22",
+              "price": 4699
+            },
+            {
+              "date": "2026-10-25",
+              "price": 4349
+            },
+            {
+              "date": "2026-10-30",
+              "price": 4499
+            }
           ],
           "catalogId": "MLB64611576"
         }
@@ -122,7 +171,24 @@
       "url": "https://www.mercadolivre.com.br/p/MLB18718936?pdp_filters=item_id%3AMLB5107006240",
       "image": "https://http2.mlstatic.com/D_NQ_NP_982266-MLA99938278453_112025-O.webp",
       "bullets": ["4 bocas, acendimento automático", "Mesa de vidro", "Precisa de forno à parte"],
-      "variants": ["cooktop-gas"]
+      "variants": ["cooktop-gas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB18718936?pdp_filters=item_id%3AMLB5107006240",
+          "price": 587,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5107006240",
+          "catalogId": "MLB18718936",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 587
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cooktop-a-gas-electrolux-5-bocas-tripla-chama",
@@ -166,7 +232,28 @@
         "Visual profissional",
         "Queimador tripla chama central"
       ],
-      "variants": ["cooktop-gas"]
+      "variants": ["cooktop-gas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB18616352?pdp_filters=item_id%3AMLB5761405716",
+          "price": 3549.5,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5761405716",
+          "catalogId": "MLB18616352",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 2799
+            },
+            {
+              "date": "2026-10-30",
+              "price": 3549.5
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cooktop-de-inducao-philco-2-bocas",

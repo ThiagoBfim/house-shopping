@@ -2,10 +2,22 @@
   "label": "Protetor de colchão",
   "utensil": true,
   "variants": [
-    { "id": "casal", "label": "Casal" },
-    { "id": "solteiro", "label": "Solteiro" },
-    { "id": "queen", "label": "Queen" },
-    { "id": "king", "label": "King" }
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
   ],
   "options": [
     {
@@ -54,7 +66,28 @@
       "url": "https://www.mercadolivre.com.br/p/MLB22767070?pdp_filters=item_id%3AMLB5288070656",
       "image": "https://http2.mlstatic.com/D_NQ_NP_700302-MLA99986821367_112025-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "Solteiro"],
-      "variants": ["solteiro"]
+      "variants": ["solteiro"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB22767070?pdp_filters=item_id%3AMLB5288070656",
+          "price": 91.06,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5288070656",
+          "catalogId": "MLB22767070",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 91
+            },
+            {
+              "date": "2026-10-30",
+              "price": 91.06
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "protetor-de-colchao-impermeavel-queen-malha",
@@ -102,7 +135,24 @@
       "url": "https://www.mercadolivre.com.br/p/MLB22799788?pdp_filters=item_id%3AMLB5287940978",
       "image": "https://http2.mlstatic.com/D_NQ_NP_835827-MLA99463667648_112025-O.webp",
       "bullets": ["Impermeável e respirável", "Não faz barulho", "King"],
-      "variants": ["king"]
+      "variants": ["king"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB22799788?pdp_filters=item_id%3AMLB5287940978",
+          "price": 147,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5287940978",
+          "catalogId": "MLB22799788",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 147
+            }
+          ]
+        }
+      ]
     }
   ]
 }

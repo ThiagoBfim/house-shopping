@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB15345687?pdp_filters=item_id%3AMLB2794432256",
       "image": "https://http2.mlstatic.com/D_NQ_NP_903761-MLA99549584628_122025-O.webp",
-      "bullets": ["Para limpeza leve (calçada, carro)", "Compacta", "Mangueira curta"]
+      "bullets": ["Para limpeza leve (calçada, carro)", "Compacta", "Mangueira curta"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB15345687?pdp_filters=item_id%3AMLB2794432256",
+          "price": 499.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB2794432256",
+          "catalogId": "MLB15345687",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 649
+            },
+            {
+              "date": "2026-10-30",
+              "price": 499.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lavadora-karcher-k2-plus",
@@ -33,8 +54,14 @@
           "externalId": "MLB6676755768",
           "catalogId": "MLB25413983",
           "history": [
-            { "date": "2026-10-22", "price": 402.99 },
-            { "date": "2026-10-30", "price": 507.74 }
+            {
+              "date": "2026-10-22",
+              "price": 402.99
+            },
+            {
+              "date": "2026-10-30",
+              "price": 507.74
+            }
           ]
         }
       ]
@@ -48,7 +75,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22609620?pdp_filters=item_id%3AMLB4096955003",
       "image": "https://http2.mlstatic.com/D_NQ_NP_642859-MLA99896173327_112025-O.webp",
-      "bullets": ["Mais pressão e vazão", "Controle de pressão na pistola", "Para quintal maior"]
+      "bullets": ["Mais pressão e vazão", "Controle de pressão na pistola", "Para quintal maior"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB22609620?pdp_filters=item_id%3AMLB4096955003",
+          "price": 889,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4096955003",
+          "catalogId": "MLB22609620",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 889
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lavadora-karcher-k5",
@@ -74,8 +118,14 @@
           "externalId": "MLB2098257351",
           "catalogId": "MLB18611173",
           "history": [
-            { "date": "2026-10-22", "price": 899.99 },
-            { "date": "2026-10-30", "price": 899 }
+            {
+              "date": "2026-10-22",
+              "price": 899.99
+            },
+            {
+              "date": "2026-10-30",
+              "price": 899
+            }
           ]
         }
       ]

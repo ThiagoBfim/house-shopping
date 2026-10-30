@@ -11,7 +11,32 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB10547390?pdp_filters=item_id%3AMLB5183709535",
       "image": "https://http2.mlstatic.com/D_NQ_NP_639461-MLA97859844587_112025-O.webp",
-      "bullets": ["Alumínio, 4,5 L", "Feijão e carnes em menos tempo", "A mais barata e resistente"]
+      "bullets": [
+        "Alumínio, 4,5 L",
+        "Feijão e carnes em menos tempo",
+        "A mais barata e resistente"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB10547390?pdp_filters=item_id%3AMLB5183709535",
+          "price": 169.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5183709535",
+          "catalogId": "MLB10547390",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 169
+            },
+            {
+              "date": "2026-10-30",
+              "price": 169.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "panela-de-pressao-tramontina-vancouver-4-5-l",
@@ -22,7 +47,32 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB10892513?pdp_filters=item_id%3AMLB5662769788",
       "image": "https://http2.mlstatic.com/D_NQ_NP_661364-MLA118230540914_102026-O.webp",
-      "bullets": ["Antiaderente: não gruda e lava fácil", "Fechamento externo mais seguro", "4,5 L"]
+      "bullets": [
+        "Antiaderente: não gruda e lava fácil",
+        "Fechamento externo mais seguro",
+        "4,5 L"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB10892513?pdp_filters=item_id%3AMLB5662769788",
+          "price": 181.95,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5662769788",
+          "catalogId": "MLB10892513",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 245
+            },
+            {
+              "date": "2026-10-30",
+              "price": 181.95
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "panela-de-pressao-tramontina-solar-inox-4-5-l",
@@ -33,7 +83,32 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB19957715?pdp_filters=item_id%3AMLB3891149400",
       "image": "https://http2.mlstatic.com/D_NQ_NP_944075-MLA99897195641_112025-O.webp",
-      "bullets": ["Aço inox com fundo triplo", "Funciona em cooktop de indução", "Dura a vida toda"]
+      "bullets": [
+        "Aço inox com fundo triplo",
+        "Funciona em cooktop de indução",
+        "Dura a vida toda"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB19957715?pdp_filters=item_id%3AMLB3891149400",
+          "price": 664.05,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3891149400",
+          "catalogId": "MLB19957715",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 728
+            },
+            {
+              "date": "2026-10-30",
+              "price": 664.05
+            }
+          ]
+        }
+      ]
     }
   ]
 }

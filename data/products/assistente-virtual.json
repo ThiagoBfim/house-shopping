@@ -16,6 +16,27 @@
         "Toca música e responde perguntas",
         "Lembretes, alarmes e lista de compras",
         "Liga lâmpadas inteligentes"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/amazon-echo-pop-alexa-preto/p/MLB61265584?pdp_filters=item_id%3AMLB7769212986",
+          "price": 509.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7769212986",
+          "catalogId": "MLB61265584",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 509
+            },
+            {
+              "date": "2026-10-30",
+              "price": 509.9
+            }
+          ]
+        }
       ]
     },
     {
@@ -27,7 +48,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/aexa-echo-dot-5-geracao-com-relogio-azul-claro-amazon-cor-azul-claro/p/MLB19757118?pdp_filters=item_id%3AMLB3393594533",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_736823-MLA99941608271_112025-E.webp",
-      "bullets": ["Som melhor", "Relógio no visor", "Sensor de temperatura"]
+      "bullets": ["Som melhor", "Relógio no visor", "Sensor de temperatura"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/aexa-echo-dot-5-geracao-com-relogio-azul-claro-amazon-cor-azul-claro/p/MLB19757118?pdp_filters=item_id%3AMLB3393594533",
+          "price": 899.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3393594533",
+          "catalogId": "MLB19757118",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 899
+            },
+            {
+              "date": "2026-10-30",
+              "price": 899.99
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "echo-show-5-com-tela-e-alexa",
@@ -38,7 +80,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/alto-falante-inteligente-echo-show-5-amazon-3-geracao-hd/p/MLB65072053?pdp_filters=item_id%3AMLB4396354205",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_899883-MLA105519313286_012026-E.webp",
-      "bullets": ["Tela: receitas, vídeo e câmeras", "Chamadas de vídeo", "Despertador com luz"]
+      "bullets": ["Tela: receitas, vídeo e câmeras", "Chamadas de vídeo", "Despertador com luz"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/alto-falante-inteligente-echo-show-5-amazon-3-geracao-hd/p/MLB65072053?pdp_filters=item_id%3AMLB4396354205",
+          "price": 649.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4396354205",
+          "catalogId": "MLB65072053",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 720
+            },
+            {
+              "date": "2026-10-30",
+              "price": 649.9
+            }
+          ]
+        }
+      ]
     }
   ]
 }

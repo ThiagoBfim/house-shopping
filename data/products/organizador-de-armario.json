@@ -23,7 +23,32 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB28405634?pdp_filters=item_id%3AMLB6225178988",
       "image": "https://http2.mlstatic.com/D_NQ_NP_747431-MLA100089428497_122025-O.webp",
-      "bullets": ["Agrupam pacotes e enlatados", "Puxa o cesto inteiro do fundo", "Fáceis de lavar"]
+      "bullets": [
+        "Agrupam pacotes e enlatados",
+        "Puxa o cesto inteiro do fundo",
+        "Fáceis de lavar"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB28405634?pdp_filters=item_id%3AMLB6225178988",
+          "price": 37.25,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB6225178988",
+          "catalogId": "MLB28405634",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 50
+            },
+            {
+              "date": "2026-10-30",
+              "price": 37.25
+            }
+          ]
+        }
+      ]
     }
   ]
 }

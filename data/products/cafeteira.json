@@ -2,9 +2,18 @@
   "label": "Cafeteira",
   "utensil": false,
   "variants": [
-    { "id": "coado", "label": "Café coado" },
-    { "id": "capsula", "label": "Cápsula" },
-    { "id": "espresso", "label": "Espresso" }
+    {
+      "id": "coado",
+      "label": "Café coado"
+    },
+    {
+      "id": "capsula",
+      "label": "Cápsula"
+    },
+    {
+      "id": "espresso",
+      "label": "Espresso"
+    }
   ],
   "options": [
     {
@@ -17,7 +26,28 @@
       "url": "https://www.mercadolivre.com.br/cafeteira-oster-flavor-programavel-4401rd/p/MLB8853735?pdp_filters=item_id%3AMLB4551957871",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_717312-MLA100018691875_122025-E.webp",
       "bullets": ["Programa a hora do café", "Jarra grande", "Mantém aquecido"],
-      "variants": ["coado"]
+      "variants": ["coado"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/cafeteira-oster-flavor-programavel-4401rd/p/MLB8853735?pdp_filters=item_id%3AMLB4551957871",
+          "price": 263.84,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4551957871",
+          "catalogId": "MLB8853735",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 396
+            },
+            {
+              "date": "2026-10-30",
+              "price": 263.84
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cafeteira-eletrica-electrolux-ecm30",
@@ -71,8 +101,14 @@
           "externalId": "MLB4046267101",
           "catalogId": "MLB15261607",
           "history": [
-            { "date": "2026-10-22", "price": 539 },
-            { "date": "2026-10-30", "price": 455.24 }
+            {
+              "date": "2026-10-22",
+              "price": 539
+            },
+            {
+              "date": "2026-10-30",
+              "price": 455.24
+            }
           ]
         }
       ],
@@ -88,7 +124,28 @@
       "url": "https://www.mercadolivre.com.br/cafeteira-nescafe-dolce-gusto-mini-me-preta/p/MLB15154780?pdp_filters=item_id%3AMLB4129672747",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_626577-MLA99520084810_112025-E.webp",
       "bullets": ["Cápsulas fáceis de achar", "Bebidas com leite (cápsula)", "Compacta"],
-      "variants": ["capsula"]
+      "variants": ["capsula"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/cafeteira-nescafe-dolce-gusto-mini-me-preta/p/MLB15154780?pdp_filters=item_id%3AMLB4129672747",
+          "price": 591.11,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4129672747",
+          "catalogId": "MLB15154780",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 579
+            },
+            {
+              "date": "2026-10-30",
+              "price": 591.11
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cafeteira-nespresso-vertuo-pop",
@@ -104,7 +161,28 @@
         "Faz café grande (caneca)",
         "Crema mais encorpada"
       ],
-      "variants": ["capsula"]
+      "variants": ["capsula"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/cafeteira-nespresso-vertuo-pop-branco/p/MLB22857430?pdp_filters=item_id%3AMLB7804098050",
+          "price": 994.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7804098050",
+          "catalogId": "MLB22857430",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 549
+            },
+            {
+              "date": "2026-10-30",
+              "price": 994.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cafeteira-oster-primalatte-ii",
@@ -120,7 +198,24 @@
         "Leite vaporizado automático (cappuccino)",
         "Reservatório de leite removível"
       ],
-      "variants": ["espresso"]
+      "variants": ["espresso"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/cafeteira-espresso-oster-nova-primalatte-inox-cor-prateado/p/MLB19541077?pdp_filters=item_id%3AMLB4197740839",
+          "price": 836,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4197740839",
+          "catalogId": "MLB19541077",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 836
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cafeteira-espresso-de-longhi-dedica-ec685",
@@ -136,7 +231,28 @@
         "Vaporizador para leite",
         "Fina: cabe em qualquer bancada"
       ],
-      "variants": ["espresso"]
+      "variants": ["espresso"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/maquina-de-cafe-delonghi-dedica-deluxe-15bar-ec680r-cor-vermelho/p/MLB24531257?pdp_filters=item_id%3AMLB5102999501",
+          "price": 2099.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5102999501",
+          "catalogId": "MLB24531257",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 2199
+            },
+            {
+              "date": "2026-10-30",
+              "price": 2099.99
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "delonghi-magnifica-s",
@@ -162,7 +278,12 @@
           "available": true,
           "externalId": "MLB4621491908",
           "catalogId": "MLB15166291",
-          "history": [{ "date": "2026-10-22", "price": 3479.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 3479.99
+            }
+          ]
         }
       ],
       "variants": ["espresso"]
@@ -181,7 +302,28 @@
         "Controle de moagem e dose",
         "Para quem leva café a sério"
       ],
-      "variants": ["espresso"]
+      "variants": ["espresso"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/cafeteira-express-tramontina-pro-inox-breville-69066012/p/MLB68861676?pdp_filters=item_id%3AMLB7585502334",
+          "price": 5490,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7585502334",
+          "catalogId": "MLB68861676",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 5230
+            },
+            {
+              "date": "2026-10-30",
+              "price": 5490
+            }
+          ]
+        }
+      ]
     }
   ]
 }

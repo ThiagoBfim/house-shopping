@@ -1,7 +1,7 @@
 // Atualiza as ofertas do Mercado Livre com preço/disponibilidade atuais (lógica pura).
 import { applyBestOffer, isSearchUrl, parseMercadoLivreIds } from '../../src/data/offers.ts'
 import { recordPrice } from '../../src/data/price-history.ts'
-import type { ProductOption, Products } from '../../src/data/schema.ts'
+import type { Offer, ProductOption, Products } from '../../src/data/schema.ts'
 
 /** Situação atual de um anúncio no Mercado Livre. */
 export interface Quote {
@@ -136,8 +136,9 @@ export async function syncOffers(
 
 /**
  * Produto de marca ainda sem link de afiliado: o `url` abre o anúncio direto e o `price` é de
- * referência. Atualiza esse preço pela API (sem criar oferta: oferta é só para link de afiliado,
- * senão o `ml:links export` trataria o link do produto como afiliado).
+ * referência. Na primeira vez, cria a oferta do Mercado Livre com o link direto (o preço de
+ * referência vira o primeiro ponto do histórico); dali em diante ela é sincronizada como as
+ * outras. Quando o link de afiliado chegar, o `ml:links import` troca só o `url` da oferta.
  */
 async function syncDirectLink(
   option: ProductOption,
@@ -167,10 +168,19 @@ async function syncDirectLink(
   if (quote.price !== option.price) {
     report.updated.push({ id: option.id, from: option.price, to: quote.price })
   }
-  return {
-    ...option,
-    price: quote.price,
-    priceUpdatedAt: today,
-    ...(!option.image && quote.image && { image: quote.image }),
+  const offer: Offer = {
+    store: 'mercadolivre',
+    url: option.url,
+    price: option.price,
+    updatedAt: option.priceUpdatedAt,
+    available: quote.available,
+    externalId: ids.itemId ?? catalogId,
+    catalogId,
+    history: [{ date: option.priceUpdatedAt, price: option.price }],
   }
+  return applyBestOffer({
+    ...option,
+    ...(!option.image && quote.image && { image: quote.image }),
+    offers: [recordPrice(offer, today, quote.price), ...(option.offers ?? [])],
+  })
 }

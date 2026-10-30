@@ -37,7 +37,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/suporte-com-escova-para-banheiro-brinox-decorline/p/MLB21027787?pdp_filters=item_id%3AMLB4497793604",
       "image": "https://http2.mlstatic.com/D_NQ_NP_916930-MLA114926764897_072026-O.webp",
-      "bullets": ["Suporte de inox", "Refil de escova trocável", "Mais bonita no banheiro"]
+      "bullets": ["Suporte de inox", "Refil de escova trocável", "Mais bonita no banheiro"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/suporte-com-escova-para-banheiro-brinox-decorline/p/MLB21027787?pdp_filters=item_id%3AMLB4497793604",
+          "price": 199,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4497793604",
+          "catalogId": "MLB21027787",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 199
+            }
+          ]
+        }
+      ]
     }
   ]
 }

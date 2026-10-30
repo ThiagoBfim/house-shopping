@@ -22,7 +22,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB29009936?pdp_filters=item_id%3AMLB5829525100",
       "image": "https://http2.mlstatic.com/D_NQ_NP_721326-MLA95592459441_102025-O.webp",
-      "bullets": ["3 portas e gavetas", "Combina com berço Henn", "Puxadores arredondados"]
+      "bullets": ["3 portas e gavetas", "Combina com berço Henn", "Puxadores arredondados"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB29009936?pdp_filters=item_id%3AMLB5829525100",
+          "price": 555.75,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5829525100",
+          "catalogId": "MLB29009936",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 555
+            },
+            {
+              "date": "2026-10-30",
+              "price": 555.75
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "guarda-roupa-matic-unique-3-portas",
@@ -33,7 +54,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB28186716?pdp_filters=item_id%3AMLB3814947329",
       "image": "https://http2.mlstatic.com/D_NQ_NP_749977-MLU77147783320_062024-O.webp",
-      "bullets": ["3 portas", "Acabamento Eco Wood", "Combina com a linha Unique"]
+      "bullets": ["3 portas", "Acabamento Eco Wood", "Combina com a linha Unique"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB28186716?pdp_filters=item_id%3AMLB3814947329",
+          "price": 1151.58,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3814947329",
+          "catalogId": "MLB28186716",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1151
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1151.58
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "guarda-roupa-infantil-madeira-macica",

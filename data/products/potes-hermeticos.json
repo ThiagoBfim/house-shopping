@@ -26,6 +26,23 @@
         "Vidro vai ao micro-ondas e forno",
         "Não pega cheiro",
         "Tampas com trava e vedação"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB23194774?pdp_filters=item_id%3AMLB7608842574",
+          "price": 179,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7608842574",
+          "catalogId": "MLB23194774",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 179
+            }
+          ]
+        }
       ]
     }
   ]

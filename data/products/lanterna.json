@@ -26,7 +26,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB21366935?pdp_filters=item_id%3AMLB3204421753",
       "image": "https://http2.mlstatic.com/D_NQ_NP_724387-MLA95393812360_102025-O.webp",
-      "bullets": ["Bem mais forte (foco ajustável)", "Resistente a chuva", "Bateria dura horas"]
+      "bullets": ["Bem mais forte (foco ajustável)", "Resistente a chuva", "Bateria dura horas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB21366935?pdp_filters=item_id%3AMLB3204421753",
+          "price": 121.42,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3204421753",
+          "catalogId": "MLB21366935",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 181
+            },
+            {
+              "date": "2026-10-30",
+              "price": 121.42
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lanterna-fenix-e28r-v2-recarregavel-1700-lumens",
@@ -50,7 +71,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB3881419527",
-          "history": [{ "date": "2026-10-22", "price": 482.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 482.99
+            }
+          ]
         }
       ]
     }

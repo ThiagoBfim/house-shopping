@@ -2,10 +2,22 @@
   "label": "Cama / base box",
   "utensil": false,
   "variants": [
-    { "id": "casal", "label": "Casal" },
-    { "id": "solteiro", "label": "Solteiro" },
-    { "id": "queen", "label": "Queen" },
-    { "id": "king", "label": "King" }
+    {
+      "id": "casal",
+      "label": "Casal"
+    },
+    {
+      "id": "solteiro",
+      "label": "Solteiro"
+    },
+    {
+      "id": "queen",
+      "label": "Queen"
+    },
+    {
+      "id": "king",
+      "label": "King"
+    }
   ],
   "options": [
     {
@@ -118,7 +130,28 @@
       "url": "https://www.mercadolivre.com.br/base-sommier-queen-ortobom-camurca-marrom-madeira-reflorestada/p/MLB23374647?pdp_filters=item_id%3AMLB7026398526",
       "image": "https://http2.mlstatic.com/D_NQ_NP_669059-MLA96100284081_102025-O.webp",
       "bullets": ["Base simples queen (1,58 m)", "Sem baú", "Montagem fácil"],
-      "variants": ["queen"]
+      "variants": ["queen"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/base-sommier-queen-ortobom-camurca-marrom-madeira-reflorestada/p/MLB23374647?pdp_filters=item_id%3AMLB7026398526",
+          "price": 692.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7026398526",
+          "catalogId": "MLB23374647",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 692
+            },
+            {
+              "date": "2026-10-30",
+              "price": 692.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cama-box-bau-queen",
@@ -170,7 +203,28 @@
       "url": "https://www.mercadolivre.com.br/base-box-king-size-ortobom-sommier-camurca-madeira-193x203x36cm/p/MLB52067883",
       "image": "https://http2.mlstatic.com/D_NQ_NP_652268-MLA119799965073_102026-O.webp",
       "bullets": ["Base simples king (1,93 m)", "Bipartida (passa na porta)", "Sem baú"],
-      "variants": ["king"]
+      "variants": ["king"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/base-box-king-size-ortobom-sommier-camurca-madeira-193x203x36cm/p/MLB52067883",
+          "price": 770.78,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB52067883",
+          "catalogId": "MLB52067883",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1999
+            },
+            {
+              "date": "2026-10-30",
+              "price": 770.78
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cama-box-bau-king",
@@ -219,7 +273,12 @@
           "updatedAt": "2026-10-30",
           "available": true,
           "externalId": "MLB3465037001",
-          "history": [{ "date": "2026-10-30", "price": 4094.67 }]
+          "history": [
+            {
+              "date": "2026-10-30",
+              "price": 4094.67
+            }
+          ]
         }
       ]
     }

@@ -64,7 +64,8 @@ export function exportRows(products: Products): string[][] {
             String(option.price),
             `https://lista.mercadolivre.com.br/${option.id}`,
             productLink,
-            offer?.url ?? '',
+            // Oferta com o link direto do produto (criada pelo sync) ainda não tem afiliado.
+            offer && isAffiliateUrl(offer.url) ? offer.url : '',
             offer ? String(offer.price) : '',
             offer?.updatedAt ?? '',
             option.image ?? '',

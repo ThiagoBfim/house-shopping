@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB49822223?pdp_filters=item_id%3AMLB5409970690",
       "image": "https://http2.mlstatic.com/D_NQ_NP_683164-MLA84324524124_052025-O.webp",
-      "bullets": ["Pica, rala e fatia", "Motor de 1000 W", "O básico para picar legumes sem faca"]
+      "bullets": ["Pica, rala e fatia", "Motor de 1000 W", "O básico para picar legumes sem faca"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB49822223?pdp_filters=item_id%3AMLB5409970690",
+          "price": 219,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5409970690",
+          "catalogId": "MLB49822223",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 269
+            },
+            {
+              "date": "2026-10-30",
+              "price": 219
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "processador-philips-walita-powerchop-ri7301",
@@ -26,6 +47,27 @@
         "Lâminas Powerchop que picam por igual",
         "Marca com assistência fácil",
         "Tigela grande para receitas de família"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB21323093?pdp_filters=item_id%3AMLB5185025128",
+          "price": 252,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5185025128",
+          "catalogId": "MLB21323093",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 404
+            },
+            {
+              "date": "2026-10-30",
+              "price": 252
+            }
+          ]
+        }
       ]
     },
     {
@@ -41,6 +83,27 @@
         "9 em 1: liquidificador, espremedor e processador",
         "Motor de 1700 W",
         "Troca vários aparelhos por um só"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB47433943?pdp_filters=item_id%3AMLB7285010844",
+          "price": 463.19,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7285010844",
+          "catalogId": "MLB47433943",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 509
+            },
+            {
+              "date": "2026-10-30",
+              "price": 463.19
+            }
+          ]
+        }
       ]
     },
     {
@@ -57,6 +120,23 @@
         "Discos de fatiar e ralar ajustáveis",
         "Construção robusta e durável",
         "Design premium da KitchenAid"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB69083102?pdp_filters=item_id%3AMLB4980900139",
+          "price": 1988,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4980900139",
+          "catalogId": "MLB69083102",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1988
+            }
+          ]
+        }
       ]
     }
   ]

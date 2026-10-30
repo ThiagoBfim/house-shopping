@@ -2,8 +2,14 @@
   "label": "Forno",
   "utensil": false,
   "variants": [
-    { "id": "bancada", "label": "Forno elétrico de bancada" },
-    { "id": "embutir", "label": "Forno de embutir" }
+    {
+      "id": "bancada",
+      "label": "Forno elétrico de bancada"
+    },
+    {
+      "id": "embutir",
+      "label": "Forno de embutir"
+    }
   ],
   "options": [
     {
@@ -16,7 +22,28 @@
       "url": "https://www.mercadolivre.com.br/p/MLB53802029?pdp_filters=item_id%3AMLB5997009972",
       "image": "https://http2.mlstatic.com/D_NQ_NP_977272-MLA96636593291_102025-O.webp",
       "bullets": ["De bancada, sem obra", "52 L e 1800 W", "Timer de 60 minutos"],
-      "variants": ["bancada"]
+      "variants": ["bancada"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB53802029?pdp_filters=item_id%3AMLB5997009972",
+          "price": 477.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5997009972",
+          "catalogId": "MLB53802029",
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 549
+            },
+            {
+              "date": "2026-10-30",
+              "price": 477.99
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "forno-eletrico-fischer-gourmet-grill-44-litros",
@@ -32,7 +59,28 @@
         "Grill e dupla resistência",
         "Vidro duplo: esquenta menos por fora"
       ],
-      "variants": ["bancada"]
+      "variants": ["bancada"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB69943592?pdp_filters=item_id%3AMLB6311070146",
+          "price": 739,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB6311070146",
+          "catalogId": "MLB69943592",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 895
+            },
+            {
+              "date": "2026-10-30",
+              "price": 739
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "forno-eletrico-oster-air-fryer-2-em-1-50-l",
@@ -44,7 +92,28 @@
       "url": "https://www.mercadolivre.com.br/p/MLB77555483?pdp_filters=item_id%3AMLB7536239408",
       "image": "https://http2.mlstatic.com/D_NQ_NP_946620-MLA114946164926_082026-O.webp",
       "bullets": ["Forno e air fryer no mesmo aparelho", "50 L", "Convecção: assa por igual"],
-      "variants": ["bancada"]
+      "variants": ["bancada"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB77555483?pdp_filters=item_id%3AMLB7536239408",
+          "price": 874.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7536239408",
+          "catalogId": "MLB77555483",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1190
+            },
+            {
+              "date": "2026-10-30",
+              "price": 874.99
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "forno-eletrico-tramontina-by-breville-smart-oven-air",
@@ -88,7 +157,28 @@
         "47 L com convecção",
         "Melhor custo-benefício de embutir"
       ],
-      "variants": ["embutir"]
+      "variants": ["embutir"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB25827378?pdp_filters=item_id%3AMLB4086786421",
+          "price": 980.96,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4086786421",
+          "catalogId": "MLB25827378",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 939
+            },
+            {
+              "date": "2026-10-30",
+              "price": 980.96
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "forno-de-embutir-electrolux-oe8ea",
@@ -114,8 +204,14 @@
           "available": true,
           "externalId": "MLB5524387860",
           "history": [
-            { "date": "2026-10-22", "price": 2047.79 },
-            { "date": "2026-10-30", "price": 1931.05 }
+            {
+              "date": "2026-10-22",
+              "price": 2047.79
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1931.05
+            }
           ],
           "catalogId": "MLB51183658"
         }

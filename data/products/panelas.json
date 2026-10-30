@@ -2,8 +2,14 @@
   "label": "Panelas",
   "utensil": true,
   "variants": [
-    { "id": "comum", "label": "Qualquer fogão" },
-    { "id": "inducao", "label": "Para indução" }
+    {
+      "id": "comum",
+      "label": "Qualquer fogão"
+    },
+    {
+      "id": "inducao",
+      "label": "Para indução"
+    }
   ],
   "options": [
     {
@@ -20,7 +26,28 @@
         "5 peças",
         "Não serve para cooktop de indução"
       ],
-      "variants": ["comum"]
+      "variants": ["comum"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB32452413?pdp_filters=item_id%3AMLB3593471545",
+          "price": 283.96,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3593471545",
+          "catalogId": "MLB32452413",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 363
+            },
+            {
+              "date": "2026-10-30",
+              "price": 283.96
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "jogo-de-panelas-tramontina-solar-inox-fundo-triplo",
@@ -36,7 +63,28 @@
         "Serve para indução",
         "Vai à lava-louças"
       ],
-      "variants": ["comum", "inducao"]
+      "variants": ["comum", "inducao"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB47816179?pdp_filters=item_id%3AMLB5376130586",
+          "price": 767.25,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5376130586",
+          "catalogId": "MLB47816179",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 945
+            },
+            {
+              "date": "2026-10-30",
+              "price": 767.25
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "jogo-de-panelas-tramontina-trento-corpo-triplo",
@@ -76,7 +124,12 @@
           "price": 4948,
           "updatedAt": "2026-10-22",
           "available": true,
-          "history": [{ "date": "2026-10-22", "price": 4948 }],
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 4948
+            }
+          ],
           "externalId": "MLB4776706002"
         }
       ],

@@ -15,6 +15,27 @@
         "Bico, corte e universal",
         "Resolve fios, pregos e pequenos reparos",
         "Cabo emborrachado"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB27157886?pdp_filters=item_id%3AMLB5577742806",
+          "price": 89,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5577742806",
+          "catalogId": "MLB27157886",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 100
+            },
+            {
+              "date": "2026-10-30",
+              "price": 89
+            }
+          ]
+        }
       ]
     },
     {
@@ -30,6 +51,27 @@
         "Isolados até 1000 V (seguro para elétrica)",
         "Aço de alta resistência",
         "Stanley: ferramenta para a vida toda"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB2081213733?pdp_filters=item_id%3AMLB3167210034",
+          "price": 320,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3167210034",
+          "catalogId": "MLB2081213733",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 364
+            },
+            {
+              "date": "2026-10-30",
+              "price": 320
+            }
+          ]
+        }
       ]
     }
   ]

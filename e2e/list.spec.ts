@@ -225,3 +225,29 @@ test('variação de preço abre o gráfico com os dias em que o preço mudou', a
   await trend.click()
   await expect(chart).toHaveCount(0)
 })
+
+test('mostra quanto a mesma lista mudou de preço desde ontem, 7 e 30 dias', async ({ page }) => {
+  // data fixa: o histórico do catálogo tem mudanças entre 23/10 e 30/10
+  await page.clock.setFixedTime(new Date('2026-10-31T12:00:00'))
+  await openKitchen(page, '30000')
+
+  const toggle = page.getByRole('button', { name: /^Lista .* mais (barata|cara) que / })
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false')
+  await toggle.click()
+
+  const periods = page.getByRole('radiogroup', { name: 'Comparar com' })
+  await periods.getByRole('radio', { name: /7 dias/ }).click()
+  await expect(periods.getByRole('radio', { name: /7 dias/ })).toHaveAttribute(
+    'aria-checked',
+    'true',
+  )
+  await expect(
+    page.getByText(/^Em 24\/10, esta mesma lista custava R\$\s[\d.,]+\. Hoje custa/),
+  ).toBeVisible()
+  await expect(page.locator('#list-change-chart')).toContainText('Total da lista')
+  await expect(page.getByText(/ite(m mudou|ns mudaram) de preço/)).toBeVisible()
+  expect(await page.locator('.list-change-items li').count()).toBeGreaterThan(0)
+
+  await toggle.click()
+  await expect(periods).toHaveCount(0)
+})

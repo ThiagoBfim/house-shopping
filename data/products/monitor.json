@@ -11,7 +11,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB43961379?pdp_filters=item_id%3AMLB4894062283",
       "image": "https://http2.mlstatic.com/D_NQ_NP_921982-MLA99962503055_112025-O.webp",
-      "bullets": ["24\" Full HD", "IPS: cores boas de qualquer ângulo", "Para planilha e e-mail"]
+      "bullets": ["24\" Full HD", "IPS: cores boas de qualquer ângulo", "Para planilha e e-mail"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB43961379?pdp_filters=item_id%3AMLB4894062283",
+          "price": 661,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4894062283",
+          "catalogId": "MLB43961379",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 661
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "monitor-samsung-27-full-hd-ips-100hz",
@@ -22,7 +39,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB46564887?pdp_filters=item_id%3AMLB4279211521",
       "image": "https://http2.mlstatic.com/D_NQ_NP_946816-MLA99885422877_112025-O.webp",
-      "bullets": ["27\": mais espaço de tela", "Borda fina", "100 Hz: rolagem mais suave"]
+      "bullets": ["27\": mais espaço de tela", "Borda fina", "100 Hz: rolagem mais suave"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB46564887?pdp_filters=item_id%3AMLB4279211521",
+          "price": 755,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4279211521",
+          "catalogId": "MLB46564887",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 755
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "monitor-lg-27-4k-ultrafine-27us550",
@@ -33,7 +67,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB48778915",
       "image": "https://http2.mlstatic.com/D_NQ_NP_912843-MLA99938852799_112025-O.webp",
-      "bullets": ["4K: para foto, vídeo e design", "USB-C carrega o notebook", "Cores calibradas"]
+      "bullets": ["4K: para foto, vídeo e design", "USB-C carrega o notebook", "Cores calibradas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB48778915",
+          "price": 1242,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB48778915",
+          "catalogId": "MLB48778915",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1781
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1242
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "monitor-dell-27-qhd-s2725ds",

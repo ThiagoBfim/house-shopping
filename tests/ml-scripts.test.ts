@@ -433,7 +433,7 @@ describe('syncOffers: produto com link direto (sem afiliado)', () => {
   }
   const catalogUrl = 'https://www.mercadolivre.com.br/p/MLB900?pdp_filters=item_id%3AMLB1'
 
-  it('atualiza o preço de referência sem criar oferta', async () => {
+  it('cria a oferta com o link direto e o preço anterior no histórico', async () => {
     const calls: unknown[] = []
     const { products: next, report } = await syncOffers(
       direct(catalogUrl),
@@ -443,7 +443,21 @@ describe('syncOffers: produto com link direto (sem afiliado)', () => {
     expect(calls).toEqual([{ itemId: 'MLB1', catalogId: 'MLB900' }])
     const option = next.liquidificador.options[0]
     expect(option).toMatchObject({ price: 349.9, priceUpdatedAt: '2026-10-30', url: catalogUrl })
-    expect(option.offers).toBeUndefined()
+    expect(option.offers).toEqual([
+      {
+        store: 'mercadolivre',
+        url: catalogUrl,
+        price: 349.9,
+        updatedAt: '2026-10-30',
+        available: true,
+        externalId: 'MLB1',
+        catalogId: 'MLB900',
+        history: [
+          { date: '2026-10-22', price: 404 },
+          { date: '2026-10-30', price: 349.9 },
+        ],
+      },
+    ])
     expect(report.updated).toEqual([{ id: 'liq-barato', from: 404, to: 349.9 }])
     expect(report.changedCategories).toEqual(new Set(['liquidificador']))
   })
@@ -483,5 +497,31 @@ describe('syncOffers: produto com link direto (sem afiliado)', () => {
     )
     expect(calls).toEqual([])
     expect(report.changedCategories.size).toBe(0)
+  })
+
+  it('na rodada seguinte a oferta criada é sincronizada como as outras', async () => {
+    const quote = { price: 349.9, available: true, condition: 'new' }
+    const first = await syncOffers(direct(catalogUrl), async () => quote, '2026-10-30')
+    const calls: unknown[] = []
+    const { products: next } = await syncOffers(
+      first.products,
+      async (ids) => (calls.push(ids), { ...quote, price: 329 }),
+      '2026-11-06',
+    )
+    expect(calls).toEqual([{ itemId: 'MLB1', catalogId: 'MLB900' }])
+    expect(next.liquidificador.options[0].offers?.[0].history?.map((p) => p.price)).toEqual([
+      404, 349.9, 329,
+    ])
+  })
+
+  it('o export não põe o link direto na coluna de afiliado', async () => {
+    const { products: next } = await syncOffers(
+      direct(catalogUrl),
+      async () => ({ price: 349.9, available: true }),
+      '2026-10-30',
+    )
+    const row = exportRows(next).find(([id]) => id === 'liq-barato')!
+    expect(row[LINK_COLUMNS.indexOf('link_produto')]).toBe(catalogUrl)
+    expect(row[LINK_COLUMNS.indexOf('link_afiliado')]).toBe('')
   })
 })

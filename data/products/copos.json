@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB6577404612",
           "catalogId": "MLB58973786",
-          "history": [{ "date": "2026-10-22", "price": 29.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 29.99
+            }
+          ]
         }
       ]
     },
@@ -44,7 +49,12 @@
           "available": true,
           "externalId": "MLB6512539354",
           "catalogId": "MLB66986892",
-          "history": [{ "date": "2026-10-22", "price": 65 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 65
+            }
+          ]
         }
       ]
     },
@@ -57,7 +67,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/jogo-12-copos-cristal-bohemia-300ml-linha-ardea-resistencia-titanio/p/MLB43867226?pdp_filters=item_id%3AMLB5256584631",
       "image": "https://http2.mlstatic.com/D_NQ_NP_781169-MLA114654901931_072026-O.webp",
-      "bullets": ["Cristal tcheco", "Mais brilho e som de cristal", "Lavar à mão"]
+      "bullets": ["Cristal tcheco", "Mais brilho e som de cristal", "Lavar à mão"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/jogo-12-copos-cristal-bohemia-300ml-linha-ardea-resistencia-titanio/p/MLB43867226?pdp_filters=item_id%3AMLB5256584631",
+          "price": 300,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5256584631",
+          "catalogId": "MLB43867226",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 300
+            }
+          ]
+        }
+      ]
     }
   ]
 }

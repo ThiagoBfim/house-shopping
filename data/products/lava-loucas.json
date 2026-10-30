@@ -25,7 +25,12 @@
           "available": true,
           "externalId": "MLB4332264349",
           "catalogId": "MLB62844446",
-          "history": [{ "date": "2026-10-22", "price": 1709.1 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 1709.1
+            }
+          ]
         }
       ]
     },
@@ -38,7 +43,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB19745915?pdp_filters=item_id%3AMLB2933408332",
       "image": "https://http2.mlstatic.com/D_NQ_NP_957527-MLA99514878602_112025-O.webp",
-      "bullets": ["8 serviços, a mais vendida do Brasil", "Inox", "Ciclo rápido para o dia a dia"]
+      "bullets": ["8 serviços, a mais vendida do Brasil", "Inox", "Ciclo rápido para o dia a dia"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB19745915?pdp_filters=item_id%3AMLB2933408332",
+          "price": 1982.08,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB2933408332",
+          "catalogId": "MLB19745915",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 2019
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1982.08
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lava-loucas-electrolux-ll14x",
@@ -63,7 +89,12 @@
           "available": true,
           "externalId": "MLB7525161176",
           "catalogId": "MLB19714947",
-          "history": [{ "date": "2026-10-30", "price": 8309.9 }]
+          "history": [
+            {
+              "date": "2026-10-30",
+              "price": 8309.9
+            }
+          ]
         }
       ]
     },
@@ -91,8 +122,14 @@
           "externalId": "MLB5336931524",
           "catalogId": "MLB43068829",
           "history": [
-            { "date": "2026-10-22", "price": 3965.17 },
-            { "date": "2026-10-30", "price": 3883.89 }
+            {
+              "date": "2026-10-22",
+              "price": 3965.17
+            },
+            {
+              "date": "2026-10-30",
+              "price": 3883.89
+            }
           ]
         }
       ]

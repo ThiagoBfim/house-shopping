@@ -2,9 +2,18 @@
   "label": "Videogame",
   "utensil": false,
   "variants": [
-    { "id": "playstation", "label": "PlayStation" },
-    { "id": "xbox", "label": "Xbox" },
-    { "id": "nintendo", "label": "Nintendo" }
+    {
+      "id": "playstation",
+      "label": "PlayStation"
+    },
+    {
+      "id": "xbox",
+      "label": "Xbox"
+    },
+    {
+      "id": "nintendo",
+      "label": "Nintendo"
+    }
   ],
   "options": [
     {
@@ -26,7 +35,12 @@
           "available": true,
           "externalId": "MLB4227636027",
           "catalogId": "MLB29001054",
-          "history": [{ "date": "2026-10-22", "price": 4399.9 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 4399.9
+            }
+          ]
         }
       ],
       "variants": ["playstation"]
@@ -41,7 +55,24 @@
       "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
       "image": "https://http2.mlstatic.com/D_NQ_NP_688343-MLA88139322691_072025-O.webp",
       "bullets": ["Lê jogo em disco (dá para comprar usado)", "Exclusivos da Sony", "SSD de 1 TB"],
-      "variants": ["playstation"]
+      "variants": ["playstation"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
+          "price": 4932,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB7705751624",
+          "catalogId": "MLB52897777",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 4932
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "kit-playstation-5-slim-com-leitor-e-controle-dualsense-extra",
@@ -82,7 +113,12 @@
           "available": true,
           "externalId": "MLB7613817060",
           "catalogId": "MLB41975964",
-          "history": [{ "date": "2026-10-22", "price": 7599 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 7599
+            }
+          ]
         }
       ],
       "variants": ["playstation"]
@@ -113,7 +149,28 @@
       "url": "https://www.mercadolivre.com.br/p/MLB27934244?pdp_filters=item_id%3AMLB7786931948",
       "image": "https://http2.mlstatic.com/D_NQ_NP_791517-MLA96137484483_102025-O.webp",
       "bullets": ["Dobro de espaço do Series S comum", "Game Pass", "Só digital"],
-      "variants": ["xbox"]
+      "variants": ["xbox"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB27934244?pdp_filters=item_id%3AMLB7786931948",
+          "price": 5299.99,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7786931948",
+          "catalogId": "MLB27934244",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 5199
+            },
+            {
+              "date": "2026-10-30",
+              "price": 5299.99
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "console-xbox-series-x-digital",
@@ -135,7 +192,12 @@
           "available": true,
           "externalId": "MLB5367509002",
           "catalogId": "MLB43535812",
-          "history": [{ "date": "2026-10-30", "price": 6699.99 }]
+          "history": [
+            {
+              "date": "2026-10-30",
+              "price": 6699.99
+            }
+          ]
         }
       ]
     },
@@ -159,7 +221,12 @@
           "available": true,
           "externalId": "MLB4060039157",
           "catalogId": "MLB29577429",
-          "history": [{ "date": "2026-10-30", "price": 7199.99 }]
+          "history": [
+            {
+              "date": "2026-10-30",
+              "price": 7199.99
+            }
+          ]
         }
       ]
     },
@@ -173,7 +240,28 @@
       "url": "https://www.mercadolivre.com.br/p/MLB17974763?pdp_filters=item_id%3AMLB5358212849",
       "image": "https://http2.mlstatic.com/D_NQ_NP_743607-MLA99448480554_112025-O.webp",
       "bullets": ["Só portátil", "Leve e barato", "Jogos da Nintendo"],
-      "variants": ["nintendo"]
+      "variants": ["nintendo"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB17974763?pdp_filters=item_id%3AMLB5358212849",
+          "price": 1325.11,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5358212849",
+          "catalogId": "MLB17974763",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 1579
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1325.11
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "console-nintendo-switch-oled",
@@ -185,7 +273,24 @@
       "url": "https://www.mercadolivre.com.br/p/MLB31000132?pdp_filters=item_id%3AMLB7777270522",
       "image": "https://http2.mlstatic.com/D_NQ_NP_925310-MLA96862732927_102025-O.webp",
       "bullets": ["Tela OLED", "Joga na TV e no portátil", "Controles destacáveis"],
-      "variants": ["nintendo"]
+      "variants": ["nintendo"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB31000132?pdp_filters=item_id%3AMLB7777270522",
+          "price": 2450,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7777270522",
+          "catalogId": "MLB31000132",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 2450
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "console-nintendo-switch-2",
@@ -211,8 +316,14 @@
           "externalId": "MLB5335958389",
           "catalogId": "MLB80167828",
           "history": [
-            { "date": "2026-10-22", "price": 4599.9 },
-            { "date": "2026-10-30", "price": 4899.9 }
+            {
+              "date": "2026-10-22",
+              "price": 4599.9
+            },
+            {
+              "date": "2026-10-30",
+              "price": 4899.9
+            }
           ]
         }
       ],

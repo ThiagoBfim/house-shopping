@@ -2293,3 +2293,98 @@ h3 {
     grid-column: 1 / -1;
   }
 }
+
+/* Variação da lista (ontem / 7 dias / 30 dias) */
+
+.list-change {
+  margin: 12px 0 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.list-change-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.list-change-toggle strong {
+  font-weight: 700;
+}
+
+.list-change-more {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.list-change-panel {
+  display: grid;
+  gap: 12px;
+  padding: 0 14px 14px;
+}
+
+.list-change-periods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.list-change-chip-delta {
+  font-weight: 600;
+}
+
+.list-change-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--fg);
+}
+
+.list-change-heading {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.list-change-items {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.list-change-items li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.list-change-items li:last-child {
+  border-bottom: none;
+}
+
+.list-change-delta {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.list-change-note {
+  margin: 0;
+  font-size: 0.75rem;
+}

@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB68898509?pdp_filters=item_id%3AMLB7389413560",
       "image": "https://http2.mlstatic.com/D_NQ_NP_796663-MLA111081037905_042026-O.webp",
-      "bullets": ["Cozinha arroz e legumes no vapor", "Mantém aquecido", "Tampa de vidro"]
+      "bullets": ["Cozinha arroz e legumes no vapor", "Mantém aquecido", "Tampa de vidro"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB68898509?pdp_filters=item_id%3AMLB7389413560",
+          "price": 138.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7389413560",
+          "catalogId": "MLB68898509",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 240
+            },
+            {
+              "date": "2026-10-30",
+              "price": 138.9
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "panela-de-arroz-midea-7-xicaras",
@@ -26,6 +47,27 @@
         "Arroz no ponto sem olhar o fogo",
         "Mantém aquecido depois de pronto",
         "7 xícaras"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB50247850?pdp_filters=item_id%3AMLB5415987536",
+          "price": 160.53,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5415987536",
+          "catalogId": "MLB50247850",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 179
+            },
+            {
+              "date": "2026-10-30",
+              "price": 160.53
+            }
+          ]
+        }
       ]
     }
   ]

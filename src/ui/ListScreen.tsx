@@ -13,6 +13,7 @@ import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { matchesSearch } from '../engine/search.ts'
 import { categoryIcon, NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
+import { ListPriceChange } from './ListPriceChange.tsx'
 import { AnswersPanel } from './AnswersPanel.tsx'
 import { ManualCard } from './ManualCard.tsx'
 import { ManualForm } from './ManualForm.tsx'
@@ -321,6 +322,8 @@ export function ListScreen({
           )}
         </button>
       </div>
+
+      <ListPriceChange view={view} />
 
       <ShareBar {...share} />
 

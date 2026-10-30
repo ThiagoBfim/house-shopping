@@ -15,6 +15,27 @@
         "Depurador: filtra e devolve o ar (sem duto)",
         "60 cm, para fogão de 4 bocas",
         "3 velocidades"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/depurador-de-embutir-slim-touch-60-cm-preto-suggar/p/MLB32343353?pdp_filters=item_id%3AMLB3596797531",
+          "price": 815,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3596797531",
+          "catalogId": "MLB32343353",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 999
+            },
+            {
+              "date": "2026-10-30",
+              "price": 815
+            }
+          ]
+        }
       ]
     },
     {
@@ -30,6 +51,27 @@
         "80 cm, para fogão de 5 bocas",
         "Inox",
         "Ainda é depurador (não joga a fumaça para fora)"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/depurador-de-ar-slim-80cm-3-velocidades-dps182ix-coifa-inox-suggar/p/MLB22337029?pdp_filters=item_id%3AMLB3825217899",
+          "price": 765.9,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3825217899",
+          "catalogId": "MLB22337029",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 920
+            },
+            {
+              "date": "2026-10-30",
+              "price": 765.9
+            }
+          ]
+        }
       ]
     },
     {
@@ -45,6 +87,23 @@
         "Coifa de verdade: exaure a fumaça para fora (com duto)",
         "Também funciona como depurador",
         "Vidro curvo"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/coifa-de-parede-70-cm-fogatti-vidro-curvo-slim-white-cor-branco/p/MLB10838095?pdp_filters=item_id%3AMLB2715751637",
+          "price": 717,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB2715751637",
+          "catalogId": "MLB10838095",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 717
+            }
+          ]
+        }
       ]
     },
     {

@@ -21,7 +21,12 @@
           "available": true,
           "externalId": "MLB3782589243",
           "catalogId": "MLB28408264",
-          "history": [{ "date": "2026-10-22", "price": 69.75 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 69.75
+            }
+          ]
         }
       ]
     },
@@ -34,7 +39,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/jogo-de-facas-6-pecas-tramontina-polywood-21199983-castanho/p/MLB27397280?pdp_filters=item_id%3AMLB4574259617",
       "image": "https://http2.mlstatic.com/D_NQ_NP_892738-MLA108812250348_032026-O.webp",
-      "bullets": ["Cabo de madeira tratada", "Cepo para guardar", "Inclui faca de churrasco"]
+      "bullets": ["Cabo de madeira tratada", "Cepo para guardar", "Inclui faca de churrasco"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/jogo-de-facas-6-pecas-tramontina-polywood-21199983-castanho/p/MLB27397280?pdp_filters=item_id%3AMLB4574259617",
+          "price": 340.67,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4574259617",
+          "catalogId": "MLB27397280",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 425
+            },
+            {
+              "date": "2026-10-30",
+              "price": 340.67
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "jogo-de-3-facas-tramontina-century",
@@ -59,7 +85,12 @@
           "available": true,
           "externalId": "MLB4099950342",
           "catalogId": "MLB27370892",
-          "history": [{ "date": "2026-10-22", "price": 436.19 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 436.19
+            }
+          ]
         }
       ]
     },
@@ -77,6 +108,27 @@
         "Balanço profissional",
         "Afiador incluso",
         "Para quem cozinha muito"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB27415380?pdp_filters=item_id%3AMLB5832029482",
+          "price": 1821,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB5832029482",
+          "catalogId": "MLB27415380",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 2079
+            },
+            {
+              "date": "2026-10-30",
+              "price": 1821
+            }
+          ]
+        }
       ]
     }
   ]

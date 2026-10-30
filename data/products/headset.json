@@ -22,8 +22,14 @@
           "externalId": "MLB1813853925",
           "catalogId": "MLB6417063",
           "history": [
-            { "date": "2026-10-22", "price": 167.44 },
-            { "date": "2026-10-25", "price": 175 }
+            {
+              "date": "2026-10-22",
+              "price": 167.44
+            },
+            {
+              "date": "2026-10-25",
+              "price": 175
+            }
           ]
         }
       ]
@@ -47,7 +53,12 @@
           "available": true,
           "externalId": "MLB6894660916",
           "catalogId": "MLB40871018",
-          "history": [{ "date": "2026-10-22", "price": 259.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 259.99
+            }
+          ]
         }
       ]
     },
@@ -60,7 +71,24 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB50743633",
       "image": "https://http2.mlstatic.com/D_NQ_NP_740382-MLA100032526731_122025-O.webp",
-      "bullets": ["Cancelamento de ruído", "Bateria de ~70 h", "Conecta em 2 aparelhos"]
+      "bullets": ["Cancelamento de ruído", "Bateria de ~70 h", "Conecta em 2 aparelhos"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB50743633",
+          "price": 515,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB50743633",
+          "catalogId": "MLB50743633",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 515
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fone-sony-wh-1000xm5-com-cancelamento-de-ruido",
@@ -85,7 +113,12 @@
           "available": true,
           "externalId": "MLB7594568986",
           "catalogId": "MLB19176887",
-          "history": [{ "date": "2026-10-22", "price": 2019 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 2019
+            }
+          ]
         }
       ]
     }

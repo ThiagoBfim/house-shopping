@@ -1,3 +1,4 @@
+import type { ComponentChildren } from 'preact'
 import type { PricePoint } from '../data/schema.ts'
 import { CHART_MONTHS } from '../data/price-history.ts'
 import { formatBRL } from '../engine/money.ts'
@@ -9,6 +10,8 @@ interface Props {
   today: string
   direction: 'down' | 'up'
   id: string
+  /** Título do gráfico (padrão: preço do produto nos últimos meses). */
+  caption?: ComponentChildren
 }
 
 const W = 320
@@ -37,7 +40,7 @@ const time = (date: string) => Date.parse(`${date}T00:00:00Z`)
 const dayMonth = (date: string) => `${date.slice(8, 10)}/${date.slice(5, 7)}`
 
 /** Gráfico em degraus do preço: o preço vale do dia em que mudou até a próxima mudança. */
-export function PriceChart({ points, today, direction, id }: Props) {
+export function PriceChart({ points, today, direction, id, caption }: Props) {
   const prices = points.map((p) => p.price)
   const [min, max] = [Math.min(...prices), Math.max(...prices)]
   const spread = max - min || max * 0.1 || 1
@@ -67,7 +70,11 @@ export function PriceChart({ points, today, direction, id }: Props) {
   return (
     <figure class={`price-chart trend-${direction}`} id={id}>
       <figcaption>
-        Preço nos últimos {CHART_MONTHS} meses <span class="muted">(dias em que mudou)</span>
+        {caption ?? (
+          <>
+            Preço nos últimos {CHART_MONTHS} meses <span class="muted">(dias em que mudou)</span>
+          </>
+        )}
       </figcaption>
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-hidden="true" focusable="false">
         <line

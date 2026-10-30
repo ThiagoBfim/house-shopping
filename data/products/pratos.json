@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB69592830?pdp_filters=item_id%3AMLB6767559174",
       "image": "https://http2.mlstatic.com/D_NQ_NP_872674-MLA110643803074_052026-O.webp",
-      "bullets": ["20 peças (6 pessoas)", "Vidro opaline: leve e resistente", "Vai ao micro-ondas"]
+      "bullets": ["20 peças (6 pessoas)", "Vidro opaline: leve e resistente", "Vai ao micro-ondas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB69592830?pdp_filters=item_id%3AMLB6767559174",
+          "price": 213,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB6767559174",
+          "catalogId": "MLB69592830",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 269
+            },
+            {
+              "date": "2026-10-30",
+              "price": 213
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "aparelho-de-jantar-oxford-porcelana-30-pecas",
@@ -22,7 +43,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB36208300?pdp_filters=item_id%3AMLB3684951181",
       "image": "https://http2.mlstatic.com/D_NQ_NP_856128-MLA95697994570_102025-O.webp",
-      "bullets": ["30 peças (6 pessoas)", "Porcelana branca", "Inclui pratos de sobremesa"]
+      "bullets": ["30 peças (6 pessoas)", "Porcelana branca", "Inclui pratos de sobremesa"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB36208300?pdp_filters=item_id%3AMLB3684951181",
+          "price": 640.1,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB3684951181",
+          "catalogId": "MLB36208300",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 640
+            },
+            {
+              "date": "2026-10-30",
+              "price": 640.1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "aparelho-de-jantar-porto-brasil-42-pecas",
@@ -37,6 +79,23 @@
         "42 peças: jantar, chá e café",
         "Cerâmica com acabamento artesanal",
         "Lava-louças e micro-ondas"
+      ],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB32486856?pdp_filters=item_id%3AMLB5660358178",
+          "price": 911,
+          "updatedAt": "2026-10-23",
+          "available": true,
+          "externalId": "MLB5660358178",
+          "catalogId": "MLB32486856",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 911
+            }
+          ]
+        }
       ]
     },
     {

@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB32691773?pdp_filters=item_id%3AMLB4093615089",
       "image": "https://http2.mlstatic.com/D_NQ_NP_667003-MLU74377810094_022024-O.webp",
-      "bullets": ["Retrátil e reclinável", "180 cm, suede", "Bom para sala pequena"]
+      "bullets": ["Retrátil e reclinável", "180 cm, suede", "Bom para sala pequena"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB32691773?pdp_filters=item_id%3AMLB4093615089",
+          "price": 964.88,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB4093615089",
+          "catalogId": "MLB32691773",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 964
+            },
+            {
+              "date": "2026-10-30",
+              "price": 964.88
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "sofa-retratil-reclinavel-blenda-mobly",
@@ -61,7 +82,12 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7588790936",
-          "history": [{ "date": "2026-10-22", "price": 9247.02 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 9247.02
+            }
+          ]
         }
       ]
     }

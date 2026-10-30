@@ -11,7 +11,28 @@
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB15785193?pdp_filters=item_id%3AMLB7762770530",
       "image": "https://http2.mlstatic.com/D_NQ_NP_890089-MLA99552528104_122025-O.webp",
-      "bullets": ["Sem vapor", "Simples e leve", "Mais trabalho em roupa amassada"]
+      "bullets": ["Sem vapor", "Simples e leve", "Mais trabalho em roupa amassada"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB15785193?pdp_filters=item_id%3AMLB7762770530",
+          "price": 127,
+          "updatedAt": "2026-10-30",
+          "available": true,
+          "externalId": "MLB7762770530",
+          "catalogId": "MLB15785193",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 199
+            },
+            {
+              "date": "2026-10-30",
+              "price": 127
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "ferro-de-passar-a-vapor-arno-ultragliss",
@@ -32,7 +53,12 @@
           "available": true,
           "externalId": "MLB7568051894",
           "catalogId": "MLB68773047",
-          "history": [{ "date": "2026-10-22", "price": 245.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 245.99
+            }
+          ]
         }
       ]
     },
@@ -59,7 +85,12 @@
           "available": true,
           "externalId": "MLB6556906064",
           "catalogId": "MLB54409377",
-          "history": [{ "date": "2026-10-22", "price": 319.99 }]
+          "history": [
+            {
+              "date": "2026-10-22",
+              "price": 319.99
+            }
+          ]
         }
       ]
     }
