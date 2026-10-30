@@ -5,7 +5,7 @@ description: Rotina semanal do catálogo do House Shopping, tudo numa execução
 
 # /sync-semanal
 
-Roda as outras skills em sequência, com o Chrome logado do usuário. O usuário está no computador (roda toda segunda às 18h, ver `scripts/agendar-sync-semanal.sh`), então captcha e dúvidas vão para ele, mas o resto segue sem perguntar.
+Roda as outras skills em sequência, com o Chrome logado do usuário. O usuário roda à mão, uma vez por semana, e está no computador, então captcha e dúvidas vão para ele, mas o resto segue sem perguntar.
 
 Argumento: quantos produtos **sem link** ganham link novo nesta rodada (padrão `10`; `0` pula essa etapa).
 
