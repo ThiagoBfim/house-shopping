@@ -8,7 +8,7 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 
 ## Comandos
 
-- `npm run dev` — servidor local (http://localhost:5173/house-shopping/)
+- `./scripts/dev.sh` — sobe o site em http://localhost:5174/house-shopping/ (ativa o Node 24, instala dependências se preciso e abre o navegador). `npm run dev` = o mesmo na porta 5173, sem o resto
 - `npm test` — Vitest (inclui validação do catálogo real em `data/`)
 - `npm run ml:links export|import` — planilha `data/affiliate/mercadolivre.csv` ↔ links de afiliado nos JSONs
 - `npm run sync:ml` — preço/disponibilidade do Mercado Livre (precisa de token em `.env.local`; ver `docs/project/MercadoLivre.md`)
