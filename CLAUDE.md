@@ -16,6 +16,12 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `npm run test:e2e` — Playwright (perfil celular), sobe o Vite sozinho na porta 4321
 - `npm run check` — lint + format + validate + testes com cobertura (≥ 90% em engine/data) + build + E2E (rodar antes de fechar um drop)
 
+## Deploy (GitHub Actions)
+
+- Push na `main` → `.github/workflows/deploy.yml` publica no GitHub Pages e cria tag/release.
+- Só `data/products/` e `data/affiliate/` mudaram → validate + build + deploy, release **patch**. Qualquer outra mudança → `checks.yml` (`npm run check`) antes, release **minor**. Só docs → sem deploy.
+- Pull requests rodam o `checks.yml`.
+
 ## Estrutura
 
 - `src/engine/` — lógica pura, sem DOM, sempre testada: `budget.ts` (planList = reload, describeList = lista exibida), `choices.ts` (recusar/travar/diff), `share.ts` (estado ↔ URL, versionado), `house.ts` (cômodos + quantidades → itens com chave `instância:categoria`, um orçamento só), `preferences.ts` (variante escolhida e necessidade ajustada; rodar antes do motor), `assistant.ts` (respostas do "Monte pra mim" → casa, orçamento e escolhas), `manual.ts` (itens adicionados pelo usuário em `choices.manual`: validação, loja pelo link), `money.ts`.

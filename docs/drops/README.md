@@ -55,7 +55,7 @@ Site no ar no GitHub Pages, preços da Amazon atualizados sozinhos e rotina sema
 
 | Drop                                               | Tema                           | Status          | Iniciado em      | Terminado em | Duração |
 | -------------------------------------------------- | ------------------------------ | --------------- | ---------------- | ------------ | ------- |
-| [6](wave-2/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages         | ⏳ A fazer      | —                | —            | —       |
+| [6](wave-2/drop-06-deploy-no-github-pages.md)      | Deploy no GitHub Pages         | 🚧 Em andamento | 2026-11-02 09:29 | —            | —       |
 | [9](wave-2/drop-09-integracao-amazon-afiliados.md) | Integração Amazon              | ⏳ A fazer      | —                | —            | —       |
 | [24](wave-2/drop-24-sync-semanal-com-pr.md)        | Sync semanal de preços e links | 🚧 Em andamento | 2026-10-27 20:06 | —            | —       |
 

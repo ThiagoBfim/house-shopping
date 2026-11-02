@@ -1,0 +1,139 @@
+# Deploy no GitHub Pages a cada push na main, com uma tag/release por deploy.
+#
+# - Só produtos mudaram (data/products/, data/affiliate/): valida o catálogo, build e deploy.
+#   Release com versão patch (v1.4.2 → v1.4.3).
+# - Qualquer outra mudança (código, rooms.json, assistant.json, config): roda o Checks
+#   completo antes do deploy. Release com versão minor (v1.4.2 → v1.5.0).
+# - Só documentação (*.md, docs/): não faz deploy.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - '.claude/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Um deploy por vez, sem cancelar o que já está publicando.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  changes:
+    name: O que mudou
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.diff.outputs.code }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - id: diff
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          # Deploy manual ou primeiro push (sem "antes"): trata como código.
+          if [ "$GITHUB_EVENT_NAME" != push ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            echo "Sem diff para comparar: rodando como mudança de código."
+            echo code=true >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          files=$(git diff --name-only "$BEFORE" "$GITHUB_SHA")
+          echo "$files"
+          code=$(echo "$files" | grep -Ev '^data/(products|affiliate)/|\.md$|^docs/|^\.claude/' || true)
+          if [ -n "$code" ]; then
+            echo "Mudança de código:"; echo "$code"
+            echo code=true >> "$GITHUB_OUTPUT"
+          else
+            echo "Só produtos: deploy sem a suíte de testes."
+            echo code=false >> "$GITHUB_OUTPUT"
+          fi
+
+  checks:
+    name: Checks
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
+    uses: ./.github/workflows/checks.yml
+
+  build:
+    name: Build
+    needs: [changes, checks]
+    # Roda com o Checks aprovado ou pulado (só produtos); nunca se ele falhou.
+    if: >-
+      always() && needs.changes.result == 'success' &&
+      (needs.checks.result == 'success' || needs.checks.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Barato e evita publicar um catálogo quebrado (também quando só os produtos mudaram).
+      - run: npm run validate
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy no GitHub Pages
+    needs: build
+    if: always() && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  release:
+    name: Tag e release
+    needs: [changes, deploy]
+    if: always() && needs.deploy.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Próxima versão
+        id: version
+        env:
+          CODE: ${{ needs.changes.outputs.code }}
+        run: |
+          last=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1)
+          if [ -z "$last" ]; then
+            next=v1.0.0
+          else
+            IFS=. read -r major minor patch <<< "${last#v}"
+            if [ "$CODE" = true ]; then
+              next="v$major.$((minor + 1)).0"
+            else
+              next="v$major.$minor.$((patch + 1))"
+            fi
+          fi
+          echo "Última: ${last:-nenhuma} → nova: $next"
+          echo "tag=$next" >> "$GITHUB_OUTPUT"
+      - name: Criar release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          KIND: ${{ needs.changes.outputs.code == 'true' && 'Código' || 'Produtos' }}
+          PAGE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --generate-notes \
+            --notes "**$KIND** · publicado em $PAGE"
