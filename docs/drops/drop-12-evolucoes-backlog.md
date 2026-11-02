@@ -15,6 +15,8 @@
 - [ ] Listas públicas prontas ("Cozinha de apartamento pequeno — R$ 15k")
 - [x] ~~Outros cômodos: Banheiro, Lavanderia, Home office~~ → Drops 13, 14 e 15
 - [ ] Outras lojas afiliadas (Magalu, Shopee)
+- [ ] Analytics leve e sem cookies (ex.: Plausible, GoatCounter): cliques em "Comprar" e compartilhamentos (veio do Drop 6)
+- [ ] Domínio próprio para o site (veio do Drop 6)
 
 ## Registro
 
