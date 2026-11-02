@@ -1,5 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { cachedShort, clearShortCache, parseShortUrl, shortenUrl } from '../src/ui/shortener.ts'
+import {
+  cachedShort,
+  canShorten,
+  clearShortCache,
+  MAX_SHORTEN_LENGTH,
+  parseShortUrl,
+  shortenUrl,
+} from '../src/ui/shortener.ts'
 
 const LONG = `https://thiagobfim.github.io/house-shopping/#l=0${'a'.repeat(400)}&s=1`
 const json = (body: unknown, ok = true) =>
@@ -51,5 +58,14 @@ describe('shortenUrl', () => {
       expect(await shortenUrl(LONG, { fetchFn, timeoutMs: 10 })).toBe(LONG)
       expect(cachedShort(LONG)).toBe(LONG)
     }
+  })
+
+  it('link maior que o limite do is.gd: nem chama o encurtador', async () => {
+    const huge = `https://thiagobfim.github.io/house-shopping/#l=0${'a'.repeat(MAX_SHORTEN_LENGTH)}`
+    const fetchFn = vi.fn(() => json({ shorturl: 'https://is.gd/abc' }))
+    expect(canShorten(huge)).toBe(false)
+    expect(canShorten(LONG)).toBe(true)
+    expect(await shortenUrl(huge, { fetchFn })).toBe(huge)
+    expect(fetchFn).not.toHaveBeenCalled()
   })
 })

@@ -267,6 +267,17 @@ describe('encodeState / decodeState', () => {
     expect(decodeState(old, rooms)?.budget).toBe(5000)
   })
 
+  it('links de produto salvos com rastreamento vão limpos no link compartilhado', () => {
+    const dirty = {
+      ...state.choices.manual[1],
+      url: 'https://www.mercadolivre.com.br/x/p/MLB1#tracking_id=abc',
+    }
+    const withDirty = { ...state, choices: { ...state.choices, manual: [dirty] } }
+    expect(decodeState(encodeState(withDirty), rooms)?.choices.manual[0].url).toBe(
+      'https://www.mercadolivre.com.br/x/p/MLB1',
+    )
+  })
+
   it('pack/unpack: ida e volta; lixo = undefined', () => {
     expect(unpack(pack('{"a":1}'))).toBe('{"a":1}')
     expect(unpack('0zz')).toBeUndefined()

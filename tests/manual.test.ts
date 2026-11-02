@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { emptyChoices } from '../src/engine/budget.ts'
 import {
   addManual,
+  cleanProductUrl,
   isValidManual,
   isWebUrl,
   keepManualIn,
@@ -193,5 +194,61 @@ describe('adicionar, editar e remover', () => {
     expect([...replacedKeys(second.manual)]).toEqual(['cozinha:geladeira'])
     // desfazer a troca = remover o item
     expect(replacedKeys(removeManual(second, 'r2').manual).size).toBe(0)
+  })
+})
+
+describe('cleanProductUrl', () => {
+  it('Mercado Livre: tira o rastreamento depois do # e os matt_*, mantém o anúncio escolhido', () => {
+    expect(
+      cleanProductUrl(
+        'https://www.mercadolivre.com.br/fritadeira-airfryer-digital-philips-walita-na23000/p/MLB62495301?matt_event_ts=1793468531731&matt_d2id=6d49&matt_tracing_id=28e9#polycard_client=recommendations&tracking_id=dabb&wid=MLB6091025890&sid=recos',
+      ),
+    ).toBe(
+      'https://www.mercadolivre.com.br/fritadeira-airfryer-digital-philips-walita-na23000/p/MLB62495301',
+    )
+    expect(
+      cleanProductUrl(
+        'https://www.mercadolivre.com.br/seladora/up/MLBU5320476728?pdp_filters=item_id:MLB5297548599#is_advertising=true&tracking_id=d9dc&ad_click_id=YzUx',
+      ),
+    ).toBe(
+      'https://www.mercadolivre.com.br/seladora/up/MLBU5320476728?pdp_filters=item_id:MLB5297548599',
+    )
+  })
+
+  it('Amazon vira /dp/<código>', () => {
+    expect(
+      cleanProductUrl(
+        'https://www.amazon.com.br/Fritadeira-Philips/dp/B0CXYZ1234/ref=sr_1_3?crid=ABC&keywords=air+fryer#customerReviews',
+      ),
+    ).toBe('https://www.amazon.com.br/dp/B0CXYZ1234')
+    expect(cleanProductUrl('https://www.amazon.com.br/gp/product/B0CXYZ1234?th=1')).toBe(
+      'https://www.amazon.com.br/dp/B0CXYZ1234',
+    )
+    // sem código do produto: só tira o # (ex.: link encurtado da Amazon)
+    expect(cleanProductUrl('https://amzn.to/3abcd#x')).toBe('https://amzn.to/3abcd')
+  })
+
+  it('outras lojas: só os parâmetros de rastreamento conhecidos; o # fica', () => {
+    expect(
+      cleanProductUrl(
+        'https://www.tokstok.com.br/cadeira?cor=preta&utm_source=google&utm_medium=cpc&gclid=abc&fbclid=x#avaliacoes',
+      ),
+    ).toBe('https://www.tokstok.com.br/cadeira?cor=preta#avaliacoes')
+    const clean = 'https://www.tokstok.com.br/cadeira?cor=preta|azul'
+    expect(cleanProductUrl(clean)).toBe(clean) // nada a tirar: o link não muda
+    expect(cleanProductUrl('não é link')).toBe('não é link')
+  })
+
+  it('o formulário já salva o link limpo', () => {
+    const parsed = parseManualInput({
+      name: 'Air fryer',
+      price: '399',
+      qty: '1',
+      url: ' https://www.mercadolivre.com.br/x/p/MLB1#tracking_id=abc ',
+    })
+    expect(parsed).toMatchObject({
+      ok: true,
+      value: { url: 'https://www.mercadolivre.com.br/x/p/MLB1' },
+    })
   })
 })
