@@ -12,6 +12,11 @@ export interface ManualItem {
   price: number
   qty: number
   url: string
+  /**
+   * Item do catálogo que este substitui ("cozinha:box"): o usuário achou um produto melhor e
+   * trocou. Enquanto existir, o item do catálogo sai da lista; remover a troca o traz de volta.
+   */
+  replaces?: string
 }
 
 /** Limite por lista, para o link compartilhado não ficar grande demais. */
@@ -118,6 +123,24 @@ export function updateManual(choices: Choices, id: string, fields: ManualFields)
     manual: choices.manual.map((item) => (item.id === id ? { ...item, ...fields } : item)),
   }
 }
+
+/**
+ * Troca o item do catálogo `item.replaces` pelo produto do usuário. Uma troca anterior do mesmo
+ * item é substituída; trava e "recusado/já tenho" do item saem (ele não está mais na lista).
+ */
+export function replaceWith(choices: Choices, item: ManualItem & { replaces: string }): Choices {
+  const key = item.replaces
+  const locked = { ...choices.locked }
+  const excluded = { ...choices.excluded }
+  delete locked[key]
+  delete excluded[key]
+  const manual = choices.manual.filter((other) => other.replaces !== key)
+  return { ...choices, locked, excluded, manual: [...manual, item] }
+}
+
+/** Itens do catálogo trocados por um produto do usuário. */
+export const replacedKeys = (items: ManualItem[]): Set<string> =>
+  new Set(items.flatMap((item) => (item.replaces ? [item.replaces] : [])))
 
 export function removeManual(choices: Choices, id: string): Choices {
   return { ...choices, manual: choices.manual.filter((item) => item.id !== id) }

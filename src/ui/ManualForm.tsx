@@ -11,8 +11,8 @@ import {
 interface Props {
   /** Prefixo dos ids dos campos (um formulário por cômodo/item). */
   id: string
-  /** Valores ao editar um item. */
-  initial?: ManualFields
+  /** Valores ao editar um item (ou o que já se sabe, ao trocar um item do catálogo). */
+  initial?: Partial<ManualFields>
   submitLabel: string
   onSave: (fields: ManualFields) => void
   onCancel: () => void
@@ -24,7 +24,7 @@ const priceText = (price: number) => price.toFixed(2).replace('.', ',')
 export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props) {
   const [input, setInput] = useState<ManualInput>({
     name: initial?.name ?? '',
-    price: initial ? priceText(initial.price) : '',
+    price: initial?.price ? priceText(initial.price) : '',
     qty: String(initial?.qty ?? 1),
     url: initial?.url ?? '',
   })
@@ -77,7 +77,7 @@ export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props
         <label for={`${id}-name`}>Nome do produto</label>
         <input
           {...field('name')}
-          autoFocus
+          autoFocus={!initial?.name}
           autoComplete="off"
           maxLength={MAX_NAME_LENGTH}
           placeholder="Ex.: Cadeira de jantar"
@@ -88,7 +88,13 @@ export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props
         <label for={`${id}-price`}>Preço unitário</label>
         <span class="manual-money">
           <span aria-hidden="true">R$</span>
-          <input {...field('price')} inputMode="decimal" autoComplete="off" placeholder="0,00" />
+          <input
+            {...field('price')}
+            autoFocus={Boolean(initial?.name) && !initial?.price}
+            inputMode="decimal"
+            autoComplete="off"
+            placeholder="0,00"
+          />
         </span>
         {error('price')}
       </div>

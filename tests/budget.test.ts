@@ -398,4 +398,38 @@ describe('itens adicionados pelo usuário', () => {
     expect(view.entries.map((e) => e.item.category)).toEqual(['geladeira', 'fogao'])
     expect(view.remaining).toBeCloseTo(1000 - 1599.6 - 2900, 2)
   })
+
+  describe('troca de um item do catálogo', () => {
+    const box = {
+      id: 'r1',
+      instanceId: 'cozinha',
+      name: 'Micro da loja X',
+      price: 450,
+      qty: 1,
+      url: 'https://loja.com/micro',
+      replaces: 'micro',
+    }
+    const replaced = choices({ manual: [box], locked: { micro: 4 } })
+
+    it('o item do catálogo sai do plano e o preço do usuário conta no lugar dele', () => {
+      const plan = tiersOf(CHEAPEST_TOTAL, replaced)
+      expect(plan).not.toHaveProperty('micro')
+      const view = describeList(room, products, CHEAPEST_TOTAL, plan, replaced)
+      expect(view.entries.map((e) => e.item.category)).not.toContain('micro')
+      expect(view.skipped.map((e) => e.item.category)).not.toContain('micro')
+      expect(view.total).toBeCloseTo(CHEAPEST_TOTAL - 500 + 450, 2)
+      expect(view.manual[0].replaced).toEqual({
+        item: { category: 'micro', need: 3, qty: 1 },
+        label: 'Micro',
+        cheapest: products.micro.options[0],
+      })
+    })
+
+    it('troca de item que não está no cômodo vira item adicionado comum', () => {
+      const other = choices({ manual: [{ ...box, replaces: 'adega' }] })
+      const view = buildList(room, products, 1_000_000, other)
+      expect(view.manual[0]).not.toHaveProperty('replaced')
+      expect(view.entries.map((e) => e.item.category)).toContain('micro')
+    })
+  })
 })

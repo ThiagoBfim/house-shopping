@@ -9,7 +9,7 @@ import type {
   Tier,
   Variant,
 } from '../data/schema.ts'
-import { storeFromUrl, type ManualItem } from './manual.ts'
+import { replacedKeys, storeFromUrl, type ManualItem } from './manual.ts'
 import { chosenVariant } from './preferences.ts'
 
 /** Tier escolhido para cada categoria incluída na lista. */
@@ -33,7 +33,10 @@ export interface Choices {
   variants: Record<string, string>
   /** Necessidade ajustada por item (ex.: quem quase não cozinha); ausente = a do catálogo. */
   needs: Record<string, Need>
-  /** Itens adicionados pelo usuário (fora do catálogo); entram sempre, antes do motor. */
+  /**
+   * Itens adicionados pelo usuário (fora do catálogo); entram sempre, antes do motor. Os que
+   * têm `replaces` tiram o item do catálogo da lista (troca).
+   */
   manual: ManualItem[]
 }
 
@@ -78,6 +81,14 @@ export interface ManualEntry {
   store: Store
   /** Preço × quantidade. */
   subtotal: number
+  /** Item do catálogo que este substitui (quando é uma troca). */
+  replaced?: ReplacedEntry
+}
+
+export interface ReplacedEntry {
+  item: RoomItem
+  label: string
+  cheapest: ProductOption
 }
 
 export type FilterReason = 'need' | 'helper' | 'utensil'
@@ -189,9 +200,15 @@ export function planList(room: Room, products: Products, budget: number, choices
   const limit = cents(budget)
   const cost = (item: RoomItem, option: ProductOption) => cents(option.price) * item.qty
   let spent = manualCents(choices.manual)
+  const replaced = replacedKeys(choices.manual)
 
   const active = room.items
-    .filter((item) => !choices.excluded[item.category] && !filterReason(item, products, choices))
+    .filter(
+      (item) =>
+        !choices.excluded[item.category] &&
+        !replaced.has(item.category) &&
+        !filterReason(item, products, choices),
+    )
     .sort(byImportance)
   const free = active.filter((item) => choices.locked[item.category] === undefined)
 
@@ -257,13 +274,28 @@ export function describeList(
   }
   let total = manualCents(choices.manual)
   const saved = { refused: 0, owned: 0 }
-  view.manual = choices.manual.map((item) => ({
-    item,
-    store: storeFromUrl(item.url),
-    subtotal: (cents(item.price) * item.qty) / 100,
-  }))
+  const replaced = new Map<string, ReplacedEntry>()
+  for (const item of room.items) {
+    if (!choices.manual.some((m) => m.replaces === item.category)) continue
+    const { label } = products[item.category]
+    replaced.set(item.category, {
+      item,
+      label,
+      cheapest: sortedOptions(products, item.category)[0],
+    })
+  }
+  view.manual = choices.manual.map((item) => {
+    const entry: ManualEntry = {
+      item,
+      store: storeFromUrl(item.url),
+      subtotal: (cents(item.price) * item.qty) / 100,
+    }
+    const original = item.replaces && replaced.get(item.replaces)
+    return original ? { ...entry, replaced: original } : entry
+  })
 
   for (const item of [...room.items].sort(byImportance)) {
+    if (replaced.has(item.category)) continue
     const { label, utensil, helper = false, variants } = products[item.category]
     const options = sortedOptions(products, item.category)
     const reason = choices.excluded[item.category]

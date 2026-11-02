@@ -88,6 +88,24 @@ describe('exportar a lista', () => {
     expect(all[index + 1].room).toBe('Quarto 2')
   })
 
+  it('troca: coluna Item com o item do catálogo que ela substitui', () => {
+    const swap = {
+      id: 'r1',
+      instanceId: 'cozinha',
+      name: 'Geladeira da loja X',
+      price: 3000,
+      qty: 1,
+      url: 'https://loja.com/geladeira',
+      replaces: 'cozinha:geladeira',
+    }
+    const withSwap = buildList(custom.room, custom.products, 60_000, {
+      ...emptyChoices(),
+      manual: [swap],
+    })
+    const row = listRows(withSwap, house.instances).find((r) => r.product === swap.name)
+    expect(row).toMatchObject({ room: 'Cozinha', item: 'Geladeira (trocado por você)' })
+  })
+
   it('nome do arquivo com a data', () => {
     expect(exportFileName('2026-10-22')).toBe('lista-house-shopping-2026-10-22.xlsx')
   })

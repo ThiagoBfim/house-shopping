@@ -1,7 +1,14 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
 import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
-import { expandHouse, houseItemKeys, itemKey, normalizeSpec, type HouseSpec } from './house.ts'
+import {
+  expandHouse,
+  houseItemKeys,
+  itemKey,
+  normalizeSpec,
+  splitItemKey,
+  type HouseSpec,
+} from './house.ts'
 import type { Answers } from './assistant.ts'
 import { isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
 
@@ -47,13 +54,16 @@ interface Wire {
   t?: Record<string, string>
   /** Necessidade ajustada por item. */
   e?: Record<string, number>
-  /** Itens adicionados pelo usuário: [cômodo, nome, preço, link, quantidade (ausente = 1)]. */
+  /**
+   * Itens adicionados pelo usuário: [cômodo, nome, preço, link, quantidade (ausente = 1),
+   * item do catálogo que substitui (ausente = só adicionado)].
+   */
   m?: WireManual[]
   /** Respostas do assistente: pergunta → ids das respostas. */
   a?: Answers
 }
 
-type WireManual = [string, string, number, string, number?]
+type WireManual = [string, string, number, string, number?, string?]
 
 export function encodeState(state: ListState): string {
   const wire: Wire = {
@@ -72,8 +82,12 @@ export function encodeState(state: ListState): string {
   if (Object.keys(state.choices.variants).length) wire.t = state.choices.variants
   if (Object.keys(state.choices.needs).length) wire.e = state.choices.needs
   if (state.choices.manual.length) {
-    wire.m = state.choices.manual.map(({ instanceId, name, price, url, qty }) =>
-      qty === 1 ? [instanceId, name, price, url] : [instanceId, name, price, url, qty],
+    wire.m = state.choices.manual.map(({ instanceId, name, price, url, qty, replaces }) =>
+      replaces
+        ? [instanceId, name, price, url, qty, replaces]
+        : qty === 1
+          ? [instanceId, name, price, url]
+          : [instanceId, name, price, url, qty],
     )
   }
   if (state.answers && Object.keys(state.answers).length) wire.a = state.answers
@@ -151,7 +165,7 @@ export function decodeState(encoded: string, rooms: Rooms): ListState | undefine
         string,
         Need
       >,
-      manual: manualItems(wire.m, house, rooms),
+      manual: manualItems(wire.m, house, rooms, keys),
     },
     ...(answers(wire.a) && { answers: answers(wire.a) }),
   }
@@ -175,20 +189,37 @@ function answers(raw: unknown): Answers | undefined {
   return valid.length ? (Object.fromEntries(valid) as Answers) : undefined
 }
 
-/** Itens adicionados válidos e de cômodos que estão na casa; ids regerados pela posição. */
-function manualItems(raw: unknown, house: HouseSpec, rooms: Rooms): ManualItem[] {
+/**
+ * Itens adicionados válidos e de cômodos que estão na casa; ids regerados pela posição. Troca de
+ * um item que não existe mais (ou repetida) vira um item adicionado comum.
+ */
+function manualItems(
+  raw: unknown,
+  house: HouseSpec,
+  rooms: Rooms,
+  keys: Set<string>,
+): ManualItem[] {
   if (!Array.isArray(raw)) return []
   const instances = new Set(expandHouse(rooms, {}, house).instances.map((i) => i.id))
   const items: ManualItem[] = []
   for (const entry of raw) {
     if (!Array.isArray(entry)) continue
-    const [instanceId, name, price, url, qty = 1] = entry as unknown[]
+    const [instanceId, name, price, url, qty = 1, replaces] = entry as unknown[]
     if (typeof instanceId !== 'string' || !instances.has(instanceId)) continue
     if (typeof name !== 'string' || typeof price !== 'number') continue
     if (typeof url !== 'string' || typeof qty !== 'number') continue
     const fields = { name: name.trim(), price, qty, url }
     if (!isValidManual(fields)) continue
-    items.push({ id: `m${items.length + 1}`, instanceId, ...fields })
+    const item: ManualItem = { id: `m${items.length + 1}`, instanceId, ...fields }
+    if (
+      typeof replaces === 'string' &&
+      keys.has(replaces) &&
+      splitItemKey(replaces).instanceId === instanceId &&
+      !items.some((other) => other.replaces === replaces)
+    ) {
+      item.replaces = replaces
+    }
+    items.push(item)
   }
   return items.slice(0, MAX_MANUAL_ITEMS)
 }

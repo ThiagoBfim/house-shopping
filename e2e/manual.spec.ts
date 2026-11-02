@@ -116,3 +116,43 @@ test('com vários cômodos, o item entra no cômodo escolhido e sai junto com el
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   await expect(page.getByRole('article', { name: /^Adicionado por você/ })).toHaveCount(0)
 })
+
+test('trocar um item do catálogo por um produto achado pelo usuário e desfazer', async ({
+  page,
+}) => {
+  await page.goto('./')
+  await pickRooms(page, { Cozinha: 1 })
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  const before = await listTotal(page)
+
+  const original = page.getByRole('article', { name: /^Geladeira:/ })
+  const originalPrice = Number(
+    ((await original.locator('.product-price strong').textContent()) ?? '')
+      .replace(/[^\d,]/g, '')
+      .replace(',', '.'),
+  )
+  await original.getByRole('button', { name: 'Trocar' }).click()
+  // o nome já vem preenchido com o item; o foco vai para o preço
+  await expect(page.getByLabel('Nome do produto')).toHaveValue('Geladeira')
+  await expect(page.getByLabel('Preço unitário')).toBeFocused()
+  await page.getByLabel('Preço unitário').fill('2.999,90')
+  await page.getByLabel('Link do produto').fill('https://www.magazineluiza.com.br/geladeira')
+  await page.getByRole('button', { name: 'Trocar', exact: true }).click()
+
+  const swap = page.getByRole('article', { name: 'Trocado por você (Geladeira): Geladeira' })
+  await expect(swap).toBeVisible()
+  await expect(swap).toContainText(/R\$\s2\.999,90/)
+  await expect(page.getByRole('article', { name: /^Geladeira:/ })).toHaveCount(0)
+  expect(await listTotal(page)).toBeCloseTo(before - originalPrice + 2999.9, 2)
+
+  // recalcular e recarregar mantêm a troca
+  await page.getByRole('button', { name: /Recalcular lista/ }).click()
+  await page.reload()
+  await expect(swap).toBeVisible()
+
+  // desfazer a troca traz o item do catálogo de volta
+  await swap.getByRole('button', { name: 'Desfazer troca' }).click()
+  await expect(swap).toBeHidden()
+  await expect(page.getByRole('article', { name: /^Geladeira:/ })).toBeVisible()
+  await expect(page.getByText('Geladeira voltou para a lista.')).toBeVisible()
+})

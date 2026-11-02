@@ -47,6 +47,7 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [22](drop-22-suas-respostas-na-lista.md)                   | Suas respostas na lista                  | ✅ Concluído                    | 2026-10-23 18:02 | 2026-10-23 18:20 | 18min   |
 | [23](drop-23-grafico-de-preco.md)                          | Gráfico de preço                         | ✅ Concluído                    | 2026-10-25 06:10 | 2026-10-25 06:27 | 17min   |
 | [25](drop-25-variacao-da-lista.md)                         | Histórico para todos e variação da lista | ✅ Concluído                    | 2026-10-30 12:33 | 2026-10-30 12:39 | 6min    |
+| [26](drop-26-trocar-item.md)                               | Trocar item por um produto seu           | ✅ Concluído                    | 2026-10-31 12:43 | 2026-10-31 12:46 | 3min    |
 
 ### 2ª wave — publicação e automação
 

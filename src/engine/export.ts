@@ -25,6 +25,8 @@ const STORE_NAMES: Record<Store, string> = {
 
 /** Coluna "Item" dos itens adicionados pelo usuário. */
 export const MANUAL_ITEM_LABEL = 'Adicionado por você'
+/** Coluna "Item" de uma troca: "Box (trocado por você)". */
+export const REPLACED_ITEM_SUFFIX = 'trocado por você'
 
 /**
  * Itens da lista exibida, agrupados por cômodo na ordem da casa; em cada cômodo, os
@@ -45,10 +47,10 @@ export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[]
       url: option.url,
     },
   }))
-  const manualRows = view.manual.map(({ item, store, subtotal }) => ({
+  const manualRows = view.manual.map(({ item, store, subtotal, replaced }) => ({
     instanceId: item.instanceId,
     row: {
-      item: MANUAL_ITEM_LABEL,
+      item: replaced ? `${replaced.label} (${REPLACED_ITEM_SUFFIX})` : MANUAL_ITEM_LABEL,
       product: item.name,
       qty: item.qty,
       price: item.price,

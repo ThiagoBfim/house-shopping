@@ -24,6 +24,8 @@ interface Props {
   onToggleLock: () => void
   onOwned: () => void
   onRefuse: () => void
+  /** Abre o formulário para trocar por um produto do usuário (ausente = limite atingido). */
+  onReplace?: () => void
   onVariant: (variant: string) => void
 }
 
@@ -42,6 +44,7 @@ export function ProductCard({
   onToggleLock,
   onOwned,
   onRefuse,
+  onReplace,
   onVariant,
 }: Props) {
   const { option, options, item, label, subtotal, locked, utensil, helper } = entry
@@ -131,6 +134,18 @@ export function ProductCard({
         <div class="card-actions">
           <button type="button" aria-pressed={locked} onClick={onToggleLock}>
             {locked ? '🔓 Destravar' : '🔒 Travar'}
+          </button>
+          <button
+            type="button"
+            disabled={!onReplace}
+            title={
+              onReplace
+                ? 'Achou um produto melhor? Cole o link e o preço dele.'
+                : 'Limite de itens adicionados por lista atingido.'
+            }
+            onClick={onReplace}
+          >
+            ⇄ Trocar
           </button>
           <button type="button" onClick={onOwned}>
             ✓ Já tenho

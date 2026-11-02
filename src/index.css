@@ -2099,6 +2099,16 @@ h3 {
   border-style: solid;
 }
 
+.replace-title {
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.manual-card.is-replacement .manual-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
 .product-list + .manual-card {
   margin-top: 12px;
 }

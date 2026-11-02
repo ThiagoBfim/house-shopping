@@ -9,6 +9,8 @@ import {
   parseManualInput,
   parsePrice,
   removeManual,
+  replacedKeys,
+  replaceWith,
   storeFromUrl,
   updateManual,
   type ManualItem,
@@ -171,5 +173,25 @@ describe('adicionar, editar e remover', () => {
     const a = newManualId()
     expect(a).toHaveLength(8)
     expect(newManualId()).not.toBe(a)
+  })
+
+  it('replaceWith: troca o item do catálogo, tira trava/exclusão e substitui troca anterior', () => {
+    const start = {
+      ...emptyChoices(),
+      locked: { 'cozinha:geladeira': 2 as const, 'cozinha:fogao': 1 as const },
+      excluded: { 'cozinha:geladeira': 'owned' as const },
+      manual: [item({ id: 'x0' })],
+    }
+    const first = replaceWith(start, { ...item({ id: 'r1' }), replaces: 'cozinha:geladeira' })
+    expect(first.locked).toEqual({ 'cozinha:fogao': 1 })
+    expect(first.excluded).toEqual({})
+    expect(first.manual.map((m) => m.id)).toEqual(['x0', 'r1'])
+    expect(start.manual).toHaveLength(1)
+
+    const second = replaceWith(first, { ...item({ id: 'r2' }), replaces: 'cozinha:geladeira' })
+    expect(second.manual.map((m) => m.id)).toEqual(['x0', 'r2'])
+    expect([...replacedKeys(second.manual)]).toEqual(['cozinha:geladeira'])
+    // desfazer a troca = remover o item
+    expect(replacedKeys(removeManual(second, 'r2').manual).size).toBe(0)
   })
 })

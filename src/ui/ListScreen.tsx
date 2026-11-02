@@ -1,5 +1,12 @@
 import { useState } from 'preact/hooks'
-import type { Choices, ListEntry, ListView, ManualEntry, Plan } from '../engine/budget.ts'
+import {
+  byImportance,
+  type Choices,
+  type ListEntry,
+  type ListView,
+  type ManualEntry,
+  type Plan,
+} from '../engine/budget.ts'
 import { exclude, lockAt, restore, setVariant, unlock, type Change } from '../engine/choices.ts'
 import { splitItemKey, type RoomInstance } from '../engine/house.ts'
 import {
@@ -7,6 +14,7 @@ import {
   MAX_MANUAL_ITEMS,
   newManualId,
   removeManual,
+  replaceWith,
   updateManual,
 } from '../engine/manual.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
@@ -88,6 +96,14 @@ export function ListScreen({
   const [adding, setAdding] = useState<string>()
   /** Item adicionado pelo usuário sendo editado. */
   const [editing, setEditing] = useState<string>()
+  /** Item do catálogo com o formulário de "Trocar" aberto. */
+  const [replacing, setReplacing] = useState<string>()
+  /** Abre um formulário por vez (adicionar, editar ou trocar). */
+  const openForm = (form: { adding?: string; editing?: string; replacing?: string }) => {
+    setAdding(form.adding)
+    setEditing(form.editing)
+    setReplacing(form.replacing)
+  }
   const updateCollapsed = (ids: string[]) => {
     setCollapsed(ids)
     saveCollapsed(ids)
@@ -123,8 +139,8 @@ export function ListScreen({
       titles.get(splitItemKey(entry.item.category).instanceId) ?? '',
     ]),
   )
-  const manualFound = view.manual.filter(({ item }) =>
-    matchesSearch(query, [item.name, titles.get(item.instanceId) ?? '']),
+  const manualFound = view.manual.filter(({ item, replaced }) =>
+    matchesSearch(query, [item.name, replaced?.label ?? '', titles.get(item.instanceId) ?? '']),
   )
   const entriesOf = (instanceId: string) =>
     found.filter((entry) => splitItemKey(entry.item.category).instanceId === instanceId)
@@ -151,6 +167,34 @@ export function ListScreen({
         `${name}: ${TIER_LABELS[target.tier].toLowerCase()} (travado).`,
       )
     }
+    if (replacing === category) {
+      return (
+        <div key={category} class="manual-card is-editing">
+          <p class="replace-title">
+            Trocar <strong>{name}</strong> por um produto que você achou
+            <span class="muted"> · hoje: {option.name}</span>
+          </p>
+          <ManualForm
+            id={`replace-${category}`}
+            initial={{ name: entry.label, qty: entry.item.qty }}
+            submitLabel="Trocar"
+            onCancel={() => setReplacing(undefined)}
+            onSave={(fields) => {
+              setReplacing(undefined)
+              onChoices(
+                replaceWith(choices, {
+                  id: newManualId(),
+                  instanceId,
+                  replaces: category,
+                  ...fields,
+                }),
+                `${name} trocado por ${fields.name}.`,
+              )
+            }}
+          />
+        </div>
+      )
+    }
     return (
       <ProductCard
         key={category}
@@ -168,6 +212,7 @@ export function ListScreen({
           onChoices(exclude(choices, category, 'owned'), `${name}: marcado como “já tenho”.`)
         }
         onRefuse={() => onChoices(exclude(choices, category, 'refused'), `${name} recusado.`)}
+        onReplace={manualFull ? undefined : () => openForm({ replacing: category })}
         onVariant={(variant) =>
           onChoices(
             setVariant(choices, category, variant),
@@ -180,6 +225,7 @@ export function ListScreen({
 
   const renderManual = ({ item, ...rest }: ManualEntry) => {
     const name = grouped ? `${item.name} (${titles.get(item.instanceId)})` : item.name
+    const { replaced } = rest
     if (editing === item.id) {
       return (
         <div key={item.id} class="manual-card is-editing">
@@ -200,11 +246,16 @@ export function ListScreen({
       <ManualCard
         key={item.id}
         entry={{ item, ...rest }}
-        onEdit={() => {
-          setAdding(undefined)
-          setEditing(item.id)
-        }}
-        onRemove={() => onChoices(removeManual(choices, item.id), `${name} removido.`)}
+        onEdit={() => openForm({ editing: item.id })}
+        onRemove={() =>
+          replaced
+            ? onChoices(
+                removeManual(choices, item.id),
+                `${nameOf(replaced.item.category, replaced.label)} voltou para a lista.`,
+                { [replaced.item.category]: replaced.cheapest.tier },
+              )
+            : onChoices(removeManual(choices, item.id), `${name} removido.`)
+        }
       />
     )
   }
@@ -233,10 +284,7 @@ export function ListScreen({
           class="small-button"
           aria-label={`Adicionar item em ${instance.title}`}
           disabled={manualFull}
-          onClick={() => {
-            setEditing(undefined)
-            setAdding(instance.id)
-          }}
+          onClick={() => openForm({ adding: instance.id })}
         >
           + Adicionar item
         </button>
@@ -248,16 +296,25 @@ export function ListScreen({
       </div>
     )
 
-  /** Itens do cômodo (catálogo + adicionados) e o "Adicionar item". */
+  /**
+   * Itens do cômodo e o "Adicionar item". Uma troca fica no lugar do item que substitui; os
+   * adicionados vêm depois dos do catálogo.
+   */
   const renderRoomBody = (instance: RoomInstance) => {
     const entries = entriesOf(instance.id)
     const manual = manualOf(instance.id)
+    const rows = [
+      ...entries.map((entry) => ({ item: entry.item, render: () => renderCard(entry) })),
+      ...manual
+        .filter((entry) => entry.replaced)
+        .map((entry) => ({ item: entry.replaced!.item, render: () => renderManual(entry) })),
+    ].sort((a, b) => byImportance(a.item, b.item))
     return (
       <>
         {entries.length || manual.length ? (
           <div class="product-list">
-            {entries.map(renderCard)}
-            {manual.map(renderManual)}
+            {rows.map((row) => row.render())}
+            {manual.filter((entry) => !entry.replaced).map(renderManual)}
           </div>
         ) : searching ? null : grouped ? (
           <p class="muted room-group-empty">Nada para comprar neste cômodo.</p>

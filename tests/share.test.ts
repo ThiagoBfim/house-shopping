@@ -249,6 +249,38 @@ describe('encodeState / decodeState', () => {
     expect(notArray?.choices.manual).toEqual([])
   })
 
+  it('trocas: ida e volta; item fora da casa, de outro cômodo ou repetido vira item comum', () => {
+    const ok = 'https://loja.com/p'
+    const swap = { ...state.choices.manual[1], replaces: 'cozinha:geladeira' }
+    const withSwap = { ...state, choices: { ...state.choices, manual: [swap] } }
+    expect(decodeState(encodeState(withSwap), rooms)?.choices.manual).toEqual([
+      { ...swap, id: 'm1' },
+    ])
+
+    const decoded = decodeState(
+      wire({
+        v: STATE_VERSION,
+        h: { cozinha: 1, quarto: 1 },
+        b: 5000,
+        m: [
+          ['cozinha', 'Fogão bom', 900, ok, 1, 'cozinha:fogao'],
+          ['cozinha', 'Outro fogão', 800, ok, 1, 'cozinha:fogao'],
+          ['cozinha', 'Colchão', 900, ok, 1, 'quarto:colchao'],
+          ['cozinha', 'Nada', 10, ok, 1, 'cozinha:nao-existe'],
+          ['cozinha', 'Número', 10, ok, 1, 42],
+        ],
+      }),
+      rooms,
+    )
+    expect(decoded?.choices.manual.map((m) => m.replaces)).toEqual([
+      'cozinha:fogao',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+    ])
+  })
+
   it('itens adicionados: no máximo MAX_MANUAL_ITEMS', () => {
     const many = Array.from({ length: 40 }, (_, i) => ['cozinha', `Item ${i}`, 10, 'https://a.com'])
     const decoded = decodeState(
