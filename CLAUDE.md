@@ -20,7 +20,7 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 
 - Push na `main` → `.github/workflows/deploy.yml` publica no GitHub Pages e cria tag/release.
 - Só `data/products/` e `data/affiliate/` mudaram → validate + build + deploy, release **patch**. Qualquer outra mudança → `checks.yml` (`npm run check`) antes, release **minor**. Só docs → sem deploy.
-- Pull requests rodam o `checks.yml`.
+- `main` protegida: só entra por PR com o check `npm run check` verde (o `checks.yml`; em PR só de produtos/docs ele roda apenas o `validate`). Push direto na `main` é recusado.
 
 ## Estrutura
 
