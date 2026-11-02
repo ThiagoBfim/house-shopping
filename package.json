@@ -21,7 +21,8 @@
     "test:e2e": "playwright test",
     "ml:links": "node scripts/ml-links.ts",
     "sync:ml": "node scripts/sync-mercadolivre.ts",
-    "ml:auth": "node scripts/ml-auth.ts"
+    "ml:auth": "node scripts/ml-auth.ts",
+    "server": "node server/index.ts"
   },
   "dependencies": {
     "lz-string": "^1.5.0",

@@ -134,6 +134,161 @@ h3 {
   color: var(--muted);
 }
 
+/* Recursos em teste (backend local da 2ª wave) */
+
+.labs-panel {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.labs-panel summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.labs-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.labs-toggle input {
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.labs-toggle.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Planta da casa (recurso em teste) */
+
+.floor-plan-upload {
+  margin-bottom: 16px;
+}
+
+.floor-plan-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.floor-plan-upload label.small-button {
+  cursor: pointer;
+}
+
+.floor-plan-upload label.is-disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.floor-plan-upload progress {
+  width: 100%;
+  margin-top: 8px;
+  accent-color: var(--accent);
+}
+
+.floor-plan-upload .notice p {
+  margin: 0 0 4px;
+}
+
+.floor-plan-drawing {
+  margin: 16px 0;
+}
+
+.floor-plan-drawing h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.floor-plan-drawing svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.plan-room rect {
+  fill: var(--bg);
+  stroke: var(--fg);
+  stroke-width: 4;
+}
+
+.plan-room.is-linked rect {
+  fill: var(--accent-soft);
+}
+
+.plan-room.is-linked {
+  cursor: pointer;
+}
+
+.plan-room.is-linked:hover rect,
+.plan-room.is-linked:focus-visible rect {
+  stroke: var(--accent);
+  stroke-width: 7;
+}
+
+.plan-room:focus {
+  outline: none;
+}
+
+.plan-room text {
+  fill: var(--fg);
+}
+
+.plan-room-title {
+  font-weight: 700;
+}
+
+.plan-room-more {
+  fill: var(--muted);
+  font-weight: 700;
+}
+
+/* Preços mais baratos (recurso em teste) */
+
+.cheaper-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.cheaper-controls select {
+  font: inherit;
+  color: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.cheaper-prices progress {
+  vertical-align: middle;
+  accent-color: var(--accent);
+}
+
+.cheaper-prices .notice p {
+  margin: 0 0 6px;
+}
+
+.found-badge {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .app-footer {
   display: flex;
   flex-wrap: wrap;

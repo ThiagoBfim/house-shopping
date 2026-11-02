@@ -32,6 +32,11 @@ export function ManualCard({ entry, onEdit, onRemove }: Props) {
           <span class="manual-badge">Adicionado por você</span>
         )}
         <h3 class="product-name">{item.name}</h3>
+        {item.found && (
+          <p class="found-badge">
+            💰 Mais barato em {item.found.store} · era {formatBRL(item.found.was)}
+          </p>
+        )}
         <p class="product-price">
           <strong>{formatBRL(subtotal)}</strong>
           {item.qty > 1 && (

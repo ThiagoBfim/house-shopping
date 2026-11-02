@@ -23,6 +23,9 @@ import { categoryIcon, NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { Filters, type FilterValues } from './Filters.tsx'
 import { ListPriceChange } from './ListPriceChange.tsx'
 import { AnswersPanel } from './AnswersPanel.tsx'
+import { CheaperPrices } from './CheaperPrices.tsx'
+import type { SavedPlan } from './floor-plan-store.ts'
+import { FloorPlanDrawing } from './FloorPlanDrawing.tsx'
 import { ManualCard } from './ManualCard.tsx'
 import { ManualForm } from './ManualForm.tsx'
 import { ProductCard } from './ProductCard.tsx'
@@ -49,6 +52,10 @@ interface Props {
   /** Painel "Suas respostas" (perguntas do assistente que valem para a casa). */
   answers: Omit<Parameters<typeof AnswersPanel>[0], 'onRedo'>
   share: Parameters<typeof ShareBar>[0]
+  /** Planta lida (recurso em teste ligado): desenho do imóvel com os móveis. */
+  floorPlan?: SavedPlan
+  /** Recurso em teste "Preços mais baratos" ligado. */
+  cheaperPrices?: boolean
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
@@ -89,6 +96,8 @@ export function ListScreen({
   onAssistant,
   answers,
   share,
+  floorPlan,
+  cheaperPrices,
 }: Props) {
   const [query, setQuery] = useState('')
   const [collapsed, setCollapsed] = useState<string[]>(readCollapsed)
@@ -393,6 +402,17 @@ export function ListScreen({
       </details>
 
       <AnswersPanel {...answers} onRedo={onAssistant} />
+
+      {floorPlan && <FloorPlanDrawing plan={floorPlan} view={view} instances={instances} />}
+
+      {cheaperPrices && hasItems && (
+        <CheaperPrices
+          view={view}
+          instances={instances}
+          choices={choices}
+          onChoices={(next, message) => onChoices(next, message)}
+        />
+      )}
 
       {over && (
         <p class="notice notice-warn">

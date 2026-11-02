@@ -13,44 +13,43 @@ Rascunho da 2ª wave, replanejada do zero em 2026-11-02 (a anterior, só com a I
 
 ## Objetivo da wave
 
-> **A definir.** Uma frase: o que muda para quem usa o site quando a 2ª wave terminar.
+Três funcionalidades novas, nesta ordem:
 
-**Pronto quando:** _a definir._
+1. **Planta → móveis → desenho:** a pessoa envia a planta da casa (imagem ou PDF), o site identifica os cômodos e o tamanho de cada um, sugere os móveis e desenha o imóvel com os móveis em cada cômodo.
+2. **Preços mais baratos:** um botão procura os produtos da lista mais baratos em outras lojas e troca links e preços, com como voltar ao que era antes.
+3. **Cobrança:** as duas funcionalidades acima passam a ser pagas.
 
-## Candidatos
+**Primeiro localmente, com o Claude Code.** As funcionalidades 1 e 2 rodam na máquina: um backend local (`server/`) chama o `claude -p` com uma skill (`/floor-plan` e a `/search-better-prices` que já existe). No site, elas ficam atrás de chaves ("Recursos em teste") que só aparecem quando o backend local está rodando; o site publicado não muda. A cobrança é a última: depende de levar o backend para a nuvem.
 
-Ideias levantadas do que ficou aberto. Nada aqui está decidido: escolher, cortar ou juntar ao criar os drops.
-
-| Tema                           | O que é                                                                                                       | De onde veio            |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Amazon                         | Preço e link de afiliado da Amazon (Creators API; a PA-API 5.0 acabou em 30/04/2026), "Também na Amazon"      | Drop 9 apagado          |
-| Outras lojas afiliadas         | Magalu, Shopee                                                                                                | Backlog (Drop 12)       |
-| Indisponível cai de tier       | Produto sem estoque some e o motor usa o próximo tier                                                         | Drop 9 apagado          |
-| Analytics sem cookies          | Plausible ou GoatCounter: cliques em "Comprar" e compartilhamentos                                            | Drop 6 → backlog        |
-| Domínio próprio                | Site fora do `github.io`                                                                                      | Drop 6 → backlog        |
-| Link menor para listas grandes | Não mandar o plano inteiro no link, só o que difere do recalculado (listas grandes passam do limite do is.gd) | Drop 29 (próximo passo) |
-| Filtros de produto             | Marca, cor, voltagem (110/220 V), tamanho                                                                     | Backlog (Drop 12)       |
-| Comparar opções                | Duas opções lado a lado                                                                                       | Backlog (Drop 12)       |
-| Checklist "comprado" / PDF     | Marcar o que já comprou; exportar em PDF                                                                      | Backlog (Drop 12)       |
-| Listas prontas                 | "Cozinha de apartamento pequeno — R$ 15k"                                                                     | Backlog (Drop 12)       |
-
-## Decisões em aberto
-
-- [ ] Objetivo e critério de "pronto" da wave
-- [ ] Fechar os Drops 10, 11 e 24 antes, ou levar junto com a 2ª wave?
-- [ ] Quais candidatos entram (e em que ordem)
-- [ ] Integrações que precisam de conta/credencial (Amazon, analytics, domínio): quem cria e onde ficam os segredos (GitHub Secrets ou só na máquina, como o token do Mercado Livre)
+**Pronto quando:** rodando localmente, enviar uma planta monta a casa com os cômodos e os móveis certos e mostra o desenho; o botão de preços troca os itens por ofertas mais baratas e "Voltar ao que era antes" desfaz tudo.
 
 ## Drops
 
-| Drop | Tema | Meta |
-| ---- | ---- | ---- |
-| —    | —    | —    |
-
-Numeração continua de onde parou: o próximo drop é o **30** (`drop-30-<tema>.md`), com a tabela de status no topo e a linha em [`docs/drops/README.md`](../README.md), como os da 1ª wave.
+| Drop                                      | Tema                               | Meta                                                                   |
+| ----------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------- |
+| [30](drop-30-backend-local-e-recursos.md) | Backend local e recursos em teste  | `npm run server` chama o Claude Code; chaves no site                   |
+| [31](drop-31-planta-para-comodos.md)      | Planta → cômodos e móveis          | Enviar a planta preenche os cômodos, com a cama pelo tamanho do quarto |
+| [32](drop-32-desenho-da-planta.md)        | Desenho do imóvel com os móveis    | Planta esquemática com os móveis da lista em cada cômodo               |
+| [33](drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer) | Botão que troca links e preços pelos mais baratos; voltar ao anterior  |
+| [34](drop-34-cobranca.md)                 | Cobrança                           | Cobrar pelas funcionalidades 1 e 2 (por último)                        |
 
 ## Ordem sugerida
 
 ```
-a definir
+30 (backend local) → 31 (planta → cômodos) → 32 (desenho) → 33 (preços mais baratos) → 34 (cobrança)
 ```
+
+## Decisões
+
+- **Claude Code local antes da nuvem:** valida as funcionalidades sem conta, chave de API nem custo de infraestrutura. O custo de cada uso aparece no `total_cost_usd` da resposta do `claude -p` e serve para precificar a cobrança.
+- **Sem crawler:** a busca de preços usa a skill `/search-better-prices` (pesquisa no Google e confere a página da loja), não um robô que varre as lojas.
+- **Desenho esquemático:** cômodos como retângulos na posição da planta e os móveis como ícones; disposição realista dos móveis fica fora desta wave.
+
+## Em aberto
+
+- [ ] Para a cobrança (Drop 34): backend na nuvem (sugestão: Supabase), meio de pagamento (Mercado Pago ou Stripe), CNPJ/MEI, preço por uso.
+- [ ] Fechar os Drops 10, 11 e 24 da 1ª wave antes ou junto com esta.
+
+## Outras ideias (fora desta wave)
+
+Amazon (Creators API), outras lojas afiliadas (Magalu, Shopee), produto indisponível cair de tier, analytics sem cookies, domínio próprio, link menor para listas grandes, filtros de produto, comparar opções, checklist "comprado"/PDF e listas prontas. Ficam no [backlog (Drop 12)](../drop-12-evolucoes-backlog.md) ou para a próxima wave.

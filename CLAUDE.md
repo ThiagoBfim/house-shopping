@@ -14,6 +14,7 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `npm run sync:ml` — preço/disponibilidade do Mercado Livre (precisa de token em `.env.local`; ver `docs/project/MercadoLivre.md`)
 - `npm run validate` — valida `data/rooms.json` + `data/products/*.json` e lista os erros
 - `npm run test:e2e` — Playwright (perfil celular), sobe o Vite sozinho na porta 4321
+- `npm run server` — backend local da 2ª wave em http://127.0.0.1:8787 (roda as funcionalidades novas com o `claude -p`); com ele rodando, o site em dev mostra "Recursos em teste"
 - `npm run check` — lint + format + validate + testes com cobertura (≥ 90% em engine/data) + build + E2E (rodar antes de fechar um drop)
 
 ## Deploy (GitHub Actions)
@@ -30,6 +31,7 @@ Vite 8 + Preact + TypeScript (strict) · Vitest · ESLint + Prettier · Node 24 
 - `src/ui/` — componentes Preact. `App.tsx` guarda a sessão (`house` + `plan` + `choices`); `persistence.ts` sincroniza URL (`#l=`) e localStorage. `shortener.ts` encurta o link de compartilhar (is.gd; falhou = link completo).
 - `data/rooms.json` (cômodos → itens com `need` 1–5 e `qty`) e `data/products/<categoria>.json` (um arquivo por categoria; o nome é o id; `variants` = tipos de produto, cada um com sua escada de tiers). `data/assistant.json`: perguntas do "Monte pra mim" (ver `docs/project/Assistente.md`). Não ler o catálogo inteiro; para adicionar/atualizar categoria use a skill `/add-product`; para links de afiliado do Mercado Livre, a skill `/ml-links` (Chrome logado; só produtos novos e nacionais); para conferir se os links ainda abrem o anúncio certo, `/ml-check-links`; a rotina da semana (preços + links), `/sync-semanal` (o usuário roda à mão, uma vez por semana).
 - `scripts/` — scripts Node (validação, links de afiliado, sync). Lógica pura em `scripts/lib/` (testada); IO e HTTP nos scripts.
+- `server/` — backend local da 2ª wave (só na máquina, nunca no site publicado): jobs que chamam `claude -p` com uma skill — `/floor-plan` (planta → cômodos, `--json-schema`) e `/search-better-prices` (local, fora do git; recebe o `itens.json` pronto e grava `resultados.jsonl`). Lógica pura em `server/lib/` (testada). No site: `local-api.ts` (endereço só em dev: `VITE_LOCAL_API` ou `localhost:8787`), `features.ts` + `LabsPanel.tsx` (chaves), `engine/floor-plan.ts` (planta → casa, cama pela área, desenho) e `engine/cheaper.ts` (preço melhor vira troca; "voltar ao que era antes"). Plano em `docs/drops/wave-2/PLAN.md`.
 - Ofertas: `offers` por loja em cada opção; `price/url/store/priceUpdatedAt` = melhor oferta (`applyBestOffer`, `src/data/offers.ts`). O validador exige isso.
 - Histórico: `offers[].history` (ponto só quando o preço muda) → variação e selo de promoção (`src/data/price-history.ts`). Sempre registrar preço com `recordPrice`.
 - `tests/` — testes unitários `*.test.ts` (Vitest). `e2e/` — testes `*.spec.ts` (Playwright).

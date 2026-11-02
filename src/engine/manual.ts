@@ -17,6 +17,11 @@ export interface ManualItem {
    * trocou. Enquanto existir, o item do catálogo sai da lista; remover a troca o traz de volta.
    */
   replaces?: string
+  /**
+   * Preço melhor achado pela busca de preços (2ª wave): loja e preço unitário de antes.
+   * Local: não vai no link compartilhado.
+   */
+  found?: { store: string; was: number }
 }
 
 /** Limite por lista, para o link compartilhado não ficar grande demais. */
