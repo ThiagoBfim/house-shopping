@@ -36,6 +36,7 @@ import {
   shareUrl,
 } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
+import { Footer } from './Footer.tsx'
 import { ThemeToggle } from './ThemeToggle.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
 
@@ -128,6 +129,7 @@ export function App() {
         </div>
       </header>
       <main class="container">{renderStep()}</main>
+      <Footer />
       {toast && <Toast toast={toast} onClose={() => setToast(undefined)} />}
     </>
   )

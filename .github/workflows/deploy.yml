@@ -1,4 +1,5 @@
-# Deploy no GitHub Pages a cada push na main, com uma tag/release por deploy.
+# Deploy no GitHub Pages a cada push na main, com uma tag/release por deploy. A versão é
+# calculada antes do build (vai no rodapé do site) e vira a tag depois do deploy.
 #
 # - Só produtos mudaram (data/products/, data/affiliate/): valida o catálogo, build e deploy.
 #   Release com versão patch (v1.4.2 → v1.4.3).
@@ -30,6 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       code: ${{ steps.diff.outputs.code }}
+      version: ${{ steps.version.outputs.tag }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -54,6 +56,24 @@ jobs:
             echo "Só produtos: deploy sem a suíte de testes."
             echo code=false >> "$GITHUB_OUTPUT"
           fi
+      - name: Próxima versão
+        id: version
+        env:
+          CODE: ${{ steps.diff.outputs.code }}
+        run: |
+          last=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1)
+          if [ -z "$last" ]; then
+            next=v1.0.0
+          else
+            IFS=. read -r major minor patch <<< "${last#v}"
+            if [ "$CODE" = true ]; then
+              next="v$major.$((minor + 1)).0"
+            else
+              next="v$major.$minor.$((patch + 1))"
+            fi
+          fi
+          echo "Última: ${last:-nenhuma} → nova: $next"
+          echo "tag=$next" >> "$GITHUB_OUTPUT"
 
   checks:
     name: Checks
@@ -79,6 +99,9 @@ jobs:
       # Barato e evita publicar um catálogo quebrado (também quando só os produtos mudaram).
       - run: npm run validate
       - run: npm run build
+        env:
+          # Vai no rodapé do site; é a mesma versão da tag criada depois do deploy.
+          APP_VERSION: ${{ needs.changes.outputs.version }}
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -108,30 +131,10 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - name: Próxima versão
-        id: version
-        env:
-          CODE: ${{ needs.changes.outputs.code }}
-        run: |
-          last=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1)
-          if [ -z "$last" ]; then
-            next=v1.0.0
-          else
-            IFS=. read -r major minor patch <<< "${last#v}"
-            if [ "$CODE" = true ]; then
-              next="v$major.$((minor + 1)).0"
-            else
-              next="v$major.$minor.$((patch + 1))"
-            fi
-          fi
-          echo "Última: ${last:-nenhuma} → nova: $next"
-          echo "tag=$next" >> "$GITHUB_OUTPUT"
       - name: Criar release
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.version.outputs.tag }}
+          TAG: ${{ needs.changes.outputs.version }}
           KIND: ${{ needs.changes.outputs.code == 'true' && 'Código' || 'Produtos' }}
           PAGE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: |
