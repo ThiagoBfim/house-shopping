@@ -1,9 +1,15 @@
 /**
  * Backend local da 2ª wave (`npm run server`), que roda as funcionalidades novas com o Claude
  * Code. Só existe em dev: o site publicado não tem esse endereço e não mostra os recursos.
+ * `VITE_LOCAL_API` vazio (`./scripts/dev.sh --no-backend`) desliga em dev também.
  */
+const configured: string | undefined = import.meta.env.VITE_LOCAL_API
 export const LOCAL_API: string | undefined =
-  import.meta.env.VITE_LOCAL_API ?? (import.meta.env.DEV ? 'http://localhost:8787' : undefined)
+  configured !== undefined
+    ? configured || undefined
+    : import.meta.env.DEV
+      ? 'http://localhost:8787'
+      : undefined
 
 export interface Health {
   floorPlan: boolean
