@@ -4,9 +4,9 @@
 | ---------- | ----------- | ------------ | ------- |
 | ⏳ A fazer | —           | —            | —       |
 
-**Wave:** backlog — depois das duas waves
+**Wave:** backlog — depois da 1ª wave
 
-**Meta:** ideias para depois das duas waves.
+**Meta:** ideias para depois da 1ª wave.
 
 - [x] ~~**Casa inteira**: um orçamento total dividido entre vários cômodos~~ → virou o Drop 13
 - [ ] Filtros: marca, cor, voltagem (110/220 V), tamanho

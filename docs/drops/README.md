@@ -1,6 +1,6 @@
 # Drops
 
-Cada drop é um arquivo neste diretório; os da 2ª wave ficam em [`wave-2/`](wave-2/). Visão geral do plano em [../project/Plan.md](../project/Plan.md).
+Cada drop é um arquivo neste diretório. Visão geral do plano em [../project/Plan.md](../project/Plan.md).
 
 ## Como registrar o tempo
 
@@ -47,20 +47,12 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [21](drop-21-limpeza-reparos-e-itens-faltando.md)          | Limpeza, reparos e itens que faltavam    | ✅ Concluído                    | 2026-10-23 17:44 | 2026-10-23 17:52 | 8min     |
 | [22](drop-22-suas-respostas-na-lista.md)                   | Suas respostas na lista                  | ✅ Concluído                    | 2026-10-23 18:02 | 2026-10-23 18:20 | 18min    |
 | [23](drop-23-grafico-de-preco.md)                          | Gráfico de preço                         | ✅ Concluído                    | 2026-10-25 06:10 | 2026-10-25 06:27 | 17min    |
+| [24](drop-24-sync-semanal-com-pr.md)                       | Sync semanal de preços e links           | 🚧 Em andamento                 | 2026-10-27 20:06 | —                | —        |
 | [25](drop-25-variacao-da-lista.md)                         | Histórico para todos e variação da lista | ✅ Concluído                    | 2026-10-30 12:33 | 2026-10-30 12:39 | 6min     |
 | [26](drop-26-trocar-item.md)                               | Trocar item por um produto seu           | ✅ Concluído                    | 2026-10-31 12:43 | 2026-10-31 12:46 | 3min     |
 | [27](drop-27-link-curto.md)                                | Link curto e sem símbolos                | ✅ Concluído                    | 2026-11-02 10:10 | 2026-11-02 10:13 | 3min     |
 | [28](drop-28-rodape.md)                                    | Rodapé com copyright e versão            | ✅ Concluído                    | 2026-11-02 10:39 | 2026-11-02 10:40 | 1min     |
 | [29](drop-29-links-limpos.md)                              | Links de produto sem rastreamento        | ✅ Concluído                    | 2026-11-02 10:53 | 2026-11-02 10:54 | 1min     |
-
-### 2ª wave — publicação e automação
-
-Preços da Amazon atualizados sozinhos e rotina semanal do Mercado Livre (preços e links) com o Claude na máquina. (O deploy no GitHub Pages, Drop 6, foi para a 1ª wave.)
-
-| Drop                                               | Tema                           | Status          | Iniciado em      | Terminado em | Duração |
-| -------------------------------------------------- | ------------------------------ | --------------- | ---------------- | ------------ | ------- |
-| [9](wave-2/drop-09-integracao-amazon-afiliados.md) | Integração Amazon              | ⏳ A fazer      | —                | —            | —       |
-| [24](wave-2/drop-24-sync-semanal-com-pr.md)        | Sync semanal de preços e links | 🚧 Em andamento | 2026-10-27 20:06 | —            | —       |
 
 ### Backlog
 

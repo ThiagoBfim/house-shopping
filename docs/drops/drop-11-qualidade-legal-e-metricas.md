@@ -12,7 +12,7 @@
 - [ ] Lighthouse ≥ 90 (performance, acessibilidade, SEO), medido localmente com `npm run preview`
 - [ ] Acessibilidade: navegação por teclado, contraste, `aria-labels`
 - [ ] Página "Sobre / Como funciona"
-- [ ] Script `npm run check:links` para achar links de produto quebrados (o agendamento semanal no CI foi para o Drop 6, na 2ª wave)
+- [ ] Script `npm run check:links` para achar links de produto quebrados (a conferência semanal virou a rotina `/sync-semanal` do [Drop 24](drop-24-sync-semanal-com-pr.md))
 
 **Pronto quando:** Lighthouse ≥ 90 local e avisos legais visíveis.
 

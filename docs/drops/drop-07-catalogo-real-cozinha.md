@@ -29,7 +29,7 @@
   Utensílios: panelas, pratos, talheres, copos, facas, jogo americano e toalha de mesa. A mesa de jantar ficou para a Sala (Drop 8).
 
 - **Modelos reais** escolhidos a partir de guias de compra de 2026 (Buscapé, Zoom, GDM, Casa dos Eletrodomésticos, mybest, AnalisaMelhor) e de listagens de lojas. Os bullets explicam a diferença em relação às outras faixas (ex.: "Freezer embaixo (inverse)", "Coifa de verdade: exaure a fumaça para fora").
-- **Preços de referência** (`priceUpdatedAt: 2026-10-22`): cruzados entre guias e listagens e arredondados. Os guias quase não publicam preço atual, então os valores são aproximados; o Drop 10 traz preço vivo do Mercado Livre e o Drop 9, da Amazon.
+- **Preços de referência** (`priceUpdatedAt: 2026-10-22`): cruzados entre guias e listagens e arredondados. Os guias quase não publicam preço atual, então os valores são aproximados; o Drop 10 traz preço vivo do Mercado Livre (a Amazon ficou para a próxima wave).
 - **Links:** `https://lista.mercadolivre.com.br/<modelo>`, a busca do modelo no Mercado Livre, que sempre funciona. `store: mercadolivre`. O Drop 10 troca por links de afiliado do produto.
 - **Catálogo dividido** em `data/products/<categoria>.json` (o nome do arquivo é o id). O site junta tudo com `import.meta.glob` num chunk só (~6 kB gzip), e o validador lê a pasta. As mensagens de erro apontam o arquivo (`products/geladeira.json › options.0.url`).
 - **Fonte dos dados:** gerados por um script temporário (fora do repo) a partir de uma tabela compacta. Daqui para frente o JSON é a fonte; a skill `/add-product` (Drop 8) padroniza as próximas categorias.
