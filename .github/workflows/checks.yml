@@ -1,5 +1,7 @@
 # Testes e validações do código: lint, formatação, catálogo, testes com cobertura, build e E2E.
-# Roda em todo pull request e é chamado pelo deploy quando o push muda código.
+# Roda em todo pull request (é o check obrigatório da main) e é chamado pelo deploy quando o
+# push muda código. PR que só muda produtos (data/products/, data/affiliate/) ou docs roda só o
+# `npm run validate`, igual ao deploy.
 name: Checks
 
 on:
@@ -15,17 +17,41 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: O que mudou
+        id: diff
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != pull_request ]; then
+            echo full=true >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          code=$(git diff --name-only "$BASE...HEAD" |
+            grep -Ev '^data/(products|affiliate)/|\.md$|^docs/|^\.claude/' || true)
+          if [ -n "$code" ]; then
+            echo "Mudança de código:"; echo "$code"
+            echo full=true >> "$GITHUB_OUTPUT"
+          else
+            echo "Só produtos/docs: apenas o validate."
+            echo full=false >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm run check
+      - if: steps.diff.outputs.full == 'false'
+        run: npm run validate
+      - if: steps.diff.outputs.full == 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.diff.outputs.full == 'true'
+        run: npm run check
       - name: Relatório do Playwright (se falhar)
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: |
