@@ -103,11 +103,11 @@ No card:
 - **"↓ R$ 604 (−13%) desde 01/10"** (verde) ou **"↑ … desde …"** (laranja): comparação com o preço anterior.
 - **"🔥 Menor preço em 90 dias"**: o preço atual é o menor da janela e está pelo menos 5% abaixo do maior preço dela.
 
-As constantes ficam em `src/data/price-history.ts`: `PROMO_WINDOW_DAYS`, `PROMO_MIN_DROP` e `HISTORY_MAX_DAYS`. O histórico começa vazio, então seta e selo só aparecem depois da segunda coleta com preço diferente. Com a atualização diária da 2ª wave, isso fica automático.
+As constantes ficam em `src/data/price-history.ts`: `PROMO_WINDOW_DAYS`, `PROMO_MIN_DROP` e `HISTORY_MAX_DAYS`. O histórico começa vazio, então seta e selo só aparecem depois da segunda coleta com preço diferente. Com a rotina semanal (`/sync-semanal`), o histórico cresce a cada rodada.
 
 ## Como os dados ficam
 
-Cada opção ganha `offers`, com uma oferta por loja. Os campos exibidos (`price`, `url`, `store`, `priceUpdatedAt`) são sempre os da **oferta mais barata disponível**; o validador garante isso. Quando a Amazon entrar (Drop 9), o mesmo modelo nas duas lojas mostra a mais barata, e o card exibe "Também na Amazon: R$ X".
+Cada opção ganha `offers`, com uma oferta por loja. Os campos exibidos (`price`, `url`, `store`, `priceUpdatedAt`) são sempre os da **oferta mais barata disponível**; o validador garante isso. Quando a Amazon entrar (próxima wave), o mesmo modelo nas duas lojas mostra a mais barata, e o card exibe "Também na Amazon: R$ X".
 
 ```json
 "offers": [

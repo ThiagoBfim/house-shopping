@@ -4,7 +4,7 @@
 | --------------- | ---------------- | ------------ | ------- |
 | 🚧 Em andamento | 2026-10-27 20:06 | —            | —       |
 
-**Wave:** 2ª — publicação e automação
+**Wave:** 1ª — produto completo (movido da 2ª wave em 2026-11-02)
 
 **Meta:** uma vez por semana, um comando só (`/sync-semanal`, rodado à mão) atualiza os preços do Mercado Livre, confere os links de afiliado, refaz os quebrados, gera links novos e deixa tudo numa branch com relatório para revisar.
 
@@ -39,5 +39,5 @@ Só preços no GitHub Actions, com um **segundo app** do Mercado Livre (Client I
 ## Registro
 
 - 2026-10-27: primeira versão era um workflow do GitHub Actions no sábado 00:00 abrindo PR. Trocado, a pedido do usuário, por uma rotina local com o Claude (segunda 18h, quando o PC está ligado), porque só na máquina dá para gerar e conferir links de afiliado. O agendamento abre uma sessão interativa em vez de `claude -p`, para não depender do Chrome no modo sem janela e para o usuário ver permissões e captcha.
-- 2026-10-30: primeira rodada, à mão (11:43–12:01, 18min): 39 preços, 2 categorias com tiers trocados, 139 links conferidos (6 refeitos), 7 links novos de 10, check ok. Relatório em [`docs/sync/2026-10-30.md`](../../sync/2026-10-30.md). Aprendizados: anúncio de catálogo sem vendedor ativo é a causa comum de "sem afiliado"; promoção forte pode inverter tiers (Emma King ficou pendente); descartar vendedor pessoa física sem vendas em item caro (Sonos, Herman Miller).
+- 2026-10-30: primeira rodada, à mão (11:43–12:01, 18min): 39 preços, 2 categorias com tiers trocados, 139 links conferidos (6 refeitos), 7 links novos de 10, check ok. Relatório em [`docs/sync/2026-10-30.md`](../sync/2026-10-30.md). Aprendizados: anúncio de catálogo sem vendedor ativo é a causa comum de "sem afiliado"; promoção forte pode inverter tiers (Emma King ficou pendente); descartar vendedor pessoa física sem vendas em item caro (Sonos, Herman Miller).
 - 2026-10-30: agendamento removido (`scripts/agendar-sync-semanal.sh`) a pedido do usuário, que prefere não deixar nada instalado na máquina e rodar `/sync-semanal` à mão.

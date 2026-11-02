@@ -4,7 +4,7 @@
 | ------------ | ---------------- | ---------------- | -------- |
 | ✅ Concluído | 2026-11-02 09:29 | 2026-11-02 17:00 | 7h 31min |
 
-**Wave:** 1ª — produto completo (movido da 2ª wave em 2026-11-02: o site já está no ar)
+**Wave:** 1ª — produto completo (movido para a 1ª wave em 2026-11-02: o site já está no ar)
 
 **Meta:** site público, com deploy automático.
 
@@ -18,7 +18,7 @@
 - [x] Página `404.html` (volta para o início mantendo o `#` do link) e favicon (já existia)
 - [x] Meta tags Open Graph (preview no WhatsApp)
 - [ ] ~~Analytics leve e sem cookies~~ → movido para o [Drop 12 (backlog)](drop-12-evolucoes-backlog.md): depende de escolher o serviço e criar conta
-- [ ] ~~Agendar `npm run check:links` semanalmente no CI~~ → virou a rotina `/sync-semanal` do [Drop 24](wave-2/drop-24-sync-semanal-com-pr.md)
+- [ ] ~~Agendar `npm run check:links` semanalmente no CI~~ → virou a rotina `/sync-semanal` do [Drop 24](drop-24-sync-semanal-com-pr.md)
 - [ ] ~~(Opcional) domínio próprio~~ → movido para o [Drop 12 (backlog)](drop-12-evolucoes-backlog.md)
 
 **Pronto quando:** push na `main` publica o site em `https://<user>.github.io/house-shopping/`, e um link compartilhado abre a mesma lista num celular de verdade.
