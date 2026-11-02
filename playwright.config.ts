@@ -17,5 +17,7 @@ export default defineConfig({
     command: `npx vite --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}/house-shopping/`,
     reuseExistingServer: !process.env.CI,
+    // Encurtador falso: nos testes nada sai para a internet (share.spec simula as respostas).
+    env: { VITE_SHORTENER: 'https://encurtador.test/criar?url=' },
   },
 })

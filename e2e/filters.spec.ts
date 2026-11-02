@@ -87,6 +87,7 @@ test('link compartilhado mantém os filtros', async ({ page, browser }) => {
   expect(names).toEqual(['Fogão ou cooktop', 'Geladeira'])
 
   await page.getByRole('button', { name: 'Copiar link' }).click()
+  await expect(page.getByText('Link copiado!')).toBeVisible()
   const link = await page.evaluate(() => navigator.clipboard.readText())
 
   const other = await browser.newContext()

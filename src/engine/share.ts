@@ -1,4 +1,8 @@
-import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
+import {
+  compressToUint8Array,
+  decompressFromEncodedURIComponent,
+  decompressFromUint8Array,
+} from 'lz-string'
 import type { Need, Rooms, Tier } from '../data/schema.ts'
 import type { Choices, ExclusionReason, Plan } from './budget.ts'
 import {
@@ -10,6 +14,7 @@ import {
   type HouseSpec,
 } from './house.ts'
 import type { Answers } from './assistant.ts'
+import { fromBase62, toBase62 } from './base62.ts'
 import { isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
@@ -29,6 +34,31 @@ export interface ListState {
  * a versão antiga em `decodeState` para não quebrar links já compartilhados.
  */
 export const STATE_VERSION = 1
+
+/**
+ * Marca do formato atual: JSON comprimido em bytes e escrito só com letras e números
+ * (`base62.ts`). Links antigos (`compressToEncodedURIComponent`, com "-" e "+") sempre começam
+ * com "N" e continuam abrindo.
+ */
+const PACKED_PREFIX = '0'
+
+/** JSON → texto do link. */
+export function pack(json: string): string {
+  return PACKED_PREFIX + toBase62(compressToUint8Array(json))
+}
+
+/** Texto do link (formato atual ou antigo) → JSON; inválido = undefined. */
+export function unpack(encoded: string): string | undefined {
+  try {
+    if (!encoded.startsWith(PACKED_PREFIX)) {
+      return decompressFromEncodedURIComponent(encoded) || undefined
+    }
+    const bytes = fromBase62(encoded.slice(PACKED_PREFIX.length))
+    return (bytes && decompressFromUint8Array(bytes)) || undefined
+  } catch {
+    return undefined
+  }
+}
 
 const REASON_CODES: Record<ExclusionReason, string> = { refused: 'r', owned: 'o' }
 const REASONS_BY_CODE: Record<string, ExclusionReason> = { r: 'refused', o: 'owned' }
@@ -91,7 +121,7 @@ export function encodeState(state: ListState): string {
     )
   }
   if (state.answers && Object.keys(state.answers).length) wire.a = state.answers
-  return compressToEncodedURIComponent(JSON.stringify(wire))
+  return pack(JSON.stringify(wire))
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -111,7 +141,7 @@ const isNeed = (value: unknown): value is Need => isTier(value) || value === 5
 export function decodeState(encoded: string, rooms: Rooms): ListState | undefined {
   let wire: unknown
   try {
-    wire = JSON.parse(decompressFromEncodedURIComponent(encoded) || 'null')
+    wire = JSON.parse(unpack(encoded) ?? 'null')
   } catch {
     return undefined
   }
