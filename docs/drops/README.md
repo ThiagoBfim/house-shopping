@@ -1,6 +1,6 @@
 # Drops
 
-Cada drop é um arquivo neste diretório. Visão geral do plano em [../project/Plan.md](../project/Plan.md).
+Cada drop é um arquivo neste diretório; os da 2ª wave ficam em [`wave-2/`](wave-2/), com o plano em [`wave-2/PLAN.md`](wave-2/PLAN.md). Visão geral do plano em [../project/Plan.md](../project/Plan.md).
 
 ## Como registrar o tempo
 
