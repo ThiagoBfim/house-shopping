@@ -80,7 +80,7 @@ export function parseManualInput(input: ManualInput): ParsedManual {
   const price = parsePrice(input.price)
   const qtyText = input.qty.trim()
   const qty = qtyText === '' ? 1 : /^\d+$/.test(qtyText) ? Number(qtyText) : NaN
-  const url = input.url.trim()
+  const url = cleanProductUrl(input.url.trim())
 
   if (!name) errors.name = 'Informe o nome do produto.'
   else if (!isValidName(name)) errors.name = `Use no máximo ${MAX_NAME_LENGTH} caracteres.`
@@ -92,6 +92,33 @@ export function parseManualInput(input: ManualInput): ParsedManual {
 
   if (Object.keys(errors).length) return { ok: false, errors }
   return { ok: true, value: { name, price: price!, qty, url } }
+}
+
+/** Parâmetros que só servem para rastrear o clique (a página do produto abre igual sem eles). */
+const TRACKING_PARAM =
+  /^(utm_|matt_|gclid$|fbclid$|gbraid$|wbraid$|srsltid$|_gl$|tracking_id$|ref_?$)/i
+
+/**
+ * Link do produto sem rastreamento, para o link compartilhado caber no encurtador. Mercado
+ * Livre e Amazon: sai tudo depois do "#" (só rastreamento); Amazon vira /dp/<código>. Em
+ * qualquer loja saem os parâmetros de rastreamento conhecidos (utm_*, gclid, matt_*…).
+ */
+export function cleanProductUrl(text: string): string {
+  let url: URL
+  try {
+    url = new URL(text)
+  } catch {
+    return text
+  }
+  const store = storeFromUrl(text)
+  if (store === 'amazon') {
+    const asin = /\/(?:dp|gp\/product)\/([A-Z0-9]{10})(?:[/?]|$)/i.exec(url.pathname + '/')?.[1]
+    if (asin) return `${url.origin}/dp/${asin}`
+  }
+  if (store !== 'other') url.hash = ''
+  const tracking = [...url.searchParams.keys()].filter((key) => TRACKING_PARAM.test(key))
+  for (const key of tracking) url.searchParams.delete(key)
+  return url.href
 }
 
 /** Loja pelo endereço do link. */

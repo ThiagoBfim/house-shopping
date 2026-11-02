@@ -36,6 +36,8 @@ import {
   shareUrl,
 } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
+import { Footer } from './Footer.tsx'
+import { canShorten } from './shortener.ts'
 import { ThemeToggle } from './ThemeToggle.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
 
@@ -128,6 +130,7 @@ export function App() {
         </div>
       </header>
       <main class="container">{renderStep()}</main>
+      <Footer />
       {toast && <Toast toast={toast} onClose={() => setToast(undefined)} />}
     </>
   )
@@ -458,7 +461,9 @@ export function App() {
                 message: ok
                   ? short
                     ? 'Link curto copiado!'
-                    : 'Link copiado!'
+                    : canShorten(url)
+                      ? 'Link copiado!'
+                      : 'Link copiado! (lista grande demais para o link curto)'
                   : 'Não foi possível copiar. Copie o endereço da barra.',
               }),
             onMessage: (message) => setToast({ message }),

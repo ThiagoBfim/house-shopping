@@ -49,6 +49,8 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 | [25](drop-25-variacao-da-lista.md)                         | Histórico para todos e variação da lista | ✅ Concluído                    | 2026-10-30 12:33 | 2026-10-30 12:39 | 6min    |
 | [26](drop-26-trocar-item.md)                               | Trocar item por um produto seu           | ✅ Concluído                    | 2026-10-31 12:43 | 2026-10-31 12:46 | 3min    |
 | [27](drop-27-link-curto.md)                                | Link curto e sem símbolos                | ✅ Concluído                    | 2026-11-02 10:10 | 2026-11-02 10:13 | 3min    |
+| [28](drop-28-rodape.md)                                    | Rodapé com copyright e versão            | ✅ Concluído                    | 2026-11-02 10:39 | 2026-11-02 10:40 | 1min    |
+| [29](drop-29-links-limpos.md)                              | Links de produto sem rastreamento        | ✅ Concluído                    | 2026-11-02 10:53 | 2026-11-02 10:54 | 1min    |
 
 ### 2ª wave — publicação e automação
 

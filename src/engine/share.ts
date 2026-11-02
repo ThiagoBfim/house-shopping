@@ -15,7 +15,7 @@ import {
 } from './house.ts'
 import type { Answers } from './assistant.ts'
 import { fromBase62, toBase62 } from './base62.ts'
-import { isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
+import { cleanProductUrl, isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
 export interface ListState {
@@ -112,13 +112,15 @@ export function encodeState(state: ListState): string {
   if (Object.keys(state.choices.variants).length) wire.t = state.choices.variants
   if (Object.keys(state.choices.needs).length) wire.e = state.choices.needs
   if (state.choices.manual.length) {
-    wire.m = state.choices.manual.map(({ instanceId, name, price, url, qty, replaces }) =>
-      replaces
+    // Links salvos antes da limpeza também saem sem rastreamento.
+    wire.m = state.choices.manual.map(({ instanceId, name, price, url: raw, qty, replaces }) => {
+      const url = cleanProductUrl(raw)
+      return replaces
         ? [instanceId, name, price, url, qty, replaces]
         : qty === 1
           ? [instanceId, name, price, url]
-          : [instanceId, name, price, url, qty],
-    )
+          : [instanceId, name, price, url, qty]
+    })
   }
   if (state.answers && Object.keys(state.answers).length) wire.a = state.answers
   return pack(JSON.stringify(wire))

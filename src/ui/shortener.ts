@@ -7,6 +7,12 @@ import { isWebUrl } from '../engine/manual.ts'
 export const SHORTENER_ENDPOINT: string =
   import.meta.env.VITE_SHORTENER ?? 'https://is.gd/create.php?format=json&url='
 
+/** Maior link que o is.gd aceita (testado: 4.948 caracteres passa, 5.148 não). */
+export const MAX_SHORTEN_LENGTH = 5000
+
+/** Link pequeno o bastante para o encurtador; maior que isso nem tenta. */
+export const canShorten = (url: string) => url.length <= MAX_SHORTEN_LENGTH
+
 /** Mais que isso e o encurtador é tratado como fora do ar. */
 export const SHORTEN_TIMEOUT_MS = 3000
 
@@ -30,6 +36,7 @@ export const cachedShort = (url: string): string | undefined => results.get(url)
 export function shortenUrl(url: string, options: Options = {}): Promise<string> {
   const ready = results.get(url)
   if (ready) return Promise.resolve(ready)
+  if (!canShorten(url)) return Promise.resolve(url)
   let request = pending.get(url)
   if (!request) {
     request = requestShort(url, options).then((short) => {
