@@ -256,11 +256,16 @@ h3 {
 
 /* Preços mais baratos (recurso em teste) */
 
+/* Espaço antes da busca da lista, para os dois "Buscar" não ficarem colados. */
+.cheaper-prices {
+  margin-bottom: 28px;
+}
+
 .cheaper-controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 12px;
+  gap: 14px 12px;
   font-size: 0.9rem;
 }
 
