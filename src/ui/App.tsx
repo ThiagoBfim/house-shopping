@@ -453,12 +453,15 @@ export function App() {
           share={{
             url,
             text: shareText,
-            onCopied: (ok) =>
+            onCopied: (ok, short) =>
               setToast({
                 message: ok
-                  ? 'Link copiado!'
+                  ? short
+                    ? 'Link curto copiado!'
+                    : 'Link copiado!'
                   : 'Não foi possível copiar. Copie o endereço da barra.',
               }),
+            onMessage: (message) => setToast({ message }),
             onExport: () =>
               downloadList(view, house.instances).then(
                 () => setToast({ message: 'Planilha baixada.' }),

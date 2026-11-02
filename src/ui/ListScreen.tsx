@@ -48,7 +48,7 @@ interface Props {
   onAssistant: () => void
   /** Painel "Suas respostas" (perguntas do assistente que valem para a casa). */
   answers: Omit<Parameters<typeof AnswersPanel>[0], 'onRedo'>
-  share: { url: string; text: string; onCopied: (ok: boolean) => void; onExport: () => void }
+  share: Parameters<typeof ShareBar>[0]
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }

@@ -1,10 +1,17 @@
-import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
+import { compressToEncodedURIComponent } from 'lz-string'
 import { describe, expect, it } from 'vitest'
 import { products, rooms } from '../src/data/catalog-data.ts'
 import { describeList, planList, type Choices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { MAX_MANUAL_ITEMS } from '../src/engine/manual.ts'
-import { decodeState, encodeState, STATE_VERSION, type ListState } from '../src/engine/share.ts'
+import {
+  decodeState,
+  encodeState,
+  pack,
+  STATE_VERSION,
+  unpack,
+  type ListState,
+} from '../src/engine/share.ts'
 
 const house = { cozinha: 1, quarto: 2, banheiro: 1 }
 const expanded = expandHouse(rooms, products, house)
@@ -193,8 +200,7 @@ describe('encodeState / decodeState', () => {
         manual: [],
       },
     }
-    const wireOf = (s: ListState) =>
-      JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
+    const wireOf = (s: ListState) => JSON.parse(unpack(encodeState(s))!) as Record<string, unknown>
     expect(wireOf(plain)).not.toHaveProperty('n')
     expect(wireOf(plain)).not.toHaveProperty('u')
     expect(wireOf(plain)).not.toHaveProperty('f')
@@ -206,8 +212,7 @@ describe('encodeState / decodeState', () => {
   })
 
   it('itens adicionados: quantidade 1 não vai no link', () => {
-    const wireOf = (s: ListState) =>
-      JSON.parse(decompressFromEncodedURIComponent(encodeState(s))) as Record<string, unknown>
+    const wireOf = (s: ListState) => JSON.parse(unpack(encodeState(s))!) as Record<string, unknown>
     expect(wireOf(state).m).toEqual([
       ['quarto-2', 'Cadeira Tok&Stok', 399.9, 'https://www.amazon.com.br/dp/B0TESTE', 4],
       ['cozinha', 'Fruteira', 59, 'https://x.com/a'],
@@ -247,6 +252,27 @@ describe('encodeState / decodeState', () => {
       rooms,
     )
     expect(notArray?.choices.manual).toEqual([])
+  })
+
+  it('link só com letras e números (o WhatsApp quebra em "-" e "+")', () => {
+    expect(encodeState(state)).toMatch(/^0[0-9A-Za-z]+$/)
+    expect(decodeState(encodeState(state), rooms)).toEqual(
+      decodeState(wire(JSON.parse(unpack(encodeState(state))!)), rooms),
+    )
+  })
+
+  it('links antigos (com "-" e "+") continuam abrindo', () => {
+    const old = wire({ v: STATE_VERSION, h: { cozinha: 1 }, b: 5000, p: {}, l: {}, x: {} })
+    expect(old).toMatch(/^N/)
+    expect(decodeState(old, rooms)?.budget).toBe(5000)
+  })
+
+  it('pack/unpack: ida e volta; lixo = undefined', () => {
+    expect(unpack(pack('{"a":1}'))).toBe('{"a":1}')
+    expect(unpack('0zz')).toBeUndefined()
+    expect(unpack('0-x')).toBeUndefined()
+    expect(unpack('0')).toBeUndefined()
+    expect(unpack('lixo')).toBeUndefined()
   })
 
   it('trocas: ida e volta; item fora da casa, de outro cômodo ou repetido vira item comum', () => {

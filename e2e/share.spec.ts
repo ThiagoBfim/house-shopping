@@ -43,7 +43,7 @@ test('link compartilhado abre a mesma lista em outro aparelho', async ({ page, b
   await page.getByRole('button', { name: 'Copiar link' }).click()
   await expect(page.getByText('Link copiado!')).toBeVisible()
   const link = await page.evaluate(() => navigator.clipboard.readText())
-  expect(link).toMatch(/#l=.+&s=1$/)
+  expect(link).toMatch(/#l=0[0-9A-Za-z]+&s=1$/)
 
   // outro "celular": contexto novo, sem localStorage
   const other = await browser.newContext()
@@ -76,7 +76,54 @@ test('botão do WhatsApp leva o link da lista', async ({ page }) => {
   expect(href).toMatch(/^https:\/\/wa\.me\/\?text=/)
   const text = decodeURIComponent(href!.split('text=')[1])
   expect(text).toContain('Minha lista (Cozinha)')
-  expect(text).toMatch(/#l=.+&s=1$/)
+  expect(text).toMatch(/#l=0[0-9A-Za-z]+&s=1$/)
+})
+
+/** Simula o encurtador (VITE_SHORTENER no playwright.config) devolvendo `shorturl`. */
+async function mockShortener(page: Page, shorturl: string) {
+  const requested: string[] = []
+  await page.route('https://encurtador.test/**', (route) => {
+    requested.push(decodeURIComponent(new URL(route.request().url()).searchParams.get('url')!))
+    return route.fulfill({
+      json: { shorturl },
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    })
+  })
+  return requested
+}
+
+test('copiar e WhatsApp usam o link curto, que leva à lista completa', async ({ page }) => {
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write'])
+  const requested = await mockShortener(page, 'https://is.gd/lista1')
+  await buildCustomList(page)
+
+  await page.getByRole('button', { name: 'Copiar link' }).click()
+  await expect(page.getByText('Link curto copiado!')).toBeVisible()
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('https://is.gd/lista1')
+  expect(requested).toHaveLength(1)
+  expect(requested[0]).toMatch(/\/house-shopping\/#l=0[0-9A-Za-z]+&s=1$/)
+
+  // o link curto já está pronto: o WhatsApp abre com ele, sem pedir de novo
+  const [popup] = await Promise.all([
+    page.waitForEvent('popup'),
+    page.getByRole('link', { name: 'WhatsApp' }).click(),
+  ])
+  await expect.poll(() => decodeURIComponent(popup.url())).toContain('https://is.gd/lista1')
+  expect(requested).toHaveLength(1)
+})
+
+test('WhatsApp encurta no clique; com o encurtador fora do ar vai o link completo', async ({
+  page,
+}) => {
+  await page.route('https://encurtador.test/**', (route) => route.abort())
+  await buildCustomList(page)
+  const [popup] = await Promise.all([
+    page.waitForEvent('popup'),
+    page.getByRole('link', { name: 'WhatsApp' }).click(),
+  ])
+  await expect.poll(() => popup.url()).toMatch(/^https:\/\/(api\.)?wa\.me\/|whatsapp/)
+  const text = decodeURIComponent(new URL(popup.url()).searchParams.get('text') ?? '')
+  expect(text).toMatch(/#l=0[0-9A-Za-z]+&s=1$/)
 })
 
 test('link inválido abre a tela inicial sem quebrar', async ({ page }) => {

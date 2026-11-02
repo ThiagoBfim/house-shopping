@@ -75,6 +75,7 @@ test('adicionar item manual com quantidade, editar, recarregar, compartilhar e r
 
   // vai no link compartilhado
   await page.getByRole('button', { name: 'Copiar link' }).click()
+  await expect(page.getByText('Link copiado!')).toBeVisible()
   const shared = await page.evaluate(() => navigator.clipboard.readText())
   const other = await browser.newContext()
   const friend = await other.newPage()
