@@ -63,22 +63,22 @@
       "id": "batedeira-planetaria-oster-obat630",
       "tier": 3,
       "name": "Batedeira Planetária Oster OBAT630",
-      "price": 562.11,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 499.99,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://meli.la/2hHYTTd",
+      "url": "https://meli.la/2aX1coe",
       "bullets": ["800 W: bate pão e massa de pizza", "Tigela de 4 L", "Batedor, gancho e pá"],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_704499-MLA99927861967_112025-O.webp",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_630069-MLA100016243299_122025-O.webp",
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://meli.la/2hHYTTd",
-          "price": 562.11,
-          "updatedAt": "2026-10-30",
+          "url": "https://meli.la/2aX1coe",
+          "price": 499.99,
+          "updatedAt": "2026-11-03",
           "available": true,
-          "externalId": "MLB3388834473",
-          "catalogId": "MLB19714146",
-          "history": [{ "date": "2026-10-30", "price": 562.11 }]
+          "externalId": "MLB5447882489",
+          "catalogId": "MLB20961663",
+          "history": [{ "date": "2026-11-03", "price": 499.99 }]
         }
       ]
     },

@@ -2,18 +2,9 @@
   "label": "Videogame",
   "utensil": false,
   "variants": [
-    {
-      "id": "playstation",
-      "label": "PlayStation"
-    },
-    {
-      "id": "xbox",
-      "label": "Xbox"
-    },
-    {
-      "id": "nintendo",
-      "label": "Nintendo"
-    }
+    { "id": "playstation", "label": "PlayStation" },
+    { "id": "xbox", "label": "Xbox" },
+    { "id": "nintendo", "label": "Nintendo" }
   ],
   "options": [
     {
@@ -35,12 +26,7 @@
           "available": true,
           "externalId": "MLB4227636027",
           "catalogId": "MLB29001054",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4399.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 4399.9 }]
         }
       ],
       "variants": ["playstation"]
@@ -82,14 +68,8 @@
           "externalId": "MLB7705751624",
           "catalogId": "MLB52897777",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 4932
-            },
-            {
-              "date": "2026-11-03",
-              "price": 5899
-            }
+            { "date": "2026-10-23", "price": 4932 },
+            { "date": "2026-11-03", "price": 5899 }
           ]
         }
       ]
@@ -117,12 +97,7 @@
           "available": true,
           "externalId": "MLB7613817060",
           "catalogId": "MLB41975964",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 7599
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 7599 }]
         }
       ],
       "variants": ["playstation"]
@@ -164,14 +139,8 @@
           "externalId": "MLB7786931948",
           "catalogId": "MLB27934244",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 5199
-            },
-            {
-              "date": "2026-10-30",
-              "price": 5299.99
-            }
+            { "date": "2026-10-23", "price": 5199 },
+            { "date": "2026-10-30", "price": 5299.99 }
           ]
         }
       ]
@@ -196,12 +165,7 @@
           "available": true,
           "externalId": "MLB5367509002",
           "catalogId": "MLB43535812",
-          "history": [
-            {
-              "date": "2026-10-30",
-              "price": 6699.99
-            }
-          ]
+          "history": [{ "date": "2026-10-30", "price": 6699.99 }]
         }
       ]
     },
@@ -225,12 +189,7 @@
           "available": true,
           "externalId": "MLB4060039157",
           "catalogId": "MLB29577429",
-          "history": [
-            {
-              "date": "2026-10-30",
-              "price": 7199.99
-            }
-          ]
+          "history": [{ "date": "2026-10-30", "price": 7199.99 }]
         }
       ]
     },
@@ -255,14 +214,8 @@
           "externalId": "MLB5358212849",
           "catalogId": "MLB17974763",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1579
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1325.11
-            }
+            { "date": "2026-10-23", "price": 1579 },
+            { "date": "2026-10-30", "price": 1325.11 }
           ]
         }
       ]
@@ -287,12 +240,7 @@
           "available": true,
           "externalId": "MLB7777270522",
           "catalogId": "MLB31000132",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 2450
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 2450 }]
         }
       ]
     },
@@ -320,14 +268,8 @@
           "externalId": "MLB5335958389",
           "catalogId": "MLB80167828",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4599.9
-            },
-            {
-              "date": "2026-10-30",
-              "price": 4899.9
-            }
+            { "date": "2026-10-22", "price": 4599.9 },
+            { "date": "2026-10-30", "price": 4899.9 }
           ]
         }
       ],
