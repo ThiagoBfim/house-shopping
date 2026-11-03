@@ -140,6 +140,27 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await expect(furniture.getByRole('status')).toContainText('R$')
   await expect(furniture.getByRole('button', { name: /^Criado-mudo:/ })).toHaveCount(2)
 
+  // 3D: abre a cena, toca na cama (posição na tela pelo gancho de teste) e vê o cartão
+  await furniture.getByRole('button', { name: '🧊 Ver em 3D' }).click()
+  const scene = furniture.locator('.room-3d')
+  const canvas = scene.locator('canvas')
+  await expect(canvas).toBeVisible()
+  const bedOnScreen = await page.evaluate(() => {
+    const room = (window as unknown as { __room3d?: { screenPosition: (id: string) => unknown } })
+      .__room3d
+    return room?.screenPosition('quarto-1:cama-box#0') as { x: number; y: number } | undefined
+  })
+  expect(bedOnScreen).toBeTruthy()
+  await canvas.click({ position: bedOnScreen! })
+  await expect(scene.getByRole('status')).toContainText('Cama / base box')
+  await expect(scene.getByRole('status')).toContainText(/📐 ~?[\d,]+ × [\d,]+ × [\d,]+ cm/)
+  // a lista de móveis da cena também escolhe
+  await scene.getByText(/^Móveis na cena/).click()
+  await scene.getByRole('button', { name: 'Guarda-roupa' }).click()
+  await expect(scene.getByRole('status')).toContainText('Guarda-roupa')
+  await scene.getByRole('button', { name: 'Fechar' }).click()
+  await expect(canvas).toHaveCount(0)
+
   // o desenho continua depois de recarregar; com a chave desligada, some
   await page.reload()
   await expect(drawing).toBeVisible()

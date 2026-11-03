@@ -27,13 +27,15 @@
   },
   "dependencies": {
     "lz-string": "^1.5.0",
-    "preact": "^11.0.1"
+    "preact": "^11.0.1",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.1",
     "@preact/preset-vite": "^2.10.6",
     "@types/node": "^24.19.2",
+    "@types/three": "^0.187.0",
     "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",

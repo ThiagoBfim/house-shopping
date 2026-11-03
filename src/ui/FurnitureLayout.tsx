@@ -1,10 +1,11 @@
-import { useState } from 'preact/hooks'
+import { useMemo, useState } from 'preact/hooks'
 import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import { arrangeRoom, layoutItems, roomSizeCm, type PlacedItem } from '../engine/layout.ts'
 import { formatBRL } from '../engine/money.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
+import { Room3DView } from './Room3DView.tsx'
 
 interface Props {
   plan: SavedPlan
@@ -32,7 +33,7 @@ function wallStrip({ x, y, w, d, facing }: PlacedItem) {
 }
 
 /** O que mostrar ao tocar num móvel: vem da lista (nome, preço, link, medida). */
-function detailsOf(view: ListView, key: string) {
+export function detailsOf(view: ListView, key: string) {
   const entry = view.entries.find((e) => e.item.category === key)
   if (entry) {
     return {
@@ -71,14 +72,20 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
     .filter((r) => r.instance && layoutItems(view, r.instance.id).length)
   const [selected, setSelected] = useState(linked[0]?.instance?.id)
   const [picked, setPicked] = useState<PlacedItem>()
+  const [show3d, setShow3d] = useState(false)
   const current = linked.find((r) => r.instance!.id === selected) ?? linked[0]
-  if (!current) return null
-
-  const size = roomSizeCm(plan, current.index)
-  const layout = arrangeRoom(
-    { width: size.width, depth: size.depth, openings: current.room.openings },
-    layoutItems(view, current.instance!.id),
-  )
+  // O 3D refaz a cena quando o layout muda: só recalcula com outro cômodo ou outra lista.
+  const memo = useMemo(() => {
+    if (!current) return undefined
+    const size = roomSizeCm(plan, current.index)
+    const layout = arrangeRoom(
+      { width: size.width, depth: size.depth, openings: current.room.openings },
+      layoutItems(view, current.instance!.id),
+    )
+    return { size, layout }
+  }, [plan, view, current?.index, current?.instance?.id])
+  if (!current || !memo) return null
+  const { size, layout } = memo
   const details = picked && detailsOf(view, picked.key)
   const meters = (cm: number) => (cm / 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })
   const order = { rug: 0, floor: 1, wall: 2 }
@@ -97,6 +104,7 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
             onClick={() => {
               setSelected(instance!.id)
               setPicked(undefined)
+              setShow3d(false)
             }}
           >
             {instance!.title}
@@ -189,6 +197,18 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
           </text>
         </g>
       </svg>
+      {show3d ? (
+        <Room3DView
+          title={current.instance!.title}
+          layout={layout}
+          view={view}
+          onClose={() => setShow3d(false)}
+        />
+      ) : (
+        <button type="button" class="small-button room-3d-open" onClick={() => setShow3d(true)}>
+          🧊 Ver em 3D
+        </button>
+      )}
       {details && picked && (
         <div class="layout-details" role="status">
           <strong>{details.category}</strong> · {details.name}

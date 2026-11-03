@@ -517,8 +517,9 @@ export function arrangeRoom(
         ? (placed.find((p) => p.category === 'rack') ??
           placed.find((p) => p.category === 'cama-box' || p.category === 'sofa'))
         : undefined
-    if (anchor) {
-      const wall = anchor.category === 'rack' ? wallOf(anchor) : OPPOSITE[wallOf(anchor)]
+    if (anchor?.category === 'rack') {
+      // TV do rack: na parede dele, centralizada em cima dele (o rack é o móvel da TV).
+      const wall = wallOf(anchor)
       const length = wallLength(wall, W, D)
       if (item.width > length) {
         fail(item)
@@ -528,6 +529,14 @@ export function arrangeRoom(
       const offset = Math.min(Math.max(0, (start + end) / 2 - item.width / 2), length - item.width)
       put(item, 0, againstWall(wall, offset, item.width, item.depth, W, D), FACING[wall], elevation)
       continue
+    }
+    // Sem rack: trecho livre de parede. TV de frente para a cama/sofá (parede oposta, alinhada
+    // com o centro deles); o resto no meio da parede. Nada de TV na porta do guarda-roupa.
+    const preferred = anchor ? OPPOSITE[wallOf(anchor)] : undefined
+    const target = (wall: Wall, length: number) => {
+      if (!anchor || wall !== preferred) return length / 2
+      const { start, end } = alongWall(wall, anchor)
+      return (start + end) / 2
     }
     let best: { wall: Wall; offset: number; score: number } | undefined
     for (const wall of ['top', 'left', 'right', 'bottom'] as Wall[]) {
@@ -546,7 +555,9 @@ export function arrangeRoom(
           ) ||
           [...doors, ...(elevation < 100 ? windows : [])].some((z) => touches(wall, z) && hit(z))
         if (blocked) continue
-        const score = -Math.abs(offset + item.width / 2 - length / 2)
+        const score =
+          (preferred && wall !== preferred ? -10000 : 0) -
+          Math.abs(offset + item.width / 2 - target(wall, length))
         if (!best || score > best.score) best = { wall, offset, score }
       }
     }

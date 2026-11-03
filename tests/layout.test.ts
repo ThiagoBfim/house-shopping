@@ -226,6 +226,22 @@ describe('itens de parede e mesa de jantar (correções do primeiro desenho)', (
     }
   })
 
+  it('TV de frente para a cama, mas não na porta do guarda-roupa', () => {
+    const layout = arrangeRoom({ width: 350, depth: 400, openings: [] }, [
+      item('cama-box', [158, 198, 42]),
+      item('guarda-roupa', [230, 55, 220]),
+      item('tv', [122, 6, 71], { placement: 'wall' }),
+    ])
+    const tv = layout.placed.find((p) => p.category === 'tv')!
+    const wardrobe = layout.placed.find((p) => p.category === 'guarda-roupa')!
+    if (tv.facing === wardrobe.facing) {
+      const vertical = tv.facing === 'left' || tv.facing === 'right'
+      const a = along(tv, vertical)
+      const b = along(wardrobe, vertical)
+      expect(a.b <= b.a || b.b <= a.a, 'TV na frente do guarda-roupa').toBe(true)
+    }
+  })
+
   it('sala de estar e jantar: a mesa de jantar cabe junto com o sofá', () => {
     const layout = arrangeRoom({ width: 420, depth: 480, openings: [door('bottom', 0.85, 90)] }, [
       item('sofa', [210, 90, 90]),
