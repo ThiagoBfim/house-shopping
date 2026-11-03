@@ -114,3 +114,4 @@ npm run validate && npm test
 - Captcha ou tela de login: pare e peça ao usuário.
 - Se o usuário disser "Stop"/"Pare": pare de navegar na hora e mostre o que já foi coletado (o TSV).
 - **Não** rode `npm run ml:links export -- --force` com links ainda não importados na planilha: ele recria a planilha a partir dos JSONs e apaga o que não foi importado.
+- **A caixa de compra não é sempre o vendedor mais barato.** O mesmo produto de catálogo costuma ter vendedores bem mais baratos (em 03/11: lava-louças LL14X a R$ 8.309,90 no link e R$ 4.199 com outro vendedor). Depois do import, o `npm run sync:ml` lista em **"💰 Mais barato no mesmo produto"** os links com vendedor confiável ≥ 5% mais barato, já com o endereço: refaça o link com ele (mesmo produto: não apague a oferta).

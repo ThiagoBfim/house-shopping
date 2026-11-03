@@ -42,6 +42,16 @@ try {
     'Sem produto de catálogo: a API não informa o preço (mantido o da planilha)',
     report.noCatalog,
   )
+  if (report.cheaperInCatalog.length) {
+    console.warn(
+      `💰 Mais barato no mesmo produto, com outro vendedor (${report.cheaperInCatalog.length}) — regenerar o link com /ml-links:`,
+    )
+    for (const { id, price, cheaper, itemId, catalogId } of report.cheaperInCatalog) {
+      console.warn(
+        `  ${id}: ${formatBRL(price)} → ${formatBRL(cheaper)} · https://www.mercadolivre.com.br/p/${catalogId}?pdp_filters=item_id%3A${itemId}`,
+      )
+    }
+  }
 } catch (error) {
   console.error(`✖ ${(error as Error).message}`)
   process.exit(1)

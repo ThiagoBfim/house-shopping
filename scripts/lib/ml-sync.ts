@@ -18,6 +18,12 @@ export interface Quote {
   sellerSales?: number
   /** Foto principal (https). */
   image?: string
+  /**
+   * Oferta nova de vendedor confiável mais barata no mesmo produto de catálogo (outro
+   * vendedor). O link de afiliado segue um anúncio só: se o vendedor dele sobe o preço, é
+   * aqui que aparece a alternativa.
+   */
+  cheaper?: { itemId: string; price: number }
 }
 
 /** O que identifica a oferta: o anúncio escolhido e o produto de catálogo. */
@@ -31,6 +37,12 @@ export type Lookup = (ids: OfferIds) => Promise<Quote | undefined>
 export const GREEN_LEVELS = ['5_green', '4_light_green']
 /** Vendas mínimas para confiar num vendedor que não é loja oficial. */
 export const MIN_SALES = 50
+/** Economia mínima para avisar que outro vendedor do mesmo produto está mais barato. */
+export const CHEAPER_MIN_SAVING = 0.05
+
+/** A oferta mais barata vale o aviso: pelo menos CHEAPER_MIN_SAVING abaixo do preço do link. */
+export const isWorthSwitching = (price: number, cheaper: number) =>
+  cheaper <= price * (1 - CHEAPER_MIN_SAVING)
 
 /**
  * Vendedor confiável: loja oficial (mesmo sem reputação verde: a loja oficial da Electrolux é
@@ -55,6 +67,14 @@ export interface SyncReport {
   notFound: string[]
   /** Anúncio sem produto de catálogo: a API não informa preço (fica o da planilha). */
   noCatalog: string[]
+  /** Outro vendedor confiável do mesmo produto vende mais barato: regenerar o link com ele. */
+  cheaperInCatalog: {
+    id: string
+    price: number
+    cheaper: number
+    itemId: string
+    catalogId: string
+  }[]
   changedCategories: Set<string>
 }
 
@@ -79,6 +99,7 @@ export async function syncOffers(
     noCommission: [],
     notFound: [],
     noCatalog: [],
+    cheaperInCatalog: [],
     changedCategories: new Set(),
   }
 
@@ -121,6 +142,19 @@ export async function syncOffers(
           }
           updated = recordPrice(offer, today, quote.price)
         }
+      }
+      if (
+        quote.price !== undefined &&
+        quote.cheaper &&
+        isWorthSwitching(quote.price, quote.cheaper.price)
+      ) {
+        report.cheaperInCatalog.push({
+          id: option.id,
+          price: quote.price,
+          cheaper: quote.cheaper.price,
+          itemId: quote.cheaper.itemId,
+          catalogId: offer.catalogId,
+        })
       }
       if (!quote.available) report.unavailable.push(option.id)
       if (quote.price !== undefined && !earnsCommission(quote)) report.noCommission.push(option.id)
