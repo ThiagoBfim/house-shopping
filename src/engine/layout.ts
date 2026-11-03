@@ -498,7 +498,14 @@ export function arrangeRoom(
   // 7. Na parede: não ocupam chão. TV acima do rack ou de frente para a cama/sofá; o resto
   //    (ar-condicionado no alto, espelho) num trecho de parede livre: sem outro item de parede
   //    nem móvel encostado que chegue à altura dele (espelho atrás da cama, ar em cima do armário).
-  const ELEVATION: Record<string, number> = { 'ar-condicionado': 210, tv: 95 }
+  const ELEVATION: Record<string, number> = {
+    'ar-condicionado': 210,
+    tv: 95,
+    coifa: 165,
+    purificador: 120,
+  }
+  /** Item de parede que vai em cima de um móvel: TV no rack, coifa no fogão. */
+  const ABOVE: Record<string, string> = { tv: 'rack', coifa: 'fogao' }
   const alongWall = (wall: Wall, r: Rect) =>
     wall === 'top' || wall === 'bottom'
       ? { start: r.x, end: r.x + r.w }
@@ -520,9 +527,9 @@ export function arrangeRoom(
       item.category === 'tv'
         ? (placed.find((p) => p.category === 'rack') ??
           placed.find((p) => p.category === 'cama-box' || p.category === 'sofa'))
-        : undefined
-    if (anchor?.category === 'rack') {
-      // TV do rack: na parede dele, centralizada em cima dele (o rack é o móvel da TV).
+        : placed.find((p) => p.category === ABOVE[item.category])
+    if (anchor && anchor.category === ABOVE[item.category]) {
+      // TV do rack, coifa do fogão: na parede dele, centralizada em cima dele.
       const wall = wallOf(anchor)
       const length = wallLength(wall, W, D)
       if (item.width > length) {
@@ -641,6 +648,33 @@ export function layoutItems(view: ListView, instanceId: string): LayoutItem[] {
     })
   }
   return items
+}
+
+/**
+ * O resto do cômodo na lista, que não tem lugar fixo no desenho: o que fica na bancada ou em
+ * cima de móvel (micro-ondas, air fryer), guardado (panelas, toalhas) ou que você adicionou sem
+ * medida. Assim a "Posição dos móveis" mostra tudo o que está na lista para o cômodo.
+ */
+export function otherItems(
+  view: ListView,
+  instanceId: string,
+): { key: string; label: string; name: string; qty: number }[] {
+  const out: { key: string; label: string; name: string; qty: number }[] = []
+  for (const entry of view.entries) {
+    const { instanceId: id } = splitItemKey(entry.item.category)
+    if (id !== instanceId || entry.size) continue
+    out.push({
+      key: entry.item.category,
+      label: entry.label,
+      name: entry.option.name,
+      qty: entry.item.qty,
+    })
+  }
+  for (const { item, replaced, size } of view.manual) {
+    if (item.instanceId !== instanceId || (replaced && size)) continue
+    out.push({ key: item.id, label: replaced?.label ?? item.name, name: item.name, qty: item.qty })
+  }
+  return out
 }
 
 /** Posição sugerida para um móvel (centro em cm no cômodo e para onde a frente aponta). */

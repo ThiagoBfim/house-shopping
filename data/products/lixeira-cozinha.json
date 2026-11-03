@@ -1,6 +1,7 @@
 {
   "label": "Lixeira de cozinha",
   "utensil": true,
+  "layout": { "placement": "floor", "size": { "width": 30, "depth": 30, "height": 55 } },
   "options": [
     {
       "id": "lixeira-com-pedal-plastico-12-l",

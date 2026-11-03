@@ -9,6 +9,7 @@ import {
   clearPositions,
   hintOf,
   layoutItems,
+  otherItems,
   roomSizeCm,
   setPosition,
   tryMove,
@@ -113,7 +114,11 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
       index,
       instance: instances.find((i) => i.id === room.instanceId),
     }))
-    .filter((r) => r.instance && layoutItems(view, r.instance.id).length)
+    .filter(
+      (r) =>
+        r.instance &&
+        (layoutItems(view, r.instance.id).length || otherItems(view, r.instance.id).length),
+    )
   const [selected, setSelected] = useState(linked[0]?.instance?.id)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
   const [show3d, setShow3d] = useState(false)
@@ -147,6 +152,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
   const meters = (cm: number) => (cm / 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })
   const order = { rug: 0, floor: 1, wall: 2 }
   const custom = (positions[id] ?? []).length > 0
+  const others = otherItems(view, id)
 
   /** Tenta pôr o móvel na posição; se não couber, avisa e deixa onde estava. */
   const place = (hint: PositionHint, what: string) => {
@@ -425,6 +431,15 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
             ver produto ↗
           </a>
         </div>
+      )}
+      {others.length > 0 && (
+        <details class="layout-others">
+          <summary>Também neste cômodo, sem lugar fixo no desenho ({others.length})</summary>
+          <p class="muted">
+            Fica na bancada, em cima de um móvel ou guardado:{' '}
+            {others.map((o) => (o.qty > 1 ? `${o.label} (×${o.qty})` : o.label)).join(', ')}.
+          </p>
+        </details>
       )}
       {layout.unplaced.length > 0 && (
         <p class="notice notice-warn">

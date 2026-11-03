@@ -668,3 +668,44 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   )
   expect(inScene).toBeUndefined()
 })
+
+test('posição dos móveis lista tudo do cômodo: no desenho ou "também neste cômodo"', async ({
+  page,
+}) => {
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByLabel('Orçamento em reais').fill('200000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Cozinha' }).click()
+  // no desenho: lixeira, coifa (em cima do fogão), purificador
+  for (const name of [/^Lixeira de cozinha/, /^Coifa/, /^Purificador/, /^Fogão/]) {
+    await expect(layout.getByRole('button', { name })).toHaveCount(1)
+  }
+  // o resto da cozinha na lista do cômodo (bancada e guardados)
+  const others = layout.locator('.layout-others')
+  await others.locator('summary').click()
+  await expect(others).toContainText('Micro-ondas')
+  await expect(others).toContainText('Panelas')
+  // recusar o micro-ondas tira ele da lista do cômodo
+  await page
+    .locator('#room-cozinha')
+    .getByRole('article', { name: /^Micro-ondas/ })
+    .getByRole('button', { name: 'Recusar' })
+    .click()
+  await expect(others).not.toContainText('Micro-ondas')
+
+  await layout.getByRole('tab', { name: 'Banheiro 1' }).click()
+  await expect(layout.getByRole('button', { name: /^Box de banheiro/ })).toHaveCount(1)
+  await layout.getByRole('tab', { name: 'Lavanderia' }).click()
+  await expect(layout.getByRole('button', { name: /^Varal/ })).toHaveCount(1)
+})

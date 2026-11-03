@@ -8,6 +8,8 @@ import {
   type LayoutItem,
   type PlacedItem,
   type RoomLayout,
+  layoutItems,
+  otherItems,
 } from '../src/engine/layout.ts'
 // Resposta real da skill /floor-plan para a planta com portas e janelas (Drop 36).
 import aptoPortas from './fixtures/floor-plan-apto-portas.json'
@@ -305,5 +307,61 @@ describe('planta real com portas e janelas (resposta da skill, 03/11)', () => {
     ])
     expect(layout.unplaced).toEqual([])
     expectSane(layout)
+  })
+})
+
+describe('nada some da posição dos móveis', () => {
+  it('cada item do cômodo está no desenho ou na lista "também neste cômodo"', async () => {
+    const { products, rooms } = await import('../src/data/catalog-data.ts')
+    const { buildList, emptyChoices } = await import('../src/engine/budget.ts')
+    const { expandHouse } = await import('../src/engine/house.ts')
+    const house = expandHouse(rooms, products, { cozinha: 1, lavanderia: 1, banheiro: 1 })
+    const view = buildList(house.room, house.products, 5_000_000, emptyChoices())
+    for (const id of ['cozinha', 'lavanderia', 'banheiro']) {
+      const drawn = layoutItems(view, id).map((i) => i.key)
+      const others = otherItems(view, id).map((i) => i.key)
+      const all = view.entries.map((e) => e.item.category).filter((k) => k.startsWith(`${id}:`))
+      expect([...drawn, ...others].sort()).toEqual(all.sort())
+      expect(drawn.filter((k) => others.includes(k))).toEqual([])
+    }
+    const kitchen = layoutItems(view, 'cozinha').map((i) => i.category)
+    expect(kitchen).toEqual(expect.arrayContaining(['lixeira-cozinha', 'coifa', 'purificador']))
+    expect(otherItems(view, 'cozinha').map((i) => i.key)).toContain('cozinha:micro-ondas')
+    expect(layoutItems(view, 'banheiro').map((i) => i.category)).toContain('box-banheiro')
+    expect(layoutItems(view, 'lavanderia').map((i) => i.category)).toEqual(
+      expect.arrayContaining(['varal', 'cesto-de-roupa']),
+    )
+  })
+
+  it('coifa fica em cima do fogão, na mesma parede', () => {
+    const layout = arrangeRoom({ width: 300, depth: 250, openings: [] }, [
+      {
+        key: 'fogao',
+        category: 'fogao',
+        label: 'Fogão',
+        placement: 'floor',
+        width: 76,
+        depth: 65,
+        height: 90,
+        qty: 1,
+      },
+      {
+        key: 'coifa',
+        category: 'coifa',
+        label: 'Coifa',
+        placement: 'wall',
+        width: 70,
+        depth: 50,
+        height: 60,
+        qty: 1,
+      },
+    ])
+    const stove = layout.placed.find((p) => p.key === 'fogao')!
+    const hood = layout.placed.find((p) => p.key === 'coifa')!
+    expect(hood.facing).toBe(stove.facing)
+    expect(hood.elevation).toBe(165)
+    const center = (p: typeof stove) =>
+      p.facing === 'left' || p.facing === 'right' ? p.y + p.d / 2 : p.x + p.w / 2
+    expect(center(hood)).toBeCloseTo(center(stove))
   })
 })

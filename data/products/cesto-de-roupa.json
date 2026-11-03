@@ -1,6 +1,7 @@
 {
   "label": "Cesto de roupa",
   "utensil": true,
+  "layout": { "placement": "floor", "size": { "width": 45, "depth": 35, "height": 60 } },
   "options": [
     {
       "id": "cesto-de-roupa-plastico-40-l",

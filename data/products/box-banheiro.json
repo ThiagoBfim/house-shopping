@@ -1,6 +1,7 @@
 {
   "label": "Box de banheiro",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 100, "depth": 90, "height": 190 } },
   "options": [
     {
       "id": "box-banheiro-vidro-temperado-8mm-1-20",

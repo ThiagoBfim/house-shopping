@@ -1,6 +1,7 @@
 {
   "label": "Cooler / caixa térmica",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 55, "depth": 35, "height": 40 } },
   "options": [
     {
       "id": "caixa-termica-coleman-28-qt",

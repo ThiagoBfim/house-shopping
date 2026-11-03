@@ -3153,3 +3153,17 @@ h3 {
   gap: 8px;
   margin: 8px 0;
 }
+
+.layout-others {
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+.layout-others summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.layout-others p {
+  margin: 6px 0 0;
+}

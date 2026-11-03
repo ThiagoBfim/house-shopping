@@ -1,6 +1,7 @@
 {
   "label": "Varal",
   "utensil": true,
+  "layout": { "placement": "floor", "size": { "width": 150, "depth": 55, "height": 100 } },
   "options": [
     {
       "id": "varal-de-chao-sanfonado-mor",

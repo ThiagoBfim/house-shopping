@@ -487,6 +487,102 @@ export function furnitureModel(
         material('#cfe0ea', { roughness: 0.02, metalness: 0.9 }),
       )
       break
+    case 'lixeira-cozinha':
+    case 'lixeira-banheiro': {
+      // Lixeira de pedal: corpo inox, tampa preta.
+      const steel = material('#c5c9cc', { roughness: 0.3, metalness: 0.85 })
+      addCylinder(g, Math.min(w, d) / 2, h - 0.03, 0, 0, 0, steel)
+      addCylinder(
+        g,
+        Math.min(w, d) / 2 + 0.005,
+        0.03,
+        0,
+        h - 0.03,
+        0,
+        material(BLACK, { roughness: 0.4 }),
+      )
+      break
+    }
+    case 'cesto-de-roupa':
+      addBox(g, w, h, d, 0, 0, 0, wood('#c9ab7a'))
+      addBox(g, w + 0.01, 0.03, d + 0.01, 0, h - 0.03, 0, wood('#a8875a'))
+      break
+    case 'varal': {
+      // Varal de chão: duas laterais em A e as varetas.
+      const metal = material('#e3e5e7', { roughness: 0.35, metalness: 0.6 })
+      for (const sx of [-1, 1]) {
+        addBox(g, 0.02, h, d, sx * (w / 2 - 0.01), 0, 0, metal)
+      }
+      for (let i = 0; i < 8; i++) {
+        addBox(g, w, 0.008, 0.008, 0, h - 0.02, -d / 2 + (d * (i + 0.5)) / 8, metal)
+      }
+      break
+    }
+    case 'box-banheiro': {
+      // Box: dois vidros (frente e lateral livre) com perfil de alumínio; piso do box.
+      const glass = material('#d7e8f0', { roughness: 0.05, metalness: 0.1 })
+      glass.transparent = true
+      glass.opacity = 0.3
+      const frame = material('#c9ccce', { roughness: 0.3, metalness: 0.8 })
+      addBox(g, w, h, 0.01, 0, 0, d / 2 - 0.005, glass)
+      addBox(g, 0.01, h, d, w / 2 - 0.005, 0, 0, glass)
+      addBox(g, w, 0.03, 0.03, 0, h - 0.03, d / 2 - 0.015, frame)
+      addBox(g, 0.03, 0.03, d, w / 2 - 0.015, h - 0.03, 0, frame)
+      addBox(g, w, 0.02, d, 0, 0, 0, material('#eeeeec', { roughness: 0.4 }))
+      // Chuveiro na parede de trás.
+      addCylinder(g, 0.1, 0.02, 0, h + 0.05, -d / 2 + 0.15, frame)
+      break
+    }
+    case 'coifa': {
+      // Coifa: corpo inclinado de inox e chaminé até perto do teto.
+      const steel = material('#c3c8cc', { roughness: 0.25, metalness: 0.9 })
+      addBox(g, w, 0.12, d, 0, 0, 0, steel)
+      addBox(g, 0.28, Math.max(0.2, 2.6 - 1.65 - 0.12), 0.24, 0, 0.12, -d / 2 + 0.12, steel)
+      break
+    }
+    case 'purificador':
+      addBox(g, w, h, d, 0, 0, 0, material(WHITE, { roughness: 0.3 }))
+      addBox(
+        g,
+        w * 0.5,
+        0.02,
+        0.06,
+        0,
+        0.04,
+        d / 2,
+        material('#9aa1a7', { metalness: 0.8, roughness: 0.3 }),
+      )
+      break
+    case 'cooler':
+      addBox(g, w, h * 0.85, d, 0, 0, 0, material('#2f6fb3', { roughness: 0.5 }))
+      addBox(
+        g,
+        w + 0.01,
+        h * 0.15,
+        d + 0.01,
+        0,
+        h * 0.85,
+        0,
+        material('#f2f2f0', { roughness: 0.5 }),
+      )
+      break
+    case 'ombrelone': {
+      addBox(g, w, 0.06, d, 0, 0, 0, material('#3b3e42', { roughness: 0.6 }))
+      addCylinder(
+        g,
+        0.02,
+        h - 0.3,
+        0,
+        0.06,
+        0,
+        material('#d9d9d6', { metalness: 0.7, roughness: 0.3 }),
+      )
+      const canopy = new Mesh(new CylinderGeometry(0.02, 1.2, 0.35, 24), fabric('#e8dcc4'))
+      canopy.position.set(0, h - 0.2, 0)
+      canopy.castShadow = true
+      g.add(canopy)
+      break
+    }
     default:
       addBox(g, w, h, d, 0, 0, 0, material('#b9b2a8', { roughness: 0.7 }))
   }
