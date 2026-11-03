@@ -171,17 +171,29 @@
       "id": "cooktop-a-gas-brastemp-5-bocas-gourmand",
       "tier": 4,
       "name": "Cooktop a Gás Brastemp 5 Bocas Inox 90 cm",
-      "price": 3929,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 3227,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/up/MLBU1139323310?pdp_filters=item_id%3AMLB3523310069",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_775366-MLB73023672334_112023-O.webp",
+      "url": "https://meli.la/21Ff8jH",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_926804-MLA99955500721_112025-O.webp",
       "bullets": [
         "Queimadores de alta potência",
         "Acendimento superautomático",
         "Acabamento premium"
       ],
-      "variants": ["cooktop-gas"]
+      "variants": ["cooktop-gas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/21Ff8jH",
+          "price": 3227,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB6483090746",
+          "catalogId": "MLB11407417",
+          "history": [{ "date": "2026-11-03", "price": 3227 }]
+        }
+      ]
     },
     {
       "id": "cooktop-a-gas-tramontina-penta-inox-5-bocas",

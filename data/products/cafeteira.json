@@ -245,11 +245,11 @@
       "id": "cafeteira-espresso-tramontina-by-breville-barista-express",
       "tier": 4,
       "name": "Cafeteira Espresso Tramontina by Breville Express Pro Inox",
-      "price": 5490,
+      "price": 5349.9,
       "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/cafeteira-express-tramontina-pro-inox-breville-69066012/p/MLB68861676?pdp_filters=item_id%3AMLB7585502334",
-      "image": "https://http2.mlstatic.com/D_Q_NP_2X_839767-MLA111053641981_042026-E.webp",
+      "url": "https://meli.la/1a84TQt",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_839767-MLA111053641981_042026-O.webp",
       "bullets": [
         "Moedor de grãos embutido",
         "Controle de moagem e dose",
@@ -259,15 +259,16 @@
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://www.mercadolivre.com.br/cafeteira-express-tramontina-pro-inox-breville-69066012/p/MLB68861676?pdp_filters=item_id%3AMLB7585502334",
-          "price": 5490,
+          "url": "https://meli.la/1a84TQt",
+          "price": 5349.9,
           "updatedAt": "2026-11-03",
           "available": true,
-          "externalId": "MLB7585502334",
+          "externalId": "MLB7602221854",
           "catalogId": "MLB68861676",
           "history": [
             { "date": "2026-10-23", "price": 5230 },
-            { "date": "2026-10-30", "price": 5490 }
+            { "date": "2026-10-30", "price": 5490 },
+            { "date": "2026-11-03", "price": 5349.9 }
           ]
         }
       ]

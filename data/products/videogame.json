@@ -106,17 +106,29 @@
       "id": "console-xbox-series-s-512-gb",
       "tier": 1,
       "name": "Console Xbox Series S 512 GB",
-      "price": 4155,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 3895,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/up/MLBU785249875?pdp_filters=item_id%3AMLB4957084586",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_916359-MLA74806232531_022024-O.webp",
+      "url": "https://meli.la/2SVa6aM",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_632101-MLA110165481061_042026-O.webp",
       "bullets": [
         "O console atual mais barato",
         "Game Pass: centenas de jogos na assinatura",
         "Só digital (sem disco)"
       ],
-      "variants": ["xbox"]
+      "variants": ["xbox"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/2SVa6aM",
+          "price": 3895,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB6718106796",
+          "catalogId": "MLB16650345",
+          "history": [{ "date": "2026-11-03", "price": 3895 }]
+        }
+      ]
     },
     {
       "id": "console-xbox-series-s-1-tb",
@@ -279,13 +291,24 @@
       "id": "console-nintendo-switch-2-com-mario-kart-world-e-controle-pro",
       "tier": 4,
       "name": "Console Nintendo Switch 2 com Mario Kart World e Controle Pro",
-      "price": 5649,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 6299,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/up/MLBU5360744228?pdp_filters=item_id%3AMLB5317666823",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_944168-MLB118840895123_102026-O.webp",
+      "url": "https://meli.la/1hGsgN3",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_944168-MLB118840895123_102026-O-nintendo-switch-2-com-mario-kart-fisico-e-pro-controller.webp",
       "bullets": ["Switch 2 com Mario Kart", "Controle Pro para jogar na TV", "Kit completo"],
-      "variants": ["nintendo"]
+      "variants": ["nintendo"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/1hGsgN3",
+          "price": 6299,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB5317666823",
+          "history": [{ "date": "2026-11-03", "price": 6299 }]
+        }
+      ]
     }
   ]
 }
