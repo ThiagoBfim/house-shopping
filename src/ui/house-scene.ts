@@ -10,6 +10,7 @@
  */
 import {
   ACESFilmicToneMapping,
+  Box3,
   BoxGeometry,
   CanvasTexture,
   Color,
@@ -21,7 +22,6 @@ import {
   MeshStandardMaterial,
   PCFSoftShadowMap,
   PerspectiveCamera,
-  Plane,
   PlaneGeometry,
   PointLight,
   Raycaster,
@@ -34,6 +34,11 @@ import {
   type Object3D,
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js'
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js'
+import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass.js'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import {
   DOOR_HEIGHT,
   WALL_HEIGHT,
@@ -49,7 +54,14 @@ import {
 import type { Floor, HouseModel } from '../engine/house3d.ts'
 import type { FurnishedRoom } from '../engine/house3d.ts'
 import type { PlacedItem } from '../engine/layout.ts'
-import { disposeMaterials, furnitureModel, material } from './furniture-models.ts'
+import {
+  builtInModel,
+  disposeMaterials,
+  furnitureModel,
+  material,
+  setRealistic,
+} from './furniture-models.ts'
+import type { RealisticKit } from './realistic-materials.ts'
 
 export type ViewMode = 'orbit' | 'walk' | 'tour'
 
@@ -61,6 +73,11 @@ export interface HouseScene {
   select: (id: string | undefined) => void
   /** Imagem PNG do que está na tela. */
   screenshot: () => string
+  /**
+   * Render realista do que está na tela (modo realista): 2× a resolução, 8 amostras por pixel e
+   * oclusão de ambiente completa. Devolve a imagem PNG.
+   */
+  renderRealistic: () => { done: Promise<string | undefined>; cancel: () => void }
   /** Estado para a interface e os testes. */
   state: () => { mode: ViewMode; x: number; z: number; room: number; tour: number }
   screenPosition: (id: string) => { x: number; y: number } | undefined
@@ -74,6 +91,7 @@ interface Callbacks {
 }
 
 export const EYE_HEIGHT = 1.6
+const EXPOSURE = 1.05
 const WALK_SPEED = 1.4
 const TOUR_SPEED = 0.9
 const TOUR_PAUSE = 3.2
@@ -188,21 +206,33 @@ export function mountHouse(
   model: HouseModel,
   furnished: FurnishedRoom[],
   callbacks: Callbacks,
+  /** Modo realista: texturas reais, céu, oclusão de ambiente e render em alta qualidade. */
+  kit?: RealisticKit,
 ): HouseScene {
+  setRealistic(kit)
   const world = buildWorld(model)
-  const layouts = furnished.map((f) => f.layout)
+  // Armários das fotos também bloqueiam quem anda e o ponto de parada do tour.
+  const layouts = furnished.map((f) => ({ ...f.layout, placed: [...f.layout.placed, ...f.fixed] }))
   const blockers: Rect2[] = blockersOf(world, model, layouts)
 
   const scene = new Scene()
-  scene.background = new Color('#dfe7ee')
-  scene.fog = new Fog('#dfe7ee', 30, 80)
+  if (kit) {
+    // Céu de verdade: ilumina (reflexos) e aparece pelas janelas.
+    scene.environment = kit.sky
+    scene.background = kit.sky
+    scene.environmentIntensity = 0.55
+  } else {
+    scene.background = new Color('#dfe7ee')
+    scene.fog = new Fog('#dfe7ee', 30, 80)
+  }
 
   const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = PCFSoftShadowMap
   renderer.toneMapping = ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.05
+  // Realista: um pouco menos de exposição, senão a parede branca estoura e perde o sombreado.
+  renderer.toneMappingExposure = kit ? 0.88 : EXPOSURE
   renderer.outputColorSpace = SRGBColorSpace
   renderer.localClippingEnabled = true
   container.appendChild(renderer.domElement)
@@ -210,7 +240,7 @@ export function mountHouse(
   const camera = new PerspectiveCamera(55, 1, 0.05, 200)
 
   // Luz: céu + sol com sombra cobrindo a casa + uma luz de teto por cômodo.
-  scene.add(new HemisphereLight('#ffffff', '#b8a690', 1.4))
+  scene.add(new HemisphereLight('#ffffff', '#b8a690', kit ? 0.45 : 1.4))
   const sun = new DirectionalLight('#fff4e0', 2.2)
   const cx = model.widthM / 2
   const cz = model.depthM / 2
@@ -218,7 +248,7 @@ export function mountHouse(
   sun.position.set(cx + span * 0.4, 12, cz + span * 0.7)
   sun.target.position.set(cx, 0, cz)
   sun.castShadow = true
-  sun.shadow.mapSize.set(2048, 2048)
+  sun.shadow.mapSize.set(kit ? 4096 : 2048, kit ? 4096 : 2048)
   sun.shadow.camera.left = -span
   sun.shadow.camera.right = span
   sun.shadow.camera.top = span
@@ -230,7 +260,7 @@ export function mountHouse(
 
   // Terreno em volta (grama clara) para a casa não flutuar.
   const ground = new Mesh(
-    new PlaneGeometry(span * 6, span * 6),
+    new PlaneGeometry(span * 40, span * 40),
     new MeshStandardMaterial({ color: '#c9d6b8', roughness: 1 }),
   )
   ground.rotation.x = -Math.PI / 2
@@ -238,14 +268,14 @@ export function mountHouse(
   ground.receiveShadow = true
   scene.add(ground)
 
-  /** Plano de corte da maquete: some tudo acima de ORBIT_CUT (paredes, portas). */
-  const cut = new Plane(new Vector3(0, -1, 0), ORBIT_CUT)
-  const cuttable: MeshStandardMaterial[] = []
-  const cutMaterial = (color: string, extra: Partial<MeshStandardMaterial> = {}) => {
-    const m = new MeshStandardMaterial({ color, roughness: 0.9, ...extra })
-    cuttable.push(m)
-    return m
-  }
+  /**
+   * Paredes, portas e janelas ficam neste grupo: na maquete são "cortadas" a ORBIT_CUT achatando
+   * cada peça (geometria de verdade, sem plano de corte no material).
+   */
+  const structure = new Group()
+  scene.add(structure)
+  const cutMaterial = (color: string, extra: Partial<MeshStandardMaterial> = {}) =>
+    new MeshStandardMaterial({ color, roughness: 0.9, ...extra })
 
   const box = (w: number, h: number, d: number, m: MeshStandardMaterial) => {
     const mesh = new Mesh(new BoxGeometry(w, h, d), m)
@@ -257,12 +287,15 @@ export function mountHouse(
   // Pisos e tetos.
   const ceilings: Mesh[] = []
   model.rooms.forEach((room, i) => {
-    const tex = floorTexture(room.finishes.floor, room.finishes.floorColor)
-    const floorMat = new MeshStandardMaterial({
-      color: tex ? '#ffffff' : room.finishes.floorColor,
-      map: tex?.texture,
-      roughness: room.finishes.floor === 'porcelanato' ? 0.35 : 0.8,
-    })
+    const { floor: kind, floorColor, tileCm } = room.finishes
+    const tex = kit ? undefined : floorTexture(kind, floorColor)
+    const floorMat = kit
+      ? kit.floor(kind, floorColor, room.widthM, room.depthM, tileCm)
+      : new MeshStandardMaterial({
+          color: tex ? '#ffffff' : floorColor,
+          map: tex?.texture,
+          roughness: kind === 'porcelanato' ? 0.35 : 0.8,
+        })
     if (tex) tex.texture.repeat.set(room.widthM / tex.meters, room.depthM / tex.meters)
     const floor = new Mesh(new PlaneGeometry(room.widthM, room.depthM), floorMat)
     floor.rotation.x = -Math.PI / 2
@@ -285,26 +318,33 @@ export function mountHouse(
     ceiling.visible = false
     scene.add(ceiling)
     ceilings.push(ceiling)
-    const lamp = new PointLight('#fff1d6', 2.2, Math.max(room.widthM, room.depthM) * 2.2, 1.6)
+    const lamp = new PointLight(
+      '#fff1d6',
+      kit ? 1.6 : 2.2,
+      Math.max(room.widthM, room.depthM) * 2.2,
+      1.6,
+    )
     lamp.position.set(room.xM + room.widthM / 2, WALL_HEIGHT - 0.25, room.yM + room.depthM / 2)
     scene.add(lamp)
   })
 
   // Paredes (com a cor de cada cômodo), rodapé, vidro das janelas.
   const wallMats = new Map<string, MeshStandardMaterial>()
-  const glass = cutMaterial('#a9cfe8', {
-    transparent: true,
-    opacity: 0.28,
-    roughness: 0.05,
-    metalness: 0.1,
-  })
+  const glass = kit
+    ? kit.glass()
+    : cutMaterial('#a9cfe8', {
+        transparent: true,
+        opacity: 0.28,
+        roughness: 0.05,
+        metalness: 0.1,
+      })
   glass.depthWrite = false
   const trim = cutMaterial('#f7f5f0', { roughness: 0.5 })
   for (const wall of world.walls) {
     const color = model.rooms[wall.room].finishes.wallColor
     let m = wallMats.get(color)
     if (!m) {
-      m = cutMaterial(color)
+      m = kit ? kit.wall(color) : cutMaterial(color)
       wallMats.set(color, m)
     }
     const w = wall.maxX - wall.minX
@@ -317,7 +357,7 @@ export function mountHouse(
       (wall.bottom + wall.top) / 2,
       (wall.minZ + wall.maxZ) / 2,
     )
-    scene.add(mesh)
+    structure.add(mesh)
     const horizontal = wall.side === 'top' || wall.side === 'bottom'
     if (wall.kind === 'glass') {
       // Caixilho: moldura fina em volta do vidro e um montante no meio.
@@ -327,7 +367,7 @@ export function mountHouse(
       for (const y of [wall.bottom, wall.top - t]) {
         const bar = box(horizontal ? len : 0.07, t, horizontal ? 0.07 : len, frame)
         bar.position.set(mesh.position.x, y + t / 2, mesh.position.z)
-        scene.add(bar)
+        structure.add(bar)
       }
       for (const along of [-len / 2 + t / 2, 0, len / 2 - t / 2]) {
         const post = box(horizontal ? t : 0.07, h, horizontal ? 0.07 : t, frame)
@@ -336,7 +376,7 @@ export function mountHouse(
           mesh.position.y,
           mesh.position.z + (horizontal ? 0 : along),
         )
-        scene.add(post)
+        structure.add(post)
       }
     } else if (wall.bottom === 0) {
       // Rodapé de 7 cm na face de dentro do cômodo.
@@ -376,7 +416,7 @@ export function mountHouse(
         DOOR_HEIGHT / 2,
         midZ + az * end * (door.widthM / 2),
       )
-      scene.add(jamb)
+      structure.add(jamb)
     }
     const head = box(
       horizontal ? door.widthM + 0.1 : WALL_THICKNESS + 0.04,
@@ -385,7 +425,7 @@ export function mountHouse(
       frameMat,
     )
     head.position.set(midX, DOOR_HEIGHT + 0.025, midZ)
-    scene.add(head)
+    structure.add(head)
     // folha
     const leafW = door.widthM - 0.03
     const leaf = new Group()
@@ -416,8 +456,28 @@ export function mountHouse(
       const diff = Math.atan2(Math.sin(toward - along), Math.cos(toward - along))
       leaf.rotation.y = along + (Math.sign(diff) * (Math.PI * 75)) / 180
     }
-    scene.add(leaf)
+    structure.add(leaf)
   }
+
+  const builtIns: Group[] = []
+  // Armários das fotos (já estão no imóvel): na medida, na parede onde a foto mostra.
+  furnished.forEach(({ room, fixed }) => {
+    fixed.forEach((p, i) => {
+      const b = room.builtIns[i]
+      const sideways = p.facing === 'left' || p.facing === 'right'
+      const [w, d] = sideways ? [p.d / 100, p.w / 100] : [p.w / 100, p.d / 100]
+      const g = builtInModel(b, w, d, p.height / 100)
+      g.rotation.y = { down: 0, up: Math.PI, right: Math.PI / 2, left: -Math.PI / 2 }[p.facing]
+      g.position.set(
+        room.xM + (p.x + p.w / 2) / 100,
+        p.elevation / 100,
+        room.yM + (p.y + p.d / 2) / 100,
+      )
+      g.userData.aboveCut = p.elevation / 100 >= ORBIT_CUT
+      scene.add(g)
+      builtIns.push(g)
+    })
+  })
 
   // Móveis.
   const pickables: Object3D[] = []
@@ -480,11 +540,22 @@ export function mountHouse(
     )
   let currentRoom = -1
 
+  // Altura de cada peça da estrutura (calculada uma vez), para o corte da maquete.
+  const pieces = structure.children.map((obj) => {
+    const bounds = new Box3().setFromObject(obj)
+    return { obj, bottom: bounds.min.y, top: bounds.max.y, y: obj.position.y }
+  })
   const applyCut = (on: boolean) => {
-    for (const m of cuttable) m.clippingPlanes = on ? [cut] : []
+    for (const { obj, bottom, top, y } of pieces) {
+      obj.visible = !on || bottom < ORBIT_CUT - 0.001
+      const s =
+        on && top > ORBIT_CUT && bottom < ORBIT_CUT ? (ORBIT_CUT - bottom) / (top - bottom) : 1
+      // Achata em volta da base: a base fica onde estava e o topo vai para ORBIT_CUT.
+      obj.scale.y = s
+      obj.position.y = bottom - (bottom - y) * s
+    }
     for (const c of ceilings) c.visible = !on
-    for (const g of items.values()) if (g.userData.aboveCut) g.visible = !on
-    for (const m of cuttable) m.needsUpdate = true
+    for (const g of [...items.values(), ...builtIns]) if (g.userData.aboveCut) g.visible = !on
   }
   applyCut(true)
 
@@ -692,9 +763,22 @@ export function mountHouse(
   }
 
   // ---------- laço ----------
+  // Realista: oclusão de ambiente (sombra suave nos cantos, sob e atrás dos móveis).
+  const composer = kit ? new EffectComposer(renderer) : undefined
+  if (composer) {
+    composer.addPass(new RenderPass(scene, camera))
+    const ao = new GTAOPass(scene, camera, 512, 512)
+    ao.blendIntensity = 0.85
+    ao.updateGtaoMaterial({ radius: 0.5, distanceFallOff: 1, thickness: 1 })
+    composer.addPass(ao)
+    composer.addPass(new OutputPass())
+  }
+  const draw = () => (composer ? composer.render() : renderer.render(scene, camera))
+
   const resize = () => {
     const { clientWidth: w, clientHeight: h } = container
     renderer.setSize(w, h, false)
+    composer?.setSize(w, h)
     camera.aspect = w / Math.max(1, h)
     camera.updateProjectionMatrix()
   }
@@ -744,10 +828,55 @@ export function mountHouse(
         callbacks.onRoom(room)
       }
     }
-    renderer.render(scene, camera)
+    if (!tracing) draw()
     frame = requestAnimationFrame(loop)
   }
   frame = requestAnimationFrame(loop)
+
+  /** Render de alta qualidade em andamento (o laço normal não desenha por cima). */
+  let tracing = false
+  const renderRealistic: HouseScene['renderRealistic'] = () => {
+    let cancelled = false
+    const done = (async () => {
+      if (!kit || tracing) return undefined
+      tracing = true
+      const ratio = renderer.getPixelRatio()
+      const size = renderer.getSize(new Vector2())
+      const hq = new EffectComposer(renderer)
+      try {
+        // 2× a resolução da tela e 8 amostras por pixel: bordas lisas, textura nítida.
+        renderer.setPixelRatio(Math.min(4, ratio * 2))
+        const ssaa = new SSAARenderPass(scene, camera)
+        ssaa.sampleLevel = 3
+        ssaa.unbiased = true
+        hq.addPass(ssaa)
+        const ao = new GTAOPass(scene, camera, size.x, size.y)
+        ao.blendIntensity = 1
+        ao.updateGtaoMaterial({ radius: 0.6, distanceFallOff: 1, thickness: 1, samples: 24 })
+        ao.updatePdMaterial({
+          lumaPhi: 10,
+          depthPhi: 2,
+          normalPhi: 3,
+          radius: 6,
+          rings: 2,
+          samples: 16,
+        })
+        hq.addPass(ao)
+        hq.addPass(new OutputPass())
+        hq.setSize(size.x, size.y)
+        await new Promise((next) => requestAnimationFrame(next))
+        if (cancelled) return undefined
+        hq.render()
+        return renderer.domElement.toDataURL('image/png')
+      } finally {
+        hq.dispose()
+        renderer.setPixelRatio(ratio)
+        resize()
+        tracing = false
+      }
+    })()
+    return { done, cancel: () => (cancelled = true) }
+  }
 
   return {
     setMode: (next) => {
@@ -761,8 +890,9 @@ export function mountHouse(
     startTour,
     stopTour,
     select,
+    renderRealistic,
     screenshot: () => {
-      renderer.render(scene, camera)
+      if (!tracing) draw()
       return canvas.toDataURL('image/png')
     },
     state: () => ({
@@ -806,6 +936,8 @@ export function mountHouse(
         }
       })
       disposeMaterials()
+      composer?.dispose()
+      setRealistic(undefined)
       renderer.dispose()
       canvas.remove()
     },

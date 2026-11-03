@@ -35,13 +35,14 @@ Três funcionalidades novas, nesta ordem:
 | [36](drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta       | Vista de cima em escala com os móveis no melhor lugar                      |
 | [37](drop-37-visualizacao-3d.md)          | Visualização 3D                    | Cena 3D com os móveis; tocar mostra nome, medida, preço                    |
 | [38](drop-38-casa-em-3d.md)               | Casa inteira em 3D                 | Planta + fotos → casa em 3D com os móveis; primeira pessoa e tour em vídeo |
+| [39](drop-39-casa-3d-realista.md)         | Casa em 3D realista                | Botão realista (texturas, céu, render) e armários das fotos                |
 | [34](drop-34-cobranca.md)                 | Cobrança                           | Cobrar pelas funcionalidades 1 e 2 (por último)                            |
 
 ## Ordem sugerida
 
 ```
 30 (backend local) → 31 (planta → cômodos) → 32 (desenho) → 33 (preços mais baratos)
-→ 35 (medidas) → 36 (posição dos móveis) → 37 (3D) → 38 (casa em 3D) → 34 (cobrança)
+→ 35 (medidas) → 36 (posição dos móveis) → 37 (3D) → 38 (casa em 3D) → 39 (realista) → 34 (cobrança)
 ```
 
 ## Decisões

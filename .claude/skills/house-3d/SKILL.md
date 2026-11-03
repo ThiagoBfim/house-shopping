@@ -5,7 +5,7 @@ description: Monta o modelo 3D de um imóvel para o House Shopping a partir da p
 
 # /house-3d
 
-Argumento: uma pasta com `planta.<ext>` (obrigatória), `foto-1.<ext>`, `foto-2.<ext>`… (opcionais) e `moveis.json` (os móveis da lista por cômodo, com medida em cm).
+Argumento: uma pasta com `planta.<ext>` (obrigatória), `foto-1.<ext>`, `foto-2.<ext>`… (opcionais) e `moveis.json` (os móveis da lista por cômodo, com medida em cm). Depois da pasta pode vir `realista` (botão "Gerar casa em 3D realista"): veja a seção 5.
 
 Abra tudo com a ferramenta `Read` (imagens e PDF). Quando chamada pelo backend, a resposta segue um JSON Schema (`--json-schema`): preencha exatamente os campos pedidos. Não use outras ferramentas nem grave arquivos.
 
@@ -34,12 +34,36 @@ Pelas **fotos**: identifique de qual cômodo é cada foto pelo que aparece (cama
 
 Sem foto do cômodo: valor comum para o tipo (quarto e sala `madeira`; cozinha, banheiro e lavanderia `porcelanato` claro; área externa `deck` ou `ceramica`) e parede `#f2efe8`. Diga em `fromPhoto` se veio de foto.
 
+Porcelanato e cerâmica: `tileCm` = lado da peça (porcelanato 60–120, cerâmica 30–45), contando as juntas na foto.
+
+## 3b. Armários das fotos (`builtIns`, por cômodo)
+
+O que **já está no imóvel** e aparece nas fotos (não é da lista de compras): armário embutido do quarto, bancada da cozinha com armário embaixo, armário aéreo, gabinete da pia do banheiro, prateleira fixa. Sem foto do cômodo: `[]`.
+
+Para cada um, encostado numa parede do retângulo do cômodo:
+
+- `kind`: `armario` (embutido, do chão até perto do teto), `bancada` (cozinha/lavanderia: armário de baixo + tampo), `aereo` (pendurado na parede), `gabinete` (pia do banheiro), `prateleira`.
+- `wall` e `startCm` / `lengthCm`: em qual parede e de onde até onde vai, em cm a partir da ponta esquerda (paredes `top`/`bottom`) ou de cima (`left`/`right`) da parede.
+- `depthCm`, `heightCm`, `elevationCm` (chão até a base). Medidas de referência para estimar pela foto: porta 80 × 210, bancada 90 de altura e 60 de profundidade, aéreo 35 de profundidade a 150 do chão, embutido 55–60 de profundidade, tomada a 30 cm do chão, interruptor a 110.
+- `finish` (`madeira-clara`, `madeira-escura`, `branco`, `laca`, `cinza`) e `color` (hex da frente). Bancada: `topColor` (granito preto `#1f1f22`, branco `#e9e7e2`…), `sink` e `cooktop` se aparecem. `doors`: quantas portas na frente.
+
+Associe a foto ao cômodo pelo que aparece e posicione pela parede onde está (janela, porta e bancada ajudam a saber qual parede é). Na dúvida sobre a parede, use a mais provável e avise em `notes`.
+
 ## 4. Móveis (`furniture`)
 
 `moveis.json` lista, por cômodo (`instanceId`, ex.: `quarto-1`), os móveis com `key`, nome, `widthCm` × `depthCm` × `heightCm` e onde ficam (`floor`, `wall`, `rug`). O site já posiciona por regras (móvel encostado na parede, passagem de 60 cm, nada na frente de porta).
 
 Só sugira posição quando a planta ou as fotos mostram onde o móvel **está ou cabe melhor** (cama desenhada na planta, bancada da cozinha, nicho de geladeira, armário embutido, foto do quarto com a cama numa parede). Para cada um: `key`, `unit` (0, 1… quando há mais de um), `xCm`/`yCm` = centro do móvel no cômodo (cm a partir do canto de cima à esquerda do retângulo do cômodo) e `rotation` = para onde a frente aponta (`down`, `up`, `left`, `right`; cama: a frente é o pé). O site confere cada sugestão (dentro do cômodo, sem bater em outro móvel, sem bloquear porta) e, se não passar, usa a regra. Na dúvida, não sugira.
 
-## 5. `notes`
+## 5. Modo `realista`
+
+Mais tempo e mais cuidado, para o modo realista do site:
+
+- Abra **cada foto** e compare com a planta antes de responder; uma foto pode mostrar mais de um cômodo (sala integrada à cozinha).
+- Armários: meça cada módulo (`startCm`, `lengthCm`) pelas referências da seção 3b; separe bancada, aéreo e embutido mesmo quando estão juntos.
+- Cores: pegue a cor do meio da superfície, longe do reflexo da janela e da sombra; madeira = tom médio das tábuas.
+- Piso: `tileCm` sempre que der para contar as peças.
+
+## 6. `notes`
 
 Avisos curtos em português (medidas estimadas, fotos que não deu para associar a um cômodo, planta de mais de um pavimento), ou `""`.

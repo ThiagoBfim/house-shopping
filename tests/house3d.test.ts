@@ -3,6 +3,7 @@ import { products, rooms } from '../src/data/catalog-data.ts'
 import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import {
+  builtInPlaced,
   furnishHouse,
   furnitureForSkill,
   linkRooms,
@@ -203,5 +204,172 @@ describe('furnishHouse e furnitureForSkill', () => {
       depthCm: expect.any(Number),
       placement: 'floor',
     })
+  })
+})
+
+describe('armários das fotos (builtIns)', () => {
+  const kitchen = (builtIns: unknown[]) =>
+    parseHouseModel(
+      model([room({ type: 'cozinha', label: 'Cozinha', widthM: 3, depthM: 2.5, builtIns })]),
+    )!.rooms[0]
+
+  it('confere, recorta na parede e descarta o que não serve', () => {
+    const r = kitchen([
+      {
+        kind: 'bancada',
+        wall: 'top',
+        startCm: 0,
+        lengthCm: 400,
+        depthCm: 60,
+        heightCm: 90,
+        elevationCm: 0,
+        finish: 'branco',
+        color: '#f0f0f0',
+        topColor: '#222222',
+        sink: true,
+        cooktop: true,
+        doors: 4,
+      },
+      {
+        kind: 'aereo',
+        wall: 'top',
+        startCm: 20,
+        lengthCm: 200,
+        depthCm: 35,
+        heightCm: 150,
+        elevationCm: 150,
+        finish: 'marmore',
+        color: 'azul',
+      },
+      {
+        kind: 'geladeira',
+        wall: 'top',
+        startCm: 0,
+        lengthCm: 80,
+        depthCm: 60,
+        heightCm: 180,
+        elevationCm: 0,
+      },
+      {
+        kind: 'armario',
+        wall: 'left',
+        startCm: 0,
+        lengthCm: 100,
+        depthCm: 200,
+        heightCm: 200,
+        elevationCm: 0,
+      },
+    ])
+    expect(r.builtIns).toEqual([
+      {
+        kind: 'bancada',
+        wall: 'top',
+        startCm: 0,
+        lengthCm: 300,
+        depthCm: 60,
+        heightCm: 90,
+        elevationCm: 0,
+        finish: 'branco',
+        color: '#f0f0f0',
+        topColor: '#222222',
+        sink: true,
+        cooktop: true,
+        doors: 4,
+      },
+      // acabamento e cor inválidos → branco; altura até o teto (270 − 150)
+      {
+        kind: 'aereo',
+        wall: 'top',
+        startCm: 20,
+        lengthCm: 200,
+        depthCm: 35,
+        heightCm: 120,
+        elevationCm: 150,
+        finish: 'branco',
+        color: '#efece6',
+      },
+    ])
+  })
+
+  it('vira peça fixa encostada na parede certa (chão ou parede pela altura)', () => {
+    const r = kitchen([
+      {
+        kind: 'bancada',
+        wall: 'right',
+        startCm: 50,
+        lengthCm: 150,
+        depthCm: 60,
+        heightCm: 90,
+        elevationCm: 0,
+        finish: 'branco',
+        color: '#ffffff',
+      },
+      {
+        kind: 'aereo',
+        wall: 'bottom',
+        startCm: 0,
+        lengthCm: 100,
+        depthCm: 35,
+        heightCm: 70,
+        elevationCm: 150,
+        finish: 'branco',
+        color: '#ffffff',
+      },
+    ])
+    expect(builtInPlaced(r.builtIns[0], 0, r)).toMatchObject({
+      key: 'embutido:0',
+      x: 240,
+      y: 50,
+      w: 60,
+      d: 150,
+      placement: 'floor',
+      facing: 'left',
+    })
+    expect(builtInPlaced(r.builtIns[1], 1, r)).toMatchObject({
+      x: 0,
+      y: 215,
+      w: 100,
+      d: 35,
+      placement: 'wall',
+      elevation: 150,
+      facing: 'up',
+    })
+  })
+
+  it('os móveis da lista desviam do armário embutido; sugestão em cima dele é recusada', () => {
+    const house = expandHouse(rooms, products, { quarto: 1 })
+    const view = buildList(house.room, house.products, 1_000_000, emptyChoices())
+    const parsed = parseHouseModel(
+      model([
+        room({
+          label: 'Quarto',
+          widthM: 3.2,
+          depthM: 3.6,
+          openings: [{ kind: 'door', wall: 'bottom', position: 0.85, widthCm: 80 }],
+          builtIns: [
+            {
+              kind: 'armario',
+              wall: 'top',
+              startCm: 0,
+              lengthCm: 320,
+              depthCm: 60,
+              heightCm: 250,
+              elevationCm: 0,
+              finish: 'madeira-clara',
+              color: '#d9c3a0',
+            },
+          ],
+          furniture: [{ key: 'quarto:cama-box', unit: 0, xCm: 160, yCm: 30, rotation: 'down' }],
+        }),
+      ]),
+    )!
+    const [furnished] = furnishHouse(linkRooms(parsed, rooms), view)
+    expect(furnished.fixed).toHaveLength(1)
+    expect(furnished.accepted).toBe(0)
+    const wardrobe = furnished.fixed[0]
+    for (const p of furnished.layout.placed.filter((p) => p.placement === 'floor')) {
+      expect(p.y).toBeGreaterThanOrEqual(wardrobe.d) // nada no chão por baixo do armário
+    }
+    expect(furnished.layout.placed.some((p) => p.category === 'cama-box')).toBe(true)
   })
 })

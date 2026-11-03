@@ -138,15 +138,19 @@ function openingZone({ kind, wall, position, widthCm }: Opening, W: number, D: n
 export function arrangeRoom(
   room: { width: number; depth: number; openings: Opening[] },
   items: LayoutItem[],
+  /** Peças que já estão no cômodo (armários embutidos das fotos): ocupam lugar e não se movem. */
+  fixed: PlacedItem[] = [],
 ): RoomLayout {
   const W = room.width
   const D = room.depth
   const doors = room.openings.filter((o) => o.kind === 'door').map((o) => openingZone(o, W, D))
   const windows = room.openings.filter((o) => o.kind === 'window').map((o) => openingZone(o, W, D))
-  const placed: PlacedItem[] = []
+  const placed: PlacedItem[] = [...fixed]
   const unplaced: RoomLayout['unplaced'] = []
   /** Passagens reservadas (frente dos móveis, lados da cama): nada de chão em cima. */
-  const reserved: Rect[] = []
+  const reserved: Rect[] = fixed
+    .filter((p) => p.placement === 'floor')
+    .map((p) => frontOf(p, p.facing, FRONT_CLEARANCE))
   const inside = (r: Rect) => r.x >= 0 && r.y >= 0 && r.x + r.w <= W && r.y + r.d <= D
   const floorTaken = () => placed.filter((p) => p.placement === 'floor')
 
@@ -574,7 +578,13 @@ export function arrangeRoom(
     )
   }
 
-  return { width: W, depth: D, openings: room.openings, placed, unplaced }
+  return {
+    width: W,
+    depth: D,
+    openings: room.openings,
+    placed: placed.slice(fixed.length),
+    unplaced,
+  }
 }
 
 /**
@@ -650,6 +660,8 @@ export interface PositionHint {
 export function applySuggestions(
   layout: RoomLayout,
   hints: PositionHint[],
+  /** Peças fixas do cômodo (armários embutidos): a sugestão também não pode bater nelas. */
+  fixed: PlacedItem[] = [],
 ): { layout: RoomLayout; accepted: number } {
   const W = layout.width
   const D = layout.depth
@@ -674,6 +686,7 @@ export function applySuggestions(
       rect.x + w <= W &&
       rect.y + d <= D &&
       !placed.some((o, j) => j !== i && o.placement === 'floor' && overlaps(rect, o)) &&
+      !fixed.some((o) => o.placement === 'floor' && overlaps(rect, o)) &&
       !doors.some((z) => overlaps(rect, z))
     if (!ok) continue
     placed[i] = { ...p, ...rect, facing: hint.rotation }

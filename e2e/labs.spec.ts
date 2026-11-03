@@ -478,3 +478,62 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
   await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible()
   expect(calls.filter((c) => c.path === '/api/house-3d')).toHaveLength(1)
 })
+
+test('casa em 3D realista: armários das fotos, texturas e render em alta qualidade', async ({
+  page,
+}) => {
+  test.setTimeout(240_000)
+  const casaArmarios = JSON.parse(
+    readFileSync('tests/fixtures/house-3d-armarios.json', 'utf8'),
+  ) as unknown
+  const calls = await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/floor-plan': { id: 'p1' }, '/api/house-3d': { id: 'h1' } },
+    jobs: {
+      p1: [{ id: 'p1', status: 'done', result: apto }],
+      h1: [{ id: 'h1', status: 'done', result: casaArmarios, costUsd: 1.2 }],
+    },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const gen = page.locator('.house-3d-generate')
+  await gen
+    .getByLabel('Planta')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await gen.getByRole('button', { name: '🌟 Gerar casa em 3D realista' }).click()
+
+  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
+  await expect(dialog).toBeVisible({ timeout: 30_000 })
+  const post = calls.find((c) => c.path === '/api/house-3d')!
+  expect(post.query.get('quality')).toBe('realista')
+  // abre já no realista (texturas e céu carregados de public/textures)
+  await expect(dialog.getByRole('button', { name: '✨ Realista' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+  await page.waitForFunction(
+    () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
+    null,
+    { timeout: 60_000 },
+  )
+
+  await dialog.getByRole('button', { name: '📸 Render realista' }).click()
+  const render = page.getByRole('dialog', { name: 'Render realista' })
+  await expect(render).toBeVisible({ timeout: 180_000 })
+  await expect(render.getByRole('link', { name: 'Baixar imagem' })).toHaveAttribute(
+    'href',
+    /^data:image\/png;base64,/,
+  )
+  await render.getByRole('button', { name: 'Voltar ao 3D' }).click()
+  await expect(render).toHaveCount(0)
+
+  await dialog.getByRole('button', { name: 'Fechar' }).click()
+  await expect(gen.getByRole('status')).toContainText('Casa gerada (realista)')
+  await expect(gen.getByRole('status')).toContainText('3 armário(s) das fotos')
+})

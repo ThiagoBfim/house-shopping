@@ -6,6 +6,7 @@ import { formatBRL } from '../engine/money.ts'
 import { detailsOf } from './FurnitureLayout.tsx'
 import type { SavedHouse } from './house3d-store.ts'
 import type { HouseScene, ViewMode } from './house-scene.ts'
+import type { RealisticKit } from './realistic-materials.ts'
 
 interface Props {
   house: SavedHouse
@@ -29,18 +30,31 @@ export function House3DView({ house, view, onClose }: Props) {
   const [picked, setPicked] = useState<string>()
   const [recording, setRecording] = useState(false)
   const [video, setVideo] = useState<{ url: string; name: string }>()
+  const [realistic, setRealistic] = useState(house.quality === 'realista')
+  const [render, setRender] = useState<
+    { step: 'running'; cancel: () => void } | { step: 'ready'; url: string }
+  >()
   const furnished = useMemo(() => furnishHouse(house.model, view), [house, view])
 
   useEffect(() => {
     let disposed = false
-    import('./house-scene.ts')
-      .then(({ mountHouse }) => {
+    let kit: RealisticKit | undefined
+    setLoad('loading')
+    Promise.all([
+      import('./house-scene.ts'),
+      realistic
+        ? import('./realistic-materials.ts').then(async (m) => (kit = await m.loadRealisticKit()))
+        : undefined,
+    ])
+      .then(([{ mountHouse }]) => {
         if (disposed || !host.current) return
-        scene.current = mountHouse(host.current, house.model, furnished, {
-          onPick: setPicked,
-          onRoom: setRoom,
-          onMode: setMode,
-        })
+        scene.current = mountHouse(
+          host.current,
+          house.model,
+          furnished,
+          { onPick: setPicked, onRoom: setRoom, onMode: setMode },
+          kit,
+        )
         if (import.meta.env.DEV) {
           ;(window as unknown as { __house3d?: HouseScene }).__house3d = scene.current
         }
@@ -51,8 +65,17 @@ export function House3DView({ house, view, onClose }: Props) {
       disposed = true
       scene.current?.dispose()
       scene.current = undefined
+      kit?.dispose()
     }
-  }, [house, furnished])
+  }, [house, furnished, realistic])
+
+  /** "📸 Render realista": a mesma vista em alta qualidade, para baixar. */
+  const startRender = () => {
+    const job = scene.current?.renderRealistic()
+    if (!job) return
+    setRender({ step: 'running', cancel: job.cancel })
+    void job.done.then((url) => setRender(url ? { step: 'ready', url } : undefined))
+  }
 
   useEffect(() => () => video && URL.revokeObjectURL(video.url), [video])
 
@@ -130,6 +153,25 @@ export function House3DView({ house, view, onClose }: Props) {
           <button type="button" class="small-button" onClick={photo}>
             📷 Foto
           </button>
+          {realistic && (
+            <button
+              type="button"
+              class="small-button"
+              disabled={load !== 'ready' || mode === 'tour' || render?.step === 'running'}
+              onClick={startRender}
+            >
+              📸 Render realista
+            </button>
+          )}
+          <button
+            type="button"
+            class="small-button"
+            aria-pressed={realistic}
+            disabled={mode === 'tour' || render?.step === 'running'}
+            onClick={() => setRealistic(!realistic)}
+          >
+            ✨ Realista
+          </button>
         </div>
         <button type="button" class="link-button" onClick={onClose}>
           Fechar
@@ -170,6 +212,28 @@ export function House3DView({ house, view, onClose }: Props) {
           <a href={details.url} target="_blank" rel="noopener noreferrer">
             ver produto ↗
           </a>
+        </div>
+      )}
+      {render?.step === 'running' && (
+        <p class="notice" role="status">
+          📸 Renderizando em alta qualidade…{' '}
+          <button type="button" class="link-button" onClick={render.cancel}>
+            Cancelar
+          </button>
+        </p>
+      )}
+      {render?.step === 'ready' && (
+        <div class="house-3d-render" role="dialog" aria-label="Render realista">
+          <img src={render.url} alt="Render realista da casa" />
+          <p>
+            <a href={render.url} download="casa-render-realista.png">
+              Baixar imagem
+            </a>{' '}
+            ·{' '}
+            <button type="button" class="link-button" onClick={() => setRender(undefined)}>
+              Voltar ao 3D
+            </button>
+          </p>
         </div>
       )}
       {video && (

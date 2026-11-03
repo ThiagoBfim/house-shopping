@@ -4,7 +4,7 @@
  *
  * - POST /api/floor-plan?name=planta.pdf   corpo = arquivo  → { id } (skill /floor-plan)
  * - POST /api/cheaper-prices   corpo = { items } (itens.json) → { id } (skill /search-better-prices)
- * - POST /api/house-3d   corpo = multipart: planta, fotos, moveis (JSON) → { id } (skill /house-3d)
+ * - POST /api/house-3d?quality=rapida|realista   multipart: planta, fotos, moveis → { id } (/house-3d)
  * - GET  /api/jobs/:id                                       → Job
  * - GET  /api/health                                         → o que está disponível
  */
@@ -98,7 +98,14 @@ async function startFloorPlan(body: Buffer, name: string) {
 /** Até 8 fotos dos cômodos (mais que isso pesa e quase não ajuda). */
 const MAX_PHOTOS = 8
 
-async function startHouse3D(body: Buffer, contentType: string) {
+/** Rápida: a casa em poucos minutos. Realista: olha cada foto com cuidado (armários, materiais). */
+const HOUSE_3D_QUALITY = {
+  rapida: { arg: '', budget: 4, timeout: 10 * 60_000 },
+  realista: { arg: ' realista', budget: 8, timeout: 20 * 60_000 },
+} as const
+
+async function startHouse3D(body: Buffer, contentType: string, quality: string) {
+  const mode = HOUSE_3D_QUALITY[quality === 'realista' ? 'realista' : 'rapida']
   if (!contentType.startsWith('multipart/form-data')) {
     throw new HttpError(400, 'Envie a planta, as fotos e os móveis num formulário (multipart).')
   }
@@ -140,13 +147,13 @@ async function startHouse3D(body: Buffer, contentType: string) {
   return jobs.start('house-3d', () =>
     runClaude(
       {
-        prompt: `/house-3d ${dir}`,
+        prompt: `/house-3d ${dir}${mode.arg}`,
         allowedTools: ['Read', 'Skill'],
         addDirs: [dir],
         jsonSchema: HOUSE_3D_SCHEMA,
-        maxBudgetUsd: 4,
+        maxBudgetUsd: mode.budget,
       },
-      10 * 60_000,
+      mode.timeout,
     ),
   )
 }
@@ -271,7 +278,11 @@ const server = createServer(async (req, res) => {
       return send(res, 202, { id: job.id })
     }
     if (req.method === 'POST' && url.pathname === '/api/house-3d') {
-      const job = await startHouse3D(await readBody(req), req.headers['content-type'] ?? '')
+      const job = await startHouse3D(
+        await readBody(req),
+        req.headers['content-type'] ?? '',
+        url.searchParams.get('quality') ?? '',
+      )
       return send(res, 202, { id: job.id })
     }
     if (req.method === 'POST' && url.pathname === '/api/cheaper-prices') {

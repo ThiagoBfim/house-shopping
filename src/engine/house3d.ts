@@ -6,6 +6,7 @@ import {
   arrangeRoom,
   layoutItems,
   type LayoutItem,
+  type PlacedItem,
   type RoomLayout,
 } from './layout.ts'
 
@@ -30,6 +31,43 @@ export interface Finishes {
   wallColor: string
   /** Veio de uma foto do cômodo (senão, valor comum para o tipo). */
   fromPhoto: boolean
+  /** Lado do piso (porcelanato/cerâmica) em cm, quando a foto mostra. */
+  tileCm?: number
+}
+
+export const BUILT_IN_KINDS = ['armario', 'bancada', 'aereo', 'gabinete', 'prateleira'] as const
+export type BuiltInKind = (typeof BUILT_IN_KINDS)[number]
+export const BUILT_IN_FINISHES = [
+  'madeira-clara',
+  'madeira-escura',
+  'branco',
+  'laca',
+  'cinza',
+] as const
+export type BuiltInFinish = (typeof BUILT_IN_FINISHES)[number]
+
+/**
+ * Armário que já está no imóvel (visto nas fotos): embutido, bancada da cozinha com armário
+ * embaixo, armário aéreo, gabinete do banheiro, prateleira. Encostado numa parede do cômodo.
+ */
+export interface BuiltIn {
+  kind: BuiltInKind
+  wall: Opening['wall']
+  /** Começo ao longo da parede (cm a partir da ponta esquerda/de cima) e comprimento. */
+  startCm: number
+  lengthCm: number
+  depthCm: number
+  heightCm: number
+  /** Do chão até a base (aéreo ~150). */
+  elevationCm: number
+  finish: BuiltInFinish
+  color: string
+  /** Bancada: cor do tampo (granito, quartzo) e se tem pia/cooktop. */
+  topColor?: string
+  sink?: boolean
+  cooktop?: boolean
+  /** Portas na frente (as fotos mostram). */
+  doors?: number
 }
 
 /** Posição sugerida pela skill para um móvel (centro, em cm, no retângulo do cômodo). */
@@ -52,9 +90,13 @@ export interface HouseRoom {
   openings: HouseOpening[]
   finishes: Finishes
   furniture: Suggestion[]
+  /** Armários das fotos (já estão no imóvel; não são da lista). */
+  builtIns: BuiltIn[]
   /** Cômodo da lista ("quarto-2"); sem ele, o cômodo aparece vazio. */
   instanceId?: string
 }
+
+export type HouseQuality = 'rapida' | 'realista'
 
 export interface HouseModel {
   widthM: number
@@ -113,6 +155,82 @@ function parseFinishes(raw: unknown, type: string): Finishes {
     wallColor:
       typeof f.wallColor === 'string' && HEX.test(f.wallColor) ? f.wallColor : fallback.wallColor,
     fromPhoto: f.fromPhoto === true,
+    ...(num(f.tileCm, 10, 200) && { tileCm: f.tileCm }),
+  }
+}
+
+function parseBuiltIn(raw: unknown, room: { widthM: number; depthM: number }): BuiltIn | undefined {
+  if (typeof raw !== 'object' || raw === null) return undefined
+  const b = raw as Record<string, unknown>
+  if (!BUILT_IN_KINDS.includes(b.kind as BuiltInKind)) return undefined
+  if (typeof b.wall !== 'string' || !WALLS.has(b.wall)) return undefined
+  const wall = b.wall as Opening['wall']
+  const wallCm = (wall === 'top' || wall === 'bottom' ? room.widthM : room.depthM) * 100
+  const across = (wall === 'top' || wall === 'bottom' ? room.depthM : room.widthM) * 100
+  if (!num(b.startCm, 0, 5000) || !num(b.lengthCm, 20, 5000)) return undefined
+  if (!num(b.depthCm, 10, 120) || !num(b.heightCm, 3, 300) || !num(b.elevationCm, 0, 250)) {
+    return undefined
+  }
+  // Recorta no tamanho da parede (a leitura da foto não é exata ao cm).
+  const startCm = Math.min(b.startCm, wallCm - 20)
+  const lengthCm = Math.min(b.lengthCm, wallCm - startCm)
+  if (b.depthCm > across / 2) return undefined
+  const kind = b.kind as BuiltInKind
+  return {
+    kind,
+    wall,
+    startCm,
+    lengthCm,
+    depthCm: b.depthCm,
+    heightCm: Math.min(b.heightCm, 270 - b.elevationCm),
+    elevationCm: b.elevationCm,
+    finish: BUILT_IN_FINISHES.includes(b.finish as BuiltInFinish)
+      ? (b.finish as BuiltInFinish)
+      : 'branco',
+    color: typeof b.color === 'string' && HEX.test(b.color) ? b.color : '#efece6',
+    ...(typeof b.topColor === 'string' && HEX.test(b.topColor) && { topColor: b.topColor }),
+    ...(b.sink === true && { sink: true }),
+    ...(b.cooktop === true && { cooktop: true }),
+    ...(Number.isInteger(b.doors) &&
+      (b.doors as number) >= 1 &&
+      (b.doors as number) <= 12 && { doors: b.doors as number }),
+  }
+}
+
+const FACING_FROM: Record<Opening['wall'], PlacedItem['facing']> = {
+  top: 'down',
+  bottom: 'up',
+  left: 'right',
+  right: 'left',
+}
+
+/** Armário das fotos como peça fixa do cômodo (cm, no retângulo do cômodo). */
+export function builtInPlaced(b: BuiltIn, index: number, room: HouseRoom): PlacedItem {
+  const W = room.widthM * 100
+  const D = room.depthM * 100
+  const rect = {
+    top: { x: b.startCm, y: 0, w: b.lengthCm, d: b.depthCm },
+    bottom: { x: b.startCm, y: D - b.depthCm, w: b.lengthCm, d: b.depthCm },
+    left: { x: 0, y: b.startCm, w: b.depthCm, d: b.lengthCm },
+    right: { x: W - b.depthCm, y: b.startCm, w: b.depthCm, d: b.lengthCm },
+  }[b.wall]
+  return {
+    key: `embutido:${index}`,
+    unit: 0,
+    category: `embutido-${b.kind}`,
+    label: {
+      armario: 'Armário embutido',
+      bancada: 'Bancada',
+      aereo: 'Armário aéreo',
+      gabinete: 'Gabinete',
+      prateleira: 'Prateleira',
+    }[b.kind],
+    // Aéreo e prateleira ficam na parede (não ocupam o chão).
+    placement: b.elevationCm >= 100 ? 'wall' : 'floor',
+    ...rect,
+    height: b.heightCm,
+    elevation: b.elevationCm,
+    facing: FACING_FROM[b.wall],
   }
 }
 
@@ -164,6 +282,10 @@ export function parseHouseModel(data: unknown): HouseModel | undefined {
         .map(parseSuggestion)
         .filter((s): s is Suggestion => s !== undefined)
         .slice(0, 40),
+      builtIns: (Array.isArray(r.builtIns) ? r.builtIns : [])
+        .map((b) => parseBuiltIn(b, { widthM: r.widthM as number, depthM: r.depthM as number }))
+        .filter((b): b is BuiltIn => b !== undefined)
+        .slice(0, 20),
       ...(typeof r.instanceId === 'string' && { instanceId: r.instanceId }),
     })
   }
@@ -230,6 +352,8 @@ export function linkRooms(model: HouseModel, rooms: Rooms, saved?: PlacedRoom[])
 export interface FurnishedRoom {
   room: HouseRoom
   layout: RoomLayout
+  /** Armários das fotos, já como peças no cômodo (mesma ordem de `room.builtIns`). */
+  fixed: PlacedItem[]
   /** Sugestões da skill que passaram na conferência (o resto ficou pela regra). */
   accepted: number
 }
@@ -238,6 +362,7 @@ export interface FurnishedRoom {
 export function furnishHouse(model: HouseModel, view: ListView): FurnishedRoom[] {
   return model.rooms.map((room) => {
     const items: LayoutItem[] = room.instanceId ? layoutItems(view, room.instanceId) : []
+    const fixed = room.builtIns.map((b, i) => builtInPlaced(b, i, room))
     const base = arrangeRoom(
       {
         width: Math.round(room.widthM * 100),
@@ -245,9 +370,10 @@ export function furnishHouse(model: HouseModel, view: ListView): FurnishedRoom[]
         openings: room.openings,
       },
       items,
+      fixed,
     )
-    const { layout, accepted } = applySuggestions(base, room.furniture)
-    return { room, layout, accepted }
+    const { layout, accepted } = applySuggestions(base, room.furniture, fixed)
+    return { room, layout, fixed, accepted }
   })
 }
 

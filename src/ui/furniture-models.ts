@@ -3,6 +3,9 @@
  * encosto, mesa com pés e cadeiras…), sempre na medida real do item. Coordenadas locais:
  * largura em x, profundidade em z, a frente apontando para +z, a base em y = 0. Em metros.
  */
+import type { BuiltIn } from '../engine/house3d.ts'
+import type { RealisticKit } from './realistic-materials.ts'
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 import {
   BoxGeometry,
   CylinderGeometry,
@@ -27,6 +30,25 @@ export function material(
   }
   return m
 }
+
+/** Modo realista: madeira e tecido com textura, cantos arredondados. */
+let kit: RealisticKit | undefined
+export function setRealistic(next: RealisticKit | undefined) {
+  kit = next
+}
+
+const isDark = (color: string) => {
+  const c = parseInt(color.slice(1), 16)
+  return ((c >> 16) & 255) * 0.3 + ((c >> 8) & 255) * 0.59 + (c & 255) * 0.11 < 120
+}
+
+/** Madeira (veio real no modo realista). */
+export const wood = (color: string) =>
+  kit ? kit.wood(color, isDark(color)) : material(color, { roughness: 0.6 })
+
+/** Tecido (trama real no modo realista). */
+export const fabric = (color: string) =>
+  kit ? kit.fabric(color) : material(color, { roughness: 0.95 })
 
 export function disposeMaterials() {
   for (const m of materials.values()) m.dispose()
@@ -53,7 +75,13 @@ function addBox(
   m: Mat,
 ) {
   if (w <= 0 || h <= 0 || d <= 0) return
-  const mesh = new Mesh(new BoxGeometry(w, h, d), m)
+  const small = Math.min(w, h, d)
+  // Realista: quina arredondada (a luz desenha a borda, como num móvel de verdade).
+  const geometry =
+    kit && small >= 0.02
+      ? new RoundedBoxGeometry(w, h, d, 2, Math.min(0.012, small * 0.25))
+      : new BoxGeometry(w, h, d)
+  const mesh = new Mesh(geometry, m)
   mesh.position.set(x, y + h / 2, z)
   mesh.castShadow = true
   mesh.receiveShadow = true
@@ -93,12 +121,12 @@ function cabinet(
   w: number,
   h: number,
   d: number,
-  body: string,
+  body: Mat,
   { doors = 2, drawers = 0, plinth = 0.06 }: { doors?: number; drawers?: number; plinth?: number },
 ) {
   const front = d / 2
-  addBox(g, w - 0.02, plinth, d - 0.04, 0, 0, -0.01, material(WOOD_DARK))
-  addBox(g, w, h - plinth, d, 0, plinth, 0, material(body, { roughness: 0.6 }))
+  addBox(g, w - 0.02, plinth, d - 0.04, 0, 0, -0.01, wood(WOOD_DARK))
+  addBox(g, w, h - plinth, d, 0, plinth, 0, body)
   const line = material(WOOD_DARK, { roughness: 0.5 })
   const handle = material(STEEL, { roughness: 0.3, metalness: 0.8 })
   const usable = h - plinth
@@ -139,8 +167,8 @@ function cabinet(
 }
 
 function bed(g: Group, w: number, d: number, h: number, crib: boolean) {
-  const frame = material(crib ? '#e8d8b0' : '#c9b79c', { roughness: 0.8 })
-  const sheet = material('#f4f1ea', { roughness: 0.95 })
+  const frame = crib ? wood('#e8d8b0') : fabric('#c9b79c')
+  const sheet = fabric('#f4f1ea')
   if (crib) {
     // Berço: estrado alto, grades de ripas dos quatro lados.
     const top = Math.max(0.8, h)
@@ -184,7 +212,7 @@ function bed(g: Group, w: number, d: number, h: number, crib: boolean) {
   const base = Math.max(0.2, h * 0.55)
   addBox(g, w, base, d - 0.06, 0, 0, 0.03, frame)
   addBox(g, w - 0.02, Math.max(0.15, h - base), d - 0.08, 0, base, 0.04, sheet)
-  addBox(g, w + 0.04, 1.05, 0.08, 0, 0, -d / 2 + 0.04, material(WOOD_DARK, { roughness: 0.7 }))
+  addBox(g, w + 0.04, 1.05, 0.08, 0, 0, -d / 2 + 0.04, wood(WOOD_DARK))
   const pillows = w > 1.2 ? 2 : 1
   for (let i = 0; i < pillows; i++) {
     const pw = w / pillows - 0.12
@@ -196,34 +224,25 @@ function bed(g: Group, w: number, d: number, h: number, crib: boolean) {
       -w / 2 + (w / pillows) * (i + 0.5),
       h,
       -d / 2 + 0.32,
-      material('#ffffff', { roughness: 1 }),
+      fabric('#ffffff'),
     )
   }
-  addBox(
-    g,
-    w + 0.02,
-    0.04,
-    d * 0.3,
-    0,
-    h - 0.01,
-    d / 2 - d * 0.15 - 0.04,
-    material('#7d8f9c', { roughness: 1 }),
-  )
+  addBox(g, w + 0.02, 0.04, d * 0.3, 0, h - 0.01, d / 2 - d * 0.15 - 0.04, fabric('#7d8f9c'))
 }
 
 function sofa(g: Group, w: number, d: number, h: number, color: string) {
-  const fabric = material(color, { roughness: 0.95 })
+  const cover = fabric(color)
   const seat = Math.min(0.45, h * 0.5)
   const arm = Math.min(0.18, w * 0.12)
   const back = Math.min(0.22, d * 0.25)
-  legs(g, w, d, 0.08, 0.04, 0.05, material(WOOD_DARK))
-  addBox(g, w, seat - 0.08, d, 0, 0.08, 0, fabric)
-  addBox(g, w, h - 0.08, back, 0, 0.08, -d / 2 + back / 2, fabric)
-  for (const s of [-1, 1]) addBox(g, arm, seat + 0.12, d, s * (w / 2 - arm / 2), 0.08, 0, fabric)
+  legs(g, w, d, 0.08, 0.04, 0.05, wood(WOOD_DARK))
+  addBox(g, w, seat - 0.08, d, 0, 0.08, 0, cover)
+  addBox(g, w, h - 0.08, back, 0, 0.08, -d / 2 + back / 2, cover)
+  for (const s of [-1, 1]) addBox(g, arm, seat + 0.12, d, s * (w / 2 - arm / 2), 0.08, 0, cover)
   // Almofadas do assento (uma por lugar).
   const seats = Math.max(1, Math.round((w - 2 * arm) / 0.65))
   const cw = (w - 2 * arm) / seats
-  const cushion = material(color, { roughness: 1 })
+  const cushion = fabric(color)
   for (let i = 0; i < seats; i++) {
     addBox(
       g,
@@ -248,16 +267,16 @@ function chair(g: Group, x: number, z: number, angle: number, m: Mat) {
   g.add(c)
 }
 
-function table(g: Group, w: number, d: number, h: number, wood: string, chairs: boolean) {
-  const m = material(wood, { roughness: 0.55 })
+function table(g: Group, w: number, d: number, h: number, top: string, chairs: boolean) {
+  const m = wood(top)
   addBox(g, w, 0.035, d, 0, h - 0.035, 0, m)
-  legs(g, w, d, h - 0.035, 0.05, 0.05, material(WOOD_DARK))
+  legs(g, w, d, h - 0.035, 0.05, 0.05, wood(WOOD_DARK))
   if (!chairs) return
   // Cadeiras: duas por lado no comprimento, uma em cada cabeceira se couber.
   const along = w >= d
   const [long, short] = along ? [w, d] : [d, w]
   const perSide = Math.max(1, Math.floor(long / 0.6))
-  const chairMat = material(WOOD_DARK, { roughness: 0.6 })
+  const chairMat = wood(WOOD_DARK)
   for (let i = 0; i < perSide; i++) {
     const t = -long / 2 + (long * (i + 0.5)) / perSide
     for (const s of [-1, 1]) {
@@ -331,8 +350,8 @@ function tv(g: Group, w: number, d: number, h: number) {
   )
 }
 
-function desk(g: Group, w: number, d: number, h: number, wood: string) {
-  table(g, w, d, h, wood, false)
+function desk(g: Group, w: number, d: number, h: number, top: string) {
+  table(g, w, d, h, top, false)
   chairOffice(g, 0, d / 2 + 0.25)
 }
 
@@ -402,26 +421,29 @@ export function furnitureModel(
       break
     case 'guarda-roupa':
     case 'guarda-roupa-infantil':
-      cabinet(g, w, h, d, category === 'guarda-roupa' ? WOOD : '#e9dcc7', {
+      cabinet(g, w, h, d, category === 'guarda-roupa' ? wood(WOOD) : wood('#e9dcc7'), {
         doors: Math.max(2, Math.round(w / 0.5)),
       })
       break
     case 'comoda':
     case 'comoda-trocador':
     case 'gaveteiro':
-      cabinet(g, w, h, d, category === 'comoda' ? WOOD : '#e9dcc7', {
+      cabinet(g, w, h, d, category === 'comoda' ? wood(WOOD) : wood('#e9dcc7'), {
         drawers: Math.max(3, Math.round(h / 0.22)),
       })
       break
     case 'criado-mudo':
-      cabinet(g, w, h, d, WOOD, { drawers: 2, plinth: 0.1 })
+      cabinet(g, w, h, d, wood(WOOD), { drawers: 2, plinth: 0.1 })
       break
     case 'rack':
-      cabinet(g, w, h, d, '#7a5c45', { doors: Math.max(2, Math.round(w / 0.6)), plinth: 0.08 })
+      cabinet(g, w, h, d, wood('#7a5c45'), {
+        doors: Math.max(2, Math.round(w / 0.6)),
+        plinth: 0.08,
+      })
       break
     case 'sapateira':
     case 'gabinete-banheiro':
-      cabinet(g, w, h, d, WHITE, { doors: 2 })
+      cabinet(g, w, h, d, material(WHITE, { roughness: 0.4 }), { doors: 2 })
       break
     case 'geladeira':
     case 'freezer':
@@ -453,7 +475,7 @@ export function furnitureModel(
       addCylinder(g, 0.18, 0.28, 0, h - 0.3, 0, material('#f6eedc', { roughness: 1 }))
       break
     case 'espelho-corpo-inteiro':
-      addBox(g, w, h, Math.min(d, 0.04), 0, 0, 0, material(WOOD_DARK))
+      addBox(g, w, h, Math.min(d, 0.04), 0, 0, 0, wood(WOOD_DARK))
       addBox(
         g,
         w - 0.04,
@@ -467,6 +489,90 @@ export function furnitureModel(
       break
     default:
       addBox(g, w, h, d, 0, 0, 0, material('#b9b2a8', { roughness: 0.7 }))
+  }
+  return g
+}
+
+/** Acabamento do armário das fotos → material. */
+function finishMaterial(finish: BuiltIn['finish'], color: string) {
+  if (finish === 'madeira-clara' || finish === 'madeira-escura') return wood(color)
+  if (finish === 'laca') return material(color, { roughness: 0.18 })
+  return material(color, { roughness: finish === 'cinza' ? 0.5 : 0.45 })
+}
+
+/** Pedra do tampo (granito, quartzo): lisa e com reflexo. */
+const stone = (color: string) => material(color, { roughness: 0.18, metalness: 0.05 })
+
+/**
+ * Armário que já está no imóvel (das fotos), na medida: embutido, bancada com tampo (pia e
+ * cooktop quando a foto mostra), aéreo, gabinete do banheiro com cuba, prateleira.
+ * Mesmas coordenadas dos móveis (frente em +z, base em y = 0).
+ */
+export function builtInModel(
+  b: Pick<BuiltIn, 'kind' | 'finish' | 'color' | 'topColor' | 'sink' | 'cooktop' | 'doors'>,
+  w: number,
+  d: number,
+  h: number,
+): Group {
+  const g = new Group()
+  const body = finishMaterial(b.finish, b.color)
+  const doors = b.doors ?? Math.max(1, Math.round(w / (b.kind === 'armario' ? 0.5 : 0.45)))
+  const steel = material('#c3c8cc', { roughness: 0.22, metalness: 0.9 })
+  switch (b.kind) {
+    case 'armario':
+      cabinet(g, w, h, d, body, { doors, plinth: 0.05 })
+      break
+    case 'aereo':
+      cabinet(g, w, h, d, body, { doors, plinth: 0 })
+      break
+    case 'prateleira':
+      addBox(g, w, Math.min(h, 0.03), d, 0, 0, 0, body)
+      break
+    case 'bancada':
+    case 'gabinete': {
+      const top = Math.min(0.03, h * 0.2)
+      const counter = b.topColor ?? (b.kind === 'gabinete' ? '#e9e7e2' : '#2a2a2d')
+      cabinet(g, w, h - top, d - 0.02, body, { doors, plinth: b.kind === 'bancada' ? 0.1 : 0.02 })
+      addBox(g, w + 0.01, top, d + 0.02, 0, h - top, 0.01, stone(counter))
+      if (b.sink || b.kind === 'gabinete') {
+        // Cuba (embutida no tampo) e torneira atrás.
+        const sw = Math.min(0.5, w * 0.4)
+        const x = b.kind === 'gabinete' ? 0 : w / 2 - sw / 2 - 0.25
+        addBox(
+          g,
+          sw,
+          0.005,
+          Math.min(0.4, d - 0.15),
+          x,
+          h,
+          0.02,
+          b.kind === 'gabinete' ? material('#fbfbfa', { roughness: 0.15 }) : steel,
+        )
+        addCylinder(g, 0.015, 0.25, x, h, -d / 2 + 0.08, steel)
+        addBox(g, 0.025, 0.025, 0.16, x, h + 0.23, -d / 2 + 0.15, steel)
+      }
+      if (b.cooktop && w > 1.2) {
+        const cx = -w / 2 + 0.4
+        addBox(g, 0.58, 0.006, 0.5, cx, h, 0.02, material('#0d0e10', { roughness: 0.05 }))
+        for (const [ox, oz] of [
+          [-0.13, -0.11],
+          [0.13, -0.11],
+          [-0.13, 0.13],
+          [0.13, 0.13],
+        ]) {
+          addCylinder(
+            g,
+            0.085,
+            0.002,
+            cx + ox,
+            h + 0.006,
+            0.02 + oz,
+            material('#3b3e42', { roughness: 0.3 }),
+          )
+        }
+      }
+      break
+    }
   }
   return g
 }

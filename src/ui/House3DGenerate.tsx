@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'preact/hooks'
 import type { Rooms } from '../data/schema.ts'
 import type { ListView } from '../engine/budget.ts'
-import { furnitureForSkill, linkRooms, parseHouseModel } from '../engine/house3d.ts'
+import {
+  furnitureForSkill,
+  linkRooms,
+  parseHouseModel,
+  type HouseQuality,
+} from '../engine/house3d.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
 import { readSavedHouse, saveHouse, type SavedHouse } from './house3d-store.ts'
@@ -22,7 +27,9 @@ const PLAN_ACCEPT = 'image/png,image/jpeg,image/webp,image/gif,application/pdf'
 const PHOTO_ACCEPT = 'image/png,image/jpeg,image/webp'
 
 type State =
-  { step: 'idle' } | { step: 'generating'; startedAt: number } | { step: 'error'; message: string }
+  | { step: 'idle' }
+  | { step: 'generating'; startedAt: number; quality: HouseQuality }
+  | { step: 'error'; message: string }
 
 /**
  * "✨ Gerar casa em 3D": manda a planta, as fotos (reduzidas) e os móveis da lista com medida
@@ -42,9 +49,9 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
     return () => clearInterval(timer)
   }, [state.step])
 
-  const generate = async () => {
+  const generate = async (quality: HouseQuality) => {
     if (!planFile) return
-    setState({ step: 'generating', startedAt: Date.now() })
+    setState({ step: 'generating', startedAt: Date.now(), quality })
     setNow(Date.now())
     try {
       const form = new FormData()
@@ -59,7 +66,11 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
           ),
         ),
       )
-      const id = await startJob('/api/house-3d', form, {})
+      const id = await startJob(
+        '/api/house-3d',
+        form,
+        quality === 'realista' ? { quality: 'realista' } : {},
+      )
       const job = await waitForJob<unknown>(id, () => {})
       if (job.status === 'error') throw new Error(job.error ?? 'A geração da casa falhou.')
       const model = parseHouseModel(job.result)
@@ -69,6 +80,7 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
         generatedAt: new Date().toISOString(),
         photos: photos.length,
         ...(job.costUsd !== undefined && { costUsd: job.costUsd }),
+        ...(quality === 'realista' && { quality }),
       }
       saveHouse(saved)
       setHouse(saved)
@@ -83,13 +95,15 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
   const seconds = generating ? Math.round((now - state.startedAt) / 1000) : 0
   const linked = house?.model.rooms.filter((r) => r.instanceId).length ?? 0
   const fromPhoto = house?.model.rooms.filter((r) => r.finishes.fromPhoto).length ?? 0
+  const builtIns = house?.model.rooms.reduce((n, r) => n + r.builtIns.length, 0) ?? 0
 
   return (
     <section class="house-3d-generate" aria-labelledby="house-3d-title">
       <h4 id="house-3d-title">🏠 Casa em 3D</h4>
       <p class="muted">
-        A planta e fotos dos cômodos (opcional) viram a casa inteira em 3D com os móveis da lista,
-        para andar em primeira pessoa e ver um tour.
+        A planta e fotos dos cômodos (opcional) viram a casa inteira em 3D com os móveis da lista e
+        os armários das fotos, para andar em primeira pessoa e ver um tour. A realista demora mais e
+        usa texturas reais, luz do céu e render em alta qualidade.
       </p>
       <div class="house-3d-inputs">
         <label>
@@ -117,9 +131,21 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
           type="button"
           class="small-button"
           disabled={!planFile || generating}
-          onClick={generate}
+          onClick={() => generate('rapida')}
         >
-          {generating ? `Gerando… ${seconds}s` : '✨ Gerar casa em 3D'}
+          {generating && state.quality === 'rapida'
+            ? `Gerando… ${seconds}s`
+            : '✨ Gerar casa em 3D'}
+        </button>
+        <button
+          type="button"
+          class="small-button"
+          disabled={!planFile || generating}
+          onClick={() => generate('realista')}
+        >
+          {generating && state.quality === 'realista'
+            ? `Gerando realista… ${seconds}s`
+            : '🌟 Gerar casa em 3D realista'}
         </button>
         {house && !generating && (
           <button type="button" class="small-button" onClick={() => onOpen(house)}>
@@ -130,7 +156,9 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
       {generating && (
         <p class="muted" role="status">
           Lendo a planta{photos.length ? ` e ${photos.length} foto(s)` : ''} com o Claude Code
-          (costuma levar 1–3 minutos).
+          {state.quality === 'realista'
+            ? ' com cuidado: armários, materiais e cores de cada foto (costuma levar 3–8 minutos).'
+            : ' (costuma levar 1–3 minutos).'}
         </p>
       )}
       {state.step === 'error' && (
@@ -140,7 +168,9 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
       )}
       {house && !generating && (
         <p class="muted" role="status">
-          Casa gerada: {house.model.rooms.length} cômodos ({linked} com móveis da lista)
+          Casa gerada{house.quality === 'realista' ? ' (realista)' : ''}: {house.model.rooms.length}{' '}
+          cômodos ({linked} com móveis da lista)
+          {builtIns ? `, ${builtIns} armário(s) das fotos` : ''}
           {house.photos ? `, ${fromPhoto} com acabamento pelas fotos` : ''}
           {house.costUsd !== undefined ? ` · US$ ${house.costUsd.toFixed(2)}` : ''}.
           {house.model.notes && ` Atenção: ${house.model.notes}`}

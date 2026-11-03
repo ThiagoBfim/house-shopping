@@ -1,4 +1,4 @@
-import { parseHouseModel, type HouseModel } from '../engine/house3d.ts'
+import { parseHouseModel, type HouseModel, type HouseQuality } from '../engine/house3d.ts'
 
 /** Casa gerada em 3D, guardada só neste navegador. */
 export interface SavedHouse {
@@ -6,6 +6,8 @@ export interface SavedHouse {
   generatedAt: string
   photos: number
   costUsd?: number
+  /** Gerada pelo botão realista (abre já no modo realista). */
+  quality?: HouseQuality
 }
 
 const KEY = 'house-shopping:house-3d'
@@ -20,6 +22,7 @@ export function readSavedHouse(): SavedHouse | undefined {
       generatedAt: value.generatedAt,
       photos: typeof value.photos === 'number' ? value.photos : 0,
       ...(typeof value.costUsd === 'number' && { costUsd: value.costUsd }),
+      ...(value.quality === 'realista' && { quality: 'realista' as const }),
     }
   } catch {
     return undefined
