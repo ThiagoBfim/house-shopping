@@ -20,6 +20,8 @@ export interface Job<T> {
   id: string
   status: 'running' | 'done' | 'error'
   progress?: { done: number; total: number }
+  /** Resultados parciais enquanto roda (preços mais baratos). */
+  partial?: T
   result?: T
   error?: string
   costUsd?: number

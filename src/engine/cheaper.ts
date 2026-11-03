@@ -44,10 +44,14 @@ export interface PriceFind {
   preco?: number
   loja?: string
   link?: string
+  /** Observação da skill ("à vista no Pix", lojas conferidas…). */
+  obs?: string
 }
 
 /** Item que ficou mais barato. */
 export interface AppliedFind {
+  /** Linha da planilha (liga ao item pesquisado). */
+  row: number
   name: string
   store: string
   /** Preço unitário antes e depois. */
@@ -55,6 +59,9 @@ export interface AppliedFind {
   now: number
   /** Economia no total do item (preço × quantidade). */
   saving: number
+  /** Anúncio de antes e o novo (sem rastreamento). */
+  wasUrl: string
+  url: string
 }
 
 export interface CheaperResult {
@@ -105,7 +112,7 @@ export function applyPriceFinds(
         ...fields,
         found: { store, was: entry.option.price },
       })
-      applied.push({ ...summary(fields, store, entry.option.price) })
+      applied.push(summary(find.row, fields, store, entry.option.price, entry.option.url))
     } else {
       const item = next.manual.find((m) => m.id === ref.id)
       if (!item || price >= item.price) continue
@@ -118,7 +125,7 @@ export function applyPriceFinds(
           m.id === item.id ? { ...m, price, url, found: { store, was: m.found?.was ?? was } } : m,
         ),
       }
-      applied.push(summary(fields, store, was))
+      applied.push(summary(find.row, fields, store, was, item.url))
     }
   }
 
@@ -127,9 +134,12 @@ export function applyPriceFinds(
 }
 
 function summary(
-  { name, price, qty }: { name: string; price: number; qty: number },
+  row: number,
+  { name, price, qty, url }: { name: string; price: number; qty: number; url: string },
   store: string,
   was: number,
+  wasUrl: string,
 ): AppliedFind {
-  return { name, store, was, now: price, saving: ((cents(was) - cents(price)) * qty) / 100 }
+  const saving = ((cents(was) - cents(price)) * qty) / 100
+  return { row, name, store, was, now: price, saving, wasUrl, url }
 }

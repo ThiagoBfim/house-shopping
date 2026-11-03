@@ -112,8 +112,8 @@ async function startCheaperPrices(body: Buffer) {
     progress(0, count)
     // A skill grava um resultado por item: acompanhar o arquivo dá o progresso.
     const watch = setInterval(async () => {
-      const text = await readFile(results, 'utf8').catch(() => '')
-      progress(Math.min(count, parsePriceFinds(text).length), count)
+      const finds = parsePriceFinds(await readFile(results, 'utf8').catch(() => ''))
+      progress(Math.min(count, finds.length), count, finds)
     }, 2000)
     try {
       const outcome = await runClaude(

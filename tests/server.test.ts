@@ -93,10 +93,14 @@ describe('JobStore', () => {
     const jobs = store()
     let finish!: (value: { result: unknown; costUsd: number }) => void
     const job = jobs.start('cheaper-prices', (progress) => {
-      progress(1, 5)
+      progress(1, 5, [{ row: 2 }])
       return new Promise((done) => (finish = done))
     })
-    expect(jobs.get('j1')).toMatchObject({ status: 'running', progress: { done: 1, total: 5 } })
+    expect(jobs.get('j1')).toMatchObject({
+      status: 'running',
+      progress: { done: 1, total: 5 },
+      partial: [{ row: 2 }],
+    })
     expect(jobs.isRunning('cheaper-prices')).toBe(true)
     expect(jobs.isRunning('floor-plan')).toBe(false)
     finish({ result: [1], costUsd: 0.5 })

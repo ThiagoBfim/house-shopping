@@ -167,7 +167,22 @@ test('preços mais baratos: troca link e preço e volta ao que era antes', async
     start: { '/api/cheaper-prices': { id: 'c1' } },
     jobs: {
       c1: [
-        { id: 'c1', status: 'running', progress: { done: 1, total: 5 } },
+        // a lista aparece no clique; depois os resultados chegam item a item
+        { id: 'c1', status: 'running', progress: { done: 0, total: 5 }, partial: [] },
+        {
+          id: 'c1',
+          status: 'running',
+          progress: { done: 1, total: 5 },
+          partial: [
+            {
+              row: 2,
+              status: 'melhor',
+              preco: 1,
+              loja: 'Magalu',
+              link: 'https://magalu.com/p?utm_source=x',
+            },
+          ],
+        },
         {
           id: 'c1',
           status: 'done',
@@ -199,12 +214,35 @@ test('preços mais baratos: troca link e preço e volta ao que era antes', async
   const first = page.locator('.product-list article').first()
   const label = (await first.getAttribute('aria-label'))!
   const [category, product] = label.split(': ')
+  const oldUrl = (await first.locator('.buy-button').getAttribute('href'))!
   const before = await listTotal(page)
 
   const panel = page.getByRole('region', { name: '🔎 Preços mais baratos' })
   await panel.getByRole('button', { name: 'Buscar preços mais baratos' }).click()
+  // no clique: os 5 itens mais caros, o primeiro procurando e os outros na fila
+  const rows = panel.getByRole('listitem')
+  await expect(rows).toHaveCount(5)
+  await expect(rows.first()).toContainText('Procurando…')
+  await expect(rows.filter({ hasText: 'Na fila' })).toHaveCount(4)
+  // item a item: o achado aparece antes de a busca terminar
   await expect(panel.getByText('1 de 5 itens pesquisados')).toBeVisible()
-  await expect(panel.getByText(/1 de 2 itens ficaram mais baratos/)).toBeVisible()
+  const row = rows.filter({ hasText: product })
+  await expect(row).toContainText('Mais barato')
+  await expect(rows.filter({ hasText: 'Procurando…' })).toHaveCount(1)
+
+  // no fim: resumo, os dois anúncios do item mais barato e o resto
+  await expect(panel.getByText('Mais barato em 1 de 5 itens')).toBeVisible()
+  await expect(row).toContainText('Agora: R$ 1,00 em Magalu')
+  await expect(row.getByRole('link', { name: 'anúncio anterior ↗' })).toHaveAttribute(
+    'href',
+    oldUrl,
+  )
+  await expect(row.getByRole('link', { name: 'nova oferta ↗' })).toHaveAttribute(
+    'href',
+    'https://magalu.com/p',
+  )
+  await expect(rows.filter({ hasText: 'Sem preço melhor' })).toHaveCount(1)
+  await expect(rows.filter({ hasText: 'Não pesquisado' })).toHaveCount(3)
   const post = calls.find((c) => c.method === 'POST')!
   expect(post.path).toBe('/api/cheaper-prices')
   // os 5 itens mais caros, no formato do itens.json da skill (linha, produto, preço…)
@@ -222,9 +260,10 @@ test('preços mais baratos: troca link e preço e volta ao que era antes', async
   )
   expect(await listTotal(page)).toBeLessThan(before)
 
-  // voltar ao que era antes (continua disponível depois de recarregar)
+  // o resultado e o "voltar" continuam depois de recarregar
   await page.reload()
-  await panel.getByRole('button', { name: /Voltar ao que era antes \(1 item\)/ }).click()
+  await expect(panel.getByText('Mais barato em 1 de 5 itens')).toBeVisible()
+  await panel.getByRole('button', { name: 'Voltar ao que era antes' }).click()
   await expect(swap).toHaveCount(0)
   await expect(page.getByRole('article', { name: label })).toBeVisible()
   expect(await listTotal(page)).toBeCloseTo(before, 2)

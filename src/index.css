@@ -287,6 +287,121 @@ h3 {
   margin: 0 0 6px;
 }
 
+.price-search {
+  margin-top: 14px;
+}
+
+.price-search-summary {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+
+.price-search-list {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.price-row {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 0.85rem;
+}
+
+.price-row.is-cheaper {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.price-row.is-queued {
+  opacity: 0.6;
+}
+
+.price-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.price-row-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.price-status {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.price-status.status-searching {
+  color: var(--accent);
+}
+
+.price-status.status-cheaper {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.price-status.status-not-found,
+.price-status.status-not-applied,
+.price-status.status-skipped {
+  color: var(--warn);
+}
+
+.price-current {
+  margin-top: 4px;
+}
+
+.price-compare {
+  display: grid;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.price-old {
+  color: var(--muted);
+}
+
+.price-row a {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.spinner {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: price-spin 0.8s linear infinite;
+}
+
+@keyframes price-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}
+
 .found-badge {
   margin: 0 0 4px;
   font-size: 0.8rem;

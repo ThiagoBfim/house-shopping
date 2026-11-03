@@ -9,6 +9,8 @@ export interface Job {
   finishedAt?: string
   /** Itens já processados (preços mais baratos). */
   progress?: { done: number; total: number }
+  /** Resultados parciais enquanto roda (o site mostra item a item). */
+  partial?: unknown
   result?: unknown
   error?: string
   /** Gasto da execução no Claude Code, em dólares (para precificar a cobrança). */
@@ -35,10 +37,12 @@ export class JobStore {
     this.newId = options.newId ?? (() => `job${++this.next}`)
   }
 
-  /** Começa um job; `run` recebe uma função para informar o progresso. */
+  /** Começa um job; `run` recebe uma função para informar o progresso (e o parcial). */
   start(
     kind: JobKind,
-    run: (progress: (done: number, total: number) => void) => Promise<JobOutcome>,
+    run: (
+      progress: (done: number, total: number, partial?: unknown) => void,
+    ) => Promise<JobOutcome>,
   ): Job {
     const job: Job = { id: this.newId(), kind, status: 'running', startedAt: this.stamp() }
     this.jobs.set(job.id, job)
@@ -51,7 +55,11 @@ export class JobStore {
         finishedAt: this.stamp(),
       })
     }
-    run((done, total) => (job.progress = { done, total })).then(finish, (error: unknown) =>
+    const progress = (done: number, total: number, partial?: unknown) => {
+      job.progress = { done, total }
+      if (partial !== undefined) job.partial = partial
+    }
+    run(progress).then(finish, (error: unknown) =>
       finish({ error: error instanceof Error ? error.message : String(error) }),
     )
     return job

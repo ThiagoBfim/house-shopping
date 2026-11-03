@@ -11,6 +11,7 @@ import { applyPriceFinds, priceItems } from '../src/engine/cheaper.ts'
 import { listRowRefs, listRows } from '../src/engine/export.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { MAX_MANUAL_ITEMS, type ManualItem } from '../src/engine/manual.ts'
+import { searchRows } from '../src/engine/price-search.ts'
 import { applyPreferences } from '../src/engine/preferences.ts'
 
 const house = expandHouse(rooms, products, { cozinha: 1, quarto: 1 })
@@ -102,6 +103,13 @@ describe('applyPriceFinds', () => {
     })
     // maior economia primeiro; a do abajur conta a quantidade (2 × R$ 20)
     expect(result.applied.map((a) => a.saving)).toEqual([300, 40])
+    // linha da planilha e os dois anúncios (o de antes e o novo, sem rastreamento)
+    expect(result.applied[0]).toMatchObject({
+      row: rowGeladeira,
+      wasUrl: geladeira.option.url,
+      url: 'https://www.magazineluiza.com.br/geladeira/p/123/',
+    })
+    expect(result.applied[1]).toMatchObject({ row: rowAbajur, wasUrl: abajur.url })
     expect(result.skipped).toBe(0)
     // sem recalcular (o que a pessoa vê), o total cai exatamente pela economia
     const custom = applyPreferences(house.room, house.products, base)
@@ -165,5 +173,67 @@ describe('applyPriceFinds', () => {
     ])
     expect(result.skipped).toBe(1)
     expect(result.applied).toEqual([])
+  })
+})
+
+describe('searchRows', () => {
+  const item = (row: number) => ({
+    row,
+    produto: `Item ${row}`,
+    qtd: 1,
+    preco: 100,
+    loja: 'ML',
+    link: `https://a.com/${row}`,
+  })
+  const items = [2, 3, 4, 5, 6].map(item)
+  const finds = [
+    { row: 2, status: 'melhor', preco: 80, loja: 'Magalu', link: 'https://m.com/2' },
+    { row: 3, status: 'sem preço melhor', obs: 'conferidas 3 lojas' },
+  ]
+
+  it('enquanto roda: achados, o próximo "procurando" e o resto na fila', () => {
+    const rows = searchRows(items, finds, { running: true })
+    expect(rows.map((r) => r.status)).toEqual([
+      'cheaper',
+      'no-better',
+      'searching',
+      'queued',
+      'queued',
+    ])
+    expect(rows[0].find?.preco).toBe(80)
+    expect(rows[1].find?.obs).toBe('conferidas 3 lojas')
+    expect(searchRows(items, [], { running: true })[0].status).toBe('searching')
+  })
+
+  it('no fim: aplicado, não aplicado, não encontrado e não pesquisado', () => {
+    const applied = [
+      {
+        row: 2,
+        name: 'Item 2',
+        store: 'Magalu',
+        was: 100,
+        now: 80,
+        saving: 20,
+        wasUrl: 'https://a.com/2',
+        url: 'https://m.com/2',
+      },
+    ]
+    const rows = searchRows(
+      items,
+      [
+        ...finds,
+        { row: 4, status: 'não encontrado' },
+        { row: 5, status: 'melhor', preco: 90, link: 'https://x.com' },
+      ],
+      { running: false, applied },
+    )
+    expect(rows.map((r) => r.status)).toEqual([
+      'cheaper',
+      'no-better',
+      'not-found',
+      'not-applied',
+      'skipped',
+    ])
+    expect(rows[0].applied).toEqual(applied[0])
   })
 })

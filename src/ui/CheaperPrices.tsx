@@ -1,9 +1,10 @@
 import { useRef, useState } from 'preact/hooks'
 import type { Choices, ListView } from '../engine/budget.ts'
-import type { AppliedFind, PriceFind } from '../engine/cheaper.ts'
+import type { AppliedFind, PriceFind, PriceItem } from '../engine/cheaper.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import { formatBRL } from '../engine/money.ts'
-import { startJob, waitForJob, type Job } from './local-api.ts'
+import { searchRows, type SearchRow, type SearchStatus } from '../engine/price-search.ts'
+import { startJob, waitForJob } from './local-api.ts'
 
 interface Props {
   view: ListView
@@ -12,35 +13,46 @@ interface Props {
   onChoices: (next: Choices, message: string) => void
 }
 
-/** Lista antes da última busca aplicada (para "Voltar ao que era antes"), só neste navegador. */
-interface Before {
-  choices: Choices
+/** Última busca: itens pesquisados e o que saiu de cada um. */
+interface Search {
+  items: PriceItem[]
+  finds: PriceFind[]
   applied: AppliedFind[]
+  /** Ofertas melhores que não entraram (limite de itens adicionados). */
+  skipped: number
 }
 
-const BEFORE_KEY = 'house-shopping:before-cheaper'
+/** Guardado no navegador: a última busca e a lista de antes (para "Voltar ao que era antes"). */
+interface Saved {
+  search: Search
+  /** Escolhas antes de aplicar (só quando algo ficou mais barato). */
+  before?: Choices
+}
 
-function readBefore(): Before | undefined {
+const KEY = 'house-shopping:cheaper-search'
+
+function readSaved(): Saved | undefined {
   try {
-    const value = JSON.parse(localStorage.getItem(BEFORE_KEY) ?? 'null') as Before | null
-    return value?.choices && Array.isArray(value.applied) ? value : undefined
+    const value = JSON.parse(localStorage.getItem(KEY) ?? 'null') as Saved | null
+    const search = value?.search
+    return search && Array.isArray(search.items) && Array.isArray(search.finds) ? value : undefined
   } catch {
     return undefined
   }
 }
 
-function saveBefore(before: Before | undefined) {
+function save(saved: Saved | undefined) {
   try {
-    if (before) localStorage.setItem(BEFORE_KEY, JSON.stringify(before))
-    else localStorage.removeItem(BEFORE_KEY)
+    if (saved) localStorage.setItem(KEY, JSON.stringify(saved))
+    else localStorage.removeItem(KEY)
   } catch {
-    // sem localStorage: o "voltar" vale até recarregar a página
+    // sem localStorage: o resultado e o "voltar" valem até recarregar a página
   }
 }
 
 type State =
   | { step: 'idle' }
-  | { step: 'searching'; done: number; total: number }
+  | { step: 'searching'; items: PriceItem[]; finds: PriceFind[] }
   | { step: 'error'; message: string }
 
 const COUNTS = [5, 10, 20]
@@ -48,45 +60,47 @@ const COUNTS = [5, 10, 20]
 /**
  * "Preços mais baratos": manda os itens mais caros da lista (as linhas do "Baixar Excel") para
  * a skill /search-better-prices no backend local e troca links e preços pelas ofertas menores.
+ * A lista dos itens aparece no clique e cada um mostra o andamento e o resultado.
  */
 export function CheaperPrices({ view, instances, choices, onChoices }: Props) {
   const total = view.entries.length + view.manual.length
   const [chosen, setCount] = useState(5)
   const count = Math.min(chosen, total)
   const [state, setState] = useState<State>({ step: 'idle' })
-  const [before, setBefore] = useState<Before | undefined>(readBefore)
-  const [last, setLast] = useState<{ applied: AppliedFind[]; skipped: number; searched: number }>()
+  const [saved, setSaved] = useState<Saved | undefined>(readSaved)
   // A busca leva minutos: ao terminar, aplica sobre a lista de agora, não a do início.
   const latest = useRef({ view, choices })
   latest.current = { view, choices }
 
   const search = async () => {
-    // Carregado só aqui (como o "Baixar Excel"): não pesa no site de quem não usa.
-    const [{ applyPriceFinds, priceItems }, { listRowRefs }] = await Promise.all([
+    // Carregado no clique (como o "Baixar Excel"): não pesa no site de quem não usa.
+    const [cheaper, { listRowRefs }] = await Promise.all([
       import('../engine/cheaper.ts'),
       import('../engine/export.ts'),
     ])
     const refs = listRowRefs(view, instances)
     // Os itens mais caros, já lidos (como o passo 0 da skill, que lê a planilha do Excel).
-    const items = priceItems(view, instances, count)
-    const body = new Blob([JSON.stringify({ items })], { type: 'application/json' })
-    setState({ step: 'searching', done: 0, total: count })
-    setLast(undefined)
+    const items = cheaper.priceItems(view, instances, count)
+    setState({ step: 'searching', items, finds: [] })
     try {
+      const body = new Blob([JSON.stringify({ items })], { type: 'application/json' })
       const id = await startJob('/api/cheaper-prices', body, {})
-      const job = await waitForJob<PriceFind[]>(id, (update: Job<PriceFind[]>) => {
-        if (update.progress) setState({ step: 'searching', ...update.progress })
+      const job = await waitForJob<PriceFind[]>(id, (update) => {
+        if (update.partial) setState({ step: 'searching', items, finds: update.partial })
       })
       if (job.status === 'error') throw new Error(job.error ?? 'A busca de preços falhou.')
+      const finds = job.result ?? []
       const now = latest.current
-      const result = applyPriceFinds(now.choices, now.view, refs, job.result ?? [])
-      const searched = job.result?.length ?? 0
+      const result = cheaper.applyPriceFinds(now.choices, now.view, refs, finds)
+      const next: Saved = {
+        search: { items, finds, applied: result.applied, skipped: result.skipped },
+        // Uma busca sem nada mais barato mantém o "voltar" da anterior.
+        before: result.applied.length ? now.choices : saved?.before,
+      }
+      setSaved(next)
+      save(next)
       setState({ step: 'idle' })
-      setLast({ applied: result.applied, skipped: result.skipped, searched })
       if (!result.applied.length) return
-      const saved = { choices: now.choices, applied: result.applied }
-      setBefore(saved)
-      saveBefore(saved)
       const saving = result.applied.reduce((sum, a) => sum + a.saving, 0)
       onChoices(
         result.choices,
@@ -98,15 +112,20 @@ export function CheaperPrices({ view, instances, choices, onChoices }: Props) {
   }
 
   const revert = () => {
-    if (!before) return
-    onChoices(before.choices, 'A lista voltou ao que era antes da busca de preços.')
-    setBefore(undefined)
-    saveBefore(undefined)
-    setLast(undefined)
+    if (!saved?.before) return
+    onChoices(saved.before, 'A lista voltou ao que era antes da busca de preços.')
+    setSaved(undefined)
+    save(undefined)
   }
 
   const searching = state.step === 'searching'
-  const saving = last?.applied.reduce((sum, a) => sum + a.saving, 0) ?? 0
+  const shown: Search | undefined = searching
+    ? { items: state.items, finds: state.finds, applied: [], skipped: 0 }
+    : saved?.search
+  const rows =
+    shown && searchRows(shown.items, shown.finds, { running: searching, applied: shown.applied })
+  const saving = shown?.applied.reduce((sum, a) => sum + a.saving, 0) ?? 0
+  const done = searching ? state.finds.length : 0
 
   return (
     <section class="cheaper-prices side-section" aria-labelledby="cheaper-title">
@@ -134,62 +153,120 @@ export function CheaperPrices({ view, instances, choices, onChoices }: Props) {
           {searching ? 'Procurando…' : 'Buscar preços mais baratos'}
         </button>
       </div>
-      {searching && (
-        <p role="status">
-          <progress value={state.done} max={state.total} aria-label="Itens pesquisados" />{' '}
-          {state.done} de {state.total} itens pesquisados
-        </p>
-      )}
+
       {state.step === 'error' && (
         <p class="notice notice-warn" role="alert">
           {state.message}
         </p>
       )}
-      {last && (
-        <div class="notice" role="status">
-          {last.applied.length ? (
-            <>
-              <p>
+
+      {shown && rows && (
+        <div class="price-search">
+          <p class="price-search-summary" role="status">
+            {searching ? (
+              <>
+                <progress value={done} max={state.items.length} aria-label="Itens pesquisados" />{' '}
+                {done} de {state.items.length} itens pesquisados
+              </>
+            ) : shown.applied.length ? (
+              <>
                 <strong>
-                  {last.applied.length} de {last.searched}{' '}
-                  {last.searched === 1 ? 'item ficou' : 'itens ficaram'} mais baratos
+                  Mais barato em {shown.applied.length} de {shown.items.length}{' '}
+                  {shown.items.length === 1 ? 'item' : 'itens'}
                 </strong>{' '}
-                · economia de {formatBRL(saving)}
-              </p>
-              <ul class="compact-list">
-                {last.applied.map((a) => (
-                  <li key={a.name}>
-                    <span>
-                      {a.name}
-                      <span class="muted">
-                        {' '}
-                        · {a.store}: {formatBRL(a.now)} (era {formatBRL(a.was)})
-                      </span>
-                    </span>
-                    <span class="saved-value">−{formatBRL(a.saving)}</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            <p>
-              Nenhum preço melhor nos {last.searched} {last.searched === 1 ? 'item' : 'itens'}{' '}
-              pesquisados.
-            </p>
-          )}
-          {last.skipped > 0 && (
+                · economia de <span class="saved-value">{formatBRL(saving)}</span>
+              </>
+            ) : (
+              <>
+                Nenhum preço melhor nos {shown.items.length}{' '}
+                {shown.items.length === 1 ? 'item pesquisado' : 'itens pesquisados'}.
+              </>
+            )}
+          </p>
+          <ol class="price-search-list">
+            {rows.map((row) => (
+              <PriceRow key={row.item.row} row={row} />
+            ))}
+          </ol>
+          {!searching && shown.skipped > 0 && (
             <p class="muted">
-              {last.skipped} oferta(s) não entraram: limite de itens adicionados na lista.
+              {shown.skipped} oferta(s) não entraram: limite de itens adicionados na lista.
             </p>
           )}
         </div>
       )}
-      {before && !searching && (
+
+      {saved?.before && !searching && (
         <button type="button" class="link-button" onClick={revert}>
-          ↺ Voltar ao que era antes ({before.applied.length}{' '}
-          {before.applied.length === 1 ? 'item' : 'itens'})
+          ↺ Voltar ao que era antes
         </button>
       )}
     </section>
+  )
+}
+
+const STATUS_LABELS: Record<SearchStatus, string> = {
+  queued: 'Na fila',
+  searching: 'Procurando…',
+  cheaper: 'Mais barato',
+  'no-better': 'Sem preço melhor',
+  'not-found': 'Não encontrado',
+  'not-applied': 'Não aplicado',
+  skipped: 'Não pesquisado',
+}
+
+/** Um item pesquisado: nome, preço de agora e o resultado (com os dois anúncios no desconto). */
+function PriceRow({ row }: { row: SearchRow }) {
+  const { item, status, find, applied } = row
+  const newPrice = applied?.now ?? find?.preco
+  const newUrl = applied?.url ?? find?.link
+  const store = applied?.store ?? find?.loja ?? 'outra loja'
+  return (
+    <li class={`price-row is-${status}`} aria-busy={status === 'searching' || undefined}>
+      <div class="price-row-head">
+        <span class="price-row-name">{item.produto}</span>
+        <span class={`price-status status-${status}`}>
+          {status === 'searching' && <span class="spinner" aria-hidden="true" />}
+          {STATUS_LABELS[status]}
+        </span>
+      </div>
+      {status === 'cheaper' && newPrice !== undefined ? (
+        <div class="price-compare">
+          <span class="price-old">
+            Antes: {formatBRL(item.preco)}
+            {item.qtd > 1 && <span class="muted"> × {item.qtd}</span>}{' '}
+            {item.link && (
+              <a href={applied?.wasUrl ?? item.link} target="_blank" rel="noopener noreferrer">
+                anúncio anterior ↗
+              </a>
+            )}
+          </span>
+          <span class="price-new">
+            Agora: <strong>{formatBRL(newPrice)}</strong> em {store}{' '}
+            {newUrl && (
+              <a href={newUrl} target="_blank" rel="noopener noreferrer nofollow">
+                nova oferta ↗
+              </a>
+            )}
+          </span>
+          {applied && <span class="saved-value">−{formatBRL(applied.saving)}</span>}
+        </div>
+      ) : (
+        <div class="price-current muted">
+          {formatBRL(item.preco)}
+          {item.qtd > 1 && <> × {item.qtd}</>}
+          {item.link && (
+            <>
+              {' '}
+              ·{' '}
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                anúncio ↗
+              </a>
+            </>
+          )}
+          {find?.obs && status !== 'queued' && <span class="price-obs"> · {find.obs}</span>}
+        </div>
+      )}
+    </li>
   )
 }
