@@ -58,16 +58,17 @@ Tudo funcionando na máquina: catálogo real de todos os cômodos, links de afil
 
 Plano em [`wave-2/PLAN.md`](wave-2/PLAN.md). Primeiro tudo local, com o Claude Code; a cobrança por último.
 
-| Drop                                             | Tema                               | Status       | Iniciado em      | Terminado em     | Duração |
-| ------------------------------------------------ | ---------------------------------- | ------------ | ---------------- | ---------------- | ------- |
-| [30](wave-2/drop-30-backend-local-e-recursos.md) | Backend local e recursos em teste  | ✅ Concluído | 2026-11-02 17:49 | 2026-11-02 17:55 | 6min    |
-| [31](wave-2/drop-31-planta-para-comodos.md)      | Planta → cômodos e móveis          | ✅ Concluído | 2026-11-02 17:55 | 2026-11-02 17:59 | 4min    |
-| [32](wave-2/drop-32-desenho-da-planta.md)        | Desenho do imóvel com os móveis    | ✅ Concluído | 2026-11-02 17:59 | 2026-11-02 18:01 | 2min    |
-| [33](wave-2/drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer) | ✅ Concluído | 2026-11-02 18:01 | 2026-11-02 18:08 | 7min    |
-| [34](wave-2/drop-34-cobranca.md)                 | Cobrança                           | ⏳ A fazer   | —                | —                | —       |
-| [35](wave-2/drop-35-medidas-dos-produtos.md)     | Medidas dos produtos               | ✅ Concluído | 2026-11-03 13:30 | 2026-11-03 13:35 | 5min    |
-| [36](wave-2/drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta       | ✅ Concluído | 2026-11-03 13:37 | 2026-11-03 13:48 | 11min   |
-| [37](wave-2/drop-37-visualizacao-3d.md)          | Visualização 3D                    | ✅ Concluído | 2026-11-03 13:49 | 2026-11-03 13:55 | 6min    |
+| Drop                                             | Tema                                       | Status       | Iniciado em      | Terminado em     | Duração |
+| ------------------------------------------------ | ------------------------------------------ | ------------ | ---------------- | ---------------- | ------- |
+| [30](wave-2/drop-30-backend-local-e-recursos.md) | Backend local e recursos em teste          | ✅ Concluído | 2026-11-02 17:49 | 2026-11-02 17:55 | 6min    |
+| [31](wave-2/drop-31-planta-para-comodos.md)      | Planta → cômodos e móveis                  | ✅ Concluído | 2026-11-02 17:55 | 2026-11-02 17:59 | 4min    |
+| [32](wave-2/drop-32-desenho-da-planta.md)        | Desenho do imóvel com os móveis            | ✅ Concluído | 2026-11-02 17:59 | 2026-11-02 18:01 | 2min    |
+| [33](wave-2/drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer)         | ✅ Concluído | 2026-11-02 18:01 | 2026-11-02 18:08 | 7min    |
+| [34](wave-2/drop-34-cobranca.md)                 | Cobrança                                   | ⏳ A fazer   | —                | —                | —       |
+| [35](wave-2/drop-35-medidas-dos-produtos.md)     | Medidas dos produtos                       | ✅ Concluído | 2026-11-03 13:30 | 2026-11-03 13:35 | 5min    |
+| [36](wave-2/drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta               | ✅ Concluído | 2026-11-03 13:37 | 2026-11-03 13:48 | 11min   |
+| [37](wave-2/drop-37-visualizacao-3d.md)          | Visualização 3D                            | ✅ Concluído | 2026-11-03 13:49 | 2026-11-03 13:55 | 6min    |
+| [38](wave-2/drop-38-casa-em-3d.md)               | Casa inteira em 3D, primeira pessoa e tour | ✅ Concluído | 2026-11-03 16:29 | 2026-11-03 16:52 | 23min   |
 
 ### Backlog
 

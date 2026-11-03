@@ -632,3 +632,52 @@ export function layoutItems(view: ListView, instanceId: string): LayoutItem[] {
   }
   return items
 }
+
+/** Posição sugerida para um móvel (centro em cm no cômodo e para onde a frente aponta). */
+export interface PositionHint {
+  key: string
+  unit: number
+  xCm: number
+  yCm: number
+  rotation: PlacedItem['facing']
+}
+
+/**
+ * Aplica as posições sugeridas (skill /house-3d, pela planta e pelas fotos) só quando passam na
+ * conferência: dentro do cômodo, sem bater em outro móvel de chão e fora do giro das portas.
+ * O que não passa fica na posição da regra.
+ */
+export function applySuggestions(
+  layout: RoomLayout,
+  hints: PositionHint[],
+): { layout: RoomLayout; accepted: number } {
+  const W = layout.width
+  const D = layout.depth
+  const doors = layout.openings.filter((o) => o.kind === 'door').map((o) => openingZone(o, W, D))
+  const placed = [...layout.placed]
+  let accepted = 0
+  for (const hint of hints) {
+    const i = placed.findIndex(
+      (p) => p.key === hint.key && p.unit === hint.unit && p.placement === 'floor',
+    )
+    if (i < 0) continue
+    const p = placed[i]
+    // Largura (frente) e profundidade do móvel, independentes de como ele estava girado.
+    const sideways = p.facing === 'left' || p.facing === 'right'
+    const [width, depth] = sideways ? [p.d, p.w] : [p.w, p.d]
+    const [w, d] =
+      hint.rotation === 'left' || hint.rotation === 'right' ? [depth, width] : [width, depth]
+    const rect = { x: hint.xCm - w / 2, y: hint.yCm - d / 2, w, d }
+    const ok =
+      rect.x >= 0 &&
+      rect.y >= 0 &&
+      rect.x + w <= W &&
+      rect.y + d <= D &&
+      !placed.some((o, j) => j !== i && o.placement === 'floor' && overlaps(rect, o)) &&
+      !doors.some((z) => overlaps(rect, z))
+    if (!ok) continue
+    placed[i] = { ...p, ...rect, facing: hint.rotation }
+    accepted++
+  }
+  return { layout: { ...layout, placed }, accepted }
+}

@@ -497,6 +497,7 @@ export function App() {
             onChange: changeAnswer,
           }}
           cheaperPrices={enabled('cheaperPrices')}
+          house3d={health?.house3d ? { rooms } : undefined}
           floorPlan={
             enabled('floorPlan') &&
             floorPlan?.rooms.some((r) => house.instances.some((i) => i.id === r.instanceId))

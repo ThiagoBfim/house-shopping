@@ -14,6 +14,8 @@ export const LOCAL_API: string | undefined =
 export interface Health {
   floorPlan: boolean
   cheaperPrices: boolean
+  /** Skill /house-3d (casa em 3D a partir da planta e das fotos). */
+  house3d?: boolean
 }
 
 export interface Job<T> {
@@ -34,14 +36,18 @@ export async function fetchHealth(): Promise<Health | undefined> {
     const response = await fetch(`${LOCAL_API}/api/health`, { signal: AbortSignal.timeout(2000) })
     if (!response.ok) return undefined
     const body = (await response.json()) as Partial<Health>
-    return { floorPlan: body.floorPlan === true, cheaperPrices: body.cheaperPrices === true }
+    return {
+      floorPlan: body.floorPlan === true,
+      cheaperPrices: body.cheaperPrices === true,
+      house3d: body.house3d === true,
+    }
   } catch {
     return undefined
   }
 }
 
 /** Envia o arquivo e devolve o id do job. Erro do backend vira Error com a mensagem dele. */
-export async function startJob(path: string, body: Blob, query: Record<string, string>) {
+export async function startJob(path: string, body: Blob | FormData, query: Record<string, string>) {
   if (!LOCAL_API) throw new Error('Backend local desligado.')
   const response = await fetch(`${LOCAL_API}${path}?${new URLSearchParams(query)}`, {
     method: 'POST',

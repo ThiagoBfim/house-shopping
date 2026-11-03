@@ -4,6 +4,8 @@ import { expect, test, type Page, type Route } from '@playwright/test'
 const API = 'http://api.test'
 // Resposta real da skill /floor-plan (apartamento de 2 quartos), a mesma dos testes unitários.
 const apto = JSON.parse(readFileSync('tests/fixtures/floor-plan-apto.json', 'utf8')) as unknown
+// Resposta real da skill /house-3d para a mesma planta (só 3 portas desenhadas).
+const casa3d = JSON.parse(readFileSync('tests/fixtures/house-3d-apto.json', 'utf8')) as unknown
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -12,7 +14,7 @@ const CORS = {
 }
 
 interface Mock {
-  health?: { floorPlan: boolean; cheaperPrices: boolean }
+  health?: { floorPlan: boolean; cheaperPrices: boolean; house3d?: boolean }
   /** Respostas de GET /api/jobs/:id, em ordem (a última se repete). */
   jobs?: Record<string, object[]>
   /** POST → id do job (ou erro). */
@@ -359,4 +361,120 @@ test('preços mais baratos: troca link e preço e volta ao que era antes', async
   await expect(page.getByRole('article', { name: label })).toBeVisible()
   expect(await listTotal(page)).toBeCloseTo(before, 2)
   await expect(panel.getByRole('button', { name: /Voltar ao que era antes/ })).toHaveCount(0)
+})
+
+type SceneState = { mode: string; x: number; z: number; room: number; tour: number }
+const sceneState = (page: Page) =>
+  page.evaluate(() =>
+    (window as unknown as { __house3d: { state: () => SceneState } }).__house3d.state(),
+  )
+
+test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e vídeo', async ({
+  page,
+}) => {
+  test.setTimeout(90_000)
+  const calls = await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/floor-plan': { id: 'p1' }, '/api/house-3d': { id: 'h1' } },
+    jobs: {
+      p1: [{ id: 'p1', status: 'done', result: apto }],
+      h1: [
+        { id: 'h1', status: 'running' },
+        { id: 'h1', status: 'done', result: casa3d, costUsd: 0.41 },
+      ],
+    },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const gen = page.locator('.house-3d-generate')
+  const button = gen.getByRole('button', { name: '✨ Gerar casa em 3D' })
+  await expect(button).toBeDisabled()
+  await gen
+    .getByLabel('Planta')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  // 1×1 px: o navegador reduz/converte para JPEG antes de enviar
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  await gen.getByLabel(/Fotos dos cômodos/).setInputFiles([
+    { name: 'sala.png', mimeType: 'image/png', buffer: pixel },
+    { name: 'quarto.png', mimeType: 'image/png', buffer: pixel },
+  ])
+  await button.click()
+  await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible({ timeout: 15000 })
+
+  // multipart com planta, 2 fotos e os móveis da lista por cômodo, com medida
+  const post = calls.find((c) => c.path === '/api/house-3d')!
+  expect(post.body).toContain('name="planta"; filename="apto.png"')
+  expect(post.body.match(/name="fotos"; filename="(sala|quarto)\.jpg"/g)).toHaveLength(2)
+  const moveis = JSON.parse(
+    post.body.split('name="moveis"')[1].split('\r\n\r\n')[1].split('\r\n')[0],
+  )
+  expect(moveis.find((r: { instanceId: string }) => r.instanceId === 'quarto-1').items).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({ key: 'quarto-1:cama-box', placement: 'floor' }),
+    ]),
+  )
+
+  // abre em tela cheia, de cima
+  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
+  await expect(dialog).toBeVisible()
+  await page.waitForFunction(
+    () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
+  )
+  await expect(dialog.getByRole('button', { name: '🛰️ De cima' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+
+  // andar: começa na entrada (varanda), W anda para dentro sem atravessar parede
+  await dialog.getByRole('button', { name: '🚶 Andar' }).click()
+  await expect(dialog.getByRole('button', { name: '🚶 Andar' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+  await expect(dialog.locator('.house-3d-room')).toHaveText(/Varanda/)
+  const before = await sceneState(page)
+  await page.keyboard.down('w')
+  await page.waitForTimeout(1500)
+  await page.keyboard.up('w')
+  const after = await sceneState(page)
+  expect(Math.hypot(after.x - before.x, after.z - before.z)).toBeGreaterThan(0.2)
+  expect(after.x).toBeGreaterThan(6)
+  expect(after.x).toBeLessThan(10) // dentro da varanda (6–10 m), não atravessou a parede
+
+  // tour gravado: passa por outro cômodo, parar entrega o vídeo
+  await dialog.getByRole('button', { name: '⏺️ Gravar tour em vídeo' }).click()
+  await expect(dialog.locator('.house-3d-rec')).toBeVisible()
+  await expect
+    .poll(async () => (await sceneState(page)).tour, { timeout: 15000 })
+    .toBeGreaterThan(0)
+  await expect
+    .poll(async () => dialog.locator('.house-3d-room').textContent(), { timeout: 20000 })
+    .not.toMatch(/Varanda/)
+  await dialog.getByRole('button', { name: /Parar e salvar vídeo/ }).click()
+  const download = dialog.getByRole('link', { name: 'Baixar vídeo' })
+  await expect(download).toBeVisible()
+  await expect(download).toHaveAttribute('download', /^tour-da-casa\.(webm|mp4)$/)
+  expect((await sceneState(page)).mode).toBe('walk')
+
+  // fechar e reabrir sem gerar de novo (fica salva no navegador)
+  await dialog.getByRole('button', { name: 'Fechar' }).click()
+  await expect(dialog).toHaveCount(0)
+  await expect(gen.getByRole('status')).toContainText('Casa gerada: 11 cômodos')
+  await expect(gen.getByRole('status')).toContainText('US$ 0.41')
+  await page.reload()
+  await page
+    .locator('.house-3d-generate')
+    .getByRole('button', { name: '🏠 Abrir casa em 3D' })
+    .click()
+  await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible()
+  expect(calls.filter((c) => c.path === '/api/house-3d')).toHaveLength(1)
 })

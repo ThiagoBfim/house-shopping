@@ -161,3 +161,95 @@ export function parsePriceFinds(text: string): PriceFind[] {
   }
   return [...byRow.values()].sort((a, b) => a.row - b.row)
 }
+
+const meters = (description: string) => ({ type: 'number', minimum: 0, maximum: 200, description })
+const WALL = { type: 'string', enum: ['top', 'right', 'bottom', 'left'] }
+
+/** Resposta da skill /house-3d (`--json-schema`): a casa em metros, para o 3D. */
+export const HOUSE_3D_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['widthM', 'depthM', 'rooms', 'notes'],
+  properties: {
+    widthM: meters('Largura da área construída inteira'),
+    depthM: meters('Profundidade da área construída inteira'),
+    rooms: {
+      type: 'array',
+      maxItems: 30,
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: [
+          'type',
+          'label',
+          'xM',
+          'yM',
+          'widthM',
+          'depthM',
+          'openings',
+          'finishes',
+          'furniture',
+        ],
+        properties: {
+          type: { type: 'string', enum: PLAN_ROOM_TYPES },
+          label: { type: 'string' },
+          xM: meters('Esquerda do cômodo a partir da esquerda da planta'),
+          yM: meters('Topo do cômodo a partir do topo da planta'),
+          widthM: meters('Largura do retângulo do cômodo'),
+          depthM: meters('Profundidade do retângulo do cômodo'),
+          openings: {
+            type: 'array',
+            maxItems: 10,
+            items: {
+              type: 'object',
+              additionalProperties: false,
+              required: ['kind', 'wall', 'position', 'widthCm'],
+              properties: {
+                kind: { type: 'string', enum: ['door', 'window'] },
+                wall: WALL,
+                position: { type: 'number', minimum: 0, maximum: 1 },
+                widthCm: { type: 'number', minimum: 40, maximum: 400 },
+                hinge: { type: 'string', enum: ['start', 'end'] },
+                swing: { type: 'string', enum: ['in', 'out'] },
+                sliding: { type: 'boolean' },
+                sillCm: { type: 'number', minimum: 0, maximum: 220 },
+                heightCm: { type: 'number', minimum: 30, maximum: 260 },
+              },
+            },
+          },
+          finishes: {
+            type: 'object',
+            additionalProperties: false,
+            required: ['floor', 'floorColor', 'wallColor', 'fromPhoto'],
+            properties: {
+              floor: {
+                type: 'string',
+                enum: ['madeira', 'porcelanato', 'ceramica', 'cimento', 'carpete', 'deck'],
+              },
+              floorColor: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' },
+              wallColor: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' },
+              fromPhoto: { type: 'boolean' },
+            },
+          },
+          furniture: {
+            type: 'array',
+            maxItems: 40,
+            items: {
+              type: 'object',
+              additionalProperties: false,
+              required: ['key', 'unit', 'xCm', 'yCm', 'rotation'],
+              properties: {
+                key: { type: 'string' },
+                unit: { type: 'integer', minimum: 0, maximum: 9 },
+                xCm: { type: 'number', minimum: 0, maximum: 5000 },
+                yCm: { type: 'number', minimum: 0, maximum: 5000 },
+                rotation: { type: 'string', enum: ['down', 'up', 'left', 'right'] },
+              },
+            },
+          },
+        },
+      },
+    },
+    notes: { type: 'string' },
+  },
+}

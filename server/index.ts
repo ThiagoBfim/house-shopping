@@ -4,6 +4,7 @@
  *
  * - POST /api/floor-plan?name=planta.pdf   corpo = arquivo  → { id } (skill /floor-plan)
  * - POST /api/cheaper-prices   corpo = { items } (itens.json) → { id } (skill /search-better-prices)
+ * - POST /api/house-3d   corpo = multipart: planta, fotos, moveis (JSON) → { id } (skill /house-3d)
  * - GET  /api/jobs/:id                                       → Job
  * - GET  /api/health                                         → o que está disponível
  */
@@ -15,14 +16,20 @@ import { tmpdir } from 'node:os'
 import { extname, join, resolve } from 'node:path'
 import { claudeArgs, parseClaudeOutput, type ClaudeRun } from './lib/claude.ts'
 import { isLocalOrigin, JobStore, type JobOutcome } from './lib/jobs.ts'
-import { FLOOR_PLAN_SCHEMA, parsePriceFinds, parsePriceItems } from './lib/skills.ts'
+import {
+  FLOOR_PLAN_SCHEMA,
+  HOUSE_3D_SCHEMA,
+  parsePriceFinds,
+  parsePriceItems,
+} from './lib/skills.ts'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const PORT = Number(process.env.HOUSE_API_PORT ?? 8787)
 const CLAUDE = process.env.CLAUDE_BIN ?? 'claude'
 const MODEL = process.env.CLAUDE_MODEL
 const PRICES_SKILL = join(ROOT, '.claude/skills/search-better-prices/SKILL.md')
-const MAX_UPLOAD = 15 * 1024 * 1024
+// Planta + até 8 fotos (o site já reduz as fotos antes de enviar).
+const MAX_UPLOAD = 40 * 1024 * 1024
 const PLAN_TYPES: Record<string, string> = {
   '.png': 'png',
   '.jpg': 'jpg',
@@ -84,6 +91,62 @@ async function startFloorPlan(body: Buffer, name: string) {
         maxBudgetUsd: 2,
       },
       5 * 60_000,
+    ),
+  )
+}
+
+/** Até 8 fotos dos cômodos (mais que isso pesa e quase não ajuda). */
+const MAX_PHOTOS = 8
+
+async function startHouse3D(body: Buffer, contentType: string) {
+  if (!contentType.startsWith('multipart/form-data')) {
+    throw new HttpError(400, 'Envie a planta, as fotos e os móveis num formulário (multipart).')
+  }
+  const form = await new Request('http://local/', {
+    method: 'POST',
+    headers: { 'content-type': contentType },
+    body: new Uint8Array(body),
+  })
+    .formData()
+    .catch(() => {
+      throw new HttpError(400, 'Formulário ilegível.')
+    })
+  const plan = form.get('planta')
+  if (!(plan instanceof File)) throw new HttpError(400, 'Falta a planta.')
+  const planType = PLAN_TYPES[extname(plan.name).toLowerCase()]
+  if (!planType) throw new HttpError(400, 'Envie a planta em PNG, JPG, WEBP, GIF ou PDF.')
+  const photos = form.getAll('fotos').filter((f): f is File => f instanceof File)
+  if (photos.length > MAX_PHOTOS) throw new HttpError(400, `No máximo ${MAX_PHOTOS} fotos.`)
+  for (const photo of photos) {
+    const type = PLAN_TYPES[extname(photo.name).toLowerCase()]
+    if (!type || type === 'pdf')
+      throw new HttpError(400, `Foto "${photo.name}": use PNG, JPG ou WEBP.`)
+  }
+  let furniture: unknown
+  try {
+    furniture = JSON.parse(String(form.get('moveis') ?? '[]'))
+  } catch {
+    throw new HttpError(400, 'Lista de móveis ilegível.')
+  }
+  if (jobs.isRunning('house-3d')) throw new HttpError(409, 'Já há uma casa sendo gerada.')
+
+  const dir = await jobDir('casa')
+  await writeFile(join(dir, `planta.${planType}`), Buffer.from(await plan.arrayBuffer()))
+  for (const [i, photo] of photos.entries()) {
+    const type = PLAN_TYPES[extname(photo.name).toLowerCase()]
+    await writeFile(join(dir, `foto-${i + 1}.${type}`), Buffer.from(await photo.arrayBuffer()))
+  }
+  await writeFile(join(dir, 'moveis.json'), JSON.stringify(furniture, null, 1))
+  return jobs.start('house-3d', () =>
+    runClaude(
+      {
+        prompt: `/house-3d ${dir}`,
+        allowedTools: ['Read', 'Skill'],
+        addDirs: [dir],
+        jsonSchema: HOUSE_3D_SCHEMA,
+        maxBudgetUsd: 4,
+      },
+      10 * 60_000,
     ),
   )
 }
@@ -160,7 +223,7 @@ function readBody(req: IncomingMessage): Promise<Buffer> {
     req.on('data', (chunk: Buffer) => {
       size += chunk.length
       if (size > MAX_UPLOAD) {
-        fail(new HttpError(413, 'Arquivo grande demais (máximo 15 MB).'))
+        fail(new HttpError(413, 'Arquivo grande demais (máximo 40 MB).'))
         req.destroy()
       } else chunks.push(chunk)
     })
@@ -193,7 +256,11 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url ?? '/', 'http://localhost')
   try {
     if (req.method === 'GET' && url.pathname === '/api/health') {
-      return send(res, 200, { floorPlan: true, cheaperPrices: existsSync(PRICES_SKILL) })
+      return send(res, 200, {
+        floorPlan: true,
+        cheaperPrices: existsSync(PRICES_SKILL),
+        house3d: true,
+      })
     }
     if (req.method === 'GET' && url.pathname.startsWith('/api/jobs/')) {
       const job = jobs.get(url.pathname.slice('/api/jobs/'.length))
@@ -201,6 +268,10 @@ const server = createServer(async (req, res) => {
     }
     if (req.method === 'POST' && url.pathname === '/api/floor-plan') {
       const job = await startFloorPlan(await readBody(req), url.searchParams.get('name') ?? '')
+      return send(res, 202, { id: job.id })
+    }
+    if (req.method === 'POST' && url.pathname === '/api/house-3d') {
+      const job = await startHouse3D(await readBody(req), req.headers['content-type'] ?? '')
       return send(res, 202, { id: job.id })
     }
     if (req.method === 'POST' && url.pathname === '/api/cheaper-prices') {

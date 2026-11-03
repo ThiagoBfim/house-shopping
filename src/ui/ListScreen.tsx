@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks'
+import type { Rooms } from '../data/schema.ts'
 import {
   byImportance,
   type Choices,
@@ -54,6 +55,8 @@ interface Props {
   share: Parameters<typeof ShareBar>[0]
   /** Planta lida (recurso em teste ligado): desenho do imóvel com os móveis. */
   floorPlan?: SavedPlan
+  /** Backend com a skill /house-3d: casa inteira em 3D a partir da planta e das fotos. */
+  house3d?: { rooms: Rooms }
   /** Recurso em teste "Preços mais baratos" ligado. */
   cheaperPrices?: boolean
 }
@@ -97,6 +100,7 @@ export function ListScreen({
   answers,
   share,
   floorPlan,
+  house3d,
   cheaperPrices,
 }: Props) {
   const [query, setQuery] = useState('')
@@ -403,7 +407,9 @@ export function ListScreen({
 
       <AnswersPanel {...answers} onRedo={onAssistant} />
 
-      {floorPlan && <FloorPlanPanel plan={floorPlan} view={view} instances={instances} />}
+      {floorPlan && (
+        <FloorPlanPanel plan={floorPlan} view={view} instances={instances} house3d={house3d} />
+      )}
 
       {cheaperPrices && hasItems && (
         <CheaperPrices
