@@ -9,7 +9,7 @@ import {
 } from '../engine/house3d.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
-import { readSavedHouse, saveHouse, type SavedHouse } from './house3d-store.ts'
+import { saveHouse, type SavedHouse } from './house3d-store.ts'
 import { startJob, waitForJob } from './local-api.ts'
 import { resizeImage } from './resize-image.ts'
 
@@ -18,7 +18,11 @@ interface Props {
   rooms: Rooms
   view: ListView
   instances: RoomInstance[]
-  /** Abre a casa gerada no visualizador 3D. */
+  /** Casa já gerada (salva no navegador). */
+  house?: SavedHouse
+  /** Casa nova gerada (a seção passa a usar ela também na posição dos móveis). */
+  onGenerated: (house: SavedHouse) => void
+  /** Abre a casa no visualizador 3D, com a lista e as posições de agora. */
   onOpen: (house: SavedHouse) => void
 }
 
@@ -36,11 +40,18 @@ type State =
  * para a skill /house-3d no backend local; a casa volta em metros, com portas, janelas,
  * acabamentos das fotos e sugestões de posição dos móveis.
  */
-export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props) {
+export function House3DGenerate({
+  plan,
+  rooms,
+  view,
+  instances,
+  house,
+  onGenerated,
+  onOpen,
+}: Props) {
   const [planFile, setPlanFile] = useState<File>()
   const [photos, setPhotos] = useState<File[]>([])
   const [state, setState] = useState<State>({ step: 'idle' })
-  const [house, setHouse] = useState<SavedHouse | undefined>(readSavedHouse)
   const [now, setNow] = useState(Date.now())
 
   useEffect(() => {
@@ -83,7 +94,7 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
         ...(quality === 'realista' && { quality }),
       }
       saveHouse(saved)
-      setHouse(saved)
+      onGenerated(saved)
       setState({ step: 'idle' })
       onOpen(saved)
     } catch (error) {
@@ -149,10 +160,16 @@ export function House3DGenerate({ plan, rooms, view, instances, onOpen }: Props)
         </button>
         {house && !generating && (
           <button type="button" class="small-button" onClick={() => onOpen(house)}>
-            🏠 Abrir casa em 3D
+            🔄 Atualizar o 3D
           </button>
         )}
       </div>
+      {house && !generating && (
+        <p class="muted">
+          "Atualizar o 3D" abre a casa com a lista e as posições de agora (sem gerar de novo): o que
+          você tirou da lista some e o que você arrastou na posição dos móveis vai junto.
+        </p>
+      )}
       {generating && (
         <p class="muted" role="status">
           Lendo a planta{photos.length ? ` e ${photos.length} foto(s)` : ''} com o Claude Code

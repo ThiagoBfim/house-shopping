@@ -1,16 +1,35 @@
-import { useMemo, useState } from 'preact/hooks'
+import { useMemo, useRef, useState } from 'preact/hooks'
 import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
-import { arrangeRoom, layoutItems, roomSizeCm, type PlacedItem } from '../engine/layout.ts'
+import { furnishHouse } from '../engine/house3d.ts'
+import {
+  applySuggestions,
+  arrangeRoom,
+  clearPositions,
+  hintOf,
+  layoutItems,
+  roomSizeCm,
+  setPosition,
+  tryMove,
+  type ManualPositions,
+  type PlacedItem,
+  type PositionHint,
+} from '../engine/layout.ts'
 import { formatBRL } from '../engine/money.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
+import type { SavedHouse } from './house3d-store.ts'
 import { Room3DView } from './Room3DView.tsx'
 
 interface Props {
   plan: SavedPlan
   view: ListView
   instances: RoomInstance[]
+  /** Casa gerada em 3D: a vista de cima usa o mesmo cálculo (medidas, armários, posições). */
+  house?: SavedHouse
+  /** Posições escolhidas arrastando (as mesmas do 3D). */
+  positions: ManualPositions
+  onPositions: (positions: ManualPositions) => void
 }
 
 /** Margem em volta do cômodo no desenho (cm), para a régua e as janelas. */
@@ -57,12 +76,37 @@ export function detailsOf(view: ListView, key: string) {
   return undefined
 }
 
+/** Girar no sentido do relógio, visto de cima. */
+const NEXT_FACING: Record<PlacedItem['facing'], PlacedItem['facing']> = {
+  down: 'left',
+  left: 'up',
+  up: 'right',
+  right: 'down',
+}
+const SNAP = 5
+const snap = (cm: number) => Math.round(cm / SNAP) * SNAP
+const sameItem = (a: { key: string; unit: number }, b: { key: string; unit: number }) =>
+  a.key === b.key && a.unit === b.unit
+
+interface Drag {
+  key: string
+  unit: number
+  /** Ponteiro − canto do móvel, no começo (cm). */
+  dx: number
+  dy: number
+  /** Canto de cima à esquerda na posição de agora (cm). */
+  x: number
+  y: number
+  moved: boolean
+  ok: boolean
+}
+
 /**
- * "Posição dos móveis": vista de cima, em escala, de um cômodo da planta com os móveis da
- * lista posicionados pelas regras de `arrangeRoom` (encostados na parede, passagem livre,
- * nada na frente de porta). Tocar num móvel mostra nome, medida e preço.
+ * "Posição dos móveis": vista de cima, em escala, de um cômodo com os móveis da lista. Com a
+ * casa em 3D gerada, é exatamente o cômodo do 3D (medidas, armários das fotos, posições). Dá
+ * para arrastar um móvel (ou mover com as setas e girar) e o 3D usa as mesmas posições.
  */
-export function FurnitureLayout({ plan, view, instances }: Props) {
+export function FurnitureLayout({ plan, view, instances, house, positions, onPositions }: Props) {
   const linked = plan.rooms
     .map((room, index) => ({
       room,
@@ -71,24 +115,95 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
     }))
     .filter((r) => r.instance && layoutItems(view, r.instance.id).length)
   const [selected, setSelected] = useState(linked[0]?.instance?.id)
-  const [picked, setPicked] = useState<PlacedItem>()
+  const [picked, setPicked] = useState<{ key: string; unit: number }>()
   const [show3d, setShow3d] = useState(false)
+  const [drag, setDrag] = useState<Drag>()
+  const [notice, setNotice] = useState<string>()
+  const svg = useRef<SVGSVGElement>(null)
+  const dragged = useRef(false)
   const current = linked.find((r) => r.instance!.id === selected) ?? linked[0]
-  // O 3D refaz a cena quando o layout muda: só recalcula com outro cômodo ou outra lista.
+  const id = current?.instance?.id
+  // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
   const memo = useMemo(() => {
-    if (!current) return undefined
+    if (!current || !id) return undefined
+    const houseRoom = house?.model.rooms.find((r) => r.instanceId === id)
+    if (house && houseRoom) {
+      const [f] = furnishHouse({ ...house.model, rooms: [houseRoom] }, view, positions)
+      const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }
+      return { size, layout: f.layout, fixed: f.fixed, from3d: true }
+    }
     const size = roomSizeCm(plan, current.index)
-    const layout = arrangeRoom(
+    const base = arrangeRoom(
       { width: size.width, depth: size.depth, openings: current.room.openings },
-      layoutItems(view, current.instance!.id),
+      layoutItems(view, id),
     )
-    return { size, layout }
-  }, [plan, view, current?.index, current?.instance?.id])
-  if (!current || !memo) return null
-  const { size, layout } = memo
-  const details = picked && detailsOf(view, picked.key)
+    const { layout } = applySuggestions(base, positions[id] ?? [])
+    return { size, layout, fixed: [] as PlacedItem[], from3d: false }
+  }, [plan, view, house, positions, current?.index, id])
+  if (!current || !memo || !id) return null
+  const { size, layout, fixed, from3d } = memo
+  const pickedItem = picked && layout.placed.find((p) => sameItem(p, picked))
+  const details = pickedItem && detailsOf(view, pickedItem.key)
   const meters = (cm: number) => (cm / 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })
   const order = { rug: 0, floor: 1, wall: 2 }
+  const custom = (positions[id] ?? []).length > 0
+
+  /** Tenta pôr o móvel na posição; se não couber, avisa e deixa onde estava. */
+  const place = (hint: PositionHint, what: string) => {
+    if (!tryMove(layout, hint, fixed)) {
+      setNotice(`Não dá para ${what} aí: bate em outro móvel, em armário, na porta ou na parede.`)
+      return false
+    }
+    setNotice(undefined)
+    onPositions(setPosition(positions, id, hint))
+    return true
+  }
+
+  const toCm = (e: PointerEvent) => {
+    const matrix = svg.current?.getScreenCTM()
+    if (!matrix) return { x: 0, y: 0 }
+    const point = new DOMPoint(e.clientX, e.clientY).matrixTransform(matrix.inverse())
+    return { x: point.x, y: point.y }
+  }
+  const startDrag = (e: PointerEvent, p: PlacedItem) => {
+    if (p.placement === 'wall') return
+    const at = toCm(e)
+    ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
+    setDrag({
+      key: p.key,
+      unit: p.unit,
+      dx: at.x - p.x,
+      dy: at.y - p.y,
+      x: p.x,
+      y: p.y,
+      moved: false,
+      ok: true,
+    })
+  }
+  const moveDrag = (e: PointerEvent) => {
+    if (!drag) return
+    const p = layout.placed.find((q) => sameItem(q, drag))
+    if (!p) return
+    const at = toCm(e)
+    const x = snap(at.x - drag.dx)
+    const y = snap(at.y - drag.dy)
+    const moved = drag.moved || Math.hypot(x - p.x, y - p.y) >= SNAP
+    const ok = !!tryMove(layout, { ...hintOf(p), xCm: x + p.w / 2, yCm: y + p.d / 2 }, fixed)
+    setDrag({ ...drag, x, y, moved, ok })
+  }
+  const endDrag = () => {
+    if (!drag) return
+    const p = layout.placed.find((q) => sameItem(q, drag))
+    setDrag(undefined)
+    if (!p || !drag.moved) return
+    dragged.current = true
+    setPicked({ key: p.key, unit: p.unit })
+    place({ ...hintOf(p), xCm: drag.x + p.w / 2, yCm: drag.y + p.d / 2 }, 'pôr o móvel')
+  }
+  const rotate = (p: PlacedItem) =>
+    place({ ...hintOf(p), rotation: NEXT_FACING[p.facing] }, 'girar o móvel')
+  const nudge = (p: PlacedItem, dx: number, dy: number) =>
+    place({ ...hintOf(p), xCm: hintOf(p).xCm + dx, yCm: hintOf(p).yCm + dy }, 'mover o móvel')
 
   return (
     <section class="furniture-layout" aria-labelledby="furniture-layout-title">
@@ -99,12 +214,13 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
             key={instance!.id}
             type="button"
             role="tab"
-            class={`chip ${instance!.id === current.instance!.id ? 'is-active' : ''}`}
-            aria-selected={instance!.id === current.instance!.id}
+            class={`chip ${instance!.id === id ? 'is-active' : ''}`}
+            aria-selected={instance!.id === id}
             onClick={() => {
               setSelected(instance!.id)
               setPicked(undefined)
               setShow3d(false)
+              setNotice(undefined)
             }}
           >
             {instance!.title}
@@ -113,12 +229,18 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
       </div>
       <p class="muted">
         {current.instance!.title}: {meters(size.width)} × {meters(size.depth)} m
-        {size.estimated ? ' (medida estimada pela planta)' : ''} · vista de cima, em escala.
+        {from3d ? ' (da casa em 3D)' : size.estimated ? ' (medida estimada pela planta)' : ''} ·
+        vista de cima, em escala.
       </p>
       <svg
+        ref={svg}
+        class={drag ? 'is-dragging' : ''}
         viewBox={`${-PAD} ${-PAD} ${layout.width + 2 * PAD} ${layout.depth + 2 * PAD}`}
         role="group"
         aria-label={`Planta de ${current.instance!.title} com os móveis`}
+        onPointerMove={moveDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={() => setDrag(undefined)}
       >
         <rect class="layout-room" x={0} y={0} width={layout.width} height={layout.depth} />
         {layout.openings.map((o, i) => {
@@ -144,6 +266,31 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
             </g>
           )
         })}
+        {fixed.map((p) => (
+          // Armários das fotos: já estão no imóvel, não saem do lugar.
+          <g
+            key={p.key}
+            class={`layout-fixed is-${p.placement}`}
+            aria-label={`${p.label} (das fotos)`}
+          >
+            {p.placement === 'wall' ? (
+              <rect {...wallStrip(p)} rx={2} />
+            ) : (
+              <rect x={p.x} y={p.y} width={p.w} height={p.d} rx={2} />
+            )}
+            {p.placement !== 'wall' && p.w > 40 && p.d > 18 && (
+              <text
+                x={p.x + p.w / 2}
+                y={p.y + p.d / 2}
+                font-size={11}
+                text-anchor="middle"
+                dominant-baseline="middle"
+              >
+                {p.label}
+              </text>
+            )}
+          </g>
+        ))}
         {[...layout.placed]
           .sort(
             (a, b) =>
@@ -153,18 +300,46 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
             const info = detailsOf(view, p.key)
             const label = info?.category ?? p.label
             const font = Math.max(9, Math.min(16, p.w / 6, p.d / 2.5))
+            const moving = drag && sameItem(drag, p)
+            // Enquanto arrasta: o móvel acompanha o dedo (vermelho onde não cabe).
+            const x = moving ? drag.x : p.x
+            const y = moving ? drag.y : p.y
+            const movable = p.placement !== 'wall'
             return (
               <g
                 key={`${p.key}-${p.unit}`}
-                class={`layout-item is-${p.placement} ${picked?.key === p.key && picked.unit === p.unit ? 'is-picked' : ''}`}
+                class={`layout-item is-${p.placement} ${picked && sameItem(picked, p) ? 'is-picked' : ''} ${moving ? 'is-moving' : ''} ${moving && !drag.ok ? 'is-invalid' : ''}`}
                 role="button"
-                tabIndex={0}
+                tabindex={0}
                 aria-label={`${label}: ${p.label}`}
-                onClick={() => setPicked(p)}
+                data-x={p.x}
+                data-y={p.y}
+                data-facing={p.facing}
+                onPointerDown={(e) => startDrag(e, p)}
+                onClick={() => {
+                  if (dragged.current) {
+                    dragged.current = false
+                    return
+                  }
+                  setPicked({ key: p.key, unit: p.unit })
+                }}
                 onKeyDown={(e) => {
+                  const step = {
+                    ArrowLeft: [-10, 0],
+                    ArrowRight: [10, 0],
+                    ArrowUp: [0, -10],
+                    ArrowDown: [0, 10],
+                  }[e.key]
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    setPicked(p)
+                    setPicked({ key: p.key, unit: p.unit })
+                  } else if (movable && step) {
+                    e.preventDefault()
+                    setPicked({ key: p.key, unit: p.unit })
+                    nudge(p, step[0], step[1])
+                  } else if (movable && (e.key === 'r' || e.key === 'R')) {
+                    e.preventDefault()
+                    rotate(p)
                   }
                 }}
               >
@@ -172,12 +347,12 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
                   // Na parede (TV, ar, espelho): faixa fina encostada, não ocupa chão.
                   <rect {...wallStrip(p)} rx={2} />
                 ) : (
-                  <rect x={p.x} y={p.y} width={p.w} height={p.d} rx={3} />
+                  <rect x={x} y={y} width={p.w} height={p.d} rx={3} />
                 )}
                 {p.placement !== 'wall' && p.w > 30 && p.d > 18 && (
                   <text
-                    x={p.x + p.w / 2}
-                    y={p.y + p.d / 2}
+                    x={x + p.w / 2}
+                    y={y + p.d / 2}
                     font-size={font}
                     text-anchor="middle"
                     dominant-baseline="middle"
@@ -209,7 +384,32 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
           🧊 Ver em 3D
         </button>
       )}
-      {details && picked && (
+      {pickedItem && pickedItem.placement !== 'wall' && (
+        <div class="layout-actions">
+          <button type="button" class="small-button" onClick={() => rotate(pickedItem)}>
+            ↻ Girar
+          </button>
+          <span class="muted">arraste o móvel ou use as setas (10 cm) · R gira</span>
+        </div>
+      )}
+      {notice && (
+        <p class="notice notice-warn" role="alert">
+          {notice}
+        </p>
+      )}
+      {custom && (
+        <button
+          type="button"
+          class="link-button"
+          onClick={() => {
+            onPositions(clearPositions(positions, id))
+            setNotice(undefined)
+          }}
+        >
+          ↩ Voltar às posições sugeridas neste cômodo
+        </button>
+      )}
+      {details && pickedItem && (
         <div class="layout-details" role="status">
           <strong>{details.category}</strong> · {details.name}
           <br />
@@ -233,8 +433,9 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
         </p>
       )}
       <p class="muted">
-        Posição sugerida por regras (móvel na parede, passagem de 60 cm, nada na frente de porta);
-        portas e janelas vêm da leitura da planta. Toque num móvel para ver medida e preço.
+        Posição sugerida por regras (móvel na parede, passagem de 60 cm, nada na frente de porta)
+        {from3d ? ', com as medidas e os armários da casa em 3D' : ''}. Arraste um móvel para mudar
+        de lugar: a casa em 3D usa as mesmas posições ("🔄 Atualizar o 3D").
       </p>
     </section>
   )

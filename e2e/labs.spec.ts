@@ -473,7 +473,7 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
   await page.reload()
   await page
     .locator('.house-3d-generate')
-    .getByRole('button', { name: '🏠 Abrir casa em 3D' })
+    .getByRole('button', { name: '🔄 Atualizar o 3D' })
     .click()
   await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible()
   expect(calls.filter((c) => c.path === '/api/house-3d')).toHaveLength(1)
@@ -536,4 +536,135 @@ test('casa em 3D realista: armários das fotos, texturas e render em alta qualid
   await dialog.getByRole('button', { name: 'Fechar' }).click()
   await expect(gen.getByRole('status')).toContainText('Casa gerada (realista)')
   await expect(gen.getByRole('status')).toContainText('3 armário(s) das fotos')
+})
+
+test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ page }) => {
+  test.setTimeout(120_000)
+  const casaArmarios = JSON.parse(
+    readFileSync('tests/fixtures/house-3d-armarios.json', 'utf8'),
+  ) as unknown
+  await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/floor-plan': { id: 'p1' }, '/api/house-3d': { id: 'h1' } },
+    jobs: {
+      p1: [{ id: 'p1', status: 'done', result: apto }],
+      h1: [{ id: 'h1', status: 'done', result: casaArmarios }],
+    },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
+  await expect(layout).not.toContainText('da casa em 3D')
+  await expect(layout.locator('.layout-fixed')).toHaveCount(0)
+
+  // gerar a casa em 3D: a vista de cima passa a ser o cômodo do 3D (medidas e armário da foto)
+  const gen = page.locator('.house-3d-generate')
+  await gen
+    .getByLabel('Planta')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await gen.getByRole('button', { name: '✨ Gerar casa em 3D' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
+  await expect(dialog).toBeVisible({ timeout: 30_000 })
+  await dialog.getByRole('button', { name: 'Fechar' }).click()
+  await expect(layout).toContainText('Quarto 1: 3,5 × 4 m (da casa em 3D)')
+  await expect(layout.getByLabel('Armário embutido (das fotos)')).toHaveCount(1)
+
+  // mover a cama com as setas: anda 10 cm por vez até bater (aí avisa e não sai do lugar)
+  const bed = layout.getByRole('button', { name: /^Cama \/ base box/ })
+  const at = async () => [await bed.getAttribute('data-x'), await bed.getAttribute('data-y')]
+  const start = await at()
+  await bed.focus()
+  let moved = false
+  for (const key of ['ArrowDown', 'ArrowRight', 'ArrowLeft', 'ArrowUp']) {
+    await page.keyboard.press(key)
+    if ((await at()).join() !== start.join()) {
+      moved = true
+      break
+    }
+  }
+  expect(moved).toBe(true)
+  const after = await at()
+  const reset = layout.getByRole('button', { name: /Voltar às posições sugeridas/ })
+  await expect(reset).toBeVisible()
+  for (let i = 0; i < 60; i++) {
+    await page.keyboard.press('ArrowUp')
+    if (await layout.getByRole('alert').isVisible()) break
+  }
+  await expect(layout.getByRole('alert')).toContainText('Não dá para mover o móvel aí')
+  const blocked = await at()
+
+  // girar: muda a direção (ou avisa que não cabe)
+  const facing = await bed.getAttribute('data-facing')
+  await layout.getByRole('button', { name: '↻ Girar' }).click()
+  await expect
+    .poll(
+      async () =>
+        (await bed.getAttribute('data-facing')) !== facing ||
+        (await layout.getByRole('alert').textContent())?.includes('girar'),
+    )
+    .toBe(true)
+
+  // as posições ficam salvas no navegador
+  const saved = await at()
+  await page.reload()
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
+  expect(await at()).toEqual(saved)
+  expect(saved).not.toEqual(start)
+  expect(after).not.toEqual(start)
+  expect(blocked).not.toEqual(start)
+
+  // voltar às sugeridas
+  await reset.click()
+  expect(await at()).toEqual(start)
+  await expect(reset).toHaveCount(0)
+
+  // arrastar com o mouse/dedo: em cima da cômoda fica vermelho e não deixa
+  const dresser = layout.getByRole('button', { name: /^Cômoda/ })
+  await layout.locator('svg').scrollIntoViewIfNeeded()
+  const from = (await bed.locator('rect').boundingBox())!
+  const to = (await dresser.locator('rect').boundingBox())!
+  await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, { steps: 8 })
+  await expect(bed).toHaveClass(/is-moving/)
+  await expect(bed).toHaveClass(/is-invalid/)
+  await page.mouse.up()
+  await expect(layout.getByRole('alert')).toContainText('Não dá para pôr o móvel aí')
+  expect(await at()).toEqual(start)
+  // um pouco para a direita (lugar livre): vai
+  const box = (await bed.locator('rect').boundingBox())!
+  const svgBox = (await layout.locator('svg').boundingBox())!
+  const pxPerCm = svgBox.width / (350 + 80)
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(box.x + box.width / 2 + 20 * pxPerCm, box.y + box.height / 2, { steps: 5 })
+  await page.mouse.up()
+  await expect(layout.getByRole('alert')).toHaveCount(0)
+  expect(Number(await bed.getAttribute('data-x'))).toBe(Number(start[0]) + 20)
+  await reset.click()
+
+  // tirar a cama da lista: some da vista de cima e do 3D
+  await page
+    .locator('#room-quarto-1')
+    .getByRole('article', { name: /^Cama \/ base box/ })
+    .getByRole('button', { name: 'Recusar' })
+    .click()
+  await expect(bed).toHaveCount(0)
+  await gen.getByRole('button', { name: '🔄 Atualizar o 3D' }).click()
+  await page.waitForFunction(
+    () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
+  )
+  const inScene = await page.evaluate(() =>
+    (
+      window as unknown as { __house3d: { screenPosition: (id: string) => unknown } }
+    ).__house3d.screenPosition('quarto-1:cama-box#0'),
+  )
+  expect(inScene).toBeUndefined()
 })

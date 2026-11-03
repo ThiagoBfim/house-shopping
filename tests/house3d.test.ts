@@ -10,7 +10,14 @@ import {
   parseHouseModel,
   type HouseModel,
 } from '../src/engine/house3d.ts'
-import { applySuggestions, arrangeRoom } from '../src/engine/layout.ts'
+import {
+  applySuggestions,
+  arrangeRoom,
+  clearPositions,
+  hintOf,
+  setPosition,
+  tryMove,
+} from '../src/engine/layout.ts'
 
 const room = (partial: object) => ({
   type: 'quarto',
@@ -371,5 +378,108 @@ describe('armários das fotos (builtIns)', () => {
       expect(p.y).toBeGreaterThanOrEqual(wardrobe.d) // nada no chão por baixo do armário
     }
     expect(furnished.layout.placed.some((p) => p.category === 'cama-box')).toBe(true)
+  })
+})
+
+describe('posições escolhidas pela pessoa', () => {
+  const base = arrangeRoom(
+    {
+      width: 350,
+      depth: 400,
+      openings: [{ kind: 'door', wall: 'bottom', position: 0.2, widthCm: 80 }],
+    },
+    [
+      {
+        key: 'cama',
+        category: 'cama-box',
+        label: 'Cama',
+        placement: 'floor',
+        width: 138,
+        depth: 188,
+        height: 42,
+        qty: 1,
+      },
+      {
+        key: 'comoda',
+        category: 'comoda',
+        label: 'Cômoda',
+        placement: 'floor',
+        width: 100,
+        depth: 45,
+        height: 90,
+        qty: 1,
+      },
+    ],
+  )
+
+  it('salva uma posição por móvel e limpa o cômodo', () => {
+    let positions = setPosition({}, 'quarto', {
+      key: 'cama',
+      unit: 0,
+      xCm: 100,
+      yCm: 100,
+      rotation: 'down',
+    })
+    positions = setPosition(positions, 'quarto', {
+      key: 'cama',
+      unit: 0,
+      xCm: 175,
+      yCm: 94,
+      rotation: 'down',
+    })
+    positions = setPosition(positions, 'sala', {
+      key: 'sofa',
+      unit: 0,
+      xCm: 1,
+      yCm: 1,
+      rotation: 'up',
+    })
+    expect(positions.quarto).toEqual([
+      { key: 'cama', unit: 0, xCm: 175, yCm: 94, rotation: 'down' },
+    ])
+    expect(Object.keys(clearPositions(positions, 'quarto'))).toEqual(['sala'])
+  })
+
+  it('tryMove: aceita onde cabe, recusa em cima de outro móvel ou no giro da porta', () => {
+    const comoda = base.placed.find((p) => p.key === 'comoda')!
+    const moved = tryMove(base, { key: 'cama', unit: 0, xCm: 175, yCm: 94, rotation: 'down' })!
+    expect(moved.placed.find((p) => p.key === 'cama')).toMatchObject({ x: 106, y: 0 })
+    expect(tryMove(base, { ...hintOf(comoda), key: 'cama' })).toBeUndefined()
+    expect(
+      tryMove(base, { key: 'comoda', unit: 0, xCm: 70, yCm: 380, rotation: 'up' }),
+    ).toBeUndefined()
+    expect(hintOf(comoda)).toEqual({
+      key: 'comoda',
+      unit: 0,
+      xCm: comoda.x + comoda.w / 2,
+      yCm: comoda.y + comoda.d / 2,
+      rotation: comoda.facing,
+    })
+  })
+
+  it('o 3D usa a posição escolhida; o que saiu da lista some', () => {
+    const house = expandHouse(rooms, products, { quarto: 1 })
+    const view = buildList(house.room, house.products, 1_000_000, emptyChoices())
+    const linked = linkRooms(
+      parseHouseModel(model([room({ label: 'Quarto', widthM: 3.5, depthM: 4 })]))!,
+      rooms,
+    )
+    const bed = (positions = {}, v = view) =>
+      furnishHouse(linked, v, positions)[0].layout.placed.find((p) => p.category === 'cama-box')
+    const before = bed()!
+    // cama girada no meio do cômodo: posição livre escolhida pela pessoa
+    const chosen = { key: before.key, unit: 0, xCm: 175, yCm: 200, rotation: 'right' as const }
+    const after = bed({ quarto: [chosen] })!
+    expect(after).toMatchObject({ x: 175 - after.w / 2, y: 200 - after.d / 2, facing: 'right' })
+    // virada para o lado: o comprimento da cama fica no eixo x
+    expect(after.w).toBe(Math.max(before.w, before.d))
+
+    // recusar a cama na lista: sai da vista de cima e do 3D, mesmo com posição salva
+    const choices = {
+      ...emptyChoices(),
+      excluded: { [before.key]: 'refused' as const },
+    }
+    const without = buildList(house.room, house.products, 1_000_000, choices)
+    expect(bed({ quarto: [chosen] }, without)).toBeUndefined()
   })
 })

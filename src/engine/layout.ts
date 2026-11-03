@@ -694,3 +694,47 @@ export function applySuggestions(
   }
   return { layout: { ...layout, placed }, accepted }
 }
+
+/** Posições escolhidas pela pessoa (arrastando na vista de cima), por cômodo da lista. */
+export type ManualPositions = Record<string, PositionHint[]>
+
+/** Uma posição por móvel (chave + unidade): a nova substitui a anterior. */
+export function setPosition(
+  positions: ManualPositions,
+  instanceId: string,
+  hint: PositionHint,
+): ManualPositions {
+  const room = (positions[instanceId] ?? []).filter(
+    (p) => !(p.key === hint.key && p.unit === hint.unit),
+  )
+  return { ...positions, [instanceId]: [...room, hint] }
+}
+
+/** Volta o cômodo às posições sugeridas (regra + leitura da planta/fotos). */
+export function clearPositions(positions: ManualPositions, instanceId: string): ManualPositions {
+  const { [instanceId]: _removed, ...rest } = positions
+  void _removed
+  return rest
+}
+
+/**
+ * Tenta pôr um móvel numa posição: devolve o layout novo só se couber (dentro do cômodo, sem
+ * bater em outro móvel, em armário fixo ou no giro da porta).
+ */
+export function tryMove(
+  layout: RoomLayout,
+  hint: PositionHint,
+  fixed: PlacedItem[] = [],
+): RoomLayout | undefined {
+  const { layout: moved, accepted } = applySuggestions(layout, [hint], fixed)
+  return accepted ? moved : undefined
+}
+
+/** Centro e direção atuais de um móvel (ponto de partida para arrastar ou girar). */
+export const hintOf = (p: PlacedItem): PositionHint => ({
+  key: p.key,
+  unit: p.unit,
+  xCm: p.x + p.w / 2,
+  yCm: p.y + p.d / 2,
+  rotation: p.facing,
+})

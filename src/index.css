@@ -3106,3 +3106,50 @@ h3 {
 .house-3d-render .link-button {
   color: #fff;
 }
+
+/* Posição dos móveis: arrastar, girar, armários das fotos */
+.layout-item.is-floor,
+.layout-item.is-rug {
+  cursor: grab;
+  touch-action: none;
+}
+
+.furniture-layout svg.is-dragging,
+.furniture-layout svg.is-dragging .layout-item {
+  cursor: grabbing;
+}
+
+.layout-item.is-moving rect {
+  opacity: 0.85;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 8 5;
+}
+
+.layout-item.is-invalid rect {
+  fill: var(--warn-soft);
+  stroke: var(--warn);
+}
+
+.layout-fixed rect {
+  fill: #e4e0d8;
+  stroke: #a39b8e;
+  stroke-width: 1.5;
+}
+
+.layout-fixed.is-wall rect {
+  fill: #cfc8bc;
+}
+
+.layout-fixed text {
+  fill: #6b6862;
+  pointer-events: none;
+}
+
+.layout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}

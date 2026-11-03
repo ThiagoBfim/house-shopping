@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
+import type { ManualPositions } from '../engine/layout.ts'
 import { furnishHouse } from '../engine/house3d.ts'
 import { formatBRL } from '../engine/money.ts'
 import { detailsOf } from './FurnitureLayout.tsx'
@@ -11,6 +12,8 @@ import type { RealisticKit } from './realistic-materials.ts'
 interface Props {
   house: SavedHouse
   view: ListView
+  /** Posições escolhidas na vista de cima (as mesmas da "Posição dos móveis"). */
+  positions: ManualPositions
   onClose: () => void
 }
 
@@ -21,7 +24,7 @@ const isTouch = () => typeof matchMedia === 'function' && matchMedia('(pointer: 
  * A casa gerada em 3D, em tela cheia: de cima (maquete), andando em primeira pessoa ou no tour
  * pelos cômodos, que pode ser gravado em vídeo. Tocar num móvel mostra nome, medida e preço.
  */
-export function House3DView({ house, view, onClose }: Props) {
+export function House3DView({ house, view, positions, onClose }: Props) {
   const host = useRef<HTMLDivElement>(null)
   const scene = useRef<HouseScene | undefined>(undefined)
   const [load, setLoad] = useState<'loading' | 'ready' | 'error'>('loading')
@@ -34,7 +37,10 @@ export function House3DView({ house, view, onClose }: Props) {
   const [render, setRender] = useState<
     { step: 'running'; cancel: () => void } | { step: 'ready'; url: string }
   >()
-  const furnished = useMemo(() => furnishHouse(house.model, view), [house, view])
+  const furnished = useMemo(
+    () => furnishHouse(house.model, view, positions),
+    [house, view, positions],
+  )
 
   useEffect(() => {
     let disposed = false

@@ -6,6 +6,7 @@ import {
   arrangeRoom,
   layoutItems,
   type LayoutItem,
+  type ManualPositions,
   type PlacedItem,
   type RoomLayout,
 } from './layout.ts'
@@ -358,8 +359,15 @@ export interface FurnishedRoom {
   accepted: number
 }
 
-/** Móveis da lista de cada cômodo: posição por regra, corrigida pelas sugestões válidas da skill. */
-export function furnishHouse(model: HouseModel, view: ListView): FurnishedRoom[] {
+/**
+ * Móveis da lista de cada cômodo (a lista de agora: o que saiu dela some): posição por regra,
+ * corrigida pelas sugestões válidas da skill e, por cima, pelas posições que a pessoa escolheu.
+ */
+export function furnishHouse(
+  model: HouseModel,
+  view: ListView,
+  positions: ManualPositions = {},
+): FurnishedRoom[] {
   return model.rooms.map((room) => {
     const items: LayoutItem[] = room.instanceId ? layoutItems(view, room.instanceId) : []
     const fixed = room.builtIns.map((b, i) => builtInPlaced(b, i, room))
@@ -372,8 +380,10 @@ export function furnishHouse(model: HouseModel, view: ListView): FurnishedRoom[]
       items,
       fixed,
     )
-    const { layout, accepted } = applySuggestions(base, room.furniture, fixed)
-    return { room, layout, fixed, accepted }
+    const suggested = applySuggestions(base, room.furniture, fixed)
+    const manual = room.instanceId ? (positions[room.instanceId] ?? []) : []
+    const { layout } = applySuggestions(suggested.layout, manual, fixed)
+    return { room, layout, fixed, accepted: suggested.accepted }
   })
 }
 
