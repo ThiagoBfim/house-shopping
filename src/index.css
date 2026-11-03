@@ -200,6 +200,49 @@ h3 {
   margin: 0 0 4px;
 }
 
+.plan-room-types {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.plan-room-types legend {
+  padding: 0 4px;
+  font-weight: 600;
+}
+
+.plan-room-types p {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+
+.plan-room-types ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-room-types li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.plan-room-types select {
+  font: inherit;
+  color: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
 .floor-plan-drawing {
   margin: 16px 0;
 }

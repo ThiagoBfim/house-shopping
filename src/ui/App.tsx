@@ -37,7 +37,7 @@ import {
 } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
 import { readFeatures, saveFeatures, type Features } from './features.ts'
-import type { ReadPlan } from '../engine/floor-plan.ts'
+import { withoutBedVariants, type ReadPlan } from '../engine/floor-plan.ts'
 import { FloorPlanUpload } from './FloorPlanUpload.tsx'
 import { readSavedPlan, savePlan, type SavedPlan } from './floor-plan-store.ts'
 import { Footer } from './Footer.tsx'
@@ -248,7 +248,8 @@ export function App() {
           picking: true,
           choices: {
             ...session.choices,
-            variants: { ...session.choices.variants, ...plan.variants },
+            // Camas de uma leitura anterior saem: com outro tipo de cômodo, os quartos mudam de número.
+            variants: { ...withoutBedVariants(session.choices.variants), ...plan.variants },
           },
         })
         setPickerKey((key) => key + 1)

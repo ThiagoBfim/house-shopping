@@ -6,6 +6,8 @@ import {
   contentsByInstance,
   parseFloorPlan,
   planToHouse,
+  setRoomType,
+  withoutBedVariants,
 } from '../src/engine/floor-plan.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { replaceWith } from '../src/engine/manual.ts'
@@ -185,5 +187,51 @@ describe('contentsByInstance', () => {
     expect(contents.cozinha.manual).toEqual([{ name: 'Geladeira X', category: 'geladeira' }])
     expect(contents['quarto-2'].manual).toEqual([{ name: 'Abajur' }])
     expect(contents['quarto-1'].categories.length).toBeGreaterThan(0)
+  })
+})
+
+describe('mudar o tipo de um cômodo', () => {
+  const plan = parseFloorPlan(apto)!
+  const dorm2 = plan.rooms.findIndex((r) => r.label === 'Dorm. 2')
+
+  it('quarto vira quarto do bebê: um quarto a menos, sem cama de casal nele', () => {
+    const read = planToHouse(setRoomType(plan, dorm2, 'quarto-bebe'), rooms)
+    expect(read.house).toMatchObject({ quarto: 1, 'quarto-bebe': 1 })
+    expect(read.rooms[dorm2].instanceId).toBe('quarto-bebe')
+    // a suíte agora é o único quarto ("quarto", sem número) e continua queen
+    expect(read.rooms.find((r) => r.label === 'Suíte')?.instanceId).toBe('quarto')
+    expect(read.variants).toMatchObject({ 'quarto:cama-box': 'queen' })
+    expect(Object.keys(read.variants).some((k) => k.startsWith('quarto-2'))).toBe(false)
+    // a planta original não muda
+    expect(plan.rooms[dorm2].type).toBe('quarto')
+  })
+
+  it('quarto vira escritório; hall vira escritório; cômodo sai da lista', () => {
+    expect(planToHouse(setRoomType(plan, dorm2, 'escritorio'), rooms).house).toMatchObject({
+      quarto: 1,
+      escritorio: 1,
+    })
+    const hall = plan.rooms.findIndex((r) => r.label === 'Circulação')
+    expect(planToHouse(setRoomType(plan, hall, 'escritorio'), rooms).house.escritorio).toBe(1)
+    const out = planToHouse(setRoomType(plan, dorm2, 'outro'), rooms)
+    expect(out.house.quarto).toBe(1)
+    expect(out.ignored).toContain('Dorm. 2')
+  })
+
+  it('withoutBedVariants: tira só as camas dos quartos', () => {
+    expect(
+      withoutBedVariants({
+        'quarto-1:cama-box': 'queen',
+        'quarto:colchao': 'casal',
+        'quarto-2:jogo-de-cama': 'casal',
+        'quarto-1:tv': 'grande',
+        'quarto-bebe:berco': 'x',
+        'cozinha:fogao': 'cooktop-inducao',
+      }),
+    ).toEqual({
+      'quarto-1:tv': 'grande',
+      'quarto-bebe:berco': 'x',
+      'cozinha:fogao': 'cooktop-inducao',
+    })
   })
 })

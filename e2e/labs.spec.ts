@@ -141,6 +141,51 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await expect(drawing).toHaveCount(0)
 })
 
+test('planta: um quarto vira quarto do bebê ou escritório', async ({ page }) => {
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto, costUsd: 0.27 }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  const summary = page.getByRole('status').filter({ hasText: 'Planta lida' })
+  await expect(summary).toContainText('2 Quartos')
+
+  const types = page.getByRole('group', { name: 'Tipo de cada cômodo' })
+  const dorm2 = types.getByRole('combobox', { name: /^Dorm\. 2/ })
+  await expect(dorm2).toHaveValue('quarto')
+
+  // escritório: um quarto a menos, um escritório a mais
+  await dorm2.selectOption({ label: 'Escritório' })
+  await expect(summary).toContainText('Quarto, ')
+  await expect(summary).toContainText('Escritório')
+  await expect(summary).not.toContainText('Dorm. 2 (9 m²) → casal')
+
+  // quarto do bebê
+  await dorm2.selectOption({ label: 'Quarto do bebê' })
+  await expect(summary).toContainText('Quarto do bebê')
+  await expect(summary).not.toContainText('Escritório')
+  await expect(summary).toContainText('Suíte (14 m²) → queen')
+
+  // um cômodo que estava fora (closet) entra como escritório
+  await types.getByRole('combobox', { name: /^Closet/ }).selectOption({ label: 'Escritório' })
+  await expect(summary).toContainText('Escritório')
+
+  await page.getByRole('button', { name: /^Continuar com 11 cômodos/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await expect(page.locator('#room-quarto-bebe')).toBeVisible()
+  await expect(page.locator('#room-escritorio')).toBeVisible()
+  await expect(page.locator('#room-quarto-2')).toHaveCount(0)
+  const bed = page.locator('#room-quarto').getByRole('article', { name: /^Cama \/ base box/ })
+  await expect(bed.getByRole('radio', { name: 'Queen' })).toHaveAttribute('aria-checked', 'true')
+  const drawing = page.getByRole('group', { name: 'Desenho do imóvel com os móveis da lista' })
+  await expect(drawing.getByRole('button', { name: /^Quarto do bebê, 9 m²/ })).toBeVisible()
+  await expect(drawing.getByRole('button', { name: /^Escritório/ })).toBeVisible()
+})
+
 test('planta: erro do backend aparece e dá para tentar de novo', async ({ page }) => {
   await mockApi(page, {
     start: {

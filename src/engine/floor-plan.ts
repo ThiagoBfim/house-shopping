@@ -81,6 +81,33 @@ export function parseFloorPlan(data: unknown): FloorPlan | undefined {
 /** Itens de cama que acompanham o tamanho da cama. */
 const BED_CATEGORIES = ['cama-box', 'colchao', 'edredom', 'jogo-de-cama', 'protetor-de-colchao']
 
+/** Tipo que tira o cômodo da lista (hall, closet…). */
+export const OUTSIDE_TYPE = 'outro'
+
+/**
+ * A pessoa muda o tipo de um cômodo lido (ex.: "Dorm. 2" vira quarto do bebê ou escritório).
+ * Devolve uma planta nova; rodar `planToHouse` de novo refaz a casa e as camas.
+ */
+export function setRoomType(plan: FloorPlan, index: number, type: string): FloorPlan {
+  return {
+    ...plan,
+    rooms: plan.rooms.map((room, i) => (i === index ? { ...room, type } : room)),
+  }
+}
+
+/**
+ * Tira as camas escolhidas pela área (de uma leitura anterior) antes de aplicar as novas: com
+ * outro tipo de cômodo, os quartos mudam de número e a cama ficaria no quarto errado.
+ */
+export function withoutBedVariants(variants: Record<string, string>): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(variants).filter(([key]) => {
+      const { instanceId, category } = splitItemKey(key)
+      return !(/^quarto(-\d+)?$/.test(instanceId) && BED_CATEGORIES.includes(category))
+    }),
+  )
+}
+
 /**
  * Tamanho da cama pela área do quarto, deixando espaço para circular e para o guarda-roupa:
  * até 9 m² solteiro, até 12 m² casal, até 16 m² queen, acima king.
