@@ -1,6 +1,7 @@
 {
   "label": "Berço",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 76, "depth": 136, "height": 95 } },
   "options": [
     {
       "id": "berco-cercado-portatil-burigotto-aconchego",
@@ -30,7 +31,8 @@
             { "date": "2026-10-30", "price": 689.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 83, "depth": 112, "height": 85 }
     },
     {
       "id": "berco-mini-cama-henn",
@@ -94,7 +96,8 @@
             { "date": "2026-11-03", "price": 4799 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 75.4, "depth": 135.3, "height": 88 }
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "label": "Cadeira de escritório",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 60, "depth": 60, "height": 110 } },
   "options": [
     {
       "id": "cadeira-de-escritorio-giratoria-secretaria",

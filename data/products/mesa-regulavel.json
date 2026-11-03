@@ -1,6 +1,7 @@
 {
   "label": "Mesa com regulagem de altura",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 140, "depth": 70, "height": 75 } },
   "options": [
     {
       "id": "mesa-gamer-120-cm-com-regulagem-de-altura-manual",

@@ -23,6 +23,7 @@ Durante tudo: "Stop"/"Pause" do usuário para a navegação na hora; o que já f
 
 ```bash
 npm run sync:ml
+npm run sync:dims   # medidas reais dos móveis (para o desenho em escala e o 3D)
 ```
 
 Anote no relatório: preços que mudaram (de → para), indisponíveis, sem comissão, não encontrados, **"💰 Mais barato no mesmo produto"** (vai para a etapa 3b) e avisos do validador. Se o sync inverter tiers de uma categoria (preço do tier 2 passou o do tier 3), troque os tiers como manda a skill `/add-product` e registre.

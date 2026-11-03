@@ -9,6 +9,7 @@ import type {
   Tier,
   Variant,
 } from '../data/schema.ts'
+import { sizeOf, type ItemSize } from '../data/layout.ts'
 import { replacedKeys, storeFromUrl, type ManualItem } from './manual.ts'
 import { chosenVariant } from './preferences.ts'
 
@@ -59,6 +60,8 @@ export interface ListEntry {
   /** Variantes da categoria e a escolhida (só quando a categoria tem variantes). */
   variants?: Variant[]
   variant?: string
+  /** Medidas (móveis e eletros que entram no desenho em escala); `estimated` = típica. */
+  size?: ItemSize
 }
 
 export interface SkippedEntry {
@@ -313,6 +316,8 @@ export function describeList(
     } else {
       const option = optionForTier(options, tier)
       const subtotal = cents(option.price) * item.qty
+      const variant = variants && chosenVariant(variants, choices.variants[item.category])
+      const size = sizeOf(option, products[item.category], variant)
       total += subtotal
       view.entries.push({
         item,
@@ -323,10 +328,8 @@ export function describeList(
         locked: choices.locked[item.category] !== undefined,
         utensil,
         helper,
-        ...(variants && {
-          variants,
-          variant: chosenVariant(variants, choices.variants[item.category]),
-        }),
+        ...(variants && { variants, variant }),
+        ...(size && { size }),
       })
     }
   }

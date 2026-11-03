@@ -1,6 +1,7 @@
 {
   "label": "Smart TV",
   "utensil": false,
+  "layout": { "placement": "wall", "size": { "width": 112, "depth": 7, "height": 65 } },
   "options": [
     {
       "id": "smart-tv-samsung-50-u8000h",
@@ -31,7 +32,8 @@
           "catalogId": "MLB78576179"
         }
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_972857-MLA116658596194_092026-O.webp"
+      "image": "https://http2.mlstatic.com/D_NQ_NP_972857-MLA116658596194_092026-O.webp",
+      "dimensions": { "width": 122.8, "depth": 12.7, "height": 74.3 }
     },
     {
       "id": "smart-tv-tcl-55-c6k",
@@ -63,7 +65,8 @@
             { "date": "2026-11-03", "price": 3499 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 122.8, "depth": 6.4, "height": 71.1 }
     },
     {
       "id": "smart-tv-lg-oled-55-c6",
@@ -90,7 +93,8 @@
           "history": [{ "date": "2026-10-22", "price": 7219.05 }],
           "catalogId": "MLB68214240"
         }
-      ]
+      ],
+      "dimensions": { "width": 122.2, "depth": 4.5, "height": 70.3 }
     },
     {
       "id": "smart-tv-samsung-oled-65-s95h",
@@ -117,7 +121,8 @@
           "history": [{ "date": "2026-10-22", "price": 13372.47 }],
           "catalogId": "MLB79674454"
         }
-      ]
+      ],
+      "dimensions": { "width": 151, "depth": 2.6, "height": 89.5 }
     }
   ]
 }

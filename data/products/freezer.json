@@ -1,6 +1,7 @@
 {
   "label": "Freezer",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 60, "depth": 65, "height": 165 } },
   "options": [
     {
       "id": "freezer-vertical-consul-cvu20",
@@ -30,7 +31,8 @@
             { "date": "2026-10-30", "price": 2659.29 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 48.3, "depth": 61.9, "height": 128.8 }
     },
     {
       "id": "freezer-vertical-electrolux-fei27t",
@@ -53,7 +55,8 @@
           "catalogId": "MLB73479286",
           "history": [{ "date": "2026-10-22", "price": 2999 }]
         }
-      ]
+      ],
+      "dimensions": { "width": 55, "depth": 62, "height": 165.4 }
     },
     {
       "id": "freezer-horizontal-electrolux-hi550",
@@ -83,7 +86,8 @@
           ],
           "catalogId": "MLB44408808"
         }
-      ]
+      ],
+      "dimensions": { "width": 160, "depth": 78, "height": 97 }
     },
     {
       "id": "freezer-brastemp-bvr28pb",
@@ -115,7 +119,8 @@
           ],
           "catalogId": "MLB64967165"
         }
-      ]
+      ],
+      "dimensions": { "width": 63, "depth": 72, "height": 171 }
     }
   ]
 }

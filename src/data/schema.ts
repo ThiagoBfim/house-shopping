@@ -40,6 +40,33 @@ export const OfferSchema = z.strictObject({
   history: z.array(PricePointSchema).min(1).optional(),
 })
 
+/** Medidas em centímetros: largura (frente), profundidade e altura. */
+export const DimensionsSchema = z.strictObject({
+  width: z.number().positive().max(1000),
+  depth: z.number().positive().max(1000),
+  height: z.number().positive().max(500),
+})
+
+/**
+ * Onde o item fica no cômodo, para o desenho em escala e o 3D: `floor` ocupa chão (cama,
+ * sofá, geladeira), `wall` fica na parede (TV, ar-condicionado), `rug` fica sob os móveis
+ * (tapete) e `none` não entra no desenho (cooktop na bancada, colchão sobre a cama).
+ */
+export const PlacementSchema = z.enum(['floor', 'wall', 'rug', 'none'])
+
+/** Medida típica da categoria (estimativa quando a opção não tem a medida real). */
+export const CategoryLayoutSchema = z.strictObject({
+  placement: PlacementSchema,
+  size: DimensionsSchema,
+  /** Por variante: cama casal × king, fogão de piso × cooktop (que não ocupa chão). */
+  variants: z
+    .record(
+      slug,
+      z.strictObject({ placement: PlacementSchema.optional(), size: DimensionsSchema.optional() }),
+    )
+    .optional(),
+})
+
 /**
  * `price`, `priceUpdatedAt`, `store` e `url` são sempre os da melhor oferta (a mais barata
  * disponível em `offers`). Sem `offers`, valem como estão (preço de referência + link de busca).
@@ -62,6 +89,8 @@ export const ProductOptionSchema = z.strictObject({
   generic: z.boolean().optional(),
   /** Variantes da categoria em que esta opção entra (obrigatório quando a categoria tem variantes). */
   variants: z.array(slug).min(1).optional(),
+  /** Medidas reais do produto (da API do Mercado Livre ou da página); sem elas, vale a típica. */
+  dimensions: DimensionsSchema.optional(),
 })
 
 /** Tipo de produto dentro da categoria (fogão de piso × cooktop, PlayStation × Xbox, casal × queen). */
@@ -78,6 +107,8 @@ export const ProductCategorySchema = z.strictObject({
    * A primeira é a padrão; o usuário troca no card ou pelo assistente.
    */
   variants: z.array(VariantSchema).min(2).optional(),
+  /** Onde fica e tamanho típico (móveis e eletros que entram no desenho em escala e no 3D). */
+  layout: CategoryLayoutSchema.optional(),
   options: z.array(ProductOptionSchema).min(1),
 })
 
@@ -106,6 +137,9 @@ export type Offer = z.infer<typeof OfferSchema>
 export type PricePoint = z.infer<typeof PricePointSchema>
 export type ProductOption = z.infer<typeof ProductOptionSchema>
 export type Variant = z.infer<typeof VariantSchema>
+export type Dimensions = z.infer<typeof DimensionsSchema>
+export type Placement = z.infer<typeof PlacementSchema>
+export type CategoryLayout = z.infer<typeof CategoryLayoutSchema>
 export type ProductCategory = z.infer<typeof ProductCategorySchema>
 export type Products = z.infer<typeof ProductsSchema>
 export type RoomItem = z.infer<typeof RoomItemSchema>

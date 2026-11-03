@@ -1,6 +1,7 @@
 {
   "label": "Cadeira gamer ou mesh",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 65, "depth": 65, "height": 130 } },
   "options": [
     {
       "id": "cadeira-gamer-mymax-mx5",

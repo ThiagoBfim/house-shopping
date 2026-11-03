@@ -21,6 +21,7 @@
     "test:e2e": "playwright test",
     "ml:links": "node scripts/ml-links.ts",
     "sync:ml": "node scripts/sync-mercadolivre.ts",
+    "sync:dims": "node scripts/sync-dimensions.ts",
     "ml:auth": "node scripts/ml-auth.ts",
     "server": "node server/index.ts"
   },

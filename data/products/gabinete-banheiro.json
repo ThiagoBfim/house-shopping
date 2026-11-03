@@ -1,6 +1,7 @@
 {
   "label": "Gabinete com cuba e espelheira",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 80, "depth": 46, "height": 60 } },
   "options": [
     {
       "id": "gabinete-banheiro-60-cm-cuba-espelheira",

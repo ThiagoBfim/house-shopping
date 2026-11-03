@@ -1,6 +1,7 @@
 {
   "label": "Poltrona de amamentação",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 80, "depth": 90, "height": 100 } },
   "options": [
     {
       "id": "poltrona-amamentacao",

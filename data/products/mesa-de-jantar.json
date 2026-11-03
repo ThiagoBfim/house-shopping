@@ -1,6 +1,7 @@
 {
   "label": "Mesa de jantar (com cadeiras)",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 160, "depth": 90, "height": 76 } },
   "options": [
     {
       "id": "conjunto-mesa-de-jantar-4-cadeiras",

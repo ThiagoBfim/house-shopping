@@ -1,6 +1,7 @@
 {
   "label": "Gaveteiro",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 40, "depth": 50, "height": 65 } },
   "options": [
     {
       "id": "gaveteiro-3-gavetas-com-rodizios-mdp",

@@ -445,6 +445,11 @@ h3 {
   }
 }
 
+.product-size {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+}
+
 .found-badge {
   margin: 0 0 4px;
   font-size: 0.8rem;
