@@ -25,7 +25,9 @@ Durante tudo: "Stop"/"Pause" do usuário para a navegação na hora; o que já f
 npm run sync:ml
 ```
 
-Anote no relatório: preços que mudaram (de → para), indisponíveis, sem comissão, não encontrados e avisos do validador. Se o sync inverter tiers de uma categoria (preço do tier 2 passou o do tier 3), troque os tiers como manda a skill `/add-product` e registre.
+Anote no relatório: preços que mudaram (de → para), indisponíveis, sem comissão, não encontrados, **"💰 Mais barato no mesmo produto"** (vai para a etapa 3b) e avisos do validador. Se o sync inverter tiers de uma categoria (preço do tier 2 passou o do tier 3), troque os tiers como manda a skill `/add-product` e registre.
+
+**Subiu mais de 20% na semana** (ex.: lava e seca Samsung de R$ 4.179 para R$ 5.262) e não está no 💰: nenhum vendedor do Mercado Livre tem o mesmo produto mais barato. Liste no relatório em "Para revisar fora do Mercado Livre" com uma busca no Google Shopping pelo modelo (mesmo modelo ou o sucessor, em Magalu, Casas Bahia, Amazon…), para o usuário decidir se troca de modelo ou de loja (outra loja não gera comissão de afiliado do Mercado Livre).
 
 Erro de token (`invalid_grant`): pare essa etapa, anote e siga para os links; o usuário roda `npm run ml:auth`.
 
@@ -42,6 +44,18 @@ Para cada link `sem afiliado`, `quebrado` ou `produto diferente` que **não** fo
 3. `npm run ml:links import`.
 
 Sem anúncio bom para o modelo: troque pelo sucessor (regras do `/ml-links`) ou deixe como está e anote no relatório como pendente.
+
+## 3b. Trocar para o vendedor mais barato
+
+O link de afiliado segue um anúncio só: se o vendedor dele sobe o preço, o site mostra o preço alto mesmo com outro vendedor do mesmo produto mais barato. O `sync:ml` lista esses casos em **"💰 Mais barato no mesmo produto"** (≥ 5% de economia, vendedor confiável, novo), já com o endereço do anúncio mais barato.
+
+Da maior economia em reais para a menor (até 15 por rodada; o resto fica para a próxima, anotado):
+
+1. Abra o endereço do 💰 e siga a etapa 2 do `/ml-links` (novo, nacional, barra de afiliado, vendedor; o preço que vale é o da página). Vendedor pessoa física em item caro ou sem histórico: pule e anote.
+2. Gere o link e atualize a linha na planilha (`link_produto` = o endereço do 💰, `link_afiliado`, `preco`, `data`, `imagem`). Mesmo produto de catálogo: **não** apague a oferta (o histórico de preço continua).
+3. Se o preço novo inverter tiers, troque os tiers (regras do `/add-product`).
+
+Depois do `npm run ml:links import`, confira que o `externalId` da oferta virou o anúncio novo e que o produto saiu do 💰 num novo `npm run sync:ml`.
 
 ## 4. Links novos
 
@@ -67,7 +81,10 @@ Feche o relatório `docs/sync/<data>.md`:
 N mudaram (tabela produto · de · para), indisponíveis, sem comissão.
 
 ## Links
-Conferidos: N ok, N com problema (tabela). Refeitos: N. Pendentes: N (por quê).
+Conferidos: N ok, N com problema (tabela). Refeitos: N. Trocados para vendedor mais barato: N (tabela produto · de · para · vendedor). Pendentes: N (por quê).
+
+## Para revisar fora do Mercado Livre
+Produtos que subiram mais de 20% sem alternativa no Mercado Livre (produto · de · para · achado em outra loja).
 
 ## Links novos
 N gerados (tabela produto · preço · vendedor). Planilha: X de Y com link.
