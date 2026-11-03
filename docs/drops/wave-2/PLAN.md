@@ -25,18 +25,22 @@ Três funcionalidades novas, nesta ordem:
 
 ## Drops
 
-| Drop                                      | Tema                               | Meta                                                                   |
-| ----------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------- |
-| [30](drop-30-backend-local-e-recursos.md) | Backend local e recursos em teste  | `npm run server` chama o Claude Code; chaves no site                   |
-| [31](drop-31-planta-para-comodos.md)      | Planta → cômodos e móveis          | Enviar a planta preenche os cômodos, com a cama pelo tamanho do quarto |
-| [32](drop-32-desenho-da-planta.md)        | Desenho do imóvel com os móveis    | Planta esquemática com os móveis da lista em cada cômodo               |
-| [33](drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer) | Botão que troca links e preços pelos mais baratos; voltar ao anterior  |
-| [34](drop-34-cobranca.md)                 | Cobrança                           | Cobrar pelas funcionalidades 1 e 2 (por último)                        |
+| Drop                                      | Tema                               | Meta                                                                      |
+| ----------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------- |
+| [30](drop-30-backend-local-e-recursos.md) | Backend local e recursos em teste  | `npm run server` chama o Claude Code; chaves no site                      |
+| [31](drop-31-planta-para-comodos.md)      | Planta → cômodos e móveis          | Enviar a planta preenche os cômodos, com a cama pelo tamanho do quarto    |
+| [32](drop-32-desenho-da-planta.md)        | Desenho do imóvel com os móveis    | Planta esquemática com os móveis da lista em cada cômodo                  |
+| [33](drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer) | Botão que troca links e preços pelos mais baratos; voltar ao anterior     |
+| [35](drop-35-medidas-dos-produtos.md)     | Medidas dos produtos               | Largura × profundidade × altura de cada móvel (API do ML + medida típica) |
+| [36](drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta       | Vista de cima em escala com os móveis no melhor lugar                     |
+| [37](drop-37-visualizacao-3d.md)          | Visualização 3D                    | Cena 3D com os móveis; tocar mostra nome, medida, preço                   |
+| [34](drop-34-cobranca.md)                 | Cobrança                           | Cobrar pelas funcionalidades 1 e 2 (por último)                           |
 
 ## Ordem sugerida
 
 ```
-30 (backend local) → 31 (planta → cômodos) → 32 (desenho) → 33 (preços mais baratos) → 34 (cobrança)
+30 (backend local) → 31 (planta → cômodos) → 32 (desenho) → 33 (preços mais baratos)
+→ 35 (medidas) → 36 (posição dos móveis) → 37 (3D) → 34 (cobrança)
 ```
 
 ## Decisões
