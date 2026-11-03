@@ -18,7 +18,7 @@
       "tier": 1,
       "name": "Guarda-roupa Infantil Henn 3 Portas 2 Gavetas",
       "price": 555.75,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB29009936?pdp_filters=item_id%3AMLB5829525100",
       "image": "https://http2.mlstatic.com/D_NQ_NP_721326-MLA95592459441_102025-O.webp",
@@ -28,19 +28,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB29009936?pdp_filters=item_id%3AMLB5829525100",
           "price": 555.75,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5829525100",
           "catalogId": "MLB29009936",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 555
-            },
-            {
-              "date": "2026-10-30",
-              "price": 555.75
-            }
+            { "date": "2026-10-23", "price": 555 },
+            { "date": "2026-10-30", "price": 555.75 }
           ]
         }
       ]
@@ -50,7 +44,7 @@
       "tier": 3,
       "name": "Guarda-roupa Infantil Matic Unique 3 Portas",
       "price": 1151.58,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB28186716?pdp_filters=item_id%3AMLB3814947329",
       "image": "https://http2.mlstatic.com/D_NQ_NP_749977-MLU77147783320_062024-O.webp",
@@ -60,19 +54,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB28186716?pdp_filters=item_id%3AMLB3814947329",
           "price": 1151.58,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3814947329",
           "catalogId": "MLB28186716",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1151
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1151.58
-            }
+            { "date": "2026-10-23", "price": 1151 },
+            { "date": "2026-10-30", "price": 1151.58 }
           ]
         }
       ]

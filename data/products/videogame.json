@@ -21,7 +21,7 @@
       "tier": 1,
       "name": "Console PlayStation 5 Slim Digital 825 GB",
       "price": 4399.9,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1KXQDey",
       "bullets": ["Exclusivos da Sony", "Gráficos 4K", "Só digital"],
@@ -31,7 +31,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1KXQDey",
           "price": 4399.9,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4227636027",
           "catalogId": "MLB29001054",
@@ -46,37 +46,8 @@
       "variants": ["playstation"]
     },
     {
-      "id": "console-playstation-5-slim-com-leitor-de-disco",
-      "tier": 2,
-      "name": "Console PlayStation 5 Slim com Leitor de Disco",
-      "price": 4932,
-      "priceUpdatedAt": "2026-10-23",
-      "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_688343-MLA88139322691_072025-O.webp",
-      "bullets": ["Lê jogo em disco (dá para comprar usado)", "Exclusivos da Sony", "SSD de 1 TB"],
-      "variants": ["playstation"],
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
-          "price": 4932,
-          "updatedAt": "2026-10-23",
-          "available": true,
-          "externalId": "MLB7705751624",
-          "catalogId": "MLB52897777",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 4932
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "kit-playstation-5-slim-com-leitor-e-controle-dualsense-extra",
-      "tier": 3,
+      "tier": 2,
       "name": "Kit PlayStation 5 Slim Digital com 2 Controles DualSense",
       "price": 5215,
       "priceUpdatedAt": "2026-10-23",
@@ -91,11 +62,44 @@
       "variants": ["playstation"]
     },
     {
+      "id": "console-playstation-5-slim-com-leitor-de-disco",
+      "tier": 3,
+      "name": "Console PlayStation 5 Slim com Leitor de Disco",
+      "price": 5899,
+      "priceUpdatedAt": "2026-11-03",
+      "store": "mercadolivre",
+      "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_688343-MLA88139322691_072025-O.webp",
+      "bullets": ["Lê jogo em disco (dá para comprar usado)", "Exclusivos da Sony", "SSD de 1 TB"],
+      "variants": ["playstation"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://www.mercadolivre.com.br/p/MLB52897777?pdp_filters=item_id%3AMLB7705751624",
+          "price": 5899,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB7705751624",
+          "catalogId": "MLB52897777",
+          "history": [
+            {
+              "date": "2026-10-23",
+              "price": 4932
+            },
+            {
+              "date": "2026-11-03",
+              "price": 5899
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "console-playstation-5-pro",
       "tier": 4,
       "name": "Console PlayStation 5 Pro",
       "price": 7599,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2Ae2Epe",
       "bullets": [
@@ -109,7 +113,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2Ae2Epe",
           "price": 7599,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7613817060",
           "catalogId": "MLB41975964",
@@ -144,7 +148,7 @@
       "tier": 2,
       "name": "Console Xbox Series S 1 TB Carbon Black",
       "price": 5299.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB27934244?pdp_filters=item_id%3AMLB7786931948",
       "image": "https://http2.mlstatic.com/D_NQ_NP_791517-MLA96137484483_102025-O.webp",
@@ -155,7 +159,7 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB27934244?pdp_filters=item_id%3AMLB7786931948",
           "price": 5299.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7786931948",
           "catalogId": "MLB27934244",
@@ -177,7 +181,7 @@
       "tier": 3,
       "name": "Console Xbox Series X Digital",
       "price": 6699.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/13FCGfC",
       "image": "https://http2.mlstatic.com/D_NQ_NP_606926-MLA99870152327_112025-O.webp",
@@ -188,7 +192,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/13FCGfC",
           "price": 6699.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5367509002",
           "catalogId": "MLB43535812",
@@ -206,7 +210,7 @@
       "tier": 4,
       "name": "Console Xbox Series X 1 TB Preto",
       "price": 7199.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2Qkd9Pb",
       "image": "https://http2.mlstatic.com/D_NQ_NP_697067-MLA99415751252_112025-O.webp",
@@ -217,7 +221,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2Qkd9Pb",
           "price": 7199.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4060039157",
           "catalogId": "MLB29577429",
@@ -268,7 +272,7 @@
       "tier": 2,
       "name": "Console Nintendo Switch OLED",
       "price": 2450,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB31000132?pdp_filters=item_id%3AMLB7777270522",
       "image": "https://http2.mlstatic.com/D_NQ_NP_925310-MLA96862732927_102025-O.webp",
@@ -279,7 +283,7 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB31000132?pdp_filters=item_id%3AMLB7777270522",
           "price": 2450,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7777270522",
           "catalogId": "MLB31000132",
@@ -297,7 +301,7 @@
       "tier": 3,
       "name": "Console Nintendo Switch 2 + Mario Kart World",
       "price": 4899.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/18iifuT",
       "bullets": [
@@ -311,7 +315,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/18iifuT",
           "price": 4899.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5335958389",
           "catalogId": "MLB80167828",

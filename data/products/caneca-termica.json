@@ -17,8 +17,8 @@
       "id": "copo-termico-stanley-quencher-887-ml",
       "tier": 2,
       "name": "Copo Térmico Stanley Quencher 887 ml",
-      "price": 185.28,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 181.2,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2PY2zgi",
       "bullets": [
@@ -31,14 +31,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2PY2zgi",
-          "price": 185.28,
-          "updatedAt": "2026-10-30",
+          "price": 181.2,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5310312110",
           "catalogId": "MLB38771174",
           "history": [
             { "date": "2026-10-22", "price": 203.6 },
-            { "date": "2026-10-30", "price": 185.28 }
+            { "date": "2026-10-30", "price": 185.28 },
+            { "date": "2026-11-03", "price": 181.2 }
           ]
         }
       ]
@@ -48,7 +49,7 @@
       "tier": 3,
       "name": "Caneca Térmica Stanley Camp Mug 350 ml",
       "price": 199,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1W5Gs5k",
       "bullets": [
@@ -62,7 +63,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1W5Gs5k",
           "price": 199,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7607716690",
           "catalogId": "MLB19807586",

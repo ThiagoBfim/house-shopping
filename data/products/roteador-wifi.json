@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Roteador Wi-Fi TP-Link Archer C20 Dual Band",
       "price": 176,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2gjmVLZ",
       "bullets": ["Dual band", "Para apartamento pequeno", "Até ~100 Mbps de verdade"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2gjmVLZ",
           "price": 176,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4580688095",
           "catalogId": "MLB29272262",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 176
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 176 }]
         }
       ]
     },
@@ -53,12 +48,7 @@
           "available": true,
           "externalId": "MLB3481165679",
           "catalogId": "MLB59029690",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 332.64
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 332.64 }]
         }
       ]
     },
@@ -67,7 +57,7 @@
       "tier": 3,
       "name": "Sistema Mesh Wi-Fi 6 TP-Link Deco X50 2 Unidades",
       "price": 902.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB38062594?pdp_filters=item_id%3AMLB6768205556",
       "image": "https://http2.mlstatic.com/D_NQ_NP_832460-MLA99419181908_112025-O.webp",
@@ -77,19 +67,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB38062594?pdp_filters=item_id%3AMLB6768205556",
           "price": 902.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6768205556",
           "catalogId": "MLB38062594",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 769
-            },
-            {
-              "date": "2026-10-30",
-              "price": 902.9
-            }
+            { "date": "2026-10-23", "price": 769 },
+            { "date": "2026-10-30", "price": 902.9 }
           ]
         }
       ]

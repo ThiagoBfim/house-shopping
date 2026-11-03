@@ -21,8 +21,8 @@
       "id": "kit-de-ferramentas-tramontina-110-pecas",
       "tier": 2,
       "name": "Kit de Ferramentas Tramontina 110 Peças",
-      "price": 380.02,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 400.03,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/31x3YNM",
       "bullets": ["Inclui soquetes e chaves combinadas", "Aço cromo-vanádio", "Maleta organizada"],
@@ -31,12 +31,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/31x3YNM",
-          "price": 380.02,
-          "updatedAt": "2026-10-30",
+          "price": 400.03,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3448131925",
           "catalogId": "MLB2126162888",
-          "history": [{ "date": "2026-10-22", "price": 380.02 }]
+          "history": [
+            { "date": "2026-10-22", "price": 380.02 },
+            { "date": "2026-11-03", "price": 400.03 }
+          ]
         }
       ]
     },

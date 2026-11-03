@@ -6,8 +6,8 @@
       "id": "kit-10-lampadas-led-bulbo-9w-philips",
       "tier": 1,
       "name": "Kit 10 Lâmpadas LED Bulbo 9W Philips",
-      "price": 34.1,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 31.96,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB63419872?pdp_filters=item_id%3AMLB5319733005",
       "image": "https://http2.mlstatic.com/D_NQ_NP_886946-MLA101658120214_122025-O.webp",
@@ -16,20 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB63419872?pdp_filters=item_id%3AMLB5319733005",
-          "price": 34.1,
-          "updatedAt": "2026-10-30",
+          "price": 31.96,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5319733005",
           "catalogId": "MLB63419872",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 44
-            },
-            {
-              "date": "2026-10-30",
-              "price": 34.1
-            }
+            { "date": "2026-10-23", "price": 44 },
+            { "date": "2026-10-30", "price": 34.1 },
+            { "date": "2026-11-03", "price": 31.96 }
           ]
         }
       ]
@@ -39,7 +34,7 @@
       "tier": 2,
       "name": "Kit 10 Lâmpadas LED Bulbo 9W Empalux",
       "price": 38.93,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB27622140?pdp_filters=item_id%3AMLB4665301287",
       "image": "https://http2.mlstatic.com/D_NQ_NP_929733-MLA99972966357_112025-O.webp",
@@ -53,19 +48,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB27622140?pdp_filters=item_id%3AMLB4665301287",
           "price": 38.93,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4665301287",
           "catalogId": "MLB27622140",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 38
-            },
-            {
-              "date": "2026-10-30",
-              "price": 38.93
-            }
+            { "date": "2026-10-23", "price": 38 },
+            { "date": "2026-10-30", "price": 38.93 }
           ]
         }
       ]
@@ -93,12 +82,7 @@
           "available": true,
           "externalId": "MLB7398837644",
           "catalogId": "MLB53818381",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 197
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 197 }]
         }
       ]
     }

@@ -33,7 +33,7 @@
       "tier": 2,
       "name": "Geladeira Electrolux Frost Free Inverter 480 L IT70S",
       "price": 3589.95,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1kohmr4",
       "bullets": [
@@ -46,7 +46,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1kohmr4",
           "price": 3589.95,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB36520314",
           "history": [
@@ -62,8 +62,8 @@
       "id": "geladeira-brastemp-bre66ae",
       "tier": 3,
       "name": "Geladeira Brastemp Inverse Frost Free 500 L BRE66AE",
-      "price": 4069,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 3989,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2qb55eb",
       "bullets": [
@@ -76,13 +76,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2qb55eb",
-          "price": 4069,
-          "updatedAt": "2026-10-30",
+          "price": 3989,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB65575170",
           "history": [
             { "date": "2026-10-22", "price": 4299 },
-            { "date": "2026-10-30", "price": 4069 }
+            { "date": "2026-10-30", "price": 4069 },
+            { "date": "2026-11-03", "price": 3989 }
           ],
           "catalogId": "MLB65575170"
         }
@@ -92,8 +93,8 @@
       "id": "geladeira-brastemp-bro88ab",
       "tier": 4,
       "name": "Geladeira Brastemp French Door Inteligente 630 L BRO88AB",
-      "price": 5679,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 5517,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1HR2kHx",
       "bullets": [
@@ -107,14 +108,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1HR2kHx",
-          "price": 5679,
-          "updatedAt": "2026-10-30",
+          "price": 5517,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7657831126",
           "history": [
             { "date": "2026-10-22", "price": 5503 },
             { "date": "2026-10-25", "price": 5749 },
-            { "date": "2026-10-30", "price": 5679 }
+            { "date": "2026-10-30", "price": 5679 },
+            { "date": "2026-11-03", "price": 5517 }
           ],
           "catalogId": "MLB79147245"
         }

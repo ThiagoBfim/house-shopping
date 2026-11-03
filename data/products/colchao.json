@@ -2,22 +2,10 @@
   "label": "Colchão",
   "utensil": false,
   "variants": [
-    {
-      "id": "casal",
-      "label": "Casal"
-    },
-    {
-      "id": "solteiro",
-      "label": "Solteiro"
-    },
-    {
-      "id": "queen",
-      "label": "Queen"
-    },
-    {
-      "id": "king",
-      "label": "King"
-    }
+    { "id": "casal", "label": "Casal" },
+    { "id": "solteiro", "label": "Solteiro" },
+    { "id": "queen", "label": "Queen" },
+    { "id": "king", "label": "King" }
   ],
   "options": [
     {
@@ -25,7 +13,7 @@
       "tier": 1,
       "name": "Colchão Casal Ortobom Light D33",
       "price": 1133.02,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-light-espuma-d33-casal-ortobom/p/MLB65689344?pdp_filters=item_id%3AMLB4476905515",
       "image": "https://http2.mlstatic.com/D_NQ_NP_643393-MLA107323926001_022026-O.webp",
@@ -36,19 +24,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-light-espuma-d33-casal-ortobom/p/MLB65689344?pdp_filters=item_id%3AMLB4476905515",
           "price": 1133.02,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4476905515",
           "catalogId": "MLB65689344",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1133
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1133.02
-            }
+            { "date": "2026-10-23", "price": 1133 },
+            { "date": "2026-10-30", "price": 1133.02 }
           ]
         }
       ]
@@ -57,8 +39,8 @@
       "id": "colchao-emma-hybrid-casal",
       "tier": 2,
       "name": "Colchão Casal Emma Duo Comfort Dupla Face",
-      "price": 1699,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1695,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-casal-emma-duo-comfort-138x188cm-dupla-face-vacuo-suporte-ideal-para-o-corpo-alta-durabilidade-capa-lavavel/p/MLB18088316?pdp_filters=item_id%3AMLB2171320205",
       "image": "https://http2.mlstatic.com/D_NQ_NP_985772-MLA106761881420_022026-O.webp",
@@ -72,20 +54,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-casal-emma-duo-comfort-138x188cm-dupla-face-vacuo-suporte-ideal-para-o-corpo-alta-durabilidade-capa-lavavel/p/MLB18088316?pdp_filters=item_id%3AMLB2171320205",
-          "price": 1699,
-          "updatedAt": "2026-10-30",
+          "price": 1695,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB2171320205",
           "catalogId": "MLB18088316",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 4220
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1699
-            }
+            { "date": "2026-10-23", "price": 4220 },
+            { "date": "2026-10-30", "price": 1699 },
+            { "date": "2026-11-03", "price": 1695 }
           ]
         }
       ]
@@ -95,7 +72,7 @@
       "tier": 3,
       "name": "Colchão Casal Castor Black & White Double Face D45",
       "price": 2042.42,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-casal-d45-castor-black-white-double-face-138x188x27/p/MLB49466023",
       "image": "https://http2.mlstatic.com/D_NQ_NP_699289-MLA99507438356_112025-O.webp",
@@ -110,19 +87,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-casal-d45-castor-black-white-double-face-138x188x27/p/MLB49466023",
           "price": 2042.42,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB49466023",
           "catalogId": "MLB49466023",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 2643
-            },
-            {
-              "date": "2026-10-30",
-              "price": 2042.42
-            }
+            { "date": "2026-10-23", "price": 2643 },
+            { "date": "2026-10-30", "price": 2042.42 }
           ]
         }
       ]
@@ -132,7 +103,7 @@
       "tier": 4,
       "name": "Colchão King Koil Attraction Casal",
       "price": 3415.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-de-casal-molas-ensacadas-138x188x27-attraction-king-koil-cr458c-cinza/p/MLB78828397?pdp_filters=item_id%3AMLB7579299860",
       "image": "https://http2.mlstatic.com/D_NQ_NP_622557-MLA117080857493_092026-O.webp",
@@ -143,19 +114,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-de-casal-molas-ensacadas-138x188x27-attraction-king-koil-cr458c-cinza/p/MLB78828397?pdp_filters=item_id%3AMLB7579299860",
           "price": 3415.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7579299860",
           "catalogId": "MLB78828397",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 4269
-            },
-            {
-              "date": "2026-10-30",
-              "price": 3415.99
-            }
+            { "date": "2026-10-23", "price": 4269 },
+            { "date": "2026-10-30", "price": 3415.99 }
           ]
         }
       ]
@@ -177,7 +142,7 @@
       "tier": 2,
       "name": "Colchão Castor Sleep Max Double Face D33 Solteiro",
       "price": 849,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/castor-sleep-max-d33-colchao-solteiro-d33-88cm-188cm-18cm/p/MLB22588155",
       "image": "https://http2.mlstatic.com/D_NQ_NP_684268-MLA99578746970_122025-O.webp",
@@ -188,19 +153,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/castor-sleep-max-d33-colchao-solteiro-d33-88cm-188cm-18cm/p/MLB22588155",
           "price": 849,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB22588155",
           "catalogId": "MLB22588155",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1033
-            },
-            {
-              "date": "2026-10-30",
-              "price": 849
-            }
+            { "date": "2026-10-23", "price": 1033 },
+            { "date": "2026-10-30", "price": 849 }
           ]
         }
       ]
@@ -209,8 +168,8 @@
       "id": "colchao-emma-original-solteiro",
       "tier": 3,
       "name": "Colchão Emma Original Solteiro",
-      "price": 1579,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1578,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-solteiro-emma-original-88x188cm-3-camadas-de-espuma-embalado-vacuo-suporte-para-coluna-alta-respirabilidade-capa-lavavel/p/MLB17351732?pdp_filters=item_id%3AMLB2171381925",
       "image": "https://http2.mlstatic.com/D_NQ_NP_641568-MLA114297324721_072026-O.webp",
@@ -220,20 +179,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-solteiro-emma-original-88x188cm-3-camadas-de-espuma-embalado-vacuo-suporte-para-coluna-alta-respirabilidade-capa-lavavel/p/MLB17351732?pdp_filters=item_id%3AMLB2171381925",
-          "price": 1579,
-          "updatedAt": "2026-10-30",
+          "price": 1578,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB2171381925",
           "catalogId": "MLB17351732",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 3569
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1579
-            }
+            { "date": "2026-10-23", "price": 3569 },
+            { "date": "2026-10-30", "price": 1579 },
+            { "date": "2026-11-03", "price": 1578 }
           ]
         }
       ]
@@ -243,7 +197,7 @@
       "tier": 4,
       "name": "Colchão King Koil Attraction Solteiro",
       "price": 2503.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-de-solteiro-molas-ensacadas-88x188x27-attraction-king-koil-cr458a-cinza/p/MLB25126664",
       "image": "https://http2.mlstatic.com/D_NQ_NP_839759-MLA118463315109_092026-O.webp",
@@ -254,19 +208,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-de-solteiro-molas-ensacadas-88x188x27-attraction-king-koil-cr458a-cinza/p/MLB25126664",
           "price": 2503.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB25126664",
           "catalogId": "MLB25126664",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 3129
-            },
-            {
-              "date": "2026-10-30",
-              "price": 2503.99
-            }
+            { "date": "2026-10-23", "price": 3129 },
+            { "date": "2026-10-30", "price": 2503.99 }
           ]
         }
       ]
@@ -275,8 +223,8 @@
       "id": "colchao-ortobom-light-d33-queen",
       "tier": 1,
       "name": "Colchão Ortobom Light D33 Queen",
-      "price": 1234.9,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 889.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-light-d33-queen-size-158x198x20-ortobom/p/MLB34355474?pdp_filters=item_id%3AMLB5399479771",
       "image": "https://http2.mlstatic.com/D_NQ_NP_849597-MLU74969283582_032024-O.webp",
@@ -286,20 +234,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-light-d33-queen-size-158x198x20-ortobom/p/MLB34355474?pdp_filters=item_id%3AMLB5399479771",
-          "price": 1234.9,
-          "updatedAt": "2026-10-30",
+          "price": 889.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5399479771",
           "catalogId": "MLB34355474",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1234
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1234.9
-            }
+            { "date": "2026-10-23", "price": 1234 },
+            { "date": "2026-10-30", "price": 1234.9 },
+            { "date": "2026-11-03", "price": 889.9 }
           ]
         }
       ]
@@ -308,8 +251,8 @@
       "id": "colchao-emma-original-queen",
       "tier": 2,
       "name": "Colchão Queen Emma Original",
-      "price": 2899.9,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 2599,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/24GbjRZ",
       "bullets": [
@@ -322,20 +265,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/24GbjRZ",
-          "price": 2899.9,
-          "updatedAt": "2026-10-30",
+          "price": 2599,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB2171387384",
           "catalogId": "MLB17351734",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2739
-            },
-            {
-              "date": "2026-10-23",
-              "price": 2899.9
-            }
+            { "date": "2026-10-22", "price": 2739 },
+            { "date": "2026-10-23", "price": 2899.9 },
+            { "date": "2026-11-03", "price": 2599 }
           ]
         }
       ],
@@ -363,12 +301,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7181284028",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 3863.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 3863.99 }]
         }
       ],
       "variants": ["queen"]
@@ -378,7 +311,7 @@
       "tier": 4,
       "name": "Colchão Castor Gold Star Molas Ensacadas Queen",
       "price": 5185.02,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/colchao-queen-molas-ensacadas-castor-g-star-vitagel-158x32/p/MLB79299536?pdp_filters=item_id%3AMLB5227440141",
       "image": "https://http2.mlstatic.com/D_NQ_NP_986322-MLA116117057450_092026-O.webp",
@@ -389,19 +322,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/colchao-queen-molas-ensacadas-castor-g-star-vitagel-158x32/p/MLB79299536?pdp_filters=item_id%3AMLB5227440141",
           "price": 5185.02,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5227440141",
           "catalogId": "MLB79299536",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 5488
-            },
-            {
-              "date": "2026-10-30",
-              "price": 5185.02
-            }
+            { "date": "2026-10-23", "price": 5488 },
+            { "date": "2026-10-30", "price": 5185.02 }
           ]
         }
       ]
@@ -410,8 +337,8 @@
       "id": "colchao-emma-original-king",
       "tier": 1,
       "name": "Colchão Emma Original King",
-      "price": 3136,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 3229,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1gSmNd2",
       "image": "https://http2.mlstatic.com/D_NQ_NP_998940-MLA106976608326_022026-O.webp",
@@ -421,20 +348,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1gSmNd2",
-          "price": 3136,
-          "updatedAt": "2026-10-30",
+          "price": 3229,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4959690446",
           "catalogId": "MLB15810522",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 7349
-            },
-            {
-              "date": "2026-10-30",
-              "price": 3136
-            }
+            { "date": "2026-10-23", "price": 7349 },
+            { "date": "2026-10-30", "price": 3136 },
+            { "date": "2026-11-03", "price": 3229 }
           ]
         }
       ]
@@ -456,7 +378,7 @@
       "tier": 3,
       "name": "Colchão King Koil Attraction King",
       "price": 4759.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/32Mwk2W",
       "image": "https://http2.mlstatic.com/D_NQ_NP_783074-MLU74959618537_032024-O.webp",
@@ -467,16 +389,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/32Mwk2W",
           "price": 4759.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7574910176",
           "catalogId": "MLB24976893",
-          "history": [
-            {
-              "date": "2026-10-30",
-              "price": 4759.99
-            }
-          ]
+          "history": [{ "date": "2026-10-30", "price": 4759.99 }]
         }
       ]
     },
@@ -484,8 +401,8 @@
       "id": "colchao-castor-gold-star-molas-ensacadas-king",
       "tier": 4,
       "name": "Colchão King Castor Vitagel Euro One Face Molas Ensacadas",
-      "price": 6535.99,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 6879.99,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1JPSYjG",
       "image": "https://http2.mlstatic.com/D_NQ_NP_822585-MLA99921471791_112025-O.webp",
@@ -495,16 +412,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1JPSYjG",
-          "price": 6535.99,
-          "updatedAt": "2026-10-30",
+          "price": 6879.99,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5204865869",
           "catalogId": "MLB25373430",
           "history": [
-            {
-              "date": "2026-10-30",
-              "price": 6535.99
-            }
+            { "date": "2026-10-30", "price": 6535.99 },
+            { "date": "2026-11-03", "price": 6879.99 }
           ]
         }
       ]

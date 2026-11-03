@@ -6,8 +6,8 @@
       "id": "chaleira-eletrica-mondial-1-8-l",
       "tier": 1,
       "name": "Chaleira Elétrica Mondial Pratic CE-06",
-      "price": 89.9,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 89.72,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/chaleira-eletrica-pratic-mondial-1200w-ce-06/p/MLB8980300?pdp_filters=item_id%3AMLB3808423334",
       "image": "https://http2.mlstatic.com/D_NQ_NP_858572-MLA99998105541_112025-O.webp",
@@ -16,20 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/chaleira-eletrica-pratic-mondial-1200w-ce-06/p/MLB8980300?pdp_filters=item_id%3AMLB3808423334",
-          "price": 89.9,
-          "updatedAt": "2026-10-30",
+          "price": 89.72,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3808423334",
           "catalogId": "MLB8980300",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 189
-            },
-            {
-              "date": "2026-10-30",
-              "price": 89.9
-            }
+            { "date": "2026-10-23", "price": 189 },
+            { "date": "2026-10-30", "price": 89.9 },
+            { "date": "2026-11-03", "price": 89.72 }
           ]
         }
       ]
@@ -39,7 +34,7 @@
       "tier": 2,
       "name": "Chaleira Elétrica Digital Oster 1,7 L",
       "price": 253,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/19i8RA8",
       "bullets": ["Controle de temperatura (chá, café)", "Base giratória sem fio", "1,7 L"],
@@ -49,16 +44,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/19i8RA8",
           "price": 253,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5682518854",
           "catalogId": "MLB24034047",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 253
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 253 }]
         }
       ]
     },

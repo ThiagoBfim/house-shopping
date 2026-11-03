@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Espreguiçadeira de Plástico Tramontina Leblon",
       "price": 577.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/espreguicadeira-4-posicoes-branca-leblon-tramontina/p/MLB26671690?pdp_filters=item_id%3AMLB7174509252",
       "image": "https://http2.mlstatic.com/D_NQ_NP_914693-MLA93606719240_102025-O.webp",
@@ -17,19 +17,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/espreguicadeira-4-posicoes-branca-leblon-tramontina/p/MLB26671690?pdp_filters=item_id%3AMLB7174509252",
           "price": 577.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7174509252",
           "catalogId": "MLB26671690",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 659
-            },
-            {
-              "date": "2026-10-30",
-              "price": 577.9
-            }
+            { "date": "2026-10-23", "price": 659 },
+            { "date": "2026-10-30", "price": 577.9 }
           ]
         }
       ]

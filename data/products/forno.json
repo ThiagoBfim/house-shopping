@@ -2,14 +2,8 @@
   "label": "Forno",
   "utensil": false,
   "variants": [
-    {
-      "id": "bancada",
-      "label": "Forno elétrico de bancada"
-    },
-    {
-      "id": "embutir",
-      "label": "Forno de embutir"
-    }
+    { "id": "bancada", "label": "Forno elétrico de bancada" },
+    { "id": "embutir", "label": "Forno de embutir" }
   ],
   "options": [
     {
@@ -33,14 +27,8 @@
           "externalId": "MLB5997009972",
           "catalogId": "MLB53802029",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 549
-            },
-            {
-              "date": "2026-10-30",
-              "price": 477.99
-            }
+            { "date": "2026-10-22", "price": 549 },
+            { "date": "2026-10-30", "price": 477.99 }
           ]
         }
       ]
@@ -49,8 +37,8 @@
       "id": "forno-eletrico-fischer-gourmet-grill-44-litros",
       "tier": 2,
       "name": "Forno Elétrico Fischer Gourmet Grill 44 L",
-      "price": 739,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 729,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB69943592?pdp_filters=item_id%3AMLB6311070146",
       "image": "https://http2.mlstatic.com/D_NQ_NP_635221-MLA110863753094_052026-O.webp",
@@ -64,20 +52,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB69943592?pdp_filters=item_id%3AMLB6311070146",
-          "price": 739,
-          "updatedAt": "2026-10-30",
+          "price": 729,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6311070146",
           "catalogId": "MLB69943592",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 895
-            },
-            {
-              "date": "2026-10-30",
-              "price": 739
-            }
+            { "date": "2026-10-23", "price": 895 },
+            { "date": "2026-10-30", "price": 739 },
+            { "date": "2026-11-03", "price": 729 }
           ]
         }
       ]
@@ -86,8 +69,8 @@
       "id": "forno-eletrico-oster-air-fryer-2-em-1-50-l",
       "tier": 3,
       "name": "Forno Elétrico Air Fryer Oster Digital Pro 8 em 1 25 L",
-      "price": 874.99,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1190.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB77555483?pdp_filters=item_id%3AMLB7536239408",
       "image": "https://http2.mlstatic.com/D_NQ_NP_946620-MLA114946164926_082026-O.webp",
@@ -97,20 +80,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB77555483?pdp_filters=item_id%3AMLB7536239408",
-          "price": 874.99,
-          "updatedAt": "2026-10-30",
+          "price": 1190.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7536239408",
           "catalogId": "MLB77555483",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1190
-            },
-            {
-              "date": "2026-10-30",
-              "price": 874.99
-            }
+            { "date": "2026-10-23", "price": 1190 },
+            { "date": "2026-10-30", "price": 874.99 },
+            { "date": "2026-11-03", "price": 1190.9 }
           ]
         }
       ]
@@ -148,7 +126,7 @@
       "tier": 1,
       "name": "Forno de Embutir Elétrico EOS 47 L EFE47EP",
       "price": 980.96,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB25827378?pdp_filters=item_id%3AMLB4086786421",
       "image": "https://http2.mlstatic.com/D_NQ_NP_833685-MLA96150744941_102025-O.webp",
@@ -163,19 +141,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB25827378?pdp_filters=item_id%3AMLB4086786421",
           "price": 980.96,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4086786421",
           "catalogId": "MLB25827378",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 939
-            },
-            {
-              "date": "2026-10-30",
-              "price": 980.96
-            }
+            { "date": "2026-10-23", "price": 939 },
+            { "date": "2026-10-30", "price": 980.96 }
           ]
         }
       ]
@@ -185,7 +157,7 @@
       "tier": 3,
       "name": "Forno de Embutir Elétrico Electrolux 80 L OE8EA",
       "price": 1931.05,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2TzFJkW",
       "bullets": [
@@ -200,18 +172,12 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2TzFJkW",
           "price": 1931.05,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5524387860",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 2047.79
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1931.05
-            }
+            { "date": "2026-10-22", "price": 2047.79 },
+            { "date": "2026-10-30", "price": 1931.05 }
           ],
           "catalogId": "MLB51183658"
         }

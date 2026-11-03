@@ -20,12 +20,7 @@
           "updatedAt": "2026-10-22",
           "available": true,
           "externalId": "MLB7739328622",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 189.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 189.9 }]
         }
       ]
     },
@@ -34,7 +29,7 @@
       "tier": 2,
       "name": "Banheira Safety 1st Smile",
       "price": 250.46,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2ZC5xoj",
       "bullets": ["Formato anatômico", "Marca Safety 1st", "Mais firme que as básicas"],
@@ -44,27 +39,15 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2ZC5xoj",
           "price": 250.46,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4202925354",
           "catalogId": "MLB23550906",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 462
-            },
-            {
-              "date": "2026-10-23",
-              "price": 250.46
-            },
-            {
-              "date": "2026-10-25",
-              "price": 283.03
-            },
-            {
-              "date": "2026-10-30",
-              "price": 250.46
-            }
+            { "date": "2026-10-22", "price": 462 },
+            { "date": "2026-10-23", "price": 250.46 },
+            { "date": "2026-10-25", "price": 283.03 },
+            { "date": "2026-10-30", "price": 250.46 }
           ]
         }
       ]
@@ -73,8 +56,8 @@
       "id": "banheira-com-suporte-e-trocador-galzerano",
       "tier": 3,
       "name": "Banheira com Suporte e Trocador Galzerano",
-      "price": 558,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 546.84,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/banheira-bebe-galzerano-com-redutor-suporte-e-trocador-real-cor-branco/p/MLB22547074?pdp_filters=item_id%3AMLB5011732990",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_652875-MLA96871390153_102025-E.webp",
@@ -87,20 +70,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/banheira-bebe-galzerano-com-redutor-suporte-e-trocador-real-cor-branco/p/MLB22547074?pdp_filters=item_id%3AMLB5011732990",
-          "price": 558,
-          "updatedAt": "2026-10-30",
+          "price": 546.84,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5011732990",
           "catalogId": "MLB22547074",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 599
-            },
-            {
-              "date": "2026-10-30",
-              "price": 558
-            }
+            { "date": "2026-10-23", "price": 599 },
+            { "date": "2026-10-30", "price": 558 },
+            { "date": "2026-11-03", "price": 546.84 }
           ]
         }
       ]

@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Tábua de Passar Roupa Mor Maxi",
       "price": 78.8,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB26416228?pdp_filters=item_id%3AMLB5672755096",
       "image": "https://http2.mlstatic.com/D_NQ_NP_613507-MLA95658901983_102025-O.webp",
@@ -17,19 +17,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB26416228?pdp_filters=item_id%3AMLB5672755096",
           "price": 78.8,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5672755096",
           "catalogId": "MLB26416228",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 78
-            },
-            {
-              "date": "2026-10-30",
-              "price": 78.8
-            }
+            { "date": "2026-10-23", "price": 78 },
+            { "date": "2026-10-30", "price": 78.8 }
           ]
         }
       ]
@@ -39,7 +33,7 @@
       "tier": 2,
       "name": "Tábua de Passar Secalux Extra Forte com Porta-Ferro",
       "price": 149.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1CzXJEJ",
       "bullets": ["Estrutura extra forte", "Apoio para o ferro", "Dobrável"],
@@ -49,16 +43,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1CzXJEJ",
           "price": 149.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4439273903",
           "catalogId": "MLB55982369",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 149.9
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 149.9 }]
         }
       ]
     }
