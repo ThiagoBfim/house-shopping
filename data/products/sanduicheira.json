@@ -6,8 +6,8 @@
       "id": "sanduicheira-mondial-master-grill-s-20",
       "tier": 1,
       "name": "Sanduicheira Mondial Master Grill S-20",
-      "price": 83.2,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 85.75,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB22607777?pdp_filters=item_id%3AMLB3695363229",
       "image": "https://http2.mlstatic.com/D_NQ_NP_684525-MLU72639791707_112023-O.webp",
@@ -16,20 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB22607777?pdp_filters=item_id%3AMLB3695363229",
-          "price": 83.2,
-          "updatedAt": "2026-10-30",
+          "price": 85.75,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3695363229",
           "catalogId": "MLB22607777",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 154
-            },
-            {
-              "date": "2026-10-30",
-              "price": 83.2
-            }
+            { "date": "2026-10-23", "price": 154 },
+            { "date": "2026-10-30", "price": 83.2 },
+            { "date": "2026-11-03", "price": 85.75 }
           ]
         }
       ]
@@ -38,8 +33,8 @@
       "id": "grill-oster-ogrl610-2-em-1",
       "tier": 2,
       "name": "Grill e Sanduicheira Oster OGRL610 Inox 2 em 1",
-      "price": 271,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 265.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB44875712?pdp_filters=item_id%3AMLB5064552713",
       "image": "https://http2.mlstatic.com/D_NQ_NP_998318-MLA99596206410_122025-O.webp",
@@ -52,20 +47,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB44875712?pdp_filters=item_id%3AMLB5064552713",
-          "price": 271,
-          "updatedAt": "2026-10-30",
+          "price": 265.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5064552713",
           "catalogId": "MLB44875712",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 283
-            },
-            {
-              "date": "2026-10-30",
-              "price": 271
-            }
+            { "date": "2026-10-23", "price": 283 },
+            { "date": "2026-10-30", "price": 271 },
+            { "date": "2026-11-03", "price": 265.9 }
           ]
         }
       ]

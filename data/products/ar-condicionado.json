@@ -66,8 +66,8 @@
       "id": "ar-condicionado-lg-dual-inverter-voice-12000",
       "tier": 3,
       "name": "Ar-condicionado Split LG Dual Inverter AI Voice 12.000 BTUs Quente/Frio",
-      "price": 3109,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 3169,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1ugnS19",
       "bullets": [
@@ -80,12 +80,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1ugnS19",
-          "price": 3109,
-          "updatedAt": "2026-10-25",
+          "price": 3169,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6739564756",
           "catalogId": "MLB66187058",
-          "history": [{ "date": "2026-10-22", "price": 3109 }]
+          "history": [
+            { "date": "2026-10-22", "price": 3109 },
+            { "date": "2026-11-03", "price": 3169 }
+          ]
         }
       ],
       "variants": ["ar"]
@@ -95,7 +98,7 @@
       "tier": 4,
       "name": "Ar-condicionado Split Daikin Full Inverter 12.000 BTUs Quente/Frio",
       "price": 4105.16,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/28XQHqc",
       "bullets": [
@@ -110,7 +113,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/28XQHqc",
           "price": 4105.16,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4823282293",
           "history": [{ "date": "2026-10-22", "price": 4105.16 }],
@@ -123,8 +126,8 @@
       "id": "ventilador-de-mesa-mondial-40-cm",
       "tier": 1,
       "name": "Ventilador de Mesa Mondial Super Power 40 cm VSP-40",
-      "price": 163.12,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 203.91,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2mNjPq7",
       "bullets": ["40 cm, 6 pás", "3 velocidades", "Barulho moderado"],
@@ -134,14 +137,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2mNjPq7",
-          "price": 163.12,
-          "updatedAt": "2026-10-30",
+          "price": 203.91,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB2795953656",
           "catalogId": "MLB18623660",
           "history": [
             { "date": "2026-10-22", "price": 163.13 },
-            { "date": "2026-10-25", "price": 163.12 }
+            { "date": "2026-10-25", "price": 163.12 },
+            { "date": "2026-11-03", "price": 203.91 }
           ]
         }
       ]
@@ -151,7 +155,7 @@
       "tier": 2,
       "name": "Ventilador de Coluna Arno X-Treme 7 40 cm VE7C",
       "price": 549.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1U4vyA1",
       "bullets": ["Coluna: altura ajustável", "7 pás: vento forte", "Função turbo"],
@@ -162,7 +166,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1U4vyA1",
           "price": 549.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4841867037",
           "catalogId": "MLB45203935",
@@ -175,7 +179,7 @@
       "tier": 3,
       "name": "Ventilador de Teto Spirit 202 com Lustre",
       "price": 639.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1ubiDeh",
       "bullets": [
@@ -190,7 +194,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1ubiDeh",
           "price": 639.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4357127811",
           "catalogId": "MLB28116466",

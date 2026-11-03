@@ -8,7 +8,7 @@
       "tier": 1,
       "name": "Echo Pop Smart Speaker com Alexa",
       "price": 509.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/amazon-echo-pop-alexa-preto/p/MLB61265584?pdp_filters=item_id%3AMLB7769212986",
       "image": "https://http2.mlstatic.com/D_NQ_NP_892431-MLA95960054692_102025-O.webp",
@@ -22,19 +22,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/amazon-echo-pop-alexa-preto/p/MLB61265584?pdp_filters=item_id%3AMLB7769212986",
           "price": 509.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7769212986",
           "catalogId": "MLB61265584",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 509
-            },
-            {
-              "date": "2026-10-30",
-              "price": 509.9
-            }
+            { "date": "2026-10-23", "price": 509 },
+            { "date": "2026-10-30", "price": 509.9 }
           ]
         }
       ]
@@ -44,7 +38,7 @@
       "tier": 3,
       "name": "Echo Dot 5ª Geração com Relógio",
       "price": 899.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/aexa-echo-dot-5-geracao-com-relogio-azul-claro-amazon-cor-azul-claro/p/MLB19757118?pdp_filters=item_id%3AMLB3393594533",
       "image": "https://http2.mlstatic.com/D_Q_NP_2X_736823-MLA99941608271_112025-E.webp",
@@ -54,19 +48,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/aexa-echo-dot-5-geracao-com-relogio-azul-claro-amazon-cor-azul-claro/p/MLB19757118?pdp_filters=item_id%3AMLB3393594533",
           "price": 899.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3393594533",
           "catalogId": "MLB19757118",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 899
-            },
-            {
-              "date": "2026-10-30",
-              "price": 899.99
-            }
+            { "date": "2026-10-23", "price": 899 },
+            { "date": "2026-10-30", "price": 899.99 }
           ]
         }
       ]
@@ -91,14 +79,8 @@
           "externalId": "MLB4396354205",
           "catalogId": "MLB65072053",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 720
-            },
-            {
-              "date": "2026-10-30",
-              "price": 649.9
-            }
+            { "date": "2026-10-23", "price": 720 },
+            { "date": "2026-10-30", "price": 649.9 }
           ]
         }
       ]

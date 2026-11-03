@@ -17,8 +17,8 @@
       "id": "comoda-6-gavetas-henn",
       "tier": 2,
       "name": "Cômoda 6 Gavetas Henn Ravenna",
-      "price": 664.91,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 659.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/comoda-ravenna-6-gavetas-nature-henn-cor-marrom/p/MLB37515051",
       "image": "https://http2.mlstatic.com/D_NQ_NP_657199-MLU76663956006_062024-O.webp",
@@ -27,20 +27,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/comoda-ravenna-6-gavetas-nature-henn-cor-marrom/p/MLB37515051",
-          "price": 664.91,
-          "updatedAt": "2026-10-30",
+          "price": 659.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB37515051",
           "catalogId": "MLB37515051",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 664
-            },
-            {
-              "date": "2026-10-30",
-              "price": 664.91
-            }
+            { "date": "2026-10-23", "price": 664 },
+            { "date": "2026-10-30", "price": 664.91 },
+            { "date": "2026-11-03", "price": 659.9 }
           ]
         }
       ]

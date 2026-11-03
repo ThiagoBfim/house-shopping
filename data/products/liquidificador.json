@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Liquidificador Mondial Turbo Power L-99",
       "price": 139,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2j7wXqT",
       "bullets": ["550 W", "Copo de plástico", "3 velocidades + pulsar"],
@@ -17,7 +17,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2j7wXqT",
           "price": 139,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5226595363",
           "catalogId": "MLB76159966",
@@ -29,8 +29,8 @@
       "id": "liquidificador-philips-walita-serie-3000",
       "tier": 2,
       "name": "Liquidificador Philips Walita Série 3000 Turbo 1000 W",
-      "price": 167.28,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 141.08,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1MgJzNw",
       "bullets": ["1000 W, tritura gelo", "Função turbo", "Marca Philips Walita"],
@@ -39,14 +39,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1MgJzNw",
-          "price": 167.28,
-          "updatedAt": "2026-10-30",
+          "price": 141.08,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5461200402",
           "catalogId": "MLB39292033",
           "history": [
             { "date": "2026-10-22", "price": 159 },
-            { "date": "2026-10-30", "price": 167.28 }
+            { "date": "2026-10-30", "price": 167.28 },
+            { "date": "2026-11-03", "price": 141.08 }
           ]
         }
       ]
@@ -56,7 +57,7 @@
       "tier": 3,
       "name": "Liquidificador Oster Profissional Xtreme Mix 2 L",
       "price": 799,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2esa92J",
       "bullets": ["Linha profissional", "Copo de 2 L", "Tritura gelo e faz smoothie"],
@@ -66,7 +67,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2esa92J",
           "price": 799,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4207610531",
           "catalogId": "MLB49409322",

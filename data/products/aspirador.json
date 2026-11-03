@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Aspirador Vertical Mondial Turbo Cycle 1500 W AP-40",
       "price": 187.78,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2vRjDxF",
       "bullets": [
@@ -21,23 +21,14 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2vRjDxF",
           "price": 187.78,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5232784214",
           "catalogId": "MLB44673154",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 159.9
-            },
-            {
-              "date": "2026-10-23",
-              "price": 161.15
-            },
-            {
-              "date": "2026-10-30",
-              "price": 187.78
-            }
+            { "date": "2026-10-22", "price": 159.9 },
+            { "date": "2026-10-23", "price": 161.15 },
+            { "date": "2026-10-30", "price": 187.78 }
           ]
         }
       ]
@@ -47,7 +38,7 @@
       "tier": 2,
       "name": "Aspirador Vertical sem Fio Electrolux Ergorapido ERG019",
       "price": 659.66,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2BS74fw",
       "bullets": [
@@ -62,16 +53,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2BS74fw",
           "price": 659.66,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4040705625",
           "catalogId": "MLB48927504",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 659.66
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 659.66 }]
         }
       ]
     },
@@ -79,8 +65,8 @@
       "id": "aspirador-vertical-xiaomi-g20-lite",
       "tier": 3,
       "name": "Aspirador Vertical Sem Fio Xiaomi G20 Lite",
-      "price": 1045,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1095,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB39209594?pdp_filters=item_id%3AMLB5283417621",
       "image": "https://http2.mlstatic.com/D_NQ_NP_606648-MLA99987035337_112025-O.webp",
@@ -94,16 +80,14 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB39209594?pdp_filters=item_id%3AMLB5283417621",
-          "price": 1045,
-          "updatedAt": "2026-10-30",
+          "price": 1095,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5283417621",
           "catalogId": "MLB39209594",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1045
-            }
+            { "date": "2026-10-23", "price": 1045 },
+            { "date": "2026-11-03", "price": 1095 }
           ]
         }
       ]
@@ -113,9 +97,9 @@
       "tier": 4,
       "name": "Aspirador Vertical Sem Fio Dyson V8 Absolute",
       "price": 4505.14,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB47115872?pdp_filters=item_id%3AMLB4099033991",
+      "url": "https://meli.la/1ZSfoVL",
       "image": "https://http2.mlstatic.com/D_NQ_NP_645095-MLA96077920675_102025-O.webp",
       "bullets": [
         "Topo de linha: sucção muito forte",
@@ -126,21 +110,15 @@
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://www.mercadolivre.com.br/p/MLB47115872?pdp_filters=item_id%3AMLB4099033991",
+          "url": "https://meli.la/1ZSfoVL",
           "price": 4505.14,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4099033991",
           "catalogId": "MLB47115872",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 4505
-            },
-            {
-              "date": "2026-10-30",
-              "price": 4505.14
-            }
+            { "date": "2026-10-23", "price": 4505 },
+            { "date": "2026-10-30", "price": 4505.14 }
           ]
         }
       ]

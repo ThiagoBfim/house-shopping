@@ -6,8 +6,8 @@
       "id": "depurador-suggar-slim-60-cm",
       "tier": 3,
       "name": "Depurador de Ar Suggar Slim Touch 60 cm",
-      "price": 815,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 824.41,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/depurador-de-embutir-slim-touch-60-cm-preto-suggar/p/MLB32343353?pdp_filters=item_id%3AMLB3596797531",
       "image": "https://http2.mlstatic.com/D_NQ_NP_602922-MLA99459899378_112025-O.webp",
@@ -20,20 +20,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/depurador-de-embutir-slim-touch-60-cm-preto-suggar/p/MLB32343353?pdp_filters=item_id%3AMLB3596797531",
-          "price": 815,
-          "updatedAt": "2026-10-30",
+          "price": 824.41,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3596797531",
           "catalogId": "MLB32343353",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 999
-            },
-            {
-              "date": "2026-10-30",
-              "price": 815
-            }
+            { "date": "2026-10-23", "price": 999 },
+            { "date": "2026-10-30", "price": 815 },
+            { "date": "2026-11-03", "price": 824.41 }
           ]
         }
       ]
@@ -43,7 +38,7 @@
       "tier": 2,
       "name": "Depurador de Ar Suggar Slim 80 cm Inox DPS182IX",
       "price": 765.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/depurador-de-ar-slim-80cm-3-velocidades-dps182ix-coifa-inox-suggar/p/MLB22337029?pdp_filters=item_id%3AMLB3825217899",
       "image": "https://http2.mlstatic.com/D_NQ_NP_768095-MLA95705611036_102025-O.webp",
@@ -57,19 +52,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/depurador-de-ar-slim-80cm-3-velocidades-dps182ix-coifa-inox-suggar/p/MLB22337029?pdp_filters=item_id%3AMLB3825217899",
           "price": 765.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3825217899",
           "catalogId": "MLB22337029",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 920
-            },
-            {
-              "date": "2026-10-30",
-              "price": 765.9
-            }
+            { "date": "2026-10-23", "price": 920 },
+            { "date": "2026-10-30", "price": 765.9 }
           ]
         }
       ]
@@ -97,12 +86,7 @@
           "available": true,
           "externalId": "MLB2715751637",
           "catalogId": "MLB10838095",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 717
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 717 }]
         }
       ]
     },

@@ -6,8 +6,8 @@
       "id": "smart-tv-samsung-50-u8000h",
       "tier": 1,
       "name": "Smart TV Samsung Crystal UHD 50\" 4K U8000H",
-      "price": 2469.05,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 2519,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1khtRfy",
       "bullets": [
@@ -19,13 +19,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1khtRfy",
-          "price": 2469.05,
-          "updatedAt": "2026-10-30",
+          "price": 2519,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB78576179",
           "history": [
             { "date": "2026-10-22", "price": 2519 },
-            { "date": "2026-10-30", "price": 2469.05 }
+            { "date": "2026-10-30", "price": 2469.05 },
+            { "date": "2026-11-03", "price": 2519 }
           ],
           "catalogId": "MLB78576179"
         }
@@ -36,8 +37,8 @@
       "id": "smart-tv-tcl-55-c6k",
       "tier": 2,
       "name": "Smart TV TCL 55\" QD-Mini LED 144 Hz C6K",
-      "price": 4099,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 3499,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1Z76hQr",
       "bullets": [
@@ -50,15 +51,16 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/1Z76hQr",
-          "price": 4099,
-          "updatedAt": "2026-10-30",
+          "price": 3499,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7574364080",
           "catalogId": "MLB48808732",
           "history": [
             { "date": "2026-10-22", "price": 3229.05 },
             { "date": "2026-10-25", "price": 3442.8 },
-            { "date": "2026-10-30", "price": 4099 }
+            { "date": "2026-10-30", "price": 4099 },
+            { "date": "2026-11-03", "price": 3499 }
           ]
         }
       ]
@@ -68,7 +70,7 @@
       "tier": 3,
       "name": "Smart TV LG OLED evo 55\" C6",
       "price": 7219.05,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2RvShAm",
       "bullets": [
@@ -82,7 +84,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2RvShAm",
           "price": 7219.05,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7608133612",
           "history": [{ "date": "2026-10-22", "price": 7219.05 }],
@@ -95,7 +97,7 @@
       "tier": 4,
       "name": "Smart TV Samsung OLED 65\" 4K S95H",
       "price": 13372.47,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/12ivCtv",
       "bullets": [
@@ -109,7 +111,7 @@
           "store": "mercadolivre",
           "url": "https://meli.la/12ivCtv",
           "price": 13372.47,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5325874311",
           "history": [{ "date": "2026-10-22", "price": 13372.47 }],

@@ -18,7 +18,7 @@
       "tier": 2,
       "name": "Kit 10 Potes Herméticos Electrolux",
       "price": 179,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB23194774?pdp_filters=item_id%3AMLB7608842574",
       "image": "https://http2.mlstatic.com/D_NQ_NP_784404-MLU69354377038_052023-O.webp",
@@ -32,16 +32,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB23194774?pdp_filters=item_id%3AMLB7608842574",
           "price": 179,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7608842574",
           "catalogId": "MLB23194774",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 179
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 179 }]
         }
       ]
     }

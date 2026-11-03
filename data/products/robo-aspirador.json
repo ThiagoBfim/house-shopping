@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Robô Aspirador Mondial Smart Clean RB-07",
       "price": 472,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB18711834?pdp_filters=item_id%3AMLB5133822279",
       "image": "https://http2.mlstatic.com/D_NQ_NP_712805-MLA99451649298_112025-O.webp",
@@ -21,16 +21,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB18711834?pdp_filters=item_id%3AMLB5133822279",
           "price": 472,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5133822279",
           "catalogId": "MLB18711834",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 472
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 472 }]
         }
       ]
     },
@@ -39,7 +34,7 @@
       "tier": 2,
       "name": "Robô Aspirador WAP Robot W1000 com Mapeamento",
       "price": 1138,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB40340788?pdp_filters=item_id%3AMLB5419978507",
       "image": "https://http2.mlstatic.com/D_NQ_NP_989645-MLA100854629508_122025-O.webp",
@@ -53,16 +48,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB40340788?pdp_filters=item_id%3AMLB5419978507",
           "price": 1138,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5419978507",
           "catalogId": "MLB40340788",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1138
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 1138 }]
         }
       ]
     },
@@ -71,7 +61,7 @@
       "tier": 3,
       "name": "Robô Aspirador Roborock Q7 Max",
       "price": 1850,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1vVXmZR",
       "bullets": [
@@ -85,19 +75,13 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1vVXmZR",
           "price": 1850,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4598100045",
           "catalogId": "MLB41746107",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1990
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1850
-            }
+            { "date": "2026-10-22", "price": 1990 },
+            { "date": "2026-10-30", "price": 1850 }
           ]
         }
       ]
@@ -106,10 +90,10 @@
       "id": "robo-aspirador-roborock-s8",
       "tier": 4,
       "name": "Robô Aspirador Roborock S8 6000 Pa com Mop",
-      "price": 5345.65,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 5627,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/p/MLB34134062?pdp_filters=item_id%3AMLB7651169454",
+      "url": "https://meli.la/1wFAkUn",
       "image": "https://http2.mlstatic.com/D_NQ_NP_896556-MLA99463396780_112025-O.webp",
       "bullets": [
         "Sucção de 6000 Pa",
@@ -120,21 +104,16 @@
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://www.mercadolivre.com.br/p/MLB34134062?pdp_filters=item_id%3AMLB7651169454",
-          "price": 5345.65,
-          "updatedAt": "2026-10-30",
+          "url": "https://meli.la/1wFAkUn",
+          "price": 5627,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7651169454",
           "catalogId": "MLB34134062",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 5627
-            },
-            {
-              "date": "2026-10-30",
-              "price": 5345.65
-            }
+            { "date": "2026-10-23", "price": 5627 },
+            { "date": "2026-10-30", "price": 5345.65 },
+            { "date": "2026-11-03", "price": 5627 }
           ]
         }
       ]

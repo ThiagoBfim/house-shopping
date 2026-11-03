@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Monitor LG 24 Full HD IPS 100 Hz",
       "price": 661,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB43961379?pdp_filters=item_id%3AMLB4894062283",
       "image": "https://http2.mlstatic.com/D_NQ_NP_921982-MLA99962503055_112025-O.webp",
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB43961379?pdp_filters=item_id%3AMLB4894062283",
           "price": 661,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4894062283",
           "catalogId": "MLB43961379",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 661
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 661 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Monitor Samsung 27 Full HD IPS 100Hz",
       "price": 755,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB46564887?pdp_filters=item_id%3AMLB4279211521",
       "image": "https://http2.mlstatic.com/D_NQ_NP_946816-MLA99885422877_112025-O.webp",
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB46564887?pdp_filters=item_id%3AMLB4279211521",
           "price": 755,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4279211521",
           "catalogId": "MLB46564887",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 755
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 755 }]
         }
       ]
     },
@@ -62,8 +52,8 @@
       "id": "monitor-lg-27-4k-ultrafine-27us550",
       "tier": 3,
       "name": "Monitor LG 27 4K UltraFine IPS HDR10",
-      "price": 1242,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1259,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB48778915",
       "image": "https://http2.mlstatic.com/D_NQ_NP_912843-MLA99938852799_112025-O.webp",
@@ -72,20 +62,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB48778915",
-          "price": 1242,
-          "updatedAt": "2026-10-30",
+          "price": 1259,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB48778915",
           "catalogId": "MLB48778915",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1781
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1242
-            }
+            { "date": "2026-10-23", "price": 1781 },
+            { "date": "2026-10-30", "price": 1242 },
+            { "date": "2026-11-03", "price": 1259 }
           ]
         }
       ]

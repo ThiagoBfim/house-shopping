@@ -17,8 +17,8 @@
       "id": "copo-termico-stanley-quencher-887-ml",
       "tier": 2,
       "name": "Copo Térmico Stanley Quencher 887 ml",
-      "price": 185.28,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 181.2,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2PY2zgi",
       "bullets": [
@@ -31,14 +31,15 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2PY2zgi",
-          "price": 185.28,
-          "updatedAt": "2026-10-30",
+          "price": 181.2,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5310312110",
           "catalogId": "MLB38771174",
           "history": [
             { "date": "2026-10-22", "price": 203.6 },
-            { "date": "2026-10-30", "price": 185.28 }
+            { "date": "2026-10-30", "price": 185.28 },
+            { "date": "2026-11-03", "price": 181.2 }
           ]
         }
       ]
@@ -47,10 +48,10 @@
       "id": "caneca-termica-stanley-camp-mug-350-ml",
       "tier": 3,
       "name": "Caneca Térmica Stanley Camp Mug 350 ml",
-      "price": 199,
-      "priceUpdatedAt": "2026-10-25",
+      "price": 198,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://meli.la/1W5Gs5k",
+      "url": "https://meli.la/2T7dpTF",
       "bullets": [
         "A caneca clássica da Stanley",
         "Café quente por horas",
@@ -60,13 +61,13 @@
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://meli.la/1W5Gs5k",
-          "price": 199,
-          "updatedAt": "2026-10-25",
+          "url": "https://meli.la/2T7dpTF",
+          "price": 198,
+          "updatedAt": "2026-11-03",
           "available": true,
-          "externalId": "MLB7607716690",
+          "externalId": "MLB5182483492",
           "catalogId": "MLB19807586",
-          "history": [{ "date": "2026-10-22", "price": 199 }]
+          "history": [{ "date": "2026-11-03", "price": 198 }]
         }
       ]
     },

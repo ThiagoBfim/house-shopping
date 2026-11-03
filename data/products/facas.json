@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Jogo de Facas Tramontina Plenus 9 Peças",
       "price": 69.75,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1XzDWWq",
       "bullets": ["Jogo de 9 peças em inox", "Cabo de polipropileno", "Perde o fio mais rápido"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1XzDWWq",
           "price": 69.75,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3782589243",
           "catalogId": "MLB28408264",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 69.75
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 69.75 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Jogo de Facas Tramontina Polywood com Cepo 6 Peças",
       "price": 340.67,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/jogo-de-facas-6-pecas-tramontina-polywood-21199983-castanho/p/MLB27397280?pdp_filters=item_id%3AMLB4574259617",
       "image": "https://http2.mlstatic.com/D_NQ_NP_892738-MLA108812250348_032026-O.webp",
@@ -45,19 +40,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/jogo-de-facas-6-pecas-tramontina-polywood-21199983-castanho/p/MLB27397280?pdp_filters=item_id%3AMLB4574259617",
           "price": 340.67,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4574259617",
           "catalogId": "MLB27397280",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 425
-            },
-            {
-              "date": "2026-10-30",
-              "price": 340.67
-            }
+            { "date": "2026-10-23", "price": 425 },
+            { "date": "2026-10-30", "price": 340.67 }
           ]
         }
       ]
@@ -66,8 +55,8 @@
       "id": "jogo-de-3-facas-tramontina-century",
       "tier": 3,
       "name": "Jogo de 3 Facas Tramontina Century",
-      "price": 436.19,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 457.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2AnLLFg",
       "bullets": [
@@ -80,16 +69,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2AnLLFg",
-          "price": 436.19,
-          "updatedAt": "2026-10-30",
+          "price": 457.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4099950342",
           "catalogId": "MLB27370892",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 436.19
-            }
+            { "date": "2026-10-22", "price": 436.19 },
+            { "date": "2026-11-03", "price": 457.9 }
           ]
         }
       ]
@@ -99,7 +86,7 @@
       "tier": 4,
       "name": "Conjunto de Facas Zwilling Profissional com Bloco 7 Peças",
       "price": 1821,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB27415380?pdp_filters=item_id%3AMLB5832029482",
       "image": "https://http2.mlstatic.com/D_NQ_NP_677832-MLA99515300328_112025-O.webp",
@@ -114,19 +101,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB27415380?pdp_filters=item_id%3AMLB5832029482",
           "price": 1821,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5832029482",
           "catalogId": "MLB27415380",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 2079
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1821
-            }
+            { "date": "2026-10-23", "price": 2079 },
+            { "date": "2026-10-30", "price": 1821 }
           ]
         }
       ]
