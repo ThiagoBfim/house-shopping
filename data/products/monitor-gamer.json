@@ -72,29 +72,29 @@
       ]
     },
     {
-      "id": "monitor-gamer-lg-ultragear-27-oled-240hz",
+      "id": "monitor-gamer-lg-ultragear-27-oled-480hz-27gx790a",
       "tier": 4,
-      "name": "Monitor Gamer LG UltraGear 27\" OLED 240 Hz 27GX704A",
-      "price": 4699,
-      "priceUpdatedAt": "2026-10-30",
+      "name": "Monitor Gamer LG UltraGear 27\" OLED 480 Hz 27GX790A-B",
+      "price": 5779,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://meli.la/2PrL83S",
+      "url": "https://meli.la/27LiRZv",
       "bullets": [
         "OLED: preto absoluto e cores fortes",
-        "240 Hz, 0,03 ms",
+        "480 Hz, 0,03 ms: o mais rápido da lista",
         "Para jogo competitivo"
       ],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_662384-MLA109034761065_032026-O.webp",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_620005-MLA99989360881_112025-O.webp",
       "offers": [
         {
           "store": "mercadolivre",
-          "url": "https://meli.la/2PrL83S",
-          "price": 4699,
-          "updatedAt": "2026-10-30",
+          "url": "https://meli.la/27LiRZv",
+          "price": 5779,
+          "updatedAt": "2026-11-03",
           "available": true,
-          "externalId": "MLB5434274025",
-          "catalogId": "MLB66833470",
-          "history": [{ "date": "2026-10-22", "price": 4699 }]
+          "externalId": "MLB6667023852",
+          "catalogId": "MLB48716532",
+          "history": [{ "date": "2026-11-03", "price": 5779 }]
         }
       ]
     }

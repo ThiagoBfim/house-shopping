@@ -22,14 +22,8 @@
           "externalId": "MLB7762770530",
           "catalogId": "MLB15785193",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 199
-            },
-            {
-              "date": "2026-10-30",
-              "price": 127
-            }
+            { "date": "2026-10-23", "price": 199 },
+            { "date": "2026-10-30", "price": 127 }
           ]
         }
       ]
@@ -39,7 +33,7 @@
       "tier": 2,
       "name": "Ferro a Vapor Arno Ultragliss Plus",
       "price": 245.99,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1cZqusT",
       "bullets": ["Vapor tira vincos mais rápido", "Base antiaderente", "Jato de vapor vertical"],
@@ -49,16 +43,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1cZqusT",
           "price": 245.99,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB7568051894",
           "catalogId": "MLB68773047",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 245.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 245.99 }]
         }
       ]
     },
@@ -66,8 +55,8 @@
       "id": "vaporizador-de-roupas-philips-serie-3000",
       "tier": 3,
       "name": "Vaporizador de Roupas Philips Walita Série 3000",
-      "price": 319.99,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 248,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2JpDAV5",
       "bullets": [
@@ -80,16 +69,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2JpDAV5",
-          "price": 319.99,
-          "updatedAt": "2026-10-30",
+          "price": 248,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6556906064",
           "catalogId": "MLB54409377",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 319.99
-            }
+            { "date": "2026-10-22", "price": 319.99 },
+            { "date": "2026-11-03", "price": 248 }
           ]
         }
       ]

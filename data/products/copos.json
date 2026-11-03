@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Jogo de Copos Nadir Americano 12 Peças",
       "price": 29.99,
-      "priceUpdatedAt": "2026-10-25",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1zfZVAp",
       "bullets": ["12 copos de vidro", "O clássico copo americano", "Barato para repor"],
@@ -17,16 +17,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1zfZVAp",
           "price": 29.99,
-          "updatedAt": "2026-10-25",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6577404612",
           "catalogId": "MLB58973786",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 29.99
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 29.99 }]
         }
       ]
     },
@@ -35,7 +30,7 @@
       "tier": 2,
       "name": "Jogo de 12 Copos Long Drink Nadir Dubai 480 ml",
       "price": 65,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2nzPmzY",
       "bullets": ["12 copos altos de 480 ml", "Vidro Nadir", "Bom para receber visitas"],
@@ -45,16 +40,11 @@
           "store": "mercadolivre",
           "url": "https://meli.la/2nzPmzY",
           "price": 65,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6512539354",
           "catalogId": "MLB66986892",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 65
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 65 }]
         }
       ]
     },
@@ -63,7 +53,7 @@
       "tier": 3,
       "name": "Jogo 12 Copos de Cristal Bohemia Ardea 300 ml",
       "price": 300,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/jogo-12-copos-cristal-bohemia-300ml-linha-ardea-resistencia-titanio/p/MLB43867226?pdp_filters=item_id%3AMLB5256584631",
       "image": "https://http2.mlstatic.com/D_NQ_NP_781169-MLA114654901931_072026-O.webp",
@@ -73,16 +63,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/jogo-12-copos-cristal-bohemia-300ml-linha-ardea-resistencia-titanio/p/MLB43867226?pdp_filters=item_id%3AMLB5256584631",
           "price": 300,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5256584631",
           "catalogId": "MLB43867226",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 300
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 300 }]
         }
       ]
     }

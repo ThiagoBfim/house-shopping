@@ -2,14 +2,8 @@
   "label": "Panelas",
   "utensil": true,
   "variants": [
-    {
-      "id": "comum",
-      "label": "Qualquer fogão"
-    },
-    {
-      "id": "inducao",
-      "label": "Para indução"
-    }
+    { "id": "comum", "label": "Qualquer fogão" },
+    { "id": "inducao", "label": "Para indução" }
   ],
   "options": [
     {
@@ -17,7 +11,7 @@
       "tier": 1,
       "name": "Jogo de Panelas Tramontina Paris 5 Peças Antiaderente",
       "price": 283.96,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB32452413?pdp_filters=item_id%3AMLB3593471545",
       "image": "https://http2.mlstatic.com/D_NQ_NP_664015-MLA95696482092_102025-O.webp",
@@ -32,19 +26,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB32452413?pdp_filters=item_id%3AMLB3593471545",
           "price": 283.96,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3593471545",
           "catalogId": "MLB32452413",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 363
-            },
-            {
-              "date": "2026-10-30",
-              "price": 283.96
-            }
+            { "date": "2026-10-23", "price": 363 },
+            { "date": "2026-10-30", "price": 283.96 }
           ]
         }
       ]
@@ -53,8 +41,8 @@
       "id": "jogo-de-panelas-tramontina-solar-inox-fundo-triplo",
       "tier": 2,
       "name": "Jogo de Panelas Tramontina Solar Inox Fundo Triplo 6 Peças",
-      "price": 767.25,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 767.15,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB47816179?pdp_filters=item_id%3AMLB5376130586",
       "image": "https://http2.mlstatic.com/D_NQ_NP_885756-MLA96139099845_102025-O.webp",
@@ -68,20 +56,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB47816179?pdp_filters=item_id%3AMLB5376130586",
-          "price": 767.25,
-          "updatedAt": "2026-10-30",
+          "price": 767.15,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5376130586",
           "catalogId": "MLB47816179",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 945
-            },
-            {
-              "date": "2026-10-30",
-              "price": 767.25
-            }
+            { "date": "2026-10-23", "price": 945 },
+            { "date": "2026-10-30", "price": 767.25 },
+            { "date": "2026-11-03", "price": 767.15 }
           ]
         }
       ]
@@ -124,12 +107,7 @@
           "price": 4948,
           "updatedAt": "2026-10-22",
           "available": true,
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4948
-            }
-          ],
+          "history": [{ "date": "2026-10-22", "price": 4948 }],
           "externalId": "MLB4776706002"
         }
       ],

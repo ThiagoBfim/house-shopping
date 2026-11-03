@@ -6,8 +6,8 @@
       "id": "purificador-ibbl-e-due",
       "tier": 1,
       "name": "Purificador de Água IBBL E-Due Equilibrium",
-      "price": 448,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 459,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/17EDmju",
       "bullets": ["Água gelada e natural", "Instalação simples", "Refil barato"],
@@ -16,63 +16,23 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/17EDmju",
-          "price": 448,
-          "updatedAt": "2026-10-30",
+          "price": 459,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6844611576",
           "catalogId": "MLB23641514",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 448
-            },
-            {
-              "date": "2026-10-23",
-              "price": 449
-            },
-            {
-              "date": "2026-10-30",
-              "price": 448
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "purificador-electrolux-pe12b",
-      "tier": 2,
-      "name": "Purificador de Água Electrolux Pure 4X PE12B",
-      "price": 689.9,
-      "priceUpdatedAt": "2026-10-30",
-      "store": "mercadolivre",
-      "url": "https://meli.la/174L6dj",
-      "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"],
-      "image": "https://http2.mlstatic.com/D_NQ_NP_761091-MLA99918405251_112025-O.webp",
-      "offers": [
-        {
-          "store": "mercadolivre",
-          "url": "https://meli.la/174L6dj",
-          "price": 689.9,
-          "updatedAt": "2026-10-30",
-          "available": true,
-          "externalId": "MLB4830318106",
-          "catalogId": "MLB20708251",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 720.9
-            },
-            {
-              "date": "2026-10-25",
-              "price": 689.9
-            }
+            { "date": "2026-10-22", "price": 448 },
+            { "date": "2026-10-23", "price": 449 },
+            { "date": "2026-10-30", "price": 448 },
+            { "date": "2026-11-03", "price": 459 }
           ]
         }
       ]
     },
     {
       "id": "purificador-electrolux-pe11b",
-      "tier": 3,
+      "tier": 2,
       "name": "Purificador de Água Electrolux PE11B",
       "price": 697,
       "priceUpdatedAt": "2026-10-23",
@@ -89,11 +49,33 @@
           "available": true,
           "externalId": "MLB29239222",
           "catalogId": "MLB29239222",
+          "history": [{ "date": "2026-10-23", "price": 697 }]
+        }
+      ]
+    },
+    {
+      "id": "purificador-electrolux-pe12b",
+      "tier": 3,
+      "name": "Purificador de Água Electrolux Pure 4X PE12B",
+      "price": 699.9,
+      "priceUpdatedAt": "2026-11-03",
+      "store": "mercadolivre",
+      "url": "https://meli.la/174L6dj",
+      "bullets": ["O mais bem avaliado da categoria", "Bivolt", "Aviso de troca de filtro"],
+      "image": "https://http2.mlstatic.com/D_NQ_NP_761091-MLA99918405251_112025-O.webp",
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/174L6dj",
+          "price": 699.9,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB4830318106",
+          "catalogId": "MLB20708251",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 697
-            }
+            { "date": "2026-10-22", "price": 720.9 },
+            { "date": "2026-10-25", "price": 689.9 },
+            { "date": "2026-11-03", "price": 699.9 }
           ]
         }
       ]

@@ -6,8 +6,8 @@
       "id": "aparelho-de-jantar-opaline-20-pecas",
       "tier": 1,
       "name": "Aparelho de Jantar Opaline 20 Peças",
-      "price": 213,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 203.22,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB69592830?pdp_filters=item_id%3AMLB6767559174",
       "image": "https://http2.mlstatic.com/D_NQ_NP_872674-MLA110643803074_052026-O.webp",
@@ -16,20 +16,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB69592830?pdp_filters=item_id%3AMLB6767559174",
-          "price": 213,
-          "updatedAt": "2026-10-30",
+          "price": 203.22,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6767559174",
           "catalogId": "MLB69592830",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 269
-            },
-            {
-              "date": "2026-10-30",
-              "price": 213
-            }
+            { "date": "2026-10-23", "price": 269 },
+            { "date": "2026-10-30", "price": 213 },
+            { "date": "2026-11-03", "price": 203.22 }
           ]
         }
       ]
@@ -39,7 +34,7 @@
       "tier": 2,
       "name": "Aparelho de Jantar Oxford Ryo White 30 Peças",
       "price": 640.1,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB36208300?pdp_filters=item_id%3AMLB3684951181",
       "image": "https://http2.mlstatic.com/D_NQ_NP_856128-MLA95697994570_102025-O.webp",
@@ -49,19 +44,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB36208300?pdp_filters=item_id%3AMLB3684951181",
           "price": 640.1,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3684951181",
           "catalogId": "MLB36208300",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 640
-            },
-            {
-              "date": "2026-10-30",
-              "price": 640.1
-            }
+            { "date": "2026-10-23", "price": 640 },
+            { "date": "2026-10-30", "price": 640.1 }
           ]
         }
       ]
@@ -89,12 +78,7 @@
           "available": true,
           "externalId": "MLB5660358178",
           "catalogId": "MLB32486856",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 911
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 911 }]
         }
       ]
     },

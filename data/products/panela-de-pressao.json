@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Panela de Pressão Clock Tradicional 4,5 L",
       "price": 169.9,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB10547390?pdp_filters=item_id%3AMLB5183709535",
       "image": "https://http2.mlstatic.com/D_NQ_NP_639461-MLA97859844587_112025-O.webp",
@@ -21,19 +21,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB10547390?pdp_filters=item_id%3AMLB5183709535",
           "price": 169.9,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5183709535",
           "catalogId": "MLB10547390",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 169
-            },
-            {
-              "date": "2026-10-30",
-              "price": 169.9
-            }
+            { "date": "2026-10-23", "price": 169 },
+            { "date": "2026-10-30", "price": 169.9 }
           ]
         }
       ]
@@ -43,7 +37,7 @@
       "tier": 2,
       "name": "Panela de Pressão Tramontina Vancouver 4,5 L Antiaderente",
       "price": 181.95,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB10892513?pdp_filters=item_id%3AMLB5662769788",
       "image": "https://http2.mlstatic.com/D_NQ_NP_661364-MLA118230540914_102026-O.webp",
@@ -57,19 +51,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB10892513?pdp_filters=item_id%3AMLB5662769788",
           "price": 181.95,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5662769788",
           "catalogId": "MLB10892513",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 245
-            },
-            {
-              "date": "2026-10-30",
-              "price": 181.95
-            }
+            { "date": "2026-10-23", "price": 245 },
+            { "date": "2026-10-30", "price": 181.95 }
           ]
         }
       ]
@@ -79,7 +67,7 @@
       "tier": 3,
       "name": "Panela de Pressão Tramontina Solar Inox 4,5 L",
       "price": 664.05,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB19957715?pdp_filters=item_id%3AMLB3891149400",
       "image": "https://http2.mlstatic.com/D_NQ_NP_944075-MLA99897195641_112025-O.webp",
@@ -93,19 +81,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB19957715?pdp_filters=item_id%3AMLB3891149400",
           "price": 664.05,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3891149400",
           "catalogId": "MLB19957715",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 728
-            },
-            {
-              "date": "2026-10-30",
-              "price": 664.05
-            }
+            { "date": "2026-10-23", "price": 728 },
+            { "date": "2026-10-30", "price": 664.05 }
           ]
         }
       ]

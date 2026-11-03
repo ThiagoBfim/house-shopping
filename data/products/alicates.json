@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Kit 3 Alicates Tramontina (Bico, Corte e Universal)",
       "price": 89,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB27157886?pdp_filters=item_id%3AMLB5577742806",
       "image": "https://http2.mlstatic.com/D_NQ_NP_861759-MLA99467985726_112025-O.webp",
@@ -21,19 +21,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB27157886?pdp_filters=item_id%3AMLB5577742806",
           "price": 89,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5577742806",
           "catalogId": "MLB27157886",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 100
-            },
-            {
-              "date": "2026-10-30",
-              "price": 89
-            }
+            { "date": "2026-10-23", "price": 100 },
+            { "date": "2026-10-30", "price": 89 }
           ]
         }
       ]
@@ -43,7 +37,7 @@
       "tier": 2,
       "name": "Jogo de Alicates Isolados Stanley VDE 3 Peças",
       "price": 320,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB2081213733?pdp_filters=item_id%3AMLB3167210034",
       "image": "https://http2.mlstatic.com/D_NQ_NP_903512-MLB54951560489_042023-O.webp",
@@ -57,19 +51,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB2081213733?pdp_filters=item_id%3AMLB3167210034",
           "price": 320,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB3167210034",
           "catalogId": "MLB2081213733",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 364
-            },
-            {
-              "date": "2026-10-30",
-              "price": 320
-            }
+            { "date": "2026-10-23", "price": 364 },
+            { "date": "2026-10-30", "price": 320 }
           ]
         }
       ]

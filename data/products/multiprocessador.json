@@ -7,7 +7,7 @@
       "tier": 1,
       "name": "Multiprocessador Britânia BMP900 3 em 1 1000 W",
       "price": 219,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB49822223?pdp_filters=item_id%3AMLB5409970690",
       "image": "https://http2.mlstatic.com/D_NQ_NP_683164-MLA84324524124_052025-O.webp",
@@ -17,19 +17,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB49822223?pdp_filters=item_id%3AMLB5409970690",
           "price": 219,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5409970690",
           "catalogId": "MLB49822223",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 269
-            },
-            {
-              "date": "2026-10-30",
-              "price": 219
-            }
+            { "date": "2026-10-23", "price": 269 },
+            { "date": "2026-10-30", "price": 219 }
           ]
         }
       ]
@@ -39,7 +33,7 @@
       "tier": 2,
       "name": "Processador Philips Walita Powerchop RI7301 750 W",
       "price": 252,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB21323093?pdp_filters=item_id%3AMLB5185025128",
       "image": "https://http2.mlstatic.com/D_NQ_NP_712356-MLA99592437148_122025-O.webp",
@@ -53,19 +47,13 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB21323093?pdp_filters=item_id%3AMLB5185025128",
           "price": 252,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5185025128",
           "catalogId": "MLB21323093",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 404
-            },
-            {
-              "date": "2026-10-30",
-              "price": 252
-            }
+            { "date": "2026-10-23", "price": 404 },
+            { "date": "2026-10-30", "price": 252 }
           ]
         }
       ]
@@ -94,14 +82,8 @@
           "externalId": "MLB7285010844",
           "catalogId": "MLB47433943",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 509
-            },
-            {
-              "date": "2026-10-30",
-              "price": 463.19
-            }
+            { "date": "2026-10-23", "price": 509 },
+            { "date": "2026-10-30", "price": 463.19 }
           ]
         }
       ]
@@ -111,7 +93,7 @@
       "tier": 4,
       "name": "Processador de Alimentos KitchenAid 9 Xícaras",
       "price": 1988,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB69083102?pdp_filters=item_id%3AMLB4980900139",
       "image": "https://http2.mlstatic.com/D_NQ_NP_857272-MLA111168955171_052026-O.webp",
@@ -126,16 +108,11 @@
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB69083102?pdp_filters=item_id%3AMLB4980900139",
           "price": 1988,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4980900139",
           "catalogId": "MLB69083102",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1988
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 1988 }]
         }
       ]
     }

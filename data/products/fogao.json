@@ -2,26 +2,17 @@
   "label": "Fogão ou cooktop",
   "utensil": false,
   "variants": [
-    {
-      "id": "piso",
-      "label": "Fogão de piso"
-    },
-    {
-      "id": "cooktop-gas",
-      "label": "Cooktop a gás"
-    },
-    {
-      "id": "cooktop-inducao",
-      "label": "Cooktop de indução"
-    }
+    { "id": "piso", "label": "Fogão de piso" },
+    { "id": "cooktop-gas", "label": "Cooktop a gás" },
+    { "id": "cooktop-inducao", "label": "Cooktop de indução" }
   ],
   "options": [
     {
       "id": "fogao-atlas-monaco-top-glass-4-bocas",
       "tier": 1,
       "name": "Fogão Atlas Mônaco Top Glass 4 Bocas",
-      "price": 1029.9,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1171.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB67291977?pdp_filters=item_id%3AMLB4721957289",
       "image": "https://http2.mlstatic.com/D_NQ_NP_699574-MLA109619945713_032026-O.webp",
@@ -35,20 +26,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB67291977?pdp_filters=item_id%3AMLB4721957289",
-          "price": 1029.9,
-          "updatedAt": "2026-10-30",
+          "price": 1171.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB4721957289",
           "catalogId": "MLB67291977",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 1159
-            },
-            {
-              "date": "2026-10-30",
-              "price": 1029.9
-            }
+            { "date": "2026-10-23", "price": 1159 },
+            { "date": "2026-10-30", "price": 1029.9 },
+            { "date": "2026-11-03", "price": 1171.9 }
           ]
         }
       ]
@@ -76,12 +62,7 @@
           "available": true,
           "externalId": "MLB7471492298",
           "catalogId": "MLB58819383",
-          "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1760.32
-            }
-          ]
+          "history": [{ "date": "2026-10-22", "price": 1760.32 }]
         }
       ],
       "variants": ["piso"]
@@ -90,8 +71,8 @@
       "id": "fogao-brastemp-bfs5ncr",
       "tier": 3,
       "name": "Fogão Brastemp 5 Bocas Inox BFS5NCR",
-      "price": 1879,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 1871.31,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/2ecE65h",
       "bullets": [
@@ -104,16 +85,14 @@
         {
           "store": "mercadolivre",
           "url": "https://meli.la/2ecE65h",
-          "price": 1879,
-          "updatedAt": "2026-10-30",
+          "price": 1871.31,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB2048022318",
           "catalogId": "MLB18949054",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 1879
-            }
+            { "date": "2026-10-22", "price": 1879 },
+            { "date": "2026-11-03", "price": 1871.31 }
           ]
         }
       ],
@@ -124,7 +103,7 @@
       "tier": 4,
       "name": "Fogão Electrolux 5 Bocas Airfry Gás/Elétrico Inox",
       "price": 4499,
-      "priceUpdatedAt": "2026-10-30",
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://meli.la/1phX4ru",
       "bullets": [
@@ -139,22 +118,13 @@
           "store": "mercadolivre",
           "url": "https://meli.la/1phX4ru",
           "price": 4499,
-          "updatedAt": "2026-10-30",
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB6258830598",
           "history": [
-            {
-              "date": "2026-10-22",
-              "price": 4699
-            },
-            {
-              "date": "2026-10-25",
-              "price": 4349
-            },
-            {
-              "date": "2026-10-30",
-              "price": 4499
-            }
+            { "date": "2026-10-22", "price": 4699 },
+            { "date": "2026-10-25", "price": 4349 },
+            { "date": "2026-10-30", "price": 4499 }
           ],
           "catalogId": "MLB64611576"
         }
@@ -181,12 +151,7 @@
           "available": true,
           "externalId": "MLB5107006240",
           "catalogId": "MLB18718936",
-          "history": [
-            {
-              "date": "2026-10-23",
-              "price": 587
-            }
-          ]
+          "history": [{ "date": "2026-10-23", "price": 587 }]
         }
       ]
     },
@@ -206,24 +171,36 @@
       "id": "cooktop-a-gas-brastemp-5-bocas-gourmand",
       "tier": 4,
       "name": "Cooktop a Gás Brastemp 5 Bocas Inox 90 cm",
-      "price": 3929,
-      "priceUpdatedAt": "2026-10-23",
+      "price": 3227,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
-      "url": "https://www.mercadolivre.com.br/up/MLBU1139323310?pdp_filters=item_id%3AMLB3523310069",
-      "image": "https://http2.mlstatic.com/D_NQ_NP_775366-MLB73023672334_112023-O.webp",
+      "url": "https://meli.la/21Ff8jH",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_926804-MLA99955500721_112025-O.webp",
       "bullets": [
         "Queimadores de alta potência",
         "Acendimento superautomático",
         "Acabamento premium"
       ],
-      "variants": ["cooktop-gas"]
+      "variants": ["cooktop-gas"],
+      "offers": [
+        {
+          "store": "mercadolivre",
+          "url": "https://meli.la/21Ff8jH",
+          "price": 3227,
+          "updatedAt": "2026-11-03",
+          "available": true,
+          "externalId": "MLB6483090746",
+          "catalogId": "MLB11407417",
+          "history": [{ "date": "2026-11-03", "price": 3227 }]
+        }
+      ]
     },
     {
       "id": "cooktop-a-gas-tramontina-penta-inox-5-bocas",
       "tier": 3,
       "name": "Cooktop a Gás Tramontina Penta 5GX Tri Inox 75 cm",
-      "price": 3549.5,
-      "priceUpdatedAt": "2026-10-30",
+      "price": 2799.9,
+      "priceUpdatedAt": "2026-11-03",
       "store": "mercadolivre",
       "url": "https://www.mercadolivre.com.br/p/MLB18616352?pdp_filters=item_id%3AMLB5761405716",
       "image": "https://http2.mlstatic.com/D_NQ_NP_604502-MLA100073521015_122025-O.webp",
@@ -237,20 +214,15 @@
         {
           "store": "mercadolivre",
           "url": "https://www.mercadolivre.com.br/p/MLB18616352?pdp_filters=item_id%3AMLB5761405716",
-          "price": 3549.5,
-          "updatedAt": "2026-10-30",
+          "price": 2799.9,
+          "updatedAt": "2026-11-03",
           "available": true,
           "externalId": "MLB5761405716",
           "catalogId": "MLB18616352",
           "history": [
-            {
-              "date": "2026-10-23",
-              "price": 2799
-            },
-            {
-              "date": "2026-10-30",
-              "price": 3549.5
-            }
+            { "date": "2026-10-23", "price": 2799 },
+            { "date": "2026-10-30", "price": 3549.5 },
+            { "date": "2026-11-03", "price": 2799.9 }
           ]
         }
       ]
