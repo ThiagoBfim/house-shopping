@@ -297,6 +297,120 @@ h3 {
   font-weight: 700;
 }
 
+/* Posição dos móveis (recurso em teste) */
+
+.furniture-layout {
+  margin: 16px 0;
+}
+
+.furniture-layout h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.furniture-layout .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.furniture-layout .chip.is-active {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.furniture-layout p {
+  margin: 6px 0;
+  font-size: 0.85rem;
+}
+
+.furniture-layout svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.layout-room {
+  fill: var(--bg);
+  stroke: var(--fg);
+  stroke-width: 6;
+}
+
+.layout-window {
+  stroke: #4a90d9;
+  stroke-width: 8;
+}
+
+.layout-door-gap {
+  stroke: var(--bg);
+  stroke-width: 8;
+}
+
+.layout-door path {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.layout-item {
+  cursor: pointer;
+}
+
+.layout-item rect {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.layout-item.is-wall rect {
+  fill: var(--tier-2-fg);
+  stroke: var(--tier-2-fg);
+}
+
+.layout-item.is-rug rect {
+  fill: var(--tier-4);
+  stroke: var(--tier-4-fg);
+  stroke-dasharray: 6 4;
+  opacity: 0.6;
+}
+
+.layout-item.is-picked rect,
+.layout-item:focus-visible rect {
+  stroke: var(--warn);
+  stroke-width: 4;
+}
+
+.layout-item:focus {
+  outline: none;
+}
+
+.layout-item text {
+  fill: var(--fg);
+  pointer-events: none;
+}
+
+.layout-scale line {
+  stroke: var(--fg);
+  stroke-width: 3;
+}
+
+.layout-scale text {
+  fill: var(--muted);
+}
+
+.layout-details {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  font-size: 0.85rem;
+}
+
 /* Preços mais baratos (recurso em teste) */
 
 /* Espaço antes da busca da lista, para os dois "Buscar" não ficarem colados. */

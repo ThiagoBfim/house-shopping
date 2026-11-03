@@ -66,7 +66,7 @@ Plano em [`wave-2/PLAN.md`](wave-2/PLAN.md). Primeiro tudo local, com o Claude C
 | [33](wave-2/drop-33-precos-mais-baratos.md)      | Preços mais baratos (com desfazer) | ✅ Concluído | 2026-11-02 18:01 | 2026-11-02 18:08 | 7min    |
 | [34](wave-2/drop-34-cobranca.md)                 | Cobrança                           | ⏳ A fazer   | —                | —                | —       |
 | [35](wave-2/drop-35-medidas-dos-produtos.md)     | Medidas dos produtos               | ✅ Concluído | 2026-11-03 13:30 | 2026-11-03 13:35 | 5min    |
-| [36](wave-2/drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta       | ⏳ A fazer   | —                | —                | —       |
+| [36](wave-2/drop-36-posicao-dos-moveis.md)       | Posição dos móveis na planta       | ✅ Concluído | 2026-11-03 13:37 | 2026-11-03 13:48 | 11min   |
 | [37](wave-2/drop-37-visualizacao-3d.md)          | Visualização 3D                    | ⏳ A fazer   | —                | —                | —       |
 
 ### Backlog

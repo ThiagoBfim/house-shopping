@@ -39,6 +39,15 @@ Liste **todos** os ambientes desenhados, um por um (dois quartos = duas entradas
 2. senão, pelas medidas ("3,00 x 4,20") → largura × comprimento;
 3. senão → `null`. **Não estime pelo tamanho do desenho**: área errada escolhe a cama errada.
 
+**`openings`** — portas e janelas do cômodo (para os móveis não ficarem na frente delas):
+
+- **porta** (`"door"`): abertura na parede com o arco de abrir (um quarto de círculo); a de correr aparece como dois traços paralelos na abertura. Porta entre dois cômodos entra nos dois.
+- **janela** (`"window"`): trecho da parede externa desenhado com linhas finas paralelas (2 ou 3), sem arco.
+- `wall`: em qual lado do **retângulo do cômodo** ela está — `top` (a parede de cima na planta), `right`, `bottom`, `left`.
+- `position`: o centro da abertura ao longo dessa parede, de 0 a 1 (0 = ponta esquerda em `top`/`bottom`, ponta de cima em `left`/`right`).
+- `widthCm`: largura da abertura em cm (porta comum 70–90; janela 100–200). Sem cota, estime pelo desenho em proporção à medida do cômodo.
+- Não dá para ver portas e janelas (planta sem esse detalhe): `openings: []`.
+
 **`x`, `y`, `width`, `height`** — o retângulo que envolve o cômodo, em frações do desenho da planta inteira (0 a 1): `x`/`y` = canto de cima à esquerda; `width`/`height` = tamanho. Cômodo em L: o retângulo que o envolve. Os retângulos podem se tocar, mas não devem se sobrepor muito.
 
 ## 2. O desenho todo

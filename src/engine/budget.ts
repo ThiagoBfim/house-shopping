@@ -86,6 +86,8 @@ export interface ManualEntry {
   subtotal: number
   /** Item do catálogo que este substitui (quando é uma troca). */
   replaced?: ReplacedEntry
+  /** Troca de móvel: a medida típica da categoria trocada (o produto do usuário não tem medida). */
+  size?: ItemSize
 }
 
 export interface ReplacedEntry {
@@ -294,7 +296,11 @@ export function describeList(
       subtotal: (cents(item.price) * item.qty) / 100,
     }
     const original = item.replaces && replaced.get(item.replaces)
-    return original ? { ...entry, replaced: original } : entry
+    if (!original) return entry
+    const { variants } = products[original.item.category]
+    const variant = variants && chosenVariant(variants, choices.variants[original.item.category])
+    const size = sizeOf({}, products[original.item.category], variant)
+    return { ...entry, replaced: original, ...(size && { size }) }
   })
 
   for (const item of [...room.items].sort(byImportance)) {

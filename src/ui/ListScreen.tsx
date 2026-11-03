@@ -26,6 +26,7 @@ import { AnswersPanel } from './AnswersPanel.tsx'
 import { CheaperPrices } from './CheaperPrices.tsx'
 import type { SavedPlan } from './floor-plan-store.ts'
 import { FloorPlanDrawing } from './FloorPlanDrawing.tsx'
+import { FurnitureLayout } from './FurnitureLayout.tsx'
 import { ManualCard } from './ManualCard.tsx'
 import { ManualForm } from './ManualForm.tsx'
 import { ProductCard } from './ProductCard.tsx'
@@ -404,6 +405,7 @@ export function ListScreen({
       <AnswersPanel {...answers} onRedo={onAssistant} />
 
       {floorPlan && <FloorPlanDrawing plan={floorPlan} view={view} instances={instances} />}
+      {floorPlan && <FurnitureLayout plan={floorPlan} view={view} instances={instances} />}
 
       {cheaperPrices && hasItems && (
         <CheaperPrices

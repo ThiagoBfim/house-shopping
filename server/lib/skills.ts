@@ -36,7 +36,7 @@ export const FLOOR_PLAN_SCHEMA = {
       items: {
         type: 'object',
         additionalProperties: false,
-        required: ['type', 'label', 'areaM2', 'x', 'y', 'width', 'height'],
+        required: ['type', 'label', 'areaM2', 'openings', 'x', 'y', 'width', 'height'],
         properties: {
           type: { type: 'string', enum: PLAN_ROOM_TYPES },
           label: {
@@ -46,6 +46,28 @@ export const FLOOR_PLAN_SCHEMA = {
           areaM2: {
             type: ['number', 'null'],
             description: 'Área em m² (null se não der para saber)',
+          },
+          openings: {
+            type: 'array',
+            maxItems: 8,
+            description: 'Portas e janelas do cômodo ([] se não der para ver)',
+            items: {
+              type: 'object',
+              additionalProperties: false,
+              required: ['kind', 'wall', 'position', 'widthCm'],
+              properties: {
+                kind: { type: 'string', enum: ['door', 'window'] },
+                wall: {
+                  type: 'string',
+                  enum: ['top', 'right', 'bottom', 'left'],
+                  description: 'Parede do retângulo do cômodo (top = a de cima na planta)',
+                },
+                position: position(
+                  'Centro da abertura ao longo da parede: 0 = início (esquerda/topo), 1 = fim',
+                ),
+                widthCm: { type: 'number', minimum: 40, maximum: 400 },
+              },
+            },
           },
           x: position('Esquerda do cômodo, de 0 (borda esquerda da planta) a 1'),
           y: position('Topo do cômodo, de 0 (borda de cima da planta) a 1'),

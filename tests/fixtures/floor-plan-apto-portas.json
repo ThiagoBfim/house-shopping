@@ -1,0 +1,176 @@
+{
+  "aspect": 1.5,
+  "rooms": [
+    {
+      "type": "quarto",
+      "label": "Suíte",
+      "areaM2": 14,
+      "x": 0,
+      "y": 0,
+      "width": 0.292,
+      "height": 0.498,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.5,
+          "widthCm": 140
+        },
+        {
+          "kind": "door",
+          "wall": "right",
+          "position": 0.8,
+          "widthCm": 80
+        },
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.54,
+          "widthCm": 80
+        }
+      ]
+    },
+    {
+      "type": "banheiro",
+      "label": "Banho",
+      "areaM2": 4,
+      "x": 0.292,
+      "y": 0,
+      "width": 0.165,
+      "height": 0.249,
+      "openings": []
+    },
+    {
+      "type": "outro",
+      "label": "Circulação",
+      "areaM2": null,
+      "x": 0.292,
+      "y": 0.249,
+      "width": 0.165,
+      "height": 0.249,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "left",
+          "position": 0.61,
+          "widthCm": 80
+        }
+      ]
+    },
+    {
+      "type": "sala",
+      "label": "Estar / Jantar",
+      "areaM2": 20,
+      "x": 0.457,
+      "y": 0,
+      "width": 0.293,
+      "height": 0.498,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "top",
+          "position": 0.52,
+          "widthCm": 160
+        }
+      ]
+    },
+    {
+      "type": "cozinha",
+      "label": "Cozinha",
+      "areaM2": 9,
+      "x": 0.75,
+      "y": 0,
+      "width": 0.249,
+      "height": 0.313,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "right",
+          "position": 0.52,
+          "widthCm": 120
+        }
+      ]
+    },
+    {
+      "type": "lavanderia",
+      "label": "A. Serviço",
+      "areaM2": 3,
+      "x": 0.75,
+      "y": 0.313,
+      "width": 0.249,
+      "height": 0.185,
+      "openings": []
+    },
+    {
+      "type": "quarto",
+      "label": "Dorm. 2",
+      "areaM2": 9,
+      "x": 0,
+      "y": 0.498,
+      "width": 0.25,
+      "height": 0.502,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.45,
+          "widthCm": 140
+        },
+        {
+          "kind": "door",
+          "wall": "top",
+          "position": 0.635,
+          "widthCm": 80
+        }
+      ]
+    },
+    {
+      "type": "banheiro",
+      "label": "Banheiro",
+      "areaM2": 3.6,
+      "x": 0.25,
+      "y": 0.498,
+      "width": 0.25,
+      "height": 0.249,
+      "openings": []
+    },
+    {
+      "type": "outro",
+      "label": "Closet",
+      "areaM2": null,
+      "x": 0.25,
+      "y": 0.747,
+      "width": 0.25,
+      "height": 0.253,
+      "openings": []
+    },
+    {
+      "type": "area-externa",
+      "label": "Varanda",
+      "areaM2": 6,
+      "x": 0.5,
+      "y": 0.498,
+      "width": 0.332,
+      "height": 0.502,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.74,
+          "widthCm": 90
+        }
+      ]
+    },
+    {
+      "type": "banheiro",
+      "label": "Lavabo",
+      "areaM2": 2,
+      "x": 0.832,
+      "y": 0.498,
+      "width": 0.166,
+      "height": 0.502,
+      "openings": []
+    }
+  ],
+  "notes": "Planta sem escala: medidas das aberturas estimadas pelo desenho. Circulação e Closet sem área escrita. Vários cômodos (Banho, Banheiro, Cozinha, A. Serviço, Lavabo, Closet, Estar/Jantar) não têm portas desenhadas — confira as passagens."
+}

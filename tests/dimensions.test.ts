@@ -75,8 +75,18 @@ describe('layout do catálogo', () => {
   it('sizeOf: medida real da opção ou a típica estimada', () => {
     const geladeira = products.geladeira
     const real = geladeira.options.find((o) => o.dimensions)!
-    expect(sizeOf(real, geladeira)).toEqual({ ...real.dimensions, estimated: false })
-    expect(sizeOf({}, geladeira)).toEqual({ width: 70, depth: 75, height: 185, estimated: true })
+    expect(sizeOf(real, geladeira)).toEqual({
+      ...real.dimensions,
+      estimated: false,
+      placement: 'floor',
+    })
+    expect(sizeOf({}, geladeira)).toEqual({
+      width: 70,
+      depth: 75,
+      height: 185,
+      estimated: true,
+      placement: 'floor',
+    })
     expect(sizeOf({}, products.colchao)).toBeUndefined() // colchão fica sobre a cama
     expect(sizeOf({}, products.liquidificador)).toBeUndefined()
   })
@@ -104,5 +114,40 @@ describe('medidas na lista', () => {
     expect(entry('cozinha:geladeira')?.size?.width).toBeGreaterThan(50)
     expect(entry('cozinha:fogao')?.size).toBeUndefined()
     expect(entry('cozinha:liquidificador')?.size).toBeUndefined()
+  })
+})
+
+describe('layoutItems (lista → móveis de um cômodo)', () => {
+  it('itens com medida do cômodo, troca com a medida típica da categoria trocada', async () => {
+    const { buildList, emptyChoices } = await import('../src/engine/budget.ts')
+    const { expandHouse } = await import('../src/engine/house.ts')
+    const { replaceWith } = await import('../src/engine/manual.ts')
+    const { layoutItems } = await import('../src/engine/layout.ts')
+    const { rooms } = await import('../src/data/catalog-data.ts')
+    const house = expandHouse(rooms, products, { quarto: 2, cozinha: 1 })
+    const choices = replaceWith(emptyChoices(), {
+      id: 'g1',
+      instanceId: 'cozinha',
+      name: 'Geladeira da loja X',
+      price: 3000,
+      qty: 1,
+      url: 'https://loja.com/g',
+      replaces: 'cozinha:geladeira',
+    })
+    const view = buildList(house.room, house.products, 1_000_000, choices)
+    const quarto = layoutItems(view, 'quarto-1')
+    expect(quarto.every((i) => i.key.startsWith('quarto-1:'))).toBe(true)
+    expect(quarto.find((i) => i.category === 'cama-box')).toMatchObject({
+      placement: 'floor',
+      width: 138,
+    })
+    expect(quarto.find((i) => i.category === 'criado-mudo')?.qty).toBe(2)
+    const cozinha = layoutItems(view, 'cozinha')
+    expect(cozinha.find((i) => i.key === 'g1')).toMatchObject({
+      category: 'geladeira',
+      label: 'Geladeira da loja X',
+      width: 70,
+    })
+    expect(cozinha.some((i) => i.category === 'liquidificador')).toBe(false)
   })
 })

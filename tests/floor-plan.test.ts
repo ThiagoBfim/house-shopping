@@ -19,6 +19,7 @@ const room = (partial: object) => ({
   type: 'quarto',
   label: 'Quarto',
   areaM2: 10,
+  openings: [],
   x: 0,
   y: 0,
   width: 0.5,
@@ -51,8 +52,26 @@ describe('parseFloorPlan', () => {
     expect(plan.aspect).toBe(1)
     expect(plan.notes).toBe('')
     expect(plan.rooms).toEqual([
-      { type: 'quarto', label: 'Suíte', areaM2: null, x: 0.5, y: 0, width: 0.5, height: 0.5 },
-      { type: 'quarto', label: 'quarto', areaM2: 10, x: 0, y: 0, width: 0.5, height: 0.5 },
+      {
+        type: 'quarto',
+        label: 'Suíte',
+        areaM2: null,
+        openings: [],
+        x: 0.5,
+        y: 0,
+        width: 0.5,
+        height: 0.5,
+      },
+      {
+        type: 'quarto',
+        label: 'quarto',
+        areaM2: 10,
+        openings: [],
+        x: 0,
+        y: 0,
+        width: 0.5,
+        height: 0.5,
+      },
       {
         type: 'quarto',
         label: 'Quarto',
@@ -61,6 +80,7 @@ describe('parseFloorPlan', () => {
         y: 0,
         width: 0.5,
         height: 0.5,
+        openings: [],
         instanceId: 'quarto-2',
       },
     ])
@@ -69,6 +89,34 @@ describe('parseFloorPlan', () => {
     expect(
       parseFloorPlan({ rooms: Array.from({ length: 40 }, () => room({})) })!.rooms,
     ).toHaveLength(30)
+  })
+})
+
+describe('portas e janelas', () => {
+  it('ficam as válidas; o resto é descartado', () => {
+    const plan = parseFloorPlan({
+      aspect: 1,
+      notes: '',
+      rooms: [
+        room({
+          openings: [
+            { kind: 'door', wall: 'bottom', position: 0.2, widthCm: 80 },
+            { kind: 'window', wall: 'top', position: 0.5, widthCm: 150 },
+            { kind: 'porta', wall: 'top', position: 0.5, widthCm: 80 },
+            { kind: 'door', wall: 'teto', position: 0.5, widthCm: 80 },
+            { kind: 'door', wall: 'left', position: 1.4, widthCm: 80 },
+            { kind: 'door', wall: 'left', position: 0.5, widthCm: 10 },
+            'lixo',
+          ],
+        }),
+        room({ openings: 'x' }),
+      ],
+    })!
+    expect(plan.rooms[0].openings).toEqual([
+      { kind: 'door', wall: 'bottom', position: 0.2, widthCm: 80 },
+      { kind: 'window', wall: 'top', position: 0.5, widthCm: 150 },
+    ])
+    expect(plan.rooms[1].openings).toEqual([])
   })
 })
 
@@ -146,7 +194,11 @@ describe('planToHouse', () => {
 
   it('ler de novo troca as ligações antigas', () => {
     const again = planToHouse(
-      { aspect: 1, notes: '', rooms: [room({ type: 'outro', instanceId: 'quarto-1' })] },
+      {
+        aspect: 1,
+        notes: '',
+        rooms: [{ ...room({ type: 'outro' }), openings: [], instanceId: 'quarto-1' }],
+      },
       rooms,
     )
     expect(again.rooms[0]).not.toHaveProperty('instanceId')

@@ -2,6 +2,41 @@ import type { Rooms } from '../data/schema.ts'
 import type { ListView } from './budget.ts'
 import { itemKey, MAX_PER_ROOM, splitItemKey, type HouseSpec } from './house.ts'
 
+/** Porta ou janela numa parede do cômodo. */
+export interface Opening {
+  kind: 'door' | 'window'
+  /** Parede do retângulo do cômodo, como na planta (top = a de cima). */
+  wall: 'top' | 'right' | 'bottom' | 'left'
+  /** Centro da abertura ao longo da parede: 0 = esquerda/topo, 1 = direita/fundo. */
+  position: number
+  widthCm: number
+}
+
+const WALLS = new Set(['top', 'right', 'bottom', 'left'])
+
+function parseOpenings(raw: unknown): Opening[] {
+  if (!Array.isArray(raw)) return []
+  return raw
+    .filter((o): o is Record<string, unknown> => typeof o === 'object' && o !== null)
+    .filter(
+      (o) =>
+        (o.kind === 'door' || o.kind === 'window') &&
+        typeof o.wall === 'string' &&
+        WALLS.has(o.wall) &&
+        isFraction(o.position) &&
+        typeof o.widthCm === 'number' &&
+        o.widthCm >= 40 &&
+        o.widthCm <= 400,
+    )
+    .slice(0, 8)
+    .map(({ kind, wall, position, widthCm }) => ({
+      kind: kind as Opening['kind'],
+      wall: wall as Opening['wall'],
+      position: position as number,
+      widthCm: widthCm as number,
+    }))
+}
+
 /** Cômodo lido da planta pela skill /floor-plan (posição em frações do desenho, 0–1). */
 export interface PlanRoom {
   /** Id do cômodo no catálogo ("quarto", "sala"…) ou "outro" (hall, closet…). */
@@ -9,6 +44,8 @@ export interface PlanRoom {
   /** Nome escrito na planta ("Suíte", "Dorm. 2"). */
   label: string
   areaM2: number | null
+  /** Portas e janelas (vazio quando a leitura não trouxe). */
+  openings: Opening[]
   x: number
   y: number
   width: number
@@ -56,7 +93,10 @@ export function parseFloorPlan(data: unknown): FloorPlan | undefined {
   const valid: PlacedRoom[] = []
   for (const room of rooms.slice(0, MAX_ROOMS)) {
     if (typeof room !== 'object' || room === null) continue
-    const { type, label, areaM2, x, y, width, height, instanceId } = room as Record<string, unknown>
+    const { type, label, areaM2, x, y, width, height, instanceId, openings } = room as Record<
+      string,
+      unknown
+    >
     if (typeof type !== 'string' || typeof label !== 'string') continue
     if (![x, y, width, height].every(isFraction)) continue
     const area = typeof areaM2 === 'number' && areaM2 > 0 && areaM2 < 1000 ? areaM2 : null
@@ -64,6 +104,7 @@ export function parseFloorPlan(data: unknown): FloorPlan | undefined {
       type,
       label: label.trim().slice(0, 40) || type,
       areaM2: area,
+      openings: parseOpenings(openings),
       x: x as number,
       y: y as number,
       width: Math.min(width as number, 1 - (x as number)),
@@ -161,9 +202,19 @@ export function planToHouse(plan: FloorPlan, rooms: Rooms): ReadPlan {
     house,
     rooms: plan.rooms.map((room) => {
       // Ligação nova (a de uma leitura anterior, se houver, não vale para esta casa).
-      const { type, label, areaM2, x, y, width, height } = room
+      const { type, label, areaM2, openings, x, y, width, height } = room
       const instanceId = instanceOf.get(room)
-      return { type, label, areaM2, x, y, width, height, ...(instanceId && { instanceId }) }
+      return {
+        type,
+        label,
+        areaM2,
+        openings,
+        x,
+        y,
+        width,
+        height,
+        ...(instanceId && { instanceId }),
+      }
     }),
     aspect: plan.aspect,
     variants,

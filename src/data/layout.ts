@@ -3,6 +3,8 @@ import type { Dimensions, Placement, ProductCategory, ProductOption } from './sc
 /** Medidas de um item da lista; `estimated` = medida típica da categoria, não a do modelo. */
 export interface ItemSize extends Dimensions {
   estimated: boolean
+  /** Onde fica no cômodo (chão, parede, tapete). */
+  placement: Exclude<Placement, 'none'>
 }
 
 /** Onde fica e tamanho típico, já com o que a variante muda (cama king, cooktop…). */
@@ -24,9 +26,10 @@ export function sizeOf(
 ): ItemSize | undefined {
   const layout = layoutFor(category, variant)
   if (!layout || layout.placement === 'none') return undefined
+  const { placement } = layout
   return option.dimensions
-    ? { ...option.dimensions, estimated: false }
-    : { ...layout.size, estimated: true }
+    ? { ...option.dimensions, estimated: false, placement }
+    : { ...layout.size, estimated: true, placement }
 }
 
 const cm = (value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 1 })

@@ -131,6 +131,15 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await drawing.getByRole('button', { name: /^Cozinha, 9 m²/ }).click()
   await expect(page.locator('#room-cozinha')).toBeInViewport()
 
+  // posição dos móveis: vista em escala por cômodo; tocar num móvel mostra medida e preço
+  const furniture = page.getByRole('region', { name: '🛋️ Posição dos móveis' })
+  await furniture.getByRole('tab', { name: 'Quarto 1' }).click()
+  await expect(furniture).toContainText(/Quarto 1: [\d,]+ × [\d,]+ m/)
+  await furniture.getByRole('button', { name: /^Cama \/ base box:/ }).click()
+  await expect(furniture.getByRole('status')).toContainText(/📐 ~?[\d,]+ × [\d,]+ × [\d,]+ cm/)
+  await expect(furniture.getByRole('status')).toContainText('R$')
+  await expect(furniture.getByRole('button', { name: /^Criado-mudo:/ })).toHaveCount(2)
+
   // o desenho continua depois de recarregar; com a chave desligada, some
   await page.reload()
   await expect(drawing).toBeVisible()
