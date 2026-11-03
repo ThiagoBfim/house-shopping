@@ -2,7 +2,12 @@ import { useMemo, useRef, useState } from 'preact/hooks'
 import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
-import { guestsByHost } from '../engine/floor-plan.ts'
+import {
+  guestsByHost,
+  roomTypeOf,
+  TYPICAL_ROOM_CM,
+  TYPICAL_ROOM_DEFAULT,
+} from '../engine/floor-plan.ts'
 import { furnishHouse } from '../engine/house3d.ts'
 import {
   applySuggestions,
@@ -33,6 +38,9 @@ interface Props {
   positions: ManualPositions
   onPositions: (positions: ManualPositions) => void
 }
+
+/** Cômodo dos itens da casa toda (limpeza, ferramentas): não é um lugar. */
+const WHOLE_HOUSE = 'utilidades'
 
 /** Margem em volta do cômodo no desenho (cm), para a régua e as janelas. */
 const PAD = 40
@@ -115,18 +123,24 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
     instances.map((i) => i.id),
   )
   const idsOf = (id: string) => [id, ...(guests[id] ?? [])]
-  const linked = plan.rooms
-    .map((room, index) => ({
-      room,
+  const inPlan = new Set(plan.rooms.map((r) => r.instanceId))
+  const hostedIds = new Set(Object.values(guests).flat())
+  const linked = [
+    ...plan.rooms.map((room, index) => ({
+      room: room as SavedPlan['rooms'][number] | undefined,
       index,
       instance: instances.find((i) => i.id === room.instanceId),
-    }))
-    .filter(
-      (r) =>
-        r.instance &&
-        (layoutItems(view, idsOf(r.instance.id)).length ||
-          otherItems(view, idsOf(r.instance.id)).length),
-    )
+    })),
+    // Cômodos da lista que não estão na planta (ex.: escritório adicionado depois): medida típica.
+    ...instances
+      .filter((i) => !inPlan.has(i.id) && !hostedIds.has(i.id) && i.roomId !== WHOLE_HOUSE)
+      .map((instance) => ({ room: undefined, index: -1, instance })),
+  ].filter(
+    (r) =>
+      r.instance &&
+      (layoutItems(view, idsOf(r.instance.id)).length ||
+        otherItems(view, idsOf(r.instance.id)).length),
+  )
   const [selected, setSelected] = useState(linked[0]?.instance?.id)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
   const [show3d, setShow3d] = useState(false)
@@ -139,22 +153,26 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
   // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
   const memo = useMemo(() => {
     if (!current || !id) return undefined
-    const houseRoom = house?.model.rooms.find((r) => r.instanceId === id)
-    if (house && houseRoom) {
-      const [f] = furnishHouse({ ...house.model, rooms: [houseRoom] }, view, positions)
+    // A casa toda (a regra da lavanderia na cozinha olha os outros cômodos), depois o cômodo.
+    const f =
+      house?.model.rooms.some((r) => r.instanceId === id) &&
+      furnishHouse(house.model, view, positions).find((r) => r.room.instanceId === id)
+    if (f) {
       const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }
-      return { size, layout: f.layout, fixed: f.fixed, from3d: true }
+      return { size, layout: f.layout, fixed: f.fixed, from3d: true, outside: false }
     }
-    const size = roomSizeCm(plan, current.index)
+    const size = current.room
+      ? roomSizeCm(plan, current.index)
+      : { ...(TYPICAL_ROOM_CM[roomTypeOf(id)] ?? TYPICAL_ROOM_DEFAULT), estimated: true }
     const base = arrangeRoom(
-      { width: size.width, depth: size.depth, openings: current.room.openings },
+      { width: size.width, depth: size.depth, openings: current.room?.openings ?? [] },
       layoutItems(view, idsOf(id)),
     )
     const { layout } = applySuggestions(base, positions[id] ?? [])
-    return { size, layout, fixed: [] as PlacedItem[], from3d: false }
+    return { size, layout, fixed: [] as PlacedItem[], from3d: false, outside: !current.room }
   }, [plan, view, house, positions, current?.index, id])
   if (!current || !memo || !id) return null
-  const { size, layout, fixed, from3d } = memo
+  const { size, layout, fixed, from3d, outside } = memo
   const pickedItem = picked && layout.placed.find((p) => sameItem(p, picked))
   const details = pickedItem && detailsOf(view, pickedItem.key)
   const meters = (cm: number) => (cm / 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })
@@ -247,6 +265,12 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
         {from3d ? ' (da casa em 3D)' : size.estimated ? ' (medida estimada pela planta)' : ''} ·
         vista de cima, em escala.
       </p>
+      {outside && (
+        <p class="notice">
+          📏 {current.instance!.title} não está na planta: desenhado com a medida típica, sem portas
+          e janelas.
+        </p>
+      )}
       {hostedTitles.length > 0 && (
         <p class="notice">
           🧺 {hostedTitles.join(', ')} fica aqui: a planta não tem um espaço só para ela.

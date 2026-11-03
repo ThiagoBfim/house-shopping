@@ -83,6 +83,57 @@ export interface ReadPlan {
  */
 export const HOST_ROOM: Record<string, string> = { lavanderia: 'cozinha' }
 
+/**
+ * Religa os cômodos da planta aos cômodos da lista de agora. A ligação é feita na leitura
+ * ("quarto-1", "quarto-2"); se depois a pessoa muda a quantidade de cômodos ou o tipo, o id
+ * antigo some e o cômodo sumiria da posição dos móveis. Ligação válida fica; o resto vai para o
+ * cômodo livre do mesmo tipo, maior primeiro (como na leitura: o maior quarto é o Quarto 1).
+ */
+export function linkPlanRooms<R extends { type: string; instanceId?: string }>(
+  planRooms: R[],
+  instanceIds: string[],
+  /** Área do cômodo (planta lida: `areaM2`; casa em 3D: largura × profundidade). */
+  area: (room: R) => number | null | undefined = (room) =>
+    (room as { areaM2?: number | null }).areaM2,
+): R[] {
+  const ids = new Set(instanceIds)
+  const used = new Set<string>()
+  const keep = planRooms.map((room) => {
+    const id = room.instanceId
+    if (!id || !ids.has(id) || used.has(id)) return false
+    used.add(id)
+    return true
+  })
+  const free = (type: string) =>
+    instanceIds.filter((id) => !used.has(id) && roomTypeOf(id) === type)
+  const order = planRooms
+    .map((room, i) => ({ room, i }))
+    .filter(({ i }) => !keep[i])
+    .sort((a, b) => (area(b.room) ?? -1) - (area(a.room) ?? -1))
+  const next = [...planRooms]
+  for (const { room, i } of order) {
+    const id = free(room.type)[0]
+    const { instanceId: _old, ...rest } = room
+    void _old
+    if (id) used.add(id)
+    next[i] = (id ? { ...rest, instanceId: id } : rest) as R
+  }
+  return next
+}
+
+/** Medida típica (cm) de um cômodo que está na lista mas não na planta. */
+export const TYPICAL_ROOM_CM: Record<string, { width: number; depth: number }> = {
+  quarto: { width: 300, depth: 350 },
+  'quarto-bebe': { width: 280, depth: 300 },
+  escritorio: { width: 260, depth: 300 },
+  sala: { width: 350, depth: 450 },
+  cozinha: { width: 250, depth: 350 },
+  banheiro: { width: 150, depth: 220 },
+  lavanderia: { width: 150, depth: 200 },
+  'area-externa': { width: 250, depth: 400 },
+}
+export const TYPICAL_ROOM_DEFAULT = { width: 300, depth: 300 }
+
 /** Tipo do cômodo pelo id ("cozinha-2" → "cozinha"). */
 export const roomTypeOf = (instanceId: string) => instanceId.replace(/-\d+$/, '')
 

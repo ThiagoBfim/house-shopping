@@ -1,4 +1,5 @@
-import { useState } from 'preact/hooks'
+import { useMemo, useState } from 'preact/hooks'
+import { linkPlanRooms } from '../engine/floor-plan.ts'
 import type { Rooms } from '../data/schema.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
@@ -50,6 +51,19 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
     house3d ? readSavedHouse() : undefined,
   )
   const [positions, setPositions] = useState<ManualPositions>(readPositions)
+  // Casa em 3D religada aos cômodos de agora (mudou a quantidade ou o tipo depois de gerar).
+  const ids = instances.map((i) => i.id).join()
+  const linkedHouse = useMemo(
+    () =>
+      house && {
+        ...house,
+        model: {
+          ...house.model,
+          rooms: linkPlanRooms(house.model.rooms, ids.split(','), (r) => r.widthM * r.depthM),
+        },
+      },
+    [house, ids],
+  )
   const changePositions = (next: ManualPositions) => {
     setPositions(next)
     savePositions(next)
@@ -81,7 +95,7 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
             plan={plan}
             view={view}
             instances={instances}
-            house={house}
+            house={linkedHouse}
             positions={positions}
             onPositions={changePositions}
           />
@@ -91,7 +105,7 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
               rooms={house3d.rooms}
               view={view}
               instances={instances}
-              house={house}
+              house={linkedHouse}
               onGenerated={setHouse}
               onOpen={setShowing}
             />

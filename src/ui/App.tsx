@@ -37,7 +37,7 @@ import {
 } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
 import { readFeatures, saveFeatures, type Features } from './features.ts'
-import { withoutBedVariants, type ReadPlan } from '../engine/floor-plan.ts'
+import { linkPlanRooms, withoutBedVariants, type ReadPlan } from '../engine/floor-plan.ts'
 import { FloorPlanUpload } from './FloorPlanUpload.tsx'
 import { readSavedPlan, savePlan, type SavedPlan } from './floor-plan-store.ts'
 import { Footer } from './Footer.tsx'
@@ -499,9 +499,18 @@ export function App() {
           cheaperPrices={enabled('cheaperPrices')}
           house3d={health?.house3d ? { rooms } : undefined}
           floorPlan={
-            enabled('floorPlan') &&
-            floorPlan?.rooms.some((r) => house.instances.some((i) => i.id === r.instanceId))
-              ? floorPlan
+            // Religada aos cômodos de agora (mudou a quantidade ou o tipo depois de ler a planta).
+            enabled('floorPlan') && floorPlan
+              ? (() => {
+                  const linked = {
+                    ...floorPlan,
+                    rooms: linkPlanRooms(
+                      floorPlan.rooms,
+                      house.instances.map((i) => i.id),
+                    ),
+                  }
+                  return linked.rooms.some((r) => r.instanceId) ? linked : undefined
+                })()
               : undefined
           }
           share={{
