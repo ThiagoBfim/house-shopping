@@ -243,13 +243,46 @@ h3 {
   background: var(--bg);
 }
 
-.floor-plan-drawing {
+.floor-plan-panel {
   margin: 16px 0;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 
-.floor-plan-drawing h3 {
-  margin: 0 0 8px;
+.floor-plan-panel h3 {
+  margin: 0;
   font-size: 1rem;
+}
+
+.floor-plan-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.floor-plan-toggle::after {
+  content: '▾';
+  margin-left: auto;
+  transition: transform 0.15s;
+}
+
+.floor-plan-panel.is-collapsed .floor-plan-toggle::after {
+  transform: rotate(-90deg);
+}
+
+.floor-plan-drawing {
+  margin: 10px 0 0;
 }
 
 .floor-plan-drawing svg {
@@ -303,9 +336,9 @@ h3 {
   margin: 16px 0;
 }
 
-.furniture-layout h3 {
+.furniture-layout h4 {
   margin: 0 0 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .furniture-layout .chips {

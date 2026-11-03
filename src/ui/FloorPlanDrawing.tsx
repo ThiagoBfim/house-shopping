@@ -29,10 +29,7 @@ export function FloorPlanDrawing({ plan, view, instances }: Props) {
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <section class="floor-plan-drawing" aria-labelledby="floor-plan-title">
-      <h3 id="floor-plan-title">
-        📐 Sua planta <span class="muted">· {plan.fileName}</span>
-      </h3>
+    <div class="floor-plan-drawing">
       <svg
         viewBox={`0 0 ${WIDTH} ${height}`}
         role="group"
@@ -126,6 +123,6 @@ export function FloorPlanDrawing({ plan, view, instances }: Props) {
         Desenho esquemático pela planta enviada: os ícones são os itens da lista, os mais
         importantes primeiro (cada ícone aparece uma vez). Toque num cômodo para ver os itens dele.
       </p>
-    </section>
+    </div>
   )
 }

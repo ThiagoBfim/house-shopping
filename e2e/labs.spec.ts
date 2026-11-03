@@ -161,6 +161,22 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await scene.getByRole('button', { name: 'Fechar' }).click()
   await expect(canvas).toHaveCount(0)
 
+  // "Sua planta" esconde o desenho e a posição dos móveis juntos; fica escondida ao recarregar
+  const panel = page.getByRole('region', { name: /^📐 Sua planta/ })
+  const toggle = panel.getByRole('button', { name: /^📐 Sua planta/ })
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+  await expect(panel.getByRole('region', { name: '🛋️ Posição dos móveis' })).toBeVisible()
+  await toggle.click()
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false')
+  await expect(drawing).toHaveCount(0)
+  await expect(furniture).toHaveCount(0)
+  await page.reload()
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false')
+  await expect(drawing).toHaveCount(0)
+  await toggle.click()
+  await expect(drawing).toBeVisible()
+  await expect(furniture).toBeVisible()
+
   // o desenho continua depois de recarregar; com a chave desligada, some
   await page.reload()
   await expect(drawing).toBeVisible()

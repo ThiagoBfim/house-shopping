@@ -92,7 +92,7 @@ export function FurnitureLayout({ plan, view, instances }: Props) {
 
   return (
     <section class="furniture-layout" aria-labelledby="furniture-layout-title">
-      <h3 id="furniture-layout-title">🛋️ Posição dos móveis</h3>
+      <h4 id="furniture-layout-title">🛋️ Posição dos móveis</h4>
       <div class="chips" role="tablist" aria-label="Cômodo">
         {linked.map(({ instance }) => (
           <button
