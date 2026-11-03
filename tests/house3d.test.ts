@@ -483,3 +483,24 @@ describe('posições escolhidas pela pessoa', () => {
     expect(bed({ quarto: [chosen] }, without)).toBeUndefined()
   })
 })
+
+describe('lavanderia sem lugar na casa em 3D', () => {
+  it('fica na cozinha do 3D (máquina e varal entre os móveis da cozinha)', () => {
+    const house = expandHouse(rooms, products, { cozinha: 1, lavanderia: 1 })
+    const view = buildList(house.room, house.products, 1_000_000, emptyChoices())
+    const linked = linkRooms(
+      parseHouseModel(
+        model([room({ type: 'cozinha', label: 'Cozinha', widthM: 4, depthM: 3.5 })]),
+      )!,
+      rooms,
+    )
+    const [kitchen] = furnishHouse(linked, view)
+    const keys = [
+      ...kitchen.layout.placed.map((p) => p.key),
+      ...kitchen.layout.unplaced.map((u) => u.key),
+    ]
+    expect(keys).toEqual(
+      expect.arrayContaining(['cozinha:geladeira', 'lavanderia:lava-roupas', 'lavanderia:varal']),
+    )
+  })
+})

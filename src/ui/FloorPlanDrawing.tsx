@@ -1,5 +1,5 @@
 import type { ListView } from '../engine/budget.ts'
-import { contentsByInstance } from '../engine/floor-plan.ts'
+import { contentsByInstance, guestsByHost } from '../engine/floor-plan.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import { categoryIcon } from './catalog.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
@@ -23,6 +23,11 @@ export function FloorPlanDrawing({ plan, view, instances }: Props) {
   const height = WIDTH / plan.aspect
   const contents = contentsByInstance(view)
   const byId = new Map(instances.map((instance) => [instance.id, instance]))
+  // Sem área de serviço, a lavanderia aparece dentro da cozinha.
+  const guests = guestsByHost(
+    plan.rooms,
+    instances.map((i) => i.id),
+  )
   const goTo = (instanceId: string) =>
     document
       .getElementById(`room-${instanceId}`)
@@ -41,18 +46,23 @@ export function FloorPlanDrawing({ plan, view, instances }: Props) {
           const y = room.y * height
           const w = room.width * WIDTH
           const h = room.height * height
-          const title = instance?.title ?? room.label
+          const hosted = instance
+            ? (guests[instance.id] ?? []).map((id) => byId.get(id)).filter((g) => !!g)
+            : []
+          const title = [instance?.title ?? room.label, ...hosted.map((g) => g.title)].join(' + ')
           const area = room.areaM2 ? `${room.areaM2.toLocaleString('pt-BR')} m²` : ''
           const font = Math.max(14, Math.min(26, w / 9, h / 5))
-          const items = instance ? contents[instance.id] : undefined
-          const all = items
-            ? [
-                ...items.categories.map((c) => categoryIcon(c, instance!.roomId)),
-                ...items.manual.map((m) =>
-                  m.category ? categoryIcon(m.category, instance!.roomId) : '🛍️',
-                ),
-              ]
-            : []
+          const all = (instance ? [instance, ...hosted] : []).flatMap((inst) => {
+            const items = contents[inst.id]
+            return items
+              ? [
+                  ...items.categories.map((c) => categoryIcon(c, inst.roomId)),
+                  ...items.manual.map((m) =>
+                    m.category ? categoryIcon(m.category, inst.roomId) : '🛍️',
+                  ),
+                ]
+              : []
+          })
           // Cada ícone uma vez só (cama, colchão e roupa de cama dividem o 🛏).
           const icons = [...new Set(all)]
           const top = y + PAD + font * 2.4
@@ -70,7 +80,7 @@ export function FloorPlanDrawing({ plan, view, instances }: Props) {
               key={i}
               class={`plan-room ${instance ? 'is-linked' : ''}`}
               role={instance ? 'button' : 'img'}
-              tabIndex={instance ? 0 : undefined}
+              tabindex={instance ? 0 : undefined}
               aria-label={label}
               onClick={instance && (() => goTo(instance.id))}
               onKeyDown={

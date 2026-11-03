@@ -616,11 +616,13 @@ export function roomSizeCm(plan: Pick<FloorPlan, 'aspect' | 'rooms'>, index: num
 }
 
 /** Itens da lista de um cômodo que entram no desenho (com medida e lugar), já como LayoutItem. */
-export function layoutItems(view: ListView, instanceId: string): LayoutItem[] {
+export function layoutItems(view: ListView, instanceId: string | string[]): LayoutItem[] {
+  // Um cômodo ou ele + os hóspedes (cozinha + lavanderia, quando não há área de serviço).
+  const ids = new Set(Array.isArray(instanceId) ? instanceId : [instanceId])
   const items: LayoutItem[] = []
   for (const entry of view.entries) {
     const { instanceId: id, category } = splitItemKey(entry.item.category)
-    if (id !== instanceId || !entry.size) continue
+    if (!ids.has(id) || !entry.size) continue
     const { width, depth, height, placement } = entry.size
     items.push({
       key: entry.item.category,
@@ -634,7 +636,7 @@ export function layoutItems(view: ListView, instanceId: string): LayoutItem[] {
     })
   }
   for (const { item, replaced, size } of view.manual) {
-    if (item.instanceId !== instanceId || !replaced || !size) continue
+    if (!ids.has(item.instanceId) || !replaced || !size) continue
     const { width, depth, height, placement } = size
     items.push({
       key: item.id,
@@ -657,12 +659,13 @@ export function layoutItems(view: ListView, instanceId: string): LayoutItem[] {
  */
 export function otherItems(
   view: ListView,
-  instanceId: string,
+  instanceId: string | string[],
 ): { key: string; label: string; name: string; qty: number }[] {
+  const ids = new Set(Array.isArray(instanceId) ? instanceId : [instanceId])
   const out: { key: string; label: string; name: string; qty: number }[] = []
   for (const entry of view.entries) {
     const { instanceId: id } = splitItemKey(entry.item.category)
-    if (id !== instanceId || entry.size) continue
+    if (!ids.has(id) || entry.size) continue
     out.push({
       key: entry.item.category,
       label: entry.label,
@@ -671,10 +674,18 @@ export function otherItems(
     })
   }
   for (const { item, replaced, size } of view.manual) {
-    if (item.instanceId !== instanceId || (replaced && size)) continue
+    if (!ids.has(item.instanceId) || (replaced && size)) continue
     out.push({ key: item.id, label: replaced?.label ?? item.name, name: item.name, qty: item.qty })
   }
   return out
+}
+
+/** Cômodos com itens na lista (para saber quais ficam sem lugar na planta). */
+export function instancesIn(view: ListView): string[] {
+  const ids = new Set<string>()
+  for (const entry of view.entries) ids.add(splitItemKey(entry.item.category).instanceId)
+  for (const { item } of view.manual) if (item.instanceId) ids.add(item.instanceId)
+  return [...ids]
 }
 
 /** Posição sugerida para um móvel (centro em cm no cômodo e para onde a frente aponta). */

@@ -1,9 +1,16 @@
 import type { Rooms } from '../data/schema.ts'
 import type { ListView } from './budget.ts'
-import { planToHouse, type FloorPlan, type Opening, type PlacedRoom } from './floor-plan.ts'
+import {
+  guestsByHost,
+  planToHouse,
+  type FloorPlan,
+  type Opening,
+  type PlacedRoom,
+} from './floor-plan.ts'
 import {
   applySuggestions,
   arrangeRoom,
+  instancesIn,
   layoutItems,
   type LayoutItem,
   type ManualPositions,
@@ -368,8 +375,11 @@ export function furnishHouse(
   view: ListView,
   positions: ManualPositions = {},
 ): FurnishedRoom[] {
+  // Sem área de serviço na planta, a lavanderia fica na cozinha (HOST_ROOM).
+  const guests = guestsByHost(model.rooms, instancesIn(view))
   return model.rooms.map((room) => {
-    const items: LayoutItem[] = room.instanceId ? layoutItems(view, room.instanceId) : []
+    const id = room.instanceId
+    const items: LayoutItem[] = id ? layoutItems(view, [id, ...(guests[id] ?? [])]) : []
     const fixed = room.builtIns.map((b, i) => builtInPlaced(b, i, room))
     const base = arrangeRoom(
       {
@@ -387,12 +397,21 @@ export function furnishHouse(
   })
 }
 
-/** O que a skill recebe em `moveis.json`: os móveis de cada cômodo da lista, com medida. */
-export function furnitureForSkill(view: ListView, instanceIds: string[]) {
+/**
+ * O que a skill recebe em `moveis.json`: os móveis de cada cômodo da lista, com medida. Os
+ * hóspedes (lavanderia sem área de serviço) vão junto com o cômodo que os recebe (cozinha).
+ */
+export function furnitureForSkill(
+  view: ListView,
+  instanceIds: string[],
+  guests: Record<string, string[]> = {},
+) {
+  const hosted = new Set(Object.values(guests).flat())
   return instanceIds
+    .filter((instanceId) => !hosted.has(instanceId))
     .map((instanceId) => ({
       instanceId,
-      items: layoutItems(view, instanceId).map(
+      items: layoutItems(view, [instanceId, ...(guests[instanceId] ?? [])]).map(
         ({ key, label, width, depth, height, placement, qty }) => ({
           key,
           name: label,

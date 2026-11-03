@@ -8,6 +8,7 @@ import {
   type HouseQuality,
 } from '../engine/house3d.ts'
 import type { RoomInstance } from '../engine/house.ts'
+import { guestsByHost } from '../engine/floor-plan.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
 import { saveHouse, type SavedHouse } from './house3d-store.ts'
 import { startJob, waitForJob } from './local-api.ts'
@@ -74,6 +75,10 @@ export function House3DGenerate({
           furnitureForSkill(
             view,
             instances.map((i) => i.id),
+            guestsByHost(
+              plan.rooms,
+              instances.map((i) => i.id),
+            ),
           ),
         ),
       )

@@ -8,8 +8,11 @@ import {
   planToHouse,
   setRoomType,
   withoutBedVariants,
+  guestsByHost,
 } from '../src/engine/floor-plan.ts'
 import { expandHouse } from '../src/engine/house.ts'
+import { furnitureForSkill } from '../src/engine/house3d.ts'
+import { layoutItems, otherItems } from '../src/engine/layout.ts'
 import { replaceWith } from '../src/engine/manual.ts'
 import { applyPreferences } from '../src/engine/preferences.ts'
 // Resposta real da skill /floor-plan para um apartamento de 2 quartos (Drop 31).
@@ -285,5 +288,54 @@ describe('mudar o tipo de um cômodo', () => {
       'quarto-bebe:berco': 'x',
       'cozinha:fogao': 'cooktop-inducao',
     })
+  })
+})
+
+describe('sem área de serviço na planta, a lavanderia fica na cozinha', () => {
+  const semLavanderia = () => {
+    const plan = parseFloorPlan(apto)!
+    return {
+      ...plan,
+      rooms: plan.rooms.map((r) => (r.type === 'lavanderia' ? { ...r, type: 'outro' } : r)),
+    }
+  }
+
+  it('a lavanderia entra na lista e fica hospedada na cozinha', () => {
+    const read = planToHouse(semLavanderia(), rooms)
+    expect(read.house.lavanderia).toBe(1)
+    expect(read.hosted).toEqual([{ guest: 'lavanderia', host: 'cozinha' }])
+    expect(read.ignored).toContain('A. Serviço')
+    const ids = expandHouse(rooms, products, read.house).instances.map((i) => i.id)
+    expect(guestsByHost(read.rooms, ids)).toEqual({ cozinha: ['lavanderia'] })
+
+    // máquina de lavar e varal desenhados na cozinha; ferro e prendedores na lista do cômodo
+    const house = expandHouse(rooms, products, read.house)
+    const view = buildList(house.room, house.products, 1_000_000, emptyChoices())
+    const kitchen = layoutItems(view, ['cozinha', 'lavanderia']).map((i) => i.key)
+    expect(kitchen).toEqual(expect.arrayContaining(['cozinha:fogao', 'lavanderia:lava-roupas']))
+    expect(otherItems(view, ['cozinha', 'lavanderia']).map((i) => i.key)).toContain(
+      'lavanderia:ferro-de-passar',
+    )
+    // a skill recebe a lavanderia junto com a cozinha (não como cômodo sem lugar)
+    const forSkill = furnitureForSkill(view, ids, guestsByHost(read.rooms, ids))
+    expect(forSkill.map((r) => r.instanceId)).not.toContain('lavanderia')
+    expect(forSkill.find((r) => r.instanceId === 'cozinha')!.items.map((i) => i.key)).toContain(
+      'lavanderia:lava-roupas',
+    )
+  })
+
+  it('com área de serviço, nada muda; sem cozinha, não inventa lavanderia', () => {
+    const comLavanderia = planToHouse(parseFloorPlan(apto)!, rooms)
+    expect(comLavanderia.hosted).toEqual([])
+    const ids = expandHouse(rooms, products, comLavanderia.house).instances.map((i) => i.id)
+    expect(guestsByHost(comLavanderia.rooms, ids)).toEqual({})
+
+    const plan = semLavanderia()
+    const semCozinha = planToHouse(
+      { ...plan, rooms: plan.rooms.filter((r) => r.type !== 'cozinha') },
+      rooms,
+    )
+    expect(semCozinha.house.lavanderia).toBeUndefined()
+    expect(semCozinha.hosted).toEqual([])
   })
 })

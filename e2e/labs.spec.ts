@@ -709,3 +709,43 @@ test('posição dos móveis lista tudo do cômodo: no desenho ou "também neste 
   await layout.getByRole('tab', { name: 'Lavanderia' }).click()
   await expect(layout.getByRole('button', { name: /^Varal/ })).toHaveCount(1)
 })
+
+test('planta sem área de serviço: a lavanderia entra na lista e fica na cozinha', async ({
+  page,
+}) => {
+  const semLavanderia = JSON.parse(JSON.stringify(apto)) as {
+    rooms: { type: string; label: string }[]
+  }
+  for (const r of semLavanderia.rooms) if (r.type === 'lavanderia') r.type = 'outro'
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: semLavanderia }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  const summary = page.getByRole('status').filter({ hasText: 'Planta lida' })
+  await expect(summary).toContainText('Lavanderia')
+  await expect(summary).toContainText(
+    'Lavanderia na cozinha: a planta não tem um espaço só para ela.',
+  )
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByLabel('Orçamento em reais').fill('200000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  // a lista tem a lavanderia (máquina de lavar não some)
+  await expect(
+    page.locator('#room-lavanderia').getByRole('article', { name: /^Máquina de lavar/ }),
+  ).toHaveCount(1)
+  // no desenho do imóvel: "Cozinha + Lavanderia"
+  await expect(page.getByRole('button', { name: /^Cozinha \+ Lavanderia/ })).toHaveCount(1)
+  // na posição dos móveis: sem aba própria; a máquina e o varal ficam na cozinha
+  const layout = page.locator('.furniture-layout')
+  await expect(layout.getByRole('tab', { name: 'Lavanderia' })).toHaveCount(0)
+  await layout.getByRole('tab', { name: 'Cozinha' }).click()
+  await expect(layout).toContainText('🧺 Lavanderia fica aqui')
+  await expect(layout.getByRole('button', { name: /^Máquina de lavar/ })).toHaveCount(1)
+  await expect(layout.getByRole('button', { name: /^Fogão/ })).toHaveCount(1)
+})

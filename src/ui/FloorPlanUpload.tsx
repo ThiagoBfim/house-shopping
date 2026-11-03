@@ -141,6 +141,12 @@ function PlanSummary({ plan, rooms, costUsd, onRetype }: SummaryProps) {
               .join(' · ')}
           </p>
         )}
+        {plan.hosted.map(({ guest, host }) => (
+          <p key={guest} class="muted">
+            {rooms[guest]?.name ?? guest} na {(rooms[host]?.name ?? host).toLowerCase()}: a planta
+            não tem um espaço só para ela.
+          </p>
+        ))}
         {plan.ignored.length > 0 && <p class="muted">Fora da lista: {plan.ignored.join(', ')}.</p>}
         {plan.notes && <p class="muted">Atenção: {plan.notes}</p>}
         {costUsd !== undefined && (

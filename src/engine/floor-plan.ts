@@ -73,6 +73,36 @@ export interface ReadPlan {
   notes: string
   /** Ambientes da planta que não viram cômodo da lista (hall, closet, excedentes). */
   ignored: string[]
+  /** Cômodos da lista sem lugar na planta que ficam dentro de outro (lavanderia na cozinha). */
+  hosted: { guest: string; host: string }[]
+}
+
+/**
+ * Cômodo que, sem lugar próprio na planta, fica dentro de outro: sem área de serviço, a
+ * lavanderia (máquina, varal, tábua…) vai para a cozinha.
+ */
+export const HOST_ROOM: Record<string, string> = { lavanderia: 'cozinha' }
+
+/** Tipo do cômodo pelo id ("cozinha-2" → "cozinha"). */
+export const roomTypeOf = (instanceId: string) => instanceId.replace(/-\d+$/, '')
+
+/**
+ * Hóspedes de cada cômodo da planta: os cômodos da lista sem lugar na planta que ficam dentro
+ * dele pela regra de HOST_ROOM (o primeiro cômodo do tipo, ex.: a cozinha). Host → hóspedes.
+ */
+export function guestsByHost(
+  planRooms: { instanceId?: string }[],
+  instanceIds: Iterable<string>,
+): Record<string, string[]> {
+  const inPlan = new Set(planRooms.map((r) => r.instanceId).filter((id): id is string => !!id))
+  const out: Record<string, string[]> = {}
+  for (const id of instanceIds) {
+    if (inPlan.has(id)) continue
+    const hostType = HOST_ROOM[roomTypeOf(id)]
+    const host = hostType && [...inPlan].find((h) => roomTypeOf(h) === hostType)
+    if (host) out[host] = [...(out[host] ?? []), id]
+  }
+  return out
 }
 
 /** Cômodo de itens da casa toda (limpeza, ferramentas): entra sempre, não está na planta. */
@@ -197,6 +227,14 @@ export function planToHouse(plan: FloorPlan, rooms: Rooms): ReadPlan {
     })
   }
   if (Object.keys(house).length && Object.hasOwn(rooms, WHOLE_HOUSE)) house[WHOLE_HOUSE] = 1
+  // Sem lugar próprio na planta (ex.: sem área de serviço), o cômodo entra na lista mesmo assim
+  // e fica dentro do outro (lavanderia na cozinha): a máquina de lavar não some da lista.
+  const hosted: ReadPlan['hosted'] = []
+  for (const [guest, host] of Object.entries(HOST_ROOM)) {
+    if (house[guest] || !house[host] || !Object.hasOwn(rooms, guest)) continue
+    house[guest] = 1
+    hosted.push({ guest, host })
+  }
 
   return {
     house,
@@ -220,6 +258,7 @@ export function planToHouse(plan: FloorPlan, rooms: Rooms): ReadPlan {
     variants,
     notes: plan.notes,
     ignored,
+    hosted,
   }
 }
 

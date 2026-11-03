@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'preact/hooks'
 import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
+import { guestsByHost } from '../engine/floor-plan.ts'
 import { furnishHouse } from '../engine/house3d.ts'
 import {
   applySuggestions,
@@ -108,6 +109,12 @@ interface Drag {
  * para arrastar um móvel (ou mover com as setas e girar) e o 3D usa as mesmas posições.
  */
 export function FurnitureLayout({ plan, view, instances, house, positions, onPositions }: Props) {
+  // Sem área de serviço, a lavanderia fica na cozinha: o cômodo + os hóspedes dele.
+  const guests = guestsByHost(
+    plan.rooms,
+    instances.map((i) => i.id),
+  )
+  const idsOf = (id: string) => [id, ...(guests[id] ?? [])]
   const linked = plan.rooms
     .map((room, index) => ({
       room,
@@ -117,7 +124,8 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
     .filter(
       (r) =>
         r.instance &&
-        (layoutItems(view, r.instance.id).length || otherItems(view, r.instance.id).length),
+        (layoutItems(view, idsOf(r.instance.id)).length ||
+          otherItems(view, idsOf(r.instance.id)).length),
     )
   const [selected, setSelected] = useState(linked[0]?.instance?.id)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
@@ -140,7 +148,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
     const size = roomSizeCm(plan, current.index)
     const base = arrangeRoom(
       { width: size.width, depth: size.depth, openings: current.room.openings },
-      layoutItems(view, id),
+      layoutItems(view, idsOf(id)),
     )
     const { layout } = applySuggestions(base, positions[id] ?? [])
     return { size, layout, fixed: [] as PlacedItem[], from3d: false }
@@ -152,7 +160,8 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
   const meters = (cm: number) => (cm / 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 })
   const order = { rug: 0, floor: 1, wall: 2 }
   const custom = (positions[id] ?? []).length > 0
-  const others = otherItems(view, id)
+  const others = otherItems(view, idsOf(id))
+  const hostedTitles = (guests[id] ?? []).map((g) => instances.find((i) => i.id === g)?.title ?? g)
 
   /** Tenta pôr o móvel na posição; se não couber, avisa e deixa onde estava. */
   const place = (hint: PositionHint, what: string) => {
@@ -238,6 +247,11 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
         {from3d ? ' (da casa em 3D)' : size.estimated ? ' (medida estimada pela planta)' : ''} ·
         vista de cima, em escala.
       </p>
+      {hostedTitles.length > 0 && (
+        <p class="notice">
+          🧺 {hostedTitles.join(', ')} fica aqui: a planta não tem um espaço só para ela.
+        </p>
+      )}
       <svg
         ref={svg}
         class={drag ? 'is-dragging' : ''}
