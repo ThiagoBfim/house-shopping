@@ -8,6 +8,7 @@ import {
   type FloorPlan,
   type Opening,
   type PlacedRoom,
+  type ReadPlan,
 } from './floor-plan.ts'
 import {
   applySuggestions,
@@ -370,6 +371,46 @@ export function resolveParts(model: HouseModel): HouseModel {
   }
 }
 
+/** A casa em metros como planta (frações do desenho), para a escolha de cômodos e o desenho. */
+export function houseToFloorPlan(model: HouseModel): FloorPlan {
+  return {
+    aspect: model.widthM / model.depthM,
+    notes: model.notes,
+    rooms: model.rooms.map((r) => ({
+      type: r.type,
+      label: r.label,
+      areaM2: Math.round(r.widthM * r.depthM * 100) / 100,
+      openings: r.openings,
+      x: Math.min(1, r.xM / model.widthM),
+      y: Math.min(1, r.yM / model.depthM),
+      width: Math.min(1, r.widthM / model.widthM),
+      height: Math.min(1, r.depthM / model.depthM),
+    })),
+  }
+}
+
+/**
+ * Leitura caprichada (planta + fotos, skill /house-3d) no começo do fluxo: os cômodos sugeridos
+ * (como a leitura rápida: tipo, quantidade, cama pela área, lavanderia na cozinha) e a casa já
+ * ligada à lista, para a posição dos móveis usar as medidas, portas, janelas e armários dela.
+ * As partes de cômodo em L não contam como cômodo (são do principal).
+ */
+export function readHouse(model: HouseModel, rooms: Rooms): { read: ReadPlan; house: HouseModel } {
+  const resolved = resolveParts(model)
+  const plan = houseToFloorPlan({
+    ...resolved,
+    rooms: resolved.rooms.map((r) => (r.partOf ? { ...r, type: OUTSIDE_TYPE } : r)),
+  })
+  // (as partes da sala em L ganham aba própria pela casa, que vai salva junto)
+  return { read: planToHouse(plan, rooms), house: linkRooms(model, rooms) }
+}
+
+/** Muda o tipo de um cômodo da casa (ex.: "Dorm. 2" vira quarto do bebê). */
+export const setHouseRoomType = (model: HouseModel, index: number, type: string): HouseModel => ({
+  ...model,
+  rooms: model.rooms.map((r, i) => (i === index ? { ...r, type } : r)),
+})
+
 /**
  * Liga cada cômodo da casa 3D ao cômodo da lista. Mesmo nome da planta lida antes ("Dorm. 2")
  * = mesmo cômodo e mesmo tipo (a pessoa pode ter feito dele um quarto do bebê); o resto, pelo
@@ -384,20 +425,7 @@ export function linkRooms(model: HouseModel, rooms: Rooms, saved?: PlacedRoom[])
     const match = byLabel.get(normalize(room.label))
     return match ? { ...room, type: match.type } : room
   })
-  const plan: FloorPlan = {
-    aspect: model.widthM / model.depthM,
-    notes: '',
-    rooms: typed.map((r) => ({
-      type: r.type,
-      label: r.label,
-      areaM2: r.widthM * r.depthM,
-      openings: r.openings,
-      x: Math.min(1, r.xM / model.widthM),
-      y: Math.min(1, r.yM / model.depthM),
-      width: Math.min(1, r.widthM / model.widthM),
-      height: Math.min(1, r.depthM / model.depthM),
-    })),
-  }
+  const plan = houseToFloorPlan({ ...model, rooms: typed })
   const derived = planToHouse(plan, rooms).rooms
   const used = new Set<string>()
   const linked = typed.map((room, i) => {

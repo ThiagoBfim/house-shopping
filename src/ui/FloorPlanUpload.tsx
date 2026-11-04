@@ -9,19 +9,37 @@ import {
   type ReadPlan,
 } from '../engine/floor-plan.ts'
 import { describeSpec } from '../engine/house.ts'
+import { parseHouseModel, readHouse, setHouseRoomType, type HouseModel } from '../engine/house3d.ts'
+import type { SavedHouse } from './house3d-store.ts'
 import { startJob, waitForJob } from './local-api.ts'
+import { resizeImage } from './resize-image.ts'
 
 interface Props {
   rooms: Rooms
-  /** Planta lida: a casa vai para a escolha de cômodos, para a pessoa conferir. */
-  onRead: (plan: ReadPlan, fileName: string) => void
+  /**
+   * Planta lida: a casa vai para a escolha de cômodos, para a pessoa conferir. Com fotos, vem
+   * também a casa em metros (portas, janelas, armários), que a posição dos móveis e o 3D usam.
+   */
+  onRead: (plan: ReadPlan, fileName: string, house?: SavedHouse) => void
 }
 
 type State =
   | { step: 'idle' }
-  | { step: 'reading'; fileName: string; startedAt: number }
-  | { step: 'done'; source: FloorPlan; plan: ReadPlan; fileName: string; costUsd?: number }
+  | { step: 'reading'; fileName: string; startedAt: number; photos: number }
+  | {
+      step: 'done'
+      source: FloorPlan
+      plan: ReadPlan
+      file: File
+      costUsd?: number
+      /** Leitura caprichada (planta + fotos): a casa em metros. */
+      model?: HouseModel
+      photos: number
+    }
   | { step: 'error'; message: string }
+
+const MAX_PHOTOS = 8
+const PHOTO_ACCEPT = 'image/png,image/jpeg,image/webp'
 
 const ACCEPT = 'image/png,image/jpeg,image/webp,image/gif,application/pdf'
 
@@ -36,10 +54,51 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
     return () => clearInterval(timer)
   }, [state.step])
 
+  const [photos, setPhotos] = useState<File[]>([])
+
+  /** Casa salva junto com a leitura caprichada (já ligada à lista). */
+  const savedHouse = (house: HouseModel, count: number, costUsd?: number): SavedHouse => ({
+    model: house,
+    generatedAt: new Date().toISOString(),
+    photos: count,
+    ...(costUsd !== undefined && { costUsd }),
+  })
+
   const read = async (file: File) => {
-    setState({ step: 'reading', fileName: file.name, startedAt: Date.now() })
+    const count = photos.length
+    setState({ step: 'reading', fileName: file.name, startedAt: Date.now(), photos: count })
     setNow(Date.now())
     try {
+      if (count) {
+        // Planta + fotos: a skill /house-3d tira as medidas da planta e, das fotos, o tipo de
+        // cada porta (de correr ou de abrir), as janelas e os armários.
+        const form = new FormData()
+        form.append('planta', file)
+        for (const photo of await Promise.all(photos.map(resizeImage))) {
+          form.append('fotos', photo)
+        }
+        form.append('moveis', '[]')
+        const id = await startJob('/api/house-3d', form, {})
+        const job = await waitForJob<unknown>(id, () => {})
+        if (job.status === 'error') throw new Error(job.error ?? 'A leitura da planta falhou.')
+        const model = parseHouseModel(job.result)
+        if (!model) throw new Error('A resposta da leitura veio num formato inesperado.')
+        const { read, house } = readHouse(model, rooms)
+        if (!Object.keys(read.house).length) {
+          throw new Error(model.notes || 'Nenhum cômodo reconhecido nesta planta.')
+        }
+        setState({
+          step: 'done',
+          source: { aspect: read.aspect, notes: read.notes, rooms: read.rooms },
+          plan: read,
+          file,
+          costUsd: job.costUsd,
+          model,
+          photos: count,
+        })
+        onRead(read, file.name, savedHouse(house, count, job.costUsd))
+        return
+      }
       const id = await startJob('/api/floor-plan', file, { name: file.name })
       const job = await waitForJob<unknown>(id, () => {})
       if (job.status === 'error') throw new Error(job.error ?? 'A leitura da planta falhou.')
@@ -49,13 +108,8 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
       if (!Object.keys(read.house).length) {
         throw new Error(plan.notes || 'Nenhum cômodo reconhecido nesta planta.')
       }
-      setState({
-        step: 'done',
-        source: plan,
-        plan: read,
-        fileName: file.name,
-        costUsd: job.costUsd,
-      })
+      setState({ step: 'done', source: plan, plan: read, file, costUsd: job.costUsd, photos: 0 })
+      // Leitura rápida: uma casa em 3D de outra leitura não vale mais.
       onRead(read, file.name)
     } catch (error) {
       setState({ step: 'error', message: error instanceof Error ? error.message : String(error) })
@@ -65,10 +119,17 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
   /** A pessoa muda o tipo de um cômodo (ex.: "Dorm. 2" vira quarto do bebê): refaz a casa. */
   const retype = (index: number, type: string) => {
     if (state.step !== 'done') return
+    if (state.model) {
+      const model = setHouseRoomType(state.model, index, type)
+      const { read, house } = readHouse(model, rooms)
+      setState({ ...state, model, source: { ...state.source, rooms: read.rooms }, plan: read })
+      onRead(read, state.file.name, savedHouse(house, state.photos, state.costUsd))
+      return
+    }
     const source = setRoomType(state.source, index, type)
     const plan = planToHouse(source, rooms)
     setState({ ...state, source, plan })
-    onRead(plan, state.fileName)
+    onRead(plan, state.file.name)
   }
 
   const seconds = state.step === 'reading' ? Math.round((now - state.startedAt) / 1000) : 0
@@ -93,14 +154,42 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
         </label>
         <span class="muted">
           {state.step === 'reading'
-            ? `Lendo ${state.fileName}… ${seconds}s (costuma levar 1 minuto)`
+            ? state.photos
+              ? `Lendo ${state.fileName} e ${state.photos} foto(s)… ${seconds}s (costuma levar 2–3 minutos)`
+              : `Lendo ${state.fileName}… ${seconds}s (costuma levar 1 minuto)`
             : 'Imagem ou PDF: os cômodos e o tamanho de cada um saem da planta.'}
         </span>
       </div>
+      <div class="floor-plan-upload-row">
+        <label class="floor-plan-photos">
+          📷 Fotos dos cômodos <span class="muted">(opcional, até {MAX_PHOTOS})</span>
+          <input
+            type="file"
+            accept={PHOTO_ACCEPT}
+            multiple
+            disabled={state.step === 'reading'}
+            onChange={(e) => setPhotos([...(e.currentTarget.files ?? [])].slice(0, MAX_PHOTOS))}
+          />
+        </label>
+        <span class="muted">
+          Planta de imobiliária nem sempre é fiel: com fotos, a leitura confere onde há porta de
+          correr (não ocupa espaço para abrir), as janelas e os armários embutidos.
+        </span>
+      </div>
+      {state.step === 'done' && photos.length > 0 && state.photos !== photos.length && (
+        <button type="button" class="small-button" onClick={() => void read(state.file)}>
+          🔄 Ler de novo a planta com {photos.length} foto(s)
+        </button>
+      )}
       {state.step === 'reading' && <progress aria-label="Lendo a planta" />}
       {state.step === 'error' && (
         <p class="notice notice-warn" role="alert">
           {state.message}
+        </p>
+      )}
+      {state.step === 'done' && state.model && (
+        <p class="muted" role="status">
+          {photoFindings(state.model, state.photos)}
         </p>
       )}
       {state.step === 'done' && (
@@ -108,6 +197,20 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
       )}
     </section>
   )
+}
+
+/** O que a leitura com fotos achou além da planta. */
+function photoFindings(model: HouseModel, photos: number): string {
+  const doors = model.rooms.flatMap((r) => r.openings.filter((o) => o.kind === 'door'))
+  const sliding = doors.filter((o) => o.sliding).length
+  const windows = model.rooms.flatMap((r) => r.openings.filter((o) => o.kind === 'window')).length
+  const builtIns = model.rooms.reduce((n, r) => n + r.builtIns.length, 0)
+  const parts = [
+    `${windows} janela(s)`,
+    `${sliding} porta(s) de correr`,
+    `${builtIns} armário(s) embutido(s)`,
+  ]
+  return `Lida com ${photos} foto(s): ${parts.join(', ')}. A posição dos móveis e o 3D usam essas medidas, portas e armários.`
 }
 
 interface SummaryProps {

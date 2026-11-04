@@ -4,6 +4,8 @@ import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { buildWorld } from '../src/engine/house-world.ts'
 import {
+  setHouseRoomType,
+  readHouse,
   relinkHouse,
   resolveParts,
   builtInPlaced,
@@ -613,5 +615,35 @@ describe('sala em L (caso real: sala junto à varanda + sala)', () => {
   it('o vão entre as partes não tem folha de porta no 3D', () => {
     const world = buildWorld(linkRooms(real, rooms))
     expect(world.doors.filter((d) => d.widthM > 1.5)).toEqual([])
+  })
+})
+
+describe('leitura caprichada no começo do fluxo (planta + fotos)', () => {
+  it('a casa em metros vira os cômodos sugeridos e a casa já ligada à lista', async () => {
+    const fixture = (await import('./fixtures/house-3d-armarios.json')).default
+    const model = parseHouseModel(fixture)!
+    const { read, house } = readHouse(model, rooms)
+    // mesmos cômodos da leitura rápida: 2 quartos (Suíte = Quarto 1), 3 banheiros, sala, cozinha…
+    expect(read.house).toMatchObject({ quarto: 2, banheiro: 3, sala: 1, cozinha: 1 })
+    expect(read.house.utilidades).toBe(1)
+    // cama pelo tamanho do quarto, como na leitura rápida
+    expect(Object.keys(read.variants)).toContain('quarto-1:cama-box')
+    // a casa sai ligada: posição dos móveis e 3D já usam as medidas e os armários das fotos
+    const suite = house.rooms.find((r) => r.label === 'Suíte')!
+    expect(suite.instanceId).toBe('quarto-1')
+    expect(suite.builtIns).toHaveLength(1)
+    // as ligações batem com os cômodos sugeridos para a planta
+    const ids = (r: { instanceId?: string }[]) => r.map((x) => x.instanceId ?? '-')
+    expect(ids(read.rooms)).toEqual(ids(house.rooms))
+  })
+
+  it('trocar o tipo de um cômodo refaz os cômodos (Dorm. 2 vira escritório)', async () => {
+    const fixture = (await import('./fixtures/house-3d-armarios.json')).default
+    const model = parseHouseModel(fixture)!
+    const index = model.rooms.findIndex((r) => r.label === 'Dorm. 2')
+    const { read, house } = readHouse(setHouseRoomType(model, index, 'escritorio'), rooms)
+    expect(read.house.quarto).toBe(1)
+    expect(read.house.escritorio).toBe(1)
+    expect(house.rooms[index].instanceId).toBe('escritorio')
   })
 })

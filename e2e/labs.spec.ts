@@ -941,3 +941,70 @@ test('chat do projeto: a IA vê o projeto, sugere e só muda ao aplicar', async 
   await expect(chat.getByRole('log')).toContainText('O sofá fica bem na parede da janela')
   await expect(chat.locator('.chat-actions li').nth(0)).toContainText('✓ aplicado')
 })
+
+test('planta + fotos no começo: leitura caprichada vira a planta do projeto', async ({ page }) => {
+  const casaArmarios = JSON.parse(
+    readFileSync('tests/fixtures/house-3d-armarios.json', 'utf8'),
+  ) as unknown
+  const calls = await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/house-3d': { id: 'h1' }, '/api/floor-plan': { id: 'p1' } },
+    jobs: {
+      h1: [{ id: 'h1', status: 'done', result: casaArmarios, costUsd: 0.45 }],
+      p1: [{ id: 'p1', status: 'done', result: apto }],
+    },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  await page.getByLabel(/Fotos dos cômodos/).setInputFiles([
+    { name: 'cozinha.png', mimeType: 'image/png', buffer: pixel },
+    { name: 'suite.png', mimeType: 'image/png', buffer: pixel },
+  ])
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.pdf', mimeType: 'application/pdf', buffer: Buffer.from('pdf') })
+
+  // com fotos, a leitura vai para a skill /house-3d (planta, fotos e sem móveis ainda)
+  const summary = page.getByRole('status').filter({ hasText: 'Planta lida' })
+  await expect(summary).toContainText('2 Quartos')
+  await expect(page.getByText(/^Lida com 2 foto\(s\):/)).toContainText('3 armário(s) embutido(s)')
+  const post = calls.find((c) => c.path === '/api/house-3d')!
+  expect(post.body).toContain('name="planta"; filename="apto.pdf"')
+  expect(post.body.match(/name="fotos"/g)).toHaveLength(2)
+  expect(calls.some((c) => c.path === '/api/floor-plan')).toBe(false)
+
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  // sem gerar nada: a posição dos móveis já é a casa lida (medidas e armário da foto)
+  await toStep(page, 'Posições em 3D')
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
+  await expect(layout).toContainText('(da casa em 3D)')
+  await expect(layout.getByLabel('Armário embutido (das fotos)')).toHaveCount(1)
+  // e o projeto em 3D já abre essa casa
+  await toStep(page, 'Projeto em 3D')
+  await expect(page.locator('.house-3d-generate').getByRole('status')).toContainText(
+    '3 armário(s) das fotos',
+  )
+
+  // ler outra planta sem fotos: leitura rápida, e a casa da leitura anterior sai
+  await toStep(page, 'Móveis')
+  await page.getByRole('button', { name: '← Cômodos' }).click()
+  await page.getByLabel(/Fotos dos cômodos/).setInputFiles([])
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'outra.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await expect(page.getByRole('status').filter({ hasText: 'Planta lida' })).toBeVisible()
+  expect(calls.filter((c) => c.path === '/api/floor-plan')).toHaveLength(1)
+  await expect(page.getByText(/^Lida com \d foto/)).toHaveCount(0)
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
+  await expect(layout).not.toContainText('(da casa em 3D)')
+})

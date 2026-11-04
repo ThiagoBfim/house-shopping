@@ -40,6 +40,7 @@ import { readFeatures, saveFeatures, type Features } from './features.ts'
 import { linkPlanRooms, withoutBedVariants, type ReadPlan } from '../engine/floor-plan.ts'
 import { FloorPlanUpload } from './FloorPlanUpload.tsx'
 import { readSavedPlan, savePlan, type SavedPlan } from './floor-plan-store.ts'
+import { saveHouse, type SavedHouse } from './house3d-store.ts'
 import { Footer } from './Footer.tsx'
 import { LabsPanel } from './LabsPanel.tsx'
 import { fetchHealth, type Health } from './local-api.ts'
@@ -240,7 +241,7 @@ export function App() {
     }
 
     if (session.picking || !house.instances.length) {
-      const readPlan = (plan: ReadPlan, fileName: string) => {
+      const readPlan = (plan: ReadPlan, fileName: string, house?: SavedHouse) => {
         // A casa da planta vai para a escolha de cômodos; a pessoa confere e continua.
         setSession({
           ...session,
@@ -256,6 +257,8 @@ export function App() {
         const saved = { fileName, aspect: plan.aspect, rooms: plan.rooms }
         setFloorPlan(saved)
         savePlan(saved)
+        // Leitura com fotos já é a casa em metros; leitura rápida apaga a casa de outra leitura.
+        saveHouse(house)
       }
       return (
         <>

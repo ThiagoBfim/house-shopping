@@ -11,6 +11,16 @@ Abra tudo com a ferramenta `Read` (imagens e PDF). Quando chamada pelo backend, 
 
 O objetivo é precisão: o site desenha a casa em 3D e deixa a pessoa andar por ela em primeira pessoa. Medida errada aparece como parede atravessando móvel ou porta dando em parede.
 
+## 0. Planta e fotos juntas
+
+Também é chamada no começo do fluxo da planta ("📐 Enviar a planta" com fotos), antes da lista existir: aí `moveis.json` vem vazio (`[]`) e `furniture` fica `[]` em todos os cômodos. O resto é igual — esta leitura vira a planta do projeto (cômodos sugeridos, posição dos móveis e 3D).
+
+Planta de imobiliária costuma simplificar ou errar. Combine as duas fontes:
+
+- **Medidas: a planta manda.** Cotas e áreas escritas valem mais que a impressão da foto.
+- **Tipo de porta, janelas e armários: a foto manda.** Se a foto mostra trilho/folha que corre, é `sliding: true` mesmo que a planta desenhe arco de porta de abrir (porta de correr não precisa do espaço do giro). Janela que aparece na foto e não na planta: acrescente, com peitoril e altura pela foto (porta-janela de varanda: `sillCm` 0). Armário embutido, bancada e aéreo da foto: `builtIns`.
+- Associe cada foto a um cômodo pelo que aparece e pela posição de porta/janela; na dúvida, não mude o que a planta diz e avise em `notes`.
+
 ## 1. A planta em metros
 
 - **`widthM` / `depthM`**: largura e profundidade da área construída inteira, em metros. Use as cotas da planta; sem cotas, deduza pela área escrita dos cômodos (soma das áreas ≈ área construída menos paredes); sem nada, estime pela proporção de um cômodo conhecido (porta = 0,80 m).
