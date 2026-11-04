@@ -79,3 +79,26 @@ export function diffPlans(before: Plan, after: Plan): Record<string, Change> {
   }
   return changes
 }
+
+/**
+ * Leva as escolhas de um cômodo para outro id ("banheiro" → "banheiro-1", quando a casa passa
+ * a ter dois): travas, recusas, variantes, necessidades e os itens adicionados/trocados.
+ */
+export function moveInstance(choices: Choices, from: string, to: string): Choices {
+  const rename = (key: string) =>
+    key.startsWith(`${from}:`) ? `${to}${key.slice(from.length)}` : key
+  const keys = <T>(record: Record<string, T>) =>
+    Object.fromEntries(Object.entries(record).map(([k, v]) => [rename(k), v]))
+  return {
+    ...choices,
+    locked: keys(choices.locked),
+    excluded: keys(choices.excluded),
+    variants: keys(choices.variants),
+    needs: keys(choices.needs),
+    manual: choices.manual.map((m) => ({
+      ...m,
+      instanceId: m.instanceId === from ? to : m.instanceId,
+      ...(m.replaces && { replaces: rename(m.replaces) }),
+    })),
+  }
+}

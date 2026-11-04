@@ -1146,3 +1146,45 @@ test('projeto em 3D sem fotos: casa montada pela planta; trocar a mesa muda o de
   )
   expect(inScene).toBeTruthy()
 })
+
+test('posição dos móveis mostra todos os cômodos da planta; o que não está na lista pode entrar', async ({
+  page,
+}) => {
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  // a planta tem 3 banheiros; a pessoa deixa só 1 na lista
+  await page.getByRole('button', { name: 'Remover um Banheiro' }).click()
+  await page.getByRole('button', { name: 'Remover um Banheiro' }).click()
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
+
+  // os outros dois banheiros aparecem (vazios), com "Pôr na lista"
+  const layout = page.locator('.furniture-layout')
+  const tabs = layout.getByRole('tab')
+  await expect(tabs.filter({ hasText: /^Banheiro$/ })).toHaveCount(1)
+  const extra = tabs.filter({ hasText: /fora da lista$/ })
+  await expect(extra).toHaveCount(2)
+  await extra.first().click()
+  await expect(layout.locator('.layout-not-in-list')).toContainText(
+    'está na planta, mas não na sua lista',
+  )
+  await expect(layout.locator('.layout-item')).toHaveCount(0)
+
+  // pôr na lista: vira mais um banheiro, com os móveis dele no desenho (e "Desfazer")
+  await layout.getByRole('button', { name: '➕ Pôr na lista' }).click()
+  await expect(page.getByText('Banheiro entrou na lista.')).toBeVisible()
+  await expect(tabs.filter({ hasText: /^Banheiro \d$/ })).toHaveCount(2)
+  await expect(extra).toHaveCount(1)
+  await tabs.filter({ hasText: /^Banheiro 2$/ }).click()
+  await expect(layout.getByRole('button', { name: /^Box de banheiro/ })).toHaveCount(1)
+  await toStep(page, 'Móveis')
+  await expect(page.locator('#room-banheiro-2')).toBeVisible()
+})

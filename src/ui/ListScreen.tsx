@@ -65,6 +65,8 @@ interface Props {
   cheaperPrices?: boolean
   /** Backend com a skill /house-chat: chat no passo "Posições em 3D". */
   chat?: boolean
+  /** Pôr na lista um cômodo que está na planta (devolve a troca de id, se houve). */
+  onAddRoom?: (type: string) => { from: string; to: string } | undefined
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
@@ -108,6 +110,7 @@ export function ListScreen({
   floorPlan,
   cheaperPrices,
   chat,
+  onAddRoom,
 }: Props) {
   const [query, setQuery] = useState('')
   // Fluxo da planta (só com a planta ligada): móveis → posições em 3D → projeto em 3D.
@@ -422,6 +425,7 @@ export function ListScreen({
           section={step === 'posicoes' ? 'positions' : 'project'}
           chat={chat}
           onRemove={refuse}
+          onAddRoom={onAddRoom}
         />
         <PlanFlowNav
           back={

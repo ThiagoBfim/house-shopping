@@ -34,6 +34,8 @@ interface Props {
   onMerge?: (a: number, b: number) => void
   /** Voltar a casa como estava antes de unir cômodos. */
   onUnmerge?: () => void
+  /** Pôr na lista um cômodo que está na planta e não na lista (mais um banheiro, a varanda). */
+  onAddRoom?: (type: string) => void
 }
 
 /** Margem em volta do cômodo no desenho (cm), para a régua e as janelas. */
@@ -120,6 +122,7 @@ export function FurnitureLayout({
   open3d = false,
   onMerge,
   onUnmerge,
+  onAddRoom,
 }: Props) {
   const { tabs: linked, idsOf, guests } = roomTabs(plan, view, instances)
   const [selected, setSelected] = useState(linked[0]?.tab)
@@ -130,7 +133,9 @@ export function FurnitureLayout({
   const svg = useRef<SVGSVGElement>(null)
   const dragged = useRef(false)
   const current = linked.find((r) => r.tab === selected) ?? linked[0]
-  const id = current?.instance?.id
+  // Cômodo da planta fora da lista: sem móveis (o id da aba só identifica o desenho).
+  const id = current?.instance?.id ?? current?.tab
+  const notInList = !!current && !current.instance
   // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
   const memo = useMemo(
     () => current && layoutOfTab(current, { plan, view, house, positions, idsOf }),
@@ -267,6 +272,20 @@ export function FurnitureLayout({
             </div>
           )
         })()}
+      {notInList && current.room && (
+        <p class="notice layout-not-in-list">
+          🏷️ {current.room.label} está na planta, mas não na sua lista: sem móveis.{' '}
+          {onAddRoom && (
+            <button
+              type="button"
+              class="small-button"
+              onClick={() => onAddRoom(current.room!.type)}
+            >
+              ➕ Pôr na lista
+            </button>
+          )}
+        </p>
+      )}
       {outside && (
         <p class="notice">
           📏 {current.title} não está na planta: desenhado com a medida típica, sem portas e

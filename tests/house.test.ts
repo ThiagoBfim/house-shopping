@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { products, rooms } from '../src/data/catalog-data.ts'
 import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import {
+  addRoomInstance,
   describeSpec,
   expandHouse,
   itemKey,
@@ -93,5 +94,56 @@ describe('expandHouse', () => {
 
   it('casa vazia', () => {
     expect(expandHouse(rooms, products, {}).room.items).toEqual([])
+  })
+})
+
+describe('pôr mais um cômodo na lista (a planta tem mais do que a lista)', () => {
+  const choices = {
+    ...emptyChoices(),
+    locked: { 'banheiro:chuveiro': 2 as const, 'sala:sofa': 1 as const },
+    excluded: { 'banheiro:toalhas': 'owned' as const },
+    variants: { 'banheiro:box-banheiro': 'x' },
+    needs: { 'banheiro:lixeira-banheiro': 1 as const },
+    manual: [
+      {
+        id: 'm1',
+        instanceId: 'banheiro',
+        name: 'Espelho',
+        price: 100,
+        qty: 1,
+        url: 'https://x.com/e',
+        replaces: 'banheiro:gabinete-banheiro',
+      },
+      { id: 'm2', instanceId: 'sala', name: 'Vaso', price: 50, qty: 1, url: 'https://x.com/v' },
+    ],
+  }
+
+  it('de 1 para 2: o banheiro que existia vira "banheiro-1" e as escolhas dele vão junto', () => {
+    const {
+      house,
+      choices: next,
+      renamed,
+    } = addRoomInstance({ banheiro: 1, sala: 1 }, 'banheiro', choices)
+    expect(house).toEqual({ banheiro: 2, sala: 1 })
+    expect(renamed).toEqual({ from: 'banheiro', to: 'banheiro-1' })
+    expect(next.locked).toEqual({ 'banheiro-1:chuveiro': 2, 'sala:sofa': 1 })
+    expect(next.excluded).toEqual({ 'banheiro-1:toalhas': 'owned' })
+    expect(next.variants).toEqual({ 'banheiro-1:box-banheiro': 'x' })
+    expect(next.needs).toEqual({ 'banheiro-1:lixeira-banheiro': 1 })
+    expect(next.manual.map((m) => [m.instanceId, m.replaces])).toEqual([
+      ['banheiro-1', 'banheiro-1:gabinete-banheiro'],
+      ['sala', undefined],
+    ])
+    // os ids batem com a casa nova
+    expect(expandHouse(rooms, {}, house).instances.map((i) => i.id)).toContain('banheiro-1')
+  })
+
+  it('de 0 para 1 ou de 2 para 3: nada muda de nome; acima do máximo, nada muda', () => {
+    expect(addRoomInstance({ sala: 1 }, 'area-externa', choices)).toEqual({
+      house: { sala: 1, 'area-externa': 1 },
+      choices,
+    })
+    expect(addRoomInstance({ banheiro: 2 }, 'banheiro', choices).house).toEqual({ banheiro: 3 })
+    expect(addRoomInstance({ banheiro: 5 }, 'banheiro', choices).house).toEqual({ banheiro: 5 })
   })
 })

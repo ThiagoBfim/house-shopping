@@ -1,6 +1,7 @@
 import type { ListView } from '../engine/budget.ts'
 import {
   guestsByHost,
+  OUTSIDE_TYPE,
   roomTypeOf,
   TYPICAL_ROOM_CM,
   TYPICAL_ROOM_DEFAULT,
@@ -63,7 +64,8 @@ export function roomTabs(plan: SavedPlan, view: ListView, instances: RoomInstanc
   const hostedIds = new Set(Object.values(guests).flat())
   const tabFor = (instance: RoomInstance | undefined, room: RoomTab['room'], index: number) => ({
     tab: instance?.id ?? `plan-${index}`,
-    title: instance?.title ?? room?.label ?? '',
+    // Fora da lista: o nome da planta pode ser igual ao de um cômodo da lista ("Banheiro").
+    title: instance?.title ?? `${room?.label ?? ''} · fora da lista`,
     room,
     index,
     instance,
@@ -80,11 +82,13 @@ export function roomTabs(plan: SavedPlan, view: ListView, instances: RoomInstanc
     ...instances
       .filter((i) => !inPlan.has(i.id) && !hostedIds.has(i.id) && i.roomId !== WHOLE_HOUSE)
       .map((instance) => tabFor(instance, undefined, -1)),
-  ].filter(
-    (r) =>
-      r.instance &&
-      (layoutItems(view, idsOf(r.instance.id)).length ||
-        otherItems(view, idsOf(r.instance.id)).length),
+  ].filter((r) =>
+    r.instance
+      ? layoutItems(view, idsOf(r.instance.id)).length ||
+        otherItems(view, idsOf(r.instance.id)).length
+      : // Cômodo da planta que não está na lista (a planta tem 3 banheiros, a lista 1): aparece
+        // vazio, com "Pôr na lista". Circulação e vestíbulo ("outro") não.
+        r.room !== undefined && r.room.type !== OUTSIDE_TYPE && r.room.type !== WHOLE_HOUSE,
   )
   return { tabs, idsOf, guests }
 }
@@ -107,7 +111,24 @@ export function layoutOfTab(
   },
 ): RoomView | undefined {
   const id = tab.instance?.id
-  if (!id) return undefined
+  if (!id) {
+    // Fora da lista: o cômodo como está (paredes, portas, janelas, armários das fotos), vazio.
+    if (!tab.room) return undefined
+    const label = tab.room.label
+    const f =
+      house?.model.rooms.some((r) => r.label === label) &&
+      furnishHouse(house.model, view, positions).find((r) => r.room.label === label)
+    if (f) {
+      const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }
+      return { size, layout: f.layout, fixed: f.fixed, from3d: true, outside: false }
+    }
+    const size = roomSizeCm(plan, tab.index)
+    const layout = arrangeRoom(
+      { width: size.width, depth: size.depth, openings: tab.room.openings },
+      [],
+    )
+    return { size, layout, fixed: [], from3d: false, outside: false }
+  }
   // A casa toda (a regra da lavanderia na cozinha olha os outros cômodos), depois o cômodo.
   // (sala em L: o principal traz o L inteiro, como um espaço só)
   const f =

@@ -22,6 +22,11 @@ interface Props {
   chat?: boolean
   /** Tirar um item da lista (o chat sugere, a pessoa aplica). */
   onRemove: (key: string, label: string) => void
+  /**
+   * Pôr na lista um cômodo da planta que não está nela. Devolve a troca de id quando o cômodo
+   * que já existia muda de nome ("banheiro" → "banheiro-1"), para as posições irem junto.
+   */
+  onAddRoom?: (type: string) => { from: string; to: string } | undefined
 }
 
 /**
@@ -29,7 +34,15 @@ interface Props {
  * cômodo em 3D com a vista de cima para arrastar e o chat do projeto. "Projeto em 3D": a casa
  * inteira gerada pela skill /house-3d, para andar e ver o tour.
  */
-export function FloorPlanPanel({ plan, view, instances, section, chat, onRemove }: Props) {
+export function FloorPlanPanel({
+  plan,
+  view,
+  instances,
+  section,
+  chat,
+  onRemove,
+  onAddRoom,
+}: Props) {
   const [showing, setShowing] = useState<SavedHouse>()
   // Casa gerada em 3D e posições escolhidas: as mesmas na vista de cima e no 3D.
   const [house, setHouse] = useState<SavedHouse | undefined>(readSavedHouse)
@@ -79,6 +92,13 @@ export function FloorPlanPanel({ plan, view, instances, section, chat, onRemove 
     setPositions(next)
     savePositions(next)
   }
+  const addRoom = (type: string) => {
+    const renamed = onAddRoom?.(type)
+    if (!renamed || !positions[renamed.from]) return
+    // As posições do cômodo que mudou de id vão junto.
+    const { [renamed.from]: moved, ...rest } = positions
+    changePositions({ ...rest, [renamed.to]: moved })
+  }
   return (
     <section class="floor-plan-panel" aria-labelledby="floor-plan-title">
       <h3 id="floor-plan-title">
@@ -98,6 +118,7 @@ export function FloorPlanPanel({ plan, view, instances, section, chat, onRemove 
             open3d
             onMerge={house ? merge : undefined}
             onUnmerge={house?.unmerged ? unmerge : undefined}
+            onAddRoom={onAddRoom ? addRoom : undefined}
           />
           {chat && (
             <ProjectChat

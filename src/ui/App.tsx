@@ -16,7 +16,7 @@ import {
   type Change,
   type ChangeSummary,
 } from '../engine/choices.ts'
-import { expandHouse, type HouseSpec } from '../engine/house.ts'
+import { addRoomInstance, expandHouse, type HouseSpec } from '../engine/house.ts'
 import { keepManualIn } from '../engine/manual.ts'
 import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
@@ -388,6 +388,28 @@ export function App() {
       setToast({ message: `Lista recalculada: ${reloadText(summary)}.`, action })
     }
 
+    /**
+     * Pôr na lista um cômodo que está na planta (a planta tem 3 banheiros, a lista 1): a casa
+     * ganha mais um do tipo, as escolhas de quem muda de id vão junto e a lista é refeita no
+     * mesmo orçamento. Com "Desfazer".
+     */
+    const addRoom = (type: string) => {
+      const added = addRoomInstance(session.house, type, choices)
+      if (added.house === session.house) return undefined
+      const nextHouse = expandHouse(rooms, load.catalog.products, added.house)
+      const custom = applyPreferences(nextHouse.room, nextHouse.products, added.choices)
+      const nextPlan = planList(custom.room, custom.products, budget, added.choices)
+      const previous = session
+      setSession({ ...session, house: added.house, choices: added.choices, plan: nextPlan })
+      setChanges({})
+      setDirty(false)
+      setToast({
+        message: `${rooms[type]?.name ?? type} entrou na lista.`,
+        action: { label: 'Desfazer', run: () => setSession(previous) },
+      })
+      return added.renamed
+    }
+
     /** Painel "Suas respostas": troca uma resposta e refaz a lista mantendo os ajustes à mão. */
     const changeAnswer = (question: Question, ids: string[]) => {
       const answers = { ...session.answers }
@@ -501,6 +523,7 @@ export function App() {
           }}
           cheaperPrices={enabled('cheaperPrices')}
           chat={health?.chat === true}
+          onAddRoom={addRoom}
           floorPlan={
             // Religada aos cômodos de agora (mudou a quantidade ou o tipo depois de ler a planta).
             enabled('floorPlan') && floorPlan
