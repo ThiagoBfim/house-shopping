@@ -392,7 +392,8 @@ const sceneState = (page: Page) =>
 test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e vídeo', async ({
   page,
 }) => {
-  test.setTimeout(90_000)
+  // No CI (renderização por software, gravando vídeo) o tour anda devagar: tempo de sobra.
+  test.setTimeout(180_000)
   const calls = await mockApi(page, {
     health: { floorPlan: true, cheaperPrices: false, house3d: true },
     start: { '/api/floor-plan': { id: 'p1' }, '/api/house-3d': { id: 'h1' } },
@@ -475,10 +476,10 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
   await dialog.getByRole('button', { name: '⏺️ Gravar tour em vídeo' }).click()
   await expect(dialog.locator('.house-3d-rec')).toBeVisible()
   await expect
-    .poll(async () => (await sceneState(page)).tour, { timeout: 15000 })
+    .poll(async () => (await sceneState(page)).tour, { timeout: 60_000 })
     .toBeGreaterThan(0)
   await expect
-    .poll(async () => dialog.locator('.house-3d-room').textContent(), { timeout: 20000 })
+    .poll(async () => dialog.locator('.house-3d-room').textContent(), { timeout: 60_000 })
     .not.toMatch(/Varanda/)
   await dialog.getByRole('button', { name: /Parar e salvar vídeo/ }).click()
   const download = dialog.getByRole('link', { name: 'Baixar vídeo' })
