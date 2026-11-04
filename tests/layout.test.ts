@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { parseFloorPlan, type Opening } from '../src/engine/floor-plan.ts'
 import {
+  applySuggestions,
   arrangeRoom,
   BED_SIDE_CLEARANCE,
   roomSizeCm,
@@ -417,5 +418,62 @@ describe('mesa de jantar em cômodo pequeno', () => {
     // com espaço, continua no meio
     const roomy = arrangeRoom({ width: 400, depth: 400, openings: [] }, [table]).placed[0]
     expect(roomy.againstWall).toBeUndefined()
+  })
+})
+
+describe('TV em cima do rack', () => {
+  const base = arrangeRoom({ width: 400, depth: 500, openings: [] }, [
+    {
+      key: 'rack',
+      category: 'rack',
+      label: 'Rack',
+      placement: 'floor',
+      width: 180,
+      depth: 40,
+      height: 55,
+      qty: 1,
+    },
+    {
+      key: 'tv',
+      category: 'tv',
+      label: 'TV',
+      placement: 'wall',
+      width: 123,
+      depth: 6,
+      height: 71,
+      qty: 1,
+    },
+  ])
+  const tvOf = (l: typeof base) => l.placed.find((p) => p.key === 'tv')!
+
+  it('a TV fica em pé no rack no meio da sala (o caso do chat: centro a 258 × 95, frente para a esquerda)', () => {
+    const { layout, accepted } = applySuggestions(base, [
+      { key: 'rack', unit: 0, xCm: 258, yCm: 95, rotation: 'left' },
+      { key: 'tv', unit: 0, xCm: 258, yCm: 95, rotation: 'left' },
+    ])
+    expect(accepted).toBe(2)
+    expect(tvOf(layout)).toMatchObject({ facing: 'left', elevation: 55, standing: true })
+  })
+
+  it('TV solta no meio da sala, sem rack embaixo nem parede, é recusada', () => {
+    const { accepted } = applySuggestions(base, [
+      { key: 'tv', unit: 0, xCm: 200, yCm: 300, rotation: 'left' },
+    ])
+    expect(accepted).toBe(0)
+  })
+
+  it('mover só o rack para o meio: a TV vai junto, em pé em cima dele; de volta à parede, volta à altura de parede', () => {
+    const middle = applySuggestions(base, [
+      { key: 'rack', unit: 0, xCm: 258, yCm: 250, rotation: 'left' },
+    ]).layout
+    const tv = tvOf(middle)
+    expect(tv).toMatchObject({ facing: 'left', elevation: 55, standing: true })
+    expect(tv.x + tv.w / 2).toBeCloseTo(258)
+    expect(tv.y + tv.d / 2).toBeCloseTo(250)
+    const wall = applySuggestions(middle, [
+      { key: 'rack', unit: 0, xCm: 380, yCm: 250, rotation: 'left' },
+    ]).layout
+    expect(tvOf(wall)).toMatchObject({ facing: 'left', elevation: 95 })
+    expect(tvOf(wall).standing).toBeUndefined()
   })
 })

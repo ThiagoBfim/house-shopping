@@ -490,6 +490,7 @@ export function mountHouse(
       const [w, d] = sideways ? [p.d / 100, p.w / 100] : [p.w / 100, p.d / 100]
       const g = furnitureModel(p.category, w, d, Math.max(0.01, p.height / 100), p.placement, {
         againstWall: p.againstWall,
+        standing: p.standing,
       })
       g.rotation.y = { down: 0, up: Math.PI, right: Math.PI / 2, left: -Math.PI / 2 }[p.facing]
       g.position.set(

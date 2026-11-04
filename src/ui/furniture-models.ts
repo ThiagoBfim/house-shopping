@@ -346,10 +346,28 @@ function appliance(g: Group, w: number, d: number, h: number, kind: string) {
   }
 }
 
-function tv(g: Group, w: number, d: number, h: number) {
-  addBox(g, w, h, Math.max(0.03, Math.min(d, 0.06)), 0, 0, 0, material(BLACK, { roughness: 0.2 }))
+function tv(g: Group, w: number, d: number, h: number, standing = false) {
+  // Em pé no rack: pé e haste; a tela fica um pouco acima.
+  const lift = standing ? 0.09 : 0
+  if (standing) {
+    addBox(g, Math.min(0.5, w * 0.35), 0.015, 0.22, 0, 0, 0, material(BLACK, { roughness: 0.4 }))
+    addBox(g, 0.05, lift, 0.03, 0, 0.015, -0.01, material(BLACK, { roughness: 0.4 }))
+  }
+  const panel = new Group()
+  panel.position.y = lift
+  g.add(panel)
   addBox(
-    g,
+    panel,
+    w,
+    h,
+    Math.max(0.03, Math.min(d, 0.06)),
+    0,
+    0,
+    0,
+    material(BLACK, { roughness: 0.2 }),
+  )
+  addBox(
+    panel,
     w - 0.03,
     h - 0.03,
     0.004,
@@ -384,7 +402,7 @@ export function furnitureModel(
   d: number,
   h: number,
   placement: string,
-  { againstWall = false }: { againstWall?: boolean } = {},
+  { againstWall = false, standing = false }: { againstWall?: boolean; standing?: boolean } = {},
 ): Group {
   const g = new Group()
   if (placement === 'rug') {
@@ -466,7 +484,7 @@ export function furnitureModel(
     case 'tv':
     case 'monitor':
     case 'monitor-gamer':
-      tv(g, w, d, h)
+      tv(g, w, d, h, standing)
       break
     case 'ar-condicionado':
       addBox(g, w, h, d, 0, 0, 0, material('#f5f5f5', { roughness: 0.4 }))

@@ -25,6 +25,7 @@ Abra com a ferramenta `Read`. Quando chamada pelo backend, a resposta segue um J
 Só sugira ação quando a pessoa pedir uma mudança ou quando ela claramente melhora o projeto. A tela mostra cada ação com um botão "Aplicar" e confere antes (dentro do cômodo, sem bater em móvel, armário ou porta); a que não passar é recusada.
 
 - `move`: `room` (id do cômodo), `key` e `unit` do móvel, novo centro `xCm`/`yCm` (cm a partir do canto de cima à esquerda do cômodo) e `rotation` (para onde a frente aponta: `down`, `up`, `left`, `right`; cama: a frente é o pé). Ao girar 90°, largura e profundidade trocam. Encostado na parede de cima com frente para baixo: `yCm` = profundidade/2. Confira a conta antes: o retângulo novo precisa caber no cômodo e não encostar nos outros móveis.
+- **TV no rack:** o rack (e a cômoda no quarto) aguenta a TV em cima, onde ele estiver — inclusive no meio da sala, como divisória. Para pôr a TV no rack: `move` da TV com o centro dentro do rack e a mesma direção dele (a tela fica em pé, na altura do rack). Mover só o rack também leva a TV: para a parede de trás dele (se o rack estiver encostado) ou em cima dele (se não). TV fora do rack precisa ficar encostada numa parede.
 - `remove`: tirar o item da lista (`key` de `list.items`): quando a pessoa disser que não quer, que já tem, ou que não cabe e ela aceita tirar.
 - `reset`: voltar o cômodo às posições sugeridas pelo site.
 

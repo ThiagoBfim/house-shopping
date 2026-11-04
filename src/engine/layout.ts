@@ -46,6 +46,8 @@ export interface PlacedItem {
   facing: 'down' | 'left' | 'up' | 'right'
   /** Mesa encostada na parede (cômodo pequeno): sem cadeiras do lado da parede (o de trás). */
   againstWall?: boolean
+  /** TV em pé em cima de um móvel (rack, cômoda), na altura dele: no 3D, com pé. */
+  standing?: boolean
 }
 
 export interface RoomLayout {
@@ -566,12 +568,6 @@ export function arrangeRoom(
   // 7. Na parede: não ocupam chão. TV acima do rack ou de frente para a cama/sofá; o resto
   //    (ar-condicionado no alto, espelho) num trecho de parede livre: sem outro item de parede
   //    nem móvel encostado que chegue à altura dele (espelho atrás da cama, ar em cima do armário).
-  const ELEVATION: Record<string, number> = {
-    'ar-condicionado': 210,
-    tv: 95,
-    coifa: 165,
-    purificador: 120,
-  }
   /** Item de parede que vai em cima de um móvel: TV no rack, coifa no fogão. */
   const alongWall = (wall: Wall, r: Rect) =>
     wall === 'top' || wall === 'bottom'
@@ -755,6 +751,19 @@ export function instancesIn(view: ListView): string[] {
   return [...ids]
 }
 
+/** Altura (cm) do chão até a base dos itens de parede. */
+const ELEVATION: Record<string, number> = {
+  'ar-condicionado': 210,
+  tv: 95,
+  coifa: 165,
+  purificador: 120,
+}
+
+/** Móveis que aguentam a TV em cima (em pé, onde o móvel estiver). */
+const STANDS: Record<string, Set<string>> = {
+  tv: new Set(['rack', 'comoda', 'comoda-trocador']),
+}
+
 /** Item de parede que vai em cima de um móvel: TV no rack, coifa no fogão (e segue ele). */
 const ABOVE: Record<string, string> = { tv: 'rack', coifa: 'fogao' }
 
@@ -794,6 +803,8 @@ export function applySuggestions(
   const byItem = new Map(hints.map((h) => [id(h), h]))
   // Retângulo novo de cada sugestão que tem forma válida (dentro do cômodo, na parede certa).
   const targets = new Map<string, PlacedItem>()
+  /** TV fora da parede: só vale em cima de um rack/cômoda (conferido no estado final). */
+  const onTop = new Map<string, PlacedItem>()
   for (const [key, hint] of byItem) {
     const p = layout.placed.find((q) => id(q) === key)
     if (!p) continue
@@ -812,14 +823,22 @@ export function applySuggestions(
       left: rect.x <= 3,
       right: rect.x + w >= W - 3,
     }[BACK_WALL[hint.rotation]]
+    const moved = { ...p, ...rect, facing: hint.rotation }
+    if (p.placement === 'wall') {
+      if (inside && againstBack) {
+        // De volta à parede: a TV que estava em pé no rack volta à altura de parede.
+        const { standing: _s, ...rest } = moved
+        void _s
+        targets.set(key, p.standing ? { ...rest, elevation: ELEVATION[p.category] ?? 30 } : rest)
+      } else if (inside && STANDS[p.category]) onTop.set(key, moved)
+      continue
+    }
     const shapeOk =
       inside &&
-      (p.placement === 'wall'
-        ? againstBack
-        : p.placement === 'rug' ||
-          (!fixed.some((o) => o.placement === 'floor' && overlaps(rect, o)) &&
-            !doors.some((z) => overlaps(rect, z))))
-    if (shapeOk) targets.set(key, { ...p, ...rect, facing: hint.rotation })
+      (p.placement === 'rug' ||
+        (!fixed.some((o) => o.placement === 'floor' && overlaps(rect, o)) &&
+          !doors.some((z) => overlaps(rect, z))))
+    if (shapeOk) targets.set(key, moved)
   }
   // Todas juntas, no estado final: a ordem não importa (trocar o sofá e o rack de parede só
   // dá certo com os dois no lugar novo). Sai quem bate em alguém; repete até assentar.
@@ -835,10 +854,26 @@ export function applySuggestions(
     if (!clash.length) break
     for (const key of clash) targets.delete(key)
   }
+  // TV em cima do rack (onde o rack ficou): na altura dele, em pé.
+  const settled = layout.placed.map((p) => targets.get(id(p)) ?? p)
+  for (const [key, tv] of onTop) {
+    const cx = tv.x + tv.w / 2
+    const cy = tv.y + tv.d / 2
+    const stand = settled.find(
+      (q) =>
+        STANDS[tv.category].has(q.category) &&
+        cx >= q.x &&
+        cx <= q.x + q.w &&
+        cy >= q.y &&
+        cy <= q.y + q.d,
+    )
+    if (stand) targets.set(key, { ...tv, elevation: stand.height, standing: true })
+  }
   const placed = layout.placed.map((p) => targets.get(id(p)) ?? p)
   const moved = new Set(targets.keys())
   const accepted = targets.size
-  // TV segue o rack, coifa segue o fogão (quando só o móvel de baixo foi mudado de lugar).
+  // TV segue o rack, coifa segue o fogão (quando só o móvel de baixo foi mudado de lugar): na
+  // parede de trás dele se ele está encostado nela; senão, a TV fica em pé em cima do rack.
   placed.forEach((q, i) => {
     const below = ABOVE[q.category]
     if (q.placement !== 'wall' || !below || moved.has(id(q))) return
@@ -848,14 +883,39 @@ export function applySuggestions(
     const sideways = q.facing === 'left' || q.facing === 'right'
     const [width, depth] = sideways ? [q.d, q.w] : [q.w, q.d]
     const length = wallLength(wall, W, D)
-    if (width > length) return
-    const center =
-      wall === 'top' || wall === 'bottom' ? anchor.x + anchor.w / 2 : anchor.y + anchor.d / 2
-    const offset = Math.min(Math.max(0, center - width / 2), length - width)
+    const touchesWall = {
+      top: anchor.y <= 3,
+      bottom: anchor.y + anchor.d >= D - 3,
+      left: anchor.x <= 3,
+      right: anchor.x + anchor.w >= W - 3,
+    }[wall]
+    const { standing: _s, ...rest } = q
+    void _s
+    if (touchesWall && width <= length) {
+      const center =
+        wall === 'top' || wall === 'bottom' ? anchor.x + anchor.w / 2 : anchor.y + anchor.d / 2
+      const offset = Math.min(Math.max(0, center - width / 2), length - width)
+      placed[i] = {
+        ...rest,
+        ...againstWall(wall, offset, width, depth, W, D),
+        facing: FACING[wall],
+        elevation: q.standing ? (ELEVATION[q.category] ?? 30) : q.elevation,
+      }
+      return
+    }
+    if (!STANDS[q.category]?.has(anchor.category)) return
+    // Em pé no meio do rack, virada para onde o rack está virado.
+    const [w, d] =
+      anchor.facing === 'left' || anchor.facing === 'right' ? [depth, width] : [width, depth]
     placed[i] = {
-      ...q,
-      ...againstWall(wall, offset, width, depth, W, D),
-      facing: FACING[wall],
+      ...rest,
+      x: anchor.x + anchor.w / 2 - w / 2,
+      y: anchor.y + anchor.d / 2 - d / 2,
+      w,
+      d,
+      facing: anchor.facing,
+      elevation: anchor.height,
+      standing: true,
     }
   })
   return { layout: { ...layout, placed }, accepted }
