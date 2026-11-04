@@ -301,7 +301,7 @@ export function describeList(
     const variant = variants && chosenVariant(variants, choices.variants[original.item.category])
     // Medidas digitadas na troca valem no lugar da medida típica (trocou o sofá → sofá novo).
     const size = sizeOf(
-      item.dimensions ? { dimensions: item.dimensions } : {},
+      item.dimensions ? { dimensions: item.dimensions } : { name: item.name },
       products[original.item.category],
       variant,
     )

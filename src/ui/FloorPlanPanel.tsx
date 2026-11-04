@@ -1,12 +1,11 @@
 import { useMemo, useState } from 'preact/hooks'
-import { mergeRooms, relinkHouse } from '../engine/house3d.ts'
-import type { Rooms } from '../data/schema.ts'
+import { houseFromPlan, mergeRooms, relinkHouse } from '../engine/house3d.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
 import { FloorPlanDrawing } from './FloorPlanDrawing.tsx'
 import { FurnitureLayout } from './FurnitureLayout.tsx'
-import { House3DGenerate } from './House3DGenerate.tsx'
+import { Project3D } from './Project3D.tsx'
 import { House3DView } from './House3DView.tsx'
 import { ProjectChat } from './ProjectChat.tsx'
 import type { ManualPositions } from '../engine/layout.ts'
@@ -17,8 +16,6 @@ interface Props {
   plan: SavedPlan
   view: ListView
   instances: RoomInstance[]
-  /** Backend local com a skill /house-3d: dá para gerar a casa inteira em 3D. */
-  house3d?: { rooms: Rooms }
   /** Passo do fluxo da planta: posições dos móveis (3D + chat) ou o projeto inteiro em 3D. */
   section: 'positions' | 'project'
   /** Backend com a skill /house-chat: chat do projeto no passo das posições. */
@@ -32,12 +29,10 @@ interface Props {
  * cômodo em 3D com a vista de cima para arrastar e o chat do projeto. "Projeto em 3D": a casa
  * inteira gerada pela skill /house-3d, para andar e ver o tour.
  */
-export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, onRemove }: Props) {
+export function FloorPlanPanel({ plan, view, instances, section, chat, onRemove }: Props) {
   const [showing, setShowing] = useState<SavedHouse>()
   // Casa gerada em 3D e posições escolhidas: as mesmas na vista de cima e no 3D.
-  const [house, setHouse] = useState<SavedHouse | undefined>(() =>
-    house3d ? readSavedHouse() : undefined,
-  )
+  const [house, setHouse] = useState<SavedHouse | undefined>(readSavedHouse)
   const [positions, setPositions] = useState<ManualPositions>(readPositions)
   // Casa em 3D religada aos cômodos de agora (mudou a quantidade ou o tipo depois de gerar).
   const ids = instances.map((i) => i.id).join()
@@ -70,6 +65,16 @@ export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, 
     setHouse(next)
     saveHouse(next)
   }
+  // Projeto em 3D: a casa da leitura com fotos ou, sem fotos, a montada pela própria planta.
+  const projectHouse = useMemo<SavedHouse>(
+    () =>
+      linkedHouse ?? {
+        model: houseFromPlan(plan),
+        generatedAt: '',
+        photos: 0,
+      },
+    [linkedHouse, plan],
+  )
   const changePositions = (next: ManualPositions) => {
     setPositions(next)
     savePositions(next)
@@ -106,21 +111,8 @@ export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, 
             />
           )}
         </>
-      ) : house3d ? (
-        <House3DGenerate
-          plan={plan}
-          rooms={house3d.rooms}
-          view={view}
-          instances={instances}
-          house={linkedHouse}
-          onGenerated={setHouse}
-          onOpen={setShowing}
-        />
       ) : (
-        <p class="notice">
-          A casa inteira em 3D é gerada pelo backend local: rode <code>npm run server</code> (ou{' '}
-          <code>./scripts/dev.sh</code>) e volte aqui.
-        </p>
+        <Project3D house={projectHouse} fromPlan={!linkedHouse} onOpen={setShowing} />
       )}
       {showing && (
         <House3DView

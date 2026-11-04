@@ -4,6 +4,7 @@ import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { buildWorld } from '../src/engine/house-world.ts'
 import {
+  houseFromPlan,
   neighbours,
   mergeRooms,
   isGeometry,
@@ -765,5 +766,35 @@ describe('unir cômodos (a pessoa junta a sala com o vestíbulo)', () => {
       true,
     )
     expect(furnished[1].layout.placed).toEqual([])
+  })
+})
+
+describe('projeto em 3D sem fotos: casa montada pela planta', () => {
+  it('mesmas medidas e cômodos da posição dos móveis (os móveis ficam no mesmo lugar)', async () => {
+    const { parseFloorPlan, planToHouse } = await import('../src/engine/floor-plan.ts')
+    const { roomSizeCm, layoutItems } = await import('../src/engine/layout.ts')
+    const apto = (await import('./fixtures/floor-plan-apto-portas.json')).default
+    const read = planToHouse(parseFloorPlan(apto)!, rooms)
+    const plan = { aspect: read.aspect, rooms: read.rooms }
+    const model = houseFromPlan(plan)
+    expect(model.rooms).toHaveLength(read.rooms.length)
+    const sala = read.rooms.findIndex((r) => r.instanceId === 'sala')
+    const size = roomSizeCm(plan, sala)
+    expect(model.rooms[sala]).toMatchObject({
+      instanceId: 'sala',
+      widthM: size.width / 100,
+      depthM: size.depth / 100,
+      openings: read.rooms[sala].openings,
+    })
+    // os cômodos ficam onde o desenho mostra (proporção da planta)
+    expect(model.widthM / model.depthM).toBeCloseTo(read.aspect, 1)
+    const house = expandHouse(rooms, products, read.house)
+    const view = buildList(house.room, house.products, 60_000, emptyChoices())
+    const inHouse = furnishHouse(model, view)[sala].layout.placed.map((p) => [p.key, p.x, p.y])
+    const onPlan = arrangeRoom(
+      { width: size.width, depth: size.depth, openings: read.rooms[sala].openings },
+      layoutItems(view, 'sala'),
+    ).placed.map((p) => [p.key, p.x, p.y])
+    expect(inHouse).toEqual(onPlan)
   })
 })

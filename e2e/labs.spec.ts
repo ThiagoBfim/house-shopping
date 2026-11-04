@@ -389,7 +389,7 @@ const sceneState = (page: Page) =>
     (window as unknown as { __house3d: { state: () => SceneState } }).__house3d.state(),
   )
 
-test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e vídeo', async ({
+test('projeto em 3D: planta e fotos no passo 1, andar em primeira pessoa, tour e vídeo', async ({
   page,
 }) => {
   // No CI (renderização por software, gravando vídeo) o tour anda devagar: tempo de sobra.
@@ -407,43 +407,32 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
   })
   await page.goto('./')
   await turnOn(page, 'Planta da casa')
+  // passo 1: fotos e planta (1×1 px: o navegador reduz/converte para JPEG antes de enviar)
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  await page.getByLabel(/Fotos dos cômodos/).setInputFiles([
+    { name: 'sala.png', mimeType: 'image/png', buffer: pixel },
+    { name: 'quarto.png', mimeType: 'image/png', buffer: pixel },
+  ])
   await page
     .getByLabel('Planta da casa (imagem ou PDF)')
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
-  await toStep(page, 'Projeto em 3D')
 
-  const gen = page.locator('.house-3d-generate')
-  const button = gen.getByRole('button', { name: '✨ Gerar casa em 3D' })
-  await expect(button).toBeDisabled()
-  await gen
-    .getByLabel('Planta')
-    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
-  // 1×1 px: o navegador reduz/converte para JPEG antes de enviar
-  const pixel = Buffer.from(
-    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
-    'base64',
-  )
-  await gen.getByLabel(/Fotos dos cômodos/).setInputFiles([
-    { name: 'sala.png', mimeType: 'image/png', buffer: pixel },
-    { name: 'quarto.png', mimeType: 'image/png', buffer: pixel },
-  ])
-  await button.click()
-  await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible({ timeout: 15000 })
-
-  // multipart com planta, 2 fotos e os móveis da lista por cômodo, com medida
+  // multipart com planta e 2 fotos (sem móveis ainda: a lista nem existia)
   const post = calls.find((c) => c.path === '/api/house-3d')!
   expect(post.body).toContain('name="planta"; filename="apto.png"')
   expect(post.body.match(/name="fotos"; filename="(sala|quarto)\.jpg"/g)).toHaveLength(2)
-  const moveis = JSON.parse(
-    post.body.split('name="moveis"')[1].split('\r\n\r\n')[1].split('\r\n')[0],
-  )
-  expect(moveis.find((r: { instanceId: string }) => r.instanceId === 'quarto-1').items).toEqual(
-    expect.arrayContaining([
-      expect.objectContaining({ key: 'quarto-1:cama-box', placement: 'floor' }),
-    ]),
-  )
+
+  // passo 4: sem upload nenhum, abre a casa lida no passo 1
+  await toStep(page, 'Projeto em 3D')
+  const gen = page.locator('.house-3d-generate')
+  await expect(page.locator('.floor-plan-panel input[type=file]')).toHaveCount(0)
+  await gen.getByRole('button', { name: '🏠 Abrir o projeto em 3D' }).click()
+  await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible({ timeout: 15000 })
 
   // abre em tela cheia, de cima
   const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
@@ -490,20 +479,18 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
   // fechar e reabrir sem gerar de novo (fica salva no navegador)
   await dialog.getByRole('button', { name: 'Fechar' }).click()
   await expect(dialog).toHaveCount(0)
-  await expect(gen.getByRole('status')).toContainText('Casa gerada: 11 cômodos')
+  await expect(gen.getByRole('status')).toContainText(/Casa: \d+ cômodos/)
   await expect(gen.getByRole('status')).toContainText('US$ 0.41')
   await page.reload()
   await page
     .locator('.house-3d-generate')
-    .getByRole('button', { name: '🔄 Atualizar o 3D' })
+    .getByRole('button', { name: '🏠 Abrir o projeto em 3D' })
     .click()
   await expect(page.getByRole('dialog', { name: 'Casa em 3D' })).toBeVisible()
   expect(calls.filter((c) => c.path === '/api/house-3d')).toHaveLength(1)
 })
 
-test('casa em 3D realista: armários das fotos, texturas e render em alta qualidade', async ({
-  page,
-}) => {
+test('projeto em 3D realista: leitura realista no passo 1, texturas e render', async ({ page }) => {
   test.setTimeout(240_000)
   const casaArmarios = JSON.parse(
     readFileSync('tests/fixtures/house-3d-armarios.json', 'utf8'),
@@ -518,23 +505,29 @@ test('casa em 3D realista: armários das fotos, texturas e render em alta qualid
   })
   await page.goto('./')
   await turnOn(page, 'Planta da casa')
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  // a opção realista só aparece com fotos
+  await expect(page.getByLabel(/Leitura realista/)).toHaveCount(0)
+  await page
+    .getByLabel(/Fotos dos cômodos/)
+    .setInputFiles([{ name: 'sala.png', mimeType: 'image/png', buffer: pixel }])
+  await page.getByLabel(/Leitura realista/).check()
   await page
     .getByLabel('Planta da casa (imagem ou PDF)')
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
-  await toStep(page, 'Projeto em 3D')
-
-  const gen = page.locator('.house-3d-generate')
-  await gen
-    .getByLabel('Planta')
-    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
-  await gen.getByRole('button', { name: '🌟 Gerar casa em 3D realista' }).click()
-
-  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
-  await expect(dialog).toBeVisible({ timeout: 30_000 })
   const post = calls.find((c) => c.path === '/api/house-3d')!
   expect(post.query.get('quality')).toBe('realista')
+
+  await toStep(page, 'Projeto em 3D')
+  const gen = page.locator('.house-3d-generate')
+  await gen.getByRole('button', { name: '🏠 Abrir o projeto em 3D' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
+  await expect(dialog).toBeVisible({ timeout: 30_000 })
   // abre já no realista (texturas e céu carregados de public/textures)
   await expect(dialog.getByRole('button', { name: '✨ Realista' })).toHaveAttribute(
     'aria-pressed',
@@ -557,7 +550,7 @@ test('casa em 3D realista: armários das fotos, texturas e render em alta qualid
   await expect(render).toHaveCount(0)
 
   await dialog.getByRole('button', { name: 'Fechar' }).click()
-  await expect(gen.getByRole('status')).toContainText('Casa gerada (realista)')
+  await expect(gen.getByRole('status')).toContainText('Casa (realista)')
   await expect(gen.getByRole('status')).toContainText('3 armário(s) das fotos')
 })
 
@@ -576,29 +569,21 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   })
   await page.goto('./')
   await turnOn(page, 'Planta da casa')
+  // planta + foto no passo 1: a vista de cima já é o cômodo da casa lida (medidas e armário da foto)
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  await page
+    .getByLabel(/Fotos dos cômodos/)
+    .setInputFiles([{ name: 'suite.png', mimeType: 'image/png', buffer: pixel }])
   await page
     .getByLabel('Planta da casa (imagem ou PDF)')
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
   await toStep(page, 'Posições em 3D')
-
   const layout = page.locator('.furniture-layout')
-  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
-  await expect(layout).not.toContainText('da casa em 3D')
-  await expect(layout.locator('.layout-fixed')).toHaveCount(0)
-
-  // gerar a casa em 3D: a vista de cima passa a ser o cômodo do 3D (medidas e armário da foto)
-  await toStep(page, 'Projeto em 3D')
-  const gen = page.locator('.house-3d-generate')
-  await gen
-    .getByLabel('Planta')
-    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
-  await gen.getByRole('button', { name: '✨ Gerar casa em 3D' }).click()
-  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
-  await expect(dialog).toBeVisible({ timeout: 30_000 })
-  await dialog.getByRole('button', { name: 'Fechar' }).click()
-  await toStep(page, 'Posições em 3D')
   await layout.getByRole('tab', { name: 'Quarto 1' }).click()
   await expect(layout).toContainText('Quarto 1: 3,5 × 4 m (da casa em 3D)')
   await expect(layout.getByLabel('Armário embutido (das fotos)')).toHaveCount(1)
@@ -689,7 +674,10 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   await expect(layout.getByRole('button', { name: /^Criado-mudo/ }).first()).toBeVisible()
   await expect(bed).toHaveCount(0)
   await toStep(page, 'Projeto em 3D')
-  await gen.getByRole('button', { name: '🔄 Atualizar o 3D' }).click()
+  await page
+    .locator('.house-3d-generate')
+    .getByRole('button', { name: '🏠 Abrir o projeto em 3D' })
+    .click()
   await page.waitForFunction(
     () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
   )
@@ -1094,4 +1082,67 @@ test('unir cômodos: a sala e o vestíbulo viram um espaço só (e dá para desf
   await expect(layout).toContainText('Sala: 3,4 × 3,6 m')
   await expect(layout.getByLabel('Fora do cômodo')).toHaveCount(0)
   await expect(merge.getByRole('button', { name: '↩ Desfazer uniões' })).toHaveCount(0)
+})
+
+test('projeto em 3D sem fotos: casa montada pela planta; trocar a mesa muda o desenho e o 3D', async ({
+  page,
+}) => {
+  test.setTimeout(120_000)
+  await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByLabel('Orçamento em reais').fill('60000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  // a mesa de jantar de agora (4 lugares, 120 × 80) no desenho
+  await toStep(page, 'Posições em 3D')
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  const table = layout.getByRole('button', { name: /^Mesa de jantar/ })
+  const footprint = async () => {
+    const rect = table.locator('rect')
+    return [Number(await rect.getAttribute('width')), Number(await rect.getAttribute('height'))]
+      .sort((a, b) => b - a)
+      .join('×')
+  }
+  const before = await footprint()
+
+  // trocar por uma mais cara (6 lugares): no desenho fica maior
+  await toStep(page, 'Móveis')
+  await page
+    .locator('#room-sala')
+    .getByRole('article', { name: /^Mesa de jantar/ })
+    .getByRole('button', { name: /Mais caro/ })
+    .click()
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  await expect.poll(footprint).not.toBe(before)
+  expect(await footprint()).toBe('160×90')
+
+  // passo 4: sem fotos, a casa é montada pela planta; nenhum upload
+  await toStep(page, 'Projeto em 3D')
+  const project = page.locator('.house-3d-generate')
+  await expect(project).toContainText('Montada pela planta do passo 1')
+  await expect(page.locator('.floor-plan-panel input[type=file]')).toHaveCount(0)
+  await project.getByRole('button', { name: '🏠 Abrir o projeto em 3D' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
+  await expect(dialog).toBeVisible()
+  await page.waitForFunction(
+    () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
+  )
+  // a mesa nova está na cena 3D
+  const inScene = await page.evaluate(() =>
+    (
+      window as unknown as { __house3d: { screenPosition: (id: string) => unknown } }
+    ).__house3d.screenPosition('sala:mesa-de-jantar#0'),
+  )
+  expect(inScene).toBeTruthy()
 })

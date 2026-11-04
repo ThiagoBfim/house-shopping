@@ -500,7 +500,6 @@ export function App() {
             onChange: changeAnswer,
           }}
           cheaperPrices={enabled('cheaperPrices')}
-          house3d={health?.house3d ? { rooms } : undefined}
           chat={health?.chat === true}
           floorPlan={
             // Religada aos cômodos de agora (mudou a quantidade ou o tipo depois de ler a planta).

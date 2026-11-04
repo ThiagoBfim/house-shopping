@@ -3392,3 +3392,11 @@ h3 {
 .layout-fixed.is-passagem-de-porta text {
   display: none;
 }
+
+.floor-plan-realistic {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 8px 0;
+  font-size: 0.85rem;
+}

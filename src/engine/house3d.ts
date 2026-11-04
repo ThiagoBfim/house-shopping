@@ -14,6 +14,7 @@ import {
   applySuggestions,
   arrangeRoom,
   MAX_SWING_DOOR_CM,
+  roomSizeCm,
   instancesIn,
   layoutItems,
   type LayoutItem,
@@ -839,3 +840,39 @@ function groupRoom(members: HouseRoom[]) {
 /** Peça só de geometria do L (fora do cômodo, passagem de porta): não é móvel nem obstáculo no 3D. */
 export const isGeometry = (p: PlacedItem) =>
   p.category === OUTSIDE_ROOM || p.category === DOOR_CLEARANCE
+
+/**
+ * Casa em metros a partir da planta lida sem fotos (leitura rápida): cada cômodo no lugar do
+ * desenho, com a medida que a posição dos móveis usa (pela área escrita e a proporção do
+ * desenho), portas e janelas da leitura e o acabamento comum do tipo. É o projeto em 3D de
+ * quem não mandou fotos — sem enviar nada de novo.
+ */
+export function houseFromPlan(
+  plan: Pick<FloorPlan, 'aspect'> & { rooms: PlacedRoom[] },
+): HouseModel {
+  const sizes = plan.rooms.map((_, i) => roomSizeCm(plan, i))
+  // Escala do desenho: largura do cômodo em metros ÷ fração da largura da planta (mediana).
+  const scales = plan.rooms
+    .flatMap((r, i) => (r.width > 0.05 ? [sizes[i].width / 100 / r.width] : []))
+    .sort((a, b) => a - b)
+  const width = scales.length ? scales[Math.floor(scales.length / 2)] : 10
+  const depth = width / plan.aspect
+  return {
+    widthM: Math.round(width * 100) / 100,
+    depthM: Math.round(depth * 100) / 100,
+    notes: 'Casa montada pela planta: medidas estimadas pela área de cada cômodo.',
+    rooms: plan.rooms.map((r, i) => ({
+      type: r.type,
+      label: r.label,
+      xM: Math.round(r.x * width * 100) / 100,
+      yM: Math.round(r.y * depth * 100) / 100,
+      widthM: sizes[i].width / 100,
+      depthM: sizes[i].depth / 100,
+      openings: r.openings,
+      finishes: defaultFinishes(r.type),
+      furniture: [],
+      builtIns: [],
+      ...(r.instanceId && { instanceId: r.instanceId }),
+    })),
+  }
+}

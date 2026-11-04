@@ -55,13 +55,21 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
   }, [state.step])
 
   const [photos, setPhotos] = useState<File[]>([])
+  /** Leitura realista: a skill olha cada foto com mais cuidado (mais demorada e mais cara). */
+  const [realistic, setRealistic] = useState(false)
 
   /** Casa salva junto com a leitura caprichada (já ligada à lista). */
-  const savedHouse = (house: HouseModel, count: number, costUsd?: number): SavedHouse => ({
+  const savedHouse = (
+    house: HouseModel,
+    count: number,
+    costUsd?: number,
+    quality?: 'realista',
+  ): SavedHouse => ({
     model: house,
     generatedAt: new Date().toISOString(),
     photos: count,
     ...(costUsd !== undefined && { costUsd }),
+    ...(quality && { quality }),
   })
 
   const read = async (file: File) => {
@@ -78,7 +86,7 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
           form.append('fotos', photo)
         }
         form.append('moveis', '[]')
-        const id = await startJob('/api/house-3d', form, {})
+        const id = await startJob('/api/house-3d', form, realistic ? { quality: 'realista' } : {})
         const job = await waitForJob<unknown>(id, () => {})
         if (job.status === 'error') throw new Error(job.error ?? 'A leitura da planta falhou.')
         const model = parseHouseModel(job.result)
@@ -96,7 +104,11 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
           model,
           photos: count,
         })
-        onRead(read, file.name, savedHouse(house, count, job.costUsd))
+        onRead(
+          read,
+          file.name,
+          savedHouse(house, count, job.costUsd, realistic ? 'realista' : undefined),
+        )
         return
       }
       const id = await startJob('/api/floor-plan', file, { name: file.name })
@@ -176,6 +188,18 @@ export function FloorPlanUpload({ rooms, onRead }: Props) {
           correr (não ocupa espaço para abrir), as janelas e os armários embutidos.
         </span>
       </div>
+      {photos.length > 0 && (
+        <label class="floor-plan-realistic">
+          <input
+            type="checkbox"
+            checked={realistic}
+            disabled={state.step === 'reading'}
+            onChange={(e) => setRealistic(e.currentTarget.checked)}
+          />
+          🌟 Leitura realista: olha cada foto com mais cuidado (armários, materiais, cores) e o
+          projeto em 3D já abre com texturas reais. Mais demorada (3–8 min) e mais cara.
+        </label>
+      )}
       {state.step === 'done' && photos.length > 0 && state.photos !== photos.length && (
         <button type="button" class="small-button" onClick={() => void read(state.file)}>
           🔄 Ler de novo a planta com {photos.length} foto(s)

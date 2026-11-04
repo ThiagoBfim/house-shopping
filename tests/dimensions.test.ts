@@ -151,3 +151,30 @@ describe('layoutItems (lista → móveis de um cômodo)', () => {
     expect(cozinha.some((i) => i.category === 'liquidificador')).toBe(false)
   })
 })
+
+describe('mesa sem medida: tamanho pelo número de lugares', () => {
+  it('4, 6 e 8 lugares têm tamanhos diferentes (a troca de mesa aparece no desenho e no 3D)', async () => {
+    const { sizeOf, seatsOf } = await import('../src/data/layout.ts')
+    const { products } = await import('../src/data/catalog-data.ts')
+    const mesa = products['mesa-de-jantar']
+    const sizes = mesa.options.map((o) => {
+      const s = sizeOf(o, mesa)!
+      return [seatsOf(o.name), s.width, s.depth, s.estimated]
+    })
+    expect(sizes).toEqual([
+      [4, 120, 80, true],
+      [6, 160, 90, true],
+      [6, 160, 90, true],
+      [8, 200, 100, true],
+    ])
+    // medida real do anúncio continua valendo
+    expect(
+      sizeOf({ name: 'Mesa 8 lugares', dimensions: { width: 220, depth: 110, height: 78 } }, mesa),
+    ).toMatchObject({ width: 220, estimated: false })
+    // categoria que não é mesa não muda pelo nome
+    expect(sizeOf({ name: 'Sofá 3 lugares' }, products.sofa)).toMatchObject(
+      products.sofa.layout!.size,
+    )
+    expect(seatsOf('Cadeira gamer')).toBeUndefined()
+  })
+})

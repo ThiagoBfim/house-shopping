@@ -295,6 +295,14 @@ function table(
       else chair(g, s * off, t, s > 0 ? -Math.PI / 2 : Math.PI / 2, chairMat)
     }
   }
+  // Mesa comprida (6 lugares ou mais): uma cadeira em cada cabeceira, de frente para a mesa.
+  if (long >= 1.5) {
+    const end = long / 2 + 0.12
+    for (const s of [-1, 1]) {
+      if (along) chair(g, s * end, 0, s > 0 ? -Math.PI / 2 : Math.PI / 2, chairMat)
+      else chair(g, 0, s * end, s > 0 ? Math.PI : 0, chairMat)
+    }
+  }
 }
 
 function appliance(g: Group, w: number, d: number, h: number, kind: string) {
