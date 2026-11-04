@@ -1,6 +1,7 @@
 {
   "label": "Lava-louças",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 60, "depth": 60, "height": 85 } },
   "options": [
     {
       "id": "lava-loucas-midea-8-servicos",
@@ -27,7 +28,8 @@
           "catalogId": "MLB62844446",
           "history": [{ "date": "2026-10-22", "price": 1709.1 }]
         }
-      ]
+      ],
+      "dimensions": { "width": 55, "depth": 50, "height": 59.5 }
     },
     {
       "id": "lava-loucas-brastemp-blf08",
@@ -54,7 +56,8 @@
             { "date": "2026-11-03", "price": 1911.57 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 51, "depth": 65, "height": 63 }
     },
     {
       "id": "lava-loucas-electrolux-ll14x",
@@ -81,7 +84,8 @@
           "catalogId": "MLB19714947",
           "history": [{ "date": "2026-10-30", "price": 8309.9 }]
         }
-      ]
+      ],
+      "dimensions": { "width": 84.5, "depth": 61, "height": 59.8 }
     },
     {
       "id": "lava-loucas-brastemp-blf61ar",
@@ -111,7 +115,8 @@
             { "date": "2026-10-30", "price": 3883.89 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 60, "depth": 59, "height": 85 }
     }
   ]
 }

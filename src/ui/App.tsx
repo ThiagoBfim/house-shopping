@@ -16,7 +16,7 @@ import {
   type Change,
   type ChangeSummary,
 } from '../engine/choices.ts'
-import { expandHouse, type HouseSpec } from '../engine/house.ts'
+import { addRoomInstance, expandHouse, type HouseSpec } from '../engine/house.ts'
 import { keepManualIn } from '../engine/manual.ts'
 import { applyPreferences } from '../engine/preferences.ts'
 import { formatBRLWhole } from '../engine/money.ts'
@@ -27,6 +27,7 @@ import { downloadList } from './download.ts'
 import { loadCatalog, type Catalog } from './catalog.ts'
 import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
+import { PlanFlowSteps, saveFlowStep } from './PlanFlow.tsx'
 import { Assistant, type AssistantNext } from './Assistant.tsx'
 import {
   persistState,
@@ -36,7 +37,14 @@ import {
   shareUrl,
 } from './persistence.ts'
 import { RoomPicker } from './RoomPicker.tsx'
+import { readFeatures, saveFeatures, type Features } from './features.ts'
+import { linkPlanRooms, withoutBedVariants, type ReadPlan } from '../engine/floor-plan.ts'
+import { FloorPlanUpload } from './FloorPlanUpload.tsx'
+import { readSavedPlan, savePlan, type SavedPlan } from './floor-plan-store.ts'
+import { saveHouse, type SavedHouse } from './house3d-store.ts'
 import { Footer } from './Footer.tsx'
+import { LabsPanel } from './LabsPanel.tsx'
+import { fetchHealth, type Health } from './local-api.ts'
 import { canShorten } from './shortener.ts'
 import { ThemeToggle } from './ThemeToggle.tsx'
 import { Toast, type ToastMessage } from './Toast.tsx'
@@ -78,12 +86,27 @@ const newSession = (): Session => ({
 export function App() {
   const [load, setLoad] = useState<Load>({ status: 'loading' })
   const [session, setSession] = useState<Session>(newSession())
+  /** A lista de antes de ir para "Planta e cômodos": voltar sem mudar nada. */
+  const [returnTo, setReturnTo] = useState<Session>()
   /** Escolhas mudaram desde o último reload. */
   const [dirty, setDirty] = useState(false)
   const [changes, setChanges] = useState<Record<string, Change>>({})
   const [toast, setToast] = useState<ToastMessage>()
   /** A lista aberta veio de um link compartilhado. */
   const [shared, setShared] = useState(false)
+  /** Backend local (2ª wave) rodando; ausente = recursos em teste escondidos. */
+  const [health, setHealth] = useState<Health>()
+  const [features, setFeatures] = useState<Features>(readFeatures)
+  useEffect(() => void fetchHealth().then(setHealth), [])
+  /** Recurso em teste ligado e disponível no backend local. */
+  const enabled = (feature: keyof Features) => Boolean(health?.[feature] && features[feature])
+  /** Planta lida (desenho na lista) e chave para recriar a escolha de cômodos com ela. */
+  const [floorPlan, setFloorPlan] = useState<SavedPlan | undefined>(readSavedPlan)
+  const [pickerKey, setPickerKey] = useState(0)
+  const changeFeatures = (next: Features) => {
+    setFeatures(next)
+    saveFeatures(next)
+  }
 
   /** Restaura a lista da URL (link compartilhado) ou do localStorage. */
   const restore = (catalog: Catalog) => {
@@ -129,7 +152,10 @@ export function App() {
           <ThemeToggle />
         </div>
       </header>
-      <main class="container">{renderStep()}</main>
+      <main class="container">
+        {health && <LabsPanel health={health} features={features} onChange={changeFeatures} />}
+        {renderStep()}
+      </main>
       <Footer />
       {toast && <Toast toast={toast} onClose={() => setToast(undefined)} />}
     </>
@@ -211,6 +237,7 @@ export function App() {
     const { room, products } = applyPreferences(house.room, house.products, session.choices)
 
     const changeRooms = () => {
+      setReturnTo(session)
       setSession({ ...session, picking: true })
       setChanges({})
       setDirty(false)
@@ -218,30 +245,82 @@ export function App() {
     }
 
     if (session.picking || !house.instances.length) {
+      const readPlan = (plan: ReadPlan, fileName: string, house?: SavedHouse) => {
+        // A casa da planta vai para a escolha de cômodos; a pessoa confere e continua.
+        setSession({
+          ...session,
+          house: plan.house,
+          picking: true,
+          choices: {
+            ...session.choices,
+            // Camas de uma leitura anterior saem: com outro tipo de cômodo, os quartos mudam de número.
+            variants: { ...withoutBedVariants(session.choices.variants), ...plan.variants },
+          },
+        })
+        setPickerKey((key) => key + 1)
+        const saved = { fileName, aspect: plan.aspect, rooms: plan.rooms }
+        setFloorPlan(saved)
+        savePlan(saved)
+        // Leitura com fotos já é a casa em metros; leitura rápida apaga a casa de outra leitura.
+        saveHouse(house)
+      }
+      /** Volta para a lista como estava (nada da escolha de cômodos é aplicado). */
+      const back = () => {
+        if (!returnTo) return
+        setSession(returnTo)
+        setReturnTo(undefined)
+      }
       return (
-        <RoomPicker
-          rooms={rooms}
-          products={load.catalog.products}
-          initial={session.house}
-          onAssistant={() => setSession({ ...session, assisting: true })}
-          onConfirm={(spec) => {
-            // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora. Os
-            // adicionados pelo usuário saem junto com o cômodo (com "Desfazer").
-            const choices = keepManualIn(
-              session.choices,
-              expandHouse(rooms, {}, spec).instances.map((instance) => instance.id),
-            )
-            const lost = session.choices.manual.length - choices.manual.length
-            const previous = session
-            setSession({ ...session, house: spec, choices, picking: false, editingBudget: true })
-            if (lost) {
-              setToast({
-                message: `${lost === 1 ? '1 item adicionado por você saiu' : `${lost} itens adicionados por você saíram`} junto com o cômodo.`,
-                action: { label: 'Desfazer', run: () => setSession(previous) },
-              })
-            }
-          }}
-        />
+        <>
+          {returnTo && (
+            <>
+              {enabled('floorPlan') && floorPlan && (
+                <PlanFlowSteps
+                  step="comodos"
+                  onStep={(step) => {
+                    saveFlowStep(step)
+                    back()
+                  }}
+                  onRooms={() => {}}
+                />
+              )}
+              <div class="picker-back">
+                <button type="button" class="small-button" onClick={back}>
+                  ← Voltar para a lista
+                </button>
+                <span class="muted">
+                  sem mudar nada; para mudar os cômodos, escolha abaixo e clique em "Continuar".
+                </span>
+              </div>
+            </>
+          )}
+          {enabled('floorPlan') && <FloorPlanUpload rooms={rooms} onRead={readPlan} />}
+          <RoomPicker
+            key={pickerKey}
+            rooms={rooms}
+            products={load.catalog.products}
+            initial={session.house}
+            onAssistant={() => setSession({ ...session, assisting: true })}
+            onConfirm={(spec) => {
+              // Itens de cômodos removidos ficam nas escolhas, mas o motor os ignora. Os
+              // adicionados pelo usuário saem junto com o cômodo (com "Desfazer").
+              const choices = keepManualIn(
+                session.choices,
+                expandHouse(rooms, {}, spec).instances.map((instance) => instance.id),
+              )
+              const lost = session.choices.manual.length - choices.manual.length
+              const previous = session
+              setReturnTo(undefined)
+              setSession({ ...session, house: spec, choices, picking: false, editingBudget: true })
+              if (lost) {
+                setToast({
+                  message: `${lost === 1 ? '1 item adicionado por você saiu' : `${lost} itens adicionados por você saíram`} junto com o cômodo.`,
+                  action: { label: 'Desfazer', run: () => setSession(previous) },
+                })
+              }
+            }}
+          />
+        </>
       )
     }
 
@@ -340,6 +419,28 @@ export function App() {
       const action = undoTo()
       const summary = summarizeChanges(view, replan(choices))
       setToast({ message: `Lista recalculada: ${reloadText(summary)}.`, action })
+    }
+
+    /**
+     * Pôr na lista um cômodo que está na planta (a planta tem 3 banheiros, a lista 1): a casa
+     * ganha mais um do tipo, as escolhas de quem muda de id vão junto e a lista é refeita no
+     * mesmo orçamento. Com "Desfazer".
+     */
+    const addRoom = (type: string) => {
+      const added = addRoomInstance(session.house, type, choices)
+      if (added.house === session.house) return undefined
+      const nextHouse = expandHouse(rooms, load.catalog.products, added.house)
+      const custom = applyPreferences(nextHouse.room, nextHouse.products, added.choices)
+      const nextPlan = planList(custom.room, custom.products, budget, added.choices)
+      const previous = session
+      setSession({ ...session, house: added.house, choices: added.choices, plan: nextPlan })
+      setChanges({})
+      setDirty(false)
+      setToast({
+        message: `${rooms[type]?.name ?? type} entrou na lista.`,
+        action: { label: 'Desfazer', run: () => setSession(previous) },
+      })
+      return added.renamed
     }
 
     /** Painel "Suas respostas": troca uma resposta e refaz a lista mantendo os ajustes à mão. */
@@ -453,6 +554,24 @@ export function App() {
             answers: session.answers ?? {},
             onChange: changeAnswer,
           }}
+          cheaperPrices={enabled('cheaperPrices')}
+          chat={health?.chat === true}
+          onAddRoom={addRoom}
+          floorPlan={
+            // Religada aos cômodos de agora (mudou a quantidade ou o tipo depois de ler a planta).
+            enabled('floorPlan') && floorPlan
+              ? (() => {
+                  const linked = {
+                    ...floorPlan,
+                    rooms: linkPlanRooms(
+                      floorPlan.rooms,
+                      house.instances.map((i) => i.id),
+                    ),
+                  }
+                  return linked.rooms.some((r) => r.instanceId) ? linked : undefined
+                })()
+              : undefined
+          }
           share={{
             url,
             text: shareText,

@@ -1,7 +1,7 @@
 // Cliente mínimo da API do Mercado Livre. Desde 2025 todos os endpoints exigem token
 // (sem token: 403 "PolicyAgent"). Ver docs/project/MercadoLivre.md.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import { isTrustedSeller, type Lookup } from './ml-sync.ts'
+import { isTrustedSeller, isWorthSwitching, type Lookup } from './ml-sync.ts'
 
 export const API = 'https://api.mercadolibre.com'
 const TOKEN_FILE = new URL('../../.ml-token.json', import.meta.url)
@@ -110,6 +110,18 @@ export function createLookup(accessToken: string): Lookup {
     ...(await seller(item.seller_id)),
   })
 
+  /** A oferta nova de vendedor confiável mais barata (abaixo de `below`, se informado). */
+  const cheapestTrusted = async (items: CatalogItem[], below = Infinity) => {
+    const candidates = items
+      .filter((i) => i.condition === 'new' && i.price < below)
+      .sort((a, b) => a.price - b.price)
+    for (const item of candidates) {
+      const quote = await quoteOf(item)
+      if (isTrustedSeller(quote)) return { item, quote }
+    }
+    return undefined
+  }
+
   return async ({ itemId, catalogId }) => {
     const items = await catalogItems(catalogId)
     if (!items) return undefined
@@ -117,14 +129,18 @@ export function createLookup(accessToken: string): Lookup {
       // Anúncio fora da lista do catálogo (comum nos /up/MLBU…) não prova que acabou:
       // sem dados, o sync mantém o preço da planilha e só avisa.
       const item = items.find((i) => i.item_id === itemId)
-      return item ? quoteOf(item) : undefined
+      if (!item) return undefined
+      const quote = await quoteOf(item)
+      // Outro vendedor do mesmo produto mais barato (só consulta quem vale o aviso).
+      const others = items.filter(
+        (i) => i.item_id !== itemId && isWorthSwitching(item.price, i.price),
+      )
+      const cheaper = await cheapestTrusted(others)
+      return cheaper
+        ? { ...quote, cheaper: { itemId: cheaper.item.item_id, price: cheaper.item.price } }
+        : quote
     }
     // Link só do catálogo: a oferta nova mais barata de vendedor confiável.
-    const candidates = items.filter((i) => i.condition === 'new').sort((a, b) => a.price - b.price)
-    for (const item of candidates) {
-      const quote = await quoteOf(item)
-      if (isTrustedSeller(quote)) return quote
-    }
-    return { available: false }
+    return (await cheapestTrusted(items))?.quote ?? { available: false }
   }
 }

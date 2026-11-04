@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { parseCsv, parsePrice, toCsv } from '../scripts/lib/csv.ts'
 import { exportRows, importRows, LINK_COLUMNS } from '../scripts/lib/ml-links.ts'
-import { earnsCommission, syncOffers, type Quote } from '../scripts/lib/ml-sync.ts'
+import {
+  earnsCommission,
+  isWorthSwitching,
+  syncOffers,
+  type Quote,
+} from '../scripts/lib/ml-sync.ts'
 import type { Products } from '../src/data/schema.ts'
 
 const products = (): Products => ({
@@ -314,6 +319,34 @@ describe('syncOffers', () => {
     ])
     expect(report.updated).toEqual([{ id: 'liq-barato', from: 119, to: 109.9 }])
     expect(report.noCommission).toEqual([])
+  })
+
+  it('avisa quando outro vendedor do mesmo produto está ≥ 5% mais barato', async () => {
+    const quote = (cheaper?: number): Quote => ({
+      price: 119,
+      available: true,
+      condition: 'new',
+      sellerLevel: '5_green',
+      ...(cheaper !== undefined && { cheaper: { itemId: 'MLB2', price: cheaper } }),
+    })
+    const run = (q: Quote) => syncOffers(withOffer(), async () => q, '2026-10-23')
+
+    const { products: next, report } = await run(quote(99.9))
+    expect(report.cheaperInCatalog).toEqual([
+      { id: 'liq-barato', price: 119, cheaper: 99.9, itemId: 'MLB2', catalogId: 'MLB900' },
+    ])
+    // o preço continua o do anúncio do link (a troca de vendedor é com /ml-links)
+    expect(next.liquidificador.options[0].price).toBe(119)
+
+    // menos de 5% de diferença ou sem alternativa: sem aviso
+    expect((await run(quote(115))).report.cheaperInCatalog).toEqual([])
+    expect((await run(quote())).report.cheaperInCatalog).toEqual([])
+  })
+
+  it('isWorthSwitching: a partir de 5% de economia', () => {
+    expect(isWorthSwitching(100, 95)).toBe(true)
+    expect(isWorthSwitching(100, 95.01)).toBe(false)
+    expect(isWorthSwitching(5262.11, 4499)).toBe(true)
   })
 
   it('traz a imagem só se o produto ainda não tiver', async () => {

@@ -7,6 +7,15 @@
     { "id": "queen", "label": "Queen" },
     { "id": "king", "label": "King" }
   ],
+  "layout": {
+    "placement": "floor",
+    "size": { "width": 138, "depth": 188, "height": 42 },
+    "variants": {
+      "solteiro": { "size": { "width": 88, "depth": 188, "height": 42 } },
+      "queen": { "size": { "width": 158, "depth": 198, "height": 42 } },
+      "king": { "size": { "width": 193, "depth": 203, "height": 42 } }
+    }
+  },
   "options": [
     {
       "id": "base-box-casal-ortobom",
@@ -133,7 +142,8 @@
             { "date": "2026-10-30", "price": 692.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 158, "depth": 198, "height": 46 }
     },
     {
       "id": "cama-box-bau-queen",
@@ -200,7 +210,8 @@
             { "date": "2026-10-30", "price": 770.78 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 193, "depth": 203, "height": 36 }
     },
     {
       "id": "cama-box-bau-king",

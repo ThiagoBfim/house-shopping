@@ -1,6 +1,7 @@
 {
   "label": "Tapete",
   "utensil": false,
+  "layout": { "placement": "rug", "size": { "width": 200, "depth": 150, "height": 1 } },
   "options": [
     {
       "id": "tapete-sala-2-00-x-1-50",

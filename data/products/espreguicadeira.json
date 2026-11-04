@@ -1,6 +1,7 @@
 {
   "label": "Espreguiçadeira",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 65, "depth": 190, "height": 35 } },
   "options": [
     {
       "id": "espreguicadeira-plastico-tramontina",
@@ -26,7 +27,8 @@
             { "date": "2026-10-30", "price": 577.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 71, "depth": 157, "height": 94 }
     },
     {
       "id": "espreguicadeira-aluminio-tela",

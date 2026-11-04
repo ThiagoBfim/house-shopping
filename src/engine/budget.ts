@@ -9,6 +9,7 @@ import type {
   Tier,
   Variant,
 } from '../data/schema.ts'
+import { sizeOf, type ItemSize } from '../data/layout.ts'
 import { replacedKeys, storeFromUrl, type ManualItem } from './manual.ts'
 import { chosenVariant } from './preferences.ts'
 
@@ -59,6 +60,8 @@ export interface ListEntry {
   /** Variantes da categoria e a escolhida (só quando a categoria tem variantes). */
   variants?: Variant[]
   variant?: string
+  /** Medidas (móveis e eletros que entram no desenho em escala); `estimated` = típica. */
+  size?: ItemSize
 }
 
 export interface SkippedEntry {
@@ -83,6 +86,8 @@ export interface ManualEntry {
   subtotal: number
   /** Item do catálogo que este substitui (quando é uma troca). */
   replaced?: ReplacedEntry
+  /** Troca de móvel: a medida típica da categoria trocada (o produto do usuário não tem medida). */
+  size?: ItemSize
 }
 
 export interface ReplacedEntry {
@@ -291,7 +296,16 @@ export function describeList(
       subtotal: (cents(item.price) * item.qty) / 100,
     }
     const original = item.replaces && replaced.get(item.replaces)
-    return original ? { ...entry, replaced: original } : entry
+    if (!original) return entry
+    const { variants } = products[original.item.category]
+    const variant = variants && chosenVariant(variants, choices.variants[original.item.category])
+    // Medidas digitadas na troca valem no lugar da medida típica (trocou o sofá → sofá novo).
+    const size = sizeOf(
+      item.dimensions ? { dimensions: item.dimensions } : { name: item.name },
+      products[original.item.category],
+      variant,
+    )
+    return { ...entry, replaced: original, ...(size && { size }) }
   })
 
   for (const item of [...room.items].sort(byImportance)) {
@@ -313,6 +327,8 @@ export function describeList(
     } else {
       const option = optionForTier(options, tier)
       const subtotal = cents(option.price) * item.qty
+      const variant = variants && chosenVariant(variants, choices.variants[item.category])
+      const size = sizeOf(option, products[item.category], variant)
       total += subtotal
       view.entries.push({
         item,
@@ -323,10 +339,8 @@ export function describeList(
         locked: choices.locked[item.category] !== undefined,
         utensil,
         helper,
-        ...(variants && {
-          variants,
-          variant: chosenVariant(variants, choices.variants[item.category]),
-        }),
+        ...(variants && { variants, variant }),
+        ...(size && { size }),
       })
     }
   }

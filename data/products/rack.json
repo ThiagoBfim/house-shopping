@@ -1,6 +1,7 @@
 {
   "label": "Rack / painel para TV",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 180, "depth": 40, "height": 55 } },
   "options": [
     {
       "id": "rack-para-tv-55-polegadas",

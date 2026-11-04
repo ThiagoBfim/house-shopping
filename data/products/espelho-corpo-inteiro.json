@@ -1,6 +1,7 @@
 {
   "label": "Espelho de corpo inteiro",
   "utensil": false,
+  "layout": { "placement": "wall", "size": { "width": 50, "depth": 3, "height": 160 } },
   "options": [
     {
       "id": "espelho-de-porta-30x110-cm",

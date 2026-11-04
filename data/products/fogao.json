@@ -6,6 +6,14 @@
     { "id": "cooktop-gas", "label": "Cooktop a gás" },
     { "id": "cooktop-inducao", "label": "Cooktop de indução" }
   ],
+  "layout": {
+    "placement": "floor",
+    "size": { "width": 76, "depth": 64, "height": 90 },
+    "variants": {
+      "cooktop-gas": { "placement": "none" },
+      "cooktop-inducao": { "placement": "none" }
+    }
+  },
   "options": [
     {
       "id": "fogao-atlas-monaco-top-glass-4-bocas",
@@ -37,7 +45,8 @@
             { "date": "2026-11-03", "price": 1171.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 48, "depth": 56, "height": 88 }
     },
     {
       "id": "fogao-electrolux-fe5iw",
@@ -96,7 +105,8 @@
           ]
         }
       ],
-      "variants": ["piso"]
+      "variants": ["piso"],
+      "dimensions": { "width": 77.8, "depth": 68.1, "height": 97.6 }
     },
     {
       "id": "fogao-electrolux-5-bocas-airfry",
@@ -129,7 +139,8 @@
           "catalogId": "MLB64611576"
         }
       ],
-      "variants": ["piso"]
+      "variants": ["piso"],
+      "dimensions": { "width": 76.4, "depth": 66, "height": 94 }
     },
     {
       "id": "cooktop-a-gas-mueller-4-bocas",

@@ -1,0 +1,261 @@
+{
+  "widthM": 12,
+  "depthM": 8,
+  "rooms": [
+    {
+      "type": "quarto",
+      "label": "Suíte",
+      "xM": 0,
+      "yM": 0,
+      "widthM": 3.5,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.5,
+          "widthCm": 140,
+          "sillCm": 100,
+          "heightCm": 120
+        },
+        {
+          "kind": "door",
+          "wall": "right",
+          "position": 0.8,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "in"
+        },
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.543,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "out"
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "banheiro",
+      "label": "Banho",
+      "xM": 3.5,
+      "yM": 0,
+      "widthM": 2,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "outro",
+      "label": "Circulação",
+      "xM": 3.5,
+      "yM": 2,
+      "widthM": 2,
+      "depthM": 2,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "left",
+          "position": 0.6,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "out"
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "sala",
+      "label": "Estar / Jantar",
+      "xM": 5.5,
+      "yM": 0,
+      "widthM": 3.5,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "top",
+          "position": 0.514,
+          "widthCm": 160,
+          "sillCm": 100,
+          "heightCm": 120
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "cozinha",
+      "label": "Cozinha",
+      "xM": 9,
+      "yM": 0,
+      "widthM": 3,
+      "depthM": 2.5,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "right",
+          "position": 0.52,
+          "widthCm": 120,
+          "sillCm": 110,
+          "heightCm": 100
+        }
+      ],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "lavanderia",
+      "label": "A. Serviço",
+      "xM": 9,
+      "yM": 2.5,
+      "widthM": 3,
+      "depthM": 1.5,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "quarto",
+      "label": "Dorm. 2",
+      "xM": 0,
+      "yM": 4,
+      "widthM": 3,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "top",
+          "position": 0.633,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "in"
+        },
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.45,
+          "widthCm": 140,
+          "sillCm": 100,
+          "heightCm": 120
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "banheiro",
+      "label": "Banheiro",
+      "xM": 3,
+      "yM": 4,
+      "widthM": 3,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "outro",
+      "label": "Closet",
+      "xM": 3,
+      "yM": 6,
+      "widthM": 3,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "area-externa",
+      "label": "Varanda",
+      "xM": 6,
+      "yM": 4,
+      "widthM": 4,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.7375,
+          "widthCm": 90,
+          "hinge": "end",
+          "swing": "in"
+        }
+      ],
+      "finishes": {
+        "floor": "ceramica",
+        "floorColor": "#cfc6b8",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    },
+    {
+      "type": "banheiro",
+      "label": "Lavabo",
+      "xM": 10,
+      "yM": 4,
+      "widthM": 2,
+      "depthM": 4,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": []
+    }
+  ],
+  "notes": "A planta diz \"sem escala\" e as áreas escritas não batem com o desenho. Medi pela proporção do desenho, tomando o Banho (4,00 m², 2×2 m) e a Suíte (14,00 m²) como referência, porque são os dois cômodos em que desenho e área escrita conferem. Com isso a casa tem 12 × 8 m. Ficaram diferentes da área escrita: Estar/Jantar (14 m² × 20 m² escritos), Cozinha (7,5 × 9), A. Serviço (4,5 × 3), Dorm. 2 (12 × 9), Banheiro (6 × 3,6), Varanda (16 × 6) e Lavabo (8 × 2). A planta só mostra 3 portas: Suíte–Circulação, Suíte–Dorm. 2 e a entrada pela Varanda. As outras passagens não aparecem e não foram criadas. Não veio nenhuma foto, então pisos e cores são os comuns para cada tipo de cômodo. Nada na planta mostra onde ficam os móveis, então não sugeri posições: o site usa as regras. Os 3 banheiros da lista (banheiro-1/2/3) correspondem a Banho, Banheiro e Lavabo."
+}

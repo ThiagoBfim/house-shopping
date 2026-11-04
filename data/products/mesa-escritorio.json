@@ -1,6 +1,7 @@
 {
   "label": "Mesa de escritório",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 120, "depth": 60, "height": 75 } },
   "options": [
     {
       "id": "mesa-para-escritorio-120-cm-mdp",

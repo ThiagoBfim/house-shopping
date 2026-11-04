@@ -134,6 +134,545 @@ h3 {
   color: var(--muted);
 }
 
+/* Recursos em teste (backend local da 2ª wave) */
+
+.labs-panel {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.labs-panel summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.labs-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.labs-toggle input {
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.labs-toggle.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Planta da casa (recurso em teste) */
+
+.floor-plan-upload {
+  margin-bottom: 16px;
+}
+
+.floor-plan-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.floor-plan-upload label.small-button {
+  cursor: pointer;
+}
+
+.floor-plan-upload label.is-disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.floor-plan-upload progress {
+  width: 100%;
+  margin-top: 8px;
+  accent-color: var(--accent);
+}
+
+.floor-plan-upload .notice p {
+  margin: 0 0 4px;
+}
+
+.plan-room-types {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.plan-room-types legend {
+  padding: 0 4px;
+  font-weight: 600;
+}
+
+.plan-room-types p {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+
+.plan-room-types ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-room-types li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.plan-room-types select {
+  font: inherit;
+  color: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.floor-plan-panel {
+  margin: 16px 0;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.floor-plan-panel h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.floor-plan-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.floor-plan-toggle::after {
+  content: '▾';
+  margin-left: auto;
+  transition: transform 0.15s;
+}
+
+.floor-plan-panel.is-collapsed .floor-plan-toggle::after {
+  transform: rotate(-90deg);
+}
+
+.floor-plan-drawing {
+  margin: 10px 0 0;
+}
+
+.floor-plan-drawing svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.plan-room rect {
+  fill: var(--bg);
+  stroke: var(--fg);
+  stroke-width: 4;
+}
+
+.plan-room.is-linked rect {
+  fill: var(--accent-soft);
+}
+
+.plan-room.is-linked {
+  cursor: pointer;
+}
+
+.plan-room.is-linked:hover rect,
+.plan-room.is-linked:focus-visible rect {
+  stroke: var(--accent);
+  stroke-width: 7;
+}
+
+.plan-room:focus {
+  outline: none;
+}
+
+.plan-room text {
+  fill: var(--fg);
+}
+
+.plan-room-title {
+  font-weight: 700;
+}
+
+.plan-room-more {
+  fill: var(--muted);
+  font-weight: 700;
+}
+
+/* Posição dos móveis (recurso em teste) */
+
+.furniture-layout {
+  margin: 16px 0;
+}
+
+.furniture-layout h4 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.furniture-layout .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.furniture-layout .chip.is-active {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.furniture-layout p {
+  margin: 6px 0;
+  font-size: 0.85rem;
+}
+
+.furniture-layout svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.layout-room {
+  fill: var(--bg);
+  stroke: var(--fg);
+  stroke-width: 6;
+}
+
+.layout-window {
+  stroke: #4a90d9;
+  stroke-width: 8;
+}
+
+.layout-door-gap {
+  stroke: var(--bg);
+  stroke-width: 8;
+}
+
+.layout-door path {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.layout-item {
+  cursor: pointer;
+}
+
+.layout-item rect {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.layout-item.is-wall rect {
+  fill: var(--tier-2-fg);
+  stroke: var(--tier-2-fg);
+}
+
+.layout-item.is-rug rect {
+  fill: var(--tier-4);
+  stroke: var(--tier-4-fg);
+  stroke-dasharray: 6 4;
+  opacity: 0.6;
+}
+
+.layout-item.is-picked rect,
+.layout-item:focus-visible rect {
+  stroke: var(--warn);
+  stroke-width: 4;
+}
+
+.layout-item:focus {
+  outline: none;
+}
+
+.layout-item text {
+  fill: var(--fg);
+  pointer-events: none;
+}
+
+.layout-scale line {
+  stroke: var(--fg);
+  stroke-width: 3;
+}
+
+.layout-scale text {
+  fill: var(--muted);
+}
+
+.layout-details {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  font-size: 0.85rem;
+}
+
+/* Visualização 3D (recurso em teste) */
+
+.room-3d-open {
+  margin: 10px 0;
+}
+
+.room-3d {
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.room-3d-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.room-3d-bar .link-button {
+  margin-left: auto;
+}
+
+.room-3d-canvas {
+  position: relative;
+  height: min(60vh, 460px);
+  touch-action: none;
+}
+
+.room-3d-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.room-3d-canvas > p {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.room-3d .layout-details {
+  margin: 8px 12px;
+}
+
+.room-3d-list {
+  padding: 6px 12px 10px;
+  font-size: 0.85rem;
+}
+
+.room-3d-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.room-3d-list .is-active {
+  font-weight: 700;
+}
+
+/* Preços mais baratos (recurso em teste) */
+
+/* Espaço antes da busca da lista, para os dois "Buscar" não ficarem colados. */
+.cheaper-prices {
+  margin-bottom: 28px;
+}
+
+.cheaper-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 12px;
+  font-size: 0.9rem;
+}
+
+.cheaper-controls select {
+  font: inherit;
+  color: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.cheaper-prices progress {
+  vertical-align: middle;
+  accent-color: var(--accent);
+}
+
+.cheaper-prices .notice p {
+  margin: 0 0 6px;
+}
+
+.price-search {
+  margin-top: 14px;
+}
+
+.price-search-summary {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+
+.price-search-list {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.price-row {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 0.85rem;
+}
+
+.price-row.is-cheaper {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.price-row.is-queued {
+  opacity: 0.6;
+}
+
+.price-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.price-row-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.price-status {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.price-status.status-searching {
+  color: var(--accent);
+}
+
+.price-status.status-cheaper {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.price-status.status-not-found,
+.price-status.status-not-applied,
+.price-status.status-skipped {
+  color: var(--warn);
+}
+
+.price-current {
+  margin-top: 4px;
+}
+
+.price-compare {
+  display: grid;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.price-old {
+  color: var(--muted);
+}
+
+.price-row a {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.spinner {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: price-spin 0.8s linear infinite;
+}
+
+@keyframes price-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+.product-size {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+}
+
+.found-badge {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .app-footer {
   display: flex;
   flex-wrap: wrap;
@@ -2413,4 +2952,459 @@ h3 {
 .list-change-note {
   margin: 0;
   font-size: 0.75rem;
+}
+
+/* Casa inteira em 3D (skill /house-3d) */
+.house-3d-generate {
+  margin: 14px 0 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.house-3d-generate h4 {
+  margin: 0 0 4px;
+}
+
+.house-3d-inputs {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.house-3d-inputs label {
+  display: grid;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.house-3d-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.house-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+.house-3d-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.house-3d-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.house-3d-modes [aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.house-3d-bar > .link-button {
+  margin-left: auto;
+}
+
+.house-3d-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  touch-action: none;
+}
+
+.house-3d-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.house-3d-canvas > p {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.house-3d-room,
+.house-3d-help {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgb(28 27 25 / 0.62);
+  color: #fff;
+  font-size: 0.85rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.house-3d-room {
+  top: 10px;
+  font-weight: 600;
+}
+
+.house-3d-help {
+  bottom: 10px;
+  max-width: 92%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.house-3d-rec {
+  color: #ff6b5a;
+}
+
+.house-3d > .layout-details,
+.house-3d > .notice,
+.house-3d-foot {
+  margin: 0;
+  padding: 8px 12px;
+}
+
+.house-3d-foot:empty {
+  display: none;
+}
+
+.house-3d-render {
+  position: absolute;
+  inset: 50px 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgb(28 27 25 / 0.88);
+  color: #fff;
+}
+
+.house-3d-render img {
+  max-width: 100%;
+  max-height: calc(100% - 48px);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.4);
+}
+
+.house-3d-render a,
+.house-3d-render .link-button {
+  color: #fff;
+}
+
+/* Posição dos móveis: arrastar, girar, armários das fotos */
+.layout-item.is-floor,
+.layout-item.is-rug {
+  cursor: grab;
+  touch-action: none;
+}
+
+.furniture-layout svg.is-dragging,
+.furniture-layout svg.is-dragging .layout-item {
+  cursor: grabbing;
+}
+
+.layout-item.is-moving rect {
+  opacity: 0.85;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 8 5;
+}
+
+.layout-item.is-invalid rect {
+  fill: var(--warn-soft);
+  stroke: var(--warn);
+}
+
+.layout-fixed rect {
+  fill: #e4e0d8;
+  stroke: #a39b8e;
+  stroke-width: 1.5;
+}
+
+.layout-fixed.is-wall rect {
+  fill: #cfc8bc;
+}
+
+.layout-fixed text {
+  fill: #6b6862;
+  pointer-events: none;
+}
+
+.layout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.layout-others {
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+.layout-others summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.layout-others p {
+  margin: 6px 0 0;
+}
+
+.manual-field-size {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.manual-field-size legend {
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.manual-size {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.manual-size input {
+  width: 5.5em;
+  min-width: 0;
+}
+
+/* Fluxo da planta: passos */
+.plan-flow {
+  margin: 12px 0;
+}
+
+.plan-flow ol {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-flow button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plan-flow-number {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: var(--border);
+  font-weight: 700;
+}
+
+.plan-flow .is-done .plan-flow-number {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.plan-flow .is-current button {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.plan-flow .is-current .plan-flow-number {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.plan-flow-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.plan-flow-next {
+  margin-left: auto;
+}
+
+/* Chat do projeto */
+.project-chat {
+  margin: 16px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.project-chat h4 {
+  margin: 0 0 4px;
+}
+
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  margin: 10px 0;
+  overflow-y: auto;
+}
+
+.chat-message {
+  max-width: 88%;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.chat-message.is-user {
+  align-self: flex-end;
+  background: var(--accent-soft);
+}
+
+.chat-message.is-assistant {
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.chat-actions {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-actions li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 0.85rem;
+}
+
+.chat-ok {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.chat-refused {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.chat-cost {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+}
+
+.chat-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  resize: vertical;
+}
+
+.chat-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.chat-apply-all {
+  margin-top: 8px;
+}
+
+.floor-plan-photos {
+  display: grid;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Unir cômodos e o L desenhado como um só */
+.layout-merge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.layout-fixed.is-fora-do-comodo rect {
+  fill: url(#outside-hatch);
+  stroke: none;
+}
+
+.layout-fixed.is-passagem-de-porta rect {
+  fill: none;
+  stroke: #b9b2a8;
+  stroke-dasharray: 6 5;
+}
+
+.layout-fixed.is-passagem-de-porta text {
+  display: none;
+}
+
+.floor-plan-realistic {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 8px 0;
+  font-size: 0.85rem;
+}
+
+.picker-back {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 14px;
 }

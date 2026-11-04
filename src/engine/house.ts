@@ -1,4 +1,6 @@
 import type { Products, Room, Rooms } from '../data/schema.ts'
+import type { Choices } from './budget.ts'
+import { moveInstance } from './choices.ts'
 
 /** Quantos de cada cômodo (id do cômodo → quantidade). Ex.: { cozinha: 1, quarto: 2 }. */
 export type HouseSpec = Record<string, number>
@@ -91,4 +93,22 @@ export function expandHouse(rooms: Rooms, products: Products, spec: HouseSpec): 
 /** Chaves de todos os itens da casa (sem precisar do catálogo de produtos). */
 export function houseItemKeys(rooms: Rooms, spec: HouseSpec): Set<string> {
   return new Set(expandHouse(rooms, {}, spec).room.items.map((item) => item.category))
+}
+
+/**
+ * Mais um cômodo do tipo na casa (ex.: a planta tem 3 banheiros e a lista só 1). De 1 para 2,
+ * o que já existia vira "-1" ("banheiro" → "banheiro-1") e as escolhas dele vão junto.
+ * No máximo MAX_PER_ROOM por tipo: acima disso, nada muda.
+ */
+export function addRoomInstance(
+  spec: HouseSpec,
+  type: string,
+  choices: Choices,
+): { house: HouseSpec; choices: Choices; renamed?: { from: string; to: string } } {
+  const count = spec[type] ?? 0
+  if (count >= MAX_PER_ROOM) return { house: spec, choices }
+  const house = { ...spec, [type]: count + 1 }
+  if (count !== 1) return { house, choices }
+  const renamed = { from: type, to: `${type}-1` }
+  return { house, choices: moveInstance(choices, renamed.from, renamed.to), renamed }
 }

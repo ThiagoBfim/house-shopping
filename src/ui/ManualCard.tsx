@@ -1,5 +1,6 @@
 import type { ManualEntry } from '../engine/budget.ts'
 import { STORE_WHERE } from '../data/offers.ts'
+import { formatSize } from '../data/layout.ts'
 import { formatBRL } from '../engine/money.ts'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
  * Numa troca, mostra o item do catálogo que ele substitui e "Desfazer troca" no lugar de remover.
  */
 export function ManualCard({ entry, onEdit, onRemove }: Props) {
-  const { item, store, subtotal, replaced } = entry
+  const { item, store, subtotal, replaced, size } = entry
   return (
     <article
       class={`manual-card ${replaced ? 'is-replacement' : ''}`}
@@ -32,6 +33,18 @@ export function ManualCard({ entry, onEdit, onRemove }: Props) {
           <span class="manual-badge">Adicionado por você</span>
         )}
         <h3 class="product-name">{item.name}</h3>
+        {size && (
+          <p class="product-size muted">
+            📐 {size.estimated ? '~' : ''}
+            {formatSize(size)}
+            {size.estimated ? ' (medida típica: informe as medidas em Editar)' : ''}
+          </p>
+        )}
+        {item.found && (
+          <p class="found-badge">
+            💰 Mais barato em {item.found.store} · era {formatBRL(item.found.was)}
+          </p>
+        )}
         <p class="product-price">
           <strong>{formatBRL(subtotal)}</strong>
           {item.qty > 1 && (

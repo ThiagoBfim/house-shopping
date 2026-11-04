@@ -1,6 +1,7 @@
 {
   "label": "Lixeira de banheiro",
   "utensil": true,
+  "layout": { "placement": "floor", "size": { "width": 25, "depth": 20, "height": 30 } },
   "options": [
     {
       "id": "lixeira-banheiro-5-litros",

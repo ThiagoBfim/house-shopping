@@ -1,6 +1,7 @@
 {
   "label": "Coifa / depurador",
   "utensil": false,
+  "layout": { "placement": "wall", "size": { "width": 70, "depth": 50, "height": 60 } },
   "options": [
     {
       "id": "depurador-suggar-slim-60-cm",

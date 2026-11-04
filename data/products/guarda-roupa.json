@@ -1,6 +1,7 @@
 {
   "label": "Guarda-roupa",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 230, "depth": 55, "height": 220 } },
   "options": [
     {
       "id": "guarda-roupa-casal-6-portas",

@@ -7,6 +7,15 @@
     { "id": "queen", "label": "Queen" },
     { "id": "king", "label": "King" }
   ],
+  "layout": {
+    "placement": "none",
+    "size": { "width": 138, "depth": 188, "height": 28 },
+    "variants": {
+      "solteiro": { "size": { "width": 88, "depth": 188, "height": 28 } },
+      "queen": { "size": { "width": 158, "depth": 198, "height": 28 } },
+      "king": { "size": { "width": 193, "depth": 203, "height": 28 } }
+    }
+  },
   "options": [
     {
       "id": "colchao-casal-ortobom-light-d33",

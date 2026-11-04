@@ -1,6 +1,7 @@
 {
   "label": "Máquina de lavar",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 60, "depth": 65, "height": 100 } },
   "options": [
     {
       "id": "maquina-de-lavar-electrolux-9-kg-essential-care-led09",
@@ -27,7 +28,8 @@
             { "date": "2026-11-03", "price": 1884.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 54, "depth": 61, "height": 101.4 }
     },
     {
       "id": "maquina-de-lavar-brastemp-12-kg-bwr12bb",
@@ -53,7 +55,8 @@
             { "date": "2026-10-30", "price": 2119 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 66, "depth": 71, "height": 106 }
     },
     {
       "id": "lava-e-seca-samsung-11-kg-wd11t",
@@ -84,7 +87,8 @@
             { "date": "2026-11-03", "price": 5262.11 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 60, "depth": 73, "height": 85 }
     },
     {
       "id": "lava-e-seca-lg-vc4-12-kg-inteligencia-artificial",
@@ -116,7 +120,8 @@
             { "date": "2026-11-03", "price": 5305.15 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 60, "depth": 56.5, "height": 85 }
     }
   ]
 }

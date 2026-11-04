@@ -1,6 +1,7 @@
 {
   "label": "Mesa de centro",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 90, "depth": 50, "height": 40 } },
   "options": [
     {
       "id": "mesa-de-centro-mdp",

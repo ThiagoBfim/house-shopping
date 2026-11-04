@@ -1,6 +1,7 @@
 {
   "label": "Guarda-roupa infantil",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 120, "depth": 50, "height": 180 } },
   "options": [
     {
       "id": "guarda-roupa-infantil-2-portas",
@@ -37,7 +38,8 @@
             { "date": "2026-10-30", "price": 555.75 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 91, "depth": 40, "height": 180.5 }
     },
     {
       "id": "guarda-roupa-matic-unique-3-portas",

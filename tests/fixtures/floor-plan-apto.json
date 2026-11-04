@@ -1,0 +1,105 @@
+{
+  "aspect": 1.5,
+  "rooms": [
+    {
+      "type": "quarto",
+      "label": "Suíte",
+      "areaM2": 14,
+      "x": 0,
+      "y": 0,
+      "width": 0.291,
+      "height": 0.5
+    },
+    {
+      "type": "banheiro",
+      "label": "Banho",
+      "areaM2": 4,
+      "x": 0.291,
+      "y": 0,
+      "width": 0.167,
+      "height": 0.25
+    },
+    {
+      "type": "outro",
+      "label": "Circulação",
+      "areaM2": null,
+      "x": 0.291,
+      "y": 0.25,
+      "width": 0.167,
+      "height": 0.25
+    },
+    {
+      "type": "sala",
+      "label": "Estar / Jantar",
+      "areaM2": 20,
+      "x": 0.458,
+      "y": 0,
+      "width": 0.292,
+      "height": 0.5
+    },
+    {
+      "type": "cozinha",
+      "label": "Cozinha",
+      "areaM2": 9,
+      "x": 0.75,
+      "y": 0,
+      "width": 0.25,
+      "height": 0.314
+    },
+    {
+      "type": "lavanderia",
+      "label": "A. Serviço",
+      "areaM2": 3,
+      "x": 0.75,
+      "y": 0.314,
+      "width": 0.25,
+      "height": 0.186
+    },
+    {
+      "type": "quarto",
+      "label": "Dorm. 2",
+      "areaM2": 9,
+      "x": 0,
+      "y": 0.5,
+      "width": 0.25,
+      "height": 0.5
+    },
+    {
+      "type": "banheiro",
+      "label": "Banheiro",
+      "areaM2": 3.6,
+      "x": 0.25,
+      "y": 0.5,
+      "width": 0.25,
+      "height": 0.251
+    },
+    {
+      "type": "outro",
+      "label": "Closet",
+      "areaM2": null,
+      "x": 0.25,
+      "y": 0.751,
+      "width": 0.25,
+      "height": 0.249
+    },
+    {
+      "type": "area-externa",
+      "label": "Varanda",
+      "areaM2": 6,
+      "x": 0.5,
+      "y": 0.5,
+      "width": 0.333,
+      "height": 0.5
+    },
+    {
+      "type": "banheiro",
+      "label": "Lavabo",
+      "areaM2": 2,
+      "x": 0.833,
+      "y": 0.5,
+      "width": 0.167,
+      "height": 0.5
+    }
+  ],
+  "notes": "Circulação e Closet sem área escrita na planta: áreas não informadas. Planta sem escala: a posição dos cômodos é aproximada."
+}

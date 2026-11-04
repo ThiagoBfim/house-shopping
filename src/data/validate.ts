@@ -84,6 +84,11 @@ function checkProducts(products: Products): string[] {
     }
 
     errors.push(...checkVariants(at, products[category]))
+    const layoutVariants = Object.keys(products[category].layout?.variants ?? {})
+    const variantIds = new Set(products[category].variants?.map((v) => v.id))
+    for (const id of layoutVariants.filter((v) => !variantIds.has(v))) {
+      errors.push(`${at}: layout usa a variante "${id}", que não existe`)
+    }
     const groups = products[category].variants
       ? products[category].variants.map(({ id }) => ({
           where: `${at} (variante ${id})`,

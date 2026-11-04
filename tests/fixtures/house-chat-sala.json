@@ -1,0 +1,63 @@
+{
+  "question": "A tomada e a antena da TV ficam na parede da direita da sala. Pode mudar a TV, o rack e o sofá para ficarem certos com isso?",
+  "reply": {
+    "reply": "Dá sim: é só inverter a sala. A sala tem 4,20 × 4,76 m. Coloquei o rack (1,80 m) encostado na parede da direita, centrado em 1,30 m da parede da janela, com a TV de 50\" na parede logo acima, perto da tomada e da antena. O sofá de 2,10 m vai para a parede da esquerda, de frente para a TV. Do encosto até a tela ficam cerca de 3,3 m, uma boa distância para 50\". Levei a mesa de centro e o tapete junto, deixando 60 cm de passagem entre o sofá e a mesa. A poltrona foi um pouco para a direita, embaixo da janela: como é baixa (90 cm), não tapa a luz, e fica voltada para a sala. A mesa de jantar continua no fundo, com espaço para as cadeiras. A soundbar fica em cima do rack, então a tomada da direita atende tudo; se precisar, use o filtro de linha que já está na lista.",
+    "actions": [
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:rack",
+        "unit": 0,
+        "xCm": 400,
+        "yCm": 130,
+        "rotation": "left"
+      },
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:tv",
+        "unit": 0,
+        "xCm": 414,
+        "yCm": 130,
+        "rotation": "left"
+      },
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:sofa",
+        "unit": 0,
+        "xCm": 45,
+        "yCm": 130,
+        "rotation": "right"
+      },
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:mesa-de-centro",
+        "unit": 0,
+        "xCm": 175,
+        "yCm": 130,
+        "rotation": "right"
+      },
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:tapete",
+        "unit": 0,
+        "xCm": 175,
+        "yCm": 130,
+        "rotation": "down"
+      },
+      {
+        "type": "move",
+        "room": "sala",
+        "key": "sala:poltrona",
+        "unit": 0,
+        "xCm": 250,
+        "yCm": 40,
+        "rotation": "down"
+      }
+    ]
+  },
+  "costUsd": 0.37244520000000003
+}

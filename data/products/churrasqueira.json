@@ -1,6 +1,7 @@
 {
   "label": "Churrasqueira",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 60, "depth": 60, "height": 100 } },
   "options": [
     {
       "id": "churrasqueira-eletrica-cadence-grl805",

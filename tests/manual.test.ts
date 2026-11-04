@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { emptyChoices } from '../src/engine/budget.ts'
+import { products, rooms } from '../src/data/catalog-data.ts'
+import { buildList, emptyChoices } from '../src/engine/budget.ts'
+import { expandHouse } from '../src/engine/house.ts'
 import {
   addManual,
   cleanProductUrl,
@@ -249,6 +251,73 @@ describe('cleanProductUrl', () => {
     expect(parsed).toMatchObject({
       ok: true,
       value: { url: 'https://www.mercadolivre.com.br/x/p/MLB1' },
+    })
+  })
+})
+
+describe('medidas no formulário (opcionais)', () => {
+  const base = { name: 'Sofá', price: '2.499,90', qty: '1', url: 'https://x.com/sofa' }
+
+  it('as três medidas viram dimensions; nenhuma = sem medida', () => {
+    expect(parseManualInput({ ...base, width: '210', depth: '92,5', height: '85' })).toEqual({
+      ok: true,
+      value: {
+        name: 'Sofá',
+        price: 2499.9,
+        qty: 1,
+        url: 'https://x.com/sofa',
+        dimensions: { width: 210, depth: 92.5, height: 85 },
+      },
+    })
+    const none = parseManualInput({ ...base, width: ' ', depth: '', height: '' })
+    expect(none.ok && none.value).not.toHaveProperty('dimensions')
+  })
+
+  it('só uma parte, zero, texto ou grande demais é erro', () => {
+    for (const sides of [
+      { width: '210' },
+      { width: '0', depth: '90', height: '80' },
+      { width: 'abc', depth: '90', height: '80' },
+      { width: '1200', depth: '90', height: '80' },
+      { width: '200', depth: '90', height: '600' },
+    ]) {
+      const parsed = parseManualInput({ ...base, ...sides })
+      expect(parsed.ok).toBe(false)
+      if (!parsed.ok) expect(parsed.errors.width).toBeTruthy()
+    }
+  })
+
+  it('isValidManual confere as medidas', () => {
+    const item = { name: 'Sofá', price: 10, qty: 1, url: 'https://x.com/a' }
+    expect(isValidManual({ ...item, dimensions: { width: 200, depth: 90, height: 80 } })).toBe(true)
+    expect(isValidManual({ ...item, dimensions: { width: -1, depth: 90, height: 80 } })).toBe(false)
+  })
+
+  it('troca com medidas: a posição dos móveis usa o tamanho do produto novo', () => {
+    const house = expandHouse(rooms, products, { sala: 1 })
+    const swap = (dimensions?: { width: number; depth: number; height: number }) =>
+      buildList(house.room, house.products, 1_000_000, {
+        ...emptyChoices(),
+        manual: [
+          {
+            id: 'm1',
+            instanceId: 'sala',
+            name: 'Sofá novo',
+            price: 999,
+            qty: 1,
+            url: 'https://x.com/s',
+            replaces: 'sala:sofa',
+            ...(dimensions && { dimensions }),
+          },
+        ],
+      }).manual[0].size
+    expect(swap()).toMatchObject({ estimated: true, placement: 'floor' })
+    expect(swap({ width: 260, depth: 100, height: 90 })).toEqual({
+      width: 260,
+      depth: 100,
+      height: 90,
+      estimated: false,
+      placement: 'floor',
     })
   })
 })

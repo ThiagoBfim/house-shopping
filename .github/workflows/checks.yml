@@ -1,11 +1,13 @@
 # Testes e validações do código: lint, formatação, catálogo, testes com cobertura, build e E2E.
 # Roda em todo pull request (é o check obrigatório da main) e é chamado pelo deploy quando o
 # push muda código. PR que só muda produtos (data/products/, data/affiliate/) ou docs roda só o
-# `npm run validate`, igual ao deploy.
+# `npm run validate`, igual ao deploy. PR em rascunho (draft) não roda nada: o check roda quando
+# ele fica pronto para revisão (ready_for_review) e a cada push depois disso.
 name: Checks
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_call:
 
 permissions:
@@ -14,6 +16,8 @@ permissions:
 jobs:
   check:
     name: npm run check
+    # Rascunho: sem CI. Chamado pelo deploy (push na main): sempre roda.
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

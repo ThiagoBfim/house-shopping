@@ -2,6 +2,7 @@
   "label": "Sapateira",
   "utensil": false,
   "helper": true,
+  "layout": { "placement": "floor", "size": { "width": 80, "depth": 35, "height": 100 } },
   "options": [
     {
       "id": "sapateira-vertical-12-pares",

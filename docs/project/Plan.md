@@ -39,4 +39,4 @@ As tarefas, o status e os tempos de cada drop ficam em [`docs/drops/`](../drops/
 Backlog:  12
 ```
 
-A **1ª wave** termina com o produto completo e publicado no GitHub Pages (Drop 6): todos os cômodos com produtos reais, links de afiliado do Mercado Livre, recusar / mais barato / mais caro / reload / filtros / compartilhar. A 2ª wave está sendo replanejada na branch `wave-2`.
+A **1ª wave** termina com o produto completo e publicado no GitHub Pages (Drop 6): todos os cômodos com produtos reais, links de afiliado do Mercado Livre, recusar / mais barato / mais caro / reload / filtros / compartilhar. A 2ª wave está sendo planejada em [`docs/drops/wave-2/PLAN.md`](../drops/wave-2/PLAN.md).

@@ -28,15 +28,19 @@ export const MANUAL_ITEM_LABEL = 'Adicionado por você'
 /** Coluna "Item" de uma troca: "Box (trocado por você)". */
 export const REPLACED_ITEM_SUFFIX = 'trocado por você'
 
+/** De onde veio cada linha da planilha: item do catálogo (chave) ou do usuário (id). */
+export type RowRef = { kind: 'catalog'; key: string } | { kind: 'manual'; id: string }
+
 /**
  * Itens da lista exibida, agrupados por cômodo na ordem da casa; em cada cômodo, os
  * adicionados pelo usuário vêm depois dos do catálogo.
  */
-export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[] {
+function sortedRows(view: ListView, instances: RoomInstance[]) {
   const order = (instanceId: string) =>
     instances.findIndex((instance) => instance.id === instanceId)
   const catalogRows = view.entries.map(({ item, label, option, subtotal }) => ({
     instanceId: splitItemKey(item.category).instanceId,
+    ref: { kind: 'catalog', key: item.category } as RowRef,
     row: {
       item: label,
       product: option.name,
@@ -49,6 +53,7 @@ export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[]
   }))
   const manualRows = view.manual.map(({ item, store, subtotal, replaced }) => ({
     instanceId: item.instanceId,
+    ref: { kind: 'manual', id: item.id } as RowRef,
     row: {
       item: replaced ? `${replaced.label} (${REPLACED_ITEM_SUFFIX})` : MANUAL_ITEM_LABEL,
       product: item.name,
@@ -59,9 +64,19 @@ export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[]
       url: item.url,
     },
   }))
-  return [...catalogRows, ...manualRows]
-    .sort((a, b) => order(a.instanceId) - order(b.instanceId))
-    .map(({ instanceId, row }) => ({ room: instances[order(instanceId)]?.title ?? '', ...row }))
+  return [...catalogRows, ...manualRows].sort((a, b) => order(a.instanceId) - order(b.instanceId))
+}
+
+export function listRows(view: ListView, instances: RoomInstance[]): ExportRow[] {
+  return sortedRows(view, instances).map(({ instanceId, row }) => ({
+    room: instances.find((instance) => instance.id === instanceId)?.title ?? '',
+    ...row,
+  }))
+}
+
+/** Item de cada linha da planilha, na mesma ordem (a linha 2 da planilha é o índice 0). */
+export function listRowRefs(view: ListView, instances: RoomInstance[]): RowRef[] {
+  return sortedRows(view, instances).map(({ ref }) => ref)
 }
 
 const HEADER = [

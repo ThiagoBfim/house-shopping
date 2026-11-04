@@ -1,6 +1,7 @@
 {
   "label": "Criado-mudo",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 45, "depth": 35, "height": 55 } },
   "options": [
     {
       "id": "mesa-de-cabeceira-1-gaveta",

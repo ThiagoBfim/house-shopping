@@ -1,6 +1,7 @@
 {
   "label": "Cômoda",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 100, "depth": 45, "height": 90 } },
   "options": [
     {
       "id": "comoda-4-gavetas",
@@ -38,7 +39,8 @@
             { "date": "2026-11-03", "price": 659.9 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 129, "depth": 48, "height": 93 }
     },
     {
       "id": "comoda-pes-palito-mdf",

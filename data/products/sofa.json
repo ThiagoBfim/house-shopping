@@ -1,6 +1,7 @@
 {
   "label": "Sofá",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 210, "depth": 90, "height": 90 } },
   "options": [
     {
       "id": "sofa-retratil-reclinavel-hanover-mobly",
@@ -27,7 +28,8 @@
             { "date": "2026-11-03", "price": 1139.96 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 180, "depth": 126, "height": 95 }
     },
     {
       "id": "sofa-retratil-reclinavel-blenda-mobly",

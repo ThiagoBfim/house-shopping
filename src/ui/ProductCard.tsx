@@ -10,6 +10,7 @@ import {
   type PriceTrend,
 } from '../data/price-history.ts'
 import type { Change } from '../engine/choices.ts'
+import { formatSize } from '../data/layout.ts'
 import { formatBRL, formatBRLWhole } from '../engine/money.ts'
 import { NEED_LABELS, TIER_LABELS } from './catalog.ts'
 import { PriceChart } from './PriceChart.tsx'
@@ -103,6 +104,18 @@ export function ProductCard({
           </div>
         )}
         <h3 class="product-name">{option.name}</h3>
+        {entry.size && (
+          <p
+            class="product-size"
+            title={
+              entry.size.estimated ? 'Medida típica da categoria, não a deste modelo' : undefined
+            }
+          >
+            📐 {entry.size.estimated ? '~' : ''}
+            {formatSize(entry.size)}
+            {entry.size.estimated && <span class="muted"> (medida típica)</span>}
+          </p>
+        )}
         <p class="need-meter" title={`Necessidade ${item.need} de 5`}>
           <span class="need-dots" aria-hidden="true">
             {'●'.repeat(item.need)}

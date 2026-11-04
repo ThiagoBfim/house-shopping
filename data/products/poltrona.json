@@ -1,6 +1,7 @@
 {
   "label": "Poltrona",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 75, "depth": 80, "height": 90 } },
   "options": [
     {
       "id": "poltrona-decorativa-pes-palito",

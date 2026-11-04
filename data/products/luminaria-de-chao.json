@@ -1,6 +1,7 @@
 {
   "label": "Luminária de chão",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 40, "depth": 40, "height": 160 } },
   "options": [
     {
       "id": "luminaria-de-chao-coluna-tripe",

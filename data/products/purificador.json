@@ -1,6 +1,7 @@
 {
   "label": "Purificador de água",
   "utensil": false,
+  "layout": { "placement": "wall", "size": { "width": 28, "depth": 14, "height": 38 } },
   "options": [
     {
       "id": "purificador-ibbl-e-due",

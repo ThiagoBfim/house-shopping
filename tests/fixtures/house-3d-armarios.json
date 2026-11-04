@@ -1,0 +1,314 @@
+{
+  "widthM": 12,
+  "depthM": 8,
+  "rooms": [
+    {
+      "type": "quarto",
+      "label": "Su\u00edte",
+      "xM": 0,
+      "yM": 0,
+      "widthM": 3.5,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.5,
+          "widthCm": 140,
+          "sillCm": 100,
+          "heightCm": 120
+        },
+        {
+          "kind": "door",
+          "wall": "right",
+          "position": 0.8,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "in"
+        },
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.543,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "out"
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": [
+        {
+          "kind": "armario",
+          "wall": "top",
+          "startCm": 0,
+          "lengthCm": 240,
+          "depthCm": 60,
+          "heightCm": 250,
+          "elevationCm": 0,
+          "finish": "madeira-clara",
+          "color": "#d2b48c",
+          "doors": 4
+        }
+      ]
+    },
+    {
+      "type": "banheiro",
+      "label": "Banho",
+      "xM": 3.5,
+      "yM": 0,
+      "widthM": 2,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "outro",
+      "label": "Circula\u00e7\u00e3o",
+      "xM": 3.5,
+      "yM": 2,
+      "widthM": 2,
+      "depthM": 2,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "left",
+          "position": 0.6,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "out"
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "sala",
+      "label": "Estar / Jantar",
+      "xM": 5.5,
+      "yM": 0,
+      "widthM": 3.5,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "top",
+          "position": 0.514,
+          "widthCm": 160,
+          "sillCm": 100,
+          "heightCm": 120
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "cozinha",
+      "label": "Cozinha",
+      "xM": 9,
+      "yM": 0,
+      "widthM": 3,
+      "depthM": 2.5,
+      "openings": [
+        {
+          "kind": "window",
+          "wall": "right",
+          "position": 0.52,
+          "widthCm": 120,
+          "sillCm": 110,
+          "heightCm": 100
+        }
+      ],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#d9d4cb",
+        "wallColor": "#f2efe8",
+        "fromPhoto": true,
+        "tileCm": 60
+      },
+      "furniture": [],
+      "builtIns": [
+        {
+          "kind": "bancada",
+          "wall": "bottom",
+          "startCm": 0,
+          "lengthCm": 300,
+          "depthCm": 60,
+          "heightCm": 90,
+          "elevationCm": 0,
+          "finish": "branco",
+          "color": "#f1f0ec",
+          "topColor": "#1f1f22",
+          "sink": true,
+          "cooktop": true,
+          "doors": 5
+        },
+        {
+          "kind": "aereo",
+          "wall": "bottom",
+          "startCm": 0,
+          "lengthCm": 300,
+          "depthCm": 35,
+          "heightCm": 70,
+          "elevationCm": 160,
+          "finish": "madeira-clara",
+          "color": "#c9a982",
+          "doors": 5
+        }
+      ]
+    },
+    {
+      "type": "lavanderia",
+      "label": "A. Servi\u00e7o",
+      "xM": 9,
+      "yM": 2.5,
+      "widthM": 3,
+      "depthM": 1.5,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "quarto",
+      "label": "Dorm. 2",
+      "xM": 0,
+      "yM": 4,
+      "widthM": 3,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "top",
+          "position": 0.633,
+          "widthCm": 80,
+          "hinge": "start",
+          "swing": "in"
+        },
+        {
+          "kind": "window",
+          "wall": "left",
+          "position": 0.45,
+          "widthCm": 140,
+          "sillCm": 100,
+          "heightCm": 120
+        }
+      ],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "banheiro",
+      "label": "Banheiro",
+      "xM": 3,
+      "yM": 4,
+      "widthM": 3,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "outro",
+      "label": "Closet",
+      "xM": 3,
+      "yM": 6,
+      "widthM": 3,
+      "depthM": 2,
+      "openings": [],
+      "finishes": {
+        "floor": "madeira",
+        "floorColor": "#b08a63",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "area-externa",
+      "label": "Varanda",
+      "xM": 6,
+      "yM": 4,
+      "widthM": 4,
+      "depthM": 4,
+      "openings": [
+        {
+          "kind": "door",
+          "wall": "bottom",
+          "position": 0.7375,
+          "widthCm": 90,
+          "hinge": "end",
+          "swing": "in"
+        }
+      ],
+      "finishes": {
+        "floor": "ceramica",
+        "floorColor": "#cfc6b8",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    },
+    {
+      "type": "banheiro",
+      "label": "Lavabo",
+      "xM": 10,
+      "yM": 4,
+      "widthM": 2,
+      "depthM": 4,
+      "openings": [],
+      "finishes": {
+        "floor": "porcelanato",
+        "floorColor": "#e6e2da",
+        "wallColor": "#f2efe8",
+        "fromPhoto": false
+      },
+      "furniture": [],
+      "builtIns": []
+    }
+  ],
+  "notes": "A planta diz \"sem escala\" e as \u00e1reas escritas n\u00e3o batem com o desenho. Medi pela propor\u00e7\u00e3o do desenho, tomando o Banho (4,00 m\u00b2, 2\u00d72 m) e a Su\u00edte (14,00 m\u00b2) como refer\u00eancia, porque s\u00e3o os dois c\u00f4modos em que desenho e \u00e1rea escrita conferem. Com isso a casa tem 12 \u00d7 8 m. Ficaram diferentes da \u00e1rea escrita: Estar/Jantar (14 m\u00b2 \u00d7 20 m\u00b2 escritos), Cozinha (7,5 \u00d7 9), A. Servi\u00e7o (4,5 \u00d7 3), Dorm. 2 (12 \u00d7 9), Banheiro (6 \u00d7 3,6), Varanda (16 \u00d7 6) e Lavabo (8 \u00d7 2). A planta s\u00f3 mostra 3 portas: Su\u00edte\u2013Circula\u00e7\u00e3o, Su\u00edte\u2013Dorm. 2 e a entrada pela Varanda. As outras passagens n\u00e3o aparecem e n\u00e3o foram criadas. N\u00e3o veio nenhuma foto, ent\u00e3o pisos e cores s\u00e3o os comuns para cada tipo de c\u00f4modo. Nada na planta mostra onde ficam os m\u00f3veis, ent\u00e3o n\u00e3o sugeri posi\u00e7\u00f5es: o site usa as regras. Os 3 banheiros da lista (banheiro-1/2/3) correspondem a Banho, Banheiro e Lavabo."
+}

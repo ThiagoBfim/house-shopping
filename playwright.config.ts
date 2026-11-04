@@ -18,6 +18,10 @@ export default defineConfig({
     url: `http://localhost:${PORT}/house-shopping/`,
     reuseExistingServer: !process.env.CI,
     // Encurtador falso: nos testes nada sai para a internet (share.spec simula as respostas).
-    env: { VITE_SHORTENER: 'https://encurtador.test/criar?url=' },
+    env: {
+      VITE_SHORTENER: 'https://encurtador.test/criar?url=',
+      // Backend local falso (labs.spec simula as respostas); sem rota, os recursos somem.
+      VITE_LOCAL_API: 'http://api.test',
+    },
   },
 })

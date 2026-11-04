@@ -1,6 +1,7 @@
 {
   "label": "Ombrelone",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 50, "depth": 50, "height": 230 } },
   "options": [
     {
       "id": "ombrelone-2-metros-com-base",

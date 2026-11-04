@@ -1,6 +1,7 @@
 {
   "label": "Cômoda com trocador",
   "utensil": false,
+  "layout": { "placement": "floor", "size": { "width": 100, "depth": 50, "height": 95 } },
   "options": [
     {
       "id": "comoda-infantil-4-gavetas-trocador",

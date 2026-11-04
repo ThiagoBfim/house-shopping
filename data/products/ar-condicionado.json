@@ -5,6 +5,13 @@
     { "id": "ar", "label": "Ar-condicionado" },
     { "id": "ventilador", "label": "Ventilador" }
   ],
+  "layout": {
+    "placement": "wall",
+    "size": { "width": 80, "depth": 20, "height": 30 },
+    "variants": {
+      "ventilador": { "placement": "floor", "size": { "width": 45, "depth": 45, "height": 120 } }
+    }
+  },
   "options": [
     {
       "id": "ar-condicionado-midea-ai-ecomaster-12000",
@@ -32,7 +39,8 @@
           "history": [{ "date": "2026-10-22", "price": 2483.1 }]
         }
       ],
-      "variants": ["ar"]
+      "variants": ["ar"],
+      "dimensions": { "width": 72.3, "depth": 19.9, "height": 28.6 }
     },
     {
       "id": "ar-condicionado-samsung-windfree-12000-quente-frio",
@@ -120,7 +128,8 @@
           "catalogId": "MLB58476909"
         }
       ],
-      "variants": ["ar"]
+      "variants": ["ar"],
+      "dimensions": { "width": 74, "depth": 32.6, "height": 55 }
     },
     {
       "id": "ventilador-de-mesa-mondial-40-cm",
@@ -148,7 +157,8 @@
             { "date": "2026-11-03", "price": 203.91 }
           ]
         }
-      ]
+      ],
+      "dimensions": { "width": 46, "depth": 30.5, "height": 61 }
     },
     {
       "id": "ventilador-de-coluna-arno-x-treme-7-40-cm",
@@ -172,7 +182,8 @@
           "catalogId": "MLB45203935",
           "history": [{ "date": "2026-10-22", "price": 549.9 }]
         }
-      ]
+      ],
+      "dimensions": { "width": 48, "depth": 13, "height": 152 }
     },
     {
       "id": "ventilador-de-teto-spirit-202-com-lustre",

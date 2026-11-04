@@ -1,6 +1,7 @@
 {
   "label": "Colchão de berço",
   "utensil": false,
+  "layout": { "placement": "none", "size": { "width": 70, "depth": 130, "height": 12 } },
   "options": [
     {
       "id": "colchao-berco-americano-d18",
