@@ -44,6 +44,8 @@ export interface PlacedItem {
   elevation: number
   /** Para onde a frente aponta (a parede de trás é a oposta). */
   facing: 'down' | 'left' | 'up' | 'right'
+  /** Mesa encostada na parede (cômodo pequeno): sem cadeiras do lado da parede (o de trás). */
+  againstWall?: boolean
 }
 
 export interface RoomLayout {
@@ -120,11 +122,23 @@ function frontOf(rect: Rect, facing: PlacedItem['facing'], depth: number): Rect 
 }
 
 /** Retângulo que a abertura ocupa na parede (fino) e, para porta, o giro dela. */
-function openingZone({ kind, wall, position, widthCm }: Opening, W: number, D: number) {
+/** Porta de abrir vai até ~1,10 m; mais larga que isso é vão aberto (sala ↔ jantar, varanda). */
+export const MAX_SWING_DOOR_CM = 110
+/** Passagem livre na frente de um vão ou de porta de correr. */
+const PASSAGE_CM = 60
+
+function openingZone(
+  { kind, wall, position, widthCm, sliding }: Opening & { sliding?: boolean },
+  W: number,
+  D: number,
+) {
   const length = wallLength(wall, W, D)
   const start = Math.max(0, position * length - widthCm / 2 - 10)
   const span = Math.min(length - start, widthCm + 20)
-  const reach = kind === 'door' ? widthCm + 10 : 15
+  // Porta de abrir: o giro da folha (quadrado do tamanho da porta). Vão largo ou porta de
+  // correr não giram: só a passagem de 60 cm (senão um vão de 2,5 m tomaria metade da sala).
+  const swings = kind === 'door' && !sliding && widthCm <= MAX_SWING_DOOR_CM
+  const reach = kind !== 'door' ? 15 : swings ? widthCm + 10 : PASSAGE_CM
   return againstWall(
     wall,
     start,
@@ -447,6 +461,55 @@ export function arrangeRoom(
         w: r.w + 2 * CHAIR_SPACE,
         d: r.d + 2 * CHAIR_SPACE,
       })
+      continue
+    }
+    // Cômodo pequeno: mesa encostada numa parede, cadeiras nos outros três lados.
+    const C = CHAIR_SPACE
+    let wallBest: { rect: Rect; zone: Rect; wall: Wall; distance: number } | undefined
+    const target = diningZone ?? { x: 0, y: 0, w: W, d: D }
+    for (const [w, d] of [
+      [item.width, item.depth],
+      [item.depth, item.width],
+    ]) {
+      for (const wall of ['top', 'bottom', 'left', 'right'] as Wall[]) {
+        const along = wall === 'top' || wall === 'bottom'
+        const length = along ? W : D
+        const size = along ? w : d
+        for (let o = C; o + size + C <= length; o += STEP) {
+          const rect = {
+            top: { x: o, y: 0, w, d },
+            bottom: { x: o, y: D - d, w, d },
+            left: { x: 0, y: o, w, d },
+            right: { x: W - w, y: o, w, d },
+          }[wall]
+          const zone = {
+            top: { x: o - C, y: 0, w: w + 2 * C, d: d + C },
+            bottom: { x: o - C, y: D - d - C, w: w + 2 * C, d: d + C },
+            left: { x: 0, y: o - C, w: w + C, d: d + 2 * C },
+            right: { x: W - w - C, y: o - C, w: w + C, d: d + 2 * C },
+          }[wall]
+          if (
+            zone.x < 0 ||
+            zone.y < 0 ||
+            zone.x + zone.w > W ||
+            zone.y + zone.d > D ||
+            floorTaken().some((p) => overlaps(zone, p)) ||
+            doors.some((z) => overlaps(zone, z)) ||
+            reserved.some((z) => overlaps(rect, z))
+          )
+            continue
+          const distance = Math.hypot(
+            rect.x + w / 2 - (target.x + target.w / 2),
+            rect.y + d / 2 - (target.y + target.d / 2),
+          )
+          if (!wallBest || distance < wallBest.distance) wallBest = { rect, zone, wall, distance }
+        }
+      }
+    }
+    if (wallBest) {
+      put(item, 0, wallBest.rect, FACING[wallBest.wall])
+      placed[placed.length - 1].againstWall = true
+      reserved.push(wallBest.zone)
     } else fail(item)
   }
 

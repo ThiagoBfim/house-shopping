@@ -15,6 +15,7 @@ O objetivo é precisão: o site desenha a casa em 3D e deixa a pessoa andar por 
 
 - **`widthM` / `depthM`**: largura e profundidade da área construída inteira, em metros. Use as cotas da planta; sem cotas, deduza pela área escrita dos cômodos (soma das áreas ≈ área construída menos paredes); sem nada, estime pela proporção de um cômodo conhecido (porta = 0,80 m).
 - **Cada cômodo** (`rooms`): retângulo que o envolve, em metros a partir do canto de cima à esquerda da planta (`xM`, `yM`, `widthM`, `depthM`). Os cômodos vizinhos dividem a parede: o fim de um é o começo do outro (sem buracos nem sobreposição). Confira: `widthM × depthM` ≈ área escrita na planta (até ~10% de diferença por causa das paredes).
+- **Cômodo em L ou irregular** (sala de estar + jantar, sala que continua junto à varanda, cozinha americana em L): divida em retângulos que não se sobrepõem, **todos com o mesmo `type`**. O maior é o principal (sem `partOf`); os outros têm `partOf` = `label` do principal (ex.: `label` "Sala – estar junto à varanda", `partOf` "Sala"). Nunca marque um pedaço da sala como `outro`: ele é a sala. Entre as partes não há parede: ponha uma abertura `door` do comprimento do trecho em comum (sem `hinge`, sem `swing`): o site entende vão largo como passagem aberta e o que não cabe no principal vai para a parte.
 - **`type`** e **`label`**: como na skill `/floor-plan` (quarto, quarto-bebe, sala, cozinha, banheiro, lavanderia, area-externa, escritorio, outro).
 
 ## 2. Portas e janelas (`openings`, por cômodo)

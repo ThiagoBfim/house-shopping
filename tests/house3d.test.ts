@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest'
 import { products, rooms } from '../src/data/catalog-data.ts'
 import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
+import { buildWorld } from '../src/engine/house-world.ts'
 import {
+  relinkHouse,
+  resolveParts,
   builtInPlaced,
   furnishHouse,
   furnitureForSkill,
@@ -502,5 +505,113 @@ describe('lavanderia sem lugar na casa em 3D', () => {
     expect(keys).toEqual(
       expect.arrayContaining(['cozinha:geladeira', 'lavanderia:lava-roupas', 'lavanderia:varal']),
     )
+  })
+})
+
+describe('sala em L (caso real: sala junto à varanda + sala)', () => {
+  const finishes = {
+    floor: 'madeira',
+    floorColor: '#b88a5f',
+    wallColor: '#f2efe8',
+    fromPhoto: false,
+  }
+  const door = (wall: string, position: number, widthCm: number) => ({
+    kind: 'door',
+    wall,
+    position,
+    widthCm,
+  })
+  // Como a skill devolveu antes de `partOf`: a parte veio como "outro".
+  const real = parseHouseModel({
+    widthM: 9.85,
+    depthM: 9.63,
+    notes: '',
+    rooms: [
+      {
+        type: 'outro',
+        label: 'Varanda',
+        xM: 0,
+        yM: 0.3,
+        widthM: 2.67,
+        depthM: 1.16,
+        openings: [door('bottom', 0.52, 200)],
+        finishes,
+        furniture: [],
+        builtIns: [],
+      },
+      {
+        type: 'outro',
+        label: 'Sala – estar junto à varanda',
+        xM: 0,
+        yM: 1.46,
+        widthM: 2.67,
+        depthM: 2.04,
+        openings: [door('top', 0.52, 200), door('bottom', 0.5, 250)],
+        finishes,
+        furniture: [],
+        builtIns: [],
+      },
+      {
+        type: 'sala',
+        label: 'Sala',
+        xM: 0,
+        yM: 3.5,
+        widthM: 3.59,
+        depthM: 3.62,
+        finishes,
+        furniture: [],
+        builtIns: [],
+        openings: [
+          door('top', 0.37, 250),
+          door('right', 0.14, 85),
+          door('bottom', 0.18, 90),
+          door('bottom', 0.49, 80),
+          { kind: 'window', wall: 'left', position: 0.35, widthCm: 150 },
+        ],
+      },
+    ],
+  })!
+  const house = expandHouse(rooms, products, { sala: 1 })
+  // Orçamento da lista do caso real (mesa de jantar de 4 lugares, 160 × 90).
+  const view = buildList(house.room, house.products, 70_000, emptyChoices())
+
+  it('a parte "outro" com o nome da sala, encostada e com vão largo vira parte da sala', () => {
+    const resolved = resolveParts(real)
+    expect(resolved.rooms.map((r) => [r.label, r.type, r.partOf])).toEqual([
+      ['Varanda', 'outro', undefined],
+      ['Sala – estar junto à varanda', 'sala', 'Sala'],
+      ['Sala', 'sala', undefined],
+    ])
+    const linked = linkRooms(real, rooms)
+    expect(linked.rooms.map((r) => r.instanceId)).toEqual([undefined, 'sala', 'sala'])
+    // casa já salva (sem ligação nas partes): religar também acha a parte
+    expect(relinkHouse(real, ['sala']).rooms.map((r) => r.instanceId)).toEqual([
+      undefined,
+      'sala',
+      'sala',
+    ])
+  })
+
+  it('o vão de 2,5 m não toma metade da sala e o que não coube vai para a outra parte', () => {
+    const furnished = furnishHouse(linkRooms(real, rooms), view)
+    const [, part, main] = furnished
+    const inMain = main.layout.placed.map((p) => p.category)
+    const inPart = part.layout.placed.map((p) => p.category)
+    expect(inMain).toEqual(expect.arrayContaining(['sofa', 'rack', 'mesa-de-centro', 'tapete']))
+    // a poltrona não coube no principal e foi para a parte junto à varanda
+    expect(inPart).toContain('poltrona')
+    // só a mesa de 160 × 90 com cadeiras não cabe (precisa de 2,10 m; a parte tem 2,04 m)
+    expect(main.layout.unplaced.map((u) => u.key)).toEqual(['sala:mesa-de-jantar'])
+    // nada repetido entre as partes, e o aviso "não coube" só com o que não coube em nenhuma
+    expect(inMain.filter((c) => c !== 'criado-mudo' && inPart.includes(c))).toEqual([])
+    expect(part.layout.unplaced).toEqual([])
+    for (const u of main.layout.unplaced) {
+      expect(inPart).not.toContain(u.key.split(':')[1])
+    }
+  })
+
+  it('o vão entre as partes não tem folha de porta no 3D', () => {
+    const world = buildWorld(linkRooms(real, rooms))
+    expect(world.doors.filter((d) => d.widthM > 1.5)).toEqual([])
   })
 })

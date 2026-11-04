@@ -233,6 +233,11 @@ export const HOUSE_3D_SCHEMA = {
               tileCm: { type: 'number', minimum: 10, maximum: 200 },
             },
           },
+          partOf: {
+            type: 'string',
+            description:
+              'Parte de um cômodo em L: o label do retângulo principal (mesmo type). Vazio = cômodo inteiro.',
+          },
           builtIns: {
             type: 'array',
             maxItems: 20,

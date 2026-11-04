@@ -1,5 +1,5 @@
 import type { HouseModel, HouseOpening } from './house3d.ts'
-import type { RoomLayout } from './layout.ts'
+import { MAX_SWING_DOOR_CM, type RoomLayout } from './layout.ts'
 
 /**
  * Geometria da casa inteira para o 3D, a primeira pessoa e o tour (lógica pura, em metros).
@@ -243,7 +243,9 @@ export function buildWorld(model: HouseModel): HouseWorld {
         if (gap.kind === 'door') {
           piece(gap.a, gap.b, DOOR_HEIGHT, WALL_HEIGHT)
           const source = gap.source
-          if (source && !gap.mirrored) {
+          // Vão largo (passagem aberta, partes de um cômodo em L): sem folha de porta.
+          const passage = source && !source.sliding && source.widthCm > MAX_SWING_DOOR_CM
+          if (source && !gap.mirrored && !passage) {
             const hingeAtStart = source.hinge !== 'end'
             const [h, f] = hingeAtStart ? [gap.a, gap.b] : [gap.b, gap.a]
             const [hingeX, hingeZ] = edge.horizontal ? [h, edge.line] : [edge.line, h]

@@ -267,7 +267,16 @@ function chair(g: Group, x: number, z: number, angle: number, m: Mat) {
   g.add(c)
 }
 
-function table(g: Group, w: number, d: number, h: number, top: string, chairs: boolean) {
+function table(
+  g: Group,
+  w: number,
+  d: number,
+  h: number,
+  top: string,
+  chairs: boolean,
+  /** Encostada na parede (atrás, −z): sem cadeiras desse lado. */
+  againstWall = false,
+) {
   const m = wood(top)
   addBox(g, w, 0.035, d, 0, h - 0.035, 0, m)
   legs(g, w, d, h - 0.035, 0.05, 0.05, wood(WOOD_DARK))
@@ -280,6 +289,7 @@ function table(g: Group, w: number, d: number, h: number, top: string, chairs: b
   for (let i = 0; i < perSide; i++) {
     const t = -long / 2 + (long * (i + 0.5)) / perSide
     for (const s of [-1, 1]) {
+      if (againstWall && along && s < 0) continue
       const off = short / 2 + 0.12
       if (along) chair(g, t, s * off, s > 0 ? Math.PI : 0, chairMat)
       else chair(g, s * off, t, s > 0 ? -Math.PI / 2 : Math.PI / 2, chairMat)
@@ -374,6 +384,7 @@ export function furnitureModel(
   d: number,
   h: number,
   placement: string,
+  { againstWall = false }: { againstWall?: boolean } = {},
 ): Group {
   const g = new Group()
   if (placement === 'rug') {
@@ -406,7 +417,7 @@ export function furnitureModel(
       break
     case 'mesa-de-jantar':
     case 'mesa-externa':
-      table(g, w, d, h, WOOD_LIGHT, true)
+      table(g, w, d, h, WOOD_LIGHT, true, againstWall)
       break
     case 'mesa-de-centro':
       table(g, w, d, h, WOOD, false)

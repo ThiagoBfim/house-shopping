@@ -2,6 +2,8 @@ import type { Rooms } from '../data/schema.ts'
 import type { ListView } from './budget.ts'
 import {
   guestsByHost,
+  linkPlanRooms,
+  OUTSIDE_TYPE,
   planToHouse,
   type FloorPlan,
   type Opening,
@@ -100,6 +102,11 @@ export interface HouseRoom {
   furniture: Suggestion[]
   /** Armários das fotos (já estão no imóvel; não são da lista). */
   builtIns: BuiltIn[]
+  /**
+   * Parte de um cômodo em L (sala com estar junto à varanda): nome do cômodo principal. A parte
+   * é o mesmo cômodo da lista; o que não cabe no principal vai para ela.
+   */
+  partOf?: string
   /** Cômodo da lista ("quarto-2"); sem ele, o cômodo aparece vazio. */
   instanceId?: string
 }
@@ -295,6 +302,7 @@ export function parseHouseModel(data: unknown): HouseModel | undefined {
         .filter((b): b is BuiltIn => b !== undefined)
         .slice(0, 20),
       ...(typeof r.instanceId === 'string' && { instanceId: r.instanceId }),
+      ...(typeof r.partOf === 'string' && r.partOf.trim() && { partOf: r.partOf.trim() }),
     })
   }
   if (!rooms.length) return undefined
@@ -313,6 +321,55 @@ const normalize = (label: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '')
 
+/** Vão largo (passagem aberta, não porta de abrir): liga as partes de um cômodo em L. */
+const WIDE_OPENING_CM = 150
+
+/** Os dois retângulos encostam (dividem um trecho de parede de pelo menos 1 m)? */
+function touching(a: HouseRoom, b: HouseRoom): boolean {
+  const near = (x: number, y: number) => Math.abs(x - y) < 0.2
+  const overlap = (a0: number, a1: number, b0: number, b1: number) =>
+    Math.min(a1, b1) - Math.max(a0, b0) >= 1
+  const vertical =
+    (near(a.xM + a.widthM, b.xM) || near(b.xM + b.widthM, a.xM)) &&
+    overlap(a.yM, a.yM + a.depthM, b.yM, b.yM + b.depthM)
+  const horizontal =
+    (near(a.yM + a.depthM, b.yM) || near(b.yM + b.depthM, a.yM)) &&
+    overlap(a.xM, a.xM + a.widthM, b.xM, b.xM + b.widthM)
+  return vertical || horizontal
+}
+
+/**
+ * Partes de cômodo em L. A skill marca com `partOf`; casas geradas antes disso trazem a parte
+ * como "outro" (ex.: "Sala – estar junto à varanda"): vira parte quando o nome começa com o do
+ * cômodo, encosta nele e tem um vão largo entre os dois.
+ */
+export function resolveParts(model: HouseModel): HouseModel {
+  const mains = model.rooms.filter((r) => !r.partOf && r.type !== OUTSIDE_TYPE)
+  return {
+    ...model,
+    rooms: model.rooms.map((room) => {
+      const byName =
+        room.partOf && mains.find((m) => normalize(m.label) === normalize(room.partOf!))
+      if (byName) return { ...room, type: byName.type, partOf: byName.label }
+      if (room.partOf || room.type !== OUTSIDE_TYPE) {
+        const { partOf: _drop, ...rest } = room
+        void _drop
+        return room.partOf ? rest : room
+      }
+      const wide = (r: HouseRoom) =>
+        r.openings.some((o) => o.kind === 'door' && o.widthCm >= WIDE_OPENING_CM)
+      const main = mains.find(
+        (m) =>
+          normalize(room.label).startsWith(normalize(m.label)) &&
+          normalize(m.label).length >= 3 &&
+          touching(room, m) &&
+          (wide(room) || wide(m)),
+      )
+      return main ? { ...room, type: main.type, partOf: main.label } : room
+    }),
+  }
+}
+
 /**
  * Liga cada cômodo da casa 3D ao cômodo da lista. Mesmo nome da planta lida antes ("Dorm. 2")
  * = mesmo cômodo e mesmo tipo (a pessoa pode ter feito dele um quarto do bebê); o resto, pelo
@@ -320,7 +377,10 @@ const normalize = (label: string) =>
  */
 export function linkRooms(model: HouseModel, rooms: Rooms, saved?: PlacedRoom[]): HouseModel {
   const byLabel = new Map((saved ?? []).map((r) => [normalize(r.label), r]))
-  const typed = model.rooms.map((room) => {
+  const resolved = resolveParts(model)
+  // Parte de cômodo em L não conta como cômodo (fica com o id do principal, no fim).
+  const typed = resolved.rooms.map((room) => {
+    if (room.partOf) return { ...room, type: OUTSIDE_TYPE }
     const match = byLabel.get(normalize(room.label))
     return match ? { ...room, type: match.type } : room
   })
@@ -341,18 +401,28 @@ export function linkRooms(model: HouseModel, rooms: Rooms, saved?: PlacedRoom[])
   const derived = planToHouse(plan, rooms).rooms
   const used = new Set<string>()
   const linked = typed.map((room, i) => {
-    const id = byLabel.get(normalize(room.label))?.instanceId
+    const id = resolved.rooms[i].partOf ? undefined : byLabel.get(normalize(room.label))?.instanceId
     if (id) used.add(id)
     return { room, id, fallback: derived[i].instanceId }
   })
+  const mains = linked.map(({ room, id, fallback }, i): HouseRoom | undefined => {
+    if (resolved.rooms[i].partOf) return undefined
+    const { instanceId: _old, ...rest } = room
+    void _old
+    const instanceId = id ?? (fallback && !used.has(fallback) ? fallback : undefined)
+    if (instanceId) used.add(instanceId)
+    return instanceId ? { ...rest, instanceId } : rest
+  })
   return {
     ...model,
-    rooms: linked.map(({ room, id, fallback }) => {
-      const { instanceId: _old, ...rest } = room
+    rooms: resolved.rooms.map((part, i) => {
+      const main = mains[i]
+      if (main) return main
+      // Parte de cômodo em L: o mesmo cômodo da lista que o principal.
+      const { instanceId: _old, ...rest } = part
       void _old
-      const instanceId = id ?? (fallback && !used.has(fallback) ? fallback : undefined)
-      if (instanceId) used.add(instanceId)
-      return instanceId ? { ...rest, instanceId } : rest
+      const owner = mains.find((m) => m && normalize(m.label) === normalize(part.partOf!))
+      return owner?.instanceId ? { ...rest, instanceId: owner.instanceId } : rest
     }),
   }
 }
@@ -377,9 +447,23 @@ export function furnishHouse(
 ): FurnishedRoom[] {
   // Sem área de serviço na planta, a lavanderia fica na cozinha (HOST_ROOM).
   const guests = guestsByHost(model.rooms, instancesIn(view))
-  return model.rooms.map((room) => {
+  // Cômodo em L: o principal recebe os móveis; o que não coube vai para as partes, em ordem.
+  const leftover = new Map<string, LayoutItem[]>()
+  const order = model.rooms
+    .map((_, i) => i)
+    .sort((a, b) => {
+      const part = (i: number) => (model.rooms[i].partOf ? 1 : 0)
+      return part(a) - part(b)
+    })
+  const out: FurnishedRoom[] = []
+  for (const index of order) {
+    const room = model.rooms[index]
     const id = room.instanceId
-    const items: LayoutItem[] = id ? layoutItems(view, [id, ...(guests[id] ?? [])]) : []
+    const items: LayoutItem[] = !id
+      ? []
+      : room.partOf
+        ? (leftover.get(id) ?? [])
+        : layoutItems(view, [id, ...(guests[id] ?? [])])
     const fixed = room.builtIns.map((b, i) => builtInPlaced(b, i, room))
     const base = arrangeRoom(
       {
@@ -393,7 +477,22 @@ export function furnishHouse(
     const suggested = applySuggestions(base, room.furniture, fixed)
     const manual = room.instanceId ? (positions[room.instanceId] ?? []) : []
     const { layout } = applySuggestions(suggested.layout, manual, fixed)
-    return { room, layout, fixed, accepted: suggested.accepted }
+    if (id) {
+      const missing = new Set(layout.unplaced.map((u) => u.key))
+      leftover.set(
+        id,
+        items.filter((i) => missing.has(i.key)),
+      )
+    }
+    out[index] = { room, layout, fixed, accepted: suggested.accepted }
+  }
+  // "Não coube" só o que não coube em nenhuma parte (no principal; as partes ficam sem aviso).
+  return out.map((f) => {
+    const id = f.room.instanceId
+    if (!id || !model.rooms.some((r) => r.partOf && r.instanceId === id)) return f
+    const missing = new Set((leftover.get(id) ?? []).map((i) => i.key))
+    const unplaced = f.room.partOf ? [] : f.layout.unplaced.filter((u) => missing.has(u.key))
+    return { ...f, layout: { ...f.layout, unplaced } }
   })
 }
 
@@ -424,4 +523,27 @@ export function furnitureForSkill(
       ),
     }))
     .filter((room) => room.items.length)
+}
+
+/**
+ * Religa a casa em 3D aos cômodos de agora (mudou quantidade ou tipo depois de gerar),
+ * reconhecendo as partes de cômodo em L (que ficam com o id do principal).
+ */
+export function relinkHouse(model: HouseModel, instanceIds: string[]): HouseModel {
+  const resolved = resolveParts(model)
+  const mains = resolved.rooms.filter((r) => !r.partOf)
+  const linked = linkPlanRooms(mains, instanceIds, (r) => r.widthM * r.depthM)
+  const idOf = new Map(mains.map((m, i) => [m, linked[i].instanceId]))
+  return {
+    ...resolved,
+    rooms: resolved.rooms.map((room) => {
+      const { instanceId: _old, ...rest } = room
+      void _old
+      const owner = room.partOf
+        ? mains.find((m) => normalize(m.label) === normalize(room.partOf!))
+        : room
+      const instanceId = owner && idOf.get(owner)
+      return instanceId ? { ...rest, instanceId } : rest
+    }),
+  }
 }

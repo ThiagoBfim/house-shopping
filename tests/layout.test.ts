@@ -365,3 +365,57 @@ describe('nada some da posição dos móveis', () => {
     expect(center(hood)).toBeCloseTo(center(stove))
   })
 })
+
+describe('vão largo não é porta de abrir', () => {
+  it('passagem de 2,5 m reserva só 60 cm; porta de 80 cm reserva o giro', () => {
+    const sofa = {
+      key: 'sofa',
+      category: 'sofa',
+      label: 'Sofá',
+      placement: 'floor' as const,
+      width: 210,
+      depth: 90,
+      height: 90,
+      qty: 1,
+    }
+    const room = (widthCm: number, sliding?: boolean) =>
+      arrangeRoom(
+        {
+          width: 300,
+          depth: 300,
+          openings: [
+            { kind: 'door', wall: 'top', position: 0.5, widthCm, ...(sliding && { sliding }) },
+          ],
+        },
+        [sofa],
+      )
+    // vão de 2,5 m na parede de cima: o sofá ainda cabe (a passagem é rasa)
+    expect(room(250).placed.map((p) => p.key)).toEqual(['sofa'])
+    expect(room(200, true).placed.map((p) => p.key)).toEqual(['sofa'])
+  })
+})
+
+describe('mesa de jantar em cômodo pequeno', () => {
+  it('sem lugar com cadeiras em volta, encosta na parede (cadeiras nos outros três lados)', () => {
+    const table = {
+      key: 'mesa',
+      category: 'mesa-de-jantar',
+      label: 'Mesa',
+      placement: 'floor' as const,
+      width: 120,
+      depth: 75,
+      height: 76,
+      qty: 1,
+    }
+    // 2,60 × 1,70: com cadeiras dos dois lados precisaria de 1,95 m
+    const layout = arrangeRoom({ width: 260, depth: 170, openings: [] }, [table])
+    const [placed] = layout.placed
+    expect(placed).toMatchObject({ category: 'mesa-de-jantar', againstWall: true })
+    const touchesWall =
+      placed.x === 0 || placed.y === 0 || placed.x + placed.w === 260 || placed.y + placed.d === 170
+    expect(touchesWall).toBe(true)
+    // com espaço, continua no meio
+    const roomy = arrangeRoom({ width: 400, depth: 400, openings: [] }, [table]).placed[0]
+    expect(roomy.againstWall).toBeUndefined()
+  })
+})

@@ -125,38 +125,79 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
   const idsOf = (id: string) => [id, ...(guests[id] ?? [])]
   const inPlan = new Set(plan.rooms.map((r) => r.instanceId))
   const hostedIds = new Set(Object.values(guests).flat())
-  const linked = [
-    ...plan.rooms.map((room, index) => ({
-      room: room as SavedPlan['rooms'][number] | undefined,
-      index,
-      instance: instances.find((i) => i.id === room.instanceId),
-    })),
+  interface Tab {
+    tab: string
+    title: string
+    room: SavedPlan['rooms'][number] | undefined
+    index: number
+    instance: RoomInstance | undefined
+    /** Parte de cômodo em L na casa em 3D (índice do retângulo). */
+    part?: number
+  }
+  const tabFor = (instance: RoomInstance | undefined, room: Tab['room'], index: number): Tab => ({
+    tab: instance?.id ?? `plan-${index}`,
+    title: instance?.title ?? room?.label ?? '',
+    room,
+    index,
+    instance,
+  })
+  // Na casa em 3D, a sala em L tem mais de um retângulo: uma aba para cada parte.
+  const partsOf = (instance: RoomInstance): Tab[] =>
+    (house?.model.rooms ?? []).flatMap((r, part) =>
+      r.partOf && r.instanceId === instance.id
+        ? [
+            {
+              tab: `${instance.id}#${part}`,
+              title: `${instance.title} · ${r.label.replace(/^.*?[–-]\s*/, '')}`,
+              room: undefined,
+              index: -1,
+              instance,
+              part,
+            },
+          ]
+        : [],
+    )
+  const linked: Tab[] = [
+    ...plan.rooms.map((room, index) =>
+      tabFor(
+        instances.find((i) => i.id === room.instanceId),
+        room,
+        index,
+      ),
+    ),
     // Cômodos da lista que não estão na planta (ex.: escritório adicionado depois): medida típica.
     ...instances
       .filter((i) => !inPlan.has(i.id) && !hostedIds.has(i.id) && i.roomId !== WHOLE_HOUSE)
-      .map((instance) => ({ room: undefined, index: -1, instance })),
-  ].filter(
-    (r) =>
-      r.instance &&
-      (layoutItems(view, idsOf(r.instance.id)).length ||
-        otherItems(view, idsOf(r.instance.id)).length),
-  )
-  const [selected, setSelected] = useState(linked[0]?.instance?.id)
+      .map((instance) => tabFor(instance, undefined, -1)),
+  ]
+    .filter(
+      (r) =>
+        r.instance &&
+        (layoutItems(view, idsOf(r.instance.id)).length ||
+          otherItems(view, idsOf(r.instance.id)).length),
+    )
+    .flatMap((r) => [r, ...partsOf(r.instance!)])
+  const [selected, setSelected] = useState(linked[0]?.tab)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
   const [show3d, setShow3d] = useState(false)
   const [drag, setDrag] = useState<Drag>()
   const [notice, setNotice] = useState<string>()
   const svg = useRef<SVGSVGElement>(null)
   const dragged = useRef(false)
-  const current = linked.find((r) => r.instance!.id === selected) ?? linked[0]
+  const current = linked.find((r) => r.tab === selected) ?? linked[0]
   const id = current?.instance?.id
   // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
   const memo = useMemo(() => {
     if (!current || !id) return undefined
     // A casa toda (a regra da lavanderia na cozinha olha os outros cômodos), depois o cômodo.
+    // (sala em L: a aba da parte mostra o retângulo dela; a do cômodo, o principal)
     const f =
       house?.model.rooms.some((r) => r.instanceId === id) &&
-      furnishHouse(house.model, view, positions).find((r) => r.room.instanceId === id)
+      furnishHouse(house.model, view, positions).find((r, i) =>
+        current.part !== undefined
+          ? i === current.part
+          : r.room.instanceId === id && !r.room.partOf,
+      )
     if (f) {
       const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }
       return { size, layout: f.layout, fixed: f.fixed, from3d: true, outside: false }
@@ -170,7 +211,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
     )
     const { layout } = applySuggestions(base, positions[id] ?? [])
     return { size, layout, fixed: [] as PlacedItem[], from3d: false, outside: !current.room }
-  }, [plan, view, house, positions, current?.index, id])
+  }, [plan, view, house, positions, current?.index, current?.part, id])
   if (!current || !memo || !id) return null
   const { size, layout, fixed, from3d, outside } = memo
   const pickedItem = picked && layout.placed.find((p) => sameItem(p, picked))
@@ -242,33 +283,33 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
     <section class="furniture-layout" aria-labelledby="furniture-layout-title">
       <h4 id="furniture-layout-title">🛋️ Posição dos móveis</h4>
       <div class="chips" role="tablist" aria-label="Cômodo">
-        {linked.map(({ instance }) => (
+        {linked.map(({ tab, title }) => (
           <button
-            key={instance!.id}
+            key={tab}
             type="button"
             role="tab"
-            class={`chip ${instance!.id === id ? 'is-active' : ''}`}
-            aria-selected={instance!.id === id}
+            class={`chip ${tab === current.tab ? 'is-active' : ''}`}
+            aria-selected={tab === current.tab}
             onClick={() => {
-              setSelected(instance!.id)
+              setSelected(tab)
               setPicked(undefined)
               setShow3d(false)
               setNotice(undefined)
             }}
           >
-            {instance!.title}
+            {title}
           </button>
         ))}
       </div>
       <p class="muted">
-        {current.instance!.title}: {meters(size.width)} × {meters(size.depth)} m
+        {current.title}: {meters(size.width)} × {meters(size.depth)} m
         {from3d ? ' (da casa em 3D)' : size.estimated ? ' (medida estimada pela planta)' : ''} ·
         vista de cima, em escala.
       </p>
       {outside && (
         <p class="notice">
-          📏 {current.instance!.title} não está na planta: desenhado com a medida típica, sem portas
-          e janelas.
+          📏 {current.title} não está na planta: desenhado com a medida típica, sem portas e
+          janelas.
         </p>
       )}
       {hostedTitles.length > 0 && (
@@ -281,7 +322,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
         class={drag ? 'is-dragging' : ''}
         viewBox={`${-PAD} ${-PAD} ${layout.width + 2 * PAD} ${layout.depth + 2 * PAD}`}
         role="group"
-        aria-label={`Planta de ${current.instance!.title} com os móveis`}
+        aria-label={`Planta de ${current.title} com os móveis`}
         onPointerMove={moveDrag}
         onPointerUp={endDrag}
         onPointerCancel={() => setDrag(undefined)}
@@ -418,7 +459,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
       </svg>
       {show3d ? (
         <Room3DView
-          title={current.instance!.title}
+          title={current.title}
           layout={layout}
           view={view}
           onClose={() => setShow3d(false)}

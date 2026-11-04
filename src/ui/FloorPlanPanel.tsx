@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'preact/hooks'
-import { linkPlanRooms } from '../engine/floor-plan.ts'
+import { relinkHouse } from '../engine/house3d.ts'
 import type { Rooms } from '../data/schema.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
@@ -59,7 +59,7 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
         ...house,
         model: {
           ...house.model,
-          rooms: linkPlanRooms(house.model.rooms, ids.split(','), (r) => r.widthM * r.depthM),
+          ...relinkHouse(house.model, ids.split(',')),
         },
       },
     [house, ids],
