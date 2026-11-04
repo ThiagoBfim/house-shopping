@@ -1188,3 +1188,55 @@ test('posição dos móveis mostra todos os cômodos da planta; o que não está
   await toStep(page, 'Móveis')
   await expect(page.locator('#room-banheiro-2')).toBeVisible()
 })
+
+test('"Planta e cômodos" tem volta: para a lista como estava ou para outro passo', async ({
+  page,
+}) => {
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  // primeira vez: não há lista para voltar
+  await expect(page.getByRole('button', { name: '← Voltar para a lista' })).toHaveCount(0)
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  const bathrooms = page.locator('[id^="room-banheiro"]')
+  await expect(bathrooms).toHaveCount(3)
+
+  // passo 1 e voltar: mexer nos cômodos sem "Continuar" não muda nada
+  const steps = page.getByRole('navigation', { name: 'Passos do projeto' })
+  await steps.getByRole('button', { name: /Planta e cômodos/ }).click()
+  await expect(steps.getByRole('button', { name: /Planta e cômodos/ })).toHaveAttribute(
+    'aria-current',
+    'step',
+  )
+  await page.getByRole('button', { name: 'Remover um Banheiro' }).click()
+  await page.getByRole('button', { name: '← Voltar para a lista' }).click()
+  await expect(bathrooms).toHaveCount(3)
+  await expect(steps.getByRole('button', { name: /Móveis/ })).toHaveAttribute(
+    'aria-current',
+    'step',
+  )
+
+  // de "Planta e cômodos" direto para outro passo
+  await steps.getByRole('button', { name: /Planta e cômodos/ }).click()
+  await steps.getByRole('button', { name: /Posições em 3D/ }).click()
+  await expect(page.locator('.furniture-layout')).toBeVisible()
+  await expect(steps.getByRole('button', { name: /Posições em 3D/ })).toHaveAttribute(
+    'aria-current',
+    'step',
+  )
+
+  // "Continuar" aplica a mudança (e aí não há mais o que desfazer por aqui)
+  await steps.getByRole('button', { name: /Planta e cômodos/ }).click()
+  await page.getByRole('button', { name: 'Remover um Banheiro' }).click()
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Móveis')
+  await expect(bathrooms).toHaveCount(2)
+})

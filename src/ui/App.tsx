@@ -27,6 +27,7 @@ import { downloadList } from './download.ts'
 import { loadCatalog, type Catalog } from './catalog.ts'
 import type { FilterValues } from './Filters.tsx'
 import { ListScreen } from './ListScreen.tsx'
+import { PlanFlowSteps, saveFlowStep } from './PlanFlow.tsx'
 import { Assistant, type AssistantNext } from './Assistant.tsx'
 import {
   persistState,
@@ -85,6 +86,8 @@ const newSession = (): Session => ({
 export function App() {
   const [load, setLoad] = useState<Load>({ status: 'loading' })
   const [session, setSession] = useState<Session>(newSession())
+  /** A lista de antes de ir para "Planta e cômodos": voltar sem mudar nada. */
+  const [returnTo, setReturnTo] = useState<Session>()
   /** Escolhas mudaram desde o último reload. */
   const [dirty, setDirty] = useState(false)
   const [changes, setChanges] = useState<Record<string, Change>>({})
@@ -234,6 +237,7 @@ export function App() {
     const { room, products } = applyPreferences(house.room, house.products, session.choices)
 
     const changeRooms = () => {
+      setReturnTo(session)
       setSession({ ...session, picking: true })
       setChanges({})
       setDirty(false)
@@ -260,8 +264,36 @@ export function App() {
         // Leitura com fotos já é a casa em metros; leitura rápida apaga a casa de outra leitura.
         saveHouse(house)
       }
+      /** Volta para a lista como estava (nada da escolha de cômodos é aplicado). */
+      const back = () => {
+        if (!returnTo) return
+        setSession(returnTo)
+        setReturnTo(undefined)
+      }
       return (
         <>
+          {returnTo && (
+            <>
+              {enabled('floorPlan') && floorPlan && (
+                <PlanFlowSteps
+                  step="comodos"
+                  onStep={(step) => {
+                    saveFlowStep(step)
+                    back()
+                  }}
+                  onRooms={() => {}}
+                />
+              )}
+              <div class="picker-back">
+                <button type="button" class="small-button" onClick={back}>
+                  ← Voltar para a lista
+                </button>
+                <span class="muted">
+                  sem mudar nada; para mudar os cômodos, escolha abaixo e clique em "Continuar".
+                </span>
+              </div>
+            </>
+          )}
           {enabled('floorPlan') && <FloorPlanUpload rooms={rooms} onRead={readPlan} />}
           <RoomPicker
             key={pickerKey}
@@ -278,6 +310,7 @@ export function App() {
               )
               const lost = session.choices.manual.length - choices.manual.length
               const previous = session
+              setReturnTo(undefined)
               setSession({ ...session, house: spec, choices, picking: false, editingBudget: true })
               if (lost) {
                 setToast({

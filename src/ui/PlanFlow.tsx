@@ -22,7 +22,8 @@ export function saveFlowStep(step: FlowStep): void {
 }
 
 interface Props {
-  step: FlowStep
+  /** Passo atual ("comodos" = a tela da planta e da escolha de cômodos). */
+  step: FlowStep | 'comodos'
   onStep: (step: FlowStep) => void
   /** Passo 1: volta para a planta e a escolha de cômodos. */
   onRooms: () => void
@@ -45,7 +46,10 @@ export function PlanFlowSteps({ step, onStep, onRooms }: Props) {
       <ol>
         {LABELS.map(({ id, label }, i) => {
           const current = id === step
-          const done = id === 'comodos' || STEPS.indexOf(id as FlowStep) < STEPS.indexOf(step)
+          const done =
+            id === 'comodos'
+              ? step !== 'comodos'
+              : STEPS.indexOf(id as FlowStep) < STEPS.indexOf(step as FlowStep)
           return (
             <li key={id} class={`${current ? 'is-current' : ''} ${done ? 'is-done' : ''}`}>
               <button
