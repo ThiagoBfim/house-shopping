@@ -37,13 +37,14 @@ Três funcionalidades novas, nesta ordem:
 | [38](drop-38-casa-em-3d.md)               | Casa inteira em 3D                 | Planta + fotos → casa em 3D com os móveis; primeira pessoa e tour em vídeo         |
 | [39](drop-39-casa-3d-realista.md)         | Casa em 3D realista                | Botão realista (texturas, céu, render) e armários das fotos                        |
 | [40](drop-40-mover-moveis.md)             | Mover os móveis                    | Vista de cima igual ao 3D; arrastar e girar; 3D com a lista e as posições de agora |
+| [41](drop-41-fluxo-da-planta-e-chat.md)   | Fluxo da planta e chat             | Passos planta → móveis → posições em 3D (chat com IA) → projeto em 3D              |
 | [34](drop-34-cobranca.md)                 | Cobrança                           | Cobrar pelas funcionalidades 1 e 2 (por último)                                    |
 
 ## Ordem sugerida
 
 ```
 30 (backend local) → 31 (planta → cômodos) → 32 (desenho) → 33 (preços mais baratos)
-→ 35 (medidas) → 36 (posição dos móveis) → 37 (3D) → 38 (casa em 3D) → 39 (realista) → 40 (mover móveis) → 34 (cobrança)
+→ 35 (medidas) → 36 (posição dos móveis) → 37 (3D) → 38 (casa em 3D) → 39 (realista) → 40 (mover móveis) → 41 (fluxo e chat) → 34 (cobrança)
 ```
 
 ## Decisões

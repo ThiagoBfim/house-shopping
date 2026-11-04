@@ -568,7 +568,6 @@ export function arrangeRoom(
     purificador: 120,
   }
   /** Item de parede que vai em cima de um móvel: TV no rack, coifa no fogão. */
-  const ABOVE: Record<string, string> = { tv: 'rack', coifa: 'fogao' }
   const alongWall = (wall: Wall, r: Rect) =>
     wall === 'top' || wall === 'bottom'
       ? { start: r.x, end: r.x + r.w }
@@ -751,6 +750,17 @@ export function instancesIn(view: ListView): string[] {
   return [...ids]
 }
 
+/** Item de parede que vai em cima de um móvel: TV no rack, coifa no fogão (e segue ele). */
+const ABOVE: Record<string, string> = { tv: 'rack', coifa: 'fogao' }
+
+/** Parede de trás de quem olha para cada lado. */
+const BACK_WALL: Record<PlacedItem['facing'], Wall> = {
+  down: 'top',
+  up: 'bottom',
+  right: 'left',
+  left: 'right',
+}
+
 /** Posição sugerida para um móvel (centro em cm no cômodo e para onde a frente aponta). */
 export interface PositionHint {
   key: string
@@ -774,32 +784,75 @@ export function applySuggestions(
   const W = layout.width
   const D = layout.depth
   const doors = layout.openings.filter((o) => o.kind === 'door').map((o) => openingZone(o, W, D))
-  const placed = [...layout.placed]
-  let accepted = 0
-  for (const hint of hints) {
-    const i = placed.findIndex(
-      (p) => p.key === hint.key && p.unit === hint.unit && p.placement === 'floor',
-    )
-    if (i < 0) continue
-    const p = placed[i]
+  const id = (p: { key: string; unit: number }) => `${p.key}#${p.unit}`
+  // Uma posição por móvel (a última vale).
+  const byItem = new Map(hints.map((h) => [id(h), h]))
+  // Retângulo novo de cada sugestão que tem forma válida (dentro do cômodo, na parede certa).
+  const targets = new Map<string, PlacedItem>()
+  for (const [key, hint] of byItem) {
+    const p = layout.placed.find((q) => id(q) === key)
+    if (!p) continue
     // Largura (frente) e profundidade do móvel, independentes de como ele estava girado.
     const sideways = p.facing === 'left' || p.facing === 'right'
     const [width, depth] = sideways ? [p.d, p.w] : [p.w, p.d]
     const [w, d] =
       hint.rotation === 'left' || hint.rotation === 'right' ? [depth, width] : [width, depth]
     const rect = { x: hint.xCm - w / 2, y: hint.yCm - d / 2, w, d }
-    const ok =
-      rect.x >= 0 &&
-      rect.y >= 0 &&
-      rect.x + w <= W &&
-      rect.y + d <= D &&
-      !placed.some((o, j) => j !== i && o.placement === 'floor' && overlaps(rect, o)) &&
-      !fixed.some((o) => o.placement === 'floor' && overlaps(rect, o)) &&
-      !doors.some((z) => overlaps(rect, z))
-    if (!ok) continue
-    placed[i] = { ...p, ...rect, facing: hint.rotation }
-    accepted++
+    const inside = rect.x >= -1 && rect.y >= -1 && rect.x + w <= W + 1 && rect.y + d <= D + 1
+    // Na parede (TV, ar): encostado na parede de trás; tapete: qualquer lugar dentro (fica por
+    // baixo dos móveis); no chão: sem porta nem armário fixo (os outros móveis, abaixo).
+    const againstBack = {
+      top: rect.y <= 3,
+      bottom: rect.y + d >= D - 3,
+      left: rect.x <= 3,
+      right: rect.x + w >= W - 3,
+    }[BACK_WALL[hint.rotation]]
+    const shapeOk =
+      inside &&
+      (p.placement === 'wall'
+        ? againstBack
+        : p.placement === 'rug' ||
+          (!fixed.some((o) => o.placement === 'floor' && overlaps(rect, o)) &&
+            !doors.some((z) => overlaps(rect, z))))
+    if (shapeOk) targets.set(key, { ...p, ...rect, facing: hint.rotation })
   }
+  // Todas juntas, no estado final: a ordem não importa (trocar o sofá e o rack de parede só
+  // dá certo com os dois no lugar novo). Sai quem bate em alguém; repete até assentar.
+  for (;;) {
+    const final = layout.placed.map((p) => targets.get(id(p)) ?? p)
+    const clash = [...targets.keys()].filter((key) => {
+      const t = targets.get(key)!
+      return (
+        t.placement === 'floor' &&
+        final.some((o) => id(o) !== key && o.placement === 'floor' && overlaps(t, o))
+      )
+    })
+    if (!clash.length) break
+    for (const key of clash) targets.delete(key)
+  }
+  const placed = layout.placed.map((p) => targets.get(id(p)) ?? p)
+  const moved = new Set(targets.keys())
+  const accepted = targets.size
+  // TV segue o rack, coifa segue o fogão (quando só o móvel de baixo foi mudado de lugar).
+  placed.forEach((q, i) => {
+    const below = ABOVE[q.category]
+    if (q.placement !== 'wall' || !below || moved.has(id(q))) return
+    const anchor = placed.find((a) => a.category === below && moved.has(id(a)))
+    if (!anchor) return
+    const wall = BACK_WALL[anchor.facing]
+    const sideways = q.facing === 'left' || q.facing === 'right'
+    const [width, depth] = sideways ? [q.d, q.w] : [q.w, q.d]
+    const length = wallLength(wall, W, D)
+    if (width > length) return
+    const center =
+      wall === 'top' || wall === 'bottom' ? anchor.x + anchor.w / 2 : anchor.y + anchor.d / 2
+    const offset = Math.min(Math.max(0, center - width / 2), length - width)
+    placed[i] = {
+      ...q,
+      ...againstWall(wall, offset, width, depth, W, D),
+      facing: FACING[wall],
+    }
+  })
   return { layout: { ...layout, placed }, accepted }
 }
 

@@ -31,6 +31,13 @@ import { ManualCard } from './ManualCard.tsx'
 import { ManualForm } from './ManualForm.tsx'
 import { ProductCard } from './ProductCard.tsx'
 import { ShareBar } from './ShareBar.tsx'
+import {
+  PlanFlowNav,
+  PlanFlowSteps,
+  readFlowStep,
+  saveFlowStep,
+  type FlowStep,
+} from './PlanFlow.tsx'
 
 interface Props {
   roomName: string
@@ -59,6 +66,8 @@ interface Props {
   house3d?: { rooms: Rooms }
   /** Recurso em teste "Preços mais baratos" ligado. */
   cheaperPrices?: boolean
+  /** Backend com a skill /house-chat: chat no passo "Posições em 3D". */
+  chat?: boolean
 }
 
 const REASON_LABELS = { refused: 'Recusado', owned: 'Já tenho' }
@@ -102,8 +111,16 @@ export function ListScreen({
   floorPlan,
   house3d,
   cheaperPrices,
+  chat,
 }: Props) {
   const [query, setQuery] = useState('')
+  // Fluxo da planta (só com a planta ligada): móveis → posições em 3D → projeto em 3D.
+  const [step, setStep] = useState<FlowStep>(readFlowStep)
+  const go = (next: FlowStep) => {
+    setStep(next)
+    saveFlowStep(next)
+    window.scrollTo?.({ top: 0 })
+  }
   const [collapsed, setCollapsed] = useState<string[]>(readCollapsed)
   /** Cômodo com o formulário de "Adicionar item" aberto. */
   const [adding, setAdding] = useState<string>()
@@ -339,8 +356,8 @@ export function ListScreen({
     )
   }
 
-  return (
-    <section>
+  const header = (
+    <>
       <div class="list-nav">
         <button type="button" class="link-button" onClick={onChangeRoom}>
           ← Cômodos
@@ -392,6 +409,44 @@ export function ListScreen({
           )}
         </button>
       </div>
+      {floorPlan && <PlanFlowSteps step={step} onStep={go} onRooms={onChangeRoom} />}
+    </>
+  )
+  const refuse = (key: string, label: string) =>
+    onChoices(exclude(choices, key, 'refused'), `${label} recusado.`)
+
+  if (floorPlan && step !== 'moveis') {
+    return (
+      <section>
+        {header}
+        <FloorPlanPanel
+          plan={floorPlan}
+          view={view}
+          instances={instances}
+          house3d={house3d}
+          section={step === 'posicoes' ? 'positions' : 'project'}
+          chat={chat}
+          onRemove={refuse}
+        />
+        <PlanFlowNav
+          back={
+            step === 'posicoes'
+              ? { label: 'Voltar aos móveis', run: () => go('moveis') }
+              : { label: 'Voltar às posições', run: () => go('posicoes') }
+          }
+          next={
+            step === 'posicoes'
+              ? { label: 'Ver o projeto em 3D', run: () => go('projeto') }
+              : undefined
+          }
+        />
+      </section>
+    )
+  }
+
+  return (
+    <section>
+      {header}
 
       <ListPriceChange view={view} />
 
@@ -407,8 +462,10 @@ export function ListScreen({
 
       <AnswersPanel {...answers} onRedo={onAssistant} />
 
-      {floorPlan && (
-        <FloorPlanPanel plan={floorPlan} view={view} instances={instances} house3d={house3d} />
+      {floorPlan && hasItems && (
+        <PlanFlowNav
+          next={{ label: 'Ver os móveis nos cômodos (3D)', run: () => go('posicoes') }}
+        />
       )}
 
       {cheaperPrices && hasItems && (
@@ -639,6 +696,11 @@ export function ListScreen({
             ))}
           </ul>
         </section>
+      )}
+      {floorPlan && hasItems && (
+        <PlanFlowNav
+          next={{ label: 'Ver os móveis nos cômodos (3D)', run: () => go('posicoes') }}
+        />
       )}
     </section>
   )

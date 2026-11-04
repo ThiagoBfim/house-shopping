@@ -16,6 +16,8 @@ export interface Health {
   cheaperPrices: boolean
   /** Skill /house-3d (casa em 3D a partir da planta e das fotos). */
   house3d?: boolean
+  /** Skill /house-chat (chat do projeto no passo "Posições em 3D"). */
+  chat?: boolean
 }
 
 export interface Job<T> {
@@ -40,6 +42,7 @@ export async function fetchHealth(): Promise<Health | undefined> {
       floorPlan: body.floorPlan === true,
       cheaperPrices: body.cheaperPrices === true,
       house3d: body.house3d === true,
+      chat: body.chat === true,
     }
   } catch {
     return undefined

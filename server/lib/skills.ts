@@ -301,3 +301,55 @@ export const HOUSE_3D_SCHEMA = {
     notes: { type: 'string' },
   },
 }
+
+/** Resposta da skill /house-chat (`--json-schema`): texto e sugestões que a tela aplica. */
+export const CHAT_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['reply', 'actions'],
+  properties: {
+    reply: { type: 'string', description: 'Resposta em português, curta' },
+    actions: {
+      type: 'array',
+      maxItems: 12,
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['type'],
+        properties: {
+          type: { type: 'string', enum: ['move', 'remove', 'reset'] },
+          room: { type: 'string' },
+          key: { type: 'string' },
+          unit: { type: 'integer', minimum: 0 },
+          xCm: { type: 'number', minimum: 0 },
+          yCm: { type: 'number', minimum: 0 },
+          rotation: { type: 'string', enum: ['down', 'up', 'left', 'right'] },
+        },
+      },
+    },
+  },
+}
+
+const MAX_CHAT_BYTES = 300_000
+
+/**
+ * Pedido do chat do projeto: a conversa (última = pergunta de agora) e o projeto como está na
+ * tela. Confere o formato básico; o conteúdo vai para a skill ler.
+ */
+export function parseChatRequest(
+  body: string,
+): { messages: unknown[]; rooms: unknown[] } | undefined {
+  if (body.length > MAX_CHAT_BYTES) return undefined
+  let data: unknown
+  try {
+    data = JSON.parse(body)
+  } catch {
+    return undefined
+  }
+  if (typeof data !== 'object' || data === null) return undefined
+  const { messages, rooms } = data as Record<string, unknown>
+  if (!Array.isArray(messages) || !messages.length || !Array.isArray(rooms)) return undefined
+  const last = messages[messages.length - 1] as Record<string, unknown> | undefined
+  if (last?.role !== 'user' || typeof last.text !== 'string' || !last.text.trim()) return undefined
+  return data as { messages: unknown[]; rooms: unknown[] }
+}

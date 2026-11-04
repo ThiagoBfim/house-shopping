@@ -14,7 +14,7 @@ const CORS = {
 }
 
 interface Mock {
-  health?: { floorPlan: boolean; cheaperPrices: boolean; house3d?: boolean }
+  health?: { floorPlan: boolean; cheaperPrices: boolean; house3d?: boolean; chat?: boolean }
   /** Respostas de GET /api/jobs/:id, em ordem (a última se repete). */
   jobs?: Record<string, object[]>
   /** POST → id do job (ou erro). */
@@ -61,6 +61,14 @@ async function mockApi(page: Page, mock: Mock) {
 }
 
 const labs = (page: Page) => page.locator('.labs-panel')
+
+/** Passo do fluxo da planta (só existe com a planta ligada e lida). */
+async function toStep(page: Page, name: 'Móveis' | 'Posições em 3D' | 'Projeto em 3D') {
+  await page
+    .getByRole('navigation', { name: 'Passos do projeto' })
+    .getByRole('button', { name: new RegExp(name) })
+    .click()
+}
 
 async function turnOn(page: Page, name: string) {
   await labs(page).locator('summary').click()
@@ -126,12 +134,26 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   const bed2 = page.locator('#room-quarto-2').getByRole('article', { name: /^Cama \/ base box/ })
   await expect(bed2.getByRole('radio', { name: 'Casal' })).toHaveAttribute('aria-checked', 'true')
 
+  // fluxo: passo 2 (móveis) é a lista; o desenho e as posições ficam no passo 3
+  const steps = page.getByRole('navigation', { name: 'Passos do projeto' })
+  await expect(steps.getByRole('button', { name: /Móveis/ })).toHaveAttribute(
+    'aria-current',
+    'step',
+  )
   const drawing = page.getByRole('group', { name: 'Desenho do imóvel com os móveis da lista' })
+  await expect(drawing).toHaveCount(0)
+  await page
+    .getByRole('button', { name: /Ver os móveis nos cômodos \(3D\)/ })
+    .first()
+    .click()
+  await expect(steps.getByRole('button', { name: /Posições em 3D/ })).toHaveAttribute(
+    'aria-current',
+    'step',
+  )
+  await expect(page.locator('#room-cozinha')).toHaveCount(0)
   await expect(drawing).toBeVisible()
   await expect(drawing.getByRole('button', { name: /^Quarto 1, 14 m²: \d+ itens/ })).toBeVisible()
   await expect(drawing.getByRole('img', { name: 'Closet (fora da lista)' })).toBeVisible()
-  await drawing.getByRole('button', { name: /^Cozinha, 9 m²/ }).click()
-  await expect(page.locator('#room-cozinha')).toBeInViewport()
 
   // posição dos móveis: vista em escala por cômodo; tocar num móvel mostra medida e preço
   const furniture = page.getByRole('region', { name: '🛋️ Posição dos móveis' })
@@ -142,8 +164,7 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await expect(furniture.getByRole('status')).toContainText('R$')
   await expect(furniture.getByRole('button', { name: /^Criado-mudo:/ })).toHaveCount(2)
 
-  // 3D: abre a cena, toca na cama (posição na tela pelo gancho de teste) e vê o cartão
-  await furniture.getByRole('button', { name: '🧊 Ver em 3D' }).click()
+  // 3D: no passo das posições a cena já abre; toca na cama (gancho de teste) e vê o cartão
   const scene = furniture.locator('.room-3d')
   const canvas = scene.locator('canvas')
   await expect(canvas).toBeVisible()
@@ -163,21 +184,16 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
   await scene.getByRole('button', { name: 'Fechar' }).click()
   await expect(canvas).toHaveCount(0)
 
-  // "Sua planta" esconde o desenho e a posição dos móveis juntos; fica escondida ao recarregar
-  const panel = page.getByRole('region', { name: /^📐 Sua planta/ })
-  const toggle = panel.getByRole('button', { name: /^📐 Sua planta/ })
-  await expect(toggle).toHaveAttribute('aria-expanded', 'true')
-  await expect(panel.getByRole('region', { name: '🛋️ Posição dos móveis' })).toBeVisible()
-  await toggle.click()
-  await expect(toggle).toHaveAttribute('aria-expanded', 'false')
-  await expect(drawing).toHaveCount(0)
-  await expect(furniture).toHaveCount(0)
+  await expect(furniture.getByRole('button', { name: '🧊 Ver em 3D' })).toBeVisible()
+
+  // o passo fica salvo ao recarregar; voltar aos móveis mostra a lista de novo
   await page.reload()
-  await expect(toggle).toHaveAttribute('aria-expanded', 'false')
-  await expect(drawing).toHaveCount(0)
-  await toggle.click()
   await expect(drawing).toBeVisible()
-  await expect(furniture).toBeVisible()
+  await page.getByRole('button', { name: /Voltar aos móveis/ }).click()
+  await expect(page.locator('#room-cozinha')).toBeVisible()
+  await expect(drawing).toHaveCount(0)
+  await toStep(page, 'Posições em 3D')
+  await expect(drawing).toBeVisible()
 
   // o desenho continua depois de recarregar; com a chave desligada, some
   await page.reload()
@@ -187,6 +203,9 @@ test('planta → cômodos, cama pelo tamanho do quarto e desenho do imóvel', as
     .getByRole('switch', { name: /Planta da casa/ })
     .uncheck()
   await expect(drawing).toHaveCount(0)
+  // sem a planta não há fluxo: a lista de sempre
+  await expect(steps).toHaveCount(0)
+  await expect(page.locator('#room-cozinha')).toBeVisible()
 })
 
 test('planta: um quarto vira quarto do bebê ou escritório', async ({ page }) => {
@@ -229,6 +248,7 @@ test('planta: um quarto vira quarto do bebê ou escritório', async ({ page }) =
   await expect(page.locator('#room-quarto-2')).toHaveCount(0)
   const bed = page.locator('#room-quarto').getByRole('article', { name: /^Cama \/ base box/ })
   await expect(bed.getByRole('radio', { name: 'Queen' })).toHaveAttribute('aria-checked', 'true')
+  await toStep(page, 'Posições em 3D')
   const drawing = page.getByRole('group', { name: 'Desenho do imóvel com os móveis da lista' })
   await expect(drawing.getByRole('button', { name: /^Quarto do bebê, 9 m²/ })).toBeVisible()
   await expect(drawing.getByRole('button', { name: /^Escritório/ })).toBeVisible()
@@ -391,6 +411,7 @@ test('casa em 3D: gerar com planta e fotos, andar em primeira pessoa, tour e ví
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Projeto em 3D')
 
   const gen = page.locator('.house-3d-generate')
   const button = gen.getByRole('button', { name: '✨ Gerar casa em 3D' })
@@ -501,6 +522,7 @@ test('casa em 3D realista: armários das fotos, texturas e render em alta qualid
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Projeto em 3D')
 
   const gen = page.locator('.house-3d-generate')
   await gen
@@ -558,6 +580,7 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
     .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
 
   const layout = page.locator('.furniture-layout')
   await layout.getByRole('tab', { name: 'Quarto 1' }).click()
@@ -565,6 +588,7 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   await expect(layout.locator('.layout-fixed')).toHaveCount(0)
 
   // gerar a casa em 3D: a vista de cima passa a ser o cômodo do 3D (medidas e armário da foto)
+  await toStep(page, 'Projeto em 3D')
   const gen = page.locator('.house-3d-generate')
   await gen
     .getByLabel('Planta')
@@ -573,6 +597,8 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   const dialog = page.getByRole('dialog', { name: 'Casa em 3D' })
   await expect(dialog).toBeVisible({ timeout: 30_000 })
   await dialog.getByRole('button', { name: 'Fechar' }).click()
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
   await expect(layout).toContainText('Quarto 1: 3,5 × 4 m (da casa em 3D)')
   await expect(layout.getByLabel('Armário embutido (das fotos)')).toHaveCount(1)
 
@@ -650,13 +676,18 @@ test('posição dos móveis = casa em 3D: mover, girar, lista atual', async ({ p
   expect(Number(await bed.getAttribute('data-x'))).toBe(Number(start[0]) + 20)
   await reset.click()
 
-  // tirar a cama da lista: some da vista de cima e do 3D
+  // tirar a cama da lista (passo dos móveis): some da vista de cima e do 3D
+  await toStep(page, 'Móveis')
   await page
     .locator('#room-quarto-1')
     .getByRole('article', { name: /^Cama \/ base box/ })
     .getByRole('button', { name: 'Recusar' })
     .click()
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Quarto 1' }).click()
+  await expect(layout.getByRole('button', { name: /^Criado-mudo/ }).first()).toBeVisible()
   await expect(bed).toHaveCount(0)
+  await toStep(page, 'Projeto em 3D')
   await gen.getByRole('button', { name: '🔄 Atualizar o 3D' }).click()
   await page.waitForFunction(
     () => 'state' in ((window as unknown as { __house3d?: object }).__house3d ?? {}),
@@ -684,6 +715,7 @@ test('posição dos móveis lista tudo do cômodo: no desenho ou "também neste 
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByLabel('Orçamento em reais').fill('200000')
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
 
   const layout = page.locator('.furniture-layout')
   await layout.getByRole('tab', { name: 'Cozinha' }).click()
@@ -696,12 +728,17 @@ test('posição dos móveis lista tudo do cômodo: no desenho ou "também neste 
   await others.locator('summary').click()
   await expect(others).toContainText('Micro-ondas')
   await expect(others).toContainText('Panelas')
-  // recusar o micro-ondas tira ele da lista do cômodo
+  // recusar o micro-ondas (passo dos móveis) tira ele da lista do cômodo
+  await toStep(page, 'Móveis')
   await page
     .locator('#room-cozinha')
     .getByRole('article', { name: /^Micro-ondas/ })
     .getByRole('button', { name: 'Recusar' })
     .click()
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Cozinha' }).click()
+  await others.locator('summary').click()
+  await expect(others).toContainText('Panelas')
   await expect(others).not.toContainText('Micro-ondas')
 
   await layout.getByRole('tab', { name: 'Banheiro 1' }).click()
@@ -739,7 +776,8 @@ test('planta sem área de serviço: a lavanderia entra na lista e fica na cozinh
   await expect(
     page.locator('#room-lavanderia').getByRole('article', { name: /^Máquina de lavar/ }),
   ).toHaveCount(1)
-  // no desenho do imóvel: "Cozinha + Lavanderia"
+  // no desenho do imóvel (passo das posições): "Cozinha + Lavanderia"
+  await toStep(page, 'Posições em 3D')
   await expect(page.getByRole('button', { name: /^Cozinha \+ Lavanderia/ })).toHaveCount(1)
   // na posição dos móveis: sem aba própria; a máquina e o varal ficam na cozinha
   const layout = page.locator('.furniture-layout')
@@ -765,6 +803,7 @@ test('trocar o sofá com as medidas: a posição dos móveis usa o tamanho do so
   await page.getByRole('button', { name: /^Continuar com/ }).click()
   await page.getByLabel('Orçamento em reais').fill('200000')
   await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
 
   const layout = page.locator('.furniture-layout')
   await layout.getByRole('tab', { name: 'Sala' }).click()
@@ -777,7 +816,8 @@ test('trocar o sofá com as medidas: a posição dos móveis usa o tamanho do so
   }
   const before = await footprint()
 
-  // trocar pelo sofá que eu achei, com as medidas dele
+  // trocar pelo sofá que eu achei, com as medidas dele (passo dos móveis)
+  await toStep(page, 'Móveis')
   await page
     .locator('#room-sala')
     .getByRole('article', { name: /^Sofá:/ })
@@ -794,6 +834,8 @@ test('trocar o sofá com as medidas: a posição dos móveis usa o tamanho do so
 
   const swap = page.getByRole('article', { name: /^Trocado por você \(Sofá\)/ })
   await expect(swap).toContainText('📐 250 × 105 × 95 cm')
+  await toStep(page, 'Posições em 3D')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
   await expect.poll(footprint).toBe('250×105')
   expect(before).not.toBe('250×105')
 
@@ -801,4 +843,101 @@ test('trocar o sofá com as medidas: a posição dos móveis usa o tamanho do so
   await page.reload()
   await layout.getByRole('tab', { name: 'Sala' }).click()
   await expect.poll(footprint).toBe('250×105')
+})
+
+test('chat do projeto: a IA vê o projeto, sugere e só muda ao aplicar', async ({ page }) => {
+  const calls = await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true, chat: true },
+    start: { '/api/floor-plan': { id: 'p1' }, '/api/chat': { id: 'c1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
+
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  const sofa = layout.getByRole('button', { name: /^Sofá/ })
+  const rect = sofa.locator('rect')
+  const [x, y, w, d] = await Promise.all(
+    ['x', 'y', 'width', 'height'].map(async (a) => Number(await rect.getAttribute(a))),
+  )
+  const facing = await sofa.getAttribute('data-facing')
+  // resposta da IA montada com a posição de agora: mesma posição (cabe), fora do cômodo (não
+  // cabe) e tirar a poltrona da lista
+  await page.route(`${API}/api/jobs/c1`, (route) =>
+    route.fulfill({
+      headers: CORS,
+      json: {
+        id: 'c1',
+        status: 'done',
+        costUsd: 0.12,
+        result: {
+          reply: 'O sofá fica bem na parede da janela. A poltrona aperta a passagem.',
+          actions: [
+            {
+              type: 'move',
+              room: 'sala',
+              key: 'sala:sofa',
+              unit: 0,
+              xCm: x + w / 2,
+              yCm: y + d / 2,
+              rotation: facing,
+            },
+            {
+              type: 'move',
+              room: 'sala',
+              key: 'sala:sofa',
+              unit: 0,
+              xCm: 5000,
+              yCm: 10,
+              rotation: 'down',
+            },
+            { type: 'remove', key: 'sala:poltrona' },
+          ],
+        },
+      },
+    }),
+  )
+
+  const chat = page.getByRole('region', { name: '💬 Converse sobre o projeto' })
+  await chat.getByLabel('Mensagem').fill('A tomada da TV fica na parede da janela. O que acha?')
+  await chat.getByRole('button', { name: 'Enviar' }).click()
+  await expect(chat.getByRole('log')).toContainText('O sofá fica bem na parede da janela')
+  await expect(chat).toContainText('US$ 0.12')
+
+  // o pedido levou o projeto: cômodos com medidas e móveis no lugar, a lista e a conversa
+  const request = JSON.parse(calls.find((c) => c.path === '/api/chat')!.body)
+  expect(request.messages.at(-1)).toEqual({
+    role: 'user',
+    text: 'A tomada da TV fica na parede da janela. O que acha?',
+  })
+  const sala = request.rooms.find((r: { id: string }) => r.id === 'sala')
+  expect(sala.furniture.map((f: { key: string }) => f.key)).toContain('sala:sofa')
+  expect(sala.widthCm).toBeGreaterThan(0)
+  expect(request.list.items.length).toBeGreaterThan(5)
+
+  // nada mudou ainda; aplicar uma por uma
+  const actions = chat.locator('.chat-actions li')
+  await expect(actions).toHaveCount(3)
+  await expect(page.getByRole('button', { name: /Voltar às posições sugeridas/ })).toHaveCount(0)
+  await actions.nth(0).getByRole('button', { name: 'Aplicar' }).click()
+  await expect(actions.nth(0)).toContainText('✓ aplicado')
+  await expect(page.getByRole('button', { name: /Voltar às posições sugeridas/ })).toBeVisible()
+  await actions.nth(1).getByRole('button', { name: 'Aplicar' }).click()
+  await expect(actions.nth(1)).toContainText('✗ não coube')
+  await expect(actions.nth(2)).toContainText('Tirar Poltrona da lista')
+  await actions.nth(2).getByRole('button', { name: 'Aplicar' }).click()
+  await expect(page.getByText('Poltrona recusado.')).toBeVisible()
+  await expect(layout.getByRole('button', { name: /^Poltrona/ })).toHaveCount(0)
+
+  // a conversa fica salva no navegador
+  await page.reload()
+  await expect(chat.getByRole('log')).toContainText('O sofá fica bem na parede da janela')
+  await expect(chat.locator('.chat-actions li').nth(0)).toContainText('✓ aplicado')
 })

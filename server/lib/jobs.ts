@@ -1,5 +1,5 @@
 /** Tarefas demoradas (planta ~1 min, preços vários minutos): o site inicia e acompanha. */
-export type JobKind = 'floor-plan' | 'cheaper-prices' | 'house-3d'
+export type JobKind = 'floor-plan' | 'cheaper-prices' | 'house-3d' | 'chat'
 
 export interface Job {
   id: string

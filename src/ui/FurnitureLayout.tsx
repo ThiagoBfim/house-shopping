@@ -3,20 +3,9 @@ import { formatSize } from '../data/layout.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
 import {
-  guestsByHost,
-  roomTypeOf,
-  TYPICAL_ROOM_CM,
-  TYPICAL_ROOM_DEFAULT,
-} from '../engine/floor-plan.ts'
-import { furnishHouse } from '../engine/house3d.ts'
-import {
-  applySuggestions,
-  arrangeRoom,
   clearPositions,
   hintOf,
-  layoutItems,
   otherItems,
-  roomSizeCm,
   setPosition,
   tryMove,
   type ManualPositions,
@@ -27,6 +16,7 @@ import { formatBRL } from '../engine/money.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
 import type { SavedHouse } from './house3d-store.ts'
 import { Room3DView } from './Room3DView.tsx'
+import { layoutOfTab, roomTabs } from './room-layouts.ts'
 
 interface Props {
   plan: SavedPlan
@@ -37,10 +27,9 @@ interface Props {
   /** Posições escolhidas arrastando (as mesmas do 3D). */
   positions: ManualPositions
   onPositions: (positions: ManualPositions) => void
+  /** Já abre com o 3D do cômodo (passo "Posições em 3D" do fluxo da planta). */
+  open3d?: boolean
 }
-
-/** Cômodo dos itens da casa toda (limpeza, ferramentas): não é um lugar. */
-const WHOLE_HOUSE = 'utilidades'
 
 /** Margem em volta do cômodo no desenho (cm), para a régua e as janelas. */
 const PAD = 40
@@ -116,70 +105,19 @@ interface Drag {
  * casa em 3D gerada, é exatamente o cômodo do 3D (medidas, armários das fotos, posições). Dá
  * para arrastar um móvel (ou mover com as setas e girar) e o 3D usa as mesmas posições.
  */
-export function FurnitureLayout({ plan, view, instances, house, positions, onPositions }: Props) {
-  // Sem área de serviço, a lavanderia fica na cozinha: o cômodo + os hóspedes dele.
-  const guests = guestsByHost(
-    plan.rooms,
-    instances.map((i) => i.id),
-  )
-  const idsOf = (id: string) => [id, ...(guests[id] ?? [])]
-  const inPlan = new Set(plan.rooms.map((r) => r.instanceId))
-  const hostedIds = new Set(Object.values(guests).flat())
-  interface Tab {
-    tab: string
-    title: string
-    room: SavedPlan['rooms'][number] | undefined
-    index: number
-    instance: RoomInstance | undefined
-    /** Parte de cômodo em L na casa em 3D (índice do retângulo). */
-    part?: number
-  }
-  const tabFor = (instance: RoomInstance | undefined, room: Tab['room'], index: number): Tab => ({
-    tab: instance?.id ?? `plan-${index}`,
-    title: instance?.title ?? room?.label ?? '',
-    room,
-    index,
-    instance,
-  })
-  // Na casa em 3D, a sala em L tem mais de um retângulo: uma aba para cada parte.
-  const partsOf = (instance: RoomInstance): Tab[] =>
-    (house?.model.rooms ?? []).flatMap((r, part) =>
-      r.partOf && r.instanceId === instance.id
-        ? [
-            {
-              tab: `${instance.id}#${part}`,
-              title: `${instance.title} · ${r.label.replace(/^.*?[–-]\s*/, '')}`,
-              room: undefined,
-              index: -1,
-              instance,
-              part,
-            },
-          ]
-        : [],
-    )
-  const linked: Tab[] = [
-    ...plan.rooms.map((room, index) =>
-      tabFor(
-        instances.find((i) => i.id === room.instanceId),
-        room,
-        index,
-      ),
-    ),
-    // Cômodos da lista que não estão na planta (ex.: escritório adicionado depois): medida típica.
-    ...instances
-      .filter((i) => !inPlan.has(i.id) && !hostedIds.has(i.id) && i.roomId !== WHOLE_HOUSE)
-      .map((instance) => tabFor(instance, undefined, -1)),
-  ]
-    .filter(
-      (r) =>
-        r.instance &&
-        (layoutItems(view, idsOf(r.instance.id)).length ||
-          otherItems(view, idsOf(r.instance.id)).length),
-    )
-    .flatMap((r) => [r, ...partsOf(r.instance!)])
+export function FurnitureLayout({
+  plan,
+  view,
+  instances,
+  house,
+  positions,
+  onPositions,
+  open3d = false,
+}: Props) {
+  const { tabs: linked, idsOf, guests } = roomTabs(plan, view, instances, house)
   const [selected, setSelected] = useState(linked[0]?.tab)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
-  const [show3d, setShow3d] = useState(false)
+  const [show3d, setShow3d] = useState(open3d)
   const [drag, setDrag] = useState<Drag>()
   const [notice, setNotice] = useState<string>()
   const svg = useRef<SVGSVGElement>(null)
@@ -187,31 +125,10 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
   const current = linked.find((r) => r.tab === selected) ?? linked[0]
   const id = current?.instance?.id
   // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
-  const memo = useMemo(() => {
-    if (!current || !id) return undefined
-    // A casa toda (a regra da lavanderia na cozinha olha os outros cômodos), depois o cômodo.
-    // (sala em L: a aba da parte mostra o retângulo dela; a do cômodo, o principal)
-    const f =
-      house?.model.rooms.some((r) => r.instanceId === id) &&
-      furnishHouse(house.model, view, positions).find((r, i) =>
-        current.part !== undefined
-          ? i === current.part
-          : r.room.instanceId === id && !r.room.partOf,
-      )
-    if (f) {
-      const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }
-      return { size, layout: f.layout, fixed: f.fixed, from3d: true, outside: false }
-    }
-    const size = current.room
-      ? roomSizeCm(plan, current.index)
-      : { ...(TYPICAL_ROOM_CM[roomTypeOf(id)] ?? TYPICAL_ROOM_DEFAULT), estimated: true }
-    const base = arrangeRoom(
-      { width: size.width, depth: size.depth, openings: current.room?.openings ?? [] },
-      layoutItems(view, idsOf(id)),
-    )
-    const { layout } = applySuggestions(base, positions[id] ?? [])
-    return { size, layout, fixed: [] as PlacedItem[], from3d: false, outside: !current.room }
-  }, [plan, view, house, positions, current?.index, current?.part, id])
+  const memo = useMemo(
+    () => current && layoutOfTab(current, { plan, view, house, positions, idsOf }),
+    [plan, view, house, positions, current?.index, current?.part, id],
+  )
   if (!current || !memo || !id) return null
   const { size, layout, fixed, from3d, outside } = memo
   const pickedItem = picked && layout.placed.find((p) => sameItem(p, picked))
@@ -293,7 +210,7 @@ export function FurnitureLayout({ plan, view, instances, house, positions, onPos
             onClick={() => {
               setSelected(tab)
               setPicked(undefined)
-              setShow3d(false)
+              setShow3d(open3d)
               setNotice(undefined)
             }}
           >

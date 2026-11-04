@@ -8,6 +8,7 @@ import { FloorPlanDrawing } from './FloorPlanDrawing.tsx'
 import { FurnitureLayout } from './FurnitureLayout.tsx'
 import { House3DGenerate } from './House3DGenerate.tsx'
 import { House3DView } from './House3DView.tsx'
+import { ProjectChat } from './ProjectChat.tsx'
 import type { ManualPositions } from '../engine/layout.ts'
 import { readSavedHouse, type SavedHouse } from './house3d-store.ts'
 import { readPositions, savePositions } from './positions-store.ts'
@@ -18,33 +19,20 @@ interface Props {
   instances: RoomInstance[]
   /** Backend local com a skill /house-3d: dá para gerar a casa inteira em 3D. */
   house3d?: { rooms: Rooms }
-}
-
-/** Aberta ou escondida, só neste navegador (como os cômodos recolhidos da lista). */
-const OPEN_KEY = 'house-shopping:floor-plan-open'
-
-function readOpen(): boolean {
-  try {
-    return localStorage.getItem(OPEN_KEY) !== 'false'
-  } catch {
-    return true
-  }
-}
-
-function saveOpen(open: boolean) {
-  try {
-    localStorage.setItem(OPEN_KEY, String(open))
-  } catch {
-    // sem localStorage: vale até recarregar a página
-  }
+  /** Passo do fluxo da planta: posições dos móveis (3D + chat) ou o projeto inteiro em 3D. */
+  section: 'positions' | 'project'
+  /** Backend com a skill /house-chat: chat do projeto no passo das posições. */
+  chat?: boolean
+  /** Tirar um item da lista (o chat sugere, a pessoa aplica). */
+  onRemove: (key: string, label: string) => void
 }
 
 /**
- * "📐 Sua planta": o desenho do imóvel e, dentro, a posição dos móveis (vista de cima e 3D).
- * Dá para esconder tudo; escondida, nada disso é calculado nem desenhado.
+ * Conteúdo dos passos 3 e 4 do fluxo da planta. "Posições em 3D": o desenho do imóvel, cada
+ * cômodo em 3D com a vista de cima para arrastar e o chat do projeto. "Projeto em 3D": a casa
+ * inteira gerada pela skill /house-3d, para andar e ver o tour.
  */
-export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
-  const [open, setOpen] = useState(readOpen)
+export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, onRemove }: Props) {
   const [showing, setShowing] = useState<SavedHouse>()
   // Casa gerada em 3D e posições escolhidas: as mesmas na vista de cima e no 3D.
   const [house, setHouse] = useState<SavedHouse | undefined>(() =>
@@ -68,28 +56,14 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
     setPositions(next)
     savePositions(next)
   }
-  const toggle = () => {
-    setOpen(!open)
-    saveOpen(!open)
-  }
   return (
-    <section
-      class={`floor-plan-panel ${open ? '' : 'is-collapsed'}`}
-      aria-labelledby="floor-plan-title"
-    >
+    <section class="floor-plan-panel" aria-labelledby="floor-plan-title">
       <h3 id="floor-plan-title">
-        <button
-          type="button"
-          class="floor-plan-toggle"
-          aria-expanded={open}
-          aria-controls="floor-plan-body"
-          onClick={toggle}
-        >
-          📐 Sua planta <span class="muted">· {plan.fileName}</span>
-        </button>
+        {section === 'positions' ? '🛋️ Os móveis nos cômodos' : '🏠 O projeto em 3D'}{' '}
+        <span class="muted">· {plan.fileName}</span>
       </h3>
-      {open && (
-        <div id="floor-plan-body">
+      {section === 'positions' ? (
+        <>
           <FloorPlanDrawing plan={plan} view={view} instances={instances} />
           <FurnitureLayout
             plan={plan}
@@ -98,19 +72,35 @@ export function FloorPlanPanel({ plan, view, instances, house3d }: Props) {
             house={linkedHouse}
             positions={positions}
             onPositions={changePositions}
+            open3d
           />
-          {house3d && (
-            <House3DGenerate
+          {chat && (
+            <ProjectChat
               plan={plan}
-              rooms={house3d.rooms}
               view={view}
               instances={instances}
               house={linkedHouse}
-              onGenerated={setHouse}
-              onOpen={setShowing}
+              positions={positions}
+              onPositions={changePositions}
+              onRemove={onRemove}
             />
           )}
-        </div>
+        </>
+      ) : house3d ? (
+        <House3DGenerate
+          plan={plan}
+          rooms={house3d.rooms}
+          view={view}
+          instances={instances}
+          house={linkedHouse}
+          onGenerated={setHouse}
+          onOpen={setShowing}
+        />
+      ) : (
+        <p class="notice">
+          A casa inteira em 3D é gerada pelo backend local: rode <code>npm run server</code> (ou{' '}
+          <code>./scripts/dev.sh</code>) e volte aqui.
+        </p>
       )}
       {showing && (
         <House3DView

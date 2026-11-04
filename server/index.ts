@@ -5,6 +5,7 @@
  * - POST /api/floor-plan?name=planta.pdf   corpo = arquivo  → { id } (skill /floor-plan)
  * - POST /api/cheaper-prices   corpo = { items } (itens.json) → { id } (skill /search-better-prices)
  * - POST /api/house-3d?quality=rapida|realista   multipart: planta, fotos, moveis → { id } (/house-3d)
+ * - POST /api/chat       corpo = { messages, rooms, list } → { id } (skill /house-chat)
  * - GET  /api/jobs/:id                                       → Job
  * - GET  /api/health                                         → o que está disponível
  */
@@ -18,7 +19,9 @@ import { claudeArgs, parseClaudeOutput, type ClaudeRun } from './lib/claude.ts'
 import { isLocalOrigin, JobStore, type JobOutcome } from './lib/jobs.ts'
 import {
   FLOOR_PLAN_SCHEMA,
+  CHAT_SCHEMA,
   HOUSE_3D_SCHEMA,
+  parseChatRequest,
   parsePriceFinds,
   parsePriceItems,
 } from './lib/skills.ts'
@@ -158,6 +161,27 @@ async function startHouse3D(body: Buffer, contentType: string, quality: string) 
   )
 }
 
+async function startChat(body: Buffer) {
+  const request = parseChatRequest(body.toString('utf8'))
+  if (!request) throw new HttpError(400, 'Mensagem ilegível ou vazia.')
+  if (jobs.isRunning('chat'))
+    throw new HttpError(409, 'Ainda estou respondendo a mensagem anterior.')
+  const dir = await jobDir('chat')
+  await writeFile(join(dir, 'chat.json'), JSON.stringify(request, null, 1))
+  return jobs.start('chat', () =>
+    runClaude(
+      {
+        prompt: `/house-chat ${dir}`,
+        allowedTools: ['Read', 'Skill'],
+        addDirs: [dir],
+        jsonSchema: CHAT_SCHEMA,
+        maxBudgetUsd: 1,
+      },
+      4 * 60_000,
+    ),
+  )
+}
+
 async function startCheaperPrices(body: Buffer) {
   if (!existsSync(PRICES_SKILL)) {
     throw new HttpError(409, 'A skill /search-better-prices não está instalada nesta máquina.')
@@ -267,6 +291,7 @@ const server = createServer(async (req, res) => {
         floorPlan: true,
         cheaperPrices: existsSync(PRICES_SKILL),
         house3d: true,
+        chat: true,
       })
     }
     if (req.method === 'GET' && url.pathname.startsWith('/api/jobs/')) {
@@ -275,6 +300,10 @@ const server = createServer(async (req, res) => {
     }
     if (req.method === 'POST' && url.pathname === '/api/floor-plan') {
       const job = await startFloorPlan(await readBody(req), url.searchParams.get('name') ?? '')
+      return send(res, 202, { id: job.id })
+    }
+    if (req.method === 'POST' && url.pathname === '/api/chat') {
+      const job = await startChat(await readBody(req))
       return send(res, 202, { id: job.id })
     }
     if (req.method === 'POST' && url.pathname === '/api/house-3d') {

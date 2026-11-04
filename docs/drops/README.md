@@ -71,6 +71,7 @@ Plano em [`wave-2/PLAN.md`](wave-2/PLAN.md). Primeiro tudo local, com o Claude C
 | [38](wave-2/drop-38-casa-em-3d.md)               | Casa inteira em 3D, primeira pessoa e tour      | ✅ Concluído | 2026-11-03 16:29 | 2026-11-03 16:52 | 23min   |
 | [39](wave-2/drop-39-casa-3d-realista.md)         | Casa em 3D realista e armários das fotos        | ✅ Concluído | 2026-11-03 17:30 | 2026-11-03 18:12 | 42min   |
 | [40](wave-2/drop-40-mover-moveis.md)             | Posição dos móveis = 3D, arrastar e lista atual | ✅ Concluído | 2026-11-03 18:20 | 2026-11-03 18:58 | 38min   |
+| [41](wave-2/drop-41-fluxo-da-planta-e-chat.md)   | Fluxo da planta em passos e chat com IA         | ✅ Concluído | 2026-11-04 05:42 | 2026-11-04 06:13 | 31min   |
 
 ### Backlog
 
