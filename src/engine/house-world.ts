@@ -77,6 +77,8 @@ interface Gap {
   heightCm?: number
   /** Veio do cômodo vizinho (porta lida só do outro lado). */
   mirrored?: boolean
+  /** Sem parede nenhuma (cômodos unidos): nem a verga em cima da porta. */
+  open?: boolean
   source?: HouseOpening
 }
 
@@ -121,6 +123,7 @@ export function buildWorld(model: HouseModel): HouseWorld {
         sillCm: o.sillCm,
         heightCm: o.heightCm,
         source: o,
+        ...(o.open && { open: true }),
       })
     }
   })
@@ -146,7 +149,7 @@ export function buildWorld(model: HouseModel): HouseWorld {
         }
         const theirs = gaps[neighbor][OPPOSITE[side]]
         if (!theirs.some((g) => g.kind === 'door' && g.a < gap.b && gap.a < g.b)) {
-          theirs.push({ kind: 'door', a: gap.a, b: gap.b, mirrored: true })
+          theirs.push({ kind: 'door', a: gap.a, b: gap.b, mirrored: true, open: gap.open })
         }
         if (
           !connections.some(
@@ -241,11 +244,11 @@ export function buildWorld(model: HouseModel): HouseWorld {
       for (const gap of [...gaps[i][side]].sort((p, q) => p.a - q.a)) {
         piece(cursor, gap.a, 0, WALL_HEIGHT)
         if (gap.kind === 'door') {
-          piece(gap.a, gap.b, DOOR_HEIGHT, WALL_HEIGHT)
+          if (!gap.open) piece(gap.a, gap.b, DOOR_HEIGHT, WALL_HEIGHT)
           const source = gap.source
           // Vão largo (passagem aberta, partes de um cômodo em L): sem folha de porta.
           const passage = source && !source.sliding && source.widthCm > MAX_SWING_DOOR_CM
-          if (source && !gap.mirrored && !passage) {
+          if (source && !gap.mirrored && !passage && !gap.open) {
             const hingeAtStart = source.hinge !== 'end'
             const [h, f] = hingeAtStart ? [gap.a, gap.b] : [gap.b, gap.a]
             const [hingeX, hingeZ] = edge.horizontal ? [h, edge.line] : [edge.line, h]
@@ -283,20 +286,22 @@ const DINING = new Set(['mesa-de-jantar', 'mesa-externa'])
 /** Retângulos que bloqueiam quem anda: paredes até a cintura e móveis de chão (sem tapete). */
 export function blockersOf(world: HouseWorld, model: HouseModel, layouts: RoomLayout[]): Rect2[] {
   const walls = world.walls.filter((w) => w.bottom < 1)
-  const furniture = layouts.flatMap((layout, i) =>
-    layout.placed
+  const furniture = layouts.flatMap((layout, i) => {
+    // Cômodo em L desenhado como um só: coordenadas a partir do retângulo que envolve o L.
+    const o = layout.origin ?? model.rooms[i]
+    return layout.placed
       .filter((p) => p.placement === 'floor' && p.height >= 30)
       .map((p) => {
         // Mesa de jantar: as cadeiras (desenhadas em volta) também bloqueiam.
         const chairs = DINING.has(p.category) ? 0.35 : 0
         return {
-          minX: model.rooms[i].xM + p.x / 100 - chairs,
-          maxX: model.rooms[i].xM + (p.x + p.w) / 100 + chairs,
-          minZ: model.rooms[i].yM + p.y / 100 - chairs,
-          maxZ: model.rooms[i].yM + (p.y + p.d) / 100 + chairs,
+          minX: o.xM + p.x / 100 - chairs,
+          maxX: o.xM + (p.x + p.w) / 100 + chairs,
+          minZ: o.yM + p.y / 100 - chairs,
+          maxZ: o.yM + (p.y + p.d) / 100 + chairs,
         }
-      }),
-  )
+      })
+  })
   return [...walls, ...furniture]
 }
 
@@ -332,6 +337,7 @@ export function move(
 export function freeSpot(model: HouseModel, layouts: RoomLayout[], index: number) {
   const room = model.rooms[index]
   const items = layouts[index]?.placed.filter((p) => p.placement === 'floor') ?? []
+  const o = layouts[index]?.origin ?? room
   const cx = room.xM + room.widthM / 2
   const cz = room.yM + room.depthM / 2
   let best: { x: number; z: number; d: number } | undefined
@@ -342,10 +348,10 @@ export function freeSpot(model: HouseModel, layouts: RoomLayout[], index: number
           x,
           z,
           {
-            minX: room.xM + p.x / 100,
-            maxX: room.xM + (p.x + p.w) / 100,
-            minZ: room.yM + p.y / 100,
-            maxZ: room.yM + (p.y + p.d) / 100,
+            minX: o.xM + p.x / 100,
+            maxX: o.xM + (p.x + p.w) / 100,
+            minZ: o.yM + p.y / 100,
+            maxZ: o.yM + (p.y + p.d) / 100,
           },
           0.35,
         ),

@@ -34,8 +34,6 @@ export interface RoomTab {
   room: SavedPlan['rooms'][number] | undefined
   index: number
   instance: RoomInstance | undefined
-  /** Parte de cômodo em L na casa em 3D (índice do retângulo). */
-  part?: number
 }
 
 export interface RoomView {
@@ -55,12 +53,7 @@ export interface RoomTabs {
   guests: Record<string, string[]>
 }
 
-export function roomTabs(
-  plan: SavedPlan,
-  view: ListView,
-  instances: RoomInstance[],
-  house?: SavedHouse,
-): RoomTabs {
+export function roomTabs(plan: SavedPlan, view: ListView, instances: RoomInstance[]): RoomTabs {
   const guests = guestsByHost(
     plan.rooms,
     instances.map((i) => i.id),
@@ -75,22 +68,6 @@ export function roomTabs(
     index,
     instance,
   })
-  // Na casa em 3D, a sala em L tem mais de um retângulo: uma aba para cada parte.
-  const partsOf = (instance: RoomInstance): RoomTab[] =>
-    (house?.model.rooms ?? []).flatMap((r, part) =>
-      r.partOf && r.instanceId === instance.id
-        ? [
-            {
-              tab: `${instance.id}#${part}`,
-              title: `${instance.title} · ${r.label.replace(/^.*?[–-]\s*/, '')}`,
-              room: undefined,
-              index: -1,
-              instance,
-              part,
-            },
-          ]
-        : [],
-    )
   const tabs: RoomTab[] = [
     ...plan.rooms.map((room, index) =>
       tabFor(
@@ -103,14 +80,12 @@ export function roomTabs(
     ...instances
       .filter((i) => !inPlan.has(i.id) && !hostedIds.has(i.id) && i.roomId !== WHOLE_HOUSE)
       .map((instance) => tabFor(instance, undefined, -1)),
-  ]
-    .filter(
-      (r) =>
-        r.instance &&
-        (layoutItems(view, idsOf(r.instance.id)).length ||
-          otherItems(view, idsOf(r.instance.id)).length),
-    )
-    .flatMap((r) => [r, ...partsOf(r.instance!)])
+  ].filter(
+    (r) =>
+      r.instance &&
+      (layoutItems(view, idsOf(r.instance.id)).length ||
+        otherItems(view, idsOf(r.instance.id)).length),
+  )
   return { tabs, idsOf, guests }
 }
 
@@ -134,11 +109,11 @@ export function layoutOfTab(
   const id = tab.instance?.id
   if (!id) return undefined
   // A casa toda (a regra da lavanderia na cozinha olha os outros cômodos), depois o cômodo.
-  // (sala em L: a aba da parte mostra o retângulo dela; a do cômodo, o principal)
+  // (sala em L: o principal traz o L inteiro, como um espaço só)
   const f =
     house?.model.rooms.some((r) => r.instanceId === id) &&
-    furnishHouse(house.model, view, positions).find((r, i) =>
-      tab.part !== undefined ? i === tab.part : r.room.instanceId === id && !r.room.partOf,
+    furnishHouse(house.model, view, positions).find(
+      (r) => r.room.instanceId === id && !r.room.partOf,
     )
   if (f) {
     const size = { width: f.layout.width, depth: f.layout.depth, estimated: false }

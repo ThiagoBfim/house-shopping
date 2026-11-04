@@ -1009,3 +1009,89 @@ test('planta + fotos no começo: leitura caprichada vira a planta do projeto', a
   await layout.getByRole('tab', { name: 'Quarto 1' }).click()
   await expect(layout).not.toContainText('(da casa em 3D)')
 })
+
+test('unir cômodos: a sala e o vestíbulo viram um espaço só (e dá para desfazer)', async ({
+  page,
+}) => {
+  const finishes = {
+    floor: 'madeira',
+    floorColor: '#b88a5f',
+    wallColor: '#f2efe8',
+    fromPhoto: false,
+  }
+  const room = (r: object) => ({ finishes, furniture: [], builtIns: [], openings: [], ...r })
+  const casa = {
+    widthM: 6,
+    depthM: 7,
+    notes: '',
+    rooms: [
+      room({
+        type: 'sala',
+        label: 'Sala',
+        xM: 0,
+        yM: 0,
+        widthM: 3.4,
+        depthM: 3.6,
+        openings: [{ kind: 'door', wall: 'bottom', position: 0.16, widthCm: 100, sliding: true }],
+      }),
+      room({
+        type: 'outro',
+        label: 'Vestíbulo de entrada',
+        xM: 0,
+        yM: 3.6,
+        widthM: 1.1,
+        depthM: 1.1,
+        openings: [
+          { kind: 'door', wall: 'top', position: 0.5, widthCm: 100, sliding: true },
+          { kind: 'door', wall: 'left', position: 0.5, widthCm: 80 },
+        ],
+      }),
+      room({ type: 'quarto', label: 'Quarto', xM: 3.4, yM: 0, widthM: 2.6, depthM: 3.6 }),
+      room({ type: 'cozinha', label: 'Cozinha', xM: 1.1, yM: 3.6, widthM: 3, depthM: 2.4 }),
+    ],
+  }
+  await mockApi(page, {
+    health: { floorPlan: true, cheaperPrices: false, house3d: true },
+    start: { '/api/house-3d': { id: 'h1' } },
+    jobs: { h1: [{ id: 'h1', status: 'done', result: casa }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  const pixel = Buffer.from(
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+    'base64',
+  )
+  await page
+    .getByLabel(/Fotos dos cômodos/)
+    .setInputFiles([{ name: 'sala.png', mimeType: 'image/png', buffer: pixel }])
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.pdf', mimeType: 'application/pdf', buffer: Buffer.from('pdf') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+  await toStep(page, 'Posições em 3D')
+
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  await expect(layout).toContainText('Sala: 3,4 × 3,6 m (da casa em 3D)')
+  const merge = layout.locator('.layout-merge')
+  await expect(merge).toContainText('🔗 Unir Sala com:')
+  await expect(merge.getByRole('button', { name: 'Quarto' })).toBeVisible()
+  await expect(layout.getByLabel('Fora do cômodo')).toHaveCount(0)
+
+  // unir com o vestíbulo: um espaço só, em L (o que fica fora do L aparece hachurado)
+  await merge.getByRole('button', { name: 'Vestíbulo de entrada' }).click()
+  await expect(layout).toContainText('Sala: 3,4 × 4,7 m (da casa em 3D)')
+  await expect(layout.getByLabel('Fora do cômodo')).toHaveCount(1)
+  await expect(merge.getByRole('button', { name: 'Vestíbulo de entrada' })).toHaveCount(0)
+  // continua unido ao recarregar e no 3D da casa (sem parede entre os dois)
+  await page.reload()
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  await expect(layout).toContainText('Sala: 3,4 × 4,7 m')
+
+  // desfazer: volta como a leitura trouxe
+  await merge.getByRole('button', { name: '↩ Desfazer uniões' }).click()
+  await expect(layout).toContainText('Sala: 3,4 × 3,6 m')
+  await expect(layout.getByLabel('Fora do cômodo')).toHaveCount(0)
+  await expect(merge.getByRole('button', { name: '↩ Desfazer uniões' })).toHaveCount(0)
+})

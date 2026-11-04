@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'preact/hooks'
-import { relinkHouse } from '../engine/house3d.ts'
+import { mergeRooms, relinkHouse } from '../engine/house3d.ts'
 import type { Rooms } from '../data/schema.ts'
 import type { ListView } from '../engine/budget.ts'
 import type { RoomInstance } from '../engine/house.ts'
@@ -10,7 +10,7 @@ import { House3DGenerate } from './House3DGenerate.tsx'
 import { House3DView } from './House3DView.tsx'
 import { ProjectChat } from './ProjectChat.tsx'
 import type { ManualPositions } from '../engine/layout.ts'
-import { readSavedHouse, type SavedHouse } from './house3d-store.ts'
+import { readSavedHouse, saveHouse, type SavedHouse } from './house3d-store.ts'
 import { readPositions, savePositions } from './positions-store.ts'
 
 interface Props {
@@ -52,6 +52,24 @@ export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, 
       },
     [house, ids],
   )
+  /** Unir cômodos: a parede some e o L vira um espaço só (guarda a casa de antes). */
+  const merge = (a: number, b: number) => {
+    if (!house) return
+    const next = {
+      ...house,
+      model: mergeRooms(house.model, a, b),
+      unmerged: house.unmerged ?? house.model,
+    }
+    setHouse(next)
+    saveHouse(next)
+  }
+  const unmerge = () => {
+    if (!house?.unmerged) return
+    const { unmerged, ...rest } = house
+    const next = { ...rest, model: unmerged }
+    setHouse(next)
+    saveHouse(next)
+  }
   const changePositions = (next: ManualPositions) => {
     setPositions(next)
     savePositions(next)
@@ -73,6 +91,8 @@ export function FloorPlanPanel({ plan, view, instances, house3d, section, chat, 
             positions={positions}
             onPositions={changePositions}
             open3d
+            onMerge={house ? merge : undefined}
+            onUnmerge={house?.unmerged ? unmerge : undefined}
           />
           {chat && (
             <ProjectChat

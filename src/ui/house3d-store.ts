@@ -8,6 +8,8 @@ export interface SavedHouse {
   costUsd?: number
   /** Gerada pelo botão realista (abre já no modo realista). */
   quality?: HouseQuality
+  /** A casa antes de unir cômodos (para "Desfazer uniões"). */
+  unmerged?: HouseModel
 }
 
 const KEY = 'house-shopping:house-3d'
@@ -23,6 +25,7 @@ export function readSavedHouse(): SavedHouse | undefined {
       photos: typeof value.photos === 'number' ? value.photos : 0,
       ...(typeof value.costUsd === 'number' && { costUsd: value.costUsd }),
       ...(value.quality === 'realista' && { quality: 'realista' as const }),
+      ...(parseHouseModel(value.unmerged) && { unmerged: parseHouseModel(value.unmerged)! }),
     }
   } catch {
     return undefined

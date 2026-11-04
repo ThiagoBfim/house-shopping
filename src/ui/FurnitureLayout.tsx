@@ -15,6 +15,7 @@ import {
 import { formatBRL } from '../engine/money.ts'
 import type { SavedPlan } from './floor-plan-store.ts'
 import type { SavedHouse } from './house3d-store.ts'
+import { isGeometry, neighbours } from '../engine/house3d.ts'
 import { Room3DView } from './Room3DView.tsx'
 import { layoutOfTab, roomTabs } from './room-layouts.ts'
 
@@ -29,6 +30,10 @@ interface Props {
   onPositions: (positions: ManualPositions) => void
   /** Já abre com o 3D do cômodo (passo "Posições em 3D" do fluxo da planta). */
   open3d?: boolean
+  /** Unir dois cômodos da casa (índices em `house.model.rooms`): a sala que continua na outra. */
+  onMerge?: (a: number, b: number) => void
+  /** Voltar a casa como estava antes de unir cômodos. */
+  onUnmerge?: () => void
 }
 
 /** Margem em volta do cômodo no desenho (cm), para a régua e as janelas. */
@@ -113,8 +118,10 @@ export function FurnitureLayout({
   positions,
   onPositions,
   open3d = false,
+  onMerge,
+  onUnmerge,
 }: Props) {
-  const { tabs: linked, idsOf, guests } = roomTabs(plan, view, instances, house)
+  const { tabs: linked, idsOf, guests } = roomTabs(plan, view, instances)
   const [selected, setSelected] = useState(linked[0]?.tab)
   const [picked, setPicked] = useState<{ key: string; unit: number }>()
   const [show3d, setShow3d] = useState(open3d)
@@ -127,7 +134,7 @@ export function FurnitureLayout({
   // Mesmo cálculo do 3D quando há casa gerada; senão, a planta lida (medida estimada).
   const memo = useMemo(
     () => current && layoutOfTab(current, { plan, view, house, positions, idsOf }),
-    [plan, view, house, positions, current?.index, current?.part, id],
+    [plan, view, house, positions, current?.index, id],
   )
   if (!current || !memo || !id) return null
   const { size, layout, fixed, from3d, outside } = memo
@@ -223,6 +230,43 @@ export function FurnitureLayout({
         {from3d ? ' (da casa em 3D)' : size.estimated ? ' (medida estimada pela planta)' : ''} ·
         vista de cima, em escala.
       </p>
+      {house &&
+        onMerge &&
+        (() => {
+          // Unir: vizinhos de qualquer parte do cômodo (menos as que já são dele).
+          const rooms = house.model.rooms
+          const group = rooms.flatMap((r, i) => (r.instanceId === id ? [i] : []))
+          const main = group.find((i) => !rooms[i].partOf)
+          const options = [...new Set(group.flatMap((i) => neighbours(house.model, i)))].filter(
+            (i) => !group.includes(i),
+          )
+          if (main === undefined || (!options.length && !onUnmerge)) return null
+          return (
+            <div class="layout-merge">
+              {options.length > 0 && <span class="muted">🔗 Unir {current.title} com:</span>}
+              {options.map((i) => (
+                <button
+                  key={i}
+                  type="button"
+                  class="small-button"
+                  onClick={() => {
+                    // Encosta no principal ou na parte que divide parede com o escolhido.
+                    const from = group.find((g) => neighbours(house.model, g).includes(i)) ?? main
+                    onMerge(from, i)
+                    setNotice(undefined)
+                  }}
+                >
+                  {rooms[i].label}
+                </button>
+              ))}
+              {onUnmerge && (
+                <button type="button" class="link-button" onClick={onUnmerge}>
+                  ↩ Desfazer uniões
+                </button>
+              )}
+            </div>
+          )
+        })()}
       {outside && (
         <p class="notice">
           📏 {current.title} não está na planta: desenhado com a medida típica, sem portas e
@@ -244,6 +288,18 @@ export function FurnitureLayout({
         onPointerUp={endDrag}
         onPointerCancel={() => setDrag(undefined)}
       >
+        <defs>
+          <pattern
+            id="outside-hatch"
+            width="16"
+            height="16"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(45)"
+          >
+            <rect width="16" height="16" fill="#ece8e1" />
+            <line x1="0" y1="0" x2="0" y2="16" stroke="#c9c1b4" stroke-width="5" />
+          </pattern>
+        </defs>
         <rect class="layout-room" x={0} y={0} width={layout.width} height={layout.depth} />
         {layout.openings.map((o, i) => {
           const horizontal = o.wall === 'top' || o.wall === 'bottom'
@@ -272,8 +328,8 @@ export function FurnitureLayout({
           // Armários das fotos: já estão no imóvel, não saem do lugar.
           <g
             key={p.key}
-            class={`layout-fixed is-${p.placement}`}
-            aria-label={`${p.label} (das fotos)`}
+            class={`layout-fixed is-${p.placement} ${isGeometry(p) ? `is-${p.category}` : ''}`}
+            aria-label={isGeometry(p) ? p.label : `${p.label} (das fotos)`}
           >
             {p.placement === 'wall' ? (
               <rect {...wallStrip(p)} rx={2} />

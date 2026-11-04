@@ -90,7 +90,7 @@ export function ProjectChat({
   const [error, setError] = useState<string>()
   const [now, setNow] = useState(Date.now())
   const end = useRef<HTMLDivElement>(null)
-  const { tabs, idsOf } = roomTabs(plan, view, instances, house)
+  const { tabs, idsOf } = roomTabs(plan, view, instances)
   const context = { plan, view, house, positions, idsOf }
 
   useEffect(() => saveChat(entries), [entries])
@@ -172,8 +172,7 @@ export function ProjectChat({
       const rooms = tabs.flatMap((tab) => {
         const room = layoutOfTab(tab, context)
         if (!room || !tab.instance) return []
-        const others =
-          tab.part === undefined ? otherItems(view, idsOf(tab.instance.id)).map((o) => o.label) : []
+        const others = otherItems(view, idsOf(tab.instance.id)).map((o) => o.label)
         return [
           chatRoom(
             { id: tab.tab, title: tab.title, estimated: room.size.estimated },

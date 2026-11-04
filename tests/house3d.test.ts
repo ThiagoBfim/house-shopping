@@ -4,6 +4,9 @@ import { buildList, emptyChoices } from '../src/engine/budget.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { buildWorld } from '../src/engine/house-world.ts'
 import {
+  neighbours,
+  mergeRooms,
+  isGeometry,
   setHouseRoomType,
   readHouse,
   relinkHouse,
@@ -594,27 +597,42 @@ describe('sala em L (caso real: sala junto à varanda + sala)', () => {
     ])
   })
 
-  it('o vão de 2,5 m não toma metade da sala e o que não coube vai para a outra parte', () => {
+  it('a sala em L é posicionada como um espaço só (sem móvel fora do L)', () => {
     const furnished = furnishHouse(linkRooms(real, rooms), view)
     const [, part, main] = furnished
-    const inMain = main.layout.placed.map((p) => p.category)
-    const inPart = part.layout.placed.map((p) => p.category)
-    expect(inMain).toEqual(expect.arrayContaining(['sofa', 'rack', 'mesa-de-centro', 'tapete']))
-    // a poltrona não coube no principal e foi para a parte junto à varanda
-    expect(inPart).toContain('poltrona')
-    // só a mesa de 160 × 90 com cadeiras não cabe (precisa de 2,10 m; a parte tem 2,04 m)
-    expect(main.layout.unplaced.map((u) => u.key)).toEqual(['sala:mesa-de-jantar'])
-    // nada repetido entre as partes, e o aviso "não coube" só com o que não coube em nenhuma
-    expect(inMain.filter((c) => c !== 'criado-mudo' && inPart.includes(c))).toEqual([])
-    expect(part.layout.unplaced).toEqual([])
-    for (const u of main.layout.unplaced) {
-      expect(inPart).not.toContain(u.key.split(':')[1])
+    // a parte vem vazia: o principal traz o L inteiro, a partir do retângulo que envolve as partes
+    expect(part.layout.placed).toEqual([])
+    expect(main.layout.origin).toEqual({ xM: 0, yM: 1.46 })
+    expect(main.layout).toMatchObject({ width: 359, depth: 566 })
+    const placed = main.layout.placed.map((p) => p.category)
+    expect(placed).toEqual(expect.arrayContaining(['sofa', 'rack', 'mesa-de-centro', 'tapete']))
+    // fora do L (à direita da parte junto à varanda) não vai nada de chão
+    const outside = main.fixed.filter(isGeometry).find((p) => p.category === 'fora-do-comodo')!
+    expect(outside).toMatchObject({ x: 267, y: 0, w: 92, d: 204 })
+    for (const p of main.layout.placed.filter((q) => q.placement === 'floor')) {
+      const inside = p.x < outside.x + outside.w && outside.x < p.x + p.w && p.y < outside.d
+      expect(inside, p.category).toBe(false)
     }
   })
 
-  it('o vão entre as partes não tem folha de porta no 3D', () => {
-    const world = buildWorld(linkRooms(real, rooms))
+  it('entre as partes não há parede: nem a verga do vão, nem folha de porta', () => {
+    const linked = linkRooms(real, rooms)
+    const [, part, main] = linked.rooms
+    // a "porta" de 2,5 m entre as partes virou passagem aberta (o resto das portas fica)
+    expect(main.openings.filter((o) => o.wall === 'top')).toEqual([
+      expect.objectContaining({ open: true, widthCm: 267 }),
+    ])
+    expect(part.openings.filter((o) => o.wall === 'bottom')).toEqual([])
+    expect(main.openings.filter((o) => o.kind === 'door' && !o.open)).toHaveLength(3)
+    const world = buildWorld(linked)
     expect(world.doors.filter((d) => d.widthM > 1.5)).toEqual([])
+    const header = world.walls.filter(
+      (w) =>
+        ((w.room === 2 && w.side === 'top') || (w.room === 1 && w.side === 'bottom')) &&
+        w.maxX <= 2.67 &&
+        w.bottom > 0,
+    )
+    expect(header).toEqual([])
   })
 })
 
@@ -645,5 +663,107 @@ describe('leitura caprichada no começo do fluxo (planta + fotos)', () => {
     expect(read.house.quarto).toBe(1)
     expect(read.house.escritorio).toBe(1)
     expect(house.rooms[index].instanceId).toBe('escritorio')
+  })
+})
+
+describe('unir cômodos (a pessoa junta a sala com o vestíbulo)', () => {
+  const finishes = {
+    floor: 'madeira',
+    floorColor: '#b88a5f',
+    wallColor: '#f2efe8',
+    fromPhoto: false,
+  }
+  const model = parseHouseModel({
+    widthM: 6,
+    depthM: 6,
+    notes: '',
+    rooms: [
+      {
+        type: 'sala',
+        label: 'Sala',
+        xM: 0,
+        yM: 0,
+        widthM: 3.4,
+        depthM: 3.6,
+        finishes,
+        furniture: [],
+        builtIns: [],
+        openings: [
+          { kind: 'door', wall: 'bottom', position: 0.16, widthCm: 100, sliding: true },
+          { kind: 'window', wall: 'top', position: 0.5, widthCm: 150 },
+        ],
+      },
+      {
+        type: 'outro',
+        label: 'Vestíbulo de entrada',
+        xM: 0,
+        yM: 3.6,
+        widthM: 1.1,
+        depthM: 1.1,
+        finishes,
+        furniture: [],
+        builtIns: [],
+        openings: [
+          { kind: 'door', wall: 'top', position: 0.5, widthCm: 100, sliding: true },
+          { kind: 'door', wall: 'left', position: 0.5, widthCm: 80 },
+        ],
+      },
+      {
+        type: 'quarto',
+        label: 'Quarto',
+        xM: 3.4,
+        yM: 0,
+        widthM: 2.6,
+        depthM: 3.6,
+        finishes,
+        furniture: [],
+        builtIns: [],
+        openings: [],
+      },
+    ],
+  })!
+
+  it('vizinhos: quem divide parede', () => {
+    expect(neighbours(model, 0)).toEqual([1, 2])
+    expect(neighbours(model, 1)).toEqual([0])
+  })
+
+  it('o vestíbulo vira parte da sala e a parede entre os dois some', () => {
+    const merged = mergeRooms(model, 0, 1)
+    const [sala, vest] = merged.rooms
+    expect(vest).toMatchObject({ type: 'sala', partOf: 'Sala' })
+    // a porta de correr entre os dois sai; fica a porta de entrada do vestíbulo
+    expect(vest.openings).toEqual([{ kind: 'door', wall: 'left', position: 0.5, widthCm: 80 }])
+    expect(sala.openings.find((o) => o.open)).toMatchObject({
+      wall: 'bottom',
+      widthCm: 110,
+      open: true,
+    })
+    expect(sala.openings.some((o) => o.sliding)).toBe(false)
+    // no 3D: nenhum pedaço de parede no trecho entre os dois (nem a verga), sem folha de porta
+    const linked = linkRooms(merged, rooms)
+    expect(linked.rooms.map((r) => r.instanceId)).toEqual(['sala', 'sala', 'quarto'])
+    const world = buildWorld(linked)
+    const between = world.walls.filter(
+      (w) =>
+        // parede de baixo da sala e de cima do vestíbulo, no trecho em comum (0–1,1 m)
+        ((w.room === 0 && w.side === 'bottom') || (w.room === 1 && w.side === 'top')) &&
+        w.minX < 1.1 &&
+        w.maxX > 0,
+    )
+    expect(between).toEqual([])
+    expect(world.connections.some((c) => c.from === 0 && c.to === 1)).toBe(true)
+  })
+
+  it('a sala unida é posicionada num espaço só (o vestíbulo entra no L)', () => {
+    const house = expandHouse(rooms, products, { sala: 1, quarto: 1 })
+    const view = buildList(house.room, house.products, 70_000, emptyChoices())
+    const furnished = furnishHouse(linkRooms(mergeRooms(model, 0, 1), rooms), view)
+    expect(furnished[0].layout).toMatchObject({ width: 340, depth: 470, origin: { xM: 0, yM: 0 } })
+    // a porta de entrada do vestíbulo continua na parede de fora do L
+    expect(furnished[0].layout.openings.some((o) => o.wall === 'left' && o.kind === 'door')).toBe(
+      true,
+    )
+    expect(furnished[1].layout.placed).toEqual([])
   })
 })

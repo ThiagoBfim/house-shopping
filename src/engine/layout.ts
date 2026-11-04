@@ -55,6 +55,11 @@ export interface RoomLayout {
   placed: PlacedItem[]
   /** O que não coube (sem parede livre, porta ou passagem no caminho). */
   unplaced: { key: string; label: string }[]
+  /**
+   * Cômodo em L desenhado como um só: canto de cima à esquerda do retângulo que envolve as
+   * partes (m, na casa). Sem isso, as coordenadas são do próprio retângulo do cômodo.
+   */
+  origin?: { xM: number; yM: number }
 }
 
 interface Rect {

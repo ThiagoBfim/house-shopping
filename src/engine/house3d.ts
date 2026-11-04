@@ -13,6 +13,7 @@ import {
 import {
   applySuggestions,
   arrangeRoom,
+  MAX_SWING_DOOR_CM,
   instancesIn,
   layoutItems,
   type LayoutItem,
@@ -28,6 +29,8 @@ export interface HouseOpening extends Opening {
   /** Abre para dentro deste cômodo ou para fora. */
   swing?: 'in' | 'out'
   sliding?: boolean
+  /** Sem parede nenhuma (cômodos unidos pela pessoa: a sala que continua na outra parte). */
+  open?: boolean
   /** Janela: altura do peitoril e da janela (cm). */
   sillCm?: number
   heightCm?: number
@@ -141,6 +144,7 @@ function parseOpening(raw: unknown): HouseOpening | undefined {
     ...((o.hinge === 'start' || o.hinge === 'end') && { hinge: o.hinge }),
     ...((o.swing === 'in' || o.swing === 'out') && { swing: o.swing }),
     ...(o.sliding === true && { sliding: true }),
+    ...(o.open === true && { open: true }),
     ...(num(o.sillCm, 0, 220) && { sillCm: o.sillCm }),
     ...(num(o.heightCm, 30, 260) && { heightCm: o.heightCm }),
   }
@@ -326,7 +330,7 @@ const normalize = (label: string) =>
 const WIDE_OPENING_CM = 150
 
 /** Os dois retângulos encostam (dividem um trecho de parede de pelo menos 1 m)? */
-function touching(a: HouseRoom, b: HouseRoom): boolean {
+export function touching(a: HouseRoom, b: HouseRoom): boolean {
   const near = (x: number, y: number) => Math.abs(x - y) < 0.2
   const overlap = (a0: number, a1: number, b0: number, b1: number) =>
     Math.min(a1, b1) - Math.max(a0, b0) >= 1
@@ -345,6 +349,10 @@ function touching(a: HouseRoom, b: HouseRoom): boolean {
  * cômodo, encosta nele e tem um vão largo entre os dois.
  */
 export function resolveParts(model: HouseModel): HouseModel {
+  return openPartWalls(findParts(model))
+}
+
+function findParts(model: HouseModel): HouseModel {
   const mains = model.rooms.filter((r) => !r.partOf && r.type !== OUTSIDE_TYPE)
   return {
     ...model,
@@ -369,6 +377,26 @@ export function resolveParts(model: HouseModel): HouseModel {
       return main ? { ...room, type: main.type, partOf: main.label } : room
     }),
   }
+}
+
+/**
+ * Entre as partes de um cômodo em L não há parede (a sala continua): a divisão que a leitura
+ * desenhou (vão largo, "porta") vira passagem aberta, como ao unir os cômodos.
+ */
+function openPartWalls(model: HouseModel): HouseModel {
+  let result = model
+  model.rooms.forEach((part, b) => {
+    if (!part.partOf) return
+    const member = result.rooms.findIndex(
+      (r, a) =>
+        a !== b &&
+        (r.label === part.partOf || r.partOf === part.partOf) &&
+        sharedWall(r, result.rooms[b]) &&
+        !r.openings.some((o) => o.open && o.wall === sharedWall(r, result.rooms[b])!.side),
+    )
+    if (member >= 0) result = mergeRooms(result, member, b)
+  })
+  return result
 }
 
 /** A casa em metros como planta (frações do desenho), para a escolha de cômodos e o desenho. */
@@ -457,9 +485,12 @@ export function linkRooms(model: HouseModel, rooms: Rooms, saved?: PlacedRoom[])
 
 export interface FurnishedRoom {
   room: HouseRoom
+  /** No cômodo em L, o principal traz o L inteiro (com `origin`) e as partes vêm vazias. */
   layout: RoomLayout
-  /** Armários das fotos, já como peças no cômodo (mesma ordem de `room.builtIns`). */
+  /** Peças fixas: armários das fotos primeiro (na ordem de `builtInDefs`), depois o que não é chão do cômodo. */
   fixed: PlacedItem[]
+  /** Os armários das fotos de `fixed` (para desenhar no 3D). */
+  builtInDefs: BuiltIn[]
   /** Sugestões da skill que passaram na conferência (o resto ficou pela regra). */
   accepted: number
 }
@@ -467,6 +498,7 @@ export interface FurnishedRoom {
 /**
  * Móveis da lista de cada cômodo (a lista de agora: o que saiu dela some): posição por regra,
  * corrigida pelas sugestões válidas da skill e, por cima, pelas posições que a pessoa escolheu.
+ * Cômodo em L (partes com `partOf`) é posicionado como um espaço só.
  */
 export function furnishHouse(
   model: HouseModel,
@@ -475,52 +507,61 @@ export function furnishHouse(
 ): FurnishedRoom[] {
   // Sem área de serviço na planta, a lavanderia fica na cozinha (HOST_ROOM).
   const guests = guestsByHost(model.rooms, instancesIn(view))
-  // Cômodo em L: o principal recebe os móveis; o que não coube vai para as partes, em ordem.
-  const leftover = new Map<string, LayoutItem[]>()
-  const order = model.rooms
-    .map((_, i) => i)
-    .sort((a, b) => {
-      const part = (i: number) => (model.rooms[i].partOf ? 1 : 0)
-      return part(a) - part(b)
-    })
-  const out: FurnishedRoom[] = []
-  for (const index of order) {
-    const room = model.rooms[index]
+  const groups = new Map<string, number[]>()
+  model.rooms.forEach((r, i) => {
+    if (r.instanceId) groups.set(r.instanceId, [...(groups.get(r.instanceId) ?? []), i])
+  })
+  return model.rooms.map((room, index) => {
     const id = room.instanceId
-    const items: LayoutItem[] = !id
-      ? []
-      : room.partOf
-        ? (leftover.get(id) ?? [])
-        : layoutItems(view, [id, ...(guests[id] ?? [])])
+    const group = id ? (groups.get(id) ?? [index]) : [index]
+    const mainIndex = group.find((i) => !model.rooms[i].partOf) ?? group[0]
+    const manual = id ? (positions[id] ?? []) : []
+    const items: LayoutItem[] = id ? layoutItems(view, [id, ...(guests[id] ?? [])]) : []
+    if (group.length > 1) {
+      const size = { width: Math.round(room.widthM * 100), depth: Math.round(room.depthM * 100) }
+      if (index !== mainIndex) {
+        // Parte do L: o principal desenha o L inteiro.
+        const empty: RoomLayout = { ...size, openings: [], placed: [], unplaced: [] }
+        return { room, layout: empty, fixed: [], builtInDefs: [], accepted: 0 }
+      }
+      const members = group.map((i) => model.rooms[i])
+      const { geometry, openings, fixed, builtInDefs } = groupRoom(members)
+      const base = arrangeRoom(
+        { width: geometry.width, depth: geometry.depth, openings },
+        items,
+        fixed,
+      )
+      // Sugestões da skill vêm no retângulo de cada parte: passam para o L.
+      const hints = members.flatMap((m, n) =>
+        m.furniture.map((h) => ({
+          ...h,
+          xCm: h.xCm + geometry.local[n].x,
+          yCm: h.yCm + geometry.local[n].y,
+        })),
+      )
+      const suggested = applySuggestions(base, hints, fixed)
+      const { layout } = applySuggestions(suggested.layout, manual, fixed)
+      return {
+        room,
+        layout: { ...layout, origin: geometry.origin },
+        fixed,
+        builtInDefs,
+        accepted: suggested.accepted,
+      }
+    }
     const fixed = room.builtIns.map((b, i) => builtInPlaced(b, i, room))
     const base = arrangeRoom(
       {
         width: Math.round(room.widthM * 100),
         depth: Math.round(room.depthM * 100),
-        openings: room.openings,
+        openings: room.openings.filter((o) => !o.open),
       },
       items,
       fixed,
     )
     const suggested = applySuggestions(base, room.furniture, fixed)
-    const manual = room.instanceId ? (positions[room.instanceId] ?? []) : []
     const { layout } = applySuggestions(suggested.layout, manual, fixed)
-    if (id) {
-      const missing = new Set(layout.unplaced.map((u) => u.key))
-      leftover.set(
-        id,
-        items.filter((i) => missing.has(i.key)),
-      )
-    }
-    out[index] = { room, layout, fixed, accepted: suggested.accepted }
-  }
-  // "Não coube" só o que não coube em nenhuma parte (no principal; as partes ficam sem aviso).
-  return out.map((f) => {
-    const id = f.room.instanceId
-    if (!id || !model.rooms.some((r) => r.partOf && r.instanceId === id)) return f
-    const missing = new Set((leftover.get(id) ?? []).map((i) => i.key))
-    const unplaced = f.room.partOf ? [] : f.layout.unplaced.filter((u) => missing.has(u.key))
-    return { ...f, layout: { ...f.layout, unplaced } }
+    return { room, layout, fixed, builtInDefs: room.builtIns, accepted: suggested.accepted }
   })
 }
 
@@ -575,3 +616,226 @@ export function relinkHouse(model: HouseModel, instanceIds: string[]): HouseMode
     }),
   }
 }
+
+type Side = Opening['wall']
+
+/** Trecho de parede que `a` divide com `b` (m, no eixo da parede), do lado de `a`. */
+export function sharedWall(
+  a: HouseRoom,
+  b: HouseRoom,
+): { side: Side; from: number; to: number } | undefined {
+  const near = (x: number, y: number) => Math.abs(x - y) < 0.2
+  const span = (a0: number, a1: number, b0: number, b1: number) => ({
+    from: Math.max(a0, b0),
+    to: Math.min(a1, b1),
+  })
+  const sides: [Side, boolean, () => { from: number; to: number }][] = [
+    [
+      'right',
+      near(a.xM + a.widthM, b.xM),
+      () => span(a.yM, a.yM + a.depthM, b.yM, b.yM + b.depthM),
+    ],
+    ['left', near(b.xM + b.widthM, a.xM), () => span(a.yM, a.yM + a.depthM, b.yM, b.yM + b.depthM)],
+    [
+      'bottom',
+      near(a.yM + a.depthM, b.yM),
+      () => span(a.xM, a.xM + a.widthM, b.xM, b.xM + b.widthM),
+    ],
+    ['top', near(b.yM + b.depthM, a.yM), () => span(a.xM, a.xM + a.widthM, b.xM, b.xM + b.widthM)],
+  ]
+  for (const [side, touches, range] of sides) {
+    if (!touches) continue
+    const { from, to } = range()
+    if (to - from >= 0.5) return { side, from, to }
+  }
+  return undefined
+}
+
+/** Cômodos que dividem parede com este (candidatos a unir). */
+export function neighbours(model: HouseModel, index: number): number[] {
+  const room = model.rooms[index]
+  return model.rooms.flatMap((other, i) => (i !== index && sharedWall(room, other) ? [i] : []))
+}
+
+/** Começo da parede `side` do cômodo, no eixo dela (m), e o comprimento. */
+const wallSpan = (r: HouseRoom, side: Side) =>
+  side === 'top' || side === 'bottom'
+    ? { start: r.xM, length: r.widthM }
+    : { start: r.yM, length: r.depthM }
+
+/** A abertura cai no trecho [from, to] da parede? */
+function onSegment(r: HouseRoom, o: HouseOpening, from: number, to: number) {
+  const { start, length } = wallSpan(r, o.wall)
+  const mid = start + o.position * length
+  return mid > from - 0.05 && mid < to + 0.05
+}
+
+const OPPOSITE: Record<Side, Side> = { top: 'bottom', bottom: 'top', left: 'right', right: 'left' }
+
+/**
+ * Une dois cômodos vizinhos num só (a sala que continua junto à varanda, sem divisão): o
+ * segundo vira parte do primeiro (mesmo cômodo da lista) e a parede entre os dois some (no 3D
+ * e na posição dos móveis, que desenha o L como um espaço só).
+ */
+export function mergeRooms(model: HouseModel, a: number, b: number): HouseModel {
+  const A = model.rooms[a]
+  const B = model.rooms[b]
+  const shared = sharedWall(A, B)
+  if (!shared || a === b) return model
+  // O principal é o de A (ou o cômodo de que A já é parte).
+  const main = A.partOf ? (model.rooms.find((r) => r.label === A.partOf) ?? A) : A
+  const { start, length } = wallSpan(A, shared.side)
+  const open: HouseOpening = {
+    kind: 'door',
+    wall: shared.side,
+    position: ((shared.from + shared.to) / 2 - start) / length,
+    widthCm: Math.min(400, Math.max(40, Math.round((shared.to - shared.from) * 100))),
+    open: true,
+  }
+  return {
+    ...model,
+    rooms: model.rooms.map((r, i) => {
+      if (i === a) {
+        return {
+          ...r,
+          openings: [
+            ...r.openings.filter(
+              (o) => !(o.wall === shared.side && onSegment(r, o, shared.from, shared.to)),
+            ),
+            open,
+          ],
+        }
+      }
+      // B (e o que já era parte de B) vira parte do principal.
+      if (i === b || (r.partOf && r.partOf === B.label)) {
+        const openings =
+          i === b
+            ? r.openings.filter(
+                (o) =>
+                  !(o.wall === OPPOSITE[shared.side] && onSegment(r, o, shared.from, shared.to)),
+              )
+            : r.openings
+        return { ...r, type: main.type, partOf: main.label, openings }
+      }
+      return r
+    }),
+  }
+}
+
+/** Área fora das partes, dentro do retângulo que as envolve: "fora do cômodo". */
+export const OUTSIDE_ROOM = 'fora-do-comodo'
+/** Passagem de porta numa parede de dentro do L (precisa ficar livre). */
+const DOOR_CLEARANCE = 'passagem-de-porta'
+
+/** Cômodo em L como um espaço só: retângulo que envolve as partes, com o que fica de fora. */
+export function groupGeometry(members: HouseRoom[]) {
+  const minX = Math.min(...members.map((r) => r.xM))
+  const minY = Math.min(...members.map((r) => r.yM))
+  const maxX = Math.max(...members.map((r) => r.xM + r.widthM))
+  const maxY = Math.max(...members.map((r) => r.yM + r.depthM))
+  const W = Math.round((maxX - minX) * 100)
+  const D = Math.round((maxY - minY) * 100)
+  const local = members.map((r) => ({
+    x: Math.round((r.xM - minX) * 100),
+    y: Math.round((r.yM - minY) * 100),
+    w: Math.round(r.widthM * 100),
+    d: Math.round(r.depthM * 100),
+  }))
+  // Células da grade formada pelas bordas: as que nenhuma parte cobre ficam fora do cômodo.
+  const xs = [...new Set([0, W, ...local.flatMap((r) => [r.x, r.x + r.w])])].sort((p, q) => p - q)
+  const ys = [...new Set([0, D, ...local.flatMap((r) => [r.y, r.y + r.d])])].sort((p, q) => p - q)
+  const outside: { x: number; y: number; w: number; d: number }[] = []
+  for (let i = 0; i + 1 < xs.length; i++) {
+    for (let j = 0; j + 1 < ys.length; j++) {
+      const cx = (xs[i] + xs[i + 1]) / 2
+      const cy = (ys[j] + ys[j + 1]) / 2
+      const covered = local.some((r) => cx > r.x && cx < r.x + r.w && cy > r.y && cy < r.y + r.d)
+      if (!covered && xs[i + 1] - xs[i] > 1 && ys[j + 1] - ys[j] > 1) {
+        outside.push({ x: xs[i], y: ys[j], w: xs[i + 1] - xs[i], d: ys[j + 1] - ys[j] })
+      }
+    }
+  }
+  return { origin: { xM: minX, yM: minY }, width: W, depth: D, local, outside }
+}
+
+/** Peça fixa da geometria (fora do cômodo, passagem de porta de dentro do L). */
+const blocker = (
+  key: string,
+  category: string,
+  label: string,
+  rect: { x: number; y: number; w: number; d: number },
+  height: number,
+): PlacedItem => ({
+  key,
+  unit: 0,
+  category,
+  label,
+  placement: 'floor',
+  ...rect,
+  height,
+  elevation: 0,
+  facing: 'down',
+})
+
+/**
+ * Prepara o cômodo em L para o motor de posição: portas e janelas das paredes de fora vão para
+ * as paredes do retângulo; porta numa parede de dentro do L vira uma passagem livre; armários
+ * das fotos de todas as partes; e o que fica fora do L, ocupado.
+ */
+function groupRoom(members: HouseRoom[]) {
+  const geometry = groupGeometry(members)
+  const { width: W, depth: D, local } = geometry
+  const openings: HouseOpening[] = []
+  const fixed: PlacedItem[] = []
+  const builtInDefs: BuiltIn[] = []
+  members.forEach((room, m) => {
+    const r = local[m]
+    room.builtIns.forEach((b, i) => {
+      const p = builtInPlaced(b, i, room)
+      fixed.push({ ...p, key: `embutido:${m}-${i}`, x: p.x + r.x, y: p.y + r.y })
+      builtInDefs.push(b)
+    })
+  })
+  members.forEach((room, m) => {
+    const r = local[m]
+    for (const o of room.openings) {
+      if (o.open) continue
+      const horizontal = o.wall === 'top' || o.wall === 'bottom'
+      const length = horizontal ? r.w : r.d
+      const mid = (horizontal ? r.x : r.y) + o.position * length
+      const line = { top: r.y, bottom: r.y + r.d, left: r.x, right: r.x + r.w }[o.wall]
+      const edge = { top: 0, bottom: D, left: 0, right: W }[o.wall]
+      if (Math.abs(line - edge) <= 3) {
+        openings.push({ ...o, position: mid / (horizontal ? W : D) })
+        continue
+      }
+      // Parede de dentro do L: entre as partes (vão) não conta; porta para outro cômodo fica livre.
+      const between = members.some((other, n) => {
+        if (n === m) return false
+        const s = sharedWall(room, other)
+        return s?.side === o.wall
+      })
+      if (between || o.kind !== 'door') continue
+      const swings = !o.sliding && o.widthCm <= MAX_SWING_DOOR_CM
+      const reach = swings ? o.widthCm + 10 : 60
+      const span = o.widthCm + 20
+      const rect = {
+        top: { x: mid - span / 2, y: line, w: span, d: reach },
+        bottom: { x: mid - span / 2, y: line - reach, w: span, d: reach },
+        left: { x: line, y: mid - span / 2, w: reach, d: span },
+        right: { x: line - reach, y: mid - span / 2, w: reach, d: span },
+      }[o.wall]
+      fixed.push(
+        blocker(`porta:${m}-${fixed.length}`, DOOR_CLEARANCE, 'Passagem da porta', rect, 210),
+      )
+    }
+  })
+  geometry.outside.forEach((rect, i) =>
+    fixed.push(blocker(`fora:${i}`, OUTSIDE_ROOM, 'Fora do cômodo', rect, 300)),
+  )
+  return { geometry, openings, fixed, builtInDefs }
+}
+
+/** Peça só de geometria do L (fora do cômodo, passagem de porta): não é móvel nem obstáculo no 3D. */
+export const isGeometry = (p: PlacedItem) =>
+  p.category === OUTSIDE_ROOM || p.category === DOOR_CLEARANCE

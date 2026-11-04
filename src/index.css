@@ -3368,3 +3368,27 @@ h3 {
   font-size: 0.85rem;
   font-weight: 600;
 }
+
+/* Unir cômodos e o L desenhado como um só */
+.layout-merge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.layout-fixed.is-fora-do-comodo rect {
+  fill: url(#outside-hatch);
+  stroke: none;
+}
+
+.layout-fixed.is-passagem-de-porta rect {
+  fill: none;
+  stroke: #b9b2a8;
+  stroke-dasharray: 6 5;
+}
+
+.layout-fixed.is-passagem-de-porta text {
+  display: none;
+}

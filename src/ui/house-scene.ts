@@ -52,7 +52,7 @@ import {
   type Rect2,
 } from '../engine/house-world.ts'
 import type { Floor, HouseModel } from '../engine/house3d.ts'
-import type { FurnishedRoom } from '../engine/house3d.ts'
+import { isGeometry, type FurnishedRoom } from '../engine/house3d.ts'
 import type { PlacedItem } from '../engine/layout.ts'
 import {
   builtInModel,
@@ -212,7 +212,11 @@ export function mountHouse(
   setRealistic(kit)
   const world = buildWorld(model)
   // Armários das fotos também bloqueiam quem anda e o ponto de parada do tour.
-  const layouts = furnished.map((f) => ({ ...f.layout, placed: [...f.layout.placed, ...f.fixed] }))
+  const layouts = furnished.map((f) => ({
+    ...f.layout,
+    // (no L, "fora do cômodo" e passagem de porta são só para posicionar: não bloqueiam no 3D)
+    placed: [...f.layout.placed, ...f.fixed.filter((p) => !isGeometry(p))],
+  }))
   const blockers: Rect2[] = blockersOf(world, model, layouts)
 
   const scene = new Scene()
@@ -461,18 +465,15 @@ export function mountHouse(
 
   const builtIns: Group[] = []
   // Armários das fotos (já estão no imóvel): na medida, na parede onde a foto mostra.
-  furnished.forEach(({ room, fixed }) => {
-    fixed.forEach((p, i) => {
-      const b = room.builtIns[i]
+  furnished.forEach(({ room, fixed, builtInDefs, layout }) => {
+    const o = layout.origin ?? room
+    builtInDefs.forEach((b, i) => {
+      const p = fixed[i]
       const sideways = p.facing === 'left' || p.facing === 'right'
       const [w, d] = sideways ? [p.d / 100, p.w / 100] : [p.w / 100, p.d / 100]
       const g = builtInModel(b, w, d, p.height / 100)
       g.rotation.y = { down: 0, up: Math.PI, right: Math.PI / 2, left: -Math.PI / 2 }[p.facing]
-      g.position.set(
-        room.xM + (p.x + p.w / 2) / 100,
-        p.elevation / 100,
-        room.yM + (p.y + p.d / 2) / 100,
-      )
+      g.position.set(o.xM + (p.x + p.w / 2) / 100, p.elevation / 100, o.yM + (p.y + p.d / 2) / 100)
       g.userData.aboveCut = p.elevation / 100 >= ORBIT_CUT
       scene.add(g)
       builtIns.push(g)
@@ -483,6 +484,7 @@ export function mountHouse(
   const pickables: Object3D[] = []
   const items = new Map<string, Group>()
   furnished.forEach(({ room, layout }) => {
+    const o = layout.origin ?? room
     for (const p of layout.placed) {
       const sideways = p.facing === 'left' || p.facing === 'right'
       const [w, d] = sideways ? [p.d / 100, p.w / 100] : [p.w / 100, p.d / 100]
@@ -491,9 +493,9 @@ export function mountHouse(
       })
       g.rotation.y = { down: 0, up: Math.PI, right: Math.PI / 2, left: -Math.PI / 2 }[p.facing]
       g.position.set(
-        room.xM + (p.x + p.w / 2) / 100,
+        o.xM + (p.x + p.w / 2) / 100,
         p.elevation / 100 + (p.placement === 'rug' ? 0.004 : 0),
-        room.yM + (p.y + p.d / 2) / 100,
+        o.yM + (p.y + p.d / 2) / 100,
       )
       const id = itemId(p)
       g.traverse((o) => (o.userData.id = id))
