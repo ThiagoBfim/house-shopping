@@ -9,6 +9,7 @@ import {
   setRoomType,
   withoutBedVariants,
   guestsByHost,
+  linkPlanRooms,
 } from '../src/engine/floor-plan.ts'
 import { expandHouse } from '../src/engine/house.ts'
 import { furnitureForSkill } from '../src/engine/house3d.ts'
@@ -337,5 +338,37 @@ describe('sem área de serviço na planta, a lavanderia fica na cozinha', () => 
     )
     expect(semCozinha.house.lavanderia).toBeUndefined()
     expect(semCozinha.hosted).toEqual([])
+  })
+})
+
+describe('linkPlanRooms: a planta segue os cômodos de agora', () => {
+  const read = planToHouse(parseFloorPlan(apto)!, rooms)
+  const quartos = () => read.rooms.filter((r) => r.type === 'quarto')
+
+  it('ligação válida fica como está', () => {
+    const ids = expandHouse(rooms, products, read.house).instances.map((i) => i.id)
+    expect(linkPlanRooms(read.rooms, ids)).toEqual(read.rooms)
+  })
+
+  it('mudou para 1 quarto: o maior quarto da planta vira "quarto"; o outro fica sem cômodo', () => {
+    const ids = expandHouse(rooms, products, { ...read.house, quarto: 1 }).instances.map(
+      (i) => i.id,
+    )
+    const linked = linkPlanRooms(read.rooms, ids).filter((r) => r.type === 'quarto')
+    const biggest = [...quartos()].sort((a, b) => (b.areaM2 ?? 0) - (a.areaM2 ?? 0))[0]
+    expect(linked.find((r) => r.label === biggest.label)!.instanceId).toBe('quarto')
+    expect(linked.filter((r) => r.instanceId)).toHaveLength(1)
+  })
+
+  it('casa em 3D: a área vem de largura × profundidade', () => {
+    const rooms3d = [
+      { type: 'quarto', label: 'A', widthM: 3, depthM: 3, instanceId: 'quarto-9' },
+      { type: 'quarto', label: 'B', widthM: 4, depthM: 4, instanceId: 'quarto-8' },
+    ]
+    const linked = linkPlanRooms(rooms3d, ['quarto-1', 'quarto-2'], (r) => r.widthM * r.depthM)
+    expect(linked.map((r) => [r.label, r.instanceId])).toEqual([
+      ['A', 'quarto-2'],
+      ['B', 'quarto-1'],
+    ])
   })
 })

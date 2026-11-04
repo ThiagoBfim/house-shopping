@@ -15,7 +15,13 @@ import {
 } from './house.ts'
 import type { Answers } from './assistant.ts'
 import { fromBase62, toBase62 } from './base62.ts'
-import { cleanProductUrl, isValidManual, MAX_MANUAL_ITEMS, type ManualItem } from './manual.ts'
+import {
+  cleanProductUrl,
+  isValidDimensions,
+  isValidManual,
+  MAX_MANUAL_ITEMS,
+  type ManualItem,
+} from './manual.ts'
 
 /** Tudo o que é preciso para reproduzir uma lista. */
 export interface ListState {
@@ -93,7 +99,8 @@ interface Wire {
   a?: Answers
 }
 
-type WireManual = [string, string, number, string, number?, string?]
+/** … + medidas [largura, profundidade, altura] em cm (ausente = medida típica). */
+type WireManual = [string, string, number, string, number?, string?, [number, number, number]?]
 
 export function encodeState(state: ListState): string {
   const wire: Wire = {
@@ -113,14 +120,20 @@ export function encodeState(state: ListState): string {
   if (Object.keys(state.choices.needs).length) wire.e = state.choices.needs
   if (state.choices.manual.length) {
     // Links salvos antes da limpeza também saem sem rastreamento.
-    wire.m = state.choices.manual.map(({ instanceId, name, price, url: raw, qty, replaces }) => {
-      const url = cleanProductUrl(raw)
-      return replaces
-        ? [instanceId, name, price, url, qty, replaces]
-        : qty === 1
-          ? [instanceId, name, price, url]
-          : [instanceId, name, price, url, qty]
-    })
+    wire.m = state.choices.manual.map(
+      ({ instanceId, name, price, url: raw, qty, replaces, dimensions }) => {
+        const url = cleanProductUrl(raw)
+        if (dimensions) {
+          const { width, depth, height } = dimensions
+          return [instanceId, name, price, url, qty, replaces ?? '', [width, depth, height]]
+        }
+        return replaces
+          ? [instanceId, name, price, url, qty, replaces]
+          : qty === 1
+            ? [instanceId, name, price, url]
+            : [instanceId, name, price, url, qty]
+      },
+    )
   }
   if (state.answers && Object.keys(state.answers).length) wire.a = state.answers
   return pack(JSON.stringify(wire))
@@ -236,12 +249,17 @@ function manualItems(
   const items: ManualItem[] = []
   for (const entry of raw) {
     if (!Array.isArray(entry)) continue
-    const [instanceId, name, price, url, qty = 1, replaces] = entry as unknown[]
+    const [instanceId, name, price, url, qty = 1, replaces, sides] = entry as unknown[]
     if (typeof instanceId !== 'string' || !instances.has(instanceId)) continue
     if (typeof name !== 'string' || typeof price !== 'number') continue
     if (typeof url !== 'string' || typeof qty !== 'number') continue
+    const dimensions =
+      Array.isArray(sides) && sides.length === 3 && sides.every((v) => typeof v === 'number')
+        ? { width: sides[0] as number, depth: sides[1] as number, height: sides[2] as number }
+        : undefined
     const fields = { name: name.trim(), price, qty, url }
     if (!isValidManual(fields)) continue
+    if (dimensions && isValidDimensions(dimensions)) Object.assign(fields, { dimensions })
     const item: ManualItem = { id: `m${items.length + 1}`, instanceId, ...fields }
     if (
       typeof replaces === 'string' &&

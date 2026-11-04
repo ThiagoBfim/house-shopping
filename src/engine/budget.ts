@@ -299,7 +299,12 @@ export function describeList(
     if (!original) return entry
     const { variants } = products[original.item.category]
     const variant = variants && chosenVariant(variants, choices.variants[original.item.category])
-    const size = sizeOf({}, products[original.item.category], variant)
+    // Medidas digitadas na troca valem no lugar da medida típica (trocou o sofá → sofá novo).
+    const size = sizeOf(
+      item.dimensions ? { dimensions: item.dimensions } : {},
+      products[original.item.category],
+      variant,
+    )
     return { ...entry, replaced: original, ...(size && { size }) }
   })
 

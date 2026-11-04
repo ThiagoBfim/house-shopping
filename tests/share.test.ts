@@ -345,3 +345,62 @@ describe('encodeState / decodeState', () => {
     expect(decoded?.answers).toEqual({ limpeza: ['robo'] })
   })
 })
+
+describe('medidas do produto trocado no link', () => {
+  const sofa = { width: 210, depth: 92.5, height: 85 }
+  const withSizes: ListState = {
+    ...state,
+    choices: {
+      ...choices,
+      manual: [
+        {
+          id: 'm1',
+          instanceId: 'quarto-2',
+          name: 'Cama nova',
+          price: 1999,
+          qty: 1,
+          url: 'https://x.com/c',
+          replaces: 'quarto-2:cama-box',
+          dimensions: { width: 160, depth: 200, height: 45 },
+        },
+        {
+          id: 'm2',
+          instanceId: 'cozinha',
+          name: 'Fruteira',
+          price: 59,
+          qty: 1,
+          url: 'https://x.com/a',
+          dimensions: sofa,
+        },
+        {
+          id: 'm3',
+          instanceId: 'cozinha',
+          name: 'Sem medida',
+          price: 10,
+          qty: 2,
+          url: 'https://x.com/b',
+        },
+      ],
+    },
+  }
+
+  it('ida e volta preserva as medidas (troca e item só adicionado)', () => {
+    const decoded = decodeState(encodeState(withSizes), rooms)!
+    expect(decoded.choices.manual).toEqual(withSizes.choices.manual)
+  })
+
+  it('medida inválida no link é ignorada (o item fica, com a medida típica)', () => {
+    const encoded = wire({
+      v: STATE_VERSION,
+      h: house,
+      b: 40000,
+      p: {},
+      l: {},
+      x: {},
+      m: [['cozinha', 'Fruteira', 59, 'https://x.com/a', 1, '', [0, 'x', 80]]],
+    })
+    const decoded = decodeState(encoded, rooms)!
+    expect(decoded.choices.manual).toHaveLength(1)
+    expect(decoded.choices.manual[0]).not.toHaveProperty('dimensions')
+  })
+})

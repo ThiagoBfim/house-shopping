@@ -22,6 +22,11 @@ export interface ManualItem {
    * Local: não vai no link compartilhado.
    */
   found?: { store: string; was: number }
+  /**
+   * Medidas do produto em cm (opcional, digitadas pela pessoa): a posição dos móveis e o 3D
+   * usam no lugar da medida típica da categoria (trocou o sofá → o sofá novo no desenho).
+   */
+  dimensions?: { width: number; depth: number; height: number }
 }
 
 /** Limite por lista, para o link compartilhado não ficar grande demais. */
@@ -36,9 +41,31 @@ export interface ManualInput {
   price: string
   qty: string
   url: string
+  /** Medidas em cm (opcionais: as três ou nenhuma). */
+  width?: string
+  depth?: string
+  height?: string
 }
 
-export type ManualFields = Pick<ManualItem, 'name' | 'price' | 'qty' | 'url'>
+export const MAX_SIDE_CM = 1000
+export const MAX_HEIGHT_CM = 500
+
+/** Medida digitada em cm ("180", "92,5"). Vazia = undefined; inválida = NaN. */
+function parseCm(text: string | undefined): number | undefined {
+  const clean = (text ?? '').trim().replace(',', '.')
+  if (!clean) return undefined
+  return /^\d+(\.\d+)?$/.test(clean) ? Math.round(Number(clean) * 10) / 10 : NaN
+}
+
+/** Medidas válidas (cm, positivas, até 10 m de lado e 5 m de altura). */
+export const isValidDimensions = (d: ManualItem['dimensions']): boolean =>
+  !d ||
+  ([d.width, d.depth].every((v) => Number.isFinite(v) && v > 0 && v <= MAX_SIDE_CM) &&
+    Number.isFinite(d.height) &&
+    d.height > 0 &&
+    d.height <= MAX_HEIGHT_CM)
+
+export type ManualFields = Pick<ManualItem, 'name' | 'price' | 'qty' | 'url' | 'dimensions'>
 
 export type ManualErrors = Partial<Record<keyof ManualInput, string>>
 
@@ -75,8 +102,12 @@ const isValidPrice = (price: number) => price > 0 && price <= MAX_PRICE
 const isValidQty = (qty: number) => Number.isInteger(qty) && qty >= 1 && qty <= MAX_QTY
 
 /** Confere um item vindo de fora (link compartilhado / localStorage). */
-export const isValidManual = ({ name, price, qty, url }: ManualFields): boolean =>
-  isValidName(name) && isValidPrice(price) && isValidQty(qty) && isWebUrl(url)
+export const isValidManual = ({ name, price, qty, url, dimensions }: ManualFields): boolean =>
+  isValidName(name) &&
+  isValidPrice(price) &&
+  isValidQty(qty) &&
+  isWebUrl(url) &&
+  isValidDimensions(dimensions)
 
 /** Valida e normaliza o formulário. Quantidade vazia = 1. */
 export function parseManualInput(input: ManualInput): ParsedManual {
@@ -94,9 +125,17 @@ export function parseManualInput(input: ManualInput): ParsedManual {
   if (!isValidQty(qty)) errors.qty = `Quantidade de 1 a ${MAX_QTY}.`
   if (!url) errors.url = 'Cole o link do produto.'
   else if (!isWebUrl(url)) errors.url = 'Link inválido: comece com https://'
+  const sides = [parseCm(input.width), parseCm(input.depth), parseCm(input.height)]
+  const given = sides.filter((v) => v !== undefined).length
+  const dimensions =
+    given === 3 ? { width: sides[0]!, depth: sides[1]!, height: sides[2]! } : undefined
+  if (given > 0 && given < 3) errors.width = 'Preencha as três medidas (ou nenhuma).'
+  else if (!isValidDimensions(dimensions)) {
+    errors.width = 'Medidas em cm, maiores que zero (até 10 m; altura até 5 m).'
+  }
 
   if (Object.keys(errors).length) return { ok: false, errors }
-  return { ok: true, value: { name, price: price!, qty, url } }
+  return { ok: true, value: { name, price: price!, qty, url, ...(dimensions && { dimensions }) } }
 }
 
 /** Parâmetros que só servem para rastrear o clique (a página do produto abre igual sem eles). */

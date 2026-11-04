@@ -3167,3 +3167,26 @@ h3 {
 .layout-others p {
   margin: 6px 0 0;
 }
+
+.manual-field-size {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.manual-field-size legend {
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.manual-size {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.manual-size input {
+  width: 5.5em;
+  min-width: 0;
+}

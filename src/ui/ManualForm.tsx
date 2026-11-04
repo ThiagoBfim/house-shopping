@@ -27,6 +27,9 @@ export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props
     price: initial?.price ? priceText(initial.price) : '',
     qty: String(initial?.qty ?? 1),
     url: initial?.url ?? '',
+    width: initial?.dimensions ? String(initial.dimensions.width) : '',
+    depth: initial?.dimensions ? String(initial.dimensions.depth) : '',
+    height: initial?.dimensions ? String(initial.dimensions.height) : '',
   })
   /** Erros só aparecem depois da primeira tentativa de salvar. */
   const [errors, setErrors] = useState<ManualErrors>()
@@ -46,7 +49,7 @@ export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props
     id: `${id}-${name}`,
     'aria-invalid': errors?.[name] ? true : undefined,
     'aria-describedby': errors?.[name] ? `${id}-${name}-error` : undefined,
-    value: input[name],
+    value: input[name] ?? '',
     onInput: (e: { currentTarget: HTMLInputElement }) => set(name, e.currentTarget.value),
   })
   const error = (name: keyof ManualInput) =>
@@ -126,6 +129,37 @@ export function ManualForm({ id, initial, submitLabel, onSave, onCancel }: Props
         <input {...field('url')} type="url" autoComplete="off" placeholder="https://" />
         {error('url')}
       </div>
+      <fieldset class="manual-field manual-field-size">
+        <legend>
+          Medidas em cm <span class="muted">(opcional: o desenho e o 3D usam)</span>
+        </legend>
+        <span class="manual-size">
+          <input
+            {...field('width')}
+            aria-label="Largura em cm"
+            inputMode="decimal"
+            autoComplete="off"
+            placeholder="Largura"
+          />
+          <span aria-hidden="true">×</span>
+          <input
+            {...field('depth')}
+            aria-label="Profundidade em cm"
+            inputMode="decimal"
+            autoComplete="off"
+            placeholder="Prof."
+          />
+          <span aria-hidden="true">×</span>
+          <input
+            {...field('height')}
+            aria-label="Altura em cm"
+            inputMode="decimal"
+            autoComplete="off"
+            placeholder="Altura"
+          />
+        </span>
+        {error('width')}
+      </fieldset>
       <div class="manual-form-actions">
         <button type="button" class="link-button" onClick={onCancel}>
           Cancelar

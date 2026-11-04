@@ -749,3 +749,56 @@ test('planta sem área de serviço: a lavanderia entra na lista e fica na cozinh
   await expect(layout.getByRole('button', { name: /^Máquina de lavar/ })).toHaveCount(1)
   await expect(layout.getByRole('button', { name: /^Fogão/ })).toHaveCount(1)
 })
+
+test('trocar o sofá com as medidas: a posição dos móveis usa o tamanho do sofá novo', async ({
+  page,
+}) => {
+  await mockApi(page, {
+    start: { '/api/floor-plan': { id: 'p1' } },
+    jobs: { p1: [{ id: 'p1', status: 'done', result: apto }] },
+  })
+  await page.goto('./')
+  await turnOn(page, 'Planta da casa')
+  await page
+    .getByLabel('Planta da casa (imagem ou PDF)')
+    .setInputFiles({ name: 'apto.png', mimeType: 'image/png', buffer: Buffer.from('png') })
+  await page.getByRole('button', { name: /^Continuar com/ }).click()
+  await page.getByLabel('Orçamento em reais').fill('200000')
+  await page.getByRole('button', { name: 'Montar minha lista' }).click()
+
+  const layout = page.locator('.furniture-layout')
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  const sofa = layout.getByRole('button', { name: /^Sofá/ })
+  const footprint = async () => {
+    const rect = sofa.locator('rect')
+    return [Number(await rect.getAttribute('width')), Number(await rect.getAttribute('height'))]
+      .sort((a, b) => b - a)
+      .join('×')
+  }
+  const before = await footprint()
+
+  // trocar pelo sofá que eu achei, com as medidas dele
+  await page
+    .locator('#room-sala')
+    .getByRole('article', { name: /^Sofá:/ })
+    .getByRole('button', { name: 'Trocar' })
+    .click()
+  await page.getByLabel('Preço unitário').fill('3.499,00')
+  await page.getByLabel('Link do produto').fill('https://www.magazineluiza.com.br/sofa-retratil')
+  await page.getByLabel('Largura em cm').fill('250')
+  await page.getByRole('button', { name: 'Trocar', exact: true }).click()
+  await expect(page.locator('.manual-error')).toContainText('Preencha as três medidas')
+  await page.getByLabel('Profundidade em cm').fill('105')
+  await page.getByLabel('Altura em cm').fill('95')
+  await page.getByRole('button', { name: 'Trocar', exact: true }).click()
+
+  const swap = page.getByRole('article', { name: /^Trocado por você \(Sofá\)/ })
+  await expect(swap).toContainText('📐 250 × 105 × 95 cm')
+  await expect.poll(footprint).toBe('250×105')
+  expect(before).not.toBe('250×105')
+
+  // fica no link/navegador: recarregar mantém a medida; editar mostra os valores
+  await page.reload()
+  await layout.getByRole('tab', { name: 'Sala' }).click()
+  await expect.poll(footprint).toBe('250×105')
+})
